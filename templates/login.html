@@ -1,97 +1,114 @@
 {% extends "templates/page.html" %}
+{% if announcement_login %}
+  {% set announcement = announcement_login %}
+{% endif %}
 
-{% block scripts %}
+{% block login_widget %}
+{% endblock %}
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y1FRQDD44F"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+{% block main %}
 
-  gtag('config', 'G-Y1FRQDD44F');
-</script>
+{% block login %}
+<div id="login-main" class="container">
+{% block login_container %}
+{% if custom_html %}
+{{ custom_html | safe }}
+{% elif login_service %}
+<div class="service-login">
+  <p id='insecure-login-warning' class='hidden'>
+  Warning: JupyterHub seems to be served over an unsecured HTTP connection.
+  We strongly recommend enabling HTTPS for JupyterHub.
+  </p>
 
-<script src="{{static_url("components/requirejs/require.js") }}" type="text/javascript" charset="utf-8"></script>
-<script src="{{static_url("components/jquery/dist/jquery.min.js") }}" type="text/javascript" charset="utf-8"></script>
-<script src="{{static_url("components/bootstrap/dist/js/bootstrap.min.js") }}" type="text/javascript" charset="utf-8"></script>
+  <a role="button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
+    Sign in with {{login_service}}
+  </a>
+</div>
+{% else %}
+<form action="{{authenticator_login_url}}" method="post" role="form">
+  <div class="auth-form-header">
+    Sign in
+  </div>
+  <div class='auth-form-body'>
+
+    <p id='insecure-login-warning' class='hidden'>
+    Warning: JupyterHub seems to be served over an unsecured HTTP connection.
+    We strongly recommend enabling HTTPS for JupyterHub.
+    </p>
+
+    {% if login_error %}
+    <p class="login_error">
+      {{login_error}}
+    </p>
+    {% endif %}
+    <label for="username_input">Username:</label>
+    <input
+      id="username_input"
+      type="text"
+      autocapitalize="off"
+      autocorrect="off"
+      class="form-control"
+      name="username"
+      val="{{username}}"
+      tabindex="1"
+      autofocus="autofocus"
+    />
+    <label for='password_input'>Password:</label>
+    <input
+      type="password"
+      class="form-control"
+      name="password"
+      id="password_input"
+      tabindex="2"
+    />
+
+    <div class="feedback-container">
+      <input
+        id="login_submit"
+        type="submit"
+        class='btn btn-jupyter'
+        value='Sign in'
+        tabindex="3"
+        />
+      <div class="feedback-widget hidden">
+        <i class="fa fa-spinner"></i>
+      </div>
+    </div>
+
+    {% block login_terms %}
+    {% if login_term_url %}
+    <div id="login_terms" class="login_terms">
+    <input type="checkbox" id="login_terms_checkbox" name="login_terms_checkbox" required />
+    {% block login_terms_text %} {# allow overriding the text #}
+    By logging into the platform you accept the <a href="{{ login_term_url }}">terms and conditions</a>.
+    {% endblock login_terms_text %}
+    </div>
+    {% endif %}
+    {% endblock login_terms %}
+
+  </div>
+</form>
+{% endif %}
+{% endblock login_container %}
+</div>
+{% endblock login %}
 
 {% endblock %}
 
-{% block nav_bar %}
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        {% block logo %}
-        <span id="jupyterhub-logo" class="pull-left">
-            <a href="{{logo_url or base_url}}"><img src='{{base_url}}logo' alt='JupyterHub' class='jpy-logo' title='Home'/></a>
-        </span>
-        {% endblock %}
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#thenavbar" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-      </div>
-
-      <div class="collapse navbar-collapse" id="thenavbar">
-        {% if user %}
-        <ul class="nav navbar-nav">
-          {% block nav_bar_left_items %}
-            <li><a href="{{base_url}}home">Home</a></li>
-            <li><a href="{{base_url}}token">Token</a></li>
-            {% if user.admin %}
-            <li><a href="{{base_url}}admin">Admin</a></li>
-            {% endif %}
-            {% if services %}
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-              {% for service in services %}
-                <li><a class="dropdown-item" href="{{service.prefix}}">{{service.name}}</a></li>
-              {% endfor %}
-              </ul>
-            </li>
-            {% endif %}
-
-            {# Start LibreTexts specific change #}
-            <li><a href="{{base_url}}about">About</a></li>
-            <li><a href="{{base_url}}faq">FAQ</a></li>
-            {# End change #}
-
-          {% endblock %}
-        </ul>
-
-        {# Start LibreTexts specific change #}
-        {% else %}
-        <ul class="nav navbar-nav">
-          <li><a href="{{base_url}}about">About</a></li>
-          <li><a href="{{base_url}}faq">FAQ</a></li>
-        </ul>
-        {# End change #}
-
-        {% endif %}
-        <ul class="nav navbar-nav navbar-right">
-          {% block nav_bar_right_items %}
-            <li>
-              {% block login_widget %}
-                <span id="login_widget">
-                  {% if user %}
-		    <p class="navbar-text">{{user.name}}</p>
-                    <a id="logout" role="button" class="navbar-btn btn-sm btn btn-default" href="{{logout_url}}"> <i aria-hidden="true" class="fa fa-sign-out"></i> Logout</a>
-                  {% else %}
-                    <a id="login" role="button" class="btn-sm btn navbar-btn btn-default" href="{{login_url}}">Login</a>
-                  {% endif %}
-                </span>
-              {% endblock %}
-            </li>
-          {% endblock %}
-        </ul>
-      </div>
-
-      {% block header %}
-      {% endblock %}
-    </div>
-  </nav>
+{% block script %}
+{{ super() }}
+<script>
+if (window.location.protocol === "http:") {
+  // unhide http warning
+  var warning = document.getElementById('insecure-login-warning');
+  warning.className = warning.className.replace(/\bhidden\b/, '');
+}
+// setup onSubmit feedback
+$('form').submit((e) => {
+  var form = $(e.target);
+  form.find('.feedback-container>input').attr('disabled', true);
+  form.find('.feedback-container>*').toggleClass('hidden');
+  form.find('.feedback-widget>*').toggleClass('fa-pulse');
+});
+</script>
 {% endblock %}
