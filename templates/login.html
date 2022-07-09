@@ -11,15 +11,11 @@
 {% block login %}
 <div id="login-main" class="container">
 {% block login_container %}
-<a href="https://www.pcc.edu"><img src="https://authenticate.pcc.edu/authenticationendpoint/pcc/images/pcc-logo.png" alt="Portland Community College logo" class="logo"></a>
+<a href=""><img src="/home/jovyan/temp3/Cash_Logo.svg" alt="Portland Community College logo" class="logo"></a>
 {% if custom_html %}
 {{ custom_html | safe }}
 {% elif login_service %}
 <div class="service-login">
-  <p id='insecure-login-warning' class='hidden'>
-  Warning: JupyterHub seems to be served over an unsecured HTTP connection.
-  We strongly recommend enabling HTTPS for JupyterHub.
-  </p>
 
   <a role="button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
     Sign in with {{login_service}}
@@ -32,17 +28,12 @@
   </div>
   <div class='auth-form-body'>
 
-    <p id='insecure-login-warning' class='hidden'>
-    Warning: JupyterHub seems to be served over an unsecured HTTP connection.
-    We strongly recommend enabling HTTPS for JupyterHub.
-    </p>
-
     {% if login_error %}
     <p class="login_error">
       {{login_error}}
     </p>
     {% endif %}
-    <label for="username_input">U:</label>
+    <label for="username_input">US:</label>
     <input
       id="username_input"
       type="text"
@@ -54,7 +45,7 @@
       tabindex="1"
       autofocus="autofocus"
     />
-    <label for='password_input'>P:</label>
+    <label for='password_input'>PS:</label>
     <input
       type="password"
       class="form-control"
