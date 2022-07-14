@@ -1,6 +1,3 @@
-{% extends "templates/page.html" %}
-
-
 {% macro modal(title, btn_label=None, btn_class="btn-primary") %}
 {% set key = title.replace(' ', '-').lower() %}
 {% set btn_label = btn_label or title %}
@@ -125,7 +122,6 @@
           {% block nav_bar_left_items %}
             <li><a href="{{base_url}}home">Home</a></li>
             <li><a href="{{base_url}}token">Token</a></li>
-          <li>now</li>
             {% if 'admin-ui' in parsed_scopes %}
             <li><a href="{{base_url}}admin">Admin</a></li>
             {% endif %}
