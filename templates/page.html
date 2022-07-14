@@ -1,3 +1,6 @@
+{% extends "templates/page.html" %}
+
+
 {% macro modal(title, btn_label=None, btn_class="btn-primary") %}
 {% set key = title.replace(' ', '-').lower() %}
 {% set btn_label = btn_label or title %}
