@@ -4,9 +4,6 @@
 {% endif %}
 
 {% block main %}
-<div>
-    Sravanthi
-  </div>
 <div class="container">
   <div class="row">
     <div class="text-center">
@@ -31,7 +28,9 @@
   you may have additional {% if named_server_limit_per_user > 0 %}{{ named_server_limit_per_user }} {% endif %}server(s) with names.
   This allows you to have more than one server running at the same time.
   </p>
-
+  <p>
+    Also, you can change the template design.
+  </p>
   {% set named_spawners = user.all_spawners(include_default=False)|list %}
 
   <table class="server-table table table-striped">
@@ -85,9 +84,6 @@
     </tbody>
   </table>
   {% endif %}
-  <div>
-    Sravanthi
-  </div>
 </div>
 {% endblock main %}
 
