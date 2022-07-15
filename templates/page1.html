@@ -1,6 +1,6 @@
 {% extends "templates/page.html" %}
- {% set announcement = 'Hello There!!!!!!!!!!!!!!' %}
-{% block nav_bar %}
-{{ super() }}
-<a href='https://www.google.co.in/'>Google</a>
+{% set announcement = 'Hello There!!!!!!!!!!!!!!' %}
+{% block nav_bar_left_items %}
+ {{ super() }}
+ <a href='https://www.google.co.in/'>Google</a>
 {% endblock %}
