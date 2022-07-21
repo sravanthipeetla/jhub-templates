@@ -15,7 +15,6 @@
 {{ custom_html | safe }}
 {% elif login_service %}
 <div class="service-login">
-  <h1>Welcome :)</h1>
   <a role="button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
     Sign in with {{login_service}}
   </a>
