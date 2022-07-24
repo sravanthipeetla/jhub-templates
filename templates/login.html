@@ -2,12 +2,15 @@
 {% if announcement_login %}
   {% set announcement = announcement_login %}
 {% endif %}
-
 {% block login_widget %}
 {% endblock %}
-
+{% block stylesheet %}
+  <link rel="stylesheet" type="text/css" href="bootstrap_adjust.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+{% endblock stylesheet %}
 {% block main %}
-
 {% block login %}
 <div id="login-main" class="container">
 {% block login_container %}
@@ -15,12 +18,79 @@
 {{ custom_html | safe }}
 {% elif login_service %}
 <div class="service-login">
-   <div class="left-content-wrapper">
+        <div class="page-wrapper">
+            <div class="d-flex flex-wrap h-100">
+                <div class="left-section">
+                    <div class="left-content-wrapper">
                         <h3 class="color-fff font-poppins">Your differentiated learning journey, begins here</h3>
                     </div> 
-  <a role="button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
-    Sign in with {{login_service}}
-  </a>
+                    <div class="student-img">
+<!--                         <img src="assets/img/jordy-1.svg" class="student-2">
+                        <img src="assets/img/jordy-2.svg" class="student-1"> -->
+                    </div>
+                    <div class="plant">
+                        <img src="assets/img/plant.png">
+                    </div>
+                    <div class="circle">
+                        <img src="assets/img/shape-2.svg">
+                    </div>
+                </div>
+                <div class="right-section">
+                    <div class="section-header">
+                        <div class="d-flex align-items-center justify-content-between">
+<!--                             <img src="assets/img/HCL_Cash-Logo.png" class="hcl-logo"> -->
+                            <div class="d-flex d-flex align-items-center justify-content-between top-copyright">
+                                <span>Powered by</span> <img src="assets/img/HCL-Logo-1.png">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="login-form-wrapper font-gothic">
+                        <h3>Welcome <span>:)</span></h3>
+                        <form id="login-form">
+                            <div class="form-group floating-label mb-5">
+                                <input type="text" class="form-control border-bottom-input" required>
+                                <label>Email</label>
+                            </div>
+                            <div class="form-group floating-label">
+                                <div class="input-group">
+                                    <input type="password" class="form-control border-bottom-input"  id="password-input" required>
+                                    <label>Password</label>
+                                    <button type="button" class="show-password-button" id="show-password-button"></button>
+                                </div> 
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <div class="input-group w-50">
+                                    <label class="check-box-container color-006BB6 check-box-type-1">Remember me
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <a href="" class="f-15 color-707070">Forgot password?</a>
+                            </div>
+                            <div class="mt-5">
+                                <div class="input-group d-flex justify-content-center">
+                                    <label class="check-box-container check-box-type-2 color-AAA f-14">I agree with the <a href="">Terms & Conditions</a>
+                                        <input type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center flex-column mt-2 ">
+                                <button class="btn btn-primary w-100 btn-curved bg-006BB6 p-2 f-16 font-poppins mb-3">Login</button>
+                                <a href="">Login with your organisation ID</a>
+                            </div>
+                            <div class="mt-5 text-center">
+                                <p class="color-AAA f-14">Having trouble logging in? <a href="" >Help center</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+ <a role="button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
+  Sign in with {{login_service}}
+ </a>
 </div>
 {% else %}
 <form action="{{authenticator_login_url}}" method="post" role="form">
@@ -102,5 +172,8 @@ $('form').submit((e) => {
   form.find('.feedback-container>*').toggleClass('hidden');
   form.find('.feedback-widget>*').toggleClass('fa-pulse');
 });
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </script>
 {% endblock %}
