@@ -29,35 +29,19 @@
                     </div> 
                     <div class="student-img">
                        <img src="https://ik.imagekit.io/bdrfryplj/jordy-1_yYMmZRvbd.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658725399028" class="student-2">
-<!--                         <img src="https://ik.imagekit.io/bdrfryplj/jordy-2_wvPbu4oPG.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658725592275" class="student-1"> -->
-                    </div>
-                    <div class="plant">
-                        <img src="assets/img/plant.png">
-                    </div>
-                    <div class="circle">
-                        <img src="assets/img/shape-2.svg">
                     </div>
                 </div>
                 <div class="right-section">
-                    <div class="section-header">
-                        <div class="d-flex align-items-center justify-content-between">
-<!--                             <img src="assets/img/HCL_Cash-Logo.png" class="hcl-logo"> -->
-                            <div class="d-flex d-flex align-items-center justify-content-between top-copyright">
-                              <a role="button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
-    Sign in with {{login_service}}
-  </a>
-<!--                                 <span>Powered by</span> <img src="assets/img/HCL-Logo-1.png"> -->
-                            </div>
-                        </div>
-                        
-                    </div>
                     <div class="login-form-wrapper font-gothic">
-                        <h3>Welcome <span>:)</span></h3>
-                    </div>
-                </div>
+                        <div class="d-flex align-items-center justify-content-between">
+                              <a role="button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
+                                    Sign in with {{login_service}}
+                               </a>
+                         </div>
+                   </div>      
+               </div>
             </div>
-        </div> 
-  
+  </div>
 </div>
 {% else %}
 <form action="{{authenticator_login_url}}" method="post" role="form">
