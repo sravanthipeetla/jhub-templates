@@ -21,19 +21,27 @@
 {{ custom_html | safe }}
 {% elif login_service %}
 <div class="service-login">
- <div class="page-wrapper">
-  <div class="d-flex flex-wrap h-100">
-   <div class="left-section">
-    <div class="left-content-wrapper">
+ <div class="page-wrapper" style="height: 100%;">
+  <div class="d-flex flex-wrap h-100" style="display:flex">
+   <div class="left-section" style="  width: 40%;
+    position: relative;
+    background: #006cb7;
+    position: relative;">
+    <div class="left-content-wrapper" style="width: 70%;
+    margin: 0px auto;
+    position: relative;">
      <h3 class="color-fff font-poppins">Your differentiated learning journey, begins here</h3>
     </div> 
-    <div class="student-img">
+    <div class="student-img" style="overflow: hidden;">
      <img src="https://ik.imagekit.io/bdrfryplj/jordy-1_yYMmZRvbd.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658725399028" style="height:300px;width:300px;" class="student-2">
     </div>
    </div>
-   <div class="right-section">
+   <div class="right-section" style="width: 60%;
+    border-radius: 80px 0px 0px 0px;
+    position: relative;
+    background: #fff;">
     <div class="login-form-wrapper font-gothic">
-     <div class="d-flex align-items-center justify-content-between">
+     <div class="d-flex align-items-center justify-content-between" style="display:flex">
       <a role="button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
        Sign in with {{login_service}}
       </a>
