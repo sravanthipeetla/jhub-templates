@@ -103,6 +103,7 @@ img {
     width: 572px;
     transition: all .35s ease;
     z-index: 1;
+  height:400px;
 }
 .student-img .student-1 {
     width: 340px;
@@ -111,6 +112,7 @@ img {
     transition: all .35s ease;
     z-index: 1;
     bottom: 183px;
+   height:400px;
 }
 .student-img .student-1 {
     opacity: 0;
@@ -206,7 +208,7 @@ img {
 }
 </style>
 {% block login %}
-<!-- <div id="login-main" class="container"> -->
+<div id="login-main" class="container">
 {% block login_container %}
 {% if custom_html %}
 {{ custom_html | safe }}
