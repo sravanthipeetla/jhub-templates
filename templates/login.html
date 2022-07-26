@@ -16,10 +16,823 @@
 {% endblock %}
 {% block main %}
 <style>
-  .btn-lg {
-    background-color:#006BB6;
-    border-color:#006BB6; 
+ /* Common class element styles */
+.d-flex {
+    display: flex;
+}
+.flex-column {
+    flex-direction: column;
+}
+.flex-row {
+    flex-direction: row;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.align-items-center {
+    align-items: center;
+}
+.justify-content-between {
+    justify-content: space-between;
+}
+.align-items-end {
+    align-items: flex-end;
+}
+.align-items-start {
+    align-items: flex-start;
+}
+.justify-content-center {
+    justify-content: center;
+}
+.f-14 {
+    font-size: 14px;
+}
+.f-15 {
+    font-size: 15px;
+}
+.f-16 {
+    font-size: 16px;
+}
+.f-27 {
+    font-size: 27px;
+}
+.b-400 {
+    font-weight: 400;
+}
+.b-500 {
+    font-weight: 500;
+}
+.b-600 {
+    font-weight: 600;
+}
+.b-700 {
+    font-weight: 700;
+}
+.font-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+.font-gothic {
+    font-family: 'Gothic A1', sans-serif;
+}
+.color-707070 {
+    color: #707070;
+}
+.color-AAA {
+    color: #AAAAAA;
+}
+.color-006BB6 {
+    color: #006BB6;
+}
+.color-fff {
+    color: #fff;
+}
+.color-000 {
+    color: #000;
+}
+.bg-006BB6 {
+    background: #006BB6;
+}
+.overflow-y-hidden {
+    overflow-y: hidden;
+}
+/*Custom css*/
+html, body, .page-wrapper {
+    height: 100%;
+}
+img {
+    max-width: 100%;
+}
+a {
+    color: #5FBEF0;
+    text-decoration: none!important;
+}
+a:hover {
+    color: #006BB6
+}
+.left-section {
+    width: 40%;
+    position: relative;
+    background: #006cb7;
+    position: relative;
+}
+.left-section::before {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: -80px;
+    bottom: 0px;
+    margin: auto;
+    content: "";
+    background: linear-gradient(134.19deg, #006BB6 17.15%, #006BB6 17.15%, #FFFFFF 167.6%);
+    transform: rotate(-180deg);
+}
+.left-section::after {
+    position: absolute;
+    top: auto;
+    left: auto;
+    right: 0px;
+    bottom: 0px;
+    margin: auto;
+    content: "";
+    width: 80px;
+    height: 80px;
+    background-image: url("../img/shape-1.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.left-content-wrapper {
+    width: 70%;
+    margin: 0px auto;
+    position: relative;
+}
+.left-content-wrapper h3 {
+    margin-top: 180px;
+    line-height: 42px;
+}
+.student-img {
+    overflow: hidden;
+}
+.student-img .student-2 {
+    position: absolute;
+    right: -100px;
+    bottom: 169px;
+    left: auto;
+    width: 572px;
+    transition: all .35s ease;
+    z-index: 1;
+}
+.student-img .student-1 {
+    width: 340px;
+    position: absolute;
+    right: -50px;
+    transition: all .35s ease;
+    z-index: 1;
+    bottom: 183px;
+}
+.student-img .student-1 {
+    opacity: 0;
+}
+.student-img:hover .student-1{
+    opacity: 1;
+    visibility: visible;
+}
+.student-img:hover .student-2{
+    opacity: 0;
+    visibility: hidden;
+}
+.plant {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    bottom: 155px;
+    left: -255px;
+    right: 0px;
+    margin: auto;
+    top: auto;
+    z-index: 100;
+}
+.circle {
+    overflow: hidden;
+}
+.circle {
+    position: absolute;
+    width: 304px;
+    height: 189px;
+    left: -90px;
+    right: 0px;
+    margin: auto;
+    content: "";
+    bottom: 0px;
+}
+.right-section {
+    width: 60%;
+    border-radius: 80px 0px 0px 0px;
+    position: relative;
+    background: #fff;
+}
+.section-header {
+    padding: 35px 28px 35px 45px;
+}
+.section-header .hcl-logo {
+    width: 92px;
+}
+.top-copyright img {
+    width: 145px;
+    margin-left: 10px;
+}
+.top-copyright {
+    font-size: 14px;
+}
+.login-form-wrapper {
+    width: 50%;
+    margin: 0px auto;
+}
+.login-form-wrapper h3 {
+    font-size: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+.login-form-wrapper h3 span {
+    color: #76ba62;
+    margin-left: 7px;
+}
+.floating-label {
+    position: relative;
+}
+.floating-label label {
+    position: absolute;
+    top: 6px;
+    font-family: 'Gothic A1', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all .25s ease;
+    color: #AAAAAA;
+}
+.floating-label input:focus ~ label,
+.floating-label input:valid ~ label {
+    top: -20px;
+    color: #006BB6;
+    font-size: 14px;
+}
+
+.border-bottom-input {
+    border: none;
+    border-bottom: 1px solid;
+    border-radius: 0px;
+}
+.border-bottom-input:focus {
+    outline: none;
+    box-shadow: none;
+}
+.floating-label input {
+    z-index: 100;
+    position: relative;
+    background: transparent;
+}
+.login-form-wrapper {
+    padding-top: 140px;
+    padding-bottom: 140px;
+}
+.login-form-wrapper input[type="text"],
+.login-form-wrapper input[type="password"] {
+    border-color: #D9D9D9;
+    border-width: 1px;
+    height: 45px;
+    background: transparent;
+    padding-left: 0px!important;
+}
+.login-form-wrapper input[type="password"] {
+    padding-right: 40px;
+}
+#show-password-button {
+    background: transparent;
+    border: none;
+    background-image: url("../img/eye-closed.png");
+    width: 40px;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 0px;
+    background-size: 20px;
+    top: 0px;
+    bottom: 0px;
+    background-position: center;
+    cursor: pointer;
+    z-index: 101;
+    outline: none;
+}
+.show-password {
+    background-image: url("../img/eye-open.png")!important;
+}
+
+.check-box-container {
+    display: block;
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: 'Gothic A1', sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
+  
+  /* Hide the browser's default checkbox */
+  .check-box-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 16px;
+    width: 16px;
+    background: #FFFFFF;
+    border: 1px solid #5FBEF0;
+    box-shadow: inset 1px 2px 6px rgba(95, 190, 240, 0.48);
+    border-radius: 2px;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .check-box-container input:checked ~ .checkmark {
+    background-color: #5FBEF0;
+    border-radius: 100%;
+    box-shadow: none!important;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .check-box-container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .check-box-container .checkmark:after {
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+.check-box-type-2 .checkmark{
+    border: 2px solid #AAAAAA;
+    box-shadow: none;
+    border-radius: 0;
+}
+.check-box-container.check-box-type-2 input:checked ~ .checkmark {
+    border-radius: 0;
+    border: none;
+}
+.check-box-container.check-box-type-2 .checkmark::after {
+    left: 6px;
+    top: 3px;
+}
+.btn-curved {
+    border-radius: 27px;
+}
+/* onboarding-1 */
+
+.polygon {
+    overflow: hidden;
+}
+.polygon {
+    position: absolute;
+    width: 340px;
+    height: 326px;
+    left: -125px;
+    right: 141px;
+    top: 295px;
+    margin: auto;
+    content: "";
+}
+.student-img .student-hi {
+    position: absolute;
+    right: -169px;
+    left: auto;
+    width: 572px;
+    transition: all .35s ease;
+    z-index: 1;
+    top: 176px;
+}
+.plant-1{
+    bottom: 104px;
+    left: -290px;
+}
+.login-form-wrapper p{
+font-family: 'Gothic A1';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 42px;
+color: #494949;
+
+}
+.second-clr{
+    color: #5FBC56 !important;
+}
+.onbording-1-box h3{
+    margin-bottom: 20px;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 30px;
+line-height: 42px;
+    color: #006BB6;
+}
+.onbording-1-box{
+    margin-left: 217px;
+    width: 562px;
+    margin-top: 111px;
+    padding: 20px 20px;
+    padding-left: 46px;
+    padding-top: 35px;
+    box-shadow: 0px 4px 35px rgb(170 170 170 / 12%);
+    border-radius: 54px;
+}
+/* onboarding-1 ends */
+/* onboarding-2 */
+.onbording-2-box{
+   padding-right: 93px;
+}
+.onbording-2-box .second-clr{
+    font-size: 27px;
+}
+.next-right{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -73px;
+    cursor: pointer;
+}
+/* onbording-2 ends */
+/* onbording-3 */
+.box-3{
+    width: 20%;
+}
+.onbording-3-box{
+    width: 828px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+.logo2-box3 {
+    margin-right: -210px;
+}
+.student-img .student1-3 {
+    width: 400px;
+    position: absolute;
+    right: -140px;
+    bottom: 171px;
+    z-index: 1;
+}
+.plant-3 {
+    z-index: 0;
+    bottom: 244px;
+    left: -5px;
+}
+.polygon-box3 {
+  left: 0px;
+  top: 243px;
+}
+.list-head{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 38px;
+    color: #494949;
+}
+.onbording-3-box p{
+    font-family: 'Gothic A1';
+    font-style: normal;
+    margin-left: 54px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 38px;
+    color: #494949;
+}
+
+/* onbording-3 */
+/* loading-page */
+.loading-page h3{
+    margin-top: 203px;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 30px;
+line-height: 42px;
+color: #FFFFFF;
+margin-right: -16px;
+}
+.polygon-load{
+    top: 80px;
+}
+.circle-load{
+    width: 254px;
+    height: auto;
+    left: 254px;
+}
+.rocket{
+    width: 254px;
+    height: auto;
+    bottom: 43px;
+    left: 209px;
+}
+.load-gif{
+    position: absolute;
+    width: 338px;
+    height: 338px;
+    top: 40px;
+    left: 270px;
+}
+.load h3{
+    margin-top: 10px;
+    margin-left: 58px;
+}
+.load-txt{
+    margin-top: 63px;
+}
+.load-txt svg{
+    margin-bottom: -57px;
+}
+#text1, #text2{
+    color: #AAAAAA;
+}
+.load-next{
+    margin-top: -41px;
+}
+/* loading-page */
+
+@media (max-width:1440px) {
+    .polygon {
+        left: -90px;
+    }
+    .plant-1{
+        bottom: 103px;
+        left: -255px;
+    }
+    /* onbording-3 */
+    .polygon-box3 {
+        left: -8px;
+    }
+    .plant-3 { 
+    bottom: 243px;
+    left: -1px;
+   }
+    .logo2-box3 {
+        margin-right: -270px;
+    }
+    /* onbording-3 */
+
+}
+
+@media (min-width:1201px) {
+
+}
+@media (max-width: 1200px) {
+    .student-img .student-1 {
+        width: 290px;
+        right: -40px;
+    }
+    .student-img .student-2 {
+        right: -130px;
+    }
+}
+@media (max-width: 1024px) {
+    .left-section {
+        width: 50%;
+    }
+    .right-section {
+        width: 50%;
+    }
+    .left-content-wrapper {
+        width: 80%;
+    }
+    .left-content-wrapper h3 {
+        margin-top: 180px;
+    }
+    .student-img .student-2 {
+        right: -58px;
+        width: 333px;
+    }
+    .student-img .student-1 {
+        width: 230px;
+        right: 19px;
+    }
+    .section-header {
+        padding: 25px 30px 25px 30px;
+    }
+    .section-header .hcl-logo {
+        width: 72px;
+    }
+    .top-copyright img {
+        width: 85px;
+    }
+    .login-form-wrapper {
+        width: 81%;
+        padding: 100px 30px;
+    }
+    .circle {
+        width: 254px;
+        height: 158px;
+    }
+    .plant {
+        bottom: 115px;
+    }
+    /* onboarding-1 */
+    .polygon {
+        width: 175px;
+        height: 288px;
+        left: -194px;
+    }
+    .plant-1{
+        bottom: 107px;
+        left: -203px;
+    }
+    .student-img .student-hi {
+        right: -69px;
+        width: 500px;
+    }
+    .student-img .student-hi-1 {
+        width: 230px;
+        right: 19px;
+    }
+    .onbording-1-box {
+        width: 81%;
+        margin-left: 68px;
+        padding: 20px 20px;
+        padding-left: 46px;
+        padding-top: 35px;
+    } 
+/* onboarding-1 */
+/* onbording-2 */
+.next-right{
+    margin-top: -33px;
+}
+/* onbording-2 */
+/* onbording-3 */
+.box-3{
+    width: 20%;
+}
+.student-img .student1-3 {
+    right: -103px;
+}
+.plant-3 {
+    bottom: 210px;
+    left: 4px;
+}
+.polygon-box3 {
+    left: -47px;
+    top: 287px;
+}
+.onbording-3-box{
+    width: 690px;
+}
+.logo2-box3 {
+    margin-right: -316px;
+}
+
+/* onbording-3 */
+}
+@media (max-width: 768px) {
+    .left-section {
+        display: none;
+    }
+    .right-section {
+        width: 100%;
+    }
+    .section-header {
+        padding: 35px;
+    }
+    .login-form-wrapper {
+        width: 80%;
+        padding: 35px;
+        margin: 0px auto;
+    }
+    /* onbording-1 */
+    .onbording-1-box {
+        width: 81%;
+        margin-top: 48px;
+        padding: 30px;
+    }
+    .onbording-1-box h3 {
+        font-size: 24px;
+    }
+    .login-form-wrapper p {
+        font-size: 22px;
+    }
+    /* onbording-1 */
+     /* onbording-2 */
+     .next-right img{
+        width: 50px;
+    }
+    /* onbording-2 */
+    /* onbording-3 */
+    .onbording-3-box{
+        width: fit-content;
+        margin-right: 40px;
+        margin-left: 40px;
+        margin-bottom: 50px;
+    }
+    .logo2-box3 {
+        margin-right: -17px;
+    }
+    /* onbording-3 */
+}
+@media (max-width: 642px) {
+    .section-header {
+        padding: 35px;
+    }
+    .login-form-wrapper {
+        width: 100%;
+        padding: 35px;
+        margin: 0px auto;
+    }
+    /* onbording-1 */
+    .onbording-1-box {
+        width: 81%;
+        margin-top: 48px;
+        padding: 30px;
+    }
+    .onbording-1-box h3 {
+        font-size: 24px;
+    }
+    .login-form-wrapper p {
+        font-size: 22px;
+    }
+    /* onbording-1 */
+    /* onbording-2 */
+    .next-right img{
+        width: 40px;
+    }
+    /* onbording-2 */
+}
+
+@media (max-width: 480px) {
+    .section-header {
+        padding: 30px;
+    }
+    .section-header .hcl-logo {
+        width: 62px;
+    }
+    .top-copyright img {
+        width: 85px;
+        margin-left: 10px;
+    }
+    .login-form-wrapper {
+        width: 100%;
+        margin: 0px auto;
+        padding: 30px;
+    }
+    /* onbording-1 */
+    .onbording-1-box {
+        width: 81%;
+        margin-top: 48px;
+        padding: 30px;
+    }
+    .onbording-1-box h3 {
+        font-size: 24px;
+    }
+    .login-form-wrapper p {
+        font-size: 22px;
+    }
+    /* onbording-1 */
+    /* onbording-2 */
+    .next-right{
+        margin-top: -14px;
+    }
+    .next-right img{
+        width: 40px;
+    }
+    /* onbording-2 */
+    /* onbording-3 */
+    .logo2-box3 {
+        margin-right: -21px;
+    }
+    .onbording-3-box {
+        width: 92%;
+        margin-top: 48px;
+        padding: 30px;
+        margin-left: 16px;
+        margin-bottom: 20px;
+    }
+    .onbording-3-box p{
+        font-size: 16px;
+    }
+    /* onbording-3 */
+    /* loading-page */ 
+    .load-gif {
+        position: absolute;
+        width: 142px;
+        height: 319px;
+        top: 80px;
+        left: 122px;
+    }
+    .load-next{
+        margin-top: 12px;
+        margin-left: -54px;
+        display: flex;
+    justify-content: center;
+    }
+    /* loading-page */
+}
  </style>
 {% block login %}
 <div id="login-main" class="container">
