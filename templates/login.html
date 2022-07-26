@@ -15,6 +15,12 @@
 {% block nav_bar %}
 {% endblock %}
 {% block main %}
+<script>
+  .btn-lg {
+    background-color:#006BB6;
+    border-color:#006BB6; 
+  }
+ </script>
 {% block login %}
 <div id="login-main" class="container">
 {% block login_container %}
@@ -38,12 +44,6 @@
     background: #fff;">
     <div class="login-form-wrapper font-gothic" style=" width: 50%;margin: 0px auto;  font-family: 'Gothic A1', sans-serif;">
      <div class="d-flex align-items-center justify-content-between" style="display:flex;  align-items: center; justify-content: space-between;">
-       <script>
-       .btn-lg {
-          background-color:#006BB6;
-          border-color:#006BB6; 
-       }
-       </script>
       <a role="button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
        Sign in with {{login_service}}
       </a>
@@ -133,8 +133,9 @@ $('form').submit((e) => {
   form.find('.feedback-container>*').toggleClass('hidden');
   form.find('.feedback-widget>*').toggleClass('fa-pulse');
 });
-   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </script>
+ <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 {% endblock %}
