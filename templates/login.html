@@ -11,6 +11,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  .btn .btn-jupyter .btn-lg {
+background-color:#006BB6;
+border-color:#006BB6; 
+}
 {% endblock stylesheet %}
 {% block nav_bar %}
 {% endblock %}
@@ -38,7 +42,7 @@
     background: #fff;">
     <div class="login-form-wrapper font-gothic" style=" width: 50%;margin: 0px auto;  font-family: 'Gothic A1', sans-serif;">
      <div class="d-flex align-items-center justify-content-between" style="display:flex;  align-items: center; justify-content: space-between;">
-      <a role="button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}' style="background-color:#006BB6;border-color:#006BB6; ">
+      <a role="button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
        Sign in with {{login_service}}
       </a>
      </div>
