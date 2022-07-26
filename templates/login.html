@@ -656,22 +656,20 @@ margin-right: -16px;
 {{ custom_html | safe }}
 {% elif login_service %}
 <div class="service-login">
- <div class="page-wrapper" style="height:100%">
-  <div class="d-flex flex-wrap h-100" style="display:flex;flex-wrap:wrap">
-   <div class="left-section" style="width: 40%;position: relative;background: #006cb7;position: relative;">
-    <div class="left-content-wrapper" style=" width: 70%;margin: 0px auto;position: relative;">
-     <h3 class="color-fff font-poppins" style="color: #fff; font-family: 'Poppins', sans-serif;">Your differentiated learning journey, begins here</h3>
+ <div class="page-wrapper">
+  <div class="d-flex flex-wrap h-100" >
+   <div class="left-section">
+    <div class="left-content-wrapper">
+     <h3 class="color-fff font-poppins">Your differentiated learning journey, begins here</h3>
     </div> 
-    <div class="student-img" style="overflow: hidden;">
-     <img src="https://ik.imagekit.io/bdrfryplj/jordy-1_yYMmZRvbd.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658725399028" style="position: absolute;right: -100px;: left:auto;width: 572px;transition: all .35s ease;z-index: 1;" class="student-2">
-    </div>
+    <div class="student-img">
+     <img src="https://ik.imagekit.io/bdrfryplj/jordy-1_yYMmZRvbd.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658725399028" class="student-2">
+   <img src="https://ik.imagekit.io/bdrfryplj/jordy-2_wvPbu4oPG.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658725592275" class="student-1">
+     </div>
    </div>
-   <div class="right-section" style=" width: 60%;
-    border-radius: 80px 0px 0px 0px;
-    position: relative;
-    background: #fff;">
-    <div class="login-form-wrapper font-gothic" style=" width: 50%;margin: 0px auto;  font-family: 'Gothic A1', sans-serif;">
-     <div class="d-flex align-items-center justify-content-between" style="display:flex;  align-items: center; justify-content: space-between;">
+   <div class="right-section">
+    <div class="login-form-wrapper font-gothic">
+     <div class="d-flex align-items-center justify-content-between">
       <a role="button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
        Sign in with {{login_service}}
       </a>
