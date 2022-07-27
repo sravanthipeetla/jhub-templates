@@ -31,11 +31,6 @@
      height: 37px;
      font-size: 15px;
  }
-/* Common class element styles */
-/* Common class element styles */
-  .h-100{
-    height:100%;
-  }
 .d-flex {
     display: flex;
   height:100%;
@@ -156,7 +151,7 @@ a:hover {
     content: "";
     width: 80px;
     height: 80px;
-    background-image: url("https://ik.imagekit.io/iwwbj9so6/shape-1_aTPghNqcM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658898386582");
+    background-image: url("../img/shape-1.svg");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -166,30 +161,28 @@ a:hover {
     position: relative;
 }
 .left-content-wrapper h3 {
-    margin-top: 46px;
+    margin-top: 180px;
     line-height: 42px;
-    font-size: 18px;
-    text-align: initial;
 }
 .student-img {
     overflow: hidden;
 }
 .student-img .student-2 {
     position: absolute;
-    right: -71px;
-    bottom: 91px;
+    right: -100px;
+    bottom: 169px;
     left: auto;
-    width: 353px;
+    width: 572px;
     transition: all .35s ease;
     z-index: 1;
 }
 .student-img .student-1 {
-    width: 188px;
+    width: 340px;
     position: absolute;
-    right: 56px;
+    right: -50px;
     transition: all .35s ease;
     z-index: 1;
-    bottom: 104px;
+    bottom: 183px;
 }
 .student-img .student-1 {
     opacity: 0;
@@ -204,10 +197,10 @@ a:hover {
 }
 .plant {
     position: absolute;
-    width: 73px;
+    width: 100px;
     height: auto;
-    bottom: 100px;
-    left: -89px;
+    bottom: 155px;
+    left: -255px;
     right: 0px;
     margin: auto;
     top: auto;
@@ -218,9 +211,9 @@ a:hover {
 }
 .circle {
     position: absolute;
-    width: 178px;
-    height: 112px;
-    left: 3px;
+    width: 304px;
+    height: 189px;
+    left: -90px;
     right: 0px;
     margin: auto;
     content: "";
@@ -259,68 +252,10 @@ a:hover {
     color: #76ba62;
     margin-left: 7px;
 }
-.floating-label {
-    position: relative;
-}
-.floating-label label {
-    position: absolute;
-    top: 6px;
-    font-family: 'Gothic A1', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    transition: all .25s ease;
-    color: #AAAAAA;
-}
-.floating-label input:focus ~ label,
-.floating-label input:valid ~ label {
-    top: -20px;
-    color: #006BB6;
-    font-size: 14px;
-}
 
-.border-bottom-input {
-    border: none;
-    border-bottom: 1px solid;
-    border-radius: 0px;
-}
-.border-bottom-input:focus {
-    outline: none;
-    box-shadow: none;
-}
-.floating-label input {
-    z-index: 100;
-    position: relative;
-    background: transparent;
-}
 .login-form-wrapper {
     padding-top: 140px;
     padding-bottom: 140px;
-}
-.login-form-wrapper input[type="text"],
-.login-form-wrapper input[type="password"] {
-    border-color: #D9D9D9;
-    border-width: 1px;
-    height: 45px;
-    background: transparent;
-    padding-left: 0px!important;
-}
-.login-form-wrapper input[type="password"] {
-    padding-right: 40px;
-}
-  /* onboarding-1 */
-
-.polygon {
-    overflow: hidden;
-}
-.polygon {
-    position: absolute;
-    width: 340px;
-    height: 326px;
-    left: -125px;
-    right: 141px;
-    top: 295px;
-    margin: auto;
-    content: "";
 }
 .student-img .student-hi {
     position: absolute;
@@ -505,67 +440,13 @@ margin-right: -16px;
 
 }
 @media (max-width: 1200px) {
-   .left-content-wrapper h3 {
-    margin-top: 46px;
-    line-height: 42px;
-    font-size: 15px;
-    text-align: initial;
-}
-.student-img {
-    overflow: hidden;
-}
-.student-img .student-2 {
-    position: absolute;
-    right: -71px;
-    bottom: 91px;
-    left: auto;
-    width: 353px;
-    transition: all .35s ease;
-    z-index: 1;
-}
-.student-img .student-1 {
-    width: 188px;
-    position: absolute;
-    right: 56px;
-    transition: all .35s ease;
-    z-index: 1;
-    bottom: 104px;
-}
-.student-img .student-1 {
-    opacity: 0;
-}
-.student-img:hover .student-1{
-    opacity: 1;
-    visibility: visible;
-}
-.student-img:hover .student-2{
-    opacity: 0;
-    visibility: hidden;
-}
-.plant {
-    position: absolute;
-    width: 73px;
-    height: auto;
-    bottom: 100px;
-    left: -89px;
-    right: 0px;
-    margin: auto;
-    top: auto;
-    z-index: 100;
-}
-.circle {
-    overflow: hidden;
-}
-.circle {
-    position: absolute;
-    width: 178px;
-    height: 112px;
-    left: 3px;
-    right: 0px;
-    margin: auto;
-    content: "";
-    bottom: 0px;
-}
+    .student-img .student-1 {
+        width: 290px;
+        right: -40px;
+    }
+    .student-img .student-2 {
+        right: -130px;
+    }
 }
 @media (max-width: 1024px) {
     .left-section {
@@ -578,66 +459,16 @@ margin-right: -16px;
         width: 80%;
     }
     .left-content-wrapper h3 {
-    margin-top: 46px;
-    line-height: 42px;
-    font-size: 15px;
-    text-align: initial;
-}
-.student-img {
-    overflow: hidden;
-}
-.student-img .student-2 {
-    position: absolute;
-    right: -71px;
-    bottom: 91px;
-    left: auto;
-    width: 353px;
-    transition: all .35s ease;
-    z-index: 1;
-}
-.student-img .student-1 {
-    width: 188px;
-    position: absolute;
-    right: 56px;
-    transition: all .35s ease;
-    z-index: 1;
-    bottom: 104px;
-}
-.student-img .student-1 {
-    opacity: 0;
-}
-.student-img:hover .student-1{
-    opacity: 1;
-    visibility: visible;
-}
-.student-img:hover .student-2{
-    opacity: 0;
-    visibility: hidden;
-}
-.plant {
-    position: absolute;
-    width: 73px;
-    height: auto;
-    bottom: 100px;
-    left: -89px;
-    right: 0px;
-    margin: auto;
-    top: auto;
-    z-index: 100;
-}
-.circle {
-    overflow: hidden;
-}
-.circle {
-    position: absolute;
-    width: 178px;
-    height: 112px;
-    left: 3px;
-    right: 0px;
-    margin: auto;
-    content: "";
-    bottom: 0px;
-}
+        margin-top: 180px;
+    }
+    .student-img .student-2 {
+        right: -58px;
+        width: 333px;
+    }
+    .student-img .student-1 {
+        width: 230px;
+        right: 19px;
+    }
     .section-header {
         padding: 25px 30px 25px 30px;
     }
@@ -756,67 +587,6 @@ margin-right: -16px;
     .logo2-box3 {
         margin-right: -17px;
     }
-  .left-content-wrapper h3 {
-    margin-top: 46px;
-    line-height: 42px;
-    font-size: 15px;
-    text-align: initial;
-}
-.student-img {
-    overflow: hidden;
-}
-.student-img .student-2 {
-    position: absolute;
-    right: -71px;
-    bottom: 91px;
-    left: auto;
-    width: 353px;
-    transition: all .35s ease;
-    z-index: 1;
-}
-.student-img .student-1 {
-    width: 188px;
-    position: absolute;
-    right: 56px;
-    transition: all .35s ease;
-    z-index: 1;
-    bottom: 104px;
-}
-.student-img .student-1 {
-    opacity: 0;
-}
-.student-img:hover .student-1{
-    opacity: 1;
-    visibility: visible;
-}
-.student-img:hover .student-2{
-    opacity: 0;
-    visibility: hidden;
-}
-.plant {
-    position: absolute;
-    width: 73px;
-    height: auto;
-    bottom: 100px;
-    left: -89px;
-    right: 0px;
-    margin: auto;
-    top: auto;
-    z-index: 100;
-}
-.circle {
-    overflow: hidden;
-}
-.circle {
-    position: absolute;
-    width: 178px;
-    height: 112px;
-    left: 3px;
-    right: 0px;
-    margin: auto;
-    content: "";
-    bottom: 0px;
-}
     /* onbording-3 */
 }
 @media (max-width: 642px) {
@@ -846,67 +616,6 @@ margin-right: -16px;
         width: 40px;
     }
     /* onbording-2 */
-  .left-content-wrapper h3 {
-    margin-top: 46px;
-    line-height: 42px;
-    font-size: 15px;
-    text-align: initial;
-}
-.student-img {
-    overflow: hidden;
-}
-.student-img .student-2 {
-    position: absolute;
-    right: -71px;
-    bottom: 91px;
-    left: auto;
-    width: 353px;
-    transition: all .35s ease;
-    z-index: 1;
-}
-.student-img .student-1 {
-    width: 188px;
-    position: absolute;
-    right: 56px;
-    transition: all .35s ease;
-    z-index: 1;
-    bottom: 104px;
-}
-.student-img .student-1 {
-    opacity: 0;
-}
-.student-img:hover .student-1{
-    opacity: 1;
-    visibility: visible;
-}
-.student-img:hover .student-2{
-    opacity: 0;
-    visibility: hidden;
-}
-.plant {
-    position: absolute;
-    width: 73px;
-    height: auto;
-    bottom: 100px;
-    left: -89px;
-    right: 0px;
-    margin: auto;
-    top: auto;
-    z-index: 100;
-}
-.circle {
-    overflow: hidden;
-}
-.circle {
-    position: absolute;
-    width: 178px;
-    height: 112px;
-    left: 3px;
-    right: 0px;
-    margin: auto;
-    content: "";
-    bottom: 0px;
-}
 }
 
 @media (max-width: 480px) {
@@ -975,69 +684,11 @@ margin-right: -16px;
         display: flex;
     justify-content: center;
     }
-  .left-content-wrapper h3 {
-    margin-top: 46px;
-    line-height: 42px;
-    font-size: 15px;
-    text-align: initial;
-}
-.student-img {
-    overflow: hidden;
-}
-.student-img .student-2 {
-    position: absolute;
-    right: -71px;
-    bottom: 91px;
-    left: auto;
-    width: 353px;
-    transition: all .35s ease;
-    z-index: 1;
-}
-.student-img .student-1 {
-    width: 188px;
-    position: absolute;
-    right: 56px;
-    transition: all .35s ease;
-    z-index: 1;
-    bottom: 104px;
-}
-.student-img .student-1 {
-    opacity: 0;
-}
-.student-img:hover .student-1{
-    opacity: 1;
-    visibility: visible;
-}
-.student-img:hover .student-2{
-    opacity: 0;
-    visibility: hidden;
-}
-.plant {
-    position: absolute;
-    width: 73px;
-    height: auto;
-    bottom: 100px;
-    left: -89px;
-    right: 0px;
-    margin: auto;
-    top: auto;
-    z-index: 100;
-}
-.circle {
-    overflow: hidden;
-}
-.circle {
-    position: absolute;
-    width: 178px;
-    height: 112px;
-    left: 3px;
-    right: 0px;
-    margin: auto;
-    content: "";
-    bottom: 0px;
-}
     /* loading-page */
 }
+
+
+/*====================== Dashboard page styles ======================= */
   #login-main{
   height:100vh;
   }
