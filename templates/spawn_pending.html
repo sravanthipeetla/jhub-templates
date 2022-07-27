@@ -43,6 +43,7 @@ require(["jquery"], function ($) {
   var progressBar = $("#progress-bar");
   var srProgress = $("#sr-progress");
   var progressLog = $("#progress-log");
+  console.log(event);
 
   evtSource.onmessage = function(e) {
     var evt = JSON.parse(e.data);
