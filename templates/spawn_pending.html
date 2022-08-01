@@ -1,5 +1,10 @@
 {% extends "templates/page.html" %}
-
+{% block stylesheet %}
+{{ super() }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+{% endblock stylesheet %}
 {% block nav_bar%}
 <div class="container-fluid">
       <div class="navbar-header">
@@ -15,7 +20,28 @@
 </div>
 {% endblock %}
 {% block main %}
-
+<style>
+      .justify-content-between {
+    justify-content: space-between;
+}
+.d-flex {
+    display: flex;
+    height: 100%;
+}
+.section-header {
+    padding: 35px 28px 35px 45px;
+}
+.section-header .hcl-logo {
+    width: 301px;
+}
+.top-copyright img {
+    width: 145px;
+    margin-left: 10px;
+}
+.top-copyright {
+    font-size: 14px;
+}
+</style>
 <div class="container">
   <div class="row">
     <div class="text-center">
