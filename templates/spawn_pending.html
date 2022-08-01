@@ -28,9 +28,9 @@
   .align-items-center {
     align-items: center;
 }
-/* .section-header {
+.section-header {
     padding: 35px 28px 35px 45px;
-} */
+}
 .section-header .hcl-logo {
     width: 301px;
 }
@@ -41,13 +41,33 @@
 .top-copyright {
     font-size: 14px;
 }
+.progress-message {
+  font-size:20px;
+  font-weight:500;
+  }
+  .student-img {
+    overflow: hidden;
+}
+  .left-section {
+    width: 40%;
+    position: relative;
+    background: #006cb7;
+    position: relative;
+}
+  .right-section {
+    width: 60%;
+    border-radius: 80px 0px 0px 0px;
+    position: relative;
+    background: #fff;
+}
+  
 </style>
 <div class="container">
   <div class="row">
     <div class="text-center">
       {% block message %}
-      <p>Your server is starting up.</p>
-      <p>You will be redirected automatically when it's ready for you.</p>
+      <p class='progress-message'>Your server is starting up.</p>
+      <p class='progress-message'>You will be redirected automatically when it's ready for you.</p>
       {% endblock %}
       <div class="progress">
         <div id="progress-bar" class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
@@ -58,12 +78,25 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="d-flex flex-wrap h-100">
+                <div class="left-section">
+                   <div class="student-img">
+                        <img src="https://ik.imagekit.io/iwwbj9so6/Asset_1_2x_4__1__nsK5zUEbso.png?ik-sdk-version=javascript-1.4.3&updatedAt=1659342763543" class="student-2">
+                    </div>
+                 </div>
+                 <div class="right-section">
+                   <details id="progress-details">
+        <summary>Event log</summary>
+        <div id="progress-log"></div>
+      </details>
+                 </div>
+    </div>
+<!--     <div class="col-md-8 col-md-offset-2">
       <details id="progress-details">
         <summary>Event log</summary>
         <div id="progress-log"></div>
       </details>
-    </div>
+    </div> -->
   </div>
 </div>
 
