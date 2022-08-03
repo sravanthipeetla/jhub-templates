@@ -176,12 +176,12 @@
         );
       }
 
-//       if (evt.ready) {
-//         evtSource.close();
-//         // reload the current page
-//         // which should result in a redirect to the running server
-//         window.location.reload();
-//       }
+      if (evt.ready) {
+        evtSource.close();
+        // reload the current page
+        // which should result in a redirect to the running server
+        window.location.reload();
+      }
 
       if (evt.failed) {
         evtSource.close();
