@@ -188,6 +188,9 @@ endblock %} {% block stylesheet %} {{ super() }}
     margin: 0px auto;
     padding-top: 140px;
     padding-bottom: 140px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
   }
   .login-form-wrapper h3 {
     font-size: 16px;
@@ -366,7 +369,7 @@ endblock %} {% block stylesheet %} {{ super() }}
               </div>
             </div>
           </div>
-          <div class="login-form-wrapper font-gothic d-flex flex-column">
+          <div class="login-form-wrapper font-gothic">
             <h3>Welcome <span>:)</span></h3>
             <p> Master your learnings by implementing here</p>
             <div id="login-form">
