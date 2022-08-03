@@ -292,19 +292,13 @@ endblock %} {% block stylesheet %} {{ super() }}
     .section-header {
       padding: 35px;
     }
+    .section-header .hcl-logo {
+      width: 200px;
+    }
     .login-form-wrapper {
       width: 80%;
       padding: 35px;
       margin: 0px auto;
-    }
-    /* onbording-1 */
-    .onbording-1-box {
-      width: 81%;
-      margin-top: 48px;
-      padding: 30px;
-    }
-    .onbording-1-box h3 {
-      font-size: 24px;
     }
     .login-form-wrapper p {
       font-size: 22px;
@@ -332,6 +326,9 @@ endblock %} {% block stylesheet %} {{ super() }}
       width: 85px;
       margin-left: 10px;
     }
+    .section-header .hcl-logo {
+      width: 200px;
+     }
     .login-form-wrapper {
       width: 100%;
       margin: 0px auto;
@@ -500,5 +497,4 @@ script %}
     form.find('.feedback-widget>*').toggleClass('fa-pulse');
   });
 </script>
-
 {% endblock %}
