@@ -51,9 +51,10 @@
   .top-copyright {
     font-size: 14px;
   }
-  .sr-only{
+  #sr-only{
   color: #006BB6;
-  font-size:18px;
+  font-size:14px;
+  font-weight:600;
   }
   .progress-message {
     font-size: 18px;
@@ -102,6 +103,7 @@
         You will be redirected automatically when it's ready for you.
       </p>
       {% endblock %}
+       <span id="sr-only">0%</span>
       <div class="progress">
         <div
           id="progress-bar"
@@ -111,11 +113,8 @@
           aria-valuemin="0"
           aria-valuemax="100"
           style="width: 0%"
-        >
-          <span id="sr-only">0% Complete</span>
-        </div>
+        />
       </div>
-      <p id="progress-message"></p>
     </div>
   </div>
   <div class="row">
