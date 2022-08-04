@@ -269,9 +269,6 @@ endblock %} {% block stylesheet %} {{ super() }}
     .right-section {
       width: 100%;
     }
-    .section-header .hcl-logo {
-      width: 200px;
-    }
   .login-form-wrapper {
     width: 65%;
     padding: 140px 0px 140px 48px;
@@ -280,7 +277,7 @@ endblock %} {% block stylesheet %} {{ super() }}
       font-size:12px;
     }
     .login-form-wrapper p {
-      font-size: 22px;
+      font-size: 12px;
     }
     .section-header .hcl-logo {
       width: 135px;
@@ -295,11 +292,11 @@ endblock %} {% block stylesheet %} {{ super() }}
     width: 200px;
   }
     }
-.login-form-wrapper p {
-    font-size: 12px
-    }
   }
   @media (max-width: 642px) {
+    .left-section{
+    display:none
+    }
     .section-header {
       padding: 35px;
     }
@@ -332,6 +329,9 @@ endblock %} {% block stylesheet %} {{ super() }}
   }
 
   @media (max-width: 480px) {
+    .left-section{
+    dispaly:none
+    }
     .section-header {
       padding: 30px;
     }
