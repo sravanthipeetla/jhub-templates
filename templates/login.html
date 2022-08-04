@@ -269,19 +269,34 @@ endblock %} {% block stylesheet %} {{ super() }}
     .right-section {
       width: 100%;
     }
-    .section-header {
-      padding: 35px;
-    }
     .section-header .hcl-logo {
       width: 200px;
     }
-    .login-form-wrapper {
-      width: 80%;
-      padding: 35px;
-      margin: 0px auto;
+  .login-form-wrapper {
+    width: 65%;
+    padding: 140px 0px 140px 48px;
+    }
+     .login-form-wrapper h3 {
+      font-size:12px;
     }
     .login-form-wrapper p {
       font-size: 22px;
+    }
+    .section-header .hcl-logo {
+      width: 135px;
+    }
+    .top-copyright {
+      font-size: 9px;
+      }
+     .top-copyright img {
+      width: 70px;
+     }
+    .btn.btn-jupyter.btn-lg {
+    width: 200px;
+  }
+    }
+.login-form-wrapper p {
+    font-size: 12px
     }
   }
   @media (max-width: 642px) {
@@ -293,6 +308,27 @@ endblock %} {% block stylesheet %} {{ super() }}
       padding: 35px;
       margin: 0px auto;
     }
+    .left-content-wrapper h3 {
+      font-size: 10px;}
+     .section-header .hcl-logo {
+      width: 127px;
+    }
+     .top-copyright {
+      font-size: 8px;
+      }
+     .top-copyright img {
+      width: 64px;
+     }
+    
+      .login-form-wrapper h3 {
+      font-size:9px;
+    }
+    .login-form-wrapper p {
+      font-size: 10px;
+    }
+      .btn.btn-jupyter.btn-lg {
+    width: 171px;
+  }
   }
 
   @media (max-width: 480px) {
