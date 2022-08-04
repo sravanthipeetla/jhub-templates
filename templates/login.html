@@ -519,7 +519,7 @@ script %}
     warning.className = warning.className.replace(/\bhidden\b/, '');
   }
   // setup onSubmit feedback
-  $('form').submit((e) => {
+  $('form').submit((e) => { 
     var form = $(e.target);
     form.find('.feedback-container>input').attr('disabled', true);
     form.find('.feedback-container>*').toggleClass('hidden');
