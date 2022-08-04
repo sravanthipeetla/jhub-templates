@@ -18,7 +18,7 @@ endblock %} {% block stylesheet %} {{ super() }}
         margin-right: 0;
         padding-right: 0;
         width: -webkit-fill-available;
-        height: 100%;
+        height: 100vh;
         font-family: 'Poppins', sans-serif;
   }
   .btn.btn-jupyter.btn-lg {
@@ -35,7 +35,7 @@ endblock %} {% block stylesheet %} {{ super() }}
   }
   .d-flex {
         display: flex;
-        height: 100%;
+        height: 100vh;
   }
   .flex-column {
         flex-direction: column;
@@ -56,7 +56,7 @@ endblock %} {% block stylesheet %} {{ super() }}
         height: 10vh;
   }
   img {
-    max-width: 100%;
+    max-width: 100vw;
   }
   .left-section {
         width: 40vw;
@@ -214,10 +214,10 @@ endblock %} {% block stylesheet %} {{ super() }}
   }
   @media (max-width: 1024px) {
         .left-section {
-          width: 50%;
+          width: 40vw;
         }
         .right-section {
-          width: 50%;
+          width: 60vw;
         }
         .left-content-wrapper {
           width: 80%;
@@ -261,7 +261,7 @@ endblock %} {% block stylesheet %} {{ super() }}
       display:none
     }
     .right-section {
-      width: 100%;
+      width: 100vw;
     }
     .login-form-wrapper {
       width: 50%;
@@ -292,7 +292,7 @@ endblock %} {% block stylesheet %} {{ super() }}
       display:none
     }
     .right-section {
-      width: 100%;
+      width: 100vw;
     }
     .section-header {
       padding: 35px;
@@ -327,7 +327,7 @@ endblock %} {% block stylesheet %} {{ super() }}
         dispaly:none;
         }
         .right-section {
-          width: 100%;
+          width: 100vw;
         }
         .section-header {
           padding: 30px;
