@@ -324,7 +324,7 @@
         font-size: 12px;
     }
 
-  @media (max-width: 1200px)  {
+    @media (max-width: 1200px) {
 
         .justify-content-between {
             padding-right: 200px;
@@ -346,10 +346,8 @@
             width: 1000px;
         }
     }
-  @media (max-width: 1200px)  {
-  
-  
-  }
+
+    @media (max-width: 1200px) {}
 </style>
 <div class="container">
     <div class="row">
@@ -385,7 +383,9 @@
     </div>
 </div>
 
-{% endblock %} {% block script %} {{ super() }}
+{% endblock %}
+{% block script %}
+{{ super() }}
 <script type="text/javascript">
     require(['jquery'], function ($) {
         $('#refresh').click(function () {
