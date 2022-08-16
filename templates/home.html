@@ -2,13 +2,58 @@
 {% if announcement_home %}
   {% set announcement = announcement_home %}
 {% endif %}
-
+{% block nav_bar %}
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="nav-header">
+        {% block logo %}
+        <span id="jupyterhub-logo" class="pull-left">
+            <a href="{{logo_url or base_url}}"><img src='{{base_url}}logo' alt='JupyterHub' class='jpy-logo' title='Home'/></a>
+        </span>
+        {% endblock %}
+        {% if user %}
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#thenavbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        {% endif %}
+      </div>
+      <div class="collapse navbar-collapse" id="thenavbar">
+        <ul class="nav navbar-nav navbar-right">
+          {% block nav_bar_right_items %}
+            <li>
+              {% block login_widget %}
+                <span id="login_widget">
+                  {% if user %}
+                    <p class="navbar-text">{{user.name}}</p>
+                    <a id="logout" role="button" class="navbar-btn btn-sm btn btn-default" href="{{logout_url}}"> <img src="https://ik.imagekit.io/iwwbj9so6/Vector_hPhiG8qfd.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660625858804"/></a>
+                  {% else %}
+                    <a id="login" role="button" class="btn-sm btn navbar-btn btn-default" href="{{login_url}}">Login</a>
+                  {% endif %}
+                </span>
+              {% endblock %}
+            </li>
+          {% endblock %}
+        </ul>
+      </div>
+      {% block header %}
+      {% endblock %}
+    </div>
+  </nav>
+{% endblock %}
 {% block main %}
+<style>
+  .server-status-message{
+    font-family: 'Poppins', sans-serif;
+  }
+</style>
 <div class="container">
   <div class="row">
     <div class="text-center">
-      <p>Hello</p>
       {% if default_server.active %}
+        <span class='.server-status-messsage'>Your server is still running. You can stop or go to your server again.</span>
         <a id="stop" role="button" class="btn btn-lg btn-danger">
           Stop My Server
         </a>
