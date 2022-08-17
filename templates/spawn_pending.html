@@ -2,6 +2,93 @@
 
 {% block main %}
 
+<div class="section-header">
+  <div class="d-flex align-items-center justify-content-between">
+    <img
+      src="https://ik.imagekit.io/iwwbj9so6/LOGO_-_data_science_lab_QYUIsnln7.png?ik-sdk-version=javascript-1.4.3&updatedAt=1658915400748"
+      class="hcl-logo"
+    />
+    <div
+      class="d-flex d-flex align-items-center justify-content-between top-copyright"
+    >
+      <span>Powered by</span>
+      <img
+        src="https://ik.imagekit.io/iwwbj9so6/HCL-Logo-1_KlkleOwcX.png?ik-sdk-version=javascript-1.4.3&updatedAt=1658853967349"
+      />
+    </div>
+  </div>
+</div>
+{% endblock %} {% block main %}
+<style>
+  .container {
+    font-family: "Poppins", sans-serif !important;
+  }
+  .justify-content-between {
+    justify-content: space-between;
+  }
+  .d-flex {
+    display: flex;
+    height: 100%;
+  }
+  .align-items-center {
+    align-items: center;
+  }
+  .section-header {
+    padding: 35px 28px 35px 45px;
+  }
+  .section-header .hcl-logo {
+    width: 301px;
+  }
+  .top-copyright img {
+    width: 145px;
+    margin-left: 10px;
+  }
+  .top-copyright {
+    font-size: 14px;
+  }
+  #sr-progress {
+    color: #006bb6;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .progress-message {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .progress {
+    border-radius: 20px;
+  }
+  .progress-bar {
+    background: linear-gradient(275.3deg, #006bb6 8.35%, #5fbef0 70.42%);
+    border-radius: 12px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+  }
+  .left-section {
+    width: 20%;
+    position: relative;
+    position: relative;
+  }
+  .student-img {
+    overflow: hidden;
+  }
+  .right-section {
+    width: 60%;
+    border-radius: 80px 0px 0px 0px;
+    position: relative;
+    background: #fff;
+  }
+  .event-log {
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  #progress-log {
+    margin: 8px 8px 8px 8px;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+  }
+</style>
 <div class="container">
   <div class="row">
     <div class="text-center">
@@ -32,45 +119,42 @@
 {% block script %}
 {{ super() }}
 <script type="text/javascript">
-require(["jquery"], function ($) {
-  $("#refresh").click(function () {
-    window.location.reload();
-  });
+  require(["jquery"], function ($) {
+    $("#refresh").click(function () {
+      window.location.reload();
+    });
 
-  // hook up event-stream for progress
-  var evtSource = new EventSource("{{ progress_url }}");
-  var progressMessage = $("#progress-message");
-  var progressBar = $("#progress-bar");
-  var srProgress = $("#sr-progress");
-  var progressLog = $("#progress-log");
+    // hook up event-stream for progress
+    var evtSource = new EventSource("{{ progress_url }}");
+    var progressMessage = $("#progress-message");
+    var progressBar = $("#progress-bar");
+    var srProgress = $("#sr-progress");
+    var progressLog = $("#progress-log");
 
-  evtSource.onmessage = function(e) {
-    var evt = JSON.parse(e.data);
-    console.log(evt);
-    if (evt.progress !== undefined) {
-      // update progress
-      var progText = evt.progress.toString();
-      progressBar.attr('aria-valuenow', progText);
-      srProgress.text(progText + '%');
-      progressBar.css('width', progText + '%');
-    }
-    // update message
-    var html_message;
-    if (evt.html_message !== undefined) {
-      progressMessage.html(evt.html_message);
-      html_message = evt.html_message;
-    } else if (evt.message !== undefined) {
-      progressMessage.text(evt.message);
-      html_message = progressMessage.html();
-    }
-    if (html_message) {
-      progressLog.append(
-        $("<div>")
-          .addClass('progress-log-event')
-          .html(html_message)
-      );
-    }
-
+    evtSource.onmessage = function (e) {
+      var evt = JSON.parse(e.data);
+      console.log(evt);
+      if (evt.progress !== undefined) {
+        // update progress
+        var progText = evt.progress.toString();
+        progressBar.attr("aria-valuenow", progText);
+        srProgress.text(progText + "%");
+        progressBar.css("width", progText + "%");
+      }
+      // update message
+      var html_message;
+      if (evt.html_message !== undefined) {
+        progressMessage.html(evt.html_message);
+        html_message = evt.html_message;
+      } else if (evt.message !== undefined) {
+        progressMessage.text(evt.message);
+        html_message = progressMessage.html();
+      }
+      if (html_message) {
+        progressLog.append(
+          $("<div>").addClass("progress-log-event").html(html_message)
+        );
+      }
     if (evt.ready) {
       evtSource.close();
       // reload the current page
@@ -78,15 +162,13 @@ require(["jquery"], function ($) {
       window.location.reload();
     }
 
-    if (evt.failed) {
-      evtSource.close();
-      // turn progress bar red
-      progressBar.addClass('progress-bar-danger');
-      // open event log for debugging
-      $('#progress-details').prop('open', true);
-    }
-  };
-
-});
+      if (evt.failed) {
+        evtSource.close();
+        // turn progress bar red
+        progressBar.addClass("progress-bar-danger");
+        // open event log for debugging
+        $("#progress-details").prop("open", true);
+      }
+    };
 </script>
 {% endblock %}
