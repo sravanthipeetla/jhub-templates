@@ -1,33 +1,104 @@
-{% extends "templates/page.html" %}
-{% if announcement_home %}
-  {% set announcement = announcement_home %}
-{% endif %}
-
-{% block main %}
+{% extends "templates/page.html" %} {% if announcement_home %} {% set
+announcement = announcement_home %} {% endif %} {% block nav_bar %}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="nav-header">
+      {% block logo %}
+      <span id="jupyterhub-logo" class="pull-left">
+        <a href="{{logo_url or base_url}}"
+          ><img
+            src="{{base_url}}logo"
+            alt="JupyterHub"
+            class="jpy-logo"
+            title="Home"
+        /></a>
+      </span>
+      {% endblock %} {% if user %}
+      <button
+        type="button"
+        class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#thenavbar"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      {% endif %}
+    </div>
+    <div class="collapse navbar-collapse" id="thenavbar">
+      <ul class="nav navbar-nav navbar-right">
+        {% block nav_bar_right_items %}
+        <li>
+          {% block login_widget %}
+          <span id="login_widget">
+            {% if user %}
+            <p class="navbar-text">{{user.name}}</p>
+            <a
+              id="logout"
+              role="button"
+              class="navbar-btn btn-sm btn btn-default"
+              href="{{logout_url}}"
+            >
+              <img
+                src="https://ik.imagekit.io/iwwbj9so6/Vector_hPhiG8qfd.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660625858804"
+            /></a>
+            {% else %}
+            <a
+              id="login"
+              role="button"
+              class="btn-sm btn navbar-btn btn-default"
+              href="{{login_url}}"
+              >Login</a
+            >
+            {% endif %}
+          </span>
+          {% endblock %}
+        </li>
+        {% endblock %}
+      </ul>
+    </div>
+    {% block header %} {% endblock %}
+  </div>
+</nav>
+{% endblock %} {% block main %}
+<style>
+  .server-status-message {
+    font-family: "Poppins", sans-serif;
+  }
+</style>
 <div class="container">
   <div class="row">
     <div class="text-center">
-      <p>Hello</p>
       {% if default_server.active %}
-        <a id="stop" role="button" class="btn btn-lg btn-danger">
-          Stop My Server
-        </a>
+      <span class=".server-status-messsage"
+        >Your server is still running. You can stop or go to your server
+        again.</span
+      >
+      <a id="stop" role="button" class="btn btn-lg btn-danger">
+        Stop My Server
+      </a>
       {% endif %}
-      <a id="start" role="button" class="btn btn-lg btn-primary" href="{{ url }}">
-      {% if not default_server.active %}Start{% endif %}
-      My Server
+      <a
+        id="start"
+        role="button"
+        class="btn btn-lg btn-primary"
+        href="{{ url }}"
+      >
+        {% if not default_server.active %}Start{% endif %} My Server
       </a>
     </div>
   </div>
   {% if allow_named_servers %}
-  <h2>
-  Named Servers
-  </h2>
+  <h2>Named Servers</h2>
 
   <p>
-  In addition to your default server,
-  you may have additional {% if named_server_limit_per_user > 0 %}{{ named_server_limit_per_user }} {% endif %}server(s) with names.
-  This allows you to have more than one server running at the same time.
+    In addition to your default server, you may have additional {% if
+    named_server_limit_per_user > 0 %}{{ named_server_limit_per_user }} {% endif
+    %}server(s) with names. This allows you to have more than one server running
+    at the same time.
   </p>
   {% set named_spawners = user.all_spawners(include_default=False)|list %}
 
@@ -43,8 +114,12 @@
     <tbody>
       <tr class="home-server-row add-server-row">
         <td colspan="4">
-          <input class="new-server-name" placeholder="Name your server">
-          <a role="button" class="new-server-btn" class="add-server btn btn-xs btn-primary">
+          <input class="new-server-name" placeholder="Name your server" />
+          <a
+            role="button"
+            class="new-server-btn"
+            class="add-server btn btn-xs btn-primary"
+          >
             Add New Server
           </a>
         </td>
@@ -55,27 +130,40 @@
         <td>{{ spawner.name }}</td>
         {# url #}
         <td>
-          <a class="server-link {% if not spawner.ready %}hidden{% endif %}" href="{{ user.server_url(spawner.name) }}">
+          <a
+            class="server-link {% if not spawner.ready %}hidden{% endif %}"
+            href="{{ user.server_url(spawner.name) }}"
+          >
             {{ user.server_url(spawner.name) }}
           </a>
         </td>
         {# activity #}
-        <td class='time-col'>
-          {% if spawner.last_activity %}
-          {{ spawner.last_activity.isoformat() + 'Z' }}
-          {% else %}
-          Never
-          {% endif %}
+        <td class="time-col">
+          {% if spawner.last_activity %} {{ spawner.last_activity.isoformat() +
+          'Z' }} {% else %} Never {% endif %}
         </td>
         {# actions #}
         <td>
-          <a role="button" class="stop-server btn btn-xs btn-danger{% if not spawner.active %} hidden{% endif %}" id="stop-{{ spawner.name }}">stop</a>
-          <a role="button" class="start-server btn btn-xs btn-primary {% if spawner.active %} hidden{% endif %}" id="start-{{ spawner.name }}"
-          href="{{ base_url }}spawn/{{ user.name }}/{{ spawner.name }}"
+          <a
+            role="button"
+            class="stop-server btn btn-xs btn-danger{% if not spawner.active %} hidden{% endif %}"
+            id="stop-{{ spawner.name }}"
+            >stop</a
+          >
+          <a
+            role="button"
+            class="start-server btn btn-xs btn-primary {% if spawner.active %} hidden{% endif %}"
+            id="start-{{ spawner.name }}"
+            href="{{ base_url }}spawn/{{ user.name }}/{{ spawner.name }}"
           >
             start
           </a>
-          <a role="button" class="delete-server btn btn-xs btn-danger{% if spawner.active %} hidden{% endif %}" id="delete-{{ spawner.name }}">delete</a>
+          <a
+            role="button"
+            class="delete-server btn btn-xs btn-danger{% if spawner.active %} hidden{% endif %}"
+            id="delete-{{ spawner.name }}"
+            >delete</a
+          >
         </td>
       </tr>
       {% endfor %}
@@ -83,11 +171,302 @@
   </table>
   {% endif %}
 </div>
-{% endblock main %}
-
-{% block script %}
-{{ super() }}
+{% endblock main %} {% block script %} {{ super() }}
 <script type="text/javascript">
-require(["home"]);
+  // require(["home"]);
+  // Copyright (c) Jupyter Development Team.
+  // Distributed under the terms of the Modified BSD License.
+
+  require(["jquery", "moment"], define(
+    ["jquery", "utils"],
+    function ($, utils) {
+      "use strict";
+
+      var JHAPI = function (base_url) {
+        this.base_url = base_url;
+      };
+
+      var default_options = {
+        type: "GET",
+        contentType: "application/json",
+        cache: false,
+        dataType: "json",
+        processData: false,
+        success: null,
+        error: utils.ajax_error_dialog,
+      };
+
+      var update = function (d1, d2) {
+        $.map(d2, function (i, key) {
+          d1[key] = d2[key];
+        });
+        return d1;
+      };
+
+      var ajax_defaults = function (options) {
+        var d = {};
+        update(d, default_options);
+        update(d, options);
+        return d;
+      };
+
+      JHAPI.prototype.api_request = function (path, options) {
+        options = options || {};
+        options = ajax_defaults(options || {});
+        var url = utils.url_path_join(
+          this.base_url,
+          "api",
+          utils.encode_uri_components(path)
+        );
+        $.ajax(url, options);
+      };
+
+      JHAPI.prototype.start_server = function (user, options) {
+        options = options || {};
+        options = update(options, { type: "POST", dataType: null });
+        this.api_request(utils.url_path_join("users", user, "server"), options);
+      };
+
+      JHAPI.prototype.start_named_server = function (
+        user,
+        server_name,
+        options
+      ) {
+        options = options || {};
+        options = update(options, { type: "POST", dataType: null });
+        this.api_request(
+          utils.url_path_join("users", user, "servers", server_name),
+          options
+        );
+      };
+
+      JHAPI.prototype.stop_server = function (user, options) {
+        options = options || {};
+        options = update(options, { type: "DELETE", dataType: null });
+        this.api_request(utils.url_path_join("users", user, "server"), options);
+      };
+
+      JHAPI.prototype.stop_named_server = function (
+        user,
+        server_name,
+        options
+      ) {
+        options = options || {};
+        options = update(options, { type: "DELETE", dataType: null });
+        this.api_request(
+          utils.url_path_join("users", user, "servers", server_name),
+          options
+        );
+      };
+
+      JHAPI.prototype.delete_named_server = function (
+        user,
+        server_name,
+        options
+      ) {
+        options = options || {};
+        options.data = JSON.stringify({ remove: true });
+        return this.stop_named_server(user, server_name, options);
+      };
+
+      JHAPI.prototype.list_users = function (options) {
+        this.api_request("users", options);
+      };
+
+      JHAPI.prototype.get_user = function (user, options) {
+        this.api_request(utils.url_path_join("users", user), options);
+      };
+
+      JHAPI.prototype.add_users = function (usernames, userinfo, options) {
+        options = options || {};
+        var data = update(userinfo, { usernames: usernames });
+        options = update(options, {
+          type: "POST",
+          dataType: null,
+          data: JSON.stringify(data),
+        });
+
+        this.api_request("users", options);
+      };
+
+      JHAPI.prototype.edit_user = function (user, userinfo, options) {
+        options = options || {};
+        options = update(options, {
+          type: "PATCH",
+          dataType: null,
+          data: JSON.stringify(userinfo),
+        });
+
+        this.api_request(utils.url_path_join("users", user), options);
+      };
+
+      JHAPI.prototype.admin_access = function (user, options) {
+        options = options || {};
+        options = update(options, {
+          type: "POST",
+          dataType: null,
+        });
+
+        this.api_request(
+          utils.url_path_join("users", user, "admin-access"),
+          options
+        );
+      };
+
+      JHAPI.prototype.delete_user = function (user, options) {
+        options = options || {};
+        options = update(options, { type: "DELETE", dataType: null });
+        this.api_request(utils.url_path_join("users", user), options);
+      };
+
+      JHAPI.prototype.request_token = function (user, props, options) {
+        options = options || {};
+        options = update(options, { type: "POST" });
+        if (props) {
+          options.data = JSON.stringify(props);
+        }
+        this.api_request(utils.url_path_join("users", user, "tokens"), options);
+      };
+
+      JHAPI.prototype.revoke_token = function (user, token_id, options) {
+        options = options || {};
+        options = update(options, { type: "DELETE" });
+        this.api_request(
+          utils.url_path_join("users", user, "tokens", token_id),
+          options
+        );
+      };
+
+      JHAPI.prototype.shutdown_hub = function (data, options) {
+        options = options || {};
+        options = update(options, { type: "POST" });
+        if (data) {
+          options.data = JSON.stringify(data);
+        }
+        this.api_request("shutdown", options);
+      };
+
+      return JHAPI;
+    }
+  ), function ($, moment, JHAPI) {
+    "use strict";
+
+    var base_url = window.jhdata.base_url;
+    var user = window.jhdata.user;
+    var api = new JHAPI(base_url);
+
+    // Named servers buttons
+
+    function getRow(element) {
+      while (!element.hasClass("home-server-row")) {
+        element = element.parent();
+      }
+      return element;
+    }
+
+    function disableRow(row) {
+      row.find(".btn").attr("disabled", true).off("click");
+    }
+
+    function enableRow(row, running) {
+      // enable buttons on a server row
+      // once the server is running or not
+      row.find(".btn").attr("disabled", false);
+      row.find(".stop-server").click(stopServer);
+      row.find(".delete-server").click(deleteServer);
+
+      if (running) {
+        row.find(".start-server").addClass("hidden");
+        row.find(".delete-server").addClass("hidden");
+        row.find(".stop-server").removeClass("hidden");
+        row.find(".server-link").removeClass("hidden");
+      } else {
+        row.find(".start-server").removeClass("hidden");
+        row.find(".delete-server").removeClass("hidden");
+        row.find(".stop-server").addClass("hidden");
+        row.find(".server-link").addClass("hidden");
+      }
+    }
+
+    function startServer() {
+      var row = getRow($(this));
+      var serverName = row.find(".new-server-name").val();
+      if (serverName === "") {
+        // ../spawn/user/ causes a 404, ../spawn/user redirects correctly to the default server
+        window.location.href = "./spawn/" + user;
+      } else {
+        window.location.href = "./spawn/" + user + "/" + serverName;
+      }
+    }
+
+    function stopServer() {
+      var row = getRow($(this));
+      var serverName = row.data("server-name");
+
+      // before request
+      disableRow(row);
+
+      // request
+      api.stop_named_server(user, serverName, {
+        success: function () {
+          enableRow(row, false);
+        },
+      });
+    }
+
+    function deleteServer() {
+      var row = getRow($(this));
+      var serverName = row.data("server-name");
+
+      // before request
+      disableRow(row);
+
+      // request
+      api.delete_named_server(user, serverName, {
+        success: function () {
+          row.remove();
+        },
+      });
+    }
+
+    // initial state: hook up click events
+    $("#stop").click(function () {
+      $("#start")
+        .attr("disabled", true)
+        .attr("title", "Your server is stopping")
+        .click(function () {
+          return false;
+        });
+      api.stop_server(user, {
+        success: function () {
+          $("#stop").hide();
+          $("#start")
+            .text("Start My Server")
+            .attr("title", "Start your default server")
+            .attr("disabled", false)
+            .attr("href", base_url + "spawn/" + user)
+            .off("click");
+        },
+      });
+    });
+
+    $(".new-server-btn").click(startServer);
+    $(".new-server-name").on("keypress", function (e) {
+      if (e.which === 13) {
+        startServer.call(this);
+      }
+    });
+
+    $(".stop-server").click(stopServer);
+    $(".delete-server").click(deleteServer);
+
+    // render timestamps
+    $(".time-col").map(function (i, el) {
+      // convert ISO datestamps to nice momentjs ones
+      el = $(el);
+      var m = moment(new Date(el.text().trim()));
+      el.text(m.isValid() ? m.fromNow() : "Never");
+    });
+  });
 </script>
 {% endblock %}

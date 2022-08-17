@@ -26,7 +26,7 @@
 {% endblock %} {% block main %}
 <style>
   .container {
-    font-family: 'Poppins', sans-serif !important;
+    font-family: "Poppins", sans-serif !important;
   }
   .justify-content-between {
     justify-content: space-between;
@@ -51,10 +51,10 @@
   .top-copyright {
     font-size: 14px;
   }
-  #sr-progress{
-  color: #006BB6;
-  font-size:18px;
-  font-weight:600;
+  #sr-progress {
+    color: #006bb6;
+    font-size: 18px;
+    font-weight: 600;
   }
   .progress-message {
     font-size: 18px;
@@ -103,7 +103,7 @@
         You will be redirected automatically when it's ready for you.
       </p>
       {% endblock %}
-       <span id="sr-progress">0%</span>
+      <span id="sr-progress">0%</span>
       <div class="progress">
         <div
           id="progress-bar"
@@ -139,17 +139,17 @@
 
 {% endblock %} {% block script %} {{ super() }}
 <script type="text/javascript">
-  require(['jquery'], function ($) {
-    $('#refresh').click(function () {
+  require(["jquery"], function ($) {
+    $("#refresh").click(function () {
       window.location.reload();
     });
 
     // hook up event-stream for progress
-    var evtSource = new EventSource('{{ progress_url }}');
-    var progressMessage = $('#progress-message');
-    var progressBar = $('#progress-bar');
-    var srProgress = $('#sr-progress');
-    var progressLog = $('#progress-log');
+    var evtSource = new EventSource("{{ progress_url }}");
+    var progressMessage = $("#progress-message");
+    var progressBar = $("#progress-bar");
+    var srProgress = $("#sr-progress");
+    var progressLog = $("#progress-log");
 
     evtSource.onmessage = function (e) {
       var evt = JSON.parse(e.data);
@@ -157,9 +157,9 @@
       if (evt.progress !== undefined) {
         // update progress
         var progText = evt.progress.toString();
-        progressBar.attr('aria-valuenow', progText);
-        srProgress.text(progText + '%');
-        progressBar.css('width', progText + '%');
+        progressBar.attr("aria-valuenow", progText);
+        srProgress.text(progText + "%");
+        progressBar.css("width", progText + "%");
       }
       // update message
       var html_message;
@@ -172,7 +172,7 @@
       }
       if (html_message) {
         progressLog.append(
-          $('<div>').addClass('progress-log-event').html(html_message)
+          $("<div>").addClass("progress-log-event").html(html_message)
         );
       }
 
@@ -186,9 +186,9 @@
       if (evt.failed) {
         evtSource.close();
         // turn progress bar red
-        progressBar.addClass('progress-bar-danger');
+        progressBar.addClass("progress-bar-danger");
         // open event log for debugging
-        $('#progress-details').prop('open', true);
+        $("#progress-details").prop("open", true);
       }
     };
   });
