@@ -1,15 +1,24 @@
 {% extends "templates/page.html" %} {% if announcement_login %} {% set
 announcement = announcement_login %} {% endif %} {% block login_widget %} {%
 endblock %} {% block stylesheet %} {{ super() }}
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap"
-  rel="stylesheet"
-/>
-{% endblock stylesheet %} {% block nav_bar %} {% endblock %} {% block main %}
-<style>
-  .container {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Poppins&display=swap');
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  font-family: 'Poppins';
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+@-ms-viewport {
+  width: device-width;
+}
+ .container {
         padding-left: 0;
         margin-left: 0;
         margin-right: 0;
@@ -369,7 +378,7 @@ endblock %} {% block stylesheet %} {{ super() }}
           font-weight:500;
     }
   }
-</style>
+{% endblock stylesheet %} {% block nav_bar %} {% endblock %} {% block main %}
 {% block login %}
 <div id="login-main" class="container">
   {% block login_container %} {% if custom_html %} {{ custom_html | safe }} {%
