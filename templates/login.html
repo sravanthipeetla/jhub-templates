@@ -1,7 +1,9 @@
 {% extends "templates/page.html" %} {% if announcement_login %} {% set
-announcement = announcement_login %} {% endif %} {% block login_widget %} {%
-endblock %} {% block stylesheet %} {{ super() }}
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Poppins&display=swap');
+announcement = announcement_login %} {% endif %} {% block login_widget %}
+{% endblock %}
+{% block nav_bar %} {% endblock %} {% block main %}
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Poppins&display=swap');
 *,
 *::before,
 *::after {
@@ -378,7 +380,7 @@ html {
           font-weight:500;
     }
   }
-{% endblock stylesheet %} {% block nav_bar %} {% endblock %} {% block main %}
+</style>
 {% block login %}
 <div id="login-main" class="container">
   {% block login_container %} {% if custom_html %} {{ custom_html | safe }} {%
