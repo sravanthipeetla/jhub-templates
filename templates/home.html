@@ -5,11 +5,25 @@
 {% block nav_bar_left_items%}
 {% endblock %}
 {% block main %}
+<style>
+  .navbar-default{
+    background-color:#FFFFFF;
+    border:none;
+  }
+  .btn-default {
+    border:none;
+    color: #5FBEF0;
+  }
+  button{
+    border-radius:8px;
+  }
+</style>
 <div class="container">
   <div class="row">
     <div class="text-center">
       {% if default_server.active %}
       <span>Your workspace is still runnnig. You can stop ofr go to your workspace again.</span>
+      <br/>
         <a id="stop" role="button" class="btn btn-lg btn-danger">
           Stop My Workspace
         </a>
