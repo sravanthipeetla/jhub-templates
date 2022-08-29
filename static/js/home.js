@@ -94,7 +94,7 @@ require(["jquery", "moment", "jhapi"], function ($, moment, JHAPI) {
       success: function () {
         $("#stop").hide();
         $("#start")
-          .text("Start My Workspace")
+          .text("Start My Server")
           .attr("title", "Start your default server")
           .attr("disabled", false)
           .attr("href", base_url + "spawn/" + user)
