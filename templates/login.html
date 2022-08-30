@@ -28,15 +28,15 @@ html {
         padding-right: 0;
         font-family: 'Poppins', sans-serif;
   }
-  .btn.btn-jupyter.btn-lg {
+   .btn.btn-jupyter.btn-lg {
       background-color: #006bb6;
       border-color: #006bb6;
       border-radius: 40px;
-      width: calc(60vw - 75rem);
+      width: calc(20vw + 20rem);
       font-family: 'Poppins';
       font-size: 16px;
       font-weight: 600;
-  }
+   }
   .btn.btn-jupyter.btn-lg:hover {
         background-color: #006bb6;
         border: 1px solid #5fbef0;
@@ -73,42 +73,37 @@ html {
         background: #006cb7;
   }
   .left-section::before {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        right: -80px;
-        bottom: 0px;
-        margin: auto;
-        content: '';
-        background: linear-gradient(
-          134.19deg,
-          #006bb6 17.15%,
-          #006bb6 17.15%,
-          #ffffff 167.6%
-        );
-        transform: rotate(-180deg);
+      position: absolute;
+      top: calc(10vh - 10rem);
+      left: calc( 10vw - 19rem);
+      right: calc( 5vw - 17rem);
+      bottom: calc(20vh - 19rem);
+      margin: auto;
+      content: '';
+      background: linear-gradient( 134.19deg, #006bb6 17.15%, #006bb6 17.15%, #ffffff 167.6% );
+      transform: rotate(-180deg);
   }
-  .left-section::after {
-        position: absolute;
-        top: auto;
-        left: auto;
-        right: 0px;
-        bottom: 0px;
-        margin: auto;
-        content: '';
-        width: 80px;
-        height: 80px;
-        background-image: url('https://ik.imagekit.io/iwwbj9so6/shape-1_aTPghNqcM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658898386582');
-        background-size: cover;
-        background-repeat: no-repeat;
+   .left-section::after {
+      position: absolute;
+      top: calc(30vh + 62rem);
+      left: calc(20vw + 29rem);
+      right: calc(10vw - 16rem);
+      bottom: 0px;
+      margin: auto;
+      content: '';
+      width: calc(20vw - 29rem);
+      height: calc(10vh - 3rem );
+      background-image: url(https://ik.imagekit.io/iwwbj9so6/shape-1_aTPghNqcM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658898386582);
+      background-size: cover;
+      background-repeat: no-repeat;
   }
   .left-content-wrapper {
-        width: calc(40vw - 20rem );
+        width: calc(16vw + 19rem );
         margin: 0px auto;
         position: relative;
   }
   .left-content-wrapper h3 {
-        margin-top: 46px;
+        margin-top: calc(10vh);
         line-height: 42px;
         font-size: 25px;
         text-align: initial;
@@ -118,24 +113,24 @@ html {
   .student-img {
         overflow: hidden;
   }
- .student-img .student-2 {
-    position: absolute;
-    left: calc(40vw - 46rem);
-    width: calc(40vw - 13.4rem);
-    height: calc(100vh - 48rem);
-    bottom: calc(100vw - 166rem);
-    transition: all 0.35s ease;
-    z-index: 1;
+  .student-img .student-2 {
+      position: absolute;
+      left: calc(20vw - 10rem);
+      width: calc(20vw + 24.4rem);
+      height: calc(20vh + 29rem);
+      bottom: calc(20vh + 0rem);
+      transition: all 0.35s ease;
+      z-index: 1;
   }
- .student-img .student-1 {
-    width: calc(40vw - 38rem);
+.student-img .student-1 {
+    width: calc(20vw - 2rem);
     position: absolute;
     right: 0%;
-    left: calc(40vw - 33rem);
+    left: calc(20vw + 5rem);
     transition: all 0.35s ease;
     z-index: 1;
     bottom: 21%;
-  }
+}
   .student-img .student-1 {
         opacity: 0;
   }
@@ -148,21 +143,21 @@ html {
         visibility: hidden;
   }
   .plant {
-    position: absolute;
-    width: calc(40vw - 60rem);
-    height: auto;
-    bottom: 20%;
-    left: -20%;
-    right: 0%;
-    margin: auto;
-    top: auto;
-    z-index: 100;
-  }
-    .circle {
       position: absolute;
-      width: calc(40vw - 30rem);
-      height: calc( 100vh - 72rem);
-      left: calc(40vw - 80rem);
+      width: calc(10vw - 6rem);
+      height: auto;
+      bottom: calc(20vh + 0rem);
+      left: calc(5vw - 22rem);
+      right: calc(10vw - 16rem);
+      margin: auto;
+      top: auto;
+      z-index: 100;
+  }
+  .circle {
+      position: absolute;
+      width: calc(20vw + 3rem);
+      height: calc( 20vh + 6rem);
+      left: calc(5vw - 15rem);
       right: 0px;
       margin: auto;
       content: '';
@@ -189,29 +184,28 @@ html {
       font-size: 18px;
       font-family: 'Gothic A1';
   }
-   .login-form-wrapper {
-      width: calc(60vw - 12rem);
-      margin: 0% auto;
+  .login-form-wrapper {
+      width: calc(30vw + 56rem);
       display: flex;
       flex-direction: column;
       padding: 290px 0px 290px 290px;
       align-items: flex-start;
-   }
-  .login-form-wrapper h3 {
-      font-size: 35px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      padding-bottom: 2%;
+  }
+    .login-form-wrapper h3 {
+        font-size: 35px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        padding-bottom: calc(20vh - 18rem);
     }
-    .login-form-wrapper p {
+  .login-form-wrapper p {
       font-family: 'Gothic A1';
       font-style: normal;
       font-weight: 500;
       color: #494949;
       text-align: left;
-      padding-bottom: 2%;
+      padding-bottom: calc(20vh - 18rem);
       font-size: 24px;
-   }
+     }
    .login-form-wrapper h3 span {
           color: #76ba62;
           margin-left: 7px;
