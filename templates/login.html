@@ -15,15 +15,15 @@ html {
  .container {
         font-family: 'Poppins', sans-serif;
   }
-   .btn.btn-jupyter.btn-lg {
+  .btn.btn-jupyter.btn-lg {
       background-color: #006bb6;
       border-color: #006bb6;
       border-radius: 40px;
-      width: calc(20vw + 20rem);
+      width: calc(26vw + 1rem);
       font-family: 'Poppins';
-      font-size: 16px;
+      font-size: 1.1vw;
       font-weight: 600;
-   }
+  }
   .btn.btn-jupyter.btn-lg:hover {
         background-color: #006bb6;
         border: 1px solid #5fbef0;
@@ -62,62 +62,62 @@ html {
     .left-section::before {
         position: absolute;
         top: calc(10vh - 12rem);
-        left: calc( 10vw - 20rem);
-        right: calc( 5vw - 9rem);
-        bottom: calc(10vh - 10rem);
+        left: calc( 10vw - 21rem);
+        right: calc( 1vw - 11rem);
+        bottom: calc(1vh - 1rem);
         margin: auto;
         content: '';
         background: linear-gradient( 134.19deg, #006bb6 17.15%, #006bb6 17.15%, #ffffff 167.6% );
         transform: rotate(-180deg);
     }
-   .left-section::after {
+  .left-section::after {
       position: absolute;
       top: calc(30vh + 62rem);
-      left: calc(20vw + 29rem);
+      left: calc(20vw + 30rem);
       right: calc(10vw - 16rem);
       bottom: 0px;
       margin: auto;
       content: '';
-      width: calc(20vw - 29rem);
+      width: calc(2vw + 4rem);
       height: calc(10vh - 3rem );
       background-image: url(https://ik.imagekit.io/iwwbj9so6/shape-1_aTPghNqcM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658898386582);
       background-size: cover;
       background-repeat: no-repeat;
   }
   .left-content-wrapper {
-        width: calc(16vw + 19rem );
-        margin: 0px auto;
-        position: relative;
+      width: calc(30vw + 9rem );
+      position: relative;
+      padding: 5vw;
   }
   .left-content-wrapper h3 {
-        margin-top: calc(10vh);
-        line-height: 42px;
-        font-size: 25px;
-        text-align: initial;
-        color:#FFFFFF;
-        font-weight:600;
+      line-height: 42px;
+      font-size: 1.3vw;
+      text-align: initial;
+      color: #FFFFFF;
+      font-weight: 600;
   }
   .student-img {
         overflow: hidden;
   }
   .student-img .student-2 {
       position: absolute;
-      left: calc(20vw - 10rem);
-      width: calc(20vw + 24.4rem);
-      height: calc(20vh + 29rem);
+      left: calc(10vw + 9rem);
+      width: calc(30vw + 4rem);
+      height: calc(40vh + 8rem);
       bottom: calc(20vh + 0rem);
+      top: calc(30vh + 3rem);
       transition: all 0.35s ease;
       z-index: 1;
   }
-.student-img .student-1 {
-    width: calc(20vw - 2rem);
-    position: absolute;
-    right: 0%;
-    left: calc(20vw + 5rem);
-    transition: all 0.35s ease;
-    z-index: 1;
-    bottom: 21%;
-}
+    .student-img .student-1 {
+        width: calc(20vw - 2rem);
+        position: absolute;
+        right: calc(20vw - 2rem);
+        left: calc(20vw + 5rem);
+        transition: all 0.35s ease;
+        z-index: 1;
+        bottom: calc(20vh + 2rem);
+    }
   .student-img .student-1 {
         opacity: 0;
   }
@@ -133,70 +133,73 @@ html {
       position: absolute;
       width: calc(10vw - 6rem);
       height: auto;
-      bottom: calc(20vh + 0rem);
-      left: calc(5vw - 22rem);
-      right: calc(10vw - 16rem);
+      bottom: calc(20vh + 2rem);
+      left: calc(1vw + 1rem);
+      right: calc(6vw + 5rem);
       margin: auto;
-      top: auto;
+      top: calc(50vh + 14rem );
       z-index: 100;
+  } 
+  .circle {
+      position: absolute;
+      position: fixed !important;
+      width: calc(20vw + 3rem);
+      height: calc( 20vh + 3rem);
+      left: calc(5vw + 1rem);
+      /* right: calc(10vw - 11rem); */
+      margin: auto;
+      content: '';
+      position: fixed;
+      bottom: 0px;
+      overflow: hidden;
   }
-.circle {
-    position: absolute;
-    width: calc(20vw + 3rem);
-    height: calc( 20vh + 6rem);
-    left: calc(5vw - 15rem);
-    right: calc(10vw - 11rem);
-    margin: auto;
-    content: '';
-    position:fixed;
-    bottom: 0px;
-    overflow: hidden;
-}
   .right-section {
         width: 60vw;
         border-radius: 80px 0px 0px 0px;
         position: relative;
         background: #fff;
   }
+ }
   .section-header {
-        padding: 35px 28px 35px 45px;
+      padding: 3vw 1vw 3vw 2vw;
   }
    .section-header .hcl-logo {
       width: calc(10vw + 5rem);
   }
- .top-copyright img {
-    width: calc(20vw - 20rem);
-    padding-left: calc(10vw - 17rem);
-}
+  .top-copyright img {
+      width: calc(7vw + 1rem);
+      padding-left: calc(1vw - 1rem);
+  }
   .top-copyright {
-      font-size: 18px;
+      font-size: 1vw;
       font-family: 'Gothic A1';
   }
-  .login-form-wrapper {
-      width: calc(30vw + 56rem);
+   .login-form-wrapper {
+      width: calc(48vw + 1rem);
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      padding: 10vw 2vw 10vw 16vw;
   }
     .login-form-wrapper h3 {
-        font-size: 35px;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 600;
-        padding-bottom: calc(20vh - 18rem);
-    }
+      font-size: 2vw;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      padding-bottom: calc(3vh - 1rem);
+  }
   .login-form-wrapper p {
       font-family: 'Gothic A1';
       font-style: normal;
       font-weight: 500;
       color: #494949;
       text-align: left;
-      padding-bottom: calc(20vh - 18rem);
-      font-size: 24px;
-     }
-   .login-form-wrapper h3 span {
-          color: #76ba62;
-          margin-left: 7px;
-   }
+      padding-bottom: calc(1vh + 1rem);
+      font-size: 1.4vw;
+  }
+   login-form-wrapper h3 span {
+      color: #76ba62;
+      margin-left: 0vw;
+  }
  }
 </style>
 {% block login %}
