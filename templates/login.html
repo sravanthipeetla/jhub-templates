@@ -72,17 +72,17 @@ html {
         position: relative;
         background: #006cb7;
   }
-  .left-section::before {
-      position: absolute;
-      top: calc(10vh - 10rem);
-      left: calc( 10vw - 19rem);
-      right: calc( 5vw - 17rem);
-      bottom: calc(20vh - 19rem);
-      margin: auto;
-      content: '';
-      background: linear-gradient( 134.19deg, #006bb6 17.15%, #006bb6 17.15%, #ffffff 167.6% );
-      transform: rotate(-180deg);
-  }
+    .left-section::before {
+        position: absolute;
+        top: calc(10vh - 12rem);
+        left: calc( 10vw - 20rem);
+        right: calc( 5vw - 9rem);
+        bottom: calc(10vh - 10rem);
+        margin: auto;
+        content: '';
+        background: linear-gradient( 134.19deg, #006bb6 17.15%, #006bb6 17.15%, #ffffff 167.6% );
+        transform: rotate(-180deg);
+    }
    .left-section::after {
       position: absolute;
       top: calc(30vh + 62rem);
@@ -153,17 +153,17 @@ html {
       top: auto;
       z-index: 100;
   }
-  .circle {
-      position: absolute;
-      width: calc(20vw + 3rem);
-      height: calc( 20vh + 6rem);
-      left: calc(5vw - 15rem);
-      right: 0px;
-      margin: auto;
-      content: '';
-      bottom: 0px;
-      overflow: hidden;
-  }
+.circle {
+    position: absolute;
+    width: calc(20vw + 3rem);
+    height: calc( 20vh + 6rem);
+    left: calc(5vw - 15rem);
+    right: calc(10vw - 11rem);
+    margin: auto;
+    content: '';
+    bottom: calc(20vh - 22rem);
+    overflow: hidden;
+}
   .right-section {
         width: 60vw;
         border-radius: 80px 0px 0px 0px;
