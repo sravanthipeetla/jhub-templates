@@ -9,423 +9,438 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
+  height:100vh;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-@-ms-viewport {
-  width: device-width;
 }
  .container {
         padding-left: 0;
         margin-left: 0;
         margin-right: 0;
         padding-right: 0;
-        width: -webkit-fill-available;
+        width: webkit-fill-available;
         height: 100vh;
         font-family: 'Poppins', sans-serif;
   }
   .btn.btn-jupyter.btn-lg {
-        background-color: #006bb6;
-        border-color: #006bb6;
-        border-radius: 27px;
-        width: 283px;
-        height: 37px;
-        font-size: 15px;
+      background-color: #006bb6;
+      border-color: #006bb6;
+      border-radius: 40px;
+      width: calc(26vw + 1rem);
+      font-family: 'Poppins';
+      font-size: 1.1vw;
+      font-weight: 600;
   }
   .btn.btn-jupyter.btn-lg:hover {
         background-color: #006bb6;
         border: 1px solid #5fbef0;
   }
- /* Common class element styles */
-.d-flex {
-    display: flex;
-}
-.flex-column {
-    flex-direction: column;
-}
-.flex-row {
-    flex-direction: row;
-}
-.flex-wrap {
-    flex-wrap: wrap;
-}
-.align-items-center {
-    align-items: center;
-}
-.justify-content-between {
-    justify-content: space-between;
-}
-.align-items-end {
-    align-items: flex-end;
-}
-.align-items-start {
-    align-items: flex-start;
-}
-.justify-content-center {
-    justify-content: center;
-}
-.f-14 {
-    font-size: 14px;
-}
-.f-15 {
-    font-size: 15px;
-}
-.f-16 {
-    font-size: 16px;
-}
-.f-27 {
-    font-size: 27px;
-}
-.b-400 {
-    font-weight: 400;
-}
-.b-500 {
-    font-weight: 500;
-}
-.b-600 {
-    font-weight: 600;
-}
-.b-700 {
-    font-weight: 700;
-}
-.font-poppins {
-    font-family: 'Poppins', sans-serif;
-}
-.font-gothic {
-    font-family: 'Gothic A1', sans-serif;
-}
-.color-707070 {
-    color: #707070;
-}
-.color-AAA {
-    color: #AAAAAA;
-}
-.color-006BB6 {
-    color: #006BB6;
-}
-.color-fff {
-    color: #fff;
-}
-.color-000 {
-    color: #000;
-}
-.bg-006BB6 {
-    background: #006BB6;
-}
-.overflow-y-hidden {
-    overflow-y: hidden;
-}
-/*Custom css*/
-html, body, .page-wrapper {
-    height: 100%;
-}
-img {
+  .d-flex {
+        display: flex;
+        height: 100%;
+  }
+  .flex-column {
+        flex-direction: column;
+  }
+  .flex-wrap {
+    flex-wrap: nowrap;
+    height: 100vh;
+  }
+  .align-items-center {
+        align-items: center;
+  }
+  .justify-content-between {
+        justify-content: space-between;
+  }
+  .font-gothic {
+        font-family: 'Gothic A1', sans-serif;
+  }
+  html,body,.page-wrapper {
+        height: 100vh;
+  }
+  img {
     max-width: 100%;
-}
-a {
-    color: #5FBEF0;
-    text-decoration: none!important;
-}
-a:hover {
-    color: #006BB6
-}
-.left-section {
-    width: 40%;
-    position: relative;
-    background: #006cb7;
-    position: relative;
-}
-.left-section::before {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: -80px;
-    bottom: 0px;
-    margin: auto;
-    content: "";
-    background: linear-gradient(134.19deg, #006BB6 17.15%, #006BB6 17.15%, #FFFFFF 167.6%);
-    transform: rotate(-180deg);
-}
-.left-section::after {
-    position: absolute;
-    top: auto;
-    left: auto;
-    right: 0px;
-    bottom: 0px;
-    margin: auto;
-    content: "";
-    width: 80px;
-    height: 80px;
-    background-image: url('https://ik.imagekit.io/iwwbj9so6/shape-1_aTPghNqcM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658898386582');
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-.left-content-wrapper {
-    width: 70%;
-    margin: 0px auto;
-    position: relative;
-}
-.left-content-wrapper h3 {
-    margin-top: 180px;
-    line-height: 42px;
-}
-.student-img {
-    overflow: hidden;
-}
-.student-img .student-2 {
-    position: absolute;
-    right: -100px;
-    bottom: 169px;
-    left: auto;
-    width: 572px;
-    transition: all .35s ease;
-    z-index: 1;
-}
-.student-img .student-1 {
-    width: 340px;
-    position: absolute;
-    right: -50px;
-    transition: all .35s ease;
-    z-index: 1;
-    bottom: 183px;
-}
-.student-img .student-1 {
-    opacity: 0;
-}
-.student-img:hover .student-1{
-    opacity: 1;
-    visibility: visible;
-}
-.student-img:hover .student-2{
-    opacity: 0;
-    visibility: hidden;
-}
-.plant {
-    position: absolute;
-    width: 100px;
-    height: auto;
-    bottom: 155px;
-    left: -255px;
-    right: 0px;
-    margin: auto;
-    top: auto;
-    z-index: 100;
-}
-.circle {
-    overflow: hidden;
-}
-.circle {
-    position: absolute;
-    width: 304px;
-    height: 189px;
-    left: -90px;
-    right: 0px;
-    margin: auto;
-    content: "";
-    bottom: 0px;
-}
-.right-section {
-    width: 60%;
-    border-radius: 80px 0px 0px 0px;
-    position: relative;
-    background: #fff;
-}
-.section-header {
-    padding: 35px 28px 35px 45px;
-}
-.section-header .hcl-logo {
-    width: 92px;
-}
-.top-copyright img {
-    width: 145px;
-    margin-left: 10px;
-}
-.top-copyright {
-    font-size: 14px;
-}
-.login-form-wrapper {
-    width: 50%;
-    margin: 0px auto;
-}
-.login-form-wrapper h3 {
-    font-size: 24px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    margin-bottom: 40px;
-}
-.login-form-wrapper h3 span {
-    color: #76ba62;
-    margin-left: 7px;
-}
-.login-form-wrapper {
-    padding-top: 140px;
-    padding-bottom: 140px;
-}
-.btn-curved {
-    border-radius: 27px;
-}
-.login-form-wrapper p{
-font-family: 'Gothic A1';
-font-style: normal;
-font-weight: 600;
-font-size: 24px;
-line-height: 42px;
-color: #494949;
-
-}
-@media (max-width:1440px) {
-
-}
-
-@media (min-width:1201px) {
-
-}
+  }
+  .left-section {
+        width: 40vw;
+        position: relative;
+        background: #006cb7;
+  } 
+    .left-section::before {
+        position: absolute;
+        top: calc(10vh - 12rem);
+        left: calc( 10vw - 21rem);
+        right: calc( 1vw - 11rem);
+        bottom: calc(1vh - 1rem);
+        margin: auto;
+        content: '';
+        background: linear-gradient( 134.19deg, #006bb6 17.15%, #006bb6 17.15%, #ffffff 167.6% );
+        transform: rotate(-180deg);
+    }
+  .left-section::after {
+      position: absolute;
+      top: calc(30vh + 62rem);
+      left: calc(20vw + 30rem);
+      right: calc(10vw - 16rem);
+      bottom: 0px;
+      margin: auto;
+      content: '';
+      width: calc(2vw + 4rem);
+      height: calc(10vh - 3rem );
+      background-image: url(https://ik.imagekit.io/iwwbj9so6/shape-1_aTPghNqcM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658898386582);
+      background-size: cover;
+      background-repeat: no-repeat;
+  }
+  .left-content-wrapper {
+      width: calc(30vw + 9rem );
+      position: relative;
+      padding: 5vw;
+  }
+  .left-content-wrapper h3 {
+      line-height: 42px;
+      font-size: 1.3vw;
+      text-align: initial;
+      color: #FFFFFF;
+      font-weight: 600;
+  }
+  .student-img {
+        overflow: hidden;
+  }
+  .student-img .student-2 {
+      position: absolute;
+      left: calc(10vw + 9rem);
+      width: calc(30vw + 4rem);
+      height: calc(40vh + 8rem);
+      bottom: calc(20vh + 0rem);
+      top: calc(30vh + 3rem);
+      transition: all 0.35s ease;
+      z-index: 1;
+  }
+    .student-img .student-1 {
+        width: calc(20vw - 2rem);
+        position: absolute;
+        right: calc(20vw - 2rem);
+        left: calc(20vw + 5rem);
+        transition: all 0.35s ease;
+        z-index: 1;
+        bottom: calc(20vh + 2rem);
+    }
+  .student-img .student-1 {
+        opacity: 0;
+  }
+  .student-img:hover .student-1 {
+        opacity: 1;
+        visibility: visible;
+  }
+  .student-img:hover .student-2 {
+        opacity: 0;
+        visibility: hidden;
+  }
+  .plant {
+      position: absolute;
+      width: calc(10vw - 6rem);
+      height: auto;
+      bottom: calc(20vh + 2rem);
+      left: calc(1vw + 1rem);
+      right: calc(6vw + 5rem);
+      margin: auto;
+      top: calc(50vh + 14rem );
+      z-index: 100;
+  } 
+  .circle {
+      position: absolute;
+      position: fixed !important;
+      width: calc(20vw + 3rem);
+      height: calc( 20vh + 3rem);
+      left: calc(5vw + 1rem);
+      /* right: calc(10vw - 11rem); */
+      margin: auto;
+      content: '';
+      position: fixed;
+      bottom: 0px;
+      overflow: hidden;
+  }
+  .right-section {
+        width: 60vw;
+        border-radius: 80px 0px 0px 0px;
+        position: relative;
+        background: #fff;
+  }
+  .section-header {
+      padding: 3vw 1vw 3vw 2vw;
+  }
+   .section-header .hcl-logo {
+      width: calc(10vw + 5rem);
+  }
+  .top-copyright img {
+      width: calc(7vw + 1rem);
+      padding-left: calc(1vw - 1rem);
+  }
+  .top-copyright {
+      font-size: 1vw;
+      font-family: 'Gothic A1';
+  }
+   .login-form-wrapper {
+      width: calc(48vw + 1rem);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10vw 2vw 10vw 16vw;
+  }
+    .login-form-wrapper h3 {
+      font-size: 2vw;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      padding-bottom: calc(3vh - 1rem);
+  }
+  .login-form-wrapper p {
+      font-family: 'Gothic A1';
+      font-style: normal;
+      font-weight: 500;
+      color: #494949;
+      text-align: left;
+      padding-bottom: calc(1vh + 1rem);
+      font-size: 1.4vw;
+  }
+   login-form-wrapper h3 span {
+      color: #76ba62;
+      margin-left: 0vw;
+  }
 @media (max-width: 1200px) {
-    .student-img .student-1 {
-        width: 290px;
-        right: -40px;
-    }
-    .student-img .student-2 {
-        right: -130px;
-    }
-}
-@media (max-width: 1024px) {
-    .left-section {
-        width: 50%;
+        .student-img .student-1 {
+          width: 200px;
+          right: 21px;
+        }
+        .student-img .student-2 {
+          right: -80px;
+          width: 377px;
+        }
+        .login-form-wrapper h3 {
+          padding-bottom: 0px; 
+        }
+        .login-form-wrapper p {
+          padding-bottom: 0px; 
+        }    
+  }
+  @media (max-width: 1024px) {
+        .left-section {
+          width: 40vw;
+        }
+        .right-section {
+          width: 60vw;
+        }
+        .left-content-wrapper {
+          width: 80%;
+        }
+        .left-content-wrapper h3 {
+          margin-top: 46px;
+          font-size: 15px;
+          text-align: initial;
+        }
+        img {
+          padding-bottom: 25px;
+        }
+        .student-img .student-2 {
+          right: -72px;
+          width: 333px;
+          bottom: 108px;
+        }
+       .student-img .student-1 {
+          width: 179px;
+          right: 16px;
+          bottom: 133px;
+        }
+        .section-header {
+          padding: 25px 30px 25px 30px;
+        }
+       .section-header .hcl-logo {
+          width: 169px;
+        }
+        .top-copyright img {
+          width: 85px;
+        }
+        .login-form-wrapper {
+          width: 81%;
+          padding: 100px 30px;
+        }
+        .circle {
+          width: 254px;
+          height: 158px;
+        }
+        .plant {
+          bottom: 115px;
+        }
+  }
+  @media (max-width: 768px)  {
+    .left-section{
+      display:none
     }
     .right-section {
-        width: 50%;
-    }
-    .left-content-wrapper {
-        width: 80%;
-    }
-    .left-content-wrapper h3 {
-        margin-top: 180px;
-    }
-    .student-img .student-2 {
-        right: -58px;
-        width: 333px;
-    }
-    .student-img .student-1 {
-        width: 230px;
-        right: 19px;
-    }
-    .section-header {
-        padding: 25px 30px 25px 30px;
-    }
-    .section-header .hcl-logo {
-        width: 72px;
-    }
-    .top-copyright img {
-        width: 85px;
+      width: 100vw;
     }
     .login-form-wrapper {
-        width: 81%;
-        padding: 100px 30px;
+      width: 50%;
+      align-items:center;
+      padding: 140px 0px 140px 64px;
     }
-    .circle {
-        width: 254px;
-        height: 158px;
-    }
-    .plant {
-        bottom: 115px;
-    }
-}
-@media (max-width: 768px) {
-    .left-section {
-        display: none;
-    }
-    .right-section {
-        width: 100%;
-    }
-    .section-header {
-        padding: 35px;
-    }
-    .login-form-wrapper {
-        width: 80%;
-        padding: 35px;
-        margin: 0px auto;
-    }
-}
-@media (max-width: 642px) {
-    .section-header {
-        padding: 35px;
-    }
-    .login-form-wrapper {
-        width: 100%;
-        padding: 35px;
-        margin: 0px auto;
+    .login-form-wrapper h3 {
+      font-size:12px;
     }
     .login-form-wrapper p {
-        font-size: 22px;
+      font-size: 12px;
     }
-}
+    .section-header .hcl-logo {
+      width: 150px;
+    }
+    .top-copyright {
+      font-size: 10px;
+    }
+    .top-copyright img {
+      width: 80px;
+    }
+    .btn.btn-jupyter.btn-lg {
+      width: 200px;
+    }
+  }
+  @media (max-width: 642px) {
+    .left-section{
+      display:none
+    }
+    .right-section {
+      width: 100vw;
+    }
+    .section-header {
+      padding: 35px;
+    }
+    .section-header .hcl-logo {
+      width: 180px;
+    }
+    .top-copyright {
+      font-size: 14px;
+    }
+    .top-copyright img {
+      width: 95px;
+    }
+    .login-form-wrapper {
+      padding-top: 118px;
+      align-items: center;
+      padding-left:0px;
+    }
+      .login-form-wrapper h3 {
+        font-size:20px;
+      }
+      .login-form-wrapper p {
+          font-size: 20px;
+        }
+      .btn.btn-jupyter.btn-lg {
+        width: 215px;
+      }
+  }
 
-@media (max-width: 480px) {
-    .section-header {
-        padding: 30px;
+  @media (max-width: 480px) {
+      .left-section {
+        dispaly:none;
+        }
+        .right-section {
+          width: 100vw;
+        }
+        .section-header {
+          padding: 30px;
+        }
+        .section-header .hcl-logo {
+          width: 148px;
+        }
+        .top-copyright img {
+          width: 85px;
+          margin-left: 10px;
+        }
+        .section-header .hcl-logo {
+          width: 200px;
+        }
+        .login-form-wrapper {
+        padding-left: 34px;
+        padding-top: 130px;
+        align-items: center;
+        }
+        .login-form-wrapper h3 {
+        font-size: 21px;
+      }
+        .login-form-wrapper p {
+          font-size: 14px;
+          padding-left: 0px;
+          font-weight:500;
     }
-    .section-header .hcl-logo {
-        width: 62px;
-    }
-    .top-copyright img {
-        width: 85px;
-        margin-left: 10px;
-    }
-    .login-form-wrapper {
-        width: 100%;
-        margin: 0px auto;
-        padding: 30px;
-    }
-    .login-form-wrapper p {
-        font-size: 22px;
-    }
-}
+  }
 </style>
 {% block login %}
 <div id="login-main" class="container">
   {% block login_container %} {% if custom_html %} {{ custom_html | safe }} {%
   elif login_service %}
   <div class="service-login">
-<div class="page-wrapper">
-            <div class="d-flex flex-wrap h-100">
-                <div class="left-section">
-                    <div class="left-content-wrapper">
-                        <h3 class="color-fff font-poppins">Your differentiated learning journey, begins here</h3>
-                    </div> 
-                    <div class="student-img">
-                        <img src="https://ik.imagekit.io/iwwbj9so6/Asset_1_3_NN47QLaod.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661773785163" class="student-2">
-                        <img src="https://ik.imagekit.io/bdrfryplj/jordy-2_wvPbu4oPG.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658725592275" class="student-1">
-                    </div>
-                    <div class="plant">
-                        <img src="https://ik.imagekit.io/iwwbj9so6/plant_bT6bGb1et.png?ik-sdk-version=javascript-1.4.3&updatedAt=1658853831371">
-                    </div>
-                    <div class="circle">
-                        <img src="https://ik.imagekit.io/iwwbj9so6/shape-2_U3yDG_XFo.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658853881568">
-                    </div>
-                </div>
-                <div class="right-section">
-                    <div class="section-header">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <img src="https://ik.imagekit.io/iwwbj9so6/LOGO_-_data_science_lab_QYUIsnln7.png?ik-sdk-version=javascript-1.4.3&updatedAt=1658915400748" class="hcl-logo">
-                            <div class="d-flex d-flex align-items-center justify-content-between top-copyright">
-                                <span>Powered by</span> <img src="https://ik.imagekit.io/iwwbj9so6/HCL-Logo-1_KlkleOwcX.png?ik-sdk-version=javascript-1.4.3&updatedAt=1658853967349">
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="login-form-wrapper font-gothic">
-                        <h3>Welcome <span>:)</span></h3>
-                            <div class="d-flex align-items-center flex-column mt-2 ">
-                                <a role="button" class="btn btn-jupyter btn-lg" href="{{authenticator_login_url}}">
-                  			Sign in with organization ID
-					<!--                   Sign in with {{login_service}} -->
-               		 </a>
-                            </div>
-                    </div>
-                </div>
-            </div>
+    <div class="page-wrapper">
+      <div class="d-flex flex-wrap h-100">
+        <div class="left-section">
+          <div class="left-content-wrapper">
+            <h3 class="color-fff">
+              Getting one step closer to becoming a Data Scientist...
+            </h3>
+          </div>
+          <div class="student-img">
+            <img
+              src="https://ik.imagekit.io/iwwbj9so6/Asset_1_3_NN47QLaod.png?ik-sdk-version=javascript-1.4.3&updatedAt=1661773785163"
+              class="student-2"
+            />
+            <img
+              src="https://ik.imagekit.io/bdrfryplj/jordy-2_wvPbu4oPG.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658725592275"
+              class="student-1"
+            />
+          </div>
+          <div class="plant">
+            <img
+              src="https://ik.imagekit.io/iwwbj9so6/plant_bT6bGb1et.png?ik-sdk-version=javascript-1.4.3&updatedAt=1658853831371"
+            />
+          </div>
+          <div class="circle">
+            <img
+              src="https://ik.imagekit.io/iwwbj9so6/shape-2_U3yDG_XFo.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658853881568"
+            />
+          </div>
         </div>
-       </div>
+        <div class="right-section">
+          <div class="section-header">
+            <div class="d-flex align-items-center justify-content-between">
+              <img
+                src="https://ik.imagekit.io/iwwbj9so6/LOGO_-_data_science_lab_QYUIsnln7.png?ik-sdk-version=javascript-1.4.3&updatedAt=1658915400748"
+                class="hcl-logo"
+              />
+              <div
+                class="d-flex d-flex align-items-center justify-content-between top-copyright"
+              >
+                <span>Powered by</span>
+                <img
+                  src="https://ik.imagekit.io/iwwbj9so6/HCL-Logo-1_KlkleOwcX.png?ik-sdk-version=javascript-1.4.3&updatedAt=1658853967349"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="login-form-wrapper font-gothic">
+            <h3>Welcome <span>:)</span></h3>
+            <p>Master the skills needed to solve complex data challenges</p>
+            <div id="login-form">
+              <div class="d-flex align-items-center flex-column mt-2">
+                <a
+                  role="button"
+                  class="btn btn-jupyter btn-lg"
+                  href="{{authenticator_login_url}}"
+                >
+                  Sign in with organization ID
+<!--                   Sign in with {{login_service}} -->
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   {% else %}
   <form action="{{authenticator_login_url}}" method="post" role="form">
