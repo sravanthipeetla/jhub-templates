@@ -300,10 +300,15 @@ html {
         }
         .circle {
           height: calc( 14vh + 3rem);
+          left: calc(3vw + 1rem);
       }
-      .plant {
-            top: calc(48vh + 20rem );
-            width: calc(14vw - 2rem);
+      .left-section::after {
+         left: calc(12vw + 21rem);
+       }
+      @media (max-width: 1200px){
+        .plant {
+            top: calc(52vh + 20rem );
+            width: calc(11vw - 2rem);
         }
        .student-img .student-2 {
           width: calc(42vw + 3rem);
@@ -337,6 +342,12 @@ html {
         .btn.btn-jupyter.btn-lg {
           width: calc(36vw + 1rem);
           font-size: 1.8vw;
+        }
+        .left-section::after {
+          top: calc(19vh + 68.4rem);
+          left: calc(9vw + 21rem);
+          right: calc( 2vw + 2rem);
+          width: calc(12vw + 2.7rem);
         }
   }
   @media (max-width: 1024px) {
