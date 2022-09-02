@@ -28,7 +28,7 @@ html {
       width: calc(26vw + 1rem);
       font-family: 'Poppins';
       font-size: 1.1vw;
-      font-weight: 600;
+      font-weight: 500;
       margin-top:2vw;
   } 
   .btn.btn-jupyter.btn-lg:hover {
@@ -377,9 +377,32 @@ html {
           left: calc(3vw + 1rem);
       }
   }
-/*   @media (max-width: 1024px) {
-   
-  } */
+  @media (max-width: 1024px) {
+    left-section::after {
+      left: calc(5vw + 21rem);
+    }
+    .circle {
+      height: calc( 13vh + 3rem);
+      left: calc(1vw + 1rem);
+    }
+    .plant {
+      top: calc(56vh + 20rem );
+    }
+    .student-img .student-2 {
+      top: calc(42vh + 3rem);
+      left: calc(5vw + 9rem);
+    }
+    .student-img .student-1 {
+      width: calc(24vw + 6rem);
+      left: calc(18vw + 5rem);
+    }
+    .login-form-wrapper p {
+      font-size: 2vw;
+    }
+    .btn.btn-jupyter.btn-lg {
+      font-size: 2.1vw;
+    }
+   }
   @media (max-width: 768px)  {
     .left-section{
       display:none
