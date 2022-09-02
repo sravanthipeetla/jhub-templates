@@ -149,7 +149,6 @@ html {
   } 
   .circle {
       position: absolute;
-      position: fixed !important;
       width: calc(20vw + 3rem);
       height: calc( 20vh + 3rem);
       left: calc(5vw + 1rem);
@@ -276,6 +275,19 @@ html {
         .btn.btn-jupyter.btn-lg {
           font-size: 1.6vw;
         }
+  }
+@media (max-width: 1500px){
+  .left-content-wrapper {
+      width: calc(34vw + 10rem );
+    }
+   .left-content-wrapper h3 {
+      font-size: 1.8vw;
+    }
+  .left-section::after {
+    left: calc(16vw + 21rem);
+  }
+  
+  
   }
 @media (max-width: 1200px) {
         .student-img .student-1 {
