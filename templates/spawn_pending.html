@@ -13,14 +13,6 @@
       src="https://ik.imagekit.io/iwwbj9so6/LOGO_-_data_science_lab_QYUIsnln7.png?ik-sdk-version=javascript-1.4.3&updatedAt=1658915400748"
       class="hcl-logo"
     />
-    <div
-      class="d-flex d-flex align-items-center justify-content-between top-copyright"
-    >
-      <span>Powered by</span>
-      <img
-        src="https://ik.imagekit.io/iwwbj9so6/HCL-Logo-1_KlkleOwcX.png?ik-sdk-version=javascript-1.4.3&updatedAt=1658853967349"
-      />
-    </div>
   </div>
 </div>
 {% endblock %} {% block main %}
@@ -43,13 +35,6 @@
   }
   .section-header .hcl-logo {
     width: 301px;
-  }
-  .top-copyright img {
-    width: 145px;
-    margin-left: 10px;
-  }
-  .top-copyright {
-    font-size: 14px;
   }
   #sr-progress{
   color: #006BB6;
@@ -92,6 +77,17 @@
     display: flex;
     flex-direction: column;
     font-size: 12px;
+  }
+  @media (max-width:768px){
+  .section-header .hcl-logo {
+    width: 200px;
+   }
+    .student-img{
+      display:none;
+    }
+    .right-section {
+      width: 100vw;
+    } 
   }
 </style>
 <div class="container">
