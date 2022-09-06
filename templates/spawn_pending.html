@@ -56,7 +56,7 @@
   font-size:18px;
   font-weight:600;
   }
-  .progress-message {
+  .progress-text {
     font-size: 18px;
     font-weight: 600;
   }
@@ -98,8 +98,8 @@
   <div class="row">
     <div class="text-center">
       {% block message %}
-      <p class="progress-message">Your server is starting up.</p>
-      <p class="progress-message">
+      <p class="progress-text">Your server is starting up.</p>
+      <p class="progress-text">
         You will be redirected automatically when it's ready for you.
       </p>
       {% endblock %}
@@ -114,6 +114,7 @@
           aria-valuemax="100"
           style="width: 0%"
         />
+        <p id="progress-message"></p>
       </div>
     </div>
   </div>
