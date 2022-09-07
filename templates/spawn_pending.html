@@ -40,7 +40,7 @@
     padding: 35px 28px 35px 45px;
   }
   .section-header .hcl-logo {
-    width: 301px;
+    width: calc(13vw + 2rem);
   }
   #sr-progress{
   color: #006BB6;
@@ -48,8 +48,11 @@
   font-weight:600;
   }
   .progress-text {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 1vw;
+    font-weight: 400;
+  }
+  .progress-text:last-child{
+    margin-bottom: calc(2vh + 2rem);
   }
   .progress {
     border-radius: 20px;
@@ -60,7 +63,7 @@
     transform: matrix(-1, 0, 0, 1, 0, 0);
   }
   .left-section {
-    width: 20%;
+    width: 20vw;
     position: relative;
     top: calc(14vh - 2rem);
   }
@@ -68,7 +71,7 @@
     overflow: hidden;
   }
   .right-section {
-    width: 60%;
+    width: 60vw;
     border-radius: 80px 0px 0px 0px;
     position: relative;
     background: #fff;
@@ -86,6 +89,11 @@
   }
   .student-2{
     height: calc(43vh + 2rem);
+  }
+  #progress-message{
+    color:#494949;
+    weight:300;
+    font:'Gothic A1';
   }
   @media (max-width:768px){
   .section-header .hcl-logo {
