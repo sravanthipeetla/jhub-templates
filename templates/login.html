@@ -55,7 +55,7 @@ html {
   .font-gothic {
         font-family: 'Gothic A1', sans-serif;
   }
-  html,body,.page-wrapper {
+  body,.page-wrapper {
         height: 100vh;
   }
   img {
@@ -71,7 +71,7 @@ html {
         top: calc(10vh - 12rem);
         left: calc( 10vw - 21rem);
         right: calc( 1vw - 11rem);
-        bottom: 0px;
+        bottom: 0;
         margin: auto;
         content: '';
         background: linear-gradient( 134.19deg, #006bb6 17.15%, #006bb6 17.15%, #ffffff 167.6% );
@@ -79,11 +79,9 @@ html {
     }
   .left-section::after {
       position: absolute;
-/*       top: calc(2vh + 68.4rem); */
       left: calc(19vw + 21rem);
       right: calc( 2vw + 2rem);
-/*       bottom: calc(6vh + -26rem); */
-      bottom:0px;
+      bottom:0;
       margin: auto;
       content: '';
       width: calc(9vw + 2.7rem);
@@ -156,7 +154,7 @@ html {
       margin: auto;
       content: '';
       position: fixed;
-      bottom: 0px;
+      bottom: 0;
       overflow: hidden;
   }
   .right-section {
