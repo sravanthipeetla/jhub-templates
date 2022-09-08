@@ -188,6 +188,18 @@
 {{ super() }}
 <script type="text/javascript">
 require(["home"]);
+window.onload = function() {
+const userAction = async () => {
+  const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
+  const myJson = await response.json(); 
+  console.log(myJson)
+}
+userAction()
+};
+function addStudents() {
+    let x = document.getElementById("myFile").files[0]
+  
+}
 var modal = document.getElementById("myModal");
 // Get the button that opens the modal
 var row= document.getElementById("row");
