@@ -200,10 +200,10 @@ const userAction = async () => {
   const myJson = await response.json(); 
   var courses_list=myJson.courses;
   console.log(courses_list)
-  $.each(courses_list, function (course) {
+  $.each(courses_list, function (item,value) {
     $('#course-list').append($('<option>', { 
-        value: course,
-        text : course
+        value: value,
+        text : value
     }));
 })
 }
