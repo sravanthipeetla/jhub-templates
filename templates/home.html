@@ -2,8 +2,50 @@
 {% if announcement_home %}
   {% set announcement = announcement_home %}
 {% endif %}
+{% block nav_bar_left_items%}
+  {{ super() }}
+    <li><button id="addStudent">Add Student</button></li>
+{% endblock %}
 {% block main %}
 <style>
+#addStudent{
+    border: none;
+    background-color: white;
+    color: #777;
+    padding-top: 10px;  
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 2; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+}
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
   .navbar-default{
     background-color:#FFFFFF;
     border:none;
@@ -57,6 +99,12 @@
       </a>
       <br/>
       <img class='server-gif' src='https://ik.imagekit.io/iwwbj9so6/Server_gif_hzHBX49u0.gif?ik-sdk-version=javascript-1.4.3&updatedAt=1661754020935'/>
+    </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Upload</p>
+      </div>
     </div>
   </div>
   {% if allow_named_servers %}
@@ -129,5 +177,25 @@
 {{ super() }}
 <script type="text/javascript">
 require(["home"]);
+var modal = document.getElementById("myModal");
+// Get the button that opens the modal
+var row= document.getElementById("row");
+var btn = document.getElementById("addStudent");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+  btn.onclick = function() {
+  modal.style.display = "block";
+  row.style.display="none";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 </script>
 {% endblock %}
