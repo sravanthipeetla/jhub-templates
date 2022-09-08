@@ -2,10 +2,10 @@
 {% if announcement_home %}
   {% set announcement = announcement_home %}
 {% endif %}
-{% block nav_bar_left_items%}
+<!-- {% block nav_bar_left_items%}
   {{ super() }}
     <li><button id="addStudent">Add Student</button></li>
-{% endblock %}
+{% endblock %} -->
 {% block main %}
 <style>
   .modal {
@@ -80,10 +80,6 @@
     padding-top:80px;
   }
 </style>
-<div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
-</div>
 <div class="container">
   <div class="row">
     <div class="text-center">
@@ -100,6 +96,11 @@
       {% if not default_server.active %}Start{% endif %}
       My Workspace
       </a>
+      <button id="addStudent">Add Student</button>
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Some text in the Modal..</p>
+      </div>
       <br/>
       <img class='server-gif' src='https://ik.imagekit.io/iwwbj9so6/Server_gif_hzHBX49u0.gif?ik-sdk-version=javascript-1.4.3&updatedAt=1661754020935'/>
     </div>
