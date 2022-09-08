@@ -118,7 +118,7 @@
                 <input type="file" id="fileinput"  name="upload"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_WkJK6A0OB.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662636716269"/></input>
              </div>
              <div class="row-flex">
-               <input type="submit" onmouseup="uploadConfirmation()">Save</input>
+               <button type="button" onmouseup="uploadConfirmation()">Save</button>
                <button type="button" onclick="closeModal">Cancel</button>
             </div>
           </form>
@@ -202,7 +202,12 @@ const userAction = async () => {
 
   const myJson = await response.json(); 
 
-  console.log(myJson)
+  console.log(myJson);
+  $.each(myJson, function (course) {
+    $('#course-list').append($('<option>', { 
+        value: course,
+        text : course
+    }));
 
 }
 
@@ -213,10 +218,7 @@ userAction()
 function addStudents() {
 
     let x = document.getElementById("myFile").files[0]
-
-  
-
-}
+    }
 var modal = document.getElementById("myModal");
 // Get the button that opens the modal
 var row= document.getElementById("row");
@@ -237,27 +239,6 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-  function readSingleFile(evt) {
-    var f = evt.target.files[0]; 
-    if (f) {
-      var r = new FileReader();
-      r.onload = function(e) { 
-          var contents = e.target.result;
-          document.write("File Uploaded! <br />" + "name: " + f.name + "<br />" + "content: " + contents + "<br />" + "type: " + f.type + "<br />" + "size: " + f.size + " bytes <br />");
 
-          var lines = contents.split("\n"), output = [];
-          for (var i=0; i<lines.length; i++){
-            output.push("<tr><td>" + lines[i].split(",").join("</td><td>") + "</td></tr>");
-          }
-          output = "<table>" + output.join("") + "</table>";
-          document.write(output);
-     }
-      r.readAsText(f);
-      document.write(output);
-    } else { 
-      alert("Failed to load file");
-    }
-  }
-  document.getElementById('fileinput').addEventListener('change', readSingleFile);
 </script>
 {% endblock %}
