@@ -33,16 +33,20 @@
   padding: 20px;
   border: 1px solid #888;
   width: 30%;
+  element.style {
+  border-radius: 15px;
+  height: 30vh;
+}
 }
 .close {
-  color: #aaaaaa;
+  color: #000000;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 .close:hover,
 .close:focus {
-  color: #000;
+  color: #FF0000;
   text-decoration: none;
   cursor: pointer;
 }
@@ -109,7 +113,7 @@
             <input type="file" id="fileinput" />
           <br/>
           <input type="submit" onmouseup="uploadConfirmation()"/>
-          <button type="button" onclick="closeModal">Close</button>
+          <button type="button" onclick="closeModal">Cancel</button>
        </form>
       </div>
     </div>
