@@ -11,7 +11,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
       -ms-overflow-style: scrollbar;
       height:100vh;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    }
+     }
      .container {
         padding-left: 0;
         margin-left: 0;
@@ -21,41 +21,40 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         height: 100vh;
         font-family: 'Poppins', sans-serif;
       }
-      .btn.btn-jupyter.btn-lg {
+     .btn.btn-jupyter.btn-lg {
         background-color: #006bb6;
         border-color: #006bb6;
         border-radius: 30px;
-        width: calc(25vw + 1rem);
+        width: calc(24vw + 1rem);
         font-family: 'Poppins';
         font-size: 1vw;
         align-self: start;
         font-weight: 500;
-    }
-    .btn.btn-jupyter.btn-lg:hover {
+     }
+     .btn.btn-jupyter.btn-lg:hover {
          background-color: #006bb6;
          border: 1px solid #5fbef0;
       }
-    /* Common class element styles */
-.d-flex {
-    display: flex;
-    height:100%;
-}
-.flex-column {
-    flex-direction: column;
-}
-.flex-row {
-    flex-direction: row;
-}
-.flex-wrap {
-    flex-wrap: wrap;
-    height:100vh;
-}
-.align-items-center {
-    align-items: center;
-}
-.justify-content-between {
-    justify-content: space-between;
-}
+    .d-flex {
+        display: flex;
+        height:100%;
+    }
+    .flex-column {
+        flex-direction: column;
+    }
+    .flex-row {
+        flex-direction: row;
+    }
+    .flex-wrap {
+        flex-wrap: wrap;
+        height:100vh;
+    }
+    .align-items-center {
+        align-items: center;
+    }
+    .justify-content-between {
+        justify-content: space-between;
+    }
 .align-items-end {
     align-items: flex-end;
 }
@@ -250,6 +249,8 @@ a:hover {
 }
 .login-form-wrapper {
     width: 50%;
+    align-items:center;
+    text-align:start;
     margin: 0px auto;
 }
 .login-form-wrapper h3 {
@@ -262,61 +263,20 @@ a:hover {
     color: #76ba62;
     margin-left: 7px;
 }
-.floating-label {
-    position: relative;
-}
-.floating-label label {
-    position: absolute;
-    top: 6px;
-    font-family: 'Gothic A1', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    transition: all .25s ease;
-    color: #AAAAAA;
-}
-.floating-label input:focus ~ label,
-.floating-label input:valid ~ label {
-    top: -20px;
-    color: #006BB6;
-    font-size: 14px;
-}
-
-.border-bottom-input {
-    border: none;
-    border-bottom: 1px solid;
-    border-radius: 0px;
-}
-.border-bottom-input:focus {
-    outline: none;
-    box-shadow: none;
-}
-.floating-label input {
-    z-index: 100;
-    position: relative;
-    background: transparent;
-}
-.login-form-wrapper {
-    text-align: start;
-    padding-top: 230px;
-    padding-bottom: 140px;
-}
-.btn-curved {
-    border-radius: 27px;
-}
-
 .login-form-wrapper-p{
-font-family: 'Gothic A1';
-font-style: normal;
-font-weight: 400;
-font-size: 24px;
-line-height: 42px;
-color: #494949;
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 42px;
+    color: #494949;
 
 }
 @media (max-width: 1920px){
     .btn.btn-jupyter.btn-lg {
-        width: calc(29vw + 1rem);
+        width: calc(24vw + 1rem);
     }
+}
 @media (max-width:1440px) {
     .login-form-wrapper-p {
         font-size: 22px;
@@ -326,9 +286,10 @@ color: #494949;
     }
 
 }
+@media (max-width: 1366px){
+    }
 @media (max-width: 1366px) and (max-height: 1024px){
     .login-form-wrapper {
-        padding-left: calc(14vw + 2rem);
         width: 100%
     }
     .btn.btn-jupyter.btn-lg {
@@ -345,9 +306,9 @@ color: #494949;
         right: -130px;
     }
 }
+    
 @media (max-width: 1024px) and (max-height: 768px){
     .login-form-wrapper {
-        padding-left: calc(16vw + 2rem);
         width: 100%;
     }
     .login-form-wrapper-p {
@@ -392,10 +353,6 @@ color: #494949;
     }
     .login-form-wrapper {
         margin: 0;
-        align-self: center;
-        padding-left: 134px;
-        padding-top: 170px;
-        padding-bottom: 140px;
         width:100%;
     }
     .login-form-wrapper-p {
@@ -426,9 +383,7 @@ color: #494949;
     }
     .login-form-wrapper {
         width: 100%;
-        padding: 35px;
         margin: 126px auto;
-        text-align: center;
     }
     .login-form-wrapper p {
         font-size: 22px;
@@ -445,9 +400,7 @@ color: #494949;
     }
     .login-form-wrapper {
         width: 100%;
-        padding: 35px;
         margin: 125px auto;
-        text-align: center;
     }
     .login-form-wrapper p {
         font-size: 22px;
@@ -473,8 +426,6 @@ color: #494949;
    .login-form-wrapper {
         width: 100%;
         margin: 115px auto;
-        padding: 30px;
-        text-align: center;
      }
     .login-form-wrapper p {
         font-size: 22px;
@@ -513,7 +464,7 @@ color: #494949;
                         <img src="https://ik.imagekit.io/iwwbj9so6/shape-2_U3yDG_XFo.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658853881568">
                     </div>
                 </div>
-                <div class="right-section">
+                <div class="right-section d-flex flex-column">
                     <div class="section-header">
                         <div class="d-flex align-items-center justify-content-between">
                             <img src="https://ik.imagekit.io/iwwbj9so6/LOGO_-_data_science_lab_QYUIsnln7.png?ik-sdk-version=javascript-1.4.3&updatedAt=1658915400748" class="hcl-logo">
