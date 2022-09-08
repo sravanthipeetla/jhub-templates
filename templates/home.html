@@ -2,12 +2,18 @@
 {% if announcement_home %}
   {% set announcement = announcement_home %}
 {% endif %}
-<!-- {% block nav_bar_left_items%}
+{% block nav_bar_left_items%}
   {{ super() }}
     <li><button id="addStudent">Add Student</button></li>
-{% endblock %} -->
+{% endblock %}
 {% block main %}
 <style>
+#addStudent{
+    border: none;
+    background-color: white;
+    color: grey;
+    padding-top: 10px;  
+}
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
