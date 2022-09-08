@@ -32,7 +32,7 @@
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 30%;
+  width: 100%;
 }
 .close {
   color: #aaaaaa;
@@ -97,14 +97,14 @@
       {% if not default_server.active %}Start{% endif %}
       My Workspace
       </a>
-      <div id="myModal" class="modal">
+      <br/>
+      <img class='server-gif' src='https://ik.imagekit.io/iwwbj9so6/Server_gif_hzHBX49u0.gif?ik-sdk-version=javascript-1.4.3&updatedAt=1661754020935'/>
+    </div>
+    <div id="myModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
         <p>Upload</p>
       </div>
-      </div>
-      <br/>
-      <img class='server-gif' src='https://ik.imagekit.io/iwwbj9so6/Server_gif_hzHBX49u0.gif?ik-sdk-version=javascript-1.4.3&updatedAt=1661754020935'/>
     </div>
   </div>
   {% if allow_named_servers %}
@@ -179,11 +179,13 @@
 require(["home"]);
 var modal = document.getElementById("myModal");
 // Get the button that opens the modal
+var row= document.getElementById("row");
 var btn = document.getElementById("addStudent");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
   btn.onclick = function() {
   modal.style.display = "block";
+  row.style.display="none";
 }
 
 // When the user clicks on <span> (x), close the modal
