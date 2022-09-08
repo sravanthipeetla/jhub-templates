@@ -107,17 +107,15 @@
     <div id="myModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
-        <form>
-          Upload a CSV file containing Learner Username and Course id.
-          <br/>
-            <input type="file" id="fileinput" />
-          <br/>
-          <input type="submit" onmouseup="uploadConfirmation()"/>
-          <button type="button" onclick="closeModal">Cancel</button>
-       </form>
+          <form id="login-form">
+            <div class="column-flex">
+              <div class="row-flex">
+                <label for="course">Select course</label>
+                <select id="course-list" name="course"/>
+             <div>
+          </form>
       </div>
     </div>
-  </div>
   {% if allow_named_servers %}
   <h2>
   Named Servers
@@ -188,18 +186,6 @@
 {{ super() }}
 <script type="text/javascript">
 require(["home"]);
-window.onload = function() {
-const userAction = async () => {
-  const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
-  const myJson = await response.json(); 
-  console.log(myJson)
-}
-userAction()
-};
-function addStudents() {
-    let x = document.getElementById("myFile").files[0]
-  
-}
 var modal = document.getElementById("myModal");
 // Get the button that opens the modal
 var row= document.getElementById("row");
