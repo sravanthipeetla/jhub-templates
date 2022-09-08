@@ -8,7 +8,7 @@
 {% endblock %} -->
 {% block main %}
 <style>
-  .modal {
+.modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -21,8 +21,6 @@
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-
-/* Modal Content */
 .modal-content {
   background-color: #fefefe;
   margin: auto;
@@ -30,15 +28,12 @@
   border: 1px solid #888;
   width: 80%;
 }
-
-/* The Close Button */
 .close {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
   color: #000;
@@ -96,10 +91,11 @@
       {% if not default_server.active %}Start{% endif %}
       My Workspace
       </a>
-      <button id="addStudent">Add Student</button>
+      <div id="myModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Some text in the Modal..</p>
+        <p>Upload</p>
+      </div>
       </div>
       <br/>
       <img class='server-gif' src='https://ik.imagekit.io/iwwbj9so6/Server_gif_hzHBX49u0.gif?ik-sdk-version=javascript-1.4.3&updatedAt=1661754020935'/>
