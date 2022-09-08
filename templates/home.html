@@ -2,6 +2,14 @@
 {% if announcement_home %}
   {% set announcement = announcement_home %}
 {% endif %}
+{% block nav_bar_left_items%}
+  {{super}}
+    <li><a href="">Add Student</a></li>
+  {% if 'admin-ui' in parsed_scopes %}
+    <li><a href="">Add Student</a></li>
+ {% endif %}
+  
+{% endblock %}
 {% block main %}
 <style>
   .navbar-default{
