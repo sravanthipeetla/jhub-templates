@@ -15,17 +15,17 @@
     padding-top: 10px;  
 }
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 2; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  display: none;
+  position: fixed;
+  z-index: 2; 
+  padding-top: 100px;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto; 
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4); 
 }
 .modal-content {
   background-color: #fefefe;
@@ -48,13 +48,6 @@
   text-decoration: none;
   cursor: pointer;
 }
-  .column-flex{
-    display:flex;
-    flex-direction:column;
-  }
-  .row-flex{
-    display:flex;
-  }
   .navbar-default{
     background-color:#FFFFFF;
     border:none;
@@ -112,7 +105,6 @@
     <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <form id="student-add-form">
                 <div>
                     <label for="course">Select course</label>
                     <select id="course-list" name="course"/>
@@ -126,7 +118,6 @@
                       <label for="upload">Upload file</label>
                       <input type="file" id="fileinput"  name="upload"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_WkJK6A0OB.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662636716269"/></input>
                 </div>
-        </form>
     </div>
 </div>
   {% if allow_named_servers %}
