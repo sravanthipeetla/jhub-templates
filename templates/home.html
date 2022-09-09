@@ -342,9 +342,10 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 	      const studentData=JSON.stringify(studentsList);
               const addStudent = async () => {
 	        console.log("In sync");
+	        console.log(studentData);
 	        const selectedCourse = selected.options[selected.selectedIndex].text;
 		console.log(selectedCourse);
-  	      	const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/'+selectedCourse+'?students='+"'"+studentData+"'", {
+  	      	const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/'+selectedCourse+'?students='+studentData, {
     			method: 'POST',
     			headers: {
 			    'Accept': 'application/json, text/plain, */*',
