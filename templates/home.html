@@ -194,7 +194,7 @@ label{
                 </div>
                 <div class="row-flex">
                     <button type="button" onmouseup="uploadConfirmation()" id="save_button">Save</button>
-                    <button type="button" onclick="closeModal" id="cancel_button" class="close">Cancel</button>
+                    <button type="button" onclick="closeModal" id="cancel_button">Cancel</button>
                 </div>
       </div>
     </div>
@@ -332,7 +332,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
                 tarr.push(studentsList);
               }
               console.log("length",tarr.length);
-              console.log(JSON.stringify(tarr));
+              console.log(JSON.stringify(tarr));	
             };
             fileReader.readAsText(fileTobeRead);
           } 
