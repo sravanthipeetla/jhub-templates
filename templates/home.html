@@ -325,7 +325,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
             fileReader.onload = function (e) {
               var fileData = fileReader.result.split(/\r\n|\n/);
               var headers = fileData[0].split(",");
-              for (var i = 1; i < fileData.length; i++) {
+              for (var i = 1; i < fileData.length-1; i++) {
                 var studentDict = {};
                 var data = fileData[i].split(",");
                 if (data.length == headers.length) {
