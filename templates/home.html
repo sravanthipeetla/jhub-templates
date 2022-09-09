@@ -120,6 +120,39 @@ label{
     height: 6vh;
     cursor: pointer;
 }
+#save_button{
+    position: absolute;
+    background: #5FBEF0;
+    border-radius: 41vh;
+    border-color: #5FBEF0;
+    margin: 7vh 0vw 0vh 10vw;
+    padding: 1vh 2vw 1vh 2vw;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 2vh;
+    line-height: 2vh;
+    color: white;
+    border-block: unset;
+    widht:6vw;
+
+	}
+#cancel_button{
+    justify-content: center;
+    background: white;
+    border-radius: 41vh;
+    border-color: #5FBEF0;
+    margin: 7vh 0vw 0vh 19vw;
+    padding: 1vh 2vw 1vh 2vw;
+    font-family: 'Poppins';
+    font-style: normal;
+    /* font-weight: 600; */
+    font-size: 2vh;
+    line-height: 2vh;
+    color: #5FBEF0;
+    width: 6vw;
+    position: absolute;
+	
+	}
 </style>
 <div class="container">
   <div class="row">
@@ -160,8 +193,8 @@ label{
 		      </div>
                 </div>
                 <div class="row-flex">
-                    <button type="button" onmouseup="uploadConfirmation()">Save</button>
-                    <button type="button" onclick="closeModal">Cancel</button>
+                    <button type="button" onmouseup="uploadConfirmation()" id="save_button">Save</button>
+                    <button type="button" onclick="closeModal" id="cancel_button">Cancel</button>
                 </div>
       </div>
     </div>
