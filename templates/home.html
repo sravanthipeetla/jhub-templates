@@ -193,7 +193,7 @@ label{
 		      </div>
                 </div>
                 <div class="row-flex">
-                    <button type="button" onmouseup="uploadConfirmation()" id="save_button">Save</button>
+                    <button type="button" id="save_button">Save</button>
                     <button type="button" onclick="closeModal" id="cancel_button">Cancel</button>
                 </div>
       </div>
@@ -349,7 +349,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
   			}
   		});
   		const myJson = await response.json(); 
-		console.log(myJson);
+		console.log("ngshareResponse"+myJson);
 			}
 	}
             };
