@@ -183,7 +183,7 @@ label{
                       		<option>Course name</option>
                   	     </select>
                 </div>
-               <div class="row-flex">
+                <div class="row-flex">
                       <label for="upload" style="margin: 3vh 4vw 2vh 2vw;">Upload file</label>
                       <div class="fileinputs">
 			<input type="file" class="file" id="fileinput" name="upload" required="" style="margin: 2vh -2vw 0vh -1.2vw;width: 20vh;height: 5vh;cursor: pointer;">
@@ -194,7 +194,7 @@ label{
                 </div>
                 <div class="row-flex">
                     <button type="button" onmouseup="uploadConfirmation()" id="save_button">Save</button>
-                    <button type="button" onclick="closeModal" id="cancel_button">Cancel</button>
+                    <button type="button" onclick="closeModal" id="cancel_button" class="close">Cancel</button>
                 </div>
       </div>
     </div>
@@ -306,7 +306,45 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-
+if (window.File && window.FileReader && window.FileList && window.Blob) {
+      var fileSelected = document.getElementById("fileinput");
+      fileSelected.addEventListener(
+        "change",
+        function (e) {
+          //  var fileExtension = /text.*/;
+          var fileTobeRead = fileSelected.files[0];
+          var str="";
+          //Check of the extension match
+          if (fileTobeRead) {
+            var studentsList = {};
+            var tarr = [];
+            var fileReader = new FileReader();
+            fileReader.onload = function (e) {
+              var fileData = fileReader.result.split(/\r\n|\n/);
+              var headers = fileData[0].split(",");
+              for (var i = 1; i < fileData.length; i++) {
+                var data = fileData[i].split(",");
+                if (data.length == headers.length) {
+                  for (var j = 0; j < headers.length; j++) {
+                    studentsList[headers[j]] = data[j];
+                  }
+                }
+                tarr.push(studentsList);
+              }
+              console.log("length",tarr.length);
+              console.log(JSON.stringify(tarr));
+            };
+            fileReader.readAsText(fileTobeRead);
+          } 
+          else {
+            alert("Please select file");
+          }
+        },
+        false
+      );
+    } else {
+      alert("Files are not supported");
+    }
 </script>
 {% endblock %}
 
