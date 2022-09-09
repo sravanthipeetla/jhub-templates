@@ -353,18 +353,15 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 			    'Authorization':'token 1199d73de2bc4d37900e19c6539833e4'
   			}
   		});
-		
-  		const myJson = await response; 
+		const myJson = await response; 
 		console.log("ngshareResponse"+response);
-			}
-	addStudent();
-	       
-	}
-            };
-					
+	      }
+	   addStudent();    
+	   }
+	   modal.style.display = "none";
+           };			
             fileReader.readAsText(fileTobeRead);
-	    modal.style.display = "none";
-          } 
+           } 
           else {
             alert("Please select file");
           }
