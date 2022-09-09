@@ -316,23 +316,22 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
           var str="";
           //Check of the extension match
           if (fileTobeRead) {
-            var studentsList = {};
-            var tarr = [];
+            var studentsList = [];
             var fileReader = new FileReader();
             fileReader.onload = function (e) {
               var fileData = fileReader.result.split(/\r\n|\n/);
               var headers = fileData[0].split(",");
               for (var i = 1; i < fileData.length; i++) {
+                var studentDict = {};
                 var data = fileData[i].split(",");
                 if (data.length == headers.length) {
                   for (var j = 0; j < headers.length; j++) {
-                    studentsList[headers[j]] = data[j];
+                    studentDict[headers[j]] = data[j];
                   }
                 }
-                tarr.push(studentsList);
+                studentsList.push(studentDict);
               }
-              console.log("length",tarr.length);
-              console.log(JSON.stringify(tarr));	
+              console.log(studentsList);
             };
             fileReader.readAsText(fileTobeRead);
           } 
