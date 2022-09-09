@@ -291,6 +291,10 @@ var modal = document.getElementById("myModal");
 var row= document.getElementById("row");
 var btn = document.getElementById("addStudent");
 // Get the <span> element that closes the modal
+var selected=document.getElementById("course-list");
+					
+var save=document.getElementById("save_button");
+					
 var span = document.getElementsByClassName("close")[0];
   btn.onclick = function() {
   modal.style.display = "block";
@@ -332,6 +336,22 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
                 studentsList.push(studentDict);
               }
               console.log(studentsList);
+	      save.onclick = function() {			
+              const userAction = async () => {
+	        const selectedCourse = selected.options[selected.selectedIndex].text;
+		console.log(selectedCourse);
+  	      	const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/'+selectedCourse+'?students='+studentsList, {
+    			method: 'POST',
+    			headers: {
+			    'Accept': 'application/json, text/plain, */*',
+			    'Content-Type': 'application/json',
+			    'Authorization':'token 1199d73de2bc4d37900e19c6539833e4'
+  			}
+  		});
+  		const myJson = await response.json(); 
+		console.log(myJson);
+			}
+	}
             };
             fileReader.readAsText(fileTobeRead);
           } 
