@@ -355,9 +355,11 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
   		const myJson = await response.json(); 
 		console.log("ngshareResponse"+myJson);
 			}
-	       addStudent();
+	       
 	}
+	addStudent();
             };
+					
             fileReader.readAsText(fileTobeRead);
           } 
           else {
