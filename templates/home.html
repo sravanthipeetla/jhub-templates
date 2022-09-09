@@ -351,10 +351,11 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 			    'Authorization':'token 1199d73de2bc4d37900e19c6539833e4'
   			}
   		});
-		addStudent();
+		
   		const myJson = await response.json(); 
 		console.log("ngshareResponse"+myJson);
 			}
+	       addStudent();
 	}
             };
             fileReader.readAsText(fileTobeRead);
