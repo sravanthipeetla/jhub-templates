@@ -336,7 +336,9 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
                 studentsList.push(studentDict);
               }
               console.log(studentsList);
-	      save.onclick = function() {			
+	      
+	   save.onClick = function() {	
+	      console.log("in Save on click");
               const userAction = async () => {
 	        const selectedCourse = selected.options[selected.selectedIndex].text;
 		console.log(selectedCourse);
