@@ -47,6 +47,13 @@
   text-decoration: none;
   cursor: pointer;
 }
+  .column-flex{
+    display:flex;
+    flex-direction: column;
+  }
+  .row-flex{
+    display:flex;
+  }
   .navbar-default{
     background-color:#FFFFFF;
     border:none;
@@ -104,21 +111,22 @@
     <div id="myModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-                <div>
+        <div class="column-flex">
+                <div class="row-flex">
                     <label for="course">Select course</label>
                     <select id="course-list" name="course">
-                      <option>Java</option>
+                      <option>Course name</option>
                   </select>
                 </div>
-               
-                <div>
-                    <button type="button" onmouseup="uploadConfirmation()">Save</button>
-                    <button type="button" onclick="closeModal">Cancel</button>
-                </div>
-               <div>
+               <div class="row-flex">
                       <label for="upload">Upload file</label>
                       <input type="file" id="fileinput"  name="upload"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_WkJK6A0OB.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662636716269"/></input>
                 </div>
+                <div class="row-flex">
+                    <button type="button" onmouseup="uploadConfirmation()">Save</button>
+                    <button type="button" onclick="closeModal">Cancel</button>
+                </div>
+      </div>
     </div>
 </div>
   {% if allow_named_servers %}
