@@ -288,7 +288,6 @@ userAction()
 };
 var modal = document.getElementById("myModal");
 // Get the button that opens the modal
-var row= document.getElementById("row");
 var btn = document.getElementById("addStudent");
 // Get the <span> element that closes the modal
 var selected=document.getElementById("course-list");
@@ -298,7 +297,9 @@ var save=document.getElementById("save_button");
 var span = document.getElementsByClassName("close")[0];
   btn.onclick = function() {
   modal.style.display = "block";
-  row.style.display="none";
+}
+function closeModal=()=>{
+	modal.style.display=none;					
 }
 
 // When the user clicks on <span> (x), close the modal
