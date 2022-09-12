@@ -194,7 +194,7 @@ label{
                 </div>
                 <div class="row-flex">
                     <button type="button" id="save_button">Save</button>
-                    <button type="button" onclick="closeModal" id="cancel_button">Cancel</button>
+                    <button type="button" id="cancel_button">Cancel</button>
                 </div>
       </div>
     </div>
@@ -293,13 +293,14 @@ var btn = document.getElementById("addStudent");
 var selected=document.getElementById("course-list");
 					
 var save=document.getElementById("save_button");
+var cancel=document.getElementById("cancel_button");
 					
 var span = document.getElementsByClassName("close")[0];
   btn.onclick = function() {
   modal.style.display = "block";
 }
-function closeModal=()=>{
-	modal.style.display=none;					
+cancel.onclick=function(){
+   modal.style.display="none";					
 }
 
 // When the user clicks on <span> (x), close the modal
