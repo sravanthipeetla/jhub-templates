@@ -379,6 +379,7 @@ window.onclick = function(event) {
 }
 if (window.File && window.FileReader && window.FileList && window.Blob) {
       const fileSelected = document.getElementById("fileinput");
+      let response_status;
       fileSelected.addEventListener(
         "change",
         function (e) {
@@ -413,7 +414,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 			    'Authorization':'token 1199d73de2bc4d37900e19c6539833e4'
   			}
   		}); 
-	        const response_status=response.status;
+	        response_status=response.status;
 	      }
 	   addStudent();    
 	   modal.style.display="none";
