@@ -421,9 +421,9 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
   			}
   		});
 		const myJson = await response; 
-		console.log("ngshareResponse "+myJson);
+		console.log("ngshareResponse "+myJson.success);
 		console.log("response "+myJson);
-	        console.log("studnets "+myJson)
+	        console.log("studnets "+myJson.students)
 	      }
 	   addStudent();    
 	   modal.style.display="none";
