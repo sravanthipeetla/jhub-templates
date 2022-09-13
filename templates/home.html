@@ -351,16 +351,16 @@ const userAction = async () => {
 userAction()
   
 };
-var modal = document.getElementById("myModal");
+const modal = document.getElementById("myModal");
 // Get the button that opens the modal
-var btn = document.getElementById("addStudent");
+const btn = document.getElementById("addStudent");
 // Get the <span> element that closes the modal
-var selected=document.getElementById("course-list");
+const selected=document.getElementById("course-list");
 					
-var save=document.getElementById("save_button");
-var cancel=document.getElementById("cancel_button");
+const save=document.getElementById("save_button");
+const cancel=document.getElementById("cancel_button");
 					
-var span = document.getElementsByClassName("close")[0];
+const span = document.getElementsByClassName("close")[0];
   btn.onclick = function() {
   modal.style.display = "block";
 }
@@ -378,40 +378,33 @@ window.onclick = function(event) {
   }
 }
 if (window.File && window.FileReader && window.FileList && window.Blob) {
-      var fileSelected = document.getElementById("fileinput");
+      const fileSelected = document.getElementById("fileinput");
       fileSelected.addEventListener(
         "change",
         function (e) {
           //  var fileExtension = /text.*/;
-          var fileTobeRead = fileSelected.files[0];
-          var str="";
+          const fileTobeRead = fileSelected.files[0];
           //Check of the extension match
           if (fileTobeRead) {
-            var studentsList = [];
-            var fileReader = new FileReader();
+            let studentsList = [];
+            const fileReader = new FileReader();
             fileReader.onload = function (e) {
-              var fileData = fileReader.result.split(/\r\n|\n/);
-              var headers = fileData[0].split(",");
+              const fileData = fileReader.result.split(/\r\n|\n/);
+              const headers = fileData[0].split(",");
               for (var i = 1; i < fileData.length-1; i++) {
-                var studentDict = {};
-                var data = fileData[i].split(",");
+                let studentDict = {};
+                const data = fileData[i].split(",");
                 if (data.length == headers.length) {
                   for (var j = 0; j < headers.length; j++) {
                     studentDict[headers[j]] = data[j];
                   }
                 }
                 studentsList.push(studentDict);
-              }
-              console.log(studentsList);
-	      
+              }	      
 	   save.onclick = function() {	
-	      console.log("in Save on click");
 	      const studentData=JSON.stringify(studentsList);
               const addStudent = async () => {
-	        console.log("In sync");
-	        console.log(studentData);
 	        const selectedCourse = selected.options[selected.selectedIndex].text;
-		console.log(selectedCourse);
   	      	const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/'+selectedCourse+'?students='+studentData, {
     			method: 'POST',
     			headers: {
@@ -419,16 +412,30 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 			    'Content-Type': 'application/json',
 			    'Authorization':'token 1199d73de2bc4d37900e19c6539833e4'
   			}
-  		});
-		const myJson = await response; 
-		console.log("ngshareResponse "+myJson.success);
-		console.log("response "+myJson);
-	        console.log("studnets "+myJson.students);
-	        console.log(response);
-	        console.log(response.success);
+  		}); 
+	        const response_status=response.status;
 	      }
 	   addStudent();    
 	   modal.style.display="none";
+	   switch(expression) {
+		  case 200:
+		    alert("success, learners list added to course");
+		    break;
+		  case 302:
+		    alert("Login required");
+		    break;
+		  case 403:
+		    alert("Permission denied");
+		    break;
+		  case 404:
+		    alert("course not found");
+		    break;
+		  case 400:
+		    alert("Please supply learners/Students cannot be JSON decoded/Incorrect request format. Please refer to https://ngshare.readthedocs.io/en/latest/api/course.html#api-course-course");
+		    break;
+		  default:
+		    alert("Something went wrong.");
+		}
 	   }
            };			
             fileReader.readAsText(fileTobeRead);
