@@ -204,14 +204,42 @@ label{
     margin: -4vh;
     height: 1.7vh;
 }
-@media (max-width: 1366px){
-  #jupyterhub-logo .jpy-logo {
-	  height: 3vh;
-  }	
- .upload-image{
-    margin: -5vh;
-    height: 1.7vh;
+@media (max-width: 1920) and (max-height: 1080){
+	.select-div::after {
+	    right: 8.5vw;
+	}
 }
+@media (max-width: 1920px) and (max-height: 768px){
+	.select-div::after {
+	    position: absolute;
+	    top: 3.7vh;
+	    right: 9.5vw;
+	}
+}
+@media (max-width: 1366px){
+	  #jupyterhub-logo .jpy-logo {
+		  height: 3vh;
+	  }	
+	 .upload-image{
+	    margin: -5vh;
+	    height: 1.7vh;
+	}
+}
+@media (max-width: 1366px) and (max-height: 1024px){
+	.modal-content {
+   		width: 32%;
+	}
+}
+@media (max-width: 1366px) and (max-height: 768px){
+	   .select-div::after {
+		    top: 3.5vh;
+		    right: 7.2vw;
+	   }
+}
+@media (max-width: 1280px) and (max-height: 720px){
+	.select-div::after {
+	    right: 8.2vw;
+	}
 }
 @media (max-width : 1200px){
 .modal-content {
@@ -227,6 +255,12 @@ label{
     margin: 4vh 0vw 0vh 20vw;
     width: 10vw;
 }
+}
+ @media (max-width: 1024px) and (max-height: 768px){
+	.select-div::after {
+	    top: 3.6vh;
+	    right: 12vw;
+	}
 }
 @media (max-width: 768px){
 .navbar-default {
