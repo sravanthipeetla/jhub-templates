@@ -155,11 +155,16 @@ label{
     border-width: 0.1vw !important;
     border-style: double;
 }
-.select-div::after { content: url("https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"); }
-.select-div { position: relative; }
 .select-div::after {
-  position: absolute;
-  top: 0; right: 0;
+    content: url("https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909");
+}
+.select-div {
+	position: relative; 
+}
+.select-div::after {
+    position: absolute;
+    top: 3.8vh;
+    right: 8vw;
 }
 @media (max-width: 1366px){
   #jupyterhub-logo .jpy-logo {
