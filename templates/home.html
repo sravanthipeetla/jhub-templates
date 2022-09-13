@@ -415,11 +415,12 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
   			}
   		}); 
 	        response_status=response.status;
+		console.log(response_status);
 	      }
 	   addStudent();    
 	   modal.style.display="none";
 	   switch(response_status) {
-		  case 200:
+		  case "200":
 		    alert("success, learners list added to course");
 		    break;
 		  case 302:
