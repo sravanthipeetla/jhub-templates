@@ -274,6 +274,9 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             line-height: 42px;
             color: #494949;
         }
+        .sign-flex {
+            display:flex;    
+        }
         @media (max-width: 1920px){
             .btn.btn-jupyter.btn-lg {
                 width: calc(24vw + 1rem);
@@ -561,7 +564,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
                             <div class="form-group floating-label mb-5">
                               <span class='login-form-wrapper-p'>Master the skills needed to solve complex data challenges</p>
                             </div>
-                            <div class="d-flex align-items-center flex-row mt-2 ">
+                            <div class="sign-flex align-items-center flex-row mt-2 ">
                                  <a role="button" class="btn btn-jupyter btn-lg" href="{{authenticator_login_url}}">
                                     Sign in with organization ID
                                     <!-- Sign in with {{login_service}} -->
