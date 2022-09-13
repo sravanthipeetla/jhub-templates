@@ -260,7 +260,8 @@ label{
 			<label for="course" style="margin: 3vh 1vw 2vh 0vw;">Select course</label>
                        <select class="select" id="course-list" name="course" style="appearance:none;margin: 3vh 0vh 0vh 0vh;width: 13vw;height: 3.5vh;background: #FFFFFF;border: 0.1vw solid #5FBEF0;border-radius: 8vh;font-family: 'Poppins';font-style: normal;font-size: 2vh;padding: 0vh 0vw 0vh 0.9vw;">
                       		<option>Course name</option>
-                  	     </select>
+                       </select>
+		       <div id="file-upload-filename"></div>
                 </div>
                 <div class="row-flex">
                       <label for="upload" style="margin: 3vh 3vw 2vh 0vw;">Upload file</label>
@@ -373,7 +374,9 @@ const selected=document.getElementById("course-list");
 					
 const save=document.getElementById("save_button");
 const cancel=document.getElementById("cancel_button");
-					
+const fileSelected = document.getElementById("fileinput");
+const filename_area = document.getElementById( 'file-upload-filename' );
+fileSelected.addEventListener( 'change', showFileName );
 const span = document.getElementsByClassName("close")[0];
   btn.onclick = function() {
   modal.style.display = "block";
@@ -391,8 +394,19 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+function showFileName( event ) {
+  
+  // the change event gives us the input it occurred in 
+  var input = event.srcElement;
+  
+  // the input has an array of files in the `files` property, each one has a name that you can use. We're just using the name here.
+  var fileName = input.files[0].name;
+  
+  // use fileName however fits your app best, i.e. add it into a div
+  filename_area.textContent = 'File name: ' + fileName;
+}
 if (window.File && window.FileReader && window.FileList && window.Blob) {
-      const fileSelected = document.getElementById("fileinput");
+	
       let alert_message;
       fileSelected.addEventListener(
         "change",
