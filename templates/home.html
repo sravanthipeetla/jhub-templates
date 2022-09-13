@@ -436,6 +436,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 		    alert("Please supply learners/Students cannot be JSON decoded/Incorrect request format. Please refer to https://ngshare.readthedocs.io/en/latest/api/course.html#api-course-course");
 		    break;
 		  default:
+		    conosle.log(response.status);
 		    alert("Something went wrong.");
 		}
 	   }
