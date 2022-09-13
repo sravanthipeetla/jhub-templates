@@ -379,7 +379,7 @@ window.onclick = function(event) {
 }
 if (window.File && window.FileReader && window.FileList && window.Blob) {
       const fileSelected = document.getElementById("fileinput");
-      let response_status;
+      let alert_message;
       fileSelected.addEventListener(
         "change",
         function (e) {
@@ -414,31 +414,32 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 			    'Authorization':'token 1199d73de2bc4d37900e19c6539833e4'
   			}
   		}); 
-	        response_status=response.status;
+	        const response_status=response.status;
 		console.log(typeof(response_status));
-	      }
-	   addStudent();    
-	   modal.style.display="none";
-	   switch(response_status) {
+		switch(response_status) {
 		  case 200:
-		    alert("success, learners list added to course");
+		    alert_messsage="success, learners list added to course";
 		    break;
 		  case 302:
-		    alert("Login required");
+		    alert-message="Login required";
 		    break;
 		  case 403:
-		    alert("Permission denied");
+		    alert_message="Permission denied";
 		    break;
 		  case 404:
-		    alert("course not found");
+		    alert_message="course not found";
 		    break;
 		  case 400:
-		    alert("Please supply learners/Students cannot be JSON decoded/Incorrect request format. Please refer to https://ngshare.readthedocs.io/en/latest/api/course.html#api-course-course");
+		    alert_message="Please supply learners/Students cannot be JSON decoded/Incorrect request format. Please refer to https://ngshare.readthedocs.io/en/latest/api/course.html#api-course-course";
 		    break;
 		  default:
 		    console.log(response_status);
-		    alert("Something went wrong.");
+		    alert_message="Something went wrong.";
 		}
+	      }
+	   addStudent();    
+	   modal.style.display="none";
+	   alert(alert_message);
 	   }
            };			
             fileReader.readAsText(fileTobeRead);
