@@ -155,12 +155,11 @@ label{
     border-width: 0.1vw !important;
     border-style: double;
 }
-.select{
-   appearance:none;
-}
-.select:: after{
-    content:'v';
-    padding-right:0.5vw;	
+.select-div::after { content: "\25b6"; }
+.select-div { position: relative; }
+.select-div::after {
+  position: absolute;
+  top: 0; right: 0;
 }
 @media (max-width: 1366px){
   #jupyterhub-logo .jpy-logo {
@@ -252,9 +251,9 @@ label{
     <div class="modal-content">
         <span class="close">&times;</span>
         <div class="column-flex">
-                <div class="row-flex">
+                <div class="row-flex select-div">
 			<label for="course" style="margin: 3vh 1vw 2vh 0vw;">Select course</label>
-                       <select class="select" id="course-list" name="course" style="margin: 3vh 0vh 0vh 0vh;width: 13vw;height: 3.5vh;background: #FFFFFF;border: 0.1vw solid #5FBEF0;border-radius: 8vh;font-family: 'Poppins';font-style: normal;font-size: 2vh;padding: 0vh 0vw 0vh 0.9vw;">
+                       <select class="select" id="course-list" name="course" style="appearance:none;margin: 3vh 0vh 0vh 0vh;width: 13vw;height: 3.5vh;background: #FFFFFF;border: 0.1vw solid #5FBEF0;border-radius: 8vh;font-family: 'Poppins';font-style: normal;font-size: 2vh;padding: 0vh 0vw 0vh 0.9vw;">
                       		<option>Course name</option>
                   	     </select>
                 </div>
