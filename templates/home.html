@@ -135,8 +135,9 @@ label{
     border-block: unset;
     width:6vw;
     height: 4vh;
-
-	}
+    border-width: 0.1vw !important;
+    border-style: double;
+}
 #cancel_button{
     justify-content: center;
     background: white;
@@ -151,6 +152,11 @@ label{
     width:6vw;
     height: 4vh;
     position: absolute;
+    border-width: 0.1vw !important;
+    border-style: double;
+}
+.select::after{
+    padding-right:0.5vw;	
 }
 @media (max-width: 1366px){
   #jupyterhub-logo .jpy-logo {
@@ -244,7 +250,7 @@ label{
         <div class="column-flex">
                 <div class="row-flex">
 			<label for="course" style="margin: 3vh 1vw 2vh 0vw;">Select course</label>
-                       <select id="course-list" name="course" style="margin: 3vh 0vh 0vh 0vh;width: 13vw;height: 3.5vh;background: #FFFFFF;border: 0.12vw solid #5FBEF0;border-radius: 8vh;font-family: 'Poppins';font-style: normal;font-size: 2vh;padding: 0vh 0vw 0vh 0.9vw;">
+                       <select class="select" id="course-list" name="course" style="border-width: 0.1vw;margin: 3vh 0vh 0vh 0vh;width: 13vw;height: 3.5vh;background: #FFFFFF;border: 0.12vw solid #5FBEF0;border-radius: 8vh;font-family: 'Poppins';font-style: normal;font-size: 2vh;padding: 0vh 0vw 0vh 0.9vw;">
                       		<option>Course name</option>
                   	     </select>
                 </div>
@@ -253,7 +259,7 @@ label{
                       <div class="fileinputs">
 			<input type="file" class="file" id="fileinput" name="upload" required="" style="margin: 2vh -2vw 0vh -1.2vw;width: 14vh;height: 4vh;cursor: pointer;">
 			<div class="fakefile">
-				<input style="border-block: dashed;border-radius: 2vw;border-color: #5FBEF0;margin: 2.5vh -2vw 0vh -1.2vw;width: 14vh;height: 3.7vh;"><img class="upload-image" src="https://ik.imagekit.io/iwwbj9so6/Vector_WkJK6A0OB.png?ik-sdk-version=javascript-1.4.3&amp;updatedAt=1662636716269" "="" style="margin: -4vh;height: 1.7vh;">
+				<input style="border-width: 0.1vw !important;border-style: dashed;border-radius: 2vw;border-color: #5FBEF0;margin: 2.5vh -2vw 0vh -1.2vw;width: 14vh;height: 3.7vh;"><img class="upload-image" src="https://ik.imagekit.io/iwwbj9so6/Vector_WkJK6A0OB.png?ik-sdk-version=javascript-1.4.3&amp;updatedAt=1662636716269" "="" style="margin: -4vh;height: 1.7vh;">
 			</div>
 		      </div>
                 </div>
