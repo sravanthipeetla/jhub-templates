@@ -4,6 +4,7 @@
 {% endif %}
 {% block nav_bar_left_items%}
   {{ super() }}
+    <li><button id='addCourse'>Add Course</button></li>
     <li><button id="addStudent">Add Student</button></li>
 {% endblock %}
 {% block main %}
@@ -329,43 +330,73 @@ label{
       </a>
       <br/>
       <img class='server-gif' src='https://ik.imagekit.io/iwwbj9so6/Server_gif_hzHBX49u0.gif?ik-sdk-version=javascript-1.4.3&updatedAt=1661754020935'/>     </div>
-    <div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <div class="column-flex">
-                <div class="row-flex select-div">
-			<div>
-				<label for="course">Select course</label>
-			</div>
-			<div>
-				<select class="select" id="course-list" name="course" >
-					<option>Course name</option>
-				</select>
-			</div>
-                </div>
-                <div class="row-flex">
-		      <div>
-                      	<label for="upload">Upload file</label>
-		      </div>
-                      <div class="fileinputs">
-			<input type="file" class="file" id="fileinput" name="upload" required>
-			<div class="fakefile">
-				<input class="fake-input"><img class="upload-image" src="https://ik.imagekit.io/iwwbj9so6/Vector_WkJK6A0OB.png?ik-sdk-version=javascript-1.4.3&amp;updatedAt=1662636716269"/>
-			</div>
-		      </div>
-		      <div id="file-upload-filename"></div>
-                </div>
-                <div class="row-flex">
-                    <div>
-			    <button type="button" id="save_button">Save</button>
-		    </div>
-                    <div>
-			    <button type="button" id="cancel_button">Cancel</button>
-		    </div>
-                </div>
-      </div>
+    <div id="addStudentModal" class="modal">
+    	<div class="modal-content">
+        	<span class="close">&times;</span>
+        	<div class="column-flex">
+                	<div class="row-flex select-div">
+				<div>
+					<label for="course">Select course</label>
+				</div>
+				<div>
+					<select class="select" id="course-list" name="course" >
+						<option>Course name</option>
+					</select>
+				</div>
+                	</div>
+                	<div class="row-flex">
+		      		<div>
+                      			<label for="upload">Upload file</label>
+		      		</div>
+                      		<div class="fileinputs">
+					<input type="file" class="file" id="fileinput" name="upload" required>
+					<div class="fakefile">
+						<input class="fake-input"><img class="upload-image" src="https://ik.imagekit.io/iwwbj9so6/Vector_WkJK6A0OB.png?ik-sdk-version=javascript-1.4.3&amp;updatedAt=1662636716269"/>
+					</div>
+		      		</div>
+		      		<div id="file-upload-filename"></div>
+                		</div>
+                	<div class="row-flex">
+                    		<div>
+			    		<button type="button" id="save_student_button">Save</button>
+		    		</div>
+                    		<div>
+			    		<button type="button" id="cancel_button">Cancel</button>
+		    		</div>
+                	</div>
+      		</div>
+    	</div>
     </div>
-</div>
+        <div id="addCourseModal" class="modal">
+    	<div class="modal-content">
+        	<span class="close">&times;</span>
+        	<div class="column-flex">
+                	<div class="row-flex select-div">
+				<div>
+					<label for="courseName">Course Name</label>
+				</div>
+				<div>
+					<input type="text" class="file" id="textInput" name="courseName" required>
+				</div>
+                	</div>
+                	<div class="row-flex">
+		      		<div>
+					<label for="instructorName">Course Name</label>
+				</div>
+				<div>
+					<input type="text" class="file" id="textInput" name="instructorName" required>
+				</div>
+                	<div class="row-flex">
+                    		<div>
+			    		<button type="button" id="save_course_button">Save</button>
+		    		</div>
+                    		<div>
+			    		<button type="button" id="cancel_button">Cancel</button>
+		    		</div>
+                	</div>
+      		</div>
+    	</div>
+    </div>
   {% if allow_named_servers %}
   <h2>
   Named Servers
@@ -453,32 +484,35 @@ const userAction = async () => {
 userAction()
   
 };
-const modal = document.getElementById("myModal");
-// Get the button that opens the modal
-const btn = document.getElementById("addStudent");
-// Get the <span> element that closes the modal
-const selected=document.getElementById("course-list");
-					
-const save=document.getElementById("save_button");
+const studentModal = document.getElementById("addStudentModal");
+const addStudentBtn = document.getElementById("addStudent");
+const addCourseBtn=document.getElementById("addCourse");
+const selected=document.getElementById("course-list");					
+const saveStudent=document.getElementById("save_student_button");
+const saveCourse=document.getElementById("save_course_button");
 const cancel=document.getElementById("cancel_button");
 const fileSelected = document.getElementById("fileinput");
 const filename_area = document.getElementById( 'file-upload-filename' );
 fileSelected.addEventListener( 'change', showFileName );
-const span = document.getElementsByClassName("close")[0];
-  btn.onclick = function() {
-  modal.style.display = "block";
+const closeSpan = document.getElementsByClassName("close")[0];
+addStudentBtn.onclick = function() {
+  studentModal.style.display = "block";
+}
+addCourseBtn.onclick = function() {
+  courseModal.style.display = "block";
 }
 cancel.onclick=function(){
-   modal.style.display="none";					
+   studentModal.style.display="none";	
+   courseModal.style.display="none";
 }
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+	
+closeSpan.onclick = function() {
+  studentModal.style.display = "none";
 }
 window.onclick = function(event) {
   if (event.target == modal) {
-    modal.style.display = "none";
+    studentModal.style.display = "none";
+    courseModal.style.display = "none";
   }
 }
 function showFileName( event ) {
@@ -517,7 +551,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
                 }
                 studentsList.push(studentDict);
               }	      
-	   save.onclick = function() {	
+	   saveStudent.onclick = function() {	
 	      const studentData=JSON.stringify(studentsList);
               const addStudent = async () => {
 	        const selectedCourse = selected.options[selected.selectedIndex].text;
@@ -552,7 +586,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 		}
 	      }
 	   addStudent();    
-	   modal.style.display="none";
+	   studentModal.style.display="none";
 // 	   alert(alert_message);
 	   }
            };			
