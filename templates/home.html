@@ -9,7 +9,7 @@
 {% endblock %}
 {% block main %}
 <style>
-#addStudent{
+#addStudent, #addCourse{
     border: none;
     background-color: white;
     color: #777;
@@ -124,7 +124,7 @@ label{
     height: 6vh;
     cursor: pointer;
 }
-#save_button{
+#save_student_button,#save_course_button{
     position: absolute;
     background: #5FBEF0;
     border-radius: 41vh;
@@ -485,6 +485,7 @@ userAction()
   
 };
 const studentModal = document.getElementById("addStudentModal");
+const courseModal = document.getElementById("addCourseModal");	
 const addStudentBtn = document.getElementById("addStudent");
 const addCourseBtn=document.getElementById("addCourse");
 const selected=document.getElementById("course-list");					
