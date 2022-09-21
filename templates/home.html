@@ -2,16 +2,13 @@
 {% if announcement_home %}
   {% set announcement = announcement_home %}
 {% endif %}
-{% if users.admin %}
-	{% block nav_bar_left_items%}
-	  {{ super() }}
-	    <li><button id='addCourse'>Add Course</button></li>
-	    <li><button id="addStudent">Add Student</button></li>
-	{% endblock %}
-{% else %}
-	{% block nav_bar_left_items%}
-	{% endblock %}
-{% endif %}
+{% block nav_bar_left_items%}
+         {% if users.admin %}
+		  {{ super() }}
+		    <li><button id='addCourse'>Add Course</button></li>
+		    <li><button id="addStudent">Add Student</button></li>
+	{% endif %}
+{% endblock %}
 {% block main %}
 <style>
 #addStudent, #addCourse{
