@@ -2,11 +2,7 @@
 
 {% block main %}
 <div id="react-admin-hook">
-  <script id="jupyterhub-admin-config">
-    window.api_page_limit = parseInt("{{ api_page_limit|safe }}")
-    window.base_url = "{{ base_url|safe }}"
-  </script>
-  <script src={{ static_url("js/admin-react.js") }}></script>
+  <span>Hello</span>
 </div>
 {% endblock %}
 
@@ -23,4 +19,9 @@
 <script type="text/javascript">
 require(["admin"]);
 </script>
+<script id="jupyterhub-admin-config">
+    window.api_page_limit = parseInt("{{ api_page_limit|safe }}")
+    window.base_url = "{{ base_url|safe }}"
+</script>
+<script src={{ static_url("js/admin-react.js") }}></script>
 {% endblock %}
