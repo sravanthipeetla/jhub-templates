@@ -79,7 +79,7 @@
   </table>
   {% endif %}
 </div>
-{% endblock %}
+{% endblock main%}
 
 {% block footer %}
 <div class="container-fluid navbar-default small version_footer">
@@ -92,14 +92,6 @@
 {% block script %}
 {{ super() }}
 <script type="text/javascript">
-require(["admin"]);
-</script>
-<script type="text/javascript">
 require(["home"]);
 </script>
-<script id="jupyterhub-admin-config">
-    window.api_page_limit = parseInt("{{ api_page_limit|safe }}")
-    window.base_url = "{{ base_url|safe }}"
-</script>
-<script src={{ static_url("js/admin-react.js") }}></script>
 {% endblock %}
