@@ -6,7 +6,7 @@
          {% if user.admin %}
 		  {{ super() }}
 <!-- 		    <li><button id='addCourse'>Add Course</button></li> -->
-		    <li><button id="addStudent">Add Student</button></li>
+		    <li><button id="addStudent">Add Learner</button></li>
 	{% endif %}
 {% endblock %}
 {% block main %}
@@ -487,9 +487,9 @@ userAction()
   
 };
 const lis = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTagName("li");
-lis[2].getElementsByTagName("a")[0].innerText = 'Check';
-lis[1].style.visibility = 'hidden';
-lis[3].style.visibility = 'hidden';
+// lis[2].getElementsByTagName("a")[0].innerText = 'Check';
+// lis[1].style.visibility = 'hidden';
+// lis[3].style.visibility = 'hidden';
 const studentModal = document.getElementById("addStudentModal");
 const courseModal = document.getElementById("addCourseModal");	
 const addStudentBtn = document.getElementById("addStudent");
