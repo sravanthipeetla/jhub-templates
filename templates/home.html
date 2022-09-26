@@ -505,22 +505,22 @@ const closeSpan = document.getElementsByClassName("close")[0];
 addStudentBtn.onclick = function() {
   studentModal.style.display = "block";
 }
-addCourseBtn.onclick = function() {
-  courseModal.style.display = "block";
-}
+// addCourseBtn.onclick = function() {
+//   courseModal.style.display = "block";
+// }
 cancel.onclick=function(){
    studentModal.style.display="none";	
-   courseModal.style.display="none";
+//    courseModal.style.display="none";
 }
 	
 closeSpan.onclick = function() {
   studentModal.style.display = "none";
-  courseModal.style.display = "none";
+//   courseModal.style.display = "none";
 }
 window.onclick = function(event) {
   if (event.target == modal) {
     studentModal.style.display = "none";
-    courseModal.style.display = "none";
+//     courseModal.style.display = "none";
   }
 }
 function showFileName( event ) {
