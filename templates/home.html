@@ -8,6 +8,7 @@
 <!-- 		    <li><button id='addCourse'>Add Course</button></li> -->
 		    <li><button id="addStudent">Add Learners</button></li>
 	{% endif %}
+<li><button id='exportData'>Export Grades</button></li>
 {% endblock %}
 {% block main %}
 <style>
@@ -500,8 +501,14 @@ const saveCourse=document.getElementById("save_course_button");
 const cancel=document.getElementById("cancel_button");
 const fileSelected = document.getElementById("fileinput");
 const filename_area = document.getElementById( 'file-upload-filename' );
+const exportData=document.getElementById("exportData");
 fileSelected.addEventListener( 'change', showFileName );
 const closeSpan = document.getElementsByClassName("close")[0];
+exportData.onclick = function() {
+  var loc = window.location.pathname;
+  var dir = loc.substring(0, loc.lastIndexOf('/'));
+  console.log(dir);
+}
 addStudentBtn.onclick = function() {
   studentModal.style.display = "block";
 }
