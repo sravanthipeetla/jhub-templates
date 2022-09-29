@@ -508,6 +508,14 @@ exportData.onclick = function() {
   var loc = window.location.pathname;
   var dir = loc.substring(0, loc.lastIndexOf('/'));
   console.log(dir);
+  $.ajax({
+	  type: "POST",
+	  url: "/scripts/export_gradesdb.py",
+	  data: { param: text}
+  }).done(function( o ) {
+   // do something
+});
+  
 }
 addStudentBtn.onclick = function() {
   studentModal.style.display = "block";
