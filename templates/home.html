@@ -510,8 +510,8 @@ exportData.onclick = function() {
   console.log(dir);
   $.ajax({
 	  type: "POST",
-	  url: "/scripts/export_gradesdb.py",
-	  data: { param: text}
+	  url: "/scripts/export_gradesdb.py"
+// 	  data: { param: text}
   }).done(function( o ) {
    // do something
 });
