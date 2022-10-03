@@ -25,7 +25,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             background-color: #006bb6;
             border-color: #006bb6;
             border-radius: 30px;
-            width: calc(24vw + 1rem);
+            width: calc(22vw + 1rem);
             font-family: 'Poppins';
             font-size: 1vw;
             align-self: start;
@@ -50,6 +50,9 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         height:100vh;
     }
     .align-items-center {
+        align-items: center;
+    }
+    .align-items-baseline {
         align-items: center;
     }
     .justify-content-between {
@@ -172,6 +175,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         .left-content-wrapper h3 {
             margin-top: 100px;
             line-height: 42px;
+            text-align: left;
         }
         .student-img {
             overflow: hidden;
@@ -239,10 +243,10 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             height: 12rem;
         }
         .section-header .hcl-logo {
-            width: 210px;
+            width: 220px;
         }
         .top-copyright img {
-            width: 145px;
+            width: 140px;
             margin-left: 10px;
         }
         .top-copyright {
@@ -259,7 +263,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             font-size: 24px;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            margin-bottom: 40px;
+            margin-bottom: 70px;
             padding-top: 16vh;
         }
         .login-form-wrapper h3 span {
@@ -553,7 +557,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
                     <div class="section-header">
                         <div class="d-flex align-items-center justify-content-between">
                             <img src="https://ik.imagekit.io/iwwbj9so6/LOGO_-_data_science_lab_QYUIsnln7.png?ik-sdk-version=javascript-1.4.3&updatedAt=1658915400748" class="hcl-logo">
-                            <div class="d-flex d-flex align-items-center justify-content-between top-copyright">
+                            <div class="d-flex d-flex align-items-baseline justify-content-between top-copyright">
                                 <span>Powered by</span> <img src="https://ik.imagekit.io/iwwbj9so6/hcltech-new-logo_1_FJdBDHDlD.png?ik-sdk-version=javascript-1.4.3&updatedAt=1664725513078">
                             </div>
                         </div>
@@ -562,7 +566,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
                     <div class="login-form-wrapper font-gothic">
                         <h3>Welcome <span>:)</span></h3>
                             <div class="form-group floating-label mb-5">
-                              <span class='login-form-wrapper-p'>Master the skills needed to solve complex data challenges</p>
+                              <span class='login-form-wrapper-p'>Master your learnings by implementing here</p>
                             </div>
                             <div class="sign-flex align-items-center flex-row mt-2 ">
                                  <a role="button" class="btn btn-jupyter btn-lg" href="{{authenticator_login_url}}">
