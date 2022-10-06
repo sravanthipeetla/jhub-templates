@@ -504,6 +504,23 @@ const exportData=document.getElementById("exportData");
 const filename_area = document.getElementById( 'file-upload-filename' );
 fileSelected.addEventListener( 'change', showFileName );
 const closeSpan = document.getElementsByClassName("close")[0];
+exportData.onclick = function() {
+  var loc = window.location.pathname;
+  var dir = loc.substring(0, loc.lastIndexOf('/'));
+  conosle.log("loc",loc);
+  console.log("dir",dir);
+  var fs = require('fs');
+  var files = fs.readdirSync('/hub/DataScience002');
+  var files=fs.readdirSync(dir);
+  console.log(files);
+  $.ajax({
+	  type: "POST",
+	  url: "/scripts/export_gradesdb.py"
+  }).done(function( o ) {
+   // do something
+});
+
+}
 addStudentBtn.onclick = function() {
   studentModal.style.display = "block";
 }
@@ -524,23 +541,6 @@ window.onclick = function(event) {
     studentModal.style.display = "none";
 //     courseModal.style.display = "none";
   }
-}
-exportData.onclick = function() {
-  var loc = window.location.pathname;
-  var dir = loc.substring(0, loc.lastIndexOf('/'));
-  conosle.log("loc",loc);
-  console.log("dir",dir);
-  var fs = require('fs');
-  var files = fs.readdirSync('/hub/DataScience002');
-  var files=fs.readdirSync(dir);
-  console.log(files);
-  $.ajax({
-	  type: "POST",
-	  url: "/scripts/export_gradesdb.py"
-  }).done(function( o ) {
-   // do something
-});
-
 }
 function showFileName( event ) {
   
