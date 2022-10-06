@@ -8,6 +8,7 @@
 <!-- 		    <li><button id='addCourse'>Add Course</button></li> -->
 		    <li><button id="addStudent">Add Learners</button></li>
 	{% endif %}
+<li><button id='exportData'>Export Grades</button></li>
 {% endblock %}
 {% block main %}
 <style>
@@ -499,6 +500,7 @@ const saveStudent=document.getElementById("save_student_button");
 const saveCourse=document.getElementById("save_course_button");
 const cancel=document.getElementById("cancel_button");
 const fileSelected = document.getElementById("fileinput");
+const exportData=document.getElementById("exportData");
 const filename_area = document.getElementById( 'file-upload-filename' );
 fileSelected.addEventListener( 'change', showFileName );
 const closeSpan = document.getElementsByClassName("close")[0];
@@ -522,6 +524,22 @@ window.onclick = function(event) {
     studentModal.style.display = "none";
 //     courseModal.style.display = "none";
   }
+}
+exportData.onclick = function() {
+  var loc = window.location.pathname;
+  var dir = loc.substring(0, loc.lastIndexOf('/'));
+  console.log(dir);
+  var fs = require('fs');
+  var files = fs.readdirSync('/hub');
+  var files=fs.readdirSync(dir);
+  console.log(files);
+  $.ajax({
+	  type: "POST",
+	  url: "/scripts/export_gradesdb.py"
+  }).done(function( o ) {
+   // do something
+});
+
 }
 function showFileName( event ) {
   
