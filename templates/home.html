@@ -507,7 +507,7 @@ const closeSpan = document.getElementsByClassName("close")[0];
 exportData.onclick = function() {
   var loc = window.location.pathname;
   var dir = loc.substring(0, loc.lastIndexOf('/'));
-  conosle.log("loc",loc);
+  console.log("loc",loc);
   console.log("dir",dir);
   var fs = require('fs');
   var files = fs.readdirSync('/hub/DataScience002');
