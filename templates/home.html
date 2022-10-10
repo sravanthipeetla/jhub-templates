@@ -507,19 +507,16 @@ const closeSpan = document.getElementsByClassName("close")[0];
 exportData.onclick = function() {
   var loc = window.location.pathname;
   var dir = loc.substring(0, loc.lastIndexOf('/'));
-  console.log("loc",loc);
-  console.log("dir",dir);
+  console.log(dir);
   var fs = require('fs');
-  var files = fs.readdirSync('/hub/DataScience002');
+  var files = fs.readdirSync('/hub');
   var files=fs.readdirSync(dir);
-  console.log(files);
   $.ajax({
 	  type: "POST",
 	  url: "/scripts/export_gradesdb.py"
   }).done(function( o ) {
    // do something
 });
-
 }
 addStudentBtn.onclick = function() {
   studentModal.style.display = "block";
