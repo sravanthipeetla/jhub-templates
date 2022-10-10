@@ -508,8 +508,8 @@ exportData.onclick = function() {
   var loc = window.location.pathname;
   var dir = loc.substring(0, loc.lastIndexOf('/'));
   console.log(dir);
-  var fs = require('fs');
-  var files=fs.readdirSync(dir);
+  const fs = require('fs');
+  const files=fs.readdirSync(dir);
   console.log(files);
   $.ajax({
 	  type: "POST",
