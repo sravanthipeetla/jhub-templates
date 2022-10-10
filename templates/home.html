@@ -509,8 +509,8 @@ exportData.onclick = function() {
   var dir = loc.substring(0, loc.lastIndexOf('/'));
   console.log(dir);
   var fs = require('fs');
-  var files = fs.readdirSync('/hub');
   var files=fs.readdirSync(dir);
+  console.log(files);
   $.ajax({
 	  type: "POST",
 	  url: "/scripts/export_gradesdb.py"
