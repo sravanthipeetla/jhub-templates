@@ -491,7 +491,6 @@ const lis = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTa
 // lis[2].getElementsByTagName("a")[0].innerText = 'Check';
 // lis[1].style.visibility = 'hidden';
 // lis[3].style.visibility = 'hidden';
-const fs = require('fs');
 const studentModal = document.getElementById("addStudentModal");
 const courseModal = document.getElementById("addCourseModal");	
 const addStudentBtn = document.getElementById("addStudent");
@@ -509,9 +508,6 @@ exportData.onclick = function() {
   var loc = window.location.pathname;
   var dir = loc.substring(0, loc.lastIndexOf('/'));
   console.log(dir);
-
-  const files=fs.readdirSync(dir);
-  console.log(files);
   $.ajax({
 	  type: "POST",
 	  url: "/home/export_gradesdb.py"
