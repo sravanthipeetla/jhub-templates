@@ -514,9 +514,10 @@ exportData.onclick = function() {
   console.log(files);
   $.ajax({
 	  type: "POST",
-	  url: "/scripts/export_gradesdb.py"
+	  url: "/home/export_gradesdb.py"
   }).done(function( o ) {
    // do something
+console.log("In success");
 });
 }
 addStudentBtn.onclick = function() {
