@@ -511,11 +511,12 @@ exportData.onclick = function() {
   console.log(dir);
   $.ajax({
 	  type: "POST",
-	  url: "formgrader/api/customexport.py",
-  }).done(function(data){
-    console.log(data);
-    alert(data);
+	  url: "{{base_url}}"+"formgrader/api/customexport"
+  }).done(function( o ) {
+   // do something
+console.log("In success");
 });
+}
 addStudentBtn.onclick = function() {
   studentModal.style.display = "block";
 }
