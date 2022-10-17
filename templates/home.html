@@ -512,10 +512,6 @@ exportData.onclick = function() {
   $.ajax({
 	  type: "POST",
 	  url: "formgrader/api/customexport.py",
-  	  success: function(response){
-          	output = response;
-           	alert(output);
-        }
   }).done(function(data){
     console.log(data);
     alert(data);
