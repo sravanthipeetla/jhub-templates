@@ -503,14 +503,15 @@ const fileSelected = document.getElementById("fileinput");
 const exportData=document.getElementById("exportData");
 const filename_area = document.getElementById( 'file-upload-filename' );
 fileSelected.addEventListener( 'change', showFileName );
-const closeSpan = document.getElementsByClassName("close")[0];
+const closeSpan = document.getElementsByClassName("close")[0]
+console.log(base_url)
 exportData.onclick = function() {
   var loc = window.location.pathname;
   var dir = loc.substring(0, loc.lastIndexOf('/'));
   console.log(dir);
   $.ajax({
 	  type: "POST",
-	  url: "/home/export_gradesdb.py"
+	  url: ""
   }).done(function( o ) {
    // do something
 console.log("In success");
