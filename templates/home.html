@@ -509,7 +509,7 @@ exportData.onclick = function() {
   var loc = window.location.pathname;
   var dir = loc.substring(0, loc.lastIndexOf('/'));
   console.log(dir);
-  var base_url="/user/"+"{{user.name}}";
+  var base_url="/user/saraswathiinstructor/formgrader/api/customexport";
   $.ajax({
 	  type: "POST",
 	  url: "/"
