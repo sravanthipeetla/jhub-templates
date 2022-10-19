@@ -509,7 +509,8 @@ exportData.onclick = function() {
   var loc = window.location.pathname;
   var dir = loc.substring(0, loc.lastIndexOf('/'));
   console.log(dir);
-  var base_url="/user/"+{{user.name}}
+  const user=String({{user.name}});
+  var base_url="/user/"+user;
   $.ajax({
 	  type: "POST",
 	  url: "/formgrader/api/customexport"
