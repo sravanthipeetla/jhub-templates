@@ -3,11 +3,9 @@
   {% set announcement = announcement_home %}
 {% endif %}
 {% block nav_bar_left_items%}
-<!--          {% if user.admin %} -->
 		  {{ super() }}
 <!-- 		    <li><button id='addCourse'>Add Course</button></li> -->
 		    <li><button id="addStudent">Add Learners</button></li>
-<!-- 	{% endif %} -->
 <li><button id='exportData'>Export Grades</button></li>
 {% endblock %}
 {% block main %}
