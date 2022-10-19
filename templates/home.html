@@ -512,7 +512,8 @@ exportData.onclick = function() {
   var base_url="/user/saraswathiinstructor/formgrader/api/customexport";
   $.ajax({
 	  type: "POST",
-	  url: "/user/saraswathiinstructor/formgrader/api/customexport"
+	  url: "/user/"+"{{user.name}}"+"/formgrader/api/customexport",
+	  Authorization: "token "+"bbd5b8fdac624a1a82417b774586ae8d"
   }).done(function( o ) {
    // do something
 console.log("In success");
