@@ -1,8 +1,8 @@
 {% extends "templates/page.html" %} {% if announcement_login %} {% set
 announcement = announcement_login %} {% endif %} {% block login_widget %}
 {% endblock %}
-{% block stylesheet %}
-    {{super()}}
+{% block nav_bar %} {% endblock %} {% block main %}
+<style>
     html {
           font-family: 'Poppins';
           line-height: 1.15;
@@ -546,8 +546,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
                 align-self: center;
             }
          }
-{% endblock %}
-{% block nav_bar %} {% endblock %} {% block main %}
+</style>
 {% block login %}
 <div id="login-main" class="container">
   {% block login_container %} 
