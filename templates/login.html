@@ -576,18 +576,18 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
                             <img src="https://ik.imagekit.io/iwwbj9so6/LOGO_-_data_science_lab_QYUIsnln7.png?ik-sdk-version=javascript-1.4.3&updatedAt=1658915400748" class="hcl-logo">
                         </div>  
                     </div>
-                    <div class="login-form-wrapper font-gothic">
+                    <div class="login-form-wrapper font-gothic .flex-column">
                         <h3>Welcome to Data Science Labs <span>:)</span></h3>
-                            <div class="form-group floating-label mb-5">
-                              <span class='login-form-wrapper-p'>Learn. Code. Act. </p>
-                            </div>
-                            <img src="https://ik.imagekit.io/iwwbj9so6/Data_extraction-rafiki__1__2_r8KI_5QUw.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1666874228326"/>
-                            <div class="sign-flex align-items-center flex-row mt-2 ">
-                                 <a role="button" class="btn btn-jupyter btn-lg" href="{{authenticator_login_url}}">
-                                    Login with organization ID
-                                    <!-- Sign in with {{login_service}} -->
-                                 </a>
-                            </div>
+                        <div class="form-group floating-label mb-5">
+                            <span class='login-form-wrapper-p'>Learn. Code. Act. </p>
+                        </div>
+                        <img src="https://ik.imagekit.io/iwwbj9so6/Data_extraction-rafiki__1__2_r8KI_5QUw.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1666874228326"/>
+                        <div class="sign-flex align-items-center flex-row mt-2 ">
+                            <a role="button" class="btn btn-jupyter btn-lg" href="{{authenticator_login_url}}">
+                                Login with organization ID
+                                <!-- Sign in with {{login_service}} -->
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
