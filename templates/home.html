@@ -4,7 +4,6 @@ if user.admin %} {{ super() }}
 <!-- 		    <li><button id='addCourse'>Add Course</button></li> -->
 <li><button id="addStudent">Add Learners</button></li>
 {% endif %}
-<li><button id="exportData">Export Grades</button></li>
 {% endblock %} {% block main %}
 <style>
   #addStudent,
@@ -544,25 +543,10 @@ if user.admin %} {{ super() }}
     const saveCourse=document.getElementById("save_course_button");
     const cancel=document.getElementById("cancel_button");
     const fileSelected = document.getElementById("fileinput");
-    const exportData=document.getElementById("exportData");
     const filename_area = document.getElementById( 'file-upload-filename' );
     fileSelected.addEventListener( 'change', showFileName );
     const closeSpan = document.getElementsByClassName("close")[0]
     console.log({{base_url}})
-    exportData.onclick = function() {
-      var loc = window.location.pathname;
-      var dir = loc.substring(0, loc.lastIndexOf('/'));
-      console.log(dir);
-      var base_url="/user/saraswathiinstructor/formgrader/api/customexport";
-      $.ajax({
-    	  type: "POST",
-    	  url: "/user/"+"{{user.name}}"+"/formgrader/api/custoexport",
-    	  Authorization: "token "+"51cba8d7d523418a8b197b311a598c6d"
-      }).done(function( o ) {
-       // do something
-    console.log("In success");
-    });
-    }
     addStudentBtn.onclick = function() {
       studentModal.style.display = "block";
     }
