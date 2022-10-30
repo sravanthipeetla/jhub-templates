@@ -276,7 +276,20 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
     display: flex;
     flex-direction: column;
 }
-/*         @media (max-width: 1920px){
+    @media (max-width: 1920px){
+            h3 {
+    font-size: 1.8vw;
+}
+    .circle {
+    position: absolute;
+    width: 343px;
+    height: 159px;
+    left: -90px;
+    right: 0px;
+    margin: auto;
+    content: "";
+    bottom: 0px;
+}
             .btn.btn-jupyter.btn-lg {
                 width: calc(23vw + 1rem);
             }
@@ -556,7 +569,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
                 width: calc(74vw + 1rem);
                 align-self: center;
             }
-         } */
+         } 
 </style>
 {% block login %}
 <div id="login-main" class="container">
