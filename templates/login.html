@@ -21,16 +21,18 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             height: 100vh;
             font-family: 'Poppins', sans-serif;
       }
-     .btn.btn-jupyter.btn-lg {
-            background-color: #006bb6;
-            border-color: #006bb6;
-            border-radius: 30px;
-            width: calc(22vw + 1rem);
-            font-family: 'Poppins';
-            font-size: 1vw;
-            align-self: start;
-            font-weight: 500;
-     }
+  .btn.btn-jupyter.btn-lg {
+    background-color: #006bb6;
+    padding:9px 0px;
+    border-color: #006bb6;
+    border-radius: 30px;
+    width: calc(24vw + 1rem);
+    font-family: 'Poppins';
+    font-size: 1vw;
+    font-weight: 500;
+    margin-top: -4vw;
+    align-self: center;
+}
      .btn.btn-jupyter.btn-lg:hover {
          background-color: #006bb6;
          border: 1px solid #5fbef0;
@@ -82,9 +84,9 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
     .f-27 {
         font-size: 27px;
     }
-     h3{
-        font-size: 1.6vw;
-     }
+     h3 {
+    font-size: 1.7vw;
+}
     .b-400 {
         font-weight: 400;
     }
@@ -170,11 +172,11 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             background-size: cover;
             background-repeat: no-repeat;
         }
-        .left-content-wrapper {
-            width: 70%;
-            margin: 0px auto;
-            position: relative;
-        }
+      .left-content-wrapper {
+    width: 80%;
+    margin: 0px auto;
+    position: relative;
+}
         .left-content-wrapper h3 {
             margin-top: 100px;
             line-height: 42px;
@@ -183,12 +185,12 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         .student-img {
             overflow: hidden;
         }
-   .student-img .student-2 {
+.student-img .student-2 {
     position: absolute;
     right: -103px;
     bottom: 127px;
     left: auto;
-    width: calc(12vw + 10rem);
+    width: calc(11vw + 10rem);
     transition: all .35s ease;
     z-index: 1;
 }
@@ -222,13 +224,13 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             position: relative;
             background: #fff;
         }
-        .section-header {
-            padding: 35px 28px 35px 45px;
-            height: 12rem;
-        }
+       .section-header {
+    padding: 20px 28px 35px 25px;
+    height: 12rem;
+}
         .hcl-logo {
-            width: 220px;
-        }
+    width: 170px;
+}
         .top-copyright img {
             width: 140px;
             margin-left: 10px;
@@ -236,20 +238,23 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         .top-copyright {
             font-size: 14px;
         }
-        .login-form-wrapper {
-            width: 50%;
-            height: calc(80vh - 12rem);
-            align-items:center;
-            text-align:start;
-            margin: 0px auto;
-        }
-        .login-form-wrapper h3 {
-            font-size: 24px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            margin-bottom: 70px;
-            padding-top: 16vh;
-        }
+       .login-form-wrapper {
+    width: 60%;
+    height: 100vh;
+    align-items: center;
+    text-align: start;
+    margin: 0px auto;
+}
+       .login-form-wrapper h3 {
+    font-size: 26px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-bottom: 24px;
+    padding-top: 4vh;
+}
+    .form-group {
+    margin-top: 4vw;
+}
         .login-form-wrapper h3 span {
             color: #76ba62;
             margin-left: 7px;
@@ -262,9 +267,14 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             line-height: 42px;
             color: #494949;
         }
-        .sign-flex {
-            display:flex;    
-        }
+    .login-form-wrapper-img{
+    width: 35vw;
+    margin-top: -11vw;
+    }
+       .sign-flex {
+    display: flex;
+    flex-direction: column;
+}
 /*         @media (max-width: 1920px){
             .btn.btn-jupyter.btn-lg {
                 width: calc(23vw + 1rem);
@@ -584,7 +594,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
                         <div class="form-group floating-label mb-5">
                             <span class='login-form-wrapper-p'>Learn. Code. Act. </p>
                         </div>
-                        <img src="https://ik.imagekit.io/iwwbj9so6/Data_extraction-rafiki__1__2_r8KI_5QUw.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1666874228326"/>
+                        <img class="login-form-wrapper-img" src="https://ik.imagekit.io/iwwbj9so6/Data_extraction-rafiki__1__2_r8KI_5QUw.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1666874228326"/>
                         <div class="sign-flex align-items-center flex-row mt-2 ">
                             <a role="button" class="btn btn-jupyter btn-lg" href="{{authenticator_login_url}}">
                                 Login with organization ID
