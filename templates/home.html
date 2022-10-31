@@ -1,328 +1,82 @@
 {% extends "templates/page.html" %} {% if announcement_home %} {% set
-announcement = announcement_home %} {% endif %} {% block nav_bar_left_items%} {%
-if user.admin %} {{ super() }}
-<!-- 		    <li><button id='addCourse'>Add Course</button></li> -->
-<li><button id="addStudent">Add Learners</button></li>
-{% endif %}
+announcement = announcement_home %} {% endif %} {% block nav_bar %}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="nav-header">
+      {% block logo %}
+      <span id="jupyterhub-logo" class="pull-left">
+        <a href="{{logo_url or base_url}}"
+          ><img
+            src="{{base_url}}logo"
+            alt="JupyterHub"
+            class="jpy-logo"
+            title="Home"
+        /></a>
+      </span>
+      {% endblock %} {% if user %}
+      <button
+        type="button"
+        class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#thenavbar"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      {% endif %}
+    </div>
+    <div class="collapse navbar-collapse" id="thenavbar">
+      <ul class="nav navbar-nav navbar-right">
+        {% block nav_bar_right_items %}
+        <li>
+          {% block login_widget %}
+          <span id="login_widget">
+            {% if user %}
+            <p class="navbar-text">{{user.name}}</p>
+            <a
+              id="logout"
+              role="button"
+              class="navbar-btn btn-sm btn btn-default"
+              href="{{logout_url}}"
+            >
+              <img
+                src="https://ik.imagekit.io/iwwbj9so6/Vector_hPhiG8qfd.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660625858804"
+            /></a>
+            {% else %}
+            <a
+              id="login"
+              role="button"
+              class="btn-sm btn navbar-btn btn-default"
+              href="{{login_url}}"
+              >Login</a
+            >
+            {% endif %}
+          </span>
+          {% endblock %}
+        </li>
+        {% endblock %}
+      </ul>
+    </div>
+    {% block header %} {% endblock %}
+  </div>
+</nav>
 {% endblock %} {% block main %}
 <style>
-  #addStudent,
-  #addCourse {
-    border: none;
-    background-color: white;
-    color: #777;
-    padding-top: 10px;
-  }
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 2;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-  .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 30%;
-    border-radius: 15px;
-    height: 30vh;
-  }
-  .close {
-    color: #000000;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  .close:hover,
-  .close:focus {
-    color: #ff0000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .column-flex {
-    display: flex;
-    flex-direction: column;
-  }
-  .row-flex {
-    display: flex;
-  }
-  div.fileinputs {
-    position: relative;
-    margin-left: 2vw;
-  }
-
-  div.fakefile {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 1;
-  }
-
-  input.file {
-    position: relative;
-    text-align: right;
-    -moz-opacity: 0;
-    filter: alpha(opacity : 0);
-    opacity: 0;
-    z-index: 2;
-  }
-  .navbar-default {
-    background-color: #ffffff;
-    border: none;
-    font-size: 15px;
-  }
-  #jupyterhub-logo .jpy-logo {
-    height: 3vh;
-  }
-  .btn-lg {
-    font-size: 15px;
-    height: 44px;
-    width: 200px;
-    border-radius: 30px !important;
-    margin-right: 30px;
-  }
-  .btn-default {
-    border: none;
-    color: #5fbef0;
-    font-size: 15px;
-  }
-  .btn-primary {
-    background-color: #5fbef0;
-    border: transparent;
-  }
-  .text-center {
-    padding-top: 60px;
-  }
-  .server-info {
-    font-size: 20px;
-    font-weight: 500;
-  }
-  .server-gif {
-    padding-top: 80px;
-  }
-  label {
-    font-family: "Gothic A1";
-    font-style: normal;
-    font-size: 2vh;
-    line-height: 3vh;
-    color: black;
-    font-weight: 400 !important;
-    margin: 3vh 1vw 2vh 0vw;
-  }
-  #file {
-    margin: 2vh -2vw 0vh -1.2vw;
-    width: 14vh;
-    height: 6vh;
-    cursor: pointer;
-  }
-  #save_student_button,
-  #save_course_button {
-    position: absolute;
-    background: #5fbef0;
-    border-radius: 41vh;
-    border-color: #5fbef0;
-    margin: 4vh 0vw 0vh 7vw;
-    font-family: "Poppins";
-    font-style: normal;
-    font-size: 2vh;
-    line-height: 2vh;
-    color: white;
-    border-block: unset;
-    width: 6vw;
-    height: 4vh;
-    border-width: 0.1vw !important;
-    border-style: hidden;
-  }
-  #cancel_button {
-    justify-content: center;
-    background: white;
-    border-radius: 41vh;
-    border-color: #5fbef0;
-    margin: 4vh 0vw 0vh 14vw;
-    font-family: "Poppins";
-    font-style: normal;
-    font-size: 2vh;
-    line-height: 2vh;
-    color: #5fbef0;
-    width: 6vw;
-    height: 4vh;
-    position: absolute;
-    border-width: 0.1vw !important;
-    border-style: double;
-  }
-  .select-div::after {
-    content: url("https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909");
-  }
-  .select-div {
-    position: relative;
-  }
-  .select-div::after {
-    position: absolute;
-    top: 3.8vh;
-    right: 8vw;
-  }
-  #file-upload-filename {
-    margin-left: 4vw;
-    margin-top: 3.5vh;
-    color: #5fbef0;
-  }
-  .select {
-    appearance: none;
-    margin: 3vh 0vh 0vh 0vh;
-    width: 13vw;
-    height: 3.5vh;
-    background: #ffffff;
-    border: 0.1vw solid #5fbef0;
-    border-radius: 8vh;
-    font-family: "Poppins";
-    font-style: normal;
-    font-size: 2vh;
-    padding: 0vh 0vw 0vh 0.9vw;
-  }
-  #fileinput {
-    margin: 2vh -2vw 0vh -1.2vw;
-    width: 14vh;
-    height: 4vh;
-    cursor: pointer;
-  }
-  .fake-input {
-    border-width: 0.1vw !important;
-    border-style: dashed;
-    border-radius: 2vw;
-    border-color: #5fbef0;
-    margin: 2.5vh -2vw 0vh -1.2vw;
-    width: 14vh;
-    height: 3.7vh;
-  }
-  .upload-image {
-    margin: -4vh;
-    height: 1.7vh;
-  }
-  @media (max-width: 1920) and (max-height: 1080) {
-    .select-div::after {
-      right: 8.5vw;
-    }
-  }
-  @media (max-width: 1920px) and (max-height: 768px) {
-    .select-div::after {
-      position: absolute;
-      top: 3.7vh;
-      right: 9.5vw;
-    }
-  }
-  @media (max-width: 1366px) {
-    #jupyterhub-logo .jpy-logo {
-      height: 3vh;
-    }
-    .upload-image {
-      margin: -5vh;
-      height: 1.7vh;
-    }
-  }
-  @media (max-width: 1366px) and (max-height: 1024px) {
-    .modal-content {
-      width: 32%;
-    }
-  }
-  @media (max-width: 1366px) and (max-height: 768px) {
-    .select-div::after {
-      top: 3.5vh;
-      right: 7.2vw;
-    }
-  }
-  @media (max-width: 1280px) and (max-height: 720px) {
-    .select-div::after {
-      right: 8.2vw;
-    }
-  }
-  @media (max-width: 1200px) {
-    .modal-content {
-      width: 45%;
-    }
-    #course-list {
-      width: 20vw;
-    }
-    #save_button {
-      width: 10vw;
-    }
-    #cancel_button {
-      margin: 4vh 0vw 0vh 20vw;
-      width: 10vw;
-    }
-  }
-  @media (max-width: 1024px) and (max-height: 768px) {
-    .select-div::after {
-      top: 3.6vh;
-      right: 12vw;
-    }
-  }
-  @media (max-width: 1024px) and (max-height: 640px) {
-    .select-div::after {
-      top: 3.4vh;
-      right: 13vw;
-    }
-  }
-  @media (max-width: 768px) {
-    .navbar-default {
-      font-size: 12px;
-    }
-    .server-gif {
-      height: 33vh;
-      width: 46vw;
-    }
-    .btn-lg {
-      height: 40px;
-    }
-    #jupyterhub-logo .jpy-logo {
-      height: 2vh;
-    }
-    .modal-content {
-      width: 60%;
-    }
-    #course-list {
-      width: 30vw;
-    }
-    #save_button {
-      width: 14vw;
-    }
-    #cancel_button {
-      margin: 4vh 0vw 0vh 25vw;
-      width: 15vw;
-    }
-  }
-  @media (max-width: 425px) {
-    .server-info {
-      font-size: 12px;
-    }
-    .btn-lg {
-      width: 130px;
-    }
-    #jupyterhub-logo .jpy-logo {
-      height: 2.5vh;
-    }
-    .server-gif {
-      height: 20vh;
-    }
+  .server-status-message {
+    font-family: "Poppins", sans-serif;
   }
 </style>
 <div class="container">
   <div class="row">
     <div class="text-center">
       {% if default_server.active %}
-      <span class="server-info"
-        >Your server is still runnnig. You can stop or go to your workspace
+      <span class=".server-status-messsage"
+        >Your server is still running. You can stop or go to your server
         again.</span
       >
-      <br />
-      <br />
-      <br />
       <a id="stop" role="button" class="btn btn-lg btn-danger">
         Stop My Server
       </a>
@@ -333,327 +87,386 @@ if user.admin %} {{ super() }}
         class="btn btn-lg btn-primary"
         href="{{ url }}"
       >
-        {% if not default_server.active %}Start{% endif %} My Workspace
+        {% if not default_server.active %}Start{% endif %} My Server
       </a>
-      <br />
-      <img
-        class="server-gif"
-        src="https://ik.imagekit.io/iwwbj9so6/Server_gif_hzHBX49u0.gif?ik-sdk-version=javascript-1.4.3&updatedAt=1661754020935"
-      />
-    </div>
-    <div id="addStudentModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <div class="column-flex">
-          <div class="row-flex select-div">
-            <div>
-              <label for="course">Select course</label>
-            </div>
-            <div>
-              <select class="select" id="course-list" name="course">
-                <option>Course name</option>
-              </select>
-            </div>
-          </div>
-          <div class="row-flex">
-            <div>
-              <label for="upload">Upload file</label>
-            </div>
-            <div class="fileinputs">
-              <input
-                type="file"
-                class="file"
-                id="fileinput"
-                name="upload"
-                required
-              />
-              <div class="fakefile">
-                <input class="fake-input" /><img
-                  class="upload-image"
-                  src="https://ik.imagekit.io/iwwbj9so6/Vector_WkJK6A0OB.png?ik-sdk-version=javascript-1.4.3&amp;updatedAt=1662636716269"
-                />
-              </div>
-            </div>
-            <div id="file-upload-filename"></div>
-          </div>
-          <div class="row-flex">
-            <div>
-              <button type="button" id="save_student_button">Save</button>
-            </div>
-            <div>
-              <button type="button" id="cancel_button">Cancel</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="addCourseModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <div class="column-flex">
-          <div class="row-flex select-div">
-            <div>
-              <label for="courseName">Course Name</label>
-            </div>
-            <div>
-              <input
-                type="text"
-                class="file"
-                id="textInput"
-                name="courseName"
-                required
-              />
-            </div>
-          </div>
-          <div class="row-flex">
-            <div>
-              <label for="instructorName">Course Name</label>
-            </div>
-            <div>
-              <input
-                type="text"
-                class="file"
-                id="textInput"
-                name="instructorName"
-                required
-              />
-            </div>
-            <div class="row-flex">
-              <div>
-                <button type="button" id="save_course_button">Save</button>
-              </div>
-              <div>
-                <button type="button" id="cancel_button">Cancel</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {% if allow_named_servers %}
-      <h2>Named Servers</h2>
-
-      <p>
-        In addition to your default server, you may have additional {% if
-        named_server_limit_per_user > 0 %}{{ named_server_limit_per_user }} {%
-        endif %}server(s) with names. This allows you to have more than one
-        server running at the same time.
-      </p>
-      {% set named_spawners = user.all_spawners(include_default=False)|list %}
-
-      <table class="server-table table table-striped">
-        <thead>
-          <tr>
-            <th>Server name</th>
-            <th>URL</th>
-            <th>Last activity</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="home-server-row add-server-row">
-            <td colspan="4">
-              <input class="new-server-name" placeholder="Name your server" />
-              <a
-                role="button"
-                class="new-server-btn"
-                class="add-server btn btn-xs btn-primary"
-              >
-                Add New Server
-              </a>
-            </td>
-          </tr>
-          {% for spawner in named_spawners %}
-          <tr class="home-server-row" data-server-name="{{ spawner.name }}">
-            {# name #}
-            <td>{{ spawner.name }}</td>
-            {# url #}
-            <td>
-              <a
-                class="server-link {% if not spawner.ready %}hidden{% endif %}"
-                href="{{ user.server_url(spawner.name) }}"
-              >
-                {{ user.server_url(spawner.name) }}
-              </a>
-            </td>
-            {# activity #}
-            <td class="time-col">
-              {% if spawner.last_activity %} {{
-              spawner.last_activity.isoformat() + 'Z' }} {% else %} Never {%
-              endif %}
-            </td>
-            {# actions #}
-            <td>
-              <a
-                role="button"
-                class="stop-server btn btn-xs btn-danger{% if not spawner.active %} hidden{% endif %}"
-                id="stop-{{ spawner.name }}"
-                >stop</a
-              >
-              <a
-                role="button"
-                class="start-server btn btn-xs btn-primary {% if spawner.active %} hidden{% endif %}"
-                id="start-{{ spawner.name }}"
-                href="{{ base_url }}spawn/{{ user.name }}/{{ spawner.name }}"
-              >
-                start
-              </a>
-              <a
-                role="button"
-                class="delete-server btn btn-xs btn-danger{% if spawner.active %} hidden{% endif %}"
-                id="delete-{{ spawner.name }}"
-                >delete</a
-              >
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      {% endif %}
     </div>
   </div>
-  {% endblock main %} {% block script %} {{ super() }}
-  <script type="text/javascript">
-    require(["home"]);
-    window.onload = function() {
-    const userAction = async () => {
-      const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
-      const myJson = await response.json();
-      var courses_list=myJson.courses;
-      console.log(courses_list)
-      $.each(courses_list, function (item,value) {
-        $('#course-list').append($('<option>', {
-            value: value,
-            text : value
-        }));
-    })
-    }
-    userAction()
+  {% if allow_named_servers %}
+  <h2>Named Servers</h2>
 
-    };
-    const lis = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTagName("li");
-    // lis[2].getElementsByTagName("a")[0].innerText = 'Check';
-    // lis[1].style.visibility = 'hidden';
-    // lis[3].style.visibility = 'hidden';
-    const studentModal = document.getElementById("addStudentModal");
-    const courseModal = document.getElementById("addCourseModal");
-    const addStudentBtn = document.getElementById("addStudent");
-    const addCourseBtn=document.getElementById("addCourse");
-    const selected=document.getElementById("course-list");
-    const saveStudent=document.getElementById("save_student_button");
-    const saveCourse=document.getElementById("save_course_button");
-    const cancel=document.getElementById("cancel_button");
-    const fileSelected = document.getElementById("fileinput");
-    const filename_area = document.getElementById( 'file-upload-filename' );
-    fileSelected.addEventListener( 'change', showFileName );
-    const closeSpan = document.getElementsByClassName("close")[0]
-    console.log({{base_url}})
-    addStudentBtn.onclick = function() {
-      studentModal.style.display = "block";
+  <p>
+    In addition to your default server, you may have additional {% if
+    named_server_limit_per_user > 0 %}{{ named_server_limit_per_user }} {% endif
+    %}server(s) with names. This allows you to have more than one server running
+    at the same time.
+  </p>
+  {% set named_spawners = user.all_spawners(include_default=False)|list %}
+
+  <table class="server-table table table-striped">
+    <thead>
+      <tr>
+        <th>Server name</th>
+        <th>URL</th>
+        <th>Last activity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="home-server-row add-server-row">
+        <td colspan="4">
+          <input class="new-server-name" placeholder="Name your server" />
+          <a
+            role="button"
+            class="new-server-btn"
+            class="add-server btn btn-xs btn-primary"
+          >
+            Add New Server
+          </a>
+        </td>
+      </tr>
+      {% for spawner in named_spawners %}
+      <tr class="home-server-row" data-server-name="{{ spawner.name }}">
+        {# name #}
+        <td>{{ spawner.name }}</td>
+        {# url #}
+        <td>
+          <a
+            class="server-link {% if not spawner.ready %}hidden{% endif %}"
+            href="{{ user.server_url(spawner.name) }}"
+          >
+            {{ user.server_url(spawner.name) }}
+          </a>
+        </td>
+        {# activity #}
+        <td class="time-col">
+          {% if spawner.last_activity %} {{ spawner.last_activity.isoformat() +
+          'Z' }} {% else %} Never {% endif %}
+        </td>
+        {# actions #}
+        <td>
+          <a
+            role="button"
+            class="stop-server btn btn-xs btn-danger{% if not spawner.active %} hidden{% endif %}"
+            id="stop-{{ spawner.name }}"
+            >stop</a
+          >
+          <a
+            role="button"
+            class="start-server btn btn-xs btn-primary {% if spawner.active %} hidden{% endif %}"
+            id="start-{{ spawner.name }}"
+            href="{{ base_url }}spawn/{{ user.name }}/{{ spawner.name }}"
+          >
+            start
+          </a>
+          <a
+            role="button"
+            class="delete-server btn btn-xs btn-danger{% if spawner.active %} hidden{% endif %}"
+            id="delete-{{ spawner.name }}"
+            >delete</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</div>
+{% endblock main %} {% block script %} {{ super() }}
+<script type="text/javascript">
+  // require(["home"]);
+  // Copyright (c) Jupyter Development Team.
+  // Distributed under the terms of the Modified BSD License.
+
+  require(["jquery", "moment"], define(
+    ["jquery", "utils"],
+    function ($, utils) {
+      "use strict";
+
+      var JHAPI = function (base_url) {
+        this.base_url = base_url;
+      };
+
+      var default_options = {
+        type: "GET",
+        contentType: "application/json",
+        cache: false,
+        dataType: "json",
+        processData: false,
+        success: null,
+        error: utils.ajax_error_dialog,
+      };
+
+      var update = function (d1, d2) {
+        $.map(d2, function (i, key) {
+          d1[key] = d2[key];
+        });
+        return d1;
+      };
+
+      var ajax_defaults = function (options) {
+        var d = {};
+        update(d, default_options);
+        update(d, options);
+        return d;
+      };
+
+      JHAPI.prototype.api_request = function (path, options) {
+        options = options || {};
+        options = ajax_defaults(options || {});
+        var url = utils.url_path_join(
+          this.base_url,
+          "api",
+          utils.encode_uri_components(path)
+        );
+        $.ajax(url, options);
+      };
+
+      JHAPI.prototype.start_server = function (user, options) {
+        options = options || {};
+        options = update(options, { type: "POST", dataType: null });
+        this.api_request(utils.url_path_join("users", user, "server"), options);
+      };
+
+      JHAPI.prototype.start_named_server = function (
+        user,
+        server_name,
+        options
+      ) {
+        options = options || {};
+        options = update(options, { type: "POST", dataType: null });
+        this.api_request(
+          utils.url_path_join("users", user, "servers", server_name),
+          options
+        );
+      };
+
+      JHAPI.prototype.stop_server = function (user, options) {
+        options = options || {};
+        options = update(options, { type: "DELETE", dataType: null });
+        this.api_request(utils.url_path_join("users", user, "server"), options);
+      };
+
+      JHAPI.prototype.stop_named_server = function (
+        user,
+        server_name,
+        options
+      ) {
+        options = options || {};
+        options = update(options, { type: "DELETE", dataType: null });
+        this.api_request(
+          utils.url_path_join("users", user, "servers", server_name),
+          options
+        );
+      };
+
+      JHAPI.prototype.delete_named_server = function (
+        user,
+        server_name,
+        options
+      ) {
+        options = options || {};
+        options.data = JSON.stringify({ remove: true });
+        return this.stop_named_server(user, server_name, options);
+      };
+
+      JHAPI.prototype.list_users = function (options) {
+        this.api_request("users", options);
+      };
+
+      JHAPI.prototype.get_user = function (user, options) {
+        this.api_request(utils.url_path_join("users", user), options);
+      };
+
+      JHAPI.prototype.add_users = function (usernames, userinfo, options) {
+        options = options || {};
+        var data = update(userinfo, { usernames: usernames });
+        options = update(options, {
+          type: "POST",
+          dataType: null,
+          data: JSON.stringify(data),
+        });
+
+        this.api_request("users", options);
+      };
+
+      JHAPI.prototype.edit_user = function (user, userinfo, options) {
+        options = options || {};
+        options = update(options, {
+          type: "PATCH",
+          dataType: null,
+          data: JSON.stringify(userinfo),
+        });
+
+        this.api_request(utils.url_path_join("users", user), options);
+      };
+
+      JHAPI.prototype.admin_access = function (user, options) {
+        options = options || {};
+        options = update(options, {
+          type: "POST",
+          dataType: null,
+        });
+
+        this.api_request(
+          utils.url_path_join("users", user, "admin-access"),
+          options
+        );
+      };
+
+      JHAPI.prototype.delete_user = function (user, options) {
+        options = options || {};
+        options = update(options, { type: "DELETE", dataType: null });
+        this.api_request(utils.url_path_join("users", user), options);
+      };
+
+      JHAPI.prototype.request_token = function (user, props, options) {
+        options = options || {};
+        options = update(options, { type: "POST" });
+        if (props) {
+          options.data = JSON.stringify(props);
+        }
+        this.api_request(utils.url_path_join("users", user, "tokens"), options);
+      };
+
+      JHAPI.prototype.revoke_token = function (user, token_id, options) {
+        options = options || {};
+        options = update(options, { type: "DELETE" });
+        this.api_request(
+          utils.url_path_join("users", user, "tokens", token_id),
+          options
+        );
+      };
+
+      JHAPI.prototype.shutdown_hub = function (data, options) {
+        options = options || {};
+        options = update(options, { type: "POST" });
+        if (data) {
+          options.data = JSON.stringify(data);
+        }
+        this.api_request("shutdown", options);
+      };
+
+      return JHAPI;
     }
-    // addCourseBtn.onclick = function() {
-    //   courseModal.style.display = "block";
-    // }
-    cancel.onclick=function(){
-       studentModal.style.display="none";
-    //    courseModal.style.display="none";
+  ), function ($, moment, JHAPI) {
+    "use strict";
+
+    var base_url = window.jhdata.base_url;
+    var user = window.jhdata.user;
+    var api = new JHAPI(base_url);
+
+    // Named servers buttons
+
+    function getRow(element) {
+      while (!element.hasClass("home-server-row")) {
+        element = element.parent();
+      }
+      return element;
     }
 
-    closeSpan.onclick = function() {
-      studentModal.style.display = "none";
-    //   courseModal.style.display = "none";
+    function disableRow(row) {
+      row.find(".btn").attr("disabled", true).off("click");
     }
-    window.onclick = function(event) {
-      if (event.target == studentModal) {
-        studentModal.style.display = "none";
-    //     courseModal.style.display = "none";
+
+    function enableRow(row, running) {
+      // enable buttons on a server row
+      // once the server is running or not
+      row.find(".btn").attr("disabled", false);
+      row.find(".stop-server").click(stopServer);
+      row.find(".delete-server").click(deleteServer);
+
+      if (running) {
+        row.find(".start-server").addClass("hidden");
+        row.find(".delete-server").addClass("hidden");
+        row.find(".stop-server").removeClass("hidden");
+        row.find(".server-link").removeClass("hidden");
+      } else {
+        row.find(".start-server").removeClass("hidden");
+        row.find(".delete-server").removeClass("hidden");
+        row.find(".stop-server").addClass("hidden");
+        row.find(".server-link").addClass("hidden");
       }
     }
-    function showFileName( event ) {
 
-      // the change event gives us the input it occurred in
-      var input = event.srcElement;
-
-      // the input has an array of files in the `files` property, each one has a name that you can use. We're just using the name here.
-      var fileName = input.files[0].name;
-
-      // use fileName however fits your app best, i.e. add it into a div
-      filename_area.textContent = fileName;
+    function startServer() {
+      var row = getRow($(this));
+      var serverName = row.find(".new-server-name").val();
+      if (serverName === "") {
+        // ../spawn/user/ causes a 404, ../spawn/user redirects correctly to the default server
+        window.location.href = "./spawn/" + user;
+      } else {
+        window.location.href = "./spawn/" + user + "/" + serverName;
+      }
     }
-    if (window.File && window.FileReader && window.FileList && window.Blob) {
 
-          let alert_message;
-          fileSelected.addEventListener(
-            "change",
-            function (e) {
-              //  var fileExtension = /text.*/;
-              const fileTobeRead = fileSelected.files[0];
-              //Check of the extension match
-              if (fileTobeRead) {
-                let studentsList = [];
-                const fileReader = new FileReader();
-                fileReader.onload = function (e) {
-                  const fileData = fileReader.result.split(/\r\n|\n/);
-                  const headers = fileData[0].split(",");
-                  for (var i = 1; i < fileData.length-1; i++) {
-                    let studentDict = {};
-                    const data = fileData[i].split(",");
-                    if (data.length == headers.length) {
-                      for (var j = 0; j < headers.length; j++) {
-                        studentDict[headers[j]] = data[j];
-                      }
-                    }
-                    studentsList.push(studentDict);
-                  }
-    	   saveStudent.onclick = function() {
-    	      const studentData=JSON.stringify(studentsList);
-                  const addStudent = async () => {
-    	        const selectedCourse = selected.options[selected.selectedIndex].text;
-      	      	const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/'+selectedCourse+'?students='+studentData, {
-        			method: 'POST',
-        			headers: {
-    			    'Accept': 'application/json, text/plain, */*',
-    			    'Content-Type': 'application/json',
-    			    'Authorization':'token 1199d73de2bc4d37900e19c6539833e4'
-      			}
-      		});
-    		console.log(response.status);
-    		switch(response.status) {
-    		  case 200:
-    		    alert_messsage="success, learners list added to course";
-    		    break;
-    		  case 302:
-    		    alert_message="Login required";
-    		    break;
-    		  case 403:
-    		    alert_message="Permission denied";
-    		    break;
-    		  case 404:
-    		    alert_message="course not found";
-    		    break;
-    		  case 400:
-    		    alert_message="Please supply learners/Students cannot be JSON decoded/Incorrect request format. Please refer to https://ngshare.readthedocs.io/en/latest/api/course.html#api-course-course";
-    		    break;
-    		  default:
-    		    console.log(response_status);
-    		    alert_message="Something went wrong.";
-    		}
-    	      }
-    	   addStudent();
-    	   studentModal.style.display="none";
-    // 	   alert(alert_message);
-    	   }
-               };
-                fileReader.readAsText(fileTobeRead);
-               }
-              else {
-                alert("Please select file");
-              }
-            },
-            false
-          );
-        } else {
-          alert("Files are not supported");
-        }
-  </script>
-  {% endblock %}
-</div>
+    function stopServer() {
+      var row = getRow($(this));
+      var serverName = row.data("server-name");
+
+      // before request
+      disableRow(row);
+
+      // request
+      api.stop_named_server(user, serverName, {
+        success: function () {
+          enableRow(row, false);
+        },
+      });
+    }
+
+    function deleteServer() {
+      var row = getRow($(this));
+      var serverName = row.data("server-name");
+
+      // before request
+      disableRow(row);
+
+      // request
+      api.delete_named_server(user, serverName, {
+        success: function () {
+          row.remove();
+        },
+      });
+    }
+
+    // initial state: hook up click events
+    $("#stop").click(function () {
+      $("#start")
+        .attr("disabled", true)
+        .attr("title", "Your server is stopping")
+        .click(function () {
+          return false;
+        });
+      api.stop_server(user, {
+        success: function () {
+          $("#stop").hide();
+          $("#start")
+            .text("Start My Server")
+            .attr("title", "Start your default server")
+            .attr("disabled", false)
+            .attr("href", base_url + "spawn/" + user)
+            .off("click");
+        },
+      });
+    });
+
+    $(".new-server-btn").click(startServer);
+    $(".new-server-name").on("keypress", function (e) {
+      if (e.which === 13) {
+        startServer.call(this);
+      }
+    });
+
+    $(".stop-server").click(stopServer);
+    $(".delete-server").click(deleteServer);
+
+    // render timestamps
+    $(".time-col").map(function (i, el) {
+      // convert ISO datestamps to nice momentjs ones
+      el = $(el);
+      var m = moment(new Date(el.text().trim()));
+      el.text(m.isValid() ? m.fromNow() : "Never");
+    });
+  });
+</script>
+{% endblock %}
