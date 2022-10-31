@@ -1,11 +1,16 @@
-{% extends "templates/page.html" %}
-
-{% block main %}
+{% extends "templates/page.html" %} {% block stylesheet %} {{ super() }}
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap"
+  rel="stylesheet"
+/>
+{% endblock stylesheet %} {% block nav_bar%}
 
 <div class="section-header">
   <div class="d-flex align-items-center justify-content-between">
     <img
-      src="https://ik.imagekit.io/iwwbj9so6/12bdc9b1-5f78-42fc-957a-6f7e8cf11c96__1__akaDA0tt-.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667113214298"
+      src="https://ik.imagekit.io/iwwbj9so6/LOGO_-_data_science_lab_QYUIsnln7.png?ik-sdk-version=javascript-1.4.3&updatedAt=1658915400748"
       class="hcl-logo"
     />
   </div>
@@ -36,10 +41,10 @@
   .section-header .hcl-logo {
     width: calc(13vw + 2rem);
   }
-  #sr-progress {
-    color: #006bb6;
-    font-size: 18px;
-    font-weight: 600;
+  #sr-progress{
+  color: #006BB6;
+  font-size:18px;
+  font-weight:600;
   }
   .progress-text {
     font-size: 1vw;
