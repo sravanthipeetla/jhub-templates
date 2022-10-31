@@ -1,11 +1,6 @@
-{% extends "templates/page.html" %} {% block stylesheet %} {{ super() }}
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap"
-  rel="stylesheet"
-/>
-{% endblock stylesheet %} {% block nav_bar%}
+{% extends "page.html" %}
+
+{% block main %}
 
 <div class="section-header">
   <div class="d-flex align-items-center justify-content-between">
@@ -41,10 +36,10 @@
   .section-header .hcl-logo {
     width: calc(13vw + 2rem);
   }
-  #sr-progress{
-  color: #006BB6;
-  font-size:18px;
-  font-weight:600;
+  #sr-progress {
+    color: #006bb6;
+    font-size: 18px;
+    font-weight: 600;
   }
   .progress-text {
     font-size: 1vw;
