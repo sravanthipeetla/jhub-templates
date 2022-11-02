@@ -8,21 +8,31 @@
   </script>
   <script src={{ static_url("js/admin-react.js") }}></script>
   <style>
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
+    .admin-navbar {
+      overflow: hidden;
     }
-
-    li {
-      display: inline;
+    .admin-navbar a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+      border-bottom: 1px solid #DBDBDB;
+    }
+    .admin-navbar a:hover {
+      cursor: pointer;
+    }
+    .admin-navbar a.active {
+      border-bottom: 1px solid #006BB6;
+      color: white;
     }
   </style>
-  <ul>
-    <li>Course</li>
-    <li>Instructors</li>
-    <li>Learners</li>
-  </ul>
+  <div class="admin-navbar">
+      <a>Course</a>
+      <a>Instructors</a>
+      <a>Learners</a>
+  </div>
 </div>
 {% endblock %}
 
