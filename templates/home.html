@@ -68,10 +68,6 @@ if user.admin %} {{ super() }}
   input.file {
     position: relative;
     text-align: right;
-    -moz-opacity: 0;
-    filter: alpha(opacity : 0);
-    opacity: 0;
-    z-index: 2;
   }
   .navbar-default {
     background-color: #ffffff;
@@ -546,7 +542,6 @@ if user.admin %} {{ super() }}
     const filename_area = document.getElementById( 'file-upload-filename' );
     fileSelected.addEventListener( 'change', showFileName );
     const closeSpan = document.getElementsByClassName("close")[0]
-    console.log({{base_url}})
     addStudentBtn.onclick = function() {
       studentModal.style.display = "block";
     }
