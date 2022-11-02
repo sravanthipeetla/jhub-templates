@@ -7,9 +7,22 @@
     window.base_url = "{{ base_url|safe }}"
   </script>
   <script src={{ static_url("js/admin-react.js") }}></script>
-  {% block nav_bar_left_items%} 
-    {{ super() }}
-  {% endblock %} 
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: inline;
+    }
+  </style>
+  <ul>
+    <li>Course</li>
+    <li>Instructors</li>
+    <li>Learners</li>
+  </ul>
 </div>
 {% endblock %}
 
