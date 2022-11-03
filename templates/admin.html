@@ -1,51 +1,56 @@
 {% extends "templates/page.html" %}
 {% block stylesheet %}
-  {{ super() }}
-  <style>
-    .navbar-collapse {
+{{ super() }}
+<style>
+  .navbar-collapse {
     margin: 1vw;
   }
+
   .navbar-default {
     background-color: #ffffff;
     border: none;
   }
+
   .navbar-default .navbar-nav>li>a {
     color: #000000;
     font-family: Poppins;
     font-size: 16px;
     font-weight: 500;
-}
-.navbar-default .navbar-nav>li>a:active{
-  color:#006BB6;
-}
-#jupyterhub-logo .jpy-logo {
-    height: 4.5vh;
-    margin: 1.4vw;
   }
-    .admin-navbar {
-      overflow: hidden;
-    }
 
-    /* Style the links inside the navigation bar */
-    .admin-navbar a {
-      float: left;
-      display: block;
-      color: #000000;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: 17px;
-      border-bottom: 3px solid #DBDBDB;
-    }
+  .navbar-default .navbar-text {
+    color: #000000;
+  }
 
-    .admin-navbar a:hover {
-      cursor: pointer;
-    }
+  #jupyterhub-logo .jpy-logo {
+    height: 3.5vh;
+    margin: 1.6vw;
+  }
 
-    .admin-navbar a.active {
-      border-bottom: 3px solid #006BB6;
-    }
-  </style>
+  .admin-navbar {
+    overflow: hidden;
+  }
+
+  /* Style the links inside the navigation bar */
+  .admin-navbar a {
+    float: left;
+    display: block;
+    color: #000000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border-bottom: 3px solid #DBDBDB;
+  }
+
+  .admin-navbar a:hover {
+    cursor: pointer;
+  }
+
+  .admin-navbar a.active {
+    border-bottom: 3px solid #006BB6;
+  }
+</style>
 {% endblock %}
 {% block main %}
 <div id="react-admin-hook">
@@ -54,7 +59,7 @@
     window.base_url = "{{ base_url|safe }}"
   </script>
   <script src={{ static_url("js/admin-react.js") }}></script>
-   <div class="admin-navbar">
+  <div class="admin-navbar">
     <a class="active">Course</a>
     <a>Instructors</a>
     <a>Learners</a>
