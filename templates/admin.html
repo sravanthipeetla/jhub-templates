@@ -26,10 +26,11 @@
     height: 3.5vh;
     margin: 1.6vw;
   }
-
+  .admin-container{
+    margin-left: 8vw;
+  }
   .admin-navbar {
     overflow: hidden;
-    margin-left: 8vw;
   }
 
   /* Style the links inside the navigation bar */
@@ -38,11 +39,11 @@
     display: block;
     color: #000000;
     text-align: center;
-    padding: 1.5vw 4vw;
+    padding: 1vw 4vw;
     text-decoration: none;
     font-size: 17px;
     border-bottom: 0.3vw solid #DBDBDB;
-}
+  }
 
   .admin-navbar a:hover {
     cursor: pointer;
@@ -50,6 +51,7 @@
 
   .admin-navbar a.active {
     border-bottom: 0.3vw solid #006BB6;
+    color: #006BB6;
   }
 </style>
 {% endblock %}
@@ -60,11 +62,13 @@
     window.base_url = "{{ base_url|safe }}"
   </script>
   <script src={{ static_url("js/admin.js") }}></script>
-  <div class="admin-navbar">
-    <a class="active">Course</a>
-    <a>Instructors</a>
-    <a>Learners</a>
-    </ul>
+  <div class="admin-container">
+    <div class="admin-navbar">
+      <a class="active">Course</a>
+      <a>Instructors</a>
+      <a>Learners</a>
+      </ul>
+    </div>
   </div>
   {% endblock %}
 
@@ -372,12 +376,12 @@
         });
     });
     // custom script
-    const currentUrl=window.location.href.split("/");
-    const currentAnchorTagText=currentUrl[currentUrl.length-1];
-    $('.navbar-nav a').each(function(){
-      const anchorTagHref=$(this).text().toLocaleLowerCase();
-      if($(this).text().toLowerCase()==currentAnchorTagText){
-        $(this).css("color","#006BB6");
+    const currentUrl = window.location.href.split("/");
+    const currentAnchorTagText = currentUrl[currentUrl.length - 1];
+    $('.navbar-nav a').each(function () {
+      const anchorTagHref = $(this).text().toLocaleLowerCase();
+      if ($(this).text().toLowerCase() == currentAnchorTagText) {
+        $(this).css("color", "#006BB6");
       }
     });
   </script>
