@@ -53,6 +53,10 @@
     border-bottom: 0.3vw solid #006BB6;
     color: #006BB6;
   }
+  .description-bar{
+    display: flex;
+    justify-content: flex-end;
+  }
 </style>
 {% endblock %}
 {% block main %}
@@ -68,6 +72,10 @@
       <a>Instructors</a>
       <a>Learners</a>
       </ul>
+    </div>
+    <div class="description-bar">
+      <p class="description">You can manage courses, instructors and learners from here.</p>
+      <button class="add-course">Add course</button>
     </div>
   </div>
   {% endblock %}
