@@ -6,7 +6,8 @@ if user.admin %} {{ super() }}
 {% endif %}
 {% endblock %} 
 {% block stylesheet %}
-  {{super()}}
+  {{ super() }}
+  <style>
   #addStudent,
   #addCourse {
     border: none;
@@ -308,6 +309,7 @@ if user.admin %} {{ super() }}
       height: 20vh;
     }
   }
+</style>
 {% endblock %}
 {% block main %}
 <div class="container">
