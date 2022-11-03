@@ -26,9 +26,12 @@
     height: 3.5vh;
     margin: 1.6vw;
   }
-  .admin-container{
-    margin-left: 8vw;
+
+  .admin-container {
+    padding-left: 12vw;
+    padding-right: 12vw;
   }
+
   .admin-navbar {
     overflow: hidden;
   }
@@ -53,9 +56,28 @@
     border-bottom: 0.3vw solid #006BB6;
     color: #006BB6;
   }
-  .description-bar{
+
+  .description-bar {
     display: flex;
     justify-content: space-between;
+    padding-top: 1.5vw;
+  }
+
+  .description {
+    font-family: Gothic A1;
+    font-size: 16px;
+    padding: 0.7vw;
+  }
+
+  .add-course-btn {
+    border: none;
+    background-color: #5FBEF0;
+    width: 8vw;
+    border-radius: 1.5vw;
+    color: white;
+    font-weight: 800;
+    height: 2.5vw;
+    font-size: 17px;
   }
 </style>
 {% endblock %}
@@ -75,8 +97,10 @@
     </div>
     <div class="description-bar">
       <p class="description">You can manage courses, instructors and learners from here.</p>
-      <button class="add-course">Add course</button>
+      <button class="add-course-btn">Add course</button>
     </div>
+    <table class="admin-table" id="admin-table">
+    </table>
   </div>
   {% endblock %}
 
@@ -392,5 +416,12 @@
         $(this).css("color", "#006BB6");
       }
     });
+
+    $('.admin-navbar a').click(function (e) {
+      $('.admin-navbar a.active').removeClass('active');
+      $(this).addClass('active');
+      e.preventDefault();
+    });
+
   </script>
   {% endblock %}
