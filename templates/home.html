@@ -536,10 +536,13 @@ if user.admin %} {{ super() }}
   {% endblock main %} {% block script %} {{ super() }}
   <script type="text/javascript">
     require(["home"]);
-    $('li').click(function() {
-      $(this).siblings().find('a').removeClass('focus');
-      $(this).find('a').addClass('focus');
+    $(document).ready(function() {
+    $(".navbar-default .navbar-nav>li [href]").each(function() {
+        if (this.href == window.location.href) {
+            $(this).addClass("active");
+        }
     });
+});
     window.onload = function () {
       const userAction = async () => {
         const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
