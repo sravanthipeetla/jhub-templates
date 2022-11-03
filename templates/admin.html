@@ -1,13 +1,12 @@
 {% extends "templates/page.html" %}
-
-{% block main %}
-<div id="react-admin-hook">
-  <script id="jupyterhub-admin-config">
-    window.api_page_limit = parseInt("{{ api_page_limit|safe }}")
-    window.base_url = "{{ base_url|safe }}"
-  </script>
-  <script src={{ static_url("js/admin-react.js") }}></script>
+{% block stylesheet %}
+  {{ super() }}
   <style>
+    .navbar-default {
+      background-color: #ffffff;
+      border: none;
+      font-size: 15px;
+    }
     .admin-navbar {
       overflow: hidden;
     }
@@ -32,7 +31,15 @@
       border-bottom: 3px solid #006BB6;
     }
   </style>
-  <div class="admin-navbar">
+{% endblock %}
+{% block main %}
+<div id="react-admin-hook">
+  <script id="jupyterhub-admin-config">
+    window.api_page_limit = parseInt("{{ api_page_limit|safe }}")
+    window.base_url = "{{ base_url|safe }}"
+  </script>
+  <script src={{ static_url("js/admin-react.js") }}></script>
+   <div class="admin-navbar">
     <a class="active">Course</a>
     <a>Instructors</a>
     <a>Learners</a>
