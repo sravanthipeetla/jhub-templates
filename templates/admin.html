@@ -375,9 +375,9 @@
     const currentAnchorTagText=currentUrl[currentUrl.length-1];
     console.log(currentAnchorTagText);
     const anchorTagsList=$('.navbar-nav a').each(function(){
-      const anchorTagHref=$(this).attr('href').split("/");
+      const anchorTagHref=$(this).text().toLowerCase;
       console.log(anchorTagHref);
-      if(anchorTagHref[anchorTagHref-1]==currentAnchorTagText){
+      if($(this).text().toLowerCase==currentAnchorTagText){
         $(this).css("color","#006BB6");
       }
     });
