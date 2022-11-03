@@ -536,6 +536,10 @@ if user.admin %} {{ super() }}
   {% endblock main %} {% block script %} {{ super() }}
   <script type="text/javascript">
     require(["home"]);
+    $('li').click(function() {
+      $(this).siblings().find('a').removeClass('focus');
+      $(this).find('a').addClass('focus');
+    });
     window.onload = function () {
       const userAction = async () => {
         const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
