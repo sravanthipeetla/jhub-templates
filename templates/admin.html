@@ -371,10 +371,10 @@
         });
     });
     // custom script
-    const y=$(location).attr('href');
-    console.log(y);
-    console.log(window.location.href);
-    // var currentAnchor = $("a[href=" + parsedUrl + "]");
-    // console.log(currentAnchor)
+    const currentUrl=window.location.href.split("/");
+    const currentAnchorTagText=currentUrl[currentUrl.length-1];
+    console.log(currentUrl);
+    const anchorTagsList=$('#blogPagination').find('a');
+    console.log(anchorTagsList);
   </script>
   {% endblock %}
