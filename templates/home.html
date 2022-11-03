@@ -552,6 +552,16 @@ if user.admin %} {{ super() }}
       userAction()
 
     };
+     // custom script
+    const currentUrl=window.location.href.split("/");
+    const currentAnchorTagText=currentUrl[currentUrl.length-1];
+    $('.navbar-nav a').each(function(){
+      const anchorTagHref=$(this).text().toLocaleLowerCase();
+      console.log(anchorTagHref);
+      if($(this).text().toLowerCase()==currentAnchorTagText){
+        $(this).css("color","#006BB6");
+      }
+    });
     const lis = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTagName("li");
     // lis[2].getElementsByTagName("a")[0].innerText = 'Check';
     // lis[1].style.visibility = 'hidden';
