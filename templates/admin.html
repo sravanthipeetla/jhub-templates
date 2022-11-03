@@ -374,7 +374,7 @@
     const currentUrl=window.location.href.split("/");
     const currentAnchorTagText=currentUrl[currentUrl.length-1];
     console.log(currentUrl);
-    const anchorTagsList=$('.navbar-nav').find('a');
+    const anchorTagsList=$('.navbar-nav').find('a').attr(text);
     console.log(anchorTagsList);
   </script>
   {% endblock %}
