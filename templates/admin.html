@@ -448,7 +448,7 @@
         console.log(course_dict);
         courseDetails.push(course_dict);
       });
-      $("#admin-table").html('');
+      // $("#admin-table").html('');
       var thead='<thead><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr></thead>';
       var tbody='<tbody>'
       $.each(courseDetails, function (key, val) {
@@ -461,6 +461,7 @@
         tbody.append(tr);
       });
       tbody += '</tbody>'
+      console.log(tbody);
       $("#admin-table").append(thead);
       $("#admin-table").append(tbody);
     })
