@@ -431,7 +431,7 @@
       const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
       const responseJson = await response.json();
       const courses = responseJson.courses;
-      let courseDetails = [];
+      const courseDetails = [];
       Object.values(courses).forEach(async course => {
         const course_dict = {};
         const instructors_count_reponse = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course);
