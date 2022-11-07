@@ -448,8 +448,9 @@
       // $("#admin-table").html('');
       var thead = '<thead><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr></thead>';
       var tbody = '<tbody>';
-      console.log(courseDetails);
+      console.log(courseDetails[0]);
       for(detail in courseDetails) {
+        console.log(detail);
         console.log(detail[course]);
         console.log(details[instructors_count]);
         var tr = '<tr>';
