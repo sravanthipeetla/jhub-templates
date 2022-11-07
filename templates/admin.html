@@ -426,11 +426,11 @@
     });
 
     //course-nav
-    $('#course-nav').click(async function () {
+    $('#course-nav').click(() => {
       let course_list = []
       // http://192.168.49.2:30562/hub/admin
-      const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
-      const courses = await response.json().courses;
+      const response = fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
+      const courses = response.json().courses;
       console.log(response);
       let courseDetails = []
       Object.values(courses).forEach(course => {
