@@ -539,7 +539,9 @@ if user.admin %} {{ super() }}
     window.onload = function () {
       const userAction = async () => {
         const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
+        console.log(response);
         const myJson = await response.json();
+        console.log(myJson);
         var courses_list = myJson.courses;
         $.each(courses_list, function (item, value) {
           $('#course-list').append($('<option>', {

@@ -426,12 +426,12 @@
     });
 
     //course-nav
-    $('#course-nav').click(() => {
+    $('#course-nav').click(async () => {
       let course_list = []
       // http://192.168.49.2:30562/hub/admin
-      const response = fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
-      console.log(response.json().courses);
-      // const courses = response.json().courses;
+      const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
+      console.log(response);
+      // const courses = await response.json().courses;
       // let courseDetails = []
       // Object.values(courses).forEach(course => {
       //   const course_dict = {}
