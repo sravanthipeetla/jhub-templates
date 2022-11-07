@@ -263,7 +263,6 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         .btn.btn-jupyter.btn-lg {
             width: calc(23vw + 1rem);
         }
-
         .plant {
             width: 106px;
             bottom: 130px;
@@ -277,6 +276,13 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             bottom: 174px;
             left: -195px;
         }
+        .login-form-wrapper {
+            margin-top: 6vw;
+        }
+        .btn.btn-jupyter.btn-lg {
+            width: calc(26vw + 1rem);
+            font-size: 1.3vw;
+        }       
     }
 
     @media (max-width:1440px) {
@@ -303,27 +309,26 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
 
     @media (max-width: 1366px) and (max-height: 768px) {
         .student-img .student-2 {
-            right: -100px;
-            width: calc(26vw + 9rem);
+            right: -59px;
+            width: calc(9vw + 9rem);
         }
-
-        .student-img .student-1 {
-            width: calc(17vw + 2rem);
-            right: -18px;
+        .hcl-logo {
+             width: 130px;
         }
-
         .plant {
             width: 89px;
-            bottom: 172px;
-            left: -125px;
+            bottom: 125px;
+            left: 122px;
         }
-
         .login-form-wrapper {
-            padding-top: 149px;
+            padding-top: 23px;
         }
 
         .btn.btn-jupyter.btn-lg {
             width: calc(28.5vw + 1rem);
+        }
+        login-form-wrapper {
+            padding-left: 3vw;
         }
     }
 
@@ -336,22 +341,43 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             width: calc(28.5vw + 1rem);
         }
     }
+    @media (max-width: 1280px) and (max-height: 1024px) {
+        h3 {
+            font-size: 1.8vw;
+        }
+        .student-img .student-2 {
+            right: -136px;
+            width: calc(16vw + 10rem);
+
+        }
+        .plant {
+            width: 116px;
+            bottom: 120px;
+            left: 114px;
+        }
+        .login-form-wrapper {
+            padding-left: 5vw;
+        }
+        .login-form-wrapper-img {
+            width: 47vw;
+            margin-top: -14vw;
+        }
+        .btn.btn-jupyter.btn-lg {
+            width: calc(35.5vw + 1rem);
+            font-size: 1.8vw;
+        }
+    }
 
     @media (max-width: 1280px) and (max-height: 720px) {
         .student-img .student-2 {
-            right: -95px;
-            width: calc(26vw + 9rem);
+            right: -58px;
+            width: calc(8vw + 9rem);
         }
-
-        .student-img .student-1 {
-            width: calc(17vw + 2rem);
-            right: -15px;
-        }
-
-        .plant {
+        
+       .plant {
             width: 90px;
-            bottom: 172px;
-            left: -127px;
+            bottom: 124px;
+            left: 132px;
         }
 
         .login-form-wrapper {
@@ -391,9 +417,28 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
     }
 
     @media (max-width: 1024px) and (max-height: 768px) {
+        .left-content-wrapper h3 {
+            margin-top: 129px;
+        }
+        .student-img .student-2 {
+            right: -71px;
+            width: 211px;
+            bottom: 134px;
+        }
+        .plant {
+            width: 85px;
+            bottom: 130px;
+            left: 150px;
+        }
+        .section-header .hcl-logo {
+            width: 115px;
+        }
         .login-form-wrapper {
             width: 100%;
             padding-top: 0px;
+        }
+        .login-form-wrapper h3 {
+            font-size: 21px;
         }
 
         .login-form-wrapper-p {
@@ -401,13 +446,8 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         }
 
         .btn.btn-jupyter.btn-lg {
-            font-size: 1.6vw;
-            width: calc(39vw + 1rem);
-            align-self: center;
-        }
-
-        .btn.btn-jupyter.btn-lg {
-            width: calc(29vw + 1rem);
+            font-size: 1.4vw;
+            width: calc(30vw + 1rem);
         }
     }
 
@@ -494,15 +534,9 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             font-size: 2.1vw;
         }
 
-        .student-img .student-2 {
-            right: -96px;
-            width: 418px;
-        }
-
-        .student-img .student-1 {
-            bottom: 157px;
-            width: 218px;
-            right: -27px;
+       .student-img .student-2 {
+            right: -50px;
+            width: 178px;
         }
 
         .login-form-wrapper {
@@ -535,75 +569,74 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         }
 
         .section-header {
-            padding: 35px;
+            padding: 22px;
         }
 
         .login-form-wrapper {
-            width: 100%;
-            margin: 126px auto;
+            padding-top: 125px;
+        }
+        .login-form-wrapper h3 {
+            font-size: 30px;
         }
 
         .login-form-wrapper p {
             font-size: 22px;
         }
+        .login-form-wrapper-img {
+            width: 65vw;
+        }
 
-        .btn.btn-jupyter.btn-lg {
-            font-size: 2.2vw;
-            width: calc(52vw + 1rem);
+      .btn.btn-jupyter.btn-lg {
+            font-size: 3.2vw;
+            width: calc(58vw + 1rem);
             align-self: center;
         }
     }
 
     @media (max-width: 642px) {
         .section-header {
-            padding: 35px;
+            padding: 15px;
         }
 
         .login-form-wrapper {
             width: 100%;
-            margin: 125px auto;
+            padding-top: 65px;
         }
 
-        .login-form-wrapper p {
-            font-size: 22px;
-        }
-
-        .btn.btn-jupyter.btn-lg {
+       .btn.btn-jupyter.btn-lg {
             font-size: 2.6vw;
-            width: calc(72vw + 1rem);
+            width: calc(55vw + 1rem);
             align-self: center;
         }
     }
-
+    
     @media (max-width: 480px) {
-        .section-header {
-            padding: 30px;
+       .section-header {
+            padding: 12px;
         }
 
         .section-header .hcl-logo {
-            width: 156px;
+            width: 115px;
         }
 
         .top-copyright img {
             width: 85px;
             margin-left: 10px;
         }
+        .login-form-wrapper h3 {
+            font-size: 20px;
+        }
 
         .login-form-wrapper {
             width: 100%;
-            margin: 115px auto;
         }
 
         .login-form-wrapper p {
             font-size: 22px;
         }
-
-        .top-copyright img {
-            width: 75px;
-        }
-
+        
         .btn.btn-jupyter.btn-lg {
-            font-size: 3.5vw;
+            font-size: 3vw;
             width: calc(74vw + 1rem);
             align-self: center;
         }
