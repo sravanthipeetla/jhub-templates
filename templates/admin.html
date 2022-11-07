@@ -450,7 +450,7 @@
       var thead = '<thead><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr></thead>';
       var tbody = '<tbody>';
       console.log(courseDetails.length);
-      for(detail in courseDetails) {
+      courseDetails.forEach(function (detail) {
         console.log(detail);
         console.log(detail[course]);
         console.log(details[instructors_count]);
@@ -462,7 +462,7 @@
         tr += '</tr>';
         console.log(tr);
         tbody += tr;
-      };
+      });
       tbody += '</tbody>'
       console.log(tbody);
       $("#admin-table").append(thead);
