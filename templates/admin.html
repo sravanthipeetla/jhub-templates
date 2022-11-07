@@ -449,6 +449,8 @@
       var thead='<thead><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr></thead>';
       var tbody='<tbody>';
       $.each(courseDetails, function (key, val) {
+        console.log(key);
+        console.log(value);
         var tr = '<tr>';
         tr += '<td>' + val.course + '</td>';
         tr += '<td>' + val.instructors_count + '</td>';
