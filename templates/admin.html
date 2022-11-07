@@ -437,8 +437,12 @@
       let courseDetails = []
       Object.values(courses).forEach(course => {
         const course_dict = {}
-        const instructors_count = (fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course)).json().instructors.length;
-        const students_count = (fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course)).json().students.length;
+        const instructors_count_reponse = fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course);
+        const instructors_count_response_json=instructors_count_reponse.json();
+        const instructors_count=instructors_count_response_json.instructors.length;
+        const students_count_response = fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course);
+        const students_count_response_json=json().students;
+        const students_count=students_count_response_json.length;
         course_dict["course"] = course
         course_dict["instructor_count"] = instructors_count
         course_dict["students_count"] = students_count
