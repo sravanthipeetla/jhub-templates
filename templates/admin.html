@@ -435,14 +435,14 @@
       const courses=responseJson.courses;
       console.log(courses);
       let courseDetails = []
-      Object.values(courses).forEach(course => {
+      Object.values(courses).forEach(async course => {
         const course_dict = {};
-        const instructors_count_reponse = fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course);
-        const instructors_count_response_json=instructors_count_reponse.json();
+        const instructors_count_reponse = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course);
+        const instructors_count_response_json=await instructors_count_reponse.json();
         const instructors_count=instructors_count_response_json.instructors.length;
-        const students_count_response = fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course);
-        const students_count_response_json=json().students;
-        const students_count=students_count_response_json.length;
+        const students_count_response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course);
+        const students_count_response_json=await students_count_response.json();
+        const students_count=students_count_response_json.students.length;
         course_dict["course"] = course;
         course_dict["instructor_count"] = instructors_count;
         course_dict["students_count"] = students_count;
