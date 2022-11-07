@@ -443,7 +443,10 @@
         course_dict["course"] = course;
         course_dict["instructors_count"] = instructors_count;
         course_dict["students_count"] = students_count;
+        console.log(typeof(course_dict));
         courseDetails.push(course_dict);
+        console.log(typeof(courseDetails));
+        console.log(courseDetails.length);
       });
       // $("#admin-table").html('');
       var thead = '<thead><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr></thead>';
