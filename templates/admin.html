@@ -429,10 +429,8 @@
     $('#course-nav').click(async () => {
       // http://192.168.49.2:30562/hub/admin
       const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
-      console.log(response);
       const responseJson = await response.json();
       const courses=responseJson.courses;
-      console.log(courses);
       let courseDetails = []
       Object.values(courses).forEach(async course => {
         const course_dict = {};
@@ -445,12 +443,11 @@
         course_dict["course"] = course;
         course_dict["instructor_count"] = instructors_count;
         course_dict["students_count"] = students_count;
-        console.log(course_dict);
         courseDetails.push(course_dict);
       });
       // $("#admin-table").html('');
       var thead='<thead><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr></thead>';
-      var tbody='<tbody>'
+      var tbody='<tbody>';
       $.each(courseDetails, function (key, val) {
         var tr = '<tr>';
         tr += '<td>' + val.course + '</td>';
@@ -458,7 +455,7 @@
         tr += '<td>' + val.students_count + '</td>';
         tr += '<td><button class="delete_course" data-key="' + val.course + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td>';
         tr += '</tr>';
-        tbody.append(tr);
+        tbody +=tr;
       });
       tbody += '</tbody>'
       console.log(tbody);
