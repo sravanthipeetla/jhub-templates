@@ -443,15 +443,12 @@
         course_dict["course"] = course;
         course_dict["instructors_count"] = instructors_count;
         course_dict["students_count"] = students_count;
-        console.log(typeof(course_dict));
         courseDetails.push(course_dict);
-        console.log(typeof(courseDetails));
-        console.log(courseDetails.length);
       });
       // $("#admin-table").html('');
       var thead = '<thead><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr></thead>';
       var tbody = '<tbody>';
-      console.log(courseDetails.keys);
+      console.log(courseDetails.length);
       Object.values(courseDetails).forEach((detail) => {
         console.log(detail);
         console.log(detail[course]);
