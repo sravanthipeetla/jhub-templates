@@ -431,7 +431,7 @@
       const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
       const responseJson = await response.json();
       const courses = responseJson.courses;
-      let courseDetails = []
+      let courseDetails = [];
       Object.values(courses).forEach(async course => {
         const course_dict = {};
         const instructors_count_reponse = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course);
@@ -445,6 +445,7 @@
         course_dict["students_count"] = students_count;
         courseDetails.push(course_dict);
       });
+      console.log(courseDetails);
       // $("#admin-table").html('');
       var thead = '<thead><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr></thead>';
       var tbody = '<tbody>';
