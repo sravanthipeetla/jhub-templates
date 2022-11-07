@@ -445,6 +445,8 @@
         courseDetails.append(course_dict);
       });
       $("#admin-table").html('');
+      var thead='<thead><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr></thead>';
+      var tbody='<tbody>'
       $.each(course_list, function (key, val) {
         var tr = '<tr>';
         tr += '<td>' + val.course + '</td>';
@@ -452,21 +454,12 @@
         tr += '<td>' + val.students_count + '</td>';
         tr += '<td><button class="delete_course" data-key="' + val.course + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td>';
         tr += '</tr>';
-        $("#admin-table").append(tr);
-        //$('tbody').append(tr);
-
+        tbody.append(tr);
       });
-
+      tbody += '</tbody>'
+      $("#admin-table").append(thead);
+      $("#admin-table").append(tbody);
     })
 
   </script>
-
-  <!-- const mytable = document.getElementById("admin-table");
-$.each(courseDetails, function (value) {
-  let newRow = document.createElement("thead");
-    $('#admin-table').append($('<option>', {
-      value: value,
-      text: value
-    }));
-  }) -->
   {% endblock %}
