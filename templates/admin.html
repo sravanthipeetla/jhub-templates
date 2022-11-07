@@ -426,7 +426,7 @@
     });
 
     //course-nav
-    $('#course-nav').click(async () => {
+    const courses_click=async () => {
       // http://192.168.49.2:30562/hub/admin
       const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
       const responseJson = await response.json();
@@ -468,6 +468,8 @@
       $("#admin-table").append(thead);
       $("#admin-table").append(tbody);
 
-    });
+    };
+    window.onload = courses_click;
+    $('#course-nav').click=courses_click;
   </script>
   {% endblock %}
