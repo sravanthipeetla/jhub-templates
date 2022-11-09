@@ -411,7 +411,7 @@
     // To change the color for active link in top left navbar items
     const currentUrl = window.location.href.split("/");
     const currentAnchorTagText = currentUrl[currentUrl.length - 1];
-    $('.navbar-nav a').each(function () {
+    $('.navbar-nav a').each(() => {
       const anchorTagHref = $(this).text().toLocaleLowerCase();
       if ($(this).text().toLowerCase() == currentAnchorTagText) {
         $(this).css("color", "#006BB6");
@@ -419,7 +419,7 @@
     });
 
     // To change the color for active link in admin-navbar items
-    $('.admin-navbar a').click(function (e) {
+    $('.admin-navbar a').click( (e)=> {
       $('.admin-navbar a.active').removeClass('active');
       $(this).addClass('active');
       e.preventDefault();
@@ -429,65 +429,56 @@
     let courseDetails = [];
     //course-nav
     const courses_click = async () => {
-      const courses_list_promise= await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then(function (response) {
+      const courses_list_promise= await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
         return response.json();
       }).then((data) => {
         courses_list=data.courses;
-      }).catch(function (error) {
+      }).catch((error) => {
         console.log(error);
       });
-      console.log(courses_list);
-      // console.log(courses_list_promise);
-      // const course_list= () => {
-      //  courses_list_promise.then((courses)=>{
-      //   return courses;
-      //  })
-      // };
-      // courses_list=course_list();
-      // console.log(courses_list);
-      // Object.values(courses_list).forEach(course => {
-      //   instructors_count = fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then(function (response) {
-      //     return response.json();
-      //   }).then(function (response) {
-      //     return response.instructors.length;
-      //   }).catch(function (error) {
-      //     console.log(error);
-      //   });
-      //   students_count = fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then(function (response) {
-      //     return response.json();
-      //   }).then(function (response) {
-      //     return response.students.length;
-      //   }).catch(function (error) {
-      //     console.log(error);
-      //   });
-      //   course_dict["course"] = course;
-      //   course_dict["instructors_count"] = instructors_count;
-      //   course_dict["students_count"] = students_count;
-      //   courseDetails.push(course_dict);
-      // });
-      // // $("#admin-table").html('');
-      // var thead = '<thead><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr></thead>';
-      // var tbody = '<tbody>';
-      // console.log(courseDetails);
-      // console.log(courseDetails.length);
-      // console.log(typeof (courseDetails));
-      // Object.values(courseDetails).forEach((detail) => {
-      //   console.log(detail);
-      //   console.log(detail[course]);
-      //   console.log(details[instructors_count]);
-      //   var tr = '<tr>';
-      //   tr += '<td>' + detail[course] + '</td>';
-      //   tr += '<td>' + detail[instructors_count] + '</td>';
-      //   tr += '<td>' + detail[students_count] + '</td>';
-      //   tr += '<td><button class="delete_course" data-key="' + deatil[course] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td>';
-      //   tr += '</tr>';
-      //   console.log(tr);
-      //   tbody += tr;
-      // });
-      // tbody += '</tbody>'
-      // console.log(tbody);
-      // $("#admin-table").append(thead);
-      // $("#admin-table").append(tbody);
+      Object.values(courses_list).forEach(async (course) => {
+        instructors_count = fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then( (response) => {
+          return response.json();
+        }).then((data) => {
+          return data.instructors.length;
+        }).catch((error) => {
+          console.log(error);
+        });
+        students_count = fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then((response)=> {
+          return response.json();
+        }).then((data) => {
+          return data.students.length;
+        }).catch((error) => {
+          console.log(error);
+        });
+        course_dict["course"] = course;
+        course_dict["instructors_count"] = instructors_count;
+        course_dict["students_count"] = students_count;
+        courseDetails.push(course_dict);
+      });
+      // $("#admin-table").html('');
+      var thead = '<thead><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr></thead>';
+      var tbody = '<tbody>';
+      console.log(courseDetails);
+      console.log(courseDetails.length);
+      console.log(typeof (courseDetails));
+      Object.values(courseDetails).forEach((detail) => {
+        console.log(detail);
+        console.log(detail[course]);
+        console.log(details[instructors_count]);
+        var tr = '<tr>';
+        tr += '<td>' + detail[course] + '</td>';
+        tr += '<td>' + detail[instructors_count] + '</td>';
+        tr += '<td>' + detail[students_count] + '</td>';
+        tr += '<td><button class="delete_course" data-key="' + deatil[course] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td>';
+        tr += '</tr>';
+        console.log(tr);
+        tbody += tr;
+      });
+      tbody += '</tbody>'
+      console.log(tbody);
+      $("#admin-table").append(thead);
+      $("#admin-table").append(tbody);
 
     };
     window.onload = courses_click;
