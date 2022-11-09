@@ -426,19 +426,28 @@
     });
 
     //course-nav
-    const courses_click=async () => {
+    const courses_click = async () => {
       // http://192.168.49.2:30562/hub/admin
       const courseDetails = [];
-      const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
-      const responseJson = await response.json();
-      const courses = responseJson.courses;
+      const course_response_json = fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then(function (response) {
+        return response.json();
+      }).catch(function (error) {
+        return error.json();
+      });
+      const courses = course_response_json.courses;
       Object.values(courses).forEach(async course => {
         const course_dict = {};
-        const instructors_count_reponse = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course);
-        const instructors_count_response_json = await instructors_count_reponse.json();
+        const instructors_count_reponse_json = fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then(function (response) {
+          return response.json();
+        }).catch(function (error) {
+          return error.json();
+        });
         const instructors_count = instructors_count_response_json.instructors.length;
-        const students_count_response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course);
-        const students_count_response_json = await students_count_response.json();
+        const students_count_response_json = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then(function (response) {
+          return response.json();
+        }).catch(function (error) {
+          return error.json();
+        });;
         const students_count = students_count_response_json.students.length;
         course_dict["course"] = course;
         course_dict["instructors_count"] = instructors_count;
@@ -450,7 +459,7 @@
       var tbody = '<tbody>';
       console.log(courseDetails);
       console.log(courseDetails.length);
-      console.log(typeof(courseDetails));
+      console.log(typeof (courseDetails));
       Object.values(courseDetails).forEach((detail) => {
         console.log(detail);
         console.log(detail[course]);
@@ -471,6 +480,6 @@
 
     };
     window.onload = courses_click;
-    $('#course-nav').click=courses_click;
+    $('#course-nav').click = courses_click;
   </script>
   {% endblock %}
