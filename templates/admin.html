@@ -437,14 +437,14 @@
         console.log(error);
       });
       Object.values(courses_list).forEach(async (course) => {
-        instructors_count = fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then( (response) => {
+        instructors_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then( (response) => {
           return response.json();
         }).then((data) => {
           return data.instructors.length;
         }).catch((error) => {
           console.log(error);
         });
-        students_count = fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then((response)=> {
+        students_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then((response)=> {
           return response.json();
         }).then((data) => {
           return data.students.length;
@@ -471,7 +471,7 @@
         tr += '<td>' + detail.course + '</td>';
         tr += '<td>' + detail.instructors_count + '</td>';
         tr += '<td>' + detail.students_count + '</td>';
-        tr += '<td><button class="delete_course" data-key="' + deatil[course] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td>';
+        tr += '<td><button class="delete_course" data-key="' + deatil.course + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td>';
         tr += '</tr>';
         console.log(tr);
         tbody += tr;
