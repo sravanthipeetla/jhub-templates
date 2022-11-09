@@ -100,6 +100,8 @@
       <button class="add-btn">Add course</button>
     </div>
     <table class="admin-table" id="admin-table">
+      <thead class="admin-thead"></thead>
+      <tbody class="admin-tbody"></tbody>
     </table>
   </div>
   {% endblock %}
@@ -427,8 +429,7 @@
     let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
-    let thead = '<thead><tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr></thead>';
-    let tbody = '<tbody>';
+    $("#admin-thead").append('<thead><tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr></thead>');
     //course-nav
     const courses_click = async () => {
       const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
@@ -457,15 +458,9 @@
         course_dict["instructors_count"] = instructors_count;
         course_dict["students_count"] = students_count;
         courseDetails.push(course_dict);
-        const tr = '<tr><td>' + course_dict["course"] + '</td></tr>';
-        console.log(tr)
-        tbody += tr;
- 
+        const tr = '<tr><td>' + course_dict["course"] + '</td><td><button class="delete_course" data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td></tr>';
+        $("#admin-tbody").append(tr);
       });
-      tbody += '</tbody>';
-      console.log(tbody)
-      $("#admin-table").append(thead);
-      $("#admin-table").append(tbody);
     };
     window.onload = courses_click;
     $('#course-nav').click = courses_click;
