@@ -428,8 +428,8 @@
     let course_dict={};
     let courseDetails = [];
     //course-nav
-    const courses_click = () => {
-      const courses_list_promise= fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then(function (response) {
+    const courses_click = async () => {
+      const courses_list_promise= await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then(function (response) {
         console.log(response.data);
         return response.data;
       }).then(function (response) {
