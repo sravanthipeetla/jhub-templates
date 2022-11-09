@@ -432,16 +432,16 @@
       const courses_list_promise= fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then(function (response) {
         return response.data;
       }).then(function (response) {
-        return response.json().courses;
+        console.log(response);
       }).catch(function (error) {
         console.log(error);
       });
-      console.log(courses_list_promise);
-      const course_list= () => {
-       courses_list_promise.then((courses)=>{
-        return courses;
-       })
-      };
+      // console.log(courses_list_promise);
+      // const course_list= () => {
+      //  courses_list_promise.then((courses)=>{
+      //   return courses;
+      //  })
+      // };
       courses_list=course_list();
       console.log(courses_list);
       // Object.values(courses_list).forEach(course => {
