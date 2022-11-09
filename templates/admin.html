@@ -427,7 +427,7 @@
     let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
-    let thead = '<thead><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr></thead>';
+    let thead = '<thead><tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr></thead>';
     let tbody = '<tbody>';
     //course-nav
     const courses_click = async () => {
@@ -457,18 +457,12 @@
         course_dict["instructors_count"] = instructors_count;
         course_dict["students_count"] = students_count;
         courseDetails.push(course_dict);
-        let tr = '<tr>';
-        tr += '<td>' + course_dict["course"] + '</td>';
-        tr += '<td>' + course_dict["instructors_count"] + '</td>';
-        tr += '<td>' + course_dict["students_count"] + '</td>';
-        tr += '<td><button class="delete_course" data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td>';
-        tr += '</tr>';
+        const tr = '<tr>'+'<td>' + course_dict["course"] + '</td>'+ '<td>' + course_dict["instructors_count"] + '</td>'+'<td>' + course_dict["students_count"] + '</td>'+'<td><button class="delete_course" data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td></tr>';
         tbody += tr;
       });
       tbody += '</tbody>';
       $("#admin-table").append(thead);
       $("#admin-table").append(tbody);
-
     };
     window.onload = courses_click;
     $('#course-nav').click = courses_click;
