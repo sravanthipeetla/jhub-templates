@@ -424,35 +424,35 @@
       $(this).addClass('active');
       e.preventDefault();
     });
-    let courses_list,instructors_count,students_count;
+    let courses_list, instructors_count, students_count;
+    let course_dict={};
+    let courseDetails = [];
     //course-nav
     const courses_click = async () => {
       // http://192.168.49.2:30562/hub/admin
-      const courseDetails = [];
-      courses_list=await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then(function (response) {
+      courses_list = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then(function (response) {
         return response.json();
-      }).then(function (response){
+      }).then(function (response) {
         return response.courses;
       }).catch(function (error) {
         console.log(error);
       });
       console.log(courses_list);
       Object.values(courses_list).forEach(async course => {
-        const course_dict = {};
-        instructors_count= await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then(function (response) {
-        return response.json();
-      }).then(function (response){
-        return response.instructors.length;
-      }).catch(function (error) {
-        console.log(error);
-      });
-      students_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then(function (response) {
-        return response.json();
-      }).then(function (response){
-        return response.students.length;
-      }).catch(function (error) {
-        console.log(error);
-      });
+        instructors_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then(function (response) {
+          return response.json();
+        }).then(function (response) {
+          return response.instructors.length;
+        }).catch(function (error) {
+          console.log(error);
+        });
+        students_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then(function (response) {
+          return response.json();
+        }).then(function (response) {
+          return response.students.length;
+        }).catch(function (error) {
+          console.log(error);
+        });
         course_dict["course"] = course;
         course_dict["instructors_count"] = instructors_count;
         course_dict["students_count"] = students_count;
