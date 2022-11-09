@@ -430,8 +430,7 @@
     const courses_click = async () => {
       // http://192.168.49.2:30562/hub/admin
       const courseDetails = [];
-      fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then(function (response) {
-        
+      await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then(function (response) {
         return response.json();
       }).then(function (response){
         courses_tst=response;
