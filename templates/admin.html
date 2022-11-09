@@ -1,322 +1,515 @@
 {% extends "templates/page.html" %}
+{% block stylesheet %}
+{{ super() }}
+<style>
+  .navbar-collapse {
+    margin: 1vw;
+  }
 
+  .navbar-default {
+    background-color: #ffffff;
+    border: none;
+  }
+
+  .navbar-default .navbar-nav>li>a {
+    color: #000000;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .navbar-default .navbar-text {
+    color: #000000;
+  }
+
+  #jupyterhub-logo .jpy-logo {
+    height: 3.5vh;
+    margin: 1.6vw;
+  }
+
+  .admin-container {
+    padding-left: 12vw;
+    padding-right: 12vw;
+  }
+
+  .admin-navbar {
+    overflow: hidden;
+  }
+
+  /* Style the links inside the navigation bar */
+  .admin-navbar a {
+    float: left;
+    display: block;
+    color: #000000;
+    text-align: center;
+    padding: 1vw 4vw;
+    text-decoration: none;
+    font-size: 17px;
+    border-bottom: 0.3vw solid #DBDBDB;
+  }
+
+  .admin-navbar a:hover {
+    cursor: pointer;
+  }
+
+  .admin-navbar a.active {
+    border-bottom: 0.3vw solid #006BB6;
+    color: #006BB6;
+  }
+
+  .description-bar {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1.5vw;
+  }
+
+  .description {
+    font-family: Gothic A1;
+    font-size: 16px;
+    padding: 0.7vw;
+  }
+
+  .add-btn {
+    border: none;
+    background-color: #5FBEF0;
+    width: 8vw;
+    border-radius: 1.5vw;
+    color: white;
+    font-weight: 800;
+    height: 2.5vw;
+    font-size: 17px;
+  }
+
+  #admin-table {
+
+    background: #FFFFFF;
+    border: 2px solid #5FBEF0;
+    border-collapse: inherit;
+    border-radius: 14px;
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  #admin-thead {
+    background: #D2EDFB;
+    border-collapse: inherit;
+    border-radius: 14px 14px 0px 0px;
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  #admin-tbody {
+    font-family: 'Gothic A1';
+    font-size: 18px;
+  }
+
+  thead td:first-child {
+    color: #006BB6;
+  }
+
+  td:first-child {
+    color: #006BB6;
+    border-radius: 14px 0px 0px 0px;
+  }
+
+  td:last-child {
+    color: #006BB6;
+    border-radius: 14px 0px 0px 0px;
+  }
+
+  td {
+    padding: 14px;
+  }
+
+  .delete_course {
+    border: none;
+    background-color: #ffffff;
+  }
+</style>
+{% endblock %}
 {% block main %}
 <div id="react-admin-hook">
   <script id="jupyterhub-admin-config">
     window.api_page_limit = parseInt("{{ api_page_limit|safe }}")
     window.base_url = "{{ base_url|safe }}"
   </script>
-  <script src={{ static_url("js/admin-react.js") }}></script>
-</div>
-{% endblock %}
-
-{% block footer %}
-<div class="container-fluid navbar-default small version_footer">
-  <div class="navbar-text">
-    JupyterHub {{ server_version }}
+  <script src={{ static_url("js/admin.js") }}></script>
+  <div class="admin-container">
+    <div class="admin-navbar">
+      <a class="active" id="course-nav">Course</a>
+      <a class="instructor-nav">Instructors</a>
+      <a class="learner-nav">Learners</a>
+      </ul>
+    </div>
+    <div class="description-bar">
+      <p class="description">You can manage courses, instructors and learners from here.</p>
+      <button class="add-btn">Add course</button>
+    </div>
+    <table class="admin-table" id="admin-table">
+      <thead id="admin-thead"></thead>
+      <tbody id="admin-tbody"></tbody>
+    </table>
   </div>
-</div>
-{% endblock %}
+  {% endblock %}
 
-{% block script %}
-{{ super() }}
-<script type="text/javascript">
-  // require(["admin"]);
-  // Copyright (c) Jupyter Development Team.
-  // Distributed under the terms of the Modified BSD License.
+  {% block footer %}
+  {% endblock %}
 
-  require(["jquery", "moment", "jhapi", "utils"], function (
-    $,
-    moment,
-    JHAPI,
-    utils
-  ) {
-    "use strict";
+  {% block script %}
+  {{ super() }}
+  <script type="text/javascript">
+    // require(["admin"]);
+    // Copyright (c) Jupyter Development Team.
+    // Distributed under the terms of the Modified BSD License.
 
-    var base_url = window.jhdata.base_url;
-    var prefix = window.jhdata.prefix;
-    var admin_access = window.jhdata.admin_access;
-    var options_form = window.jhdata.options_form;
+    require(["jquery", "moment", "jhapi", "utils"], function (
+      $,
+      moment,
+      JHAPI,
+      utils
+    ) {
+      "use strict";
 
-    var api = new JHAPI(base_url);
+      var base_url = window.jhdata.base_url;
+      var prefix = window.jhdata.prefix;
+      var admin_access = window.jhdata.admin_access;
+      var options_form = window.jhdata.options_form;
 
-    function getRow(element) {
-      var original = element;
-      while (!element.hasClass("server-row")) {
-        element = element.parent();
-        if (element[0].tagName === "BODY") {
-          console.error("Couldn't find row for", original);
-          throw new Error("No server-row found");
-        }
-      }
-      return element;
-    }
+      var api = new JHAPI(base_url);
 
-    function resort(col, order) {
-      var query = window.location.search.slice(1).split("&");
-      // if col already present in args, remove it
-      var i = 0;
-      while (i < query.length) {
-        if (query[i] === "sort=" + col) {
-          query.splice(i, 1);
-          if (query[i] && query[i].substr(0, 6) === "order=") {
-            query.splice(i, 1);
+      function getRow(element) {
+        var original = element;
+        while (!element.hasClass("server-row")) {
+          element = element.parent();
+          if (element[0].tagName === "BODY") {
+            console.error("Couldn't find row for", original);
+            throw new Error("No server-row found");
           }
-        } else {
-          i += 1;
         }
+        return element;
       }
-      // add new order to the front
-      if (order) {
-        query.unshift("order=" + order);
-      }
-      query.unshift("sort=" + col);
-      // reload page with new order
-      window.location = window.location.pathname + "?" + query.join("&");
-    }
 
-    $("th").map(function (i, th) {
-      th = $(th);
-      var col = th.data("sort");
-      if (!col || col.length === 0) {
-        return;
+      function resort(col, order) {
+        var query = window.location.search.slice(1).split("&");
+        // if col already present in args, remove it
+        var i = 0;
+        while (i < query.length) {
+          if (query[i] === "sort=" + col) {
+            query.splice(i, 1);
+            if (query[i] && query[i].substr(0, 6) === "order=") {
+              query.splice(i, 1);
+            }
+          } else {
+            i += 1;
+          }
+        }
+        // add new order to the front
+        if (order) {
+          query.unshift("order=" + order);
+        }
+        query.unshift("sort=" + col);
+        // reload page with new order
+        window.location = window.location.pathname + "?" + query.join("&");
       }
-      var order = th.find("i").hasClass("fa-sort-desc") ? "asc" : "desc";
-      th.find("a").click(function () {
-        resort(col, order);
+
+      $("th").map(function (i, th) {
+        th = $(th);
+        var col = th.data("sort");
+        if (!col || col.length === 0) {
+          return;
+        }
+        var order = th.find("i").hasClass("fa-sort-desc") ? "asc" : "desc";
+        th.find("a").click(function () {
+          resort(col, order);
+        });
       });
-    });
 
-    $(".time-col").map(function (i, el) {
-      // convert ISO datestamps to nice momentjs ones
-      el = $(el);
-      var m = moment(new Date(el.text().trim()));
-      el.text(m.isValid() ? m.fromNow() : "Never");
-    });
+      $(".time-col").map(function (i, el) {
+        // convert ISO datestamps to nice momentjs ones
+        el = $(el);
+        var m = moment(new Date(el.text().trim()));
+        el.text(m.isValid() ? m.fromNow() : "Never");
+      });
 
-    $(".stop-server").click(function () {
-      var el = $(this);
-      var row = getRow(el);
-      var serverName = row.data("server-name");
-      var user = row.data("user");
-      el.text("stopping...");
-      var stop = function (options) {
-        return api.stop_server(user, options);
-      };
-      if (serverName !== "") {
-        stop = function (options) {
-          return api.stop_named_server(user, serverName, options);
+      $(".stop-server").click(function () {
+        var el = $(this);
+        var row = getRow(el);
+        var serverName = row.data("server-name");
+        var user = row.data("user");
+        el.text("stopping...");
+        var stop = function (options) {
+          return api.stop_server(user, options);
         };
-      }
-      stop({
-        success: function () {
-          el.text("stop " + serverName).addClass("hidden");
-          row.find(".access-server").addClass("hidden");
-          row.find(".start-server").removeClass("hidden");
-        },
+        if (serverName !== "") {
+          stop = function (options) {
+            return api.stop_named_server(user, serverName, options);
+          };
+        }
+        stop({
+          success: function () {
+            el.text("stop " + serverName).addClass("hidden");
+            row.find(".access-server").addClass("hidden");
+            row.find(".start-server").removeClass("hidden");
+          },
+        });
       });
-    });
 
-    $(".delete-server").click(function () {
-      var el = $(this);
-      var row = getRow(el);
-      var serverName = row.data("server-name");
-      var user = row.data("user");
-      el.text("deleting...");
-      api.delete_named_server(user, serverName, {
-        success: function () {
-          row.remove();
-        },
+      $(".delete-server").click(function () {
+        var el = $(this);
+        var row = getRow(el);
+        var serverName = row.data("server-name");
+        var user = row.data("user");
+        el.text("deleting...");
+        api.delete_named_server(user, serverName, {
+          success: function () {
+            row.remove();
+          },
+        });
       });
-    });
 
-    $(".access-server").map(function (i, el) {
-      el = $(el);
-      var row = getRow(el);
-      var user = row.data("user");
-      var serverName = row.data("server-name");
-      el.attr(
-        "href",
-        utils.url_path_join(prefix, "user", user, serverName) + "/"
-      );
-    });
-
-    if (admin_access && options_form) {
-      // if admin access and options form are enabled
-      // link to spawn page instead of making API requests
-      $(".start-server").map(function (i, el) {
+      $(".access-server").map(function (i, el) {
         el = $(el);
         var row = getRow(el);
         var user = row.data("user");
         var serverName = row.data("server-name");
         el.attr(
           "href",
-          utils.url_path_join(prefix, "hub/spawn", user, serverName)
+          utils.url_path_join(prefix, "user", user, serverName) + "/"
         );
       });
-      // cannot start all servers in this case
-      // since it would mean opening a bunch of tabs
-      $("#start-all-servers").addClass("hidden");
-    } else {
-      $(".start-server").click(function () {
+
+      if (admin_access && options_form) {
+        // if admin access and options form are enabled
+        // link to spawn page instead of making API requests
+        $(".start-server").map(function (i, el) {
+          el = $(el);
+          var row = getRow(el);
+          var user = row.data("user");
+          var serverName = row.data("server-name");
+          el.attr(
+            "href",
+            utils.url_path_join(prefix, "hub/spawn", user, serverName)
+          );
+        });
+        // cannot start all servers in this case
+        // since it would mean opening a bunch of tabs
+        $("#start-all-servers").addClass("hidden");
+      } else {
+        $(".start-server").click(function () {
+          var el = $(this);
+          var row = getRow(el);
+          var user = row.data("user");
+          var serverName = row.data("server-name");
+          el.text("starting...");
+          var start = function (options) {
+            return api.start_server(user, options);
+          };
+          if (serverName !== "") {
+            start = function (options) {
+              return api.start_named_server(user, serverName, options);
+            };
+          }
+          start({
+            success: function () {
+              el.text("start " + serverName).addClass("hidden");
+              row.find(".stop-server").removeClass("hidden");
+              row.find(".access-server").removeClass("hidden");
+            },
+          });
+        });
+      }
+
+      $(".edit-user").click(function () {
         var el = $(this);
         var row = getRow(el);
         var user = row.data("user");
-        var serverName = row.data("server-name");
-        el.text("starting...");
-        var start = function (options) {
-          return api.start_server(user, options);
-        };
-        if (serverName !== "") {
-          start = function (options) {
-            return api.start_named_server(user, serverName, options);
-          };
-        }
-        start({
-          success: function () {
-            el.text("start " + serverName).addClass("hidden");
-            row.find(".stop-server").removeClass("hidden");
-            row.find(".access-server").removeClass("hidden");
-          },
-        });
-      });
-    }
-
-    $(".edit-user").click(function () {
-      var el = $(this);
-      var row = getRow(el);
-      var user = row.data("user");
-      var admin = row.data("admin");
-      var dialog = $("#edit-user-dialog");
-      dialog.data("user", user);
-      dialog.find(".username-input").val(user);
-      dialog.find(".admin-checkbox").attr("checked", admin === "True");
-      dialog.modal();
-    });
-
-    $("#edit-user-dialog")
-      .find(".save-button")
-      .click(function () {
+        var admin = row.data("admin");
         var dialog = $("#edit-user-dialog");
-        var user = dialog.data("user");
-        var name = dialog.find(".username-input").val();
-        var admin = dialog.find(".admin-checkbox").prop("checked");
-        api.edit_user(
-          user,
-          {
-            admin: admin,
-            name: name,
-          },
-          {
-            success: function () {
-              window.location.reload();
-            },
-          }
-        );
+        dialog.data("user", user);
+        dialog.find(".username-input").val(user);
+        dialog.find(".admin-checkbox").attr("checked", admin === "True");
+        dialog.modal();
       });
 
-    $(".delete-user").click(function () {
-      var el = $(this);
-      var row = getRow(el);
-      var user = row.data("user");
-      var dialog = $("#delete-user-dialog");
-      dialog.find(".delete-username").text(user);
-      dialog.modal();
-    });
+      $("#edit-user-dialog")
+        .find(".save-button")
+        .click(function () {
+          var dialog = $("#edit-user-dialog");
+          var user = dialog.data("user");
+          var name = dialog.find(".username-input").val();
+          var admin = dialog.find(".admin-checkbox").prop("checked");
+          api.edit_user(
+            user,
+            {
+              admin: admin,
+              name: name,
+            },
+            {
+              success: function () {
+                window.location.reload();
+              },
+            }
+          );
+        });
 
-    $("#delete-user-dialog")
-      .find(".delete-button")
-      .click(function () {
+      $(".delete-user").click(function () {
+        var el = $(this);
+        var row = getRow(el);
+        var user = row.data("user");
         var dialog = $("#delete-user-dialog");
-        var username = dialog.find(".delete-username").text();
-        console.log("deleting", username);
-        api.delete_user(username, {
-          success: function () {
-            window.location.reload();
-          },
-        });
+        dialog.find(".delete-username").text(user);
+        dialog.modal();
       });
 
-    $("#add-users").click(function () {
-      var dialog = $("#add-users-dialog");
-      dialog.find(".username-input").val("");
-      dialog.find(".admin-checkbox").prop("checked", false);
-      dialog.modal();
-    });
-
-    $("#add-users-dialog")
-      .find(".save-button")
-      .click(function () {
-        var dialog = $("#add-users-dialog");
-        var lines = dialog.find(".username-input").val().split("\n");
-        var admin = dialog.find(".admin-checkbox").prop("checked");
-        var usernames = [];
-        lines.map(function (line) {
-          var username = line.trim();
-          if (username.length) {
-            usernames.push(username);
-          }
-        });
-
-        api.add_users(
-          usernames,
-          { admin: admin },
-          {
+      $("#delete-user-dialog")
+        .find(".delete-button")
+        .click(function () {
+          var dialog = $("#delete-user-dialog");
+          var username = dialog.find(".delete-username").text();
+          console.log("deleting", username);
+          api.delete_user(username, {
             success: function () {
               window.location.reload();
             },
-          }
-        );
-      });
-
-    $("#stop-all-servers").click(function () {
-      $("#stop-all-servers-dialog").modal();
-    });
-
-    $("#start-all-servers").click(function () {
-      $("#start-all-servers-dialog").modal();
-    });
-
-    $("#stop-all-servers-dialog")
-      .find(".stop-all-button")
-      .click(function () {
-        // stop all clicks all the active stop buttons
-        $(".stop-server").not(".hidden").click();
-      });
-
-    function start(el) {
-      return function () {
-        $(el).click();
-      };
-    }
-
-    $("#start-all-servers-dialog")
-      .find(".start-all-button")
-      .click(function () {
-        $(".start-server")
-          .not(".hidden")
-          .each(function (i) {
-            setTimeout(start(this), i * 500);
           });
+        });
+
+      $("#add-users").click(function () {
+        var dialog = $("#add-users-dialog");
+        dialog.find(".username-input").val("");
+        dialog.find(".admin-checkbox").prop("checked", false);
+        dialog.modal();
       });
 
-    $("#shutdown-hub").click(function () {
-      var dialog = $("#shutdown-hub-dialog");
-      dialog.find("input[type=checkbox]").prop("checked", true);
-      dialog.modal();
+      $("#add-users-dialog")
+        .find(".save-button")
+        .click(function () {
+          var dialog = $("#add-users-dialog");
+          var lines = dialog.find(".username-input").val().split("\n");
+          var admin = dialog.find(".admin-checkbox").prop("checked");
+          var usernames = [];
+          lines.map(function (line) {
+            var username = line.trim();
+            if (username.length) {
+              usernames.push(username);
+            }
+          });
+
+          api.add_users(
+            usernames,
+            { admin: admin },
+            {
+              success: function () {
+                window.location.reload();
+              },
+            }
+          );
+        });
+
+      $("#stop-all-servers").click(function () {
+        $("#stop-all-servers-dialog").modal();
+      });
+
+      $("#start-all-servers").click(function () {
+        $("#start-all-servers-dialog").modal();
+      });
+
+      $("#stop-all-servers-dialog")
+        .find(".stop-all-button")
+        .click(function () {
+          // stop all clicks all the active stop buttons
+          $(".stop-server").not(".hidden").click();
+        });
+
+      function start(el) {
+        return function () {
+          $(el).click();
+        };
+      }
+
+      $("#start-all-servers-dialog")
+        .find(".start-all-button")
+        .click(function () {
+          $(".start-server")
+            .not(".hidden")
+            .each(function (i) {
+              setTimeout(start(this), i * 500);
+            });
+        });
+
+      $("#shutdown-hub").click(function () {
+        var dialog = $("#shutdown-hub-dialog");
+        dialog.find("input[type=checkbox]").prop("checked", true);
+        dialog.modal();
+      });
+
+      $("#shutdown-hub-dialog")
+        .find(".shutdown-button")
+        .click(function () {
+          var dialog = $("#shutdown-hub-dialog");
+          var servers = dialog.find(".shutdown-servers-checkbox").prop("checked");
+          var proxy = dialog.find(".shutdown-proxy-checkbox").prop("checked");
+          api.shutdown_hub({
+            proxy: proxy,
+            servers: servers,
+          });
+        });
+    });
+    // custom script
+    // To change the color for active link in top left navbar items
+    const currentUrl = window.location.href.split("/");
+    const currentAnchorTagText = currentUrl[currentUrl.length - 1];
+    $('.navbar-nav a').each(() => {
+      const anchorTagHref = $(this).text().toLocaleLowerCase();
+      if ($(this).text().toLowerCase() == currentAnchorTagText) {
+        $(this).css("color", "#006BB6");
+      }
     });
 
-    $("#shutdown-hub-dialog")
-      .find(".shutdown-button")
-      .click(function () {
-        var dialog = $("#shutdown-hub-dialog");
-        var servers = dialog.find(".shutdown-servers-checkbox").prop("checked");
-        var proxy = dialog.find(".shutdown-proxy-checkbox").prop("checked");
-        api.shutdown_hub({
-          proxy: proxy,
-          servers: servers,
-        });
+    // To change the color for active link in admin-navbar items
+    $('.admin-navbar a').click((e) => {
+      $('.admin-navbar a.active').removeClass('active');
+      $(this).addClass('active');
+      e.preventDefault();
+    });
+    let courses_list, instructors_count, students_count;
+    let course_dict = {};
+    let courseDetails = [];
+    $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
+    //course-nav
+    const courses_click = async () => {
+      const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
+        return response.json();
+      }).then((data) => {
+        courses_list = data.courses;
+      }).catch((error) => {
+        console.log(error);
       });
-  });
-</script>
-{% endblock %}
+      Object.values(courses_list).forEach(async (course) => {
+        instructors_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then((response) => {
+          return response.json();
+        }).then((data) => {
+          return data.instructors.length;
+        }).catch((error) => {
+          console.log(error);
+        });
+        students_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then((response) => {
+          return response.json();
+        }).then((data) => {
+          return data.students.length;
+        }).catch((error) => {
+          console.log(error);
+        });
+        course_dict["course"] = course;
+        course_dict["instructors_count"] = instructors_count;
+        course_dict["students_count"] = students_count;
+        courseDetails.push(course_dict);
+        const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td>' + course_dict["students_count"] + '</td><td><button class="delete_course" data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td></tr>';
+        $("#admin-tbody").append(tr);
+      });
+    };
+    window.onload = courses_click;
+    $('#course-nav').click = courses_click;
+  </script>
+  {% endblock %}

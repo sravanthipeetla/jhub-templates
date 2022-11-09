@@ -164,5 +164,14 @@
 {{ super() }}
 <script type="text/javascript">
 require(["token"]);
+ // custom script
+ const currentUrl=window.location.href.split("/");
+    const currentAnchorTagText=currentUrl[currentUrl.length-1];
+    $('.navbar-nav a').each(function(){
+      const anchorTagHref=$(this).text().toLocaleLowerCase();
+      if($(this).text().toLowerCase()==currentAnchorTagText){
+        $(this).css("color","#006BB6");
+      }
+    });
 </script>
 {% endblock script %}
