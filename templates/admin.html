@@ -437,7 +437,7 @@
       }).catch(function (error) {
         console.log(error);
       });
-      console.log(courses_list);
+      console.log(courses_list.json());
       Object.values(courses_list).forEach(course => {
         instructors_count = fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then(function (response) {
           return response.json();
