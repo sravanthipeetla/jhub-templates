@@ -458,7 +458,9 @@
         course_dict["students_count"] = students_count;
         courseDetails.push(course_dict);
         const tr = '<tr><td>' + course_dict["course"] + '</td></tr>';
+        console.log(tr)
         tbody += tr;
+        console.log(tbody)
       });
       tbody += '</tbody>';
       $("#admin-table").append(thead);
