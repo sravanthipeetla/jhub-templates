@@ -428,9 +428,9 @@
     let course_dict={};
     let courseDetails = [];
     //course-nav
-    const courses_click = async () => {
+    const courses_click = () => {
       // http://192.168.49.2:30562/hub/admin
-      courses_list = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then(function (response) {
+      courses_list = fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then(function (response) {
         return response.json();
       }).then(function (response) {
         return response.courses;
@@ -438,15 +438,15 @@
         console.log(error);
       });
       console.log(courses_list);
-      Object.values(courses_list).forEach(async course => {
-        instructors_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then(function (response) {
+      Object.values(courses_list).forEach(course => {
+        instructors_count = fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then(function (response) {
           return response.json();
         }).then(function (response) {
           return response.instructors.length;
         }).catch(function (error) {
           console.log(error);
         });
-        students_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then(function (response) {
+        students_count = fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then(function (response) {
           return response.json();
         }).then(function (response) {
           return response.students.length;
