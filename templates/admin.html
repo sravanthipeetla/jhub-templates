@@ -437,8 +437,8 @@
       }).catch(function (error) {
         console.log(error);
       });
-      courses_list = async () => {
-       const courses=await course_list_promise;
+      const course_list_ = async () => {
+       courses_list=await course_list_promise;
        return courses;
       };
       console.log(courses_list);
