@@ -88,6 +88,19 @@
     table-layout: fixed;
     width: 100%;
   }
+  #admin-thead{
+    background: #D2EDFB;
+border-radius: 14px 14px 0px 0px;
+font-family: 'Poppins';
+  }
+  #admin-tdody{
+    font-family: 'Gothic A1';
+  }
+  td:first-child { color: #006BB6};
+  .delete_course{
+    border:none;
+    background-color: #ffffff;
+  }
 </style>
 {% endblock %}
 {% block main %}
@@ -438,7 +451,7 @@
     let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
-    $("#admin-thead").append('<thead><tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr></thead>');
+    $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
     //course-nav
     const courses_click = async () => {
       const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
