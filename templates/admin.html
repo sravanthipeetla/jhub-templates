@@ -424,12 +424,12 @@
       $(this).addClass('active');
       e.preventDefault();
     });
-
+    let courses_list,instructors_count,students_count;
     //course-nav
     const courses_click = async () => {
       // http://192.168.49.2:30562/hub/admin
       const courseDetails = [];
-      const courses_list=await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then(function (response) {
+      courses_list=await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then(function (response) {
         return response.json();
       }).then(function (response){
         return response.courses;
@@ -439,14 +439,14 @@
       console.log(courses_list);
       Object.values(courses_list).forEach(async course => {
         const course_dict = {};
-        const instructors_count= await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then(function (response) {
+        instructors_count= await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then(function (response) {
         return response.json();
       }).then(function (response){
         return response.instructors.length;
       }).catch(function (error) {
         console.log(error);
       });
-        const students_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then(function (response) {
+      students_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then(function (response) {
         return response.json();
       }).then(function (response){
         return response.students.length;
