@@ -432,7 +432,7 @@
       const course_response_json= fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then(function (response) {
         return response.json();
       }).then(function (response){
-        return response;
+        return response.courses;
       }).catch(function (error) {
         console.log(error);
       });
