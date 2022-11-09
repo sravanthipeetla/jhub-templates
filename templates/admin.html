@@ -437,10 +437,12 @@
       }).catch(function (error) {
         console.log(error);
       });
-      const course_list_ = async () => {
-       courses_list=await course_list_promise;
-       return courses;
+      const course_list= () => {
+       courses_list_promise.then((courses)=>{
+        return courses
+       })
       };
+      courses_list=course_list();
       console.log(courses_list);
       Object.values(courses_list).forEach(course => {
         instructors_count = fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then(function (response) {
