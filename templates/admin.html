@@ -472,23 +472,29 @@
       $(this).addClass('active');
       e.preventDefault();
     });
-    const courses_list=[];
+    const courses_list = [];
     let instructors_count, students_count, tr;
     let course_dict = {};
     let courseDetails = [];
     $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
     //course-nav
     const courses_click = async () => {
-      const courseListPromise=fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
-      courseListPromise.then(response => {
-    return response.json();
-}).then(data=> {
-   const courses=data.courses;
-   courses.map(course => courses_list.push(course));
-}).catch(error => {
-    console.error('Request Failed',error)
-});
-    };
+      async function fetchCourses() {
+        let response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+      }
+      fetchCourses().then(data => {
+        return data.courses;
+      }).then(courses => {
+        courses.forEach(course => {
+          courses_list.push(course);
+
+        });
+      });
+    }
     console.log(courses_list);
     window.onload = courses_click;
     $('#course-nav').click = courses_click;
