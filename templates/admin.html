@@ -81,7 +81,7 @@
   }
 
   #admin-table {
-    margin-bottom:20px;
+    margin-bottom: 20px;
     background: #FFFFFF;
     border: 2px solid #5FBEF0;
     border-collapse: inherit;
@@ -115,7 +115,7 @@
   td:last-child {
     border-radius: 0px 15px 0px 0px;
     text-align: left;
-    padding:5px 125px 5px 30px
+    padding: 5px 125px 5px 30px
   }
 
   td {
@@ -473,16 +473,16 @@
       $(this).addClass('active');
       e.preventDefault();
     });
-    $('#delete_course_button').click(()=> {
-      console.log("freee");
-    conosle.log($(this).data('data-key'));
-});
     let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
     $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
     //course-nav
     const courses_click = async () => {
+      $('#delete_course_button').click(() => {
+        console.log("freee");
+        conosle.log($(this).data('data-key'));
+      });
       const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
         return response.json();
       }).then((data) => {
