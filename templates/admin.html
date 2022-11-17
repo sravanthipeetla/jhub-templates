@@ -461,10 +461,8 @@
     const currentUrl = window.location.href.split("/");
     const currentAnchorTagText = currentUrl[currentUrl.length - 1];
     console.log(currentAnchorTagText);
-    $('.navbar-nav a').each(() => {
-      const anchorTagHref = $(this).text().toLocaleLowerCase();
-      console.log(anchorTagHref);
-      if ($(this).text().toLowerCase() == currentAnchorTagText) {
+    $('.navbar-nav a').each((item) => {
+      if (item.text().toLowerCase() == currentAnchorTagText) {
         console.log("here");
         $(this).css("color", "#006BB6");
       }
