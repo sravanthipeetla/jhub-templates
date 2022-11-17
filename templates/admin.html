@@ -499,11 +499,12 @@
       $(".admin-navbar .active").removeClass("active");
       $(event.target).addClass("active");
     });
-    const addCourseButton=document.getElementsByClassName("add-course")[0];
+    const addCourseButton=document.getElementsByClassName("add-course");
+    console.log(addCourseButton);
     const addCourseModal=document.getElementById("addCourseModal");
-    addCourseButton.click=()=>{
-      addCourseModal.style.display='block';
-    }
+    // addCourseButton.click=()=>{
+    //   addCourseModal.style.display='block';
+    // }
     // $(".add-course").click(() => {
     //   console.log("In add course");
     //     $("#addCourseModal").css("display","block");
