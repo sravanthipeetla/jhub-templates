@@ -473,6 +473,9 @@
       $(this).addClass('active');
       e.preventDefault();
     });
+    $('#delete_course_but').click(function () {
+      conosle.log($(this).data('data-key'));
+    });
     let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
@@ -509,10 +512,6 @@
         $("#admin-tbody").append(tr);
       });
     };
-    $('#delete_course_but').click((e) => {
-        console.log("freee");
-        conosle.log($(this).data('data-key'));
-      });
     console.log(courseDetails);
     console.log(courseDetails.length);
     window.onload = courses_click;
