@@ -473,7 +473,7 @@
       e.preventDefault();
     });
     const courses_list = [];
-    const instructors_count = 0, learners_count =0;
+    const instructors_count = 0, learners_count = 0;
     let tr;
     const course_dict = {};
     const courseDetails = [];
@@ -492,34 +492,38 @@
         });
       });
       console.log(courses_list);
-      Object.values(courses_list).forEach((course) => {
-        console.log("Inside");
-        async function fetchInstructorsCount() {
-          let response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course);
-          return await response.json();
-        }
-        fetchInstructorsCount().then(data => {
-          return data.instructors;
-        }).then(instructors => {
-          instructors_count = instructors.length;
-        });
-        console.log(instructors_count);
-        async function fetchLearnersCount() {
-          let response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course);
-          return await response.json();
-        }
-        fetchLearnersCount().then(data => {
-          return data.students;
-        }).then(learners => {
-          learners_count = learners.length;
-        });
-        console.log(learners_count);
-        course_dict['course']=course;
-        course_dict['instructors_count']=instructors_count;
-        course_dict['learners_count']=learners_count;
+      async function fetchCourseList() {
+        courses_list.forEach(async (course) => {
+          console.log("Inside");
+          async function fetchInstructorsCount() {
+            let response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course);
+            return await response.json();
+          }
+          fetchInstructorsCount().then(data => {
+            return data.instructors;
+          }).then(instructors => {
+            instructors_count = instructors.length;
+          });
+          console.log(instructors_count);
+          async function fetchLearnersCount() {
+            let response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course);
+            return await response.json();
+          }
+          fetchLearnersCount().then(data => {
+            return data.students;
+          }).then(learners => {
+            learners_count = learners.length;
+          });
+          console.log(learners_count);
+          course_dict['course'] = course;
+          course_dict['instructors_count'] = instructors_count;
+          course_dict['learners_count'] = learners_count;
+        })
+        return await course_dict;
+      }
+      fetchCourseList().then(data => {
+        courseDetails.push(course_dict);
       })
-      console.log(course_dict);
-      courseDetails.push(course_dict);
     }
     console.log(courseDetails);
 
