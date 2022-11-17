@@ -144,7 +144,7 @@
     </div>
     <div class="description-bar">
       <p class="description">You can manage courses, instructors and learners from here.</p>
-      <button class="add-btn">Add course</button>
+      <button class="add-btn"></button>
     </div>
     <table class="admin-table" id="admin-table">
       <thead id="admin-thead"></thead>
@@ -477,6 +477,7 @@
 
     //course-nav
     const courses_click = async () => {
+      $('$add-btn').html('Add course');
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
       const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
         return response.json();
