@@ -126,6 +126,10 @@
     border: none;
     background-color: #ffffff;
   }
+
+  #addCourseModal{
+    display:none;
+  }
 </style>
 {% endblock %}
 {% block main %}
@@ -150,7 +154,7 @@
       <thead id="admin-thead"></thead>
       <tbody id="admin-tbody"></tbody>
     </table>
-    <div id="changeCourseModal" class="modal">
+    <div id="addCourseModal" class="modal">
       <div class="courseModalContent">
         <span class="courseClose">&times;</span>
         <div class="column-flex">
@@ -498,7 +502,7 @@
       $(event.target).addClass("active");
     });
     $(".add-course").click(() => {
-        courseModal.style.display = "block";
+        $("#addCourseModal").css("display","block");
     });
     // cancel.onclick = function () {
     //     courseModal.style.display = "none";
