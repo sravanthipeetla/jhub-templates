@@ -462,7 +462,8 @@
     const currentAnchorTagText = currentUrl[currentUrl.length - 1];
     console.log(currentAnchorTagText);
     $('.navbar-nav a').each(() => {
-      if ($(this).text().toLowerCase() == currentAnchorTagText) {
+      console.log($(this).text());
+      if($(this).text().toLowerCase() == currentAnchorTagText) {
         console.log("here");
         $(this).css("color", "#006BB6");
       }
