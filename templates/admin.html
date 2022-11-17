@@ -473,6 +473,7 @@
     $('.admin-navbar a').click(() => {
       console.log($('.admin-navbar a.active').text())
       $('.admin-navbar a.active').removeClass('active');
+      console.log($(this).text());
       $(this).addClass('active');
     });
     let courses_list, instructors_count, students_count;
