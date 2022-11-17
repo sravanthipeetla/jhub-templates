@@ -460,7 +460,6 @@
     // To change the color for active link in top left navbar items
     const currentUrl = window.location.href.split("/");
     const currentAnchorTagText = currentUrl[currentUrl.length - 1];
-    console.log(currentAnchorTagText);
     $('.navbar-nav a').each(function(){
       if($(this).text().toLowerCase()==currentAnchorTagText){
         $(this).css("color","#006BB6");
@@ -477,7 +476,7 @@
 
     //course-nav
     const courses_click = async () => {
-      $('add-btn').html('Add course');
+      $('add-btn').text('Add course');
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
       const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
         return response.json();
