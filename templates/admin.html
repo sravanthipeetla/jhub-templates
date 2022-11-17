@@ -466,22 +466,21 @@
         $(this).css("color", "#006BB6");
       }
     });
-    $('.admin-table #delete_course_but').click(function () {
-      console.log($(this).data('data-key'));
-    });
     // To change the color for active link in admin-navbar items
     $('.admin-navbar a').click(() => {
       console.log($('.admin-navbar a.active').text())
       $('.admin-navbar a.active').removeClass('active');
       console.log($(this).text());
+      console.log($(this));
       $(this).addClass('active');
     });
     let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
-    $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
+
     //course-nav
     const courses_click = async () => {
+      $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
       const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
         return response.json();
       }).then((data) => {
