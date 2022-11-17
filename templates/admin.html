@@ -473,17 +473,15 @@
       e.preventDefault();
     });
     const courses_list = [];
-    let instructors_count, students_count, tr;
-    let course_dict = {};
-    let courseDetails = [];
+    const instructors_count = 0, learners_count =0;
+    let tr;
+    const course_dict = {};
+    const courseDetails = [];
     $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
     //course-nav
     const courses_click = async () => {
       async function fetchCourses() {
         let response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
         return await response.json();
       }
       fetchCourses().then(data => {
@@ -491,11 +489,35 @@
       }).then(courses => {
         courses.forEach(course => {
           courses_list.push(course);
-
         });
       });
+      courses_list.forEach((course) => {
+        async function fetchInstructorsCount() {
+          let response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course);
+          return await response.json();
+        }
+        fetchInstructorsCount().then(data => {
+          return data.instructors;
+        }).then(instructors => {
+          instructors_count = instructors.length;
+        });
+        async function fetchLearnersCount() {
+          let response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course);
+          return await response.json();
+        }
+        fetchLearnersCount().then(data => {
+          return data.students;
+        }).then(learners => {
+          learners_count = learners.length;
+        });
+        course_dict['course']=course;
+        course_dict['instructors_count']=instructors_count;
+        course_dict['learners_count']=learners_count;
+      })
+      courseDetails.push(course_dict);
     }
-    console.log(courses_list[0]);
+    console.log(courseDetails);
+
     window.onload = courses_click;
     $('#course-nav').click = courses_click;
   </script>
