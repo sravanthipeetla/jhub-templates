@@ -466,38 +466,37 @@
         $(this).css("color", "#006BB6");
       }
     });
-
+    $('#delete_course_but').click(function () {
+      console.log($(this).data('data-key'));
+    });
     // To change the color for active link in admin-navbar items
     $('.admin-navbar a').click((e) => {
       $('.admin-navbar a.active').removeClass('active');
       $(this).addClass('active');
       e.preventDefault();
     });
-    $('#delete_course_but').click(function () {
-      conosle.log($(this).data('data-key'));
-    });
     let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
     $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
     //course-nav
-    const courses_click = async () => {
-      const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
+    const courses_click = () => {
+      const courses_list_promise = fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
         return response.json();
       }).then((data) => {
         courses_list = data.courses;
       }).catch((error) => {
         console.log(error);
       });
-      Object.values(courses_list).forEach(async (course) => {
-        instructors_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then((response) => {
+      Object.values(courses_list).forEach((course) => {
+        instructors_count = fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then((response) => {
           return response.json();
         }).then((data) => {
           return data.instructors.length;
         }).catch((error) => {
           console.log(error);
         });
-        students_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then((response) => {
+        students_count = fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then((response) => {
           return response.json();
         }).then((data) => {
           return data.students.length;
