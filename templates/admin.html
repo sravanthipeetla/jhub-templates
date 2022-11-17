@@ -470,11 +470,11 @@
       console.log($(this).data('data-key'));
     });
     // To change the color for active link in admin-navbar items
-    $('.admin-navbar a').click((e) => {
+    $('.admin-navbar a').click(() => {
       $('.admin-navbar a.active').removeClass('active');
       $(this).addClass('active');
       $(this).css({ "border-bottom": "0.3vw solid #006BB6"," color": "#006BB6"})
-      e.preventDefault();
+      // e.preventDefault();
       console.log("hello");
     });
     let courses_list, instructors_count, students_count;
