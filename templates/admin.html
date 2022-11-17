@@ -461,11 +461,9 @@
     const currentUrl = window.location.href.split("/");
     const currentAnchorTagText = currentUrl[currentUrl.length - 1];
     console.log(currentAnchorTagText);
-    $('.navbar-nav a').each(() => {
-      console.log($(this).text());
-      if($(this).text().toLowerCase() == currentAnchorTagText) {
-        console.log("here");
-        $(this).css("color", "#006BB6");
+    $('.navbar-nav a').each(function(){
+      if($(this).text().toLowerCase()==currentAnchorTagText){
+        $(this).css("color","#006BB6");
       }
     });
     // To change the color for active link in admin-navbar items
