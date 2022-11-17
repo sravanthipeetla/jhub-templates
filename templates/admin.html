@@ -521,6 +521,7 @@
 
     //course-nav
     const courses_click = async () => {
+      $("#admin-thead tr").remove();
       $("#admin-table tr").remove(); 
       $(".add-btn").text("Add Course");
       $(".add-btn").addClass("add-course");
@@ -556,6 +557,7 @@
       });
     };
     const instructors_click = async () => {
+      $("#admin-thead tr").remove();
       $("#admin-table tr").remove(); 
       $(".add-btn").text("Add instructor");
       $(".add-btn").addClass("add-instructor");
