@@ -493,6 +493,7 @@
       });
       console.log(courses_list);
       Object.values(courses_list).forEach((course) => {
+        console.log("Inside");
         async function fetchInstructorsCount() {
           let response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course);
           return await response.json();
