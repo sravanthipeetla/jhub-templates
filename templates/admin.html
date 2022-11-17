@@ -127,8 +127,8 @@
     background-color: #ffffff;
   }
 
-  #addCourseModal{
-    display:none;
+  #addCourseModal {
+    display: none;
   }
 </style>
 {% endblock %}
@@ -499,16 +499,13 @@
       $(".admin-navbar .active").removeClass("active");
       $(event.target).addClass("active");
     });
-    const addCourseButton=document.getElementsByClassName("add-course");
-    console.log(addCourseButton);
-    const addCourseModal=document.getElementById("addCourseModal");
+    // const addCourseButton=document.getElementsByClassName("add-course");
+    // console.log(addCourseButton);
+    // const addCourseModal=document.getElementById("addCourseModal");
     // addCourseButton.click=()=>{
     //   addCourseModal.style.display='block';
     // }
-    // $(".add-course").click(() => {
-    //   console.log("In add course");
-    //     $("#addCourseModal").css("display","block");
-    // });
+
     // cancel.onclick = function () {
     //     courseModal.style.display = "none";
     // }
@@ -521,6 +518,10 @@
 
     //course-nav
     const courses_click = async () => {
+      $(".add-course").click(() => {
+        console.log("In add course");
+        $("#addCourseModal").css("display", "block");
+      });
       $(".add-btn").text("Add Course");
       $(".add-btn").addClass("add-course");
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
