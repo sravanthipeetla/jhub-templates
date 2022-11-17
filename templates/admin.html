@@ -475,7 +475,7 @@
       $(this).addClass('active');
       e.preventDefault();
     });
-    let courses_list, instructors_count, students_count;
+    let courses_list, instructors_count, students_count,tr;
     let course_dict = {};
     let courseDetails = [];
     $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
@@ -507,14 +507,11 @@
         course_dict["instructors_count"] = instructors_count;
         course_dict["students_count"] = students_count;
         courseDetails.push(course_dict);
+        tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td>' + course_dict["students_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td></tr>';
+        $("#admin-tbody").append(tr);
       });
     };
     console.log(courseDetails);
-    courseDetails.forEach((c)=>{
-        const tr = '<tr><td>' + c["course"] + '</td><td>' + c["instructors_count"] + '</td><td>' + c["students_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" data-key="' + c["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td></tr>';
-        $("#admin-tbody").append(tr);
-    })
-    // const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td>' + course_dict["students_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td></tr>';
     console.log(courseDetails.length);
     window.onload = courses_click;
     $('#course-nav').click = courses_click;
