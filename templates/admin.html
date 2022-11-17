@@ -137,10 +137,9 @@
   <script src={{ static_url("js/admin.js") }}></script>
   <div class="admin-container">
     <div class="admin-navbar">
-      <li class="active">
-      <a class="course-nav" id="course-nav">Courses</a></li>
-      <li><a class="instructor-nav">Instructors</a></li>
-      <li><a class="learner-nav">Learners</a></li>
+      <a class="course-nav active" id="course-nav">Courses</a>
+      <a class="instructor-nav">Instructors</a>
+      <a class="learner-nav">Learners</a>
       </ul>
     </div>
     <div class="description-bar">
@@ -469,8 +468,8 @@
     });
     // To change the color for active link in admin-navbar items
     $(".admin-navbar a").click(() => {
-      $(".admin-navbar").find(".active").removeClass("active");
-      $(this).parent().addClass("active");
+      $(".admin-navbar .active").removeClass("active");
+      $(this).addClass("active");
     });
     let courses_list, instructors_count, students_count;
     let course_dict = {};
