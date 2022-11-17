@@ -463,7 +463,7 @@
     console.log(currentAnchorTagText);
     $('.navbar-nav a').each(() => {
       const anchorTagHref = $(this).text().toLocaleLowerCase();
-      console.log("out")
+      console.log(anchorTagHref);
       if ($(this).text().toLowerCase() == currentAnchorTagText) {
         console.log("here");
         $(this).css("color", "#006BB6");
