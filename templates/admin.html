@@ -475,7 +475,7 @@
       $(this).addClass('active');
       e.preventDefault();
     });
-    const courses_list = [], instructors_count = 0, students_count = 0;
+    let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
     $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
