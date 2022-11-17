@@ -473,6 +473,7 @@
     $('.admin-navbar a').click((e) => {
       $('.admin-navbar a.active').removeClass('active');
       $(this).addClass('active');
+      $(this).css({ "border-bottom": "0.3vw solid #006BB6"," color": "#006BB6"})
       e.preventDefault();
       console.log("hello");
     });
