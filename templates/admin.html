@@ -482,7 +482,8 @@
     //course-nav
     const courses_click = async () => {
       const courses_list_response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
-      courses_list= await courses_list_response.json();
+      const courses_list_json= await courses_list_response.json();
+      courses_list=courses_list_json.courses;
       console.log(courses_list);
       Object.values(courses_list).forEach((course) => {
         instructors_count = fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then((response) => {
@@ -507,6 +508,7 @@
         $("#admin-tbody").append(tr);
       });
     };
+    console.log(courses_list);
     console.log(courseDetails);
     console.log(courseDetails.length);
     window.onload = courses_click;
