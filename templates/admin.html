@@ -521,6 +521,7 @@
 
     //course-nav
     const courses_click = async () => {
+      $("#admin-table tr").remove(); 
       $(".add-btn").text("Add Course");
       $(".add-btn").addClass("add-course");
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
@@ -555,6 +556,7 @@
       });
     };
     const instructors_click = async () => {
+      $("#admin-table tr").remove(); 
       $(".add-btn").text("Add instructor");
       $(".add-btn").addClass("add-instructor");
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Actions</td></tr>');
