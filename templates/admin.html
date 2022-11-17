@@ -150,6 +150,33 @@
       <thead id="admin-thead"></thead>
       <tbody id="admin-tbody"></tbody>
     </table>
+    <div id="changeCourseModal" class="modal">
+      <div class="courseModalContent">
+        <span class="courseClose">&times;</span>
+        <div class="column-flex">
+          <div class="row-flex select-div">
+            <div>
+              <label id="courseLabel" for="course">Select course</label>
+            </div>
+            <div>
+              <select class="select" id="course-list" name="course">
+                <option value="" disabled selected>select course</option>
+              </select>
+            </div>
+          </div>
+          <div class="row-flex">
+            <div>
+              <button type="button" id="change_course_button">Change</button>
+            </div>
+            <div>
+              <button type="button" id="cancel_course_button">Cancel</button>
+            </div>
+          </div>
+          <p id='note_content'>Note: Once you click 'Change', you will be redirected to Home. Please stop and start
+            the server for the changes to reflect.</p>
+        </div>
+      </div>
+    </div>
   </div>
   {% endblock %}
 
@@ -460,9 +487,9 @@
     // To change the color for active link in top left navbar items
     const currentUrl = window.location.href.split("/");
     const currentAnchorTagText = currentUrl[currentUrl.length - 1];
-    $('.navbar-nav a').each(function(){
-      if($(this).text().toLowerCase()==currentAnchorTagText){
-        $(this).css("color","#006BB6");
+    $('.navbar-nav a').each(function () {
+      if ($(this).text().toLowerCase() == currentAnchorTagText) {
+        $(this).css("color", "#006BB6");
       }
     });
     // To change the color for active link in admin-navbar items
@@ -470,6 +497,15 @@
       $(".admin-navbar .active").removeClass("active");
       $(event.target).addClass("active");
     });
+    $(".add-course").click(() => {
+        courseModal.style.display = "block";
+    });
+    // cancel.onclick = function () {
+    //     courseModal.style.display = "none";
+    // }
+    // closeSpan.onclick = function () {
+    //     courseModal.style.display = "none";
+    // }
     let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
@@ -477,6 +513,7 @@
     //course-nav
     const courses_click = async () => {
       $(".add-btn").text("Add Course");
+      $("add-btn").addClass("add-course");
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
       const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
         return response.json();
