@@ -467,9 +467,9 @@
       }
     });
     // To change the color for active link in admin-navbar items
-    $(".admin-navbar a").click(() => {
+    $(".admin-navbar a").click((event) => {
       $(".admin-navbar .active").removeClass("active");
-      $(this).addClass("active");
+      $(event.target).addClass("active");
     });
     let courses_list, instructors_count, students_count;
     let course_dict = {};
