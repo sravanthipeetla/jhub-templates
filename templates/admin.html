@@ -482,7 +482,9 @@
     //course-nav
     const courses_click = () => {
       const courses_list_promise = fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
-        return response.json();
+        return response;
+      }).then((res) => {
+        return res.json();
       }).then((data) => {
         courses_list = data.courses;
         console.log(courses_list);
