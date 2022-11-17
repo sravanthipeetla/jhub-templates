@@ -587,7 +587,11 @@
 
     };
     window.onload = courses_click;
-    $('#course-nav').click = courses_click;
-    $('#instructor-nav').click=instructors_click;
+    const course_navigation=document.getElementById('course-nav');
+    const instructor_navigation=document.getElementById('instructor-nav');
+    course_navigation.onclick=courses_click;
+    instructor_navigation.onclick=instructors_click
+    // $('#course-nav').click = courses_click;
+    // $('#instructor-nav').click=instructors_click;
   </script>
   {% endblock %}
