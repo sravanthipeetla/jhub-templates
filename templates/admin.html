@@ -471,6 +471,7 @@
     });
     // To change the color for active link in admin-navbar items
     $('.admin-navbar a').click(() => {
+      console.log($('.admin-navbar a.active').text())
       $('.admin-navbar a.active').removeClass('active');
       $(this).addClass('active');
     });
@@ -502,7 +503,6 @@
         }).catch((error) => {
           console.log(error);
         });
-        
         course_dict["course"] = course;
         course_dict["instructors_count"] = instructors_count;
         course_dict["students_count"] = students_count;
@@ -511,8 +511,6 @@
         $("#admin-tbody").append(tr);
       });
     };
-    console.log(courseDetails);
-    console.log(courseDetails.length);
     window.onload = courses_click;
     $('#course-nav').click = courses_click;
   </script>
