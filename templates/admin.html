@@ -466,9 +466,6 @@
         $(this).css("color", "#006BB6");
       }
     });
-    $('#delete_course_but').click(function () {
-      console.log($(this).data('data-key'));
-    });
     // To change the color for active link in admin-navbar items
     $('.admin-navbar a').click((e) => {
       $('.admin-navbar a.active').removeClass('active');
@@ -503,6 +500,9 @@
         }).catch((error) => {
           console.log(error);
         });
+        $('#delete_course_but').click(function () {
+      console.log($(this).data('data-key'));
+    });
         course_dict["course"] = course;
         course_dict["instructors_count"] = instructors_count;
         course_dict["students_count"] = students_count;
