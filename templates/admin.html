@@ -502,6 +502,7 @@
         }).then(instructors => {
           instructors_count = instructors.length;
         });
+        console.log(instructors_count);
         async function fetchLearnersCount() {
           let response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course);
           return await response.json();
@@ -511,6 +512,7 @@
         }).then(learners => {
           learners_count = learners.length;
         });
+        console.log(learners_count);
         course_dict['course']=course;
         course_dict['instructors_count']=instructors_count;
         course_dict['learners_count']=learners_count;
