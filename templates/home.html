@@ -557,7 +557,6 @@ if user.admin %} {{ super() }}
     const currentUrl=window.location.href.split("/");
     const currentAnchorTagText=currentUrl[currentUrl.length-1];
     $('.navbar-nav a').each(function(){
-      const anchorTagHref=$(this).text().toLocaleLowerCase();
       if($(this).text().toLowerCase()==currentAnchorTagText){
         $(this).css("color","#006BB6");
       }
