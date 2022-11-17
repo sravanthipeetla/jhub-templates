@@ -483,7 +483,10 @@
     const courses_click = async () => {
       const courses_list_response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
       const courses_list_json= await courses_list_response.json();
-      courses_list.push(courses_list_json.courses);
+      courses_list_json.courses.forEach((course)=>{
+        courses_list.push(course);
+      })
+      
       console.log(courses_list);
       Object.values(courses_list).forEach((course) => {
         instructors_count = fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then((response) => {
