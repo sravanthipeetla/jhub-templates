@@ -122,7 +122,7 @@
     padding: 5px 5px 5px 30px;
   }
 
-  .delete_button {
+  .delete_course_button {
     border: none;
     background-color: #ffffff;
   }
@@ -473,7 +473,7 @@
       $(this).addClass('active');
       e.preventDefault();
     });
-    $('#delete_button').click(()=> {
+    $('#delete_course_button').click(()=> {
       console.log("freee");
     conosle.log($(this).data('data-key'));
 });
@@ -509,7 +509,7 @@
         course_dict["instructors_count"] = instructors_count;
         course_dict["students_count"] = students_count;
         courseDetails.push(course_dict);
-        const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td>' + course_dict["students_count"] + '</td><td><button class="delete_button" id="delete_button" data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td></tr>';
+        const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td>' + course_dict["students_count"] + '</td><td><button class="delete_course_button" id="delete_course_button" data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td></tr>';
         $("#admin-tbody").append(tr);
       });
     };
