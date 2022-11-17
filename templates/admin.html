@@ -142,8 +142,8 @@
   <div class="admin-container">
     <div class="admin-navbar">
       <a class="course-nav active" id="course-nav">Courses</a>
-      <a class="instructor-nav">Instructors</a>
-      <a class="learner-nav">Learners</a>
+      <a class="instructor-nav" id="instructor-nav">Instructors</a>
+      <a class="learner-nav" id="learner-nav">Learners</a>
       </ul>
     </div>
     <div class="description-bar">
@@ -499,7 +499,16 @@
       $(".admin-navbar .active").removeClass("active");
       $(event.target).addClass("active");
     });
-
+    // $(".add-course").click(() => {
+    //     console.log("In add course");
+    //     $("#addCourseModal").css("display", "block");
+    //   });
+    //      const addCourseButton=document.getElementsByClassName("add-course");
+    // console.log(addCourseButton);
+    // const addCourseModal=document.getElementById("addCourseModal");
+    // addCourseButton.click=()=>{
+    //   addCourseModal.style.display='block';
+    // }
     // cancel.onclick = function () {
     //     courseModal.style.display = "none";
     // }
@@ -512,16 +521,6 @@
 
     //course-nav
     const courses_click = async () => {
-      // $(".add-course").click(() => {
-      //   console.log("In add course");
-      //   $("#addCourseModal").css("display", "block");
-      // });
-         const addCourseButton=document.getElementsByClassName("add-course");
-    console.log(addCourseButton);
-    const addCourseModal=document.getElementById("addCourseModal");
-    addCourseButton.click=()=>{
-      addCourseModal.style.display='block';
-    }
       $(".add-btn").text("Add Course");
       $(".add-btn").addClass("add-course");
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
@@ -555,7 +554,35 @@
         $("#admin-tbody").append(tr);
       });
     };
+    const instructors_click = async () => {
+      $(".add-btn").text("Add instructor");
+      $(".add-btn").addClass("add-instructor");
+      $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Actions</td></tr>');
+      const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
+        return response.json();
+      }).then((data) => {
+        courses_list = data.courses;
+      }).catch((error) => {
+        console.log(error);
+      });
+      Object.values(courses_list).forEach(async (course) => {
+        instructors_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then((response) => {
+          return response.json();
+        }).then((data) => {
+          return data.instructors.length;
+        }).catch((error) => {
+          console.log(error);
+        });
+        course_dict["course"] = course;
+        course_dict["instructors_count"] = instructors_count;
+        courseDetails.push(course_dict);
+        const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
+        $("#admin-tbody").append(tr);
+      });
+
+    };
     window.onload = courses_click;
     $('#course-nav').click = courses_click;
+    $('#instructor-nav').click=instructors_click;
   </script>
   {% endblock %}
