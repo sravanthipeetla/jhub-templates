@@ -518,7 +518,7 @@
     //course-nav
     const courses_click = async () => {
       $(".add-btn").text("Add Course");
-      $("add-btn").addClass("add-course");
+      $(".add-btn").addClass("add-course");
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
       const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
         return response.json();
