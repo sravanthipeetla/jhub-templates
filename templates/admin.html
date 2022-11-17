@@ -491,6 +491,7 @@
           courses_list.push(course);
         });
       });
+      console.log(courses_list);
       courses_list.forEach((course) => {
         async function fetchInstructorsCount() {
           let response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course);
