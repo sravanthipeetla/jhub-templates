@@ -137,7 +137,7 @@
   <script src={{ static_url("js/admin.js") }}></script>
   <div class="admin-container">
     <div class="admin-navbar">
-      <a class="active" id="course-nav">Course</a>
+      <a class="active" id="course-nav">Courses</a>
       <a class="instructor-nav">Instructors</a>
       <a class="learner-nav">Learners</a>
       </ul>
@@ -474,6 +474,7 @@
       $('.admin-navbar a.active').removeClass('active');
       $(this).addClass('active');
       e.preventDefault();
+      console.log("hello");
     });
     let courses_list, instructors_count, students_count;
     let course_dict = {};
