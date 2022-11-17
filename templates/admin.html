@@ -52,7 +52,7 @@
     cursor: pointer;
   }
 
-  .admin-navbar a.active {
+  .admin-navbar li.active {
     border-bottom: 0.3vw solid #006BB6;
     color: #006BB6;
   }
@@ -137,9 +137,10 @@
   <script src={{ static_url("js/admin.js") }}></script>
   <div class="admin-container">
     <div class="admin-navbar">
-      <a class="course-nav active" id="course-nav">Courses</a>
-      <a class="instructor-nav">Instructors</a>
-      <a class="learner-nav">Learners</a>
+      <li class="active">
+      <a class="course-nav" id="course-nav">Courses</a></li>
+      <li><a class="instructor-nav">Instructors</a></li>
+      <li><a class="learner-nav">Learners</a></li>
       </ul>
     </div>
     <div class="description-bar">
@@ -467,12 +468,9 @@
       }
     });
     // To change the color for active link in admin-navbar items
-    $('.admin-navbar a').click(() => {
-      console.log($('.admin-navbar a.active').text())
-      $('.admin-navbar a.active').removeClass('active');
-      console.log($(this).text());
-      console.log($(this));
-      $(this).addClass('active');
+    $(".admin-navbar a").click(() => {
+      $(".admin-navbar").find(".active").removeClass("active");
+      $(this).parent().addClass("active");
     });
     let courses_list, instructors_count, students_count;
     let course_dict = {};
