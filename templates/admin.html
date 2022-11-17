@@ -472,47 +472,24 @@
       $(this).addClass('active');
       e.preventDefault();
     });
-    let courses_list, instructors_count, students_count,tr;
+    const courses_list=[];
+    let instructors_count, students_count, tr;
     let course_dict = {};
     let courseDetails = [];
     $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
     //course-nav
     const courses_click = async () => {
-      const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
-        return response.json();
-      }).then((data) => {
-        courses_list = data.courses;
-      }).catch((error) => {
-        console.log(error);
-      });
-      $('#delete_course_but').click(function () {
-      console.log($(this).data('data-key'));
-    });
-      Object.values(courses_list).forEach(async (course) => {
-        instructors_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then((response) => {
-          return response.json();
-        }).then((data) => {
-          return data.instructors.length;
-        }).catch((error) => {
-          console.log(error);
-        });
-        students_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then((response) => {
-          return response.json();
-        }).then((data) => {
-          return data.students.length;
-        }).catch((error) => {
-          console.log(error);
-        });
-        course_dict["course"] = course;
-        course_dict["instructors_count"] = instructors_count;
-        course_dict["students_count"] = students_count;
-        courseDetails.push(course_dict);
-        tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td>' + course_dict["students_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td></tr>';
-        $("#admin-tbody").append(tr);
-      });
+      const courseListPromise=fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
+      courseListPromise.then(response => {
+    return response.json();
+}).then(data=> {
+   const courses=data.courses;
+   courses.map(course => courses_list.push(course));
+}).catch(error => {
+    console.error('Request Failed',error)
+});
     };
-    console.log(courseDetails);
-    console.log(courseDetails.length);
+    console.log(courses_list);
     window.onload = courses_click;
     $('#course-nav').click = courses_click;
   </script>
