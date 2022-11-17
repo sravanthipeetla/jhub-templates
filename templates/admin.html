@@ -480,17 +480,9 @@
     let courseDetails = [];
     $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
     //course-nav
-    const courses_click = () => {
-      const courses_list_promise = fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
-        return response;
-      }).then((res) => {
-        return res.json();
-      }).then((data) => {
-        courses_list = data.courses;
-        console.log(courses_list);
-      }).catch((error) => {
-        console.log(error);
-      });
+    const courses_click = async () => {
+      const courses_list_response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
+      courses_list= await courses_list_response.json();
       console.log(courses_list);
       Object.values(courses_list).forEach((course) => {
         instructors_count = fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then((response) => {
