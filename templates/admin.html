@@ -506,8 +506,6 @@
     //     console.log("In add course");
     //     $("#addCourseModal").css("display", "block");
     //   });
-    const addCourseButton=document.getElementById('add-course');
-    console.log(addCourseButton);
     // const addCourseModal=document.getElementById("addCourseModal");
     // addCourseButton.onclick=()=>{
     //   addCourseModal.style.display='block';
@@ -528,6 +526,8 @@
       $("#admin-table tr").remove(); 
       $(".add-btn").text("Add Course");
       $(".add-btn").attr('id','add-course');
+      const addCourseButton=document.getElementById('add-course');
+    console.log(addCourseButton);
       // $(".add-btn").addClass("add-course");
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
       const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
