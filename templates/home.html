@@ -563,15 +563,14 @@ if user.admin %} {{ super() }}
 
         $(this).css("color", "#006BB6");
       }
-      if ($(this).text().toLowerCase() === "token" || "services") {
-        console.log(typeof($(this).text().toLowerCase()));
-        $(this).css("display", "none");
-      }
+      // if ($(this).text().toLowerCase() === "token" || "services") {
+      //   console.log(typeof($(this).text().toLowerCase()));
+      //   $(this).css("display", "none");
+      // }
     });
     const lis = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTagName("li");
-    // lis[2].getElementsByTagName("a")[0].innerText = 'Check';
-    // lis[1].style.visibility = 'hidden';
-    // lis[3].style.visibility = 'hidden';
+    lis[1].style.visibility = 'hidden';
+    lis[3].style.visibility = 'hidden';
     const studentModal = document.getElementById("addStudentModal");
     const courseModal = document.getElementById("addCourseModal");
     const addStudentBtn = document.getElementById("addStudent");

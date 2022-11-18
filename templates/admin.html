@@ -493,10 +493,10 @@
       if ($(this).text().toLowerCase() == currentAnchorTagText) {
         $(this).css("color", "#006BB6");
       }
-      if ($(this).text().toLowerCase() == 'token' || 'services') {
-        $(this).css("display", "none");
-      }
     });
+    const lis = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTagName("li");
+    lis[1].style.visibility = 'hidden';
+    lis[3].style.visibility = 'hidden';
     // To change the color for active link in admin-navbar items
     $(".admin-navbar a").click((event) => {
       $(".admin-navbar .active").removeClass("active");
