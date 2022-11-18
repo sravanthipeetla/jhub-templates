@@ -562,7 +562,11 @@ if user.admin %} {{ super() }}
         $(this).css("color","#006BB6");
       }
       console.log($(this).text().toLowerCase());
-        // $(this).css("display", "none");
+      if($(this).text().toLowerCase()=='token' || 'services'){
+         console.log($(this).text().toLowerCase());
+         $(this).css("display", "none");
+      }
+       
       
     });
     const lis = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTagName("li");
