@@ -651,7 +651,9 @@
                 Accept: 'application.json',
                 'Content-Type': 'application/json'
               }
-            });
+            }).then((response) => {
+              return response.json();
+            })
             if ($.inArray(instructorUserName, instructorsList) != -1) {
               const instructorAddResponse = fetch(`https://data-labs.hcl-edtech.com/services/ngshare/instructor/${courseName}/${instructorUserName}`, {
                 method: 'POST',
