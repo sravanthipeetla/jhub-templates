@@ -637,11 +637,7 @@
       const instructorUserName = instructorUserNameText.value;
       if (courseName.length > 0 && instructorUserName.length > 0) {
         const courseResponse = fetch(`https://data-labs.hcl-edtech.com/services/ngshare/course/${courseName}`, {
-          method: 'POST',
-          headers: {
-            Accept: 'application.json',
-            'Content-Type': 'application/json'
-          }
+          method: 'POST'
         }).then((response) => {
           console.log(response.status);
           // if (response.status == 200 && response.ok) {
