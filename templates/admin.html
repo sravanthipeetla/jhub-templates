@@ -149,9 +149,9 @@
     margin: 9vh auto;
     padding: 20px;
     border: 1px solid #5FBEF0;
-    width: 25%;
+    width: 30%;
     border-radius: 15px;
-    height: 25vh;
+    height: 27vh;
     box-shadow: 0px 2px 13px rgb(170 170 170 / 27%);
   }
 
@@ -182,12 +182,14 @@
     align-items: baseline;
     gap: 2rem;
   }
+
   .row-flex-course {
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    gap: 2rem;
+    gap: 7rem;
   }
+
   #courseLabel,
   #instructorLabel {
     font-family: 'Gothic A1';
@@ -196,14 +198,14 @@
     line-height: 3vh;
     color: black;
     font-weight: 400 !important;
-    margin: 3vh 0vw 2vh 2.5vw;
+    margin: 4vh 0vw 2vh 1.5vw;
   }
 
   #cancel_course_button {
     background: white;
     border-radius: 41vh;
     border-color: #5FBEF0;
-    margin: 3.2vh 0vw 0vh 11vw;
+    margin: -2.8vh 0vw 0vh 15vw;
     font-family: 'Poppins';
     font-style: normal;
     font-size: 2vh;
@@ -221,11 +223,20 @@
     height: 4vh;
     border-radius: 2vw;
     border: none;
-    margin: 3vh -19vw 0vh 4vw;
+    margin: 2vh -19vw 0vh 7vw;
     background-color: #D2EDFB;
     font-size: 1vw;
     font-weight: 100;
     padding: 0.5vw 0.5vw 0.5vw 0.5vw;
+  }
+
+  #addCourseModal input {
+    border-radius: 41vh;
+    border-color: #5FBEF0;
+    border-width: 0.1vw !important;
+    border-style: double;
+    height: 3.5vh;
+    width: 14vw;
   }
 </style>
 {% endblock %}
@@ -625,7 +636,7 @@
       $(".add-btn").text("Add Course");
       $(".add-btn").attr('id', 'add-course');
       const addCourseButton = document.getElementById('add-course');
-      const saveCourseButton=document.getElementById('save_course_button');
+      const saveCourseButton = document.getElementById('save_course_button');
 
       addCourseButton.onclick = add_course_click;
       // $(".add-btn").addClass("add-course");
