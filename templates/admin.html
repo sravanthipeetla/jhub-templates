@@ -601,13 +601,14 @@
       $(event.target).addClass("active");
     });
     const addCourseModal = document.getElementById("addCourseModal");
+    const closeSpan = document.getElementById("courseClose");
     const add_course_click = () => {
       console.log("here");
       addCourseModal.style.display = "block";
     }
-    // closeSpan.onclick = function () {
-    //     courseModal.style.display = "none";
-    // }
+    closeSpan.onclick = function () {
+        addCourseModal.style.display = "none";
+    }
     let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
@@ -619,6 +620,8 @@
       $(".add-btn").text("Add Course");
       $(".add-btn").attr('id', 'add-course');
       const addCourseButton = document.getElementById('add-course');
+      const saveCourseButton=document.getElementById('save_course_button');
+
       addCourseButton.onclick = add_course_click;
       // $(".add-btn").addClass("add-course");
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
