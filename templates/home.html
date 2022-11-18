@@ -18,9 +18,11 @@ if user.admin %} {{ super() }}
     font-size: 16px;
     font-weight: 500;
   }
+
   a:focus {
     color: red;
   }
+
   .navbar-default .navbar-text {
     color: #000000;
   }
@@ -553,20 +555,18 @@ if user.admin %} {{ super() }}
       userAction()
 
     };
-     // custom script
-    const currentUrl=window.location.href.split("/");
-    const currentAnchorTagText=currentUrl[currentUrl.length-1];
-    $('.navbar-nav a').each(function(){
-      if($(this).text().toLowerCase()==currentAnchorTagText){
-        
-        $(this).css("color","#006BB6");
+    // custom script
+    const currentUrl = window.location.href.split("/");
+    const currentAnchorTagText = currentUrl[currentUrl.length - 1];
+    $('.navbar-nav a').each(function () {
+      if ($(this).text().toLowerCase() == currentAnchorTagText) {
+
+        $(this).css("color", "#006BB6");
       }
-      if($(this).text().toLowerCase()=='token' || 'services'){
-         console.log($(this).text().toLowerCase());
-         $(this).css("display", "none");
+      if ($(this).text().toLowerCase() == 'token' || 'services') {
+        console.log(typeof($(this).text().toLowerCase()));
+        $(this).css("display", "none");
       }
-       
-      
     });
     const lis = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTagName("li");
     // lis[2].getElementsByTagName("a")[0].innerText = 'Check';
