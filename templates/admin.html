@@ -227,6 +227,7 @@
     background-color: #D2EDFB;
     font-size: 1vw;
     font-weight: 100;
+    padding: 0.5vw 0.5vw 0.5vw 0.5vw;
   }
 
   #addCourseModal input {
@@ -616,70 +617,14 @@
       $(event.target).addClass("active");
     });
     const addCourseModal = document.getElementById("addCourseModal");
-    const closeSpan = document.getElementsByClassName("courseClose")[0];
-    const cancelCourseButton = document.getElementById("cancel_course_button");
-    const saveCourseButton = document.getElementById("save_course_button");
-    const courseNameText = document.getElementById("course-name");
-    const instructorUserNameText = document.getElementById("instructor-user-name");
+    const closeSpan = document.getElementById("courseClose");
     const add_course_click = () => {
       console.log("here");
       addCourseModal.style.display = "block";
     }
-    closeSpan.onclick = function () {
-      addCourseModal.style.display = "none";
-    }
-    cancelCourseButton.onclick = function () {
-      addCourseModal.style.display = "none";
-    }
-
-    saveCourseButton.onclick = function () {
-      let success;
-      const courseName = courseNameText.value;
-      const instructorUserName = instructorUserNameText.value;
-      if (courseName.length > 0 && instructorUserName.length > 0) {
-        const courseResponse = fetch(`https://data-labs.hcl-edtech.com/services/ngshare/course/${courseName}`, {
-          method: 'POST',
-          headers: {
-            Accept: 'application.json',
-            'Content-Type': 'application/json'
-          }
-        }).then((response) => {
-          if (response.status == 200 && response.ok) {
-            const instructorsList = fetch('https://data-labs.hcl-edtech.com/hub/api/groups/instructor/users', {
-              method: 'POST',
-              headers: {
-                Accept: 'application.json',
-                'Content-Type': 'application/json'
-              }
-            }).then((response) => {
-              return response.json();
-            })
-            if ($.inArray(instructorUserName, instructorsList) != -1) {
-              const instructorAddResponse = fetch(`https://data-labs.hcl-edtech.com/services/ngshare/instructor/${courseName}/${instructorUserName}`, {
-                method: 'POST',
-                headers: {
-                  Accept: 'application.json',
-                  'Content-Type': 'application/json'
-                }
-              }).then((response) => {
-                if (response.status == 200 && response.ok) {
-                  alert("success");
-                }
-                alert("Course created but instructor couldn't be assigned.");
-              })
-            }
-            alert("Instructor not present.")
-          }
-          alert('Course could not be created!');
-        });
-
-      }
-      else {
-        alert('Please provide valid course name and instructor username');
-        console.log(courseResponse);
-      }
-    }
-
+    // closeSpan.onclick = function () {
+    //     addCourseModal.style.display = "none";
+    // }
     let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
@@ -704,15 +649,14 @@
         console.log(error);
       });
       Object.values(courses_list).forEach(async (course) => {
-        instructors_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/instructors/${course}`).then((response) => {
+        instructors_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then((response) => {
           return response.json();
         }).then((data) => {
           return data.instructors.length;
         }).catch((error) => {
           console.log(error);
         });
-        console.log(instructors_count);
-        students_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/students/${course}`).then((response) => {
+        students_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then((response) => {
           return response.json();
         }).then((data) => {
           return data.students.length;
@@ -723,7 +667,7 @@
         course_dict["instructors_count"] = instructors_count;
         course_dict["students_count"] = students_count;
         courseDetails.push(course_dict);
-        const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td>' + course_dict["students_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
+        const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td>' + course_dict["students_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Union_eq2mzPlQz.png?ik-sdk-version=javascript-1.4.3&updatedAt=1667806615995"/></button></td></tr>';
         $("#admin-tbody").append(tr);
       });
     };
@@ -741,7 +685,7 @@
         console.log(error);
       });
       Object.values(courses_list).forEach(async (course) => {
-        instructors_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/instructors/${course}`).then((response) => {
+        instructors_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then((response) => {
           return response.json();
         }).then((data) => {
           return data.instructors.length;
@@ -770,7 +714,7 @@
         console.log(error);
       });
       Object.values(courses_list).forEach(async (course) => {
-        students_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/students/${course}`).then((response) => {
+        students_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then((response) => {
           return response.json();
         }).then((data) => {
           return data.students.length;
