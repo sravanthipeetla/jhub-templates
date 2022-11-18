@@ -558,13 +558,11 @@ if user.admin %} {{ super() }}
     const currentAnchorTagText=currentUrl[currentUrl.length-1];
     $('.navbar-nav a').each(function(){
       if($(this).text().toLowerCase()==currentAnchorTagText){
+        console.log($(this).text().toLowerCase());
         $(this).css("color","#006BB6");
       }
-      if ($(this).text().toLowerCase() == 'token' || 'services') {
-        console.log($(this).text().toLowerCase());
-
-        $(this).css("display", "none");
-      }
+        // $(this).css("display", "none");
+      
     });
     const lis = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTagName("li");
     // lis[2].getElementsByTagName("a")[0].innerText = 'Check';
