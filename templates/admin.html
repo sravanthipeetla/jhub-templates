@@ -632,6 +632,52 @@
       addCourseModal.style.display = "none";
     }
 
+    saveCourseButton.onclick = function () {
+      let success;
+      const courseName = courseNameText.value;
+      const instructorUserName = instructorUserNameText.value;
+      if (courseName.length > 0 && instructorUserName.length > 0) {
+        const courseResponse = fetch(`https://data-labs.hcl-edtech.com/services/ngshare/course/${courseName}`, {
+          method: 'POST',
+          headers: {
+            Accept: 'application.json',
+            'Content-Type': 'application/json'
+          }
+        }).then((response) => {
+          if (response.status == 200 && response.ok) {
+            const instructorsList = fetch('https://data-labs.hcl-edtech.com/hub/api/groups/instructor/users', {
+              method: 'POST',
+              headers: {
+                Accept: 'application.json',
+                'Content-Type': 'application/json'
+              }
+            });
+            if ($.inArray(instructorUserName, instructorsList) != -1) {
+              const instructorAddResponse = fetch(`https://data-labs.hcl-edtech.com/services/ngshare/instructor/${courseName}/${instructorUserName}`, {
+                method: 'POST',
+                headers: {
+                  Accept: 'application.json',
+                  'Content-Type': 'application/json'
+                }
+              }).then((response) => {
+                if (response.status == 200 && response.ok) {
+                  alert("success");
+                }
+                alert("Course created but instructor couldn't be assigned.");
+              })
+            }
+            alert("Instructor not present.")
+          }
+          alert('Course could not be created!');
+        });
+
+      }
+      else {
+        alert('Please provide valid course name and instructor username');
+        console.log(courseResponse);
+      }
+    }
+
     let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
