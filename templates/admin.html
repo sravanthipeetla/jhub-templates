@@ -701,14 +701,14 @@
         console.log(error);
       });
       Object.values(courses_list).forEach(async (course) => {
-        instructors_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then((response) => {
+        instructors_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/instructors/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
           return data.instructors.length;
         }).catch((error) => {
           console.log(error);
         });
-        students_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then((response) => {
+        students_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/students/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
           return data.students.length;
@@ -737,7 +737,7 @@
         console.log(error);
       });
       Object.values(courses_list).forEach(async (course) => {
-        instructors_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then((response) => {
+        instructors_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/instructors/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
           return data.instructors.length;
@@ -766,7 +766,7 @@
         console.log(error);
       });
       Object.values(courses_list).forEach(async (course) => {
-        students_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then((response) => {
+        students_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/students/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
           return data.students.length;
