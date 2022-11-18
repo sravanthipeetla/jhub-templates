@@ -558,9 +558,10 @@ if user.admin %} {{ super() }}
     const currentAnchorTagText=currentUrl[currentUrl.length-1];
     $('.navbar-nav a').each(function(){
       if($(this).text().toLowerCase()==currentAnchorTagText){
-        console.log($(this).text().toLowerCase());
+        
         $(this).css("color","#006BB6");
       }
+      console.log($(this).text().toLowerCase());
         // $(this).css("display", "none");
       
     });
