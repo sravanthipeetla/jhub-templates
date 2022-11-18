@@ -563,7 +563,7 @@ if user.admin %} {{ super() }}
 
         $(this).css("color", "#006BB6");
       }
-      if ($(this).text().toLowerCase() == 'token' || 'services') {
+      if ($(this).text().toLowerCase() === "token" || "services") {
         console.log(typeof($(this).text().toLowerCase()));
         $(this).css("display", "none");
       }
