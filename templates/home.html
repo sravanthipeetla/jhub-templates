@@ -516,7 +516,7 @@ if user.admin %} {{ super() }}
     require(["home"]);
     window.onload = function() {
     const userAction = async () => {
-      const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
+      const response = await fetch('https://dslab-dev.hcl-edtech.com/services/ngshare/courses');
       const myJson = await response.json();
       var courses_list=myJson.courses;
       console.log(courses_list)
