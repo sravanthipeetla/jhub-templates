@@ -182,7 +182,12 @@
     align-items: baseline;
     gap: 2rem;
   }
-
+  .row-flex-course {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 2rem;
+  }
   #courseLabel,
   #instructorLabel {
     font-family: 'Gothic A1';
@@ -250,7 +255,7 @@
       <div class="courseModalContent">
         <span class="courseClose">&times;</span>
         <div class="column-flex">
-          <div class="row-flex">
+          <div class="row-flex-course">
             <div>
               <label id="courseLabel" for="course">Course name</label>
             </div>
