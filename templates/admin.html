@@ -617,43 +617,43 @@
     });
     const addCourseModal = document.getElementById("addCourseModal");
     const closeSpan = document.getElementsByClassName("courseClose")[0];
-    const cancelCourseButton=document.getElementById("cancel_course_button");
-    const saveCourseButton=document.getElementById("save_course_button");
-    const courseNameText=document.getElementById("course-name");
-    const instructorUserNameText=document.getElementById("instructor-user-name");
+    const cancelCourseButton = document.getElementById("cancel_course_button");
+    const saveCourseButton = document.getElementById("save_course_button");
+    const courseNameText = document.getElementById("course-name");
+    const instructorUserNameText = document.getElementById("instructor-user-name");
     const add_course_click = () => {
       console.log("here");
       addCourseModal.style.display = "block";
     }
     closeSpan.onclick = function () {
-        addCourseModal.style.display = "none";
-    }
-    cancelCourseButton.onclick=function(){
       addCourseModal.style.display = "none";
     }
-    saveCourseButton.onclick=function(){
+    cancelCourseButton.onclick = function () {
+      addCourseModal.style.display = "none";
+    }
+    saveCourseButton.onclick = function () {
       let success;
-      const courseName=courseNameText.value;
-      const instructorUserName=instructorUserNameText.value;
-      if(courseName.length>0 && instructorUserName.length>0){
-        const courseResponse = fetch('https://data-labs.hcl-edtech.com/services/ngshare/course/'+courseName).then((response)=>{
+      const courseName = courseNameText.value;
+      const instructorUserName = instructorUserNameText.value;
+      if (courseName.length > 0 && instructorUserName.length > 0) {
+        const courseResponse = fetch('https://data-labs.hcl-edtech.com/services/ngshare/course/' + courseName).then((response) => {
           return response.json();
         });
         console.log(courseResponse);
-        if(courseResponse.status==200){
-          const instructorAddResponse=fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructor'+courseName+'/'+instructorUserName).then((response)=>{
-            return response.json();
-          })
-          if(instructorAddResponse.status==200){
-            success=true;
-          }
-          else{
-            alert(instructorAddResponse);
-          }
-        }
-        else{
-          alert(courseResponse);
-        }
+        // if (courseResponse.status == 200) {
+        //   const instructorAddResponse = fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructor' + courseName + '/' + instructorUserName).then((response) => {
+        //     return response.json();
+        //   })
+        //   if (instructorAddResponse.status == 200) {
+        //     success = true;
+        //   }
+        //   else {
+        //     alert(instructorAddResponse);
+        //   }
+        // }
+        // else {
+        //   alert(courseResponse);
+        // }
       }
     }
     let courses_list, instructors_count, students_count;
