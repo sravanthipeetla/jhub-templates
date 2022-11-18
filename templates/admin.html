@@ -616,14 +616,18 @@
       $(event.target).addClass("active");
     });
     const addCourseModal = document.getElementById("addCourseModal");
-    const closeSpan = document.getElementById("courseClose");
+    const closeSpan = document.getElementsByClassName("courseClose")[0];
+    const cancelCourseButton=document.getElementsByClassName("cancel_course_button");
     const add_course_click = () => {
       console.log("here");
       addCourseModal.style.display = "block";
     }
-    // closeSpan.onclick = function () {
-    //     addCourseModal.style.display = "none";
-    // }
+    closeSpan.onclick = function () {
+        addCourseModal.style.display = "none";
+    }
+    cancelCourseButton.onclick=function(){
+      addCourseModal.style.display = "none";
+    }
     let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
