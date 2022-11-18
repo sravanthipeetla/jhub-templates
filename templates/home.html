@@ -560,6 +560,9 @@ if user.admin %} {{ super() }}
       if($(this).text().toLowerCase()==currentAnchorTagText){
         $(this).css("color","#006BB6");
       }
+      if ($(this).text().toLowerCase() == 'token' || 'services') {
+        $(this).css("display", "none");
+      }
     });
     const lis = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTagName("li");
     // lis[2].getElementsByTagName("a")[0].innerText = 'Check';

@@ -493,6 +493,9 @@
       if ($(this).text().toLowerCase() == currentAnchorTagText) {
         $(this).css("color", "#006BB6");
       }
+      if ($(this).text().toLowerCase() == 'token' || 'services') {
+        $(this).css("display", "none");
+      }
     });
     // To change the color for active link in admin-navbar items
     $(".admin-navbar a").click((event) => {
