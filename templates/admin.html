@@ -506,12 +506,12 @@
     //     console.log("In add course");
     //     $("#addCourseModal").css("display", "block");
     //   });
-    //      const addCourseButton=document.getElementsByClassName("add-course");
-    // console.log(addCourseButton);
-    // const addCourseModal=document.getElementById("addCourseModal");
-    // addCourseButton.click=()=>{
-    //   addCourseModal.style.display='block';
-    // }
+    const addCourseButton=document.getElementsByClassName("add-course")[0];
+    console.log(addCourseButton);
+    const addCourseModal=document.getElementById("addCourseModal");
+    addCourseButton.onclick=()=>{
+      addCourseModal.style.display='block';
+    }
     // cancel.onclick = function () {
     //     courseModal.style.display = "none";
     // }
