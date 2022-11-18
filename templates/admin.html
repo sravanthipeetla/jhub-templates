@@ -631,37 +631,56 @@
     cancelCourseButton.onclick = function () {
       addCourseModal.style.display = "none";
     }
+
     saveCourseButton.onclick = function () {
       let success;
       const courseName = courseNameText.value;
       const instructorUserName = instructorUserNameText.value;
       if (courseName.length > 0 && instructorUserName.length > 0) {
         const courseResponse = fetch(`https://data-labs.hcl-edtech.com/services/ngshare/course/${courseName}`, {
-          Method: 'POST',
-          Headers: {
+          method: 'POST',
+          headers: {
             Accept: 'application.json',
-          'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
           }
         }).then((response) => {
-          return response.json();
+          if (response.status == 200 && response.ok) {
+            const instructorsList = fetch('https://data-labs.hcl-edtech.com/hub/api/groups/instructor/users', {
+              method: 'POST',
+              headers: {
+                Accept: 'application.json',
+                'Content-Type': 'application/json'
+              }
+            }).then((response) => {
+              return response.json();
+            })
+            if ($.inArray(instructorUserName, instructorsList) != -1) {
+              const instructorAddResponse = fetch( "https://data-labs.hcl-edtech.com/services/ngshare/students/"+courseName+"?instructor="+'[{"username": "saraswathiinstructor","first_name": "","last_name": "","email": "pasumartisaraswathi@gmail.com"}]', {
+                method: 'POST',
+                headers: {
+                  Accept: 'application.json',
+                  'Content-Type': 'application/json'
+                }
+              }).then((response) => {
+                if (response.status == 200 && response.ok) {
+                  alert("success");
+                }
+                alert("Course created but instructor couldn't be assigned.");
+              })
+              alert("Course created .");
+            }
+            alert("Instructor not present.")
+          }
+          alert('Course could not be created!');
         });
+
+      }
+      else {
+        alert('Please provide valid course name and instructor username');
         console.log(courseResponse);
-        // if (courseResponse.status == 200) {
-        //   const instructorAddResponse = fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructor' + courseName + '/' + instructorUserName).then((response) => {
-        //     return response.json();
-        //   })
-        //   if (instructorAddResponse.status == 200) {
-        //     success = true;
-        //   }
-        //   else {
-        //     alert(instructorAddResponse);
-        //   }
-        // }
-        // else {
-        //   alert(courseResponse);
-        // }
       }
     }
+
     let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
@@ -686,14 +705,15 @@
         console.log(error);
       });
       Object.values(courses_list).forEach(async (course) => {
-        instructors_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then((response) => {
+        instructors_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/instructors/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
           return data.instructors.length;
         }).catch((error) => {
           console.log(error);
         });
-        students_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then((response) => {
+        console.log(instructors_count);
+        students_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/students/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
           return data.students.length;
@@ -722,7 +742,7 @@
         console.log(error);
       });
       Object.values(courses_list).forEach(async (course) => {
-        instructors_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/instructors/' + course).then((response) => {
+        instructors_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/instructors/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
           return data.instructors.length;
@@ -751,7 +771,7 @@
         console.log(error);
       });
       Object.values(courses_list).forEach(async (course) => {
-        students_count = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + course).then((response) => {
+        students_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/students/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
           return data.students.length;
