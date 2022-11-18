@@ -631,6 +631,7 @@
     cancelCourseButton.onclick = function () {
       addCourseModal.style.display = "none";
     }
+
     let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
@@ -654,7 +655,6 @@
       }).catch((error) => {
         console.log(error);
       });
-      console.log(courses_list);
       Object.values(courses_list).forEach(async (course) => {
         instructors_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/instructors/${course}`).then((response) => {
           return response.json();
