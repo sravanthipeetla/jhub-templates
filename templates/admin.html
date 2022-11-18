@@ -643,35 +643,36 @@
             'Content-Type': 'application/json'
           }
         }).then((response) => {
-          if (response.status == 200 && response.ok) {
-            const instructorsList = fetch('https://data-labs.hcl-edtech.com/hub/api/groups/instructor/users', {
-              method: 'POST',
-              headers: {
-                Accept: 'application.json',
-                'Content-Type': 'application/json'
-              }
-            }).then((response) => {
-              return response.json();
-            });
-            if ($.inArray(instructorUserName, instructorsList) != -1) {
-              const instructorAddResponse = fetch(`https://data-labs.hcl-edtech.com/services/ngshare/instructor/${courseName}/${instructorUserName}`, {
-                method: 'POST',
-                headers: {
-                  Accept: 'application.json',
-                  'Content-Type': 'application/json'
-                }
-              }).then((response) => {
-                if (response.status == 200 && response.ok) {
-                  alert("success");
-                }
-                alert("instructor couldn't be assigned.");
-              })
-            }
-            else {
-              alert("Instructor not present.")
-            }
-          }
-          alert("Course couldn't be created!");
+          console.log(response.status);
+          // if (response.status == 200 && response.ok) {
+          //   const instructorsList = fetch('https://data-labs.hcl-edtech.com/hub/api/groups/instructor/users', {
+          //     method: 'POST',
+          //     headers: {
+          //       Accept: 'application.json',
+          //       'Content-Type': 'application/json'
+          //     }
+          //   }).then((response) => {
+          //     return response.json();
+          //   });
+          //   if ($.inArray(instructorUserName, instructorsList) != -1) {
+          //     const instructorAddResponse = fetch(`https://data-labs.hcl-edtech.com/services/ngshare/instructor/${courseName}/${instructorUserName}`, {
+          //       method: 'POST',
+          //       headers: {
+          //         Accept: 'application.json',
+          //         'Content-Type': 'application/json'
+          //       }
+          //     }).then((response) => {
+          //       if (response.status == 200 && response.ok) {
+          //         alert("success");
+          //       }
+          //       alert("instructor couldn't be assigned.");
+          //     })
+          //   }
+          //   else {
+          //     alert("Instructor not present.")
+          //   }
+          // }
+          // alert("Course couldn't be created!");
         });
         console.log(courseResponse);
       }
