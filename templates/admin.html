@@ -663,6 +663,7 @@
         }).catch((error) => {
           console.log(error);
         });
+        console.log(instructors_count);
         students_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/students/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
