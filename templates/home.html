@@ -608,7 +608,7 @@ if user.admin %} {{ super() }}
     	      const studentData=JSON.stringify(studentsList);
                   const addStudent = async () => {
     	        const selectedCourse = selected.options[selected.selectedIndex].text;
-      	      	const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/'+selectedCourse+'?students='+studentData, {
+      	      	const response = await fetch('https://dslab-dev.hcl-edtech.com//services/ngshare/students/'+selectedCourse+'?students='+studentData, {
         			method: 'POST',
         			headers: {
     			    'Accept': 'application/json, text/plain, */*',
