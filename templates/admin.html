@@ -502,15 +502,9 @@
       $(".admin-navbar .active").removeClass("active");
       $(event.target).addClass("active");
     });
-    // $(".add-course").click(() => {
-    //     console.log("In add course");
-    //     $("#addCourseModal").css("display", "block");
-    //   });
     const addCourseModal=document.getElementById("addCourseModal");
-    // addCourseButton.onclick=()=>{
-    //   addCourseModal.style.display='block';
-    // }
-    add_course_click= ()=> {
+    const add_course_click= ()=> {
+        console.log("here");
         addCourseModal.style.display = "none";
     }
     // closeSpan.onclick = function () {
