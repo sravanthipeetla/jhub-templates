@@ -630,7 +630,7 @@
     const saveCourseButton = document.getElementById("save_course_button");
     const courseNameText = document.getElementById("course-name");
     const instructorUserNameText = document.getElementById("instructor-user-name");
-    const add_course_click = () => {
+    const addCourse = () => {
       console.log("here");
       addCourseModal.style.display = "block";
     }
@@ -694,13 +694,12 @@
       console.log('here');
       // console.log(courseName);
     }
-    const courses_list=[];
-    let instructors_count, students_count;
-    let course_dict = {};
-    let courseDetails = [];
+    const courseDetails = [];
 
     //course-nav
-    const courses_click = async () => {
+    const fetchCourseDetails= async () => {
+      const coursesList=[], course_dict = {};
+      let instructorsCount, studentsCount;
       $("#admin-thead tr").remove();
       $("#admin-table tr").remove();
       $(".add-btn").text("Add Course");
@@ -708,58 +707,30 @@
       const addCourseButton = document.getElementById('add-course');
       const saveCourseButton = document.getElementById('save_course_button');
 
-      addCourseButton.onclick = add_course_click;
-      // $(".add-btn").addClass("add-course");
+      addCourseButton.onclick = addCourse;
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
-
-
-      const courses_list_promise = await fetch(`${ngshare_url}courses`);
-      const course_list_json=await courses_list_promise.json();
-      const courses=course_list_json.courses;
-      courses.forEach((course)=>{
-        courses_list.push(course);
+      const courseFetch= await fetch(`${ngshare_url}courses`);
+      const courseJson=await courseFetch.json();
+      courseJson.courses.forEach((course)=>{
+        coursesList.push(course);
       });
+      coursesList.map(async (course) => {
+        const instructorsPromise = await fetch(`${ngshare_url}instructors/${course}`);
+        const instructorsJson=await instructorsPromise.json();
+        instructorsCount=instructorsJson.instructors.length;
+        const studentsPromise=await fetch(`${ngshare_url}students/${course}`);
+        const studentsJson=await studentsPromise.json();
+        studentsCount=studentsJson.students.length;
 
-
-
-
-
-
-
-      // .then((response) => {
-      //   return response.json();
-      // }).then((data) => {
-      //   courses_list = data.courses;
-      // }).catch((error) => {
-      //   console.log(error);
-      // });
-      Object.values(courses_list).map(async (course) => {
-        instructors_count = await fetch(`${ngshare_url}instructors/${course}`).then((response) => {
-          return response.json();
-        }).then((data) => {
-          return data.instructors.length;
-        }).catch((error) => {
-          console.log(error);
-        });
-        students_count = await fetch(`${ngshare_url}students/${course}`).then((response) => {
-          return response.json();
-        }).then((data) => {
-          return data.students.length;
-        }).catch((error) => {
-          console.log(error);
-        });
         course_dict["course"] = course;
         course_dict["instructors_count"] = instructors_count;
         course_dict["students_count"] = students_count;
         courseDetails.push(course_dict);
-        const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td>' + course_dict["students_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" onclick="deleteCourse('+course_dict.course+')"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
-        $("#admin-tbody").append(tr);
+        // const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td>' + course_dict["students_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" onclick="deleteCourse('+course_dict.course+')"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
+        // $("#admin-tbody").append(tr);
       });
-    };
-
-    $('#loader').addClass("hide-loader");
-    
-    console.log("now course list",courses_list);
+    };    
+    console.log("now course list",courseDetails);
 
 
 
@@ -769,13 +740,13 @@
 
 
 
-    const instructors_click = async () => {
+    const fetchInstructorDetails = async () => {
       $("#admin-thead tr").remove();
       $("#admin-table tr").remove();
       $(".add-btn").text("Add instructor");
       $(".add-btn").addClass("add-instructor");
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Actions</td></tr>');
-      const courses_list_promise = await fetch(`${ngshare_url}courses`).then((response) => {
+      const courseFetch= await fetch(`${ngshare_url}courses`).then((response) => {
         return response.json();
       }).then((data) => {
         courses_list = data.courses;
@@ -798,13 +769,13 @@
       });
 
     };
-    const learners_click = async () => {
+    const fetchLearnerDetails = async () => {
       $("#admin-thead tr").remove();
       $("#admin-table tr").remove();
       $(".add-btn").text("Add learner");
       $(".add-btn").addClass("add-learner");
       $("#admin-thead").append('<tr><td>Course name</td><td>Learner count</td><td>Actions</td></tr>');
-      const courses_list_promise = await fetch(`${ngshare_url}courses`).then((response) => {
+      const courseFetch= await fetch(`${ngshare_url}courses`).then((response) => {
         return response.json();
       }).then((data) => {
         courses_list = data.courses;
@@ -826,12 +797,12 @@
         $("#admin-tbody").append(tr);
       });
     };
-    window.onload = courses_click;
+    window.onload = fetchCourseDetails;
     const course_navigation = document.getElementById('course-nav');
     const instructor_navigation = document.getElementById('instructor-nav');
     const learner_navigation = document.getElementById('learner-nav');
-    course_navigation.onclick = courses_click;
-    instructor_navigation.onclick = instructors_click;
-    learner_navigation.onclick = learners_click;
+    course_navigation.onclick = fetchCourseDetails;
+    instructor_navigation.onclick = fetchInstructorDetails;
+    learner_navigation.onclick = fetchLearnerDetails;
   </script>
   {% endblock %}
