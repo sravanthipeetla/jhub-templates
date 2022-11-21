@@ -705,39 +705,24 @@
       $(".add-btn").attr('id', 'add-course');
       const addCourseButton = document.getElementById('add-course');
       const saveCourseButton = document.getElementById('save_course_button');
+      const coursesList=[];
 
       addCourseButton.onclick = addCourse;
-      // $(".add-btn").addClass("add-course");
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
-
-
-      const courses_list_promise = await fetch(`${ngshare_url}courses`);
-      const course_list_json=await courses_list_promise.json();
-      const courses=course_list_json.courses;
-      courses.forEach((course)=>{
+      const courseFetch= await fetch(`${ngshare_url}courses`);
+      const courseJson=await courseFetch.json();
+      courseJson.courses.forEach((course)=>{
         coursesList.push(course);
       });
-
-      Object.values(coursesList).forEach(async (course) => {
-        instructors_count = await fetch(`${ngshare_url}instructors/${course}`).then((response) => {
-          return response.json();
-        }).then((data) => {
-          return data.instructors.length;
-        }).catch((error) => {
-          console.log(error);
-        });
-        students_count = await fetch(`${ngshare_url}students/${course}`).then((response) => {
-          return response.json();
-        }).then((data) => {
-          return data.students.length;
-        }).catch((error) => {
-          console.log(error);
-        });
-        course_dict["course"] = course;
-        course_dict["instructors_count"] = instructors_count;
-        course_dict["students_count"] = students_count;
-        courseDetails.push(course_dict);
-        const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td>' + course_dict["students_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" onclick="deleteCourse('+course_dict.course+')"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
+      Object.values(courseJson.courses).forEach(async (courseName) => {
+        console.log(courseName);
+        const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
+        const instructorsJson=await instructorsPromise.json();
+        const instructorsCount=instructorsJson.instructors.length;
+        const studentsPromise=await fetch(`${ngshare_url}students/${courseName}`);
+        const studentsJson=await studentsPromise.json();
+        const studentsCount=studentsJson.students.length;
+        const tr = '<tr><td>' + course + '</td><td>' + instructorsCount + '</td><td>' + studentsCount + '</td><td><button class="delete_course_button" id="delete_course_but" onclick="deleteCourse('+course+')"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
         $("#admin-tbody").append(tr);
       });
     };    
