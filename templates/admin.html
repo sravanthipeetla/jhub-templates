@@ -698,8 +698,8 @@
 
     //course-nav
     const fetchCourseDetails= async () => {
-      const coursesList=[], course_dict = {};
-      let instructorsCount, studentsCount;
+      const coursesList=[];
+      let instructorsCount, studentsCount,course_dict;
       $("#admin-thead tr").remove();
       $("#admin-table tr").remove();
       $(".add-btn").text("Add Course");
