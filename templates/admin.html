@@ -738,7 +738,7 @@
         course_dict["instructors_count"] = instructors_count;
         course_dict["students_count"] = students_count;
         courseDetails.push(course_dict);
-        const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td>' + course_dict["students_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" onClick="deleteCourseButton(this.data-key)" data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
+        const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td>' + course_dict["students_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" onClick="deleteCourse(this.data-key)" data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
         $("#admin-tbody").append(tr);
       });
     };
@@ -766,7 +766,7 @@
         course_dict["course"] = course;
         course_dict["instructors_count"] = instructors_count;
         courseDetails.push(course_dict);
-        const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" onclick=deleteCourse(this.data-key) data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
+        const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
         $("#admin-tbody").append(tr);
       });
 
