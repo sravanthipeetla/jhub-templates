@@ -237,23 +237,6 @@
     height: 3.5vh;
     width: 14vw;
   }
-  .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
- }
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.hide-loader{
-display:none;
-}
 </style>
 {% endblock %}
 {% block main %}
@@ -273,8 +256,6 @@ display:none;
     <div class="description-bar">
       <p class="description">You can manage courses, instructors and learners from here.</p>
       <button class="add-btn"></button>
-    </div>
-    <div class="loader" id="loader">
     </div>
     <table class="admin-table" id="admin-table">
       <thead id="admin-thead"></thead>
@@ -752,7 +733,7 @@ display:none;
       // }).catch((error) => {
       //   console.log(error);
       // });
-      Object.values(courses_list).forEach(async (course) => {
+      Object.values(courses_list).map(async (course) => {
         instructors_count = await fetch(`${ngshare_url}instructors/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
@@ -779,11 +760,6 @@ display:none;
     $('#loader').addClass("hide-loader");
     
     console.log("now course list",courses_list);
-
-    courses_list.forEach((course)=>{
-      console.log(course);
-    })
-
 
 
 
