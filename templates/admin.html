@@ -681,9 +681,10 @@
       }
     }
 
-    // const deleteCourse=(courseName)=>{
-    //   console.log(courseName);
-    // }
+    const deleteCourse=(courseName)=>{
+      console.log('here');
+      // console.log(courseName);
+    }
 
     let courses_list, instructors_count, students_count;
     let course_dict = {};
@@ -699,9 +700,6 @@
       const saveCourseButton = document.getElementById('save_course_button');
 
       addCourseButton.onclick = add_course_click;
-      const deleteCourse=(coursename)=>{
-        console.log(courseName);
-      }
       // $(".add-btn").addClass("add-course");
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
       const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
