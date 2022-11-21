@@ -716,6 +716,7 @@
       });
       console.log(coursesList);
       coursesList.map(async (courseName) => {
+        console.log(courseName);
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson=await instructorsPromise.json();
         instructorsCount=instructorsJson.instructors.length;
