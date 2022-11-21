@@ -22,7 +22,7 @@
     color: #000000;
   }
 
-  #jupyterhub-logo{
+  #jupyterhub-logo {
     height: 3.5vh;
     margin: 1.6vw;
   }
@@ -655,7 +655,7 @@
               return response.json();
             })
             if ($.inArray(instructorUserName, instructorsList) != -1) {
-              const instructorAddResponse = fetch( "https://data-labs.hcl-edtech.com/services/ngshare/students/"+courseName+"?instructor="+'[{"username": "saraswathiinstructor","first_name": "","last_name": "","email": "pasumartisaraswathi@gmail.com"}]', {
+              const instructorAddResponse = fetch("https://data-labs.hcl-edtech.com/services/ngshare/students/" + courseName + "?instructor=" + '[{"username": "saraswathiinstructor","first_name": "","last_name": "","email": "pasumartisaraswathi@gmail.com"}]', {
                 method: 'POST',
                 headers: {
                   Accept: 'application.json',
@@ -680,22 +680,22 @@
         console.log(courseResponse);
       }
     }
-     const deleteCourse=(courseName)=>{
+    const deleteCourse = (courseName) => {
       console.log(courseName);
-      const response=fetch(`https://data-labs.hcl-edtech.com/services/ngshare/course/${courseName}`, {
-          method: 'POST',
-          headers: {
-            Accept: 'application.json',
-            'Content-Type': 'application/json'
-          }
-        }).then((response)=>{
-          if(response.status==200){
-            alert("successfully delted course!");
-          }
-          return response.json();
-        })
-        console.log(response);
-     }
+      const response = fetch(`https://data-labs.hcl-edtech.com/services/ngshare/course/${courseName}`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application.json',
+          'Content-Type': 'application/json'
+        }
+      }).then((response) => {
+        if (response.status == 200) {
+          alert("successfully delted course!");
+        }
+        return response.json();
+      })
+      console.log(response);
+    }
     let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
@@ -738,7 +738,7 @@
         course_dict["instructors_count"] = instructors_count;
         course_dict["students_count"] = students_count;
         courseDetails.push(course_dict);
-        const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td>' + course_dict["students_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" onclick=deleteCourse('+course_dict["course"]+') dataKey="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
+        const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td>' + course_dict["students_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" onclick=deleteCourse(' + course_dict["course"] + ') dataKey="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
         $("#admin-tbody").append(tr);
       });
     };
@@ -811,4 +811,5 @@
   </script>
   {% endblock %}
 
-  "https://data-labs.hcl-edtech.com/services/ngshare/students/DL103?students="+'[{"username": "liustudent01","first_name": "liustudent","last_name": "lastname","email": "liustudent@gmail.com"}]'
+  "https://data-labs.hcl-edtech.com/services/ngshare/students/DL103?students="+'[{"username":
+  "liustudent01","first_name": "liustudent","last_name": "lastname","email": "liustudent@gmail.com"}]'
