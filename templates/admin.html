@@ -699,7 +699,6 @@
     //course-nav
     const fetchCourseDetails= async () => {
       const coursesList=[];
-      let instructorsCount, studentsCount,course_dict;
       $("#admin-thead tr").remove();
       $("#admin-table tr").remove();
       $(".add-btn").text("Add Course");
@@ -714,16 +713,14 @@
       courseJson.courses.forEach((course)=>{
         coursesList.push(course);
       });
-      console.log(coursesList);
       Object.values(coursesList).forEach(async (courseName) => {
-        console.log(courseName);
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson=await instructorsPromise.json();
-        instructorsCount=instructorsJson.instructors.length;
+        const instructorsCount=instructorsJson.instructors.length;
         const studentsPromise=await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson=await studentsPromise.json();
-        studentsCount=studentsJson.students.length;
-
+        const studentsCount=studentsJson.students.length;
+        let course_dict;
         course_dict["courseName"] = courseName;
         course_dict["instructorsCount"] = instructorsCount;
         course_dict["studentsCount"] = studentsCount;
