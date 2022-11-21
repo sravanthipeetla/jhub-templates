@@ -714,6 +714,7 @@
         coursesList.push(course);
       });
       Object.values(coursesList).forEach(async (courseName) => {
+        console.log(courseName);
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson=await instructorsPromise.json();
         const instructorsCount=instructorsJson.instructors.length;
