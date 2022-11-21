@@ -599,6 +599,10 @@
         });
     });
     // custom script
+
+    const ngshare_url='https://data-labs.hcl-edtech.com/services/ngshare/';
+    const hub_url='https://data-labs.hcl-edtech.com/hub/api/';
+
     // To change the color for active link in top left navbar items
     const currentUrl = window.location.href.split("/");
     const currentAnchorTagText = currentUrl[currentUrl.length - 1];
@@ -607,14 +611,19 @@
         $(this).css("color", "#006BB6");
       }
     });
-    const lis = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTagName("li");
-    lis[1].style.visibility = 'hidden';
-    lis[3].style.visibility = 'hidden';
+
+    // To hide left navbar items - 'Token' and 'services'
+    const navbar_left_list = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTagName("li");
+    navbar_left_list[1].style.visibility = 'hidden';
+    navbar_left_list[3].style.visibility = 'hidden';
+
     // To change the color for active link in admin-navbar items
     $(".admin-navbar a").click((event) => {
       $(".admin-navbar .active").removeClass("active");
       $(event.target).addClass("active");
     });
+
+    // Courses tab functionality
     const addCourseModal = document.getElementById("addCourseModal");
     const closeSpan = document.getElementsByClassName("courseClose")[0];
     const cancelCourseButton = document.getElementById("cancel_course_button");
@@ -637,7 +646,7 @@
       const courseName = courseNameText.value;
       const instructorUserName = instructorUserNameText.value;
       if (courseName.length > 0 && instructorUserName.length > 0) {
-        const courseResponse = fetch(`https://data-labs.hcl-edtech.com/services/ngshare/course/${courseName}`, {
+        const courseResponse = fetch(`${ngshare_url}course/${courseName}`, {
           method: 'POST',
           headers: {
             Accept: 'application.json',
@@ -645,7 +654,7 @@
           }
         }).then((response) => {
           if (response.status == 200 && response.ok) {
-            const instructorsList = fetch('https://data-labs.hcl-edtech.com/hub/api/groups/instructor/users', {
+            const instructorsList = fetch(`${hub_url}groups/instructor/users`, {
               method: 'POST',
               headers: {
                 Accept: 'application.json',
@@ -655,7 +664,7 @@
               return response.json();
             })
             if ($.inArray(instructorUserName, instructorsList) != -1) {
-              const instructorAddResponse = fetch( "https://data-labs.hcl-edtech.com/services/ngshare/students/"+courseName+"?instructor="+'[{"username": "saraswathiinstructor","first_name": "","last_name": "","email": "pasumartisaraswathi@gmail.com"}]', {
+              const instructorAddResponse = fetch( `${ngshare_url}students/"+courseName+"?instructor="+'[{"username": "saraswathiinstructor","first_name": "","last_name": "","email": "pasumartisaraswathi@gmail.com"}]`, {
                 method: 'POST',
                 headers: {
                   Accept: 'application.json',
@@ -685,8 +694,8 @@
       console.log('here');
       // console.log(courseName);
     }
-
-    let courses_list, instructors_count, students_count;
+    const courses_list=[];
+    let instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
 
@@ -702,9 +711,9 @@
       addCourseButton.onclick = add_course_click;
       // $(".add-btn").addClass("add-course");
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
-      const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
+      const courses_list_promise = await fetch(`${ngshare_url}courses`);
       const course_list_json=await courses_list_promise.json();
-      courses_list=course_list_json.courses;
+      courses_list.push(await course_list_json.courses);
       console.log(courses_list_promise);
 
 
@@ -721,14 +730,14 @@
       //   console.log(error);
       // });
       Object.values(courses_list).forEach(async (course) => {
-        instructors_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/instructors/${course}`).then((response) => {
+        instructors_count = await fetch(`${ngshare_url}instructors/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
           return data.instructors.length;
         }).catch((error) => {
           console.log(error);
         });
-        students_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/students/${course}`).then((response) => {
+        students_count = await fetch(`${ngshare_url}students/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
           return data.students.length;
@@ -750,7 +759,7 @@
       $(".add-btn").text("Add instructor");
       $(".add-btn").addClass("add-instructor");
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Actions</td></tr>');
-      const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
+      const courses_list_promise = await fetch(`${ngshare_url}courses`).then((response) => {
         return response.json();
       }).then((data) => {
         courses_list = data.courses;
@@ -758,7 +767,7 @@
         console.log(error);
       });
       Object.values(courses_list).forEach(async (course) => {
-        instructors_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/instructors/${course}`).then((response) => {
+        instructors_count = await fetch(`${ngshare_url}instructors/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
           return data.instructors.length;
@@ -779,7 +788,7 @@
       $(".add-btn").text("Add learner");
       $(".add-btn").addClass("add-learner");
       $("#admin-thead").append('<tr><td>Course name</td><td>Learner count</td><td>Actions</td></tr>');
-      const courses_list_promise = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses').then((response) => {
+      const courses_list_promise = await fetch(`${ngshare_url}courses`).then((response) => {
         return response.json();
       }).then((data) => {
         courses_list = data.courses;
@@ -787,7 +796,7 @@
         console.log(error);
       });
       Object.values(courses_list).forEach(async (course) => {
-        students_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/students/${course}`).then((response) => {
+        students_count = await fetch(`${ngshare_url}students/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
           return data.students.length;
