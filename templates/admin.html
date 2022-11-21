@@ -683,7 +683,7 @@
      const deleteCourse=(courseName)=>{
       console.log(courseName);
       const response=fetch(`https://data-labs.hcl-edtech.com/services/ngshare/course/${courseName}`, {
-          method: 'DELETE',
+          method: 'POST',
           headers: {
             Accept: 'application.json',
             'Content-Type': 'application/json'
