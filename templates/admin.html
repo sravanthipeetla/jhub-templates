@@ -698,13 +698,13 @@
 
     //course-nav
     const fetchCourseDetails= async () => {
-      const coursesList=[];
       $("#admin-thead tr").remove();
       $("#admin-table tr").remove();
       $(".add-btn").text("Add Course");
       $(".add-btn").attr('id', 'add-course');
       const addCourseButton = document.getElementById('add-course');
       const saveCourseButton = document.getElementById('save_course_button');
+      const coursesList=[];
 
       addCourseButton.onclick = addCourse;
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
@@ -713,7 +713,7 @@
       courseJson.courses.forEach((course)=>{
         coursesList.push(course);
       });
-      Object.values(coursesList).forEach(async (courseName) => {
+      Object.values(courseJson.courses).forEach(async (courseName) => {
         console.log(courseName);
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson=await instructorsPromise.json();
