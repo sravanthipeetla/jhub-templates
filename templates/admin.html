@@ -711,9 +711,15 @@
       addCourseButton.onclick = add_course_click;
       // $(".add-btn").addClass("add-course");
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
+
+
       const courses_list_promise = await fetch(`${ngshare_url}courses`);
       const course_list_json=await courses_list_promise.json();
-      courses_list.push(course_list_json.courses);
+      const courses=course_list_json.courses;
+      courses.forEach((course)=>{
+        courses_list.push(course);
+      })
+     
       console.log(courses_list_promise);
 
 
