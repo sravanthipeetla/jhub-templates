@@ -715,7 +715,7 @@
         coursesList.push(course);
       });
       console.log(coursesList);
-      coursesList.map(async (course) => {
+      coursesList.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${course}`);
         const instructorsJson=await instructorsPromise.json();
         instructorsCount=instructorsJson.instructors.length;
@@ -723,7 +723,7 @@
         const studentsJson=await studentsPromise.json();
         studentsCount=studentsJson.students.length;
 
-        course_dict["courseName"] = course;
+        course_dict["courseName"] = courseName;
         course_dict["instructorsCount"] = instructorsCount;
         course_dict["studentsCount"] = studentsCount;
         courseDetails.push(course_dict);
