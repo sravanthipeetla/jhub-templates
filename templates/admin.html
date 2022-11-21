@@ -744,7 +744,7 @@
         instructors_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/instructors/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
-          return data.instructors.length;
+          return JSON.stringify(data.instructors.length);
         }).catch((error) => {
           console.log(error);
         });
