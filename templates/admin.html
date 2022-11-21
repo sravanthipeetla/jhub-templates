@@ -692,7 +692,9 @@
           if(response.status==200){
             alert("successfully delted course!");
           }
+          return response.json();
         })
+        console.log(response);
      }
     let courses_list, instructors_count, students_count;
     let course_dict = {};
