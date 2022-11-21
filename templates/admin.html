@@ -22,7 +22,7 @@
     color: #000000;
   }
 
-  #jupyterhub-logo{
+  #jupyterhub-logo {
     height: 3.5vh;
     margin: 1.6vw;
   }
@@ -256,6 +256,9 @@
     <div class="description-bar">
       <p class="description">You can manage courses, instructors and learners from here.</p>
       <button class="add-btn"></button>
+    </div>
+    <div class="preload">
+      <div class="emoji">🕐</div>
     </div>
     <table class="admin-table" id="admin-table">
       <thead id="admin-thead"></thead>
@@ -600,8 +603,27 @@
     });
     // custom script
 
-    const ngshare_url='https://data-labs.hcl-edtech.com/services/ngshare/';
-    const hub_url='https://data-labs.hcl-edtech.com/hub/api/';
+    const ngshare_url = 'https://data-labs.hcl-edtech.com/services/ngshare/';
+    const hub_url = 'https://data-labs.hcl-edtech.com/hub/api/';
+
+
+    const loader = document.querySelector('.preload');
+    const emoji = loader.querySelector('.emoji');
+
+    const emojis = ["🕐", "🕜", "🕑", "🕝", "🕒", "🕞", "🕓", "🕟", "🕔", "🕠", "🕕", "🕡", "🕖", "🕢", "🕗", "🕣", "🕘", "🕤", "🕙", "🕥", "🕚", "🕦", "🕛", "🕧"];
+
+    const interval = 125;
+
+    const loadEmojis = (arr) => {
+      setInterval(() => {
+        emoji.innerText = arr[Math.floor(Math.random() * arr.length)];
+        //console.log(Math.floor(Math.random() * arr.length))
+      }, interval);
+    }
+
+    const init = () => {
+      loadEmojis(emojis);
+    }
 
     // To change the color for active link in top left navbar items
     const currentUrl = window.location.href.split("/");
@@ -664,7 +686,7 @@
               return response.json();
             })
             if ($.inArray(instructorUserName, instructorsList) != -1) {
-              const instructorAddResponse = fetch( `${ngshare_url}students/"+courseName+"?instructor="+'[{"username": "saraswathiinstructor","first_name": "","last_name": "","email": "pasumartisaraswathi@gmail.com"}]`, {
+              const instructorAddResponse = fetch(`${ngshare_url}students/"+courseName+"?instructor="+'[{"username": "saraswathiinstructor","first_name": "","last_name": "","email": "pasumartisaraswathi@gmail.com"}]`, {
                 method: 'POST',
                 headers: {
                   Accept: 'application.json',
@@ -690,15 +712,15 @@
       }
     }
 
-    const deleteCourse=()=>{
+    const deleteCourse = () => {
       console.log('here');
       // console.log(courseName);
     }
     const courseDetails = [];
-    const coursesList=[];
+    const coursesList = [];
     let course_dict;
     //course-nav
-    const fetchCourseDetails= async () => {
+    const fetchCourseDetails = async () => {
       $("#admin-thead tr").remove();
       $("#admin-table tr").remove();
       $(".add-btn").text("Add Course");
@@ -707,22 +729,28 @@
       const saveCourseButton = document.getElementById('save_course_button');
       addCourseButton.onclick = addCourse;
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
-      const courseFetch= await fetch(`${ngshare_url}courses`);
-      const courseJson=await courseFetch.json();
-      const coursesList=courseJson.courses;
-      Object.values(courseJson.courses).forEach(async (courseName) => {
+      const courseFetch = await fetch(`${ngshare_url}courses`);
+      const courseJson = await courseFetch.json();
+      const coursesList = courseJson.courses;
+      coursesList.map(async (courseName) => {
         console.log(courseName);
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
-        const instructorsJson=await instructorsPromise.json();
-        const instructorsCount=instructorsJson.instructors.length;
-        const studentsPromise=await fetch(`${ngshare_url}students/${courseName}`);
-        const studentsJson=await studentsPromise.json();
-        const studentsCount=studentsJson.students.length;
-        const tr = '<tr><td>'+courseName+'</td><td>' + instructorsCount + '</td><td>' + studentsCount + '</td><td><button class="delete_course_button" id="delete_course_but"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
+        const instructorsJson = await instructorsPromise.json();
+        const instructorsCount = instructorsJson.instructors.length;
+        const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
+        const studentsJson = await studentsPromise.json();
+        const studentsCount = studentsJson.students.length;
+        const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td>' + studentsCount + '</td><td><button class="delete_course_button" id="delete_course_but"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
         $("#admin-tbody").append(tr);
-      });
-    };    
-    console.log("now course list",courseDetails);
+      }).then(r => r.json())
+    .then(data => {
+       // console.log(data)
+       document.querySelector(".preload").style.display = "none"//stop the load
+})
+
+
+    };
+    console.log("now course list", courseDetails);
 
 
 
@@ -738,7 +766,7 @@
       $(".add-btn").text("Add instructor");
       $(".add-btn").addClass("add-instructor");
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Actions</td></tr>');
-      const courseFetch= await fetch(`${ngshare_url}courses`).then((response) => {
+      const courseFetch = await fetch(`${ngshare_url}courses`).then((response) => {
         return response.json();
       }).then((data) => {
         courses_list = data.courses;
@@ -767,7 +795,7 @@
       $(".add-btn").text("Add learner");
       $(".add-btn").addClass("add-learner");
       $("#admin-thead").append('<tr><td>Course name</td><td>Learner count</td><td>Actions</td></tr>');
-      const courseFetch= await fetch(`${ngshare_url}courses`).then((response) => {
+      const courseFetch = await fetch(`${ngshare_url}courses`).then((response) => {
         return response.json();
       }).then((data) => {
         courses_list = data.courses;
