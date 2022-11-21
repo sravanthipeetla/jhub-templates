@@ -695,7 +695,7 @@
       // console.log(courseName);
     }
     const courseDetails = [];
-
+    const coursesList=[];
     //course-nav
     const fetchCourseDetails= async () => {
       $("#admin-thead tr").remove();
@@ -714,7 +714,7 @@
       const course_list_json=await courses_list_promise.json();
       const courses=course_list_json.courses;
       courses.forEach((course)=>{
-        courses_list.push(course);
+        coursesList.push(course);
       });
 
       Object.values(courses_list).forEach(async (course) => {
