@@ -714,6 +714,7 @@
       courseJson.courses.forEach((course)=>{
         coursesList.push(course);
       });
+      console.log(coursesList);
       coursesList.map(async (course) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${course}`);
         const instructorsJson=await instructorsPromise.json();
