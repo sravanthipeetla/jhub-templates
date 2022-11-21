@@ -717,7 +717,7 @@
         coursesList.push(course);
       });
 
-      Object.values(courses_list).forEach(async (course) => {
+      Object.values(coursesList).forEach(async (course) => {
         instructors_count = await fetch(`${ngshare_url}instructors/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
