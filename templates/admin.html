@@ -681,6 +681,7 @@
       }
     }
      const deleteCourse=(courseName)=>{
+      console.log("in delete course");
       console.log(courseName);
       const response=fetch(`https://data-labs.hcl-edtech.com/services/ngshare/course/${courseName}`, {
           method: 'POST',
@@ -806,8 +807,6 @@
     course_navigation.onclick = courses_click;
     instructor_navigation.onclick = instructors_click;
     learner_navigation.onclick = learners_click;
-    // $('#course-nav').click = courses_click;
-    // $('#instructor-nav').click=instructors_click;
   </script>
   {% endblock %}
 
