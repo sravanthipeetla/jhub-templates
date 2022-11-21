@@ -680,7 +680,22 @@
         console.log(courseResponse);
       }
     }
+     const deleteCourse=(courseName)=>{
+      const response=fetch(`https://data-labs.hcl-edtech.com/services/ngshare/course/${courseName}`, {
+          method: 'DELETE',
+          headers: {
+            Accept: 'application.json',
+            'Content-Type': 'application/json'
+          }
+        }).then((response)=>{
+          if(response.status==200){
+            alert("successfully delted course!");
+          }
+          return response.json();
+        })
 
+
+     }
     let courses_list, instructors_count, students_count;
     let course_dict = {};
     let courseDetails = [];
@@ -744,14 +759,14 @@
         instructors_count = await fetch(`https://data-labs.hcl-edtech.com/services/ngshare/instructors/${course}`).then((response) => {
           return response.json();
         }).then((data) => {
-          return JSON.stringify(data.instructors.length);
+          return data.instructors.length;
         }).catch((error) => {
           console.log(error);
         });
         course_dict["course"] = course;
         course_dict["instructors_count"] = instructors_count;
         courseDetails.push(course_dict);
-        const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
+        const tr = '<tr><td>' + course_dict["course"] + '</td><td>' + course_dict["instructors_count"] + '</td><td><button class="delete_course_button" id="delete_course_but" onclick=deleteCourse(this.data-key) data-key="' + course_dict["course"] + '"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
         $("#admin-tbody").append(tr);
       });
 
