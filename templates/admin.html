@@ -68,7 +68,9 @@
     font-size: 16px;
     padding: 0.7vw;
   }
-
+   .instructors_filter{
+    display:none;
+   }
   .add-btn {
     border: none;
     background-color: #5FBEF0;
@@ -255,7 +257,14 @@
     </div>
     <div class="description-bar">
       <p class="description">You can manage courses, instructors and learners from here.</p>
+      <div id="left-description-bar">
+      <select class="instructors_filter" id="instructors_filter">
+        <option default value="mapped">Mapped</option>
+        <option value="unmapped">Unmapped</option>
+        <option value="all">All</option>
+      </select>
       <button class="add-btn"></button>
+      </div>
     </div>
     <table class="admin-table" id="admin-table">
       <thead id="admin-thead"></thead>
@@ -747,6 +756,7 @@
       $("#admin-table tr").remove();
       $(".add-btn").text("Add instructor");
       $(".add-btn").addClass("add-instructor");
+      $(".instructors_filter").attr('display','block');
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Actions</td></tr>');
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
