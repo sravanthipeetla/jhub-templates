@@ -122,7 +122,7 @@
     padding: 5px 5px 5px 30px;
   }
 
-  .delete_course_button {
+  .delete_course_button,.dropdown_button {
     border: none;
     background-color: #ffffff;
   }
@@ -755,7 +755,7 @@
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
         const instructorsCount = instructorsJson.instructors.length;
-        const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td><button><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
+        const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
         $("#admin-tbody").append(tr);
       });
     };
