@@ -652,7 +652,6 @@
             'Content-Type': 'application/json'
           }
         });
-        console.log(coursePromise);
         if (coursePromise.status == 200 && coursePromise.ok) {
           const hubAddUserPromise = await fetch(`${hub_url}users/${instructorUserName}`,{
             method:'POST',
@@ -691,9 +690,15 @@
               console.log(instructorAddPromise);
               if (instructorAddPromise.status == 200 && instructorAddPromise.ok) {
                 alert("success");
+                addCourseModal.style.display = "none";
+                fetchCourseDetails;
+
               }
             }
           }
+        }
+        else{
+          alert(await coursePromise.json().message);
         }
       }
       else {
