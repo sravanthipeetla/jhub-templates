@@ -697,8 +697,8 @@
           }
         }
         else{
-          const courseResponse=coursePromise.json();
-          console.log(courseResponse);
+          const courseResponse=await coursePromise.json();
+          console.log(courseResponse)
         }
       }
       else {
