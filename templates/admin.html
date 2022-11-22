@@ -674,7 +674,7 @@
                 Accept: 'application.json',
                 'Content-Type': 'application/json'
               },
-              body: data
+              body: JSON.parse(data)
             }
             );
             console.log(hubAddUserGroupPromise);
