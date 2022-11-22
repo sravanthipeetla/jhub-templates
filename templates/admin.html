@@ -641,7 +641,7 @@
       addCourseModal.style.display = "none";
     }
 
-    saveCourseButton.onclick = ()=> {
+    saveCourseButton.onclick = () => {
       const courseName = courseNameText.value;
       const instructorUserName = instructorUserNameInput.value;
       if (courseName.length > 0 && instructorUserName.length > 0) {
@@ -653,20 +653,41 @@
           }
         });
         const courseReponse = coursePromise.json();
-        if (courseResponse.status == 200 && response.ok) {
-          const hubUsersListPromise= fetch(`${hub_url}/users`);
-          const hubUsersList= hubUsersListPromise.json();
-          for(const user in hubUsersList){
-            if(user.name==instructorUserName && user.groups.include("instructor")){
-              const instructorAddPromise = fetch(`${ngshare_url}instructor/${courseName}/${instructorUserName}?first_name=&last_name=&email=`, {
+        if (courseResponse.status == 200 && courseResponse.ok) {
+          const hubAddUserPromise = fetch(`${hub_url}users/${instructorUserName}`);
+          const hubAddUserResponse = hubAddUserPromise.json();
+          if (hubAddUserResponse.status == 200 && hubAddUserResponse.ok) {
+            const data = {
+              "users": [
+                instructorUserName
+              ]
+            };
+            const hubAddUserGroupPromise = fetch(`${hub_url}groups/instructor/users`, {
               method: 'POST',
               headers: {
                 Accept: 'application.json',
                 'Content-Type': 'application/json'
+              },
+              body: data
+            }
+            );
+            const hubAddUserResponse = hubAddUserGroupPromise.json();
+            if (hubAddUserResponse.status == 200 && hubAddUserResponse.ok) {
+              const instructorAddPromise = fetch(`${ngshare_url}instructor/${courseName}/${instructorUserName}?first_name=&last_name=&email=`, {
+                method: 'POST',
+                headers: {
+                  Accept: 'application.json',
+                  'Content-Type': 'application/json'
+                }
+              });
+              const instructorAddRespone = instructorAddPromise.json();
+              if (instructorAddRespone.status == 200 && instructorAddRespone.ok) {
+                alert("success");
               }
-            });
             }
           }
+
+
         }
       }
       else {
@@ -700,7 +721,7 @@
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
         const studentsCount = studentsJson.students.length;
-        const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td>' + studentsCount + '</td><td><button class="delete_course_button" id="delete_course_but" onclick="deleteCourse("'+courseName+'")"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
+        const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td>' + studentsCount + '</td><td><button class="delete_course_button" id="delete_course_but" onclick="deleteCourse("' + courseName + '")"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
         $("#admin-tbody").append(tr);
       })
     };
