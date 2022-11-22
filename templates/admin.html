@@ -639,6 +639,7 @@
     const saveCourseButton = document.getElementById("save_course_button");
     const courseNameText = document.getElementById("course-name");
     const instructorUserNameInput = document.getElementById("instructor-user-name");
+    const instructorsFilter=document.getElementById("instructors_filter");
     const addCourse = () => {
       console.log("here");
       addCourseModal.style.display = "block";
@@ -756,7 +757,7 @@
       $("#admin-table tr").remove();
       $(".add-btn").text("Add instructor");
       $(".add-btn").addClass("add-instructor");
-      $(".instructors_filter").attr('display','block');
+      instructorsFilter.style.display='block';
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Actions</td></tr>');
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
