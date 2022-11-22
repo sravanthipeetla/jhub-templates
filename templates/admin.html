@@ -780,7 +780,13 @@
       coursesList.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
-        const instructorsCount = instructorsJson.instructors.length;
+        const instructorsDetail=instructorsJson.instructors;
+        const instructorsCount = instructorsDetail.length;
+        const instructorUsername=[];
+        for(const instructor in instructorsDetail){
+          instructorUsername.push(instructor.username);
+        }
+        console.log(instructorUsername);
         const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
         $("#admin-tbody").append(tr);
       });
