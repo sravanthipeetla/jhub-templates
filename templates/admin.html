@@ -712,9 +712,9 @@
       }
     }
 
-    const deleteCourse = (courseName) => {
-      console.log('here');
-      console.log(courseName);
+    const deleteCourse = (e) => {
+      console.log(e);
+      // console.log(this.data-value);
       // console.log(courseName);
     }
     //course-nav
@@ -725,6 +725,8 @@
       $(".add-btn").attr('id', 'add-course');
       const addCourseButton = document.getElementById('add-course');
       const saveCourseButton = document.getElementById('save_course_button');
+      const deleteCourseButton= document.getElementById('delete_course_but');
+      deleteCourseButton.onclick= deleteCourse;
       addCourseButton.onclick = addCourse;
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
       const courseFetch = await fetch(`${ngshare_url}courses`);
@@ -737,7 +739,7 @@
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
         const studentsCount = studentsJson.students.length;
-        const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td>' + studentsCount + '</td><td><button class="delete_course_button" id="delete_course_but" onclick=() => {console.log(hello!!!!)}><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
+        const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td>' + studentsCount + '</td><td><button class="delete_course_button" id="delete_course_but" data-value='+courseName+'><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
         $("#admin-tbody").append(tr);
       })
     };
