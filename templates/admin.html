@@ -68,8 +68,19 @@
     font-size: 16px;
     padding: 0.7vw;
   }
+  #left-description-bar{
+    display: flex;
+    gap: 1rem;
+  }
    .instructors_filter{
     display:none;
+    border: 1px solid #5FBEF0;
+    background-color: white;
+    border-radius: 1.5vw;
+    width: 8vw;
+    height: 2vw;
+    font-size: 17px;
+    color:#000000;
    }
   .add-btn {
     border: none;
@@ -733,6 +744,7 @@
       $("#admin-table tr").remove();
       $(".add-btn").text("Add Course");
       $(".add-btn").attr('id', 'add-course');
+      instructorsFilter.style.display='none';
       const addCourseButton = document.getElementById('add-course');
       const saveCourseButton = document.getElementById('save_course_button');
       addCourseButton.onclick = addCourse;
@@ -776,6 +788,7 @@
       $("#admin-table tr").remove();
       $(".add-btn").text("Add learner");
       $(".add-btn").addClass("add-learner");
+      instructorsFilter.style.display='none';
       $("#admin-thead").append('<tr><td>Course name</td><td>Learner count</td><td>Actions</td></tr>');
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
