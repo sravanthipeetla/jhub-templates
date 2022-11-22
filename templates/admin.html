@@ -653,22 +653,20 @@
           }
         });
         if (coursePromise.status == 200 && coursePromise.ok) {
-          const hubAddUserPromise = await fetch(`${hub_url}users/${instructorUserName}`,{
-            method:'POST',
+          const hubAddUserPromise = await fetch(`${hub_url}users/${instructorUserName}`, {
+            method: 'POST',
             headers: {
-                Accept: 'application.json',
-                'Content-Type': 'application/json'
-              }
+              Accept: 'application.json',
+              'Content-Type': 'application/json'
+            }
           });
-          console.log(hubAddUserPromise);
-          console.log(typeof(instructorUserName));
           if (hubAddUserPromise.status == 201 && hubAddUserPromise.ok) {
             const data = {
               "users": [
                 instructorUserName
               ]
             };
-            console.log(typeof(data));
+            console.log(typeof (data));
             const hubAddUserGroupPromise = await fetch(`${hub_url}groups/instructor/users`, {
               method: 'POST',
               headers: {
@@ -689,15 +687,23 @@
               });
               console.log(instructorAddPromise);
               if (instructorAddPromise.status == 200 && instructorAddPromise.ok) {
-                alert("success");
+                alert('Success created.');
                 addCourseModal.style.display = "none";
                 fetchCourseDetails;
               }
+              else {
+                const instructorAddResponse = await instructorAddPromise.json();
+                alert(instructorAddResponse.message);
+              }
             }
           }
+          else {
+            const hubAddUserResponse = await hubAddUserPromise.json();
+            alert(hubAddUserResponse.message);
+          }
         }
-        else{
-          const courseResponse=await coursePromise.json();
+        else {
+          const courseResponse = await coursePromise.json();
           alert(courseResponse.message);
         }
       }
