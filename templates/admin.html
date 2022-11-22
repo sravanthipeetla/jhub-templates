@@ -652,47 +652,46 @@
             'Content-Type': 'application/json'
           }
         });
+        console.log(coursePromise);
         const courseReponse = await coursePromise.json();
-        if (courseResponse.status == 200 && courseResponse.ok) {
-          const hubAddUserPromise = await fetch(`${hub_url}users/${instructorUserName}`);
-          const hubAddUserResponse = await hubAddUserPromise.json();
-          if (hubAddUserResponse.status == 200 && hubAddUserResponse.ok) {
-            const data = {
-              "users": [
-                instructorUserName
-              ]
-            };
-            const hubAddUserGroupPromise = await fetch(`${hub_url}groups/instructor/users`, {
-              method: 'POST',
-              headers: {
-                Accept: 'application.json',
-                'Content-Type': 'application/json'
-              },
-              body: data
-            }
-            );
-            const hubAddUserResponse = await hubAddUserGroupPromise.json();
-            if (hubAddUserResponse.status == 200 && hubAddUserResponse.ok) {
-              const instructorAddPromise = await fetch(`${ngshare_url}instructor/${courseName}/${instructorUserName}?first_name=&last_name=&email=`, {
-                method: 'POST',
-                headers: {
-                  Accept: 'application.json',
-                  'Content-Type': 'application/json'
-                }
-              });
-              const instructorAddRespone = await instructorAddPromise.json();
-              if (instructorAddRespone.status == 200 && instructorAddRespone.ok) {
-                alert("success");
-              }
-            }
-          }
-
-
-        }
+        console.log(courseResponse);
+        // if (courseResponse.status == 200 && courseResponse.ok) {
+        //   const hubAddUserPromise = await fetch(`${hub_url}users/${instructorUserName}`);
+        //   const hubAddUserResponse = await hubAddUserPromise.json();
+        //   if (hubAddUserResponse.status == 200 && hubAddUserResponse.ok) {
+        //     const data = {
+        //       "users": [
+        //         instructorUserName
+        //       ]
+        //     };
+        //     const hubAddUserGroupPromise = await fetch(`${hub_url}groups/instructor/users`, {
+        //       method: 'POST',
+        //       headers: {
+        //         Accept: 'application.json',
+        //         'Content-Type': 'application/json'
+        //       },
+        //       body: data
+        //     }
+        //     );
+        //     const hubAddUserResponse = await hubAddUserGroupPromise.json();
+        //     if (hubAddUserResponse.status == 200 && hubAddUserResponse.ok) {
+        //       const instructorAddPromise = await fetch(`${ngshare_url}instructor/${courseName}/${instructorUserName}?first_name=&last_name=&email=`, {
+        //         method: 'POST',
+        //         headers: {
+        //           Accept: 'application.json',
+        //           'Content-Type': 'application/json'
+        //         }
+        //       });
+        //       const instructorAddRespone = await instructorAddPromise.json();
+        //       if (instructorAddRespone.status == 200 && instructorAddRespone.ok) {
+        //         alert("success");
+        //       }
+        //     }
+        //   }
+        // }
       }
       else {
         alert('Please provide valid course name and instructor username');
-        console.log(courseResponse);
       }
     }
 
