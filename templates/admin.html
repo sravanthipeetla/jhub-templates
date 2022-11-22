@@ -257,9 +257,9 @@
       <p class="description">You can manage courses, instructors and learners from here.</p>
       <button class="add-btn"></button>
     </div>
-    <div class="preload">
-      <div class="emoji">🕐</div>
-    </div>
+    <button id="fetchButton">Fetch</button>
+    <div id="loader" style="display: none">Loading...</div>
+    <div id="content"></div>
     <table class="admin-table" id="admin-table">
       <thead id="admin-thead"></thead>
       <tbody id="admin-tbody"></tbody>
@@ -607,23 +607,8 @@
     const hub_url = 'https://data-labs.hcl-edtech.com/hub/api/';
 
 
-    const loader = document.querySelector('.preload');
-    const emoji = loader.querySelector('.emoji');
-
-    const emojis = ["🕐", "🕜", "🕑", "🕝", "🕒", "🕞", "🕓", "🕟", "🕔", "🕠", "🕕", "🕡", "🕖", "🕢", "🕗", "🕣", "🕘", "🕤", "🕙", "🕥", "🕚", "🕦", "🕛", "🕧"];
-
-    const interval = 125;
-
-    const loadEmojis = (arr) => {
-      setInterval(() => {
-        emoji.innerText = arr[Math.floor(Math.random() * arr.length)];
-        //console.log(Math.floor(Math.random() * arr.length))
-      }, interval);
-    }
-
-    const init = () => {
-      loadEmojis(emojis);
-    }
+    const fetchButton = document.querySelector('#fetchButton');
+    const loader = document.querySelector('#loader');
 
     // To change the color for active link in top left navbar items
     const currentUrl = window.location.href.split("/");
@@ -742,15 +727,8 @@
         const studentsCount = studentsJson.students.length;
         const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td>' + studentsCount + '</td><td><button class="delete_course_button" id="delete_course_but"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
         $("#admin-tbody").append(tr);
-      }).then(r => r.json())
-    .then(data => {
-       // console.log(data)
-       document.querySelector(".preload").style.display = "none"//stop the load
-})
-
-
+      })
     };
-    console.log("now course list", courseDetails);
 
 
 
@@ -817,7 +795,9 @@
         $("#admin-tbody").append(tr);
       });
     };
+    loader.style.display = 'block'
     window.onload = fetchCourseDetails;
+    loader.style.display = 'none'
     const course_navigation = document.getElementById('course-nav');
     const instructor_navigation = document.getElementById('instructor-nav');
     const learner_navigation = document.getElementById('learner-nav');
