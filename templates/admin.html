@@ -652,9 +652,14 @@
             'Content-Type': 'application/json'
           }
         });
-        console.log(coursePromise);
         if (coursePromise.status == 200 && coursePromise.ok) {
-          const hubAddUserPromise = await fetch(`${hub_url}users/${instructorUserName}`);
+          const hubAddUserPromise = await fetch(`${hub_url}users/${instructorUserName}`,{
+            method:'POST',
+            headers: {
+                Accept: 'application.json',
+                'Content-Type': 'application/json'
+              }
+          });
           const hubAddUserResponse = await hubAddUserPromise.json();
           if (hubAddUserResponse.status == 200 && hubAddUserResponse.ok) {
             const data = {
