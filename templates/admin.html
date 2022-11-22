@@ -670,14 +670,13 @@
               ]
             };
             console.log(typeof(data));
-            console.log(typeof(JSON.parse(data)));
             const hubAddUserGroupPromise = await fetch(`${hub_url}groups/instructor/users`, {
               method: 'POST',
               headers: {
                 Accept: 'application.json',
                 'Content-Type': 'application/json'
               },
-              body: JSON.parse(data)
+              body: JSON.stringify(data)
             }
             );
             console.log(hubAddUserGroupPromise);
