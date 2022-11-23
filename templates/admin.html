@@ -68,23 +68,26 @@
     font-size: 16px;
     padding: 0.7vw;
   }
-  #left-description-bar{
+
+  #left-description-bar {
     display: flex;
     gap: 1rem;
   }
-   .instructors_filter{
-    display:none;
+
+  .instructors_filter {
+    display: none;
     border: 1px solid #5FBEF0;
     background-color: white;
     border-radius: 1.5vw;
     width: 8vw;
     height: 2vw;
     font-size: 17px;
-    color:#000000;
+    color: #000000;
     cursor: pointer;
     padding: 0.1vw;
 
-   }
+  }
+
   .add-btn {
     border: none;
     background-color: #5FBEF0;
@@ -138,7 +141,8 @@
     padding: 5px 5px 5px 30px;
   }
 
-  .delete_course_button,.dropdown_button {
+  .delete_course_button,
+  .dropdown_button {
     border: none;
     background-color: #ffffff;
   }
@@ -272,12 +276,12 @@
     <div class="description-bar">
       <p class="description">You can manage courses, instructors and learners from here.</p>
       <div id="left-description-bar">
-      <select class="instructors_filter" id="instructors_filter">
-        <option default value="mapped">Mapped</option>
-        <option value="unmapped">Unmapped</option>
-        <option value="all">All</option>
-      </select>
-      <button class="add-btn"></button>
+        <select class="instructors_filter" id="instructors_filter">
+          <option default value="mapped">Mapped</option>
+          <option value="unmapped">Unmapped</option>
+          <option value="all">All</option>
+        </select>
+        <button class="add-btn"></button>
       </div>
     </div>
     <table class="admin-table" id="admin-table">
@@ -653,7 +657,8 @@
     const saveCourseButton = document.getElementById("save_course_button");
     const courseNameText = document.getElementById("course-name");
     const instructorUserNameInput = document.getElementById("instructor-user-name");
-    const instructorsFilter=document.getElementById("instructors_filter");
+    const instructorsFilter = document.getElementById("instructors_filter");
+    let deleteCourseSelected;
     const addCourse = () => {
       console.log("here");
       addCourseModal.style.display = "block";
@@ -736,13 +741,19 @@
       }
     }
 
+    const deleteCourse = (selectedCourse) => {
+      console.log(selectedCourse);
+      // console.log(this.data-value);
+      // console.log(courseName);
+    }
+
     //course-nav
     const fetchCourseDetails = async () => {
       $("#admin-thead tr").remove();
       $("#admin-table tr").remove();
       $(".add-btn").text("Add Course");
       $(".add-btn").attr('id', 'add-course');
-      instructorsFilter.style.display='none';
+      instructorsFilter.style.display = 'none';
       const addCourseButton = document.getElementById('add-course');
       const saveCourseButton = document.getElementById('save_course_button');
       addCourseButton.onclick = addCourse;
@@ -751,18 +762,17 @@
       const courseJson = await courseFetch.json();
       const coursesList = courseJson.courses;
       coursesList.map(async (courseName) => {
-        const deleteCourse = (selectedCourse) => {
-        console.log(selectedCourse);
-      // console.log(this.data-value);
-      // console.log(courseName);
-    }
+
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
         const instructorsCount = instructorsJson.instructors.length;
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
         const studentsCount = studentsJson.students.length;
-        const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td>' + studentsCount + '</td><td><button class="delete_course_button" id="delete_course_but" onclick="deleteCourse(' + courseName + ')"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
+        const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td>' + studentsCount + '</td><td><button class="delete_course_button" id="delete_course_but" onclick=' + (function () {
+          deleteCourseSelected = courseName;
+          deleteCourse(deleteCourseSelected);
+        }); + '><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
         $("#admin-tbody").append(tr);
       })
     };
@@ -772,7 +782,7 @@
       $("#admin-table tr").remove();
       $(".add-btn").text("Add instructor");
       $(".add-btn").addClass("add-instructor");
-      instructorsFilter.style.display='block';
+      instructorsFilter.style.display = 'block';
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Actions</td></tr>');
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
@@ -780,10 +790,10 @@
       coursesList.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
-        const instructorsDetail=await instructorsJson.instructors;
+        const instructorsDetail = await instructorsJson.instructors;
         const instructorsCount = instructorsDetail.length;
-        let instructorUsername=[];
-        for(const instructor in instructorsDetail){
+        let instructorUsername = [];
+        for (const instructor in instructorsDetail) {
           instructorUsername.push(instructor['username']);
         }
         console.log(instructorsDetail);
@@ -798,7 +808,7 @@
       $("#admin-table tr").remove();
       $(".add-btn").text("Add learner");
       $(".add-btn").addClass("add-learner");
-      instructorsFilter.style.display='none';
+      instructorsFilter.style.display = 'none';
       $("#admin-thead").append('<tr><td>Course name</td><td>Learner count</td><td>Actions</td></tr>');
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
