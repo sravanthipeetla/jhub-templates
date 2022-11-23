@@ -934,26 +934,6 @@
                     }
                   });
                   console.log(response.status);
-                  switch (response.status) {
-                    case 200:
-                      alert_messsage = "success, learners list added to course";
-                      break;
-                    case 302:
-                      alert_message = "Login required";
-                      break;
-                    case 403:
-                      alert_message = "Permission denied";
-                      break;
-                    case 404:
-                      alert_message = "course not found";
-                      break;
-                    case 400:
-                      alert_message = "Please supply learners/Students cannot be JSON decoded/Incorrect request format. Please refer to https://ngshare.readthedocs.io/en/latest/api/course.html#api-course-course";
-                      break;
-                    default:
-                      console.log(response_status);
-                      alert_message = "Something went wrong.";
-                  }
                 }
                 addStudent();
                 studentModal.style.display = "none";
@@ -1047,9 +1027,26 @@
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
         const studentsCount = studentsJson.students.length;
-        const tr = '<tr><td>' + courseName + '</td><td>' + studentsCount + '</td><td><button class="dropdown_button">><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
+        const tr = '<tr><td>' + courseName + '</td><td>' + studentsCount + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
         $("#admin-tbody").append(tr);
       });
+    };
+    window.onload = function () {
+      const userAction = async () => {
+        const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
+        console.log(response);
+        const myJson = await response.json();
+        console.log(myJson);
+        var courses_list = myJson.courses;
+        $.each(courses_list, function (item, value) {
+          $('#course-list').append($('<option>', {
+            value: value,
+            text: value
+          }));
+        })
+      }
+      userAction()
+
     };
 
     window.onload = fetchCourseDetails;
