@@ -887,7 +887,6 @@
       $("#admin-table tr").remove();
       $(".add-btn").text("Add learner");
       $(".add-btn").addClass("addStudentBtn");
-      const addStudentBtn=document.getElementsByClassName("addStudentBtn")[0].onclick=addStudentBtnFunction;
       instructorsFilter.style.display = 'none';
       $("#admin-thead").append('<tr><td>Course name</td><td>Learner count</td><td>Actions</td></tr>');
       const courseFetch = await fetch(`${ngshare_url}courses`);
