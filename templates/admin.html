@@ -399,43 +399,6 @@
         </div>
       </div>
     </div>
-    <div id="addStudentModal" class="modal">
-      <div class="studentModalContent ">
-        <span class="studentClose">&times;</span>
-        <div class="column-flex">
-          <div class="row-flex select-div">
-            <div>
-              <label for="course">Select course</label>
-            </div>
-            <div>
-              <select class="select" id="course-list" name="course">
-                <option>Course name</option>
-              </select>
-            </div>
-          </div>
-          <div class="row-flex">
-            <div>
-              <label for="upload">Upload file</label>
-            </div>
-            <div class="fileinputs">
-              <input type="file" class="file" id="fileinput" name="upload" required />
-              <div class="fakefile">
-                <input class="fake-input" /><img class="upload-image"
-                  src="https://ik.imagekit.io/iwwbj9so6/Vector_WkJK6A0OB.png?ik-sdk-version=javascript-1.4.3&amp;updatedAt=1662636716269" />
-              </div>
-            </div>
-            <div id="file-upload-filename"></div>
-          </div>
-          <div class="row-flex">
-            <div>
-              <button type="button" id="save_student_button">Save</button>
-            </div>
-            <div>
-              <button type="button" id="cancel_button">Cancel</button>
-            </div>
-          </div>
-        </div>
-      </div>
   </div>
   {% endblock %}
 
@@ -775,35 +738,7 @@
     const courseNameText = document.getElementById("course-name");
     const instructorUserNameInput = document.getElementById("instructor-user-name");
     const instructorsFilter = document.getElementById("instructors_filter");
-    const studentModal = document.getElementById("addStudentModal");
-    const addStudentBtn = document.getElementsByClassName("addStudentBtn")[0];
-    const saveStudent = document.getElementById("save_student_button");
-    const saveCourse = document.getElementById("save_course_button");
-    const cancel = document.getElementById("cancel_button");
-    const fileSelected = document.getElementById("fileinput");
-    const filename_area = document.getElementById('file-upload-filename');
-    fileSelected.addEventListener('change', showFileName);
-    addStudentBtnFunction = function () {
-      studentModal.style.display = "block";
-    }
-    // addCourseBtn.onclick = function() {
-    //   courseModal.style.display = "block";
-    // }
-    cancel.onclick = function () {
-      studentModal.style.display = "none";
-      //    courseModal.style.display="none";
-    }
-
-    closeSpan.onclick = function () {
-      studentModal.style.display = "none";
-      //   courseModal.style.display = "none";
-    }
-    window.onclick = function (event) {
-      if (event.target == studentModal) {
-        studentModal.style.display = "none";
-        //     courseModal.style.display = "none";
-      }
-    }
+ 
     let deleteCourseSelected;
     const addCourse = () => {
       console.log("here");
@@ -886,71 +821,6 @@
         alert('Please provide valid course name and instructor username');
       }
     }
-    function showFileName(event) {
-
-      // the change event gives us the input it occurred in
-      var input = event.srcElement;
-
-      // the input has an array of files in the `files` property, each one has a name that you can use. We're just using the name here.
-      var fileName = input.files[0].name;
-
-      // use fileName however fits your app best, i.e. add it into a div
-      filename_area.textContent = fileName;
-    }
-    if (window.File && window.FileReader && window.FileList && window.Blob) {
-
-      let alert_message;
-      fileSelected.addEventListener(
-        "change",
-        function (e) {
-          //  var fileExtension = /text.*/;
-          const fileTobeRead = fileSelected.files[0];
-          //Check of the extension match
-          if (fileTobeRead) {
-            let studentsList = [];
-            const fileReader = new FileReader();
-            fileReader.onload = function (e) {
-              const fileData = fileReader.result.split(/\r\n|\n/);
-              const headers = fileData[0].split(",");
-              for (var i = 1; i < fileData.length - 1; i++) {
-                let studentDict = {};
-                const data = fileData[i].split(",");
-                if (data.length == headers.length) {
-                  for (var j = 0; j < headers.length; j++) {
-                    studentDict[headers[j]] = data[j];
-                  }
-                }
-                studentsList.push(studentDict);
-              }
-              saveStudent.onclick = function () {
-                const studentData = JSON.stringify(studentsList);
-                const addStudent = async () => {
-                  const selectedCourse = selected.options[selected.selectedIndex].text;
-                  const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/' + selectedCourse + '?students=' + studentData, {
-                    method: 'POST',
-                    headers: {
-                      'Accept': 'application/json, text/plain, */*',
-                      'Content-Type': 'application/json',
-                    }
-                  });
-                  console.log(response.status);
-                }
-                addStudent();
-                studentModal.style.display = "none";
-                // 	   alert(alert_message);
-              }
-            };
-            fileReader.readAsText(fileTobeRead);
-          }
-          else {
-            alert("Please select file");
-          }
-        },
-        false
-      );
-    } else {
-      alert("Files are not supported");
-    }
 
     const deleteCourse = () => {
       console.log("here")
@@ -1030,24 +900,6 @@
         const tr = '<tr><td>' + courseName + '</td><td>' + studentsCount + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
         $("#admin-tbody").append(tr);
       });
-    };
-    window.onload = function () {
-      console.log("In learner")
-      const userAction = async () => {
-        const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
-        console.log(response);
-        const myJson = await response.json();
-        console.log(myJson);
-        var courses_list = myJson.courses;
-        $.each(courses_list, function (item, value) {
-          $('#course-list').append($('<option>', {
-            value: value,
-            text: value
-          }));
-        })
-      }
-      userAction()
-
     };
 
     window.onload = fetchCourseDetails;
