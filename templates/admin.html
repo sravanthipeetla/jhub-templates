@@ -741,10 +741,8 @@
       }
     }
 
-    const deleteCourse = (selectedCourse) => {
-      console.log(selectedCourse);
-      // console.log(this.data-value);
-      // console.log(courseName);
+    const deleteCourse = () => {
+      console.log(deleteCourseSelected);
     }
 
     //course-nav
@@ -772,7 +770,7 @@
         const tr = `<tr><td>${courseName}</td><td>${instructorsCount}</td><td>${studentsCount}</td><td><button class="delete_course_button" id="delete_course_but" 
           onclick=" ${(() => {
           deleteCourseSelected = courseName;
-          deleteCourse(deleteCourseSelected);
+          deleteCourse();
         })}"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>`;
         $("#admin-tbody").append(tr);
       })
