@@ -750,12 +750,12 @@
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
       const coursesList = courseJson.courses;
-      const deleteCourse = (selectedCourse) => {
-      console.log(selectedCourse);
+      coursesList.map(async (courseName) => {
+        const deleteCourse = (selectedCourse) => {
+        console.log(selectedCourse);
       // console.log(this.data-value);
       // console.log(courseName);
     }
-      coursesList.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
         const instructorsCount = instructorsJson.instructors.length;
