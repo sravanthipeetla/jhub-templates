@@ -233,6 +233,42 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         display: flex;
         flex-direction: column;
     }
+    @media(max-width: 2560px){
+        .left-content-wrapper h3 {
+            font-size: 3.8rem;
+        }
+        .circle {
+            width: 40rem;
+            height: 16rem;
+        }
+        .plant {
+            width: 14rem;
+            bottom: 19rem;
+            left: 43rem;
+        }
+        .student-img .student-2 {
+            left: 80rem;
+            bottom: 20rem;
+            width: 35rem;
+        }
+        .hcl-logo {
+            width: 20rem;
+        }
+        .login-form-wrapper h3 {
+            font-size: 3.5rem;
+        }
+        .login-form-wrapper-p {
+            font-size: 3.2rem;
+        }
+        .login-form-wrapper-img {
+            width: 60rem;
+        }
+        btn.btn-jupyter.btn-lg {
+            width: 62rem;
+            font-size: 2.8rem;
+        }
+    }
+    
 </style>
 {% block login %}
 <div id="login-main" class="container">
