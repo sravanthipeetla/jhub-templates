@@ -736,11 +736,6 @@
       }
     }
 
-    const deleteCourse = (e) => {
-      console.log(e.target.value);
-      // console.log(this.data-value);
-      // console.log(courseName);
-    }
     //course-nav
     const fetchCourseDetails = async () => {
       $("#admin-thead tr").remove();
@@ -755,6 +750,11 @@
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
       const coursesList = courseJson.courses;
+      const deleteCourse = (selectedCourse) => {
+      console.log(selectedCourse);
+      // console.log(this.data-value);
+      // console.log(courseName);
+    }
       coursesList.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
@@ -762,7 +762,7 @@
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
         const studentsCount = studentsJson.students.length;
-        const tr = `<tr><td>${courseName}</td><td>${instructorsCount}</td><td>${studentsCount}</td><td><button class="delete_course_button" id="delete_course_but" onclick="deleteCourse()"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>`;
+        const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td>' + studentsCount + '</td><td><button class="delete_course_button" id="delete_course_but" onclick="deleteCourse("' + courseName + '")"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>';
         $("#admin-tbody").append(tr);
       })
     };
@@ -782,7 +782,7 @@
         const instructorsJson = await instructorsPromise.json();
         const instructorsDetail=await instructorsJson.instructors;
         const instructorsCount = instructorsDetail.length;
-        const instructorUsername=[];
+        let instructorUsername=[];
         for(const instructor in instructorsDetail){
           instructorUsername.push(instructor['username']);
         }
