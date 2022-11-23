@@ -794,9 +794,7 @@
         const instructorsCount = instructorsDetail.length;
         const instructorUsernam=[];
         for(const instructor in instructorsDetail){
-          const iu=await instructor.username;
-
-          instructorUsername.push(iu.json());
+          console.log(instructor);
         }
         console.log(instructorsDetail);
         console.log(instructorUsername);
