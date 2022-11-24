@@ -514,8 +514,8 @@ if user.admin %} {{ super() }}
   {% endblock main %} {% block script %} {{ super() }}
   <script type="text/javascript">
     require(["home"]);
-    const stopServer = document.getElementById("stop").style.visibility;
-    console.log(stopServer);
+    
+    console.log(document.getElementById("stop").getAttribute("class"));
     window.onload = function() {
     const userAction = async () => {
       const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
