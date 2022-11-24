@@ -317,7 +317,7 @@ if user.admin %} {{ super() }}
     <div class="text-center">
       {% if default_server.active %}
       <span class="server-info"
-        >Your server is still runnnig. You can stop or go to your workspace
+        >{{default_server.active}}Your server is still runnnig. You can stop or go to your workspace
         again.</span
       >
       <br />
