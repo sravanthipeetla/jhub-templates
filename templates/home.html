@@ -316,7 +316,7 @@ if user.admin %} {{ super() }}
   <div class="row">
     <div class="text-center">
       {% if default_server.active %}
-      {{spawner.active}}
+      {{named_spawners}}
       <span class="server-info"
         >{{default_server.active}} our server is still runnnig. You can stop or go to your workspace
         again.</span
