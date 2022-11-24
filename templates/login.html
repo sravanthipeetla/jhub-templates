@@ -370,6 +370,17 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             left: 30rem;
         }
     }
+    @media (max-width: 1920px){
+.login-form-wrapper-img {
+    height: calc(38vh - 2rem);
+        }
+        .login-form-wrapper h3 {
+    padding-top: calc(6vh - 3rem);
+}
+        .hcl-logo {
+    width: 16rem;
+}
+    }
 </style>
 {% block login %}
 <div id="login-main" class="container">
