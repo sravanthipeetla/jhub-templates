@@ -544,6 +544,17 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             font-size: 2.2rem;
         }
     }
+    @media (max-width: 1050px){
+        .student-img-wrapper {
+            left: 25rem;
+            height: calc(58vh - 1rem);
+            width: 27rem;
+        }
+        .login-form-wrapper-img {
+            width: calc(38vw - 2rem);
+                        height: calc(35vh - 2rem);
+        }
+    }
 </style>
 {% block login %}
 <div id="login-main" class="container">
