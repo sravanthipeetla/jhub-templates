@@ -644,6 +644,11 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             width: calc(70vw + 2rem);
         }
     }
+    @media (max-width: 469px){
+        .login-form-wrapper h3 {
+            font-size: 1.7rem;
+        }
+    }
 </style>
 {% block login %}
 <div id="login-main" class="container">
