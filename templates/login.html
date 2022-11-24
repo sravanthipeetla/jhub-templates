@@ -223,6 +223,9 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         line-height: 5rem;
         color: #60BC57;
     }
+    .login-img{
+        height:100%;
+    }
 
     .login-form-wrapper-img {
         width: 65rem;
@@ -233,7 +236,30 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         display: flex;
         flex-direction: column;
     }
-    
+    @media (max-width: 2560px){
+        .left-content-wrapper h3 {
+            font-size: 3.8rem;
+        }
+        .circle {
+            width: 45rem;
+            height: 27rem;
+            left: 0rem;
+            bottom: 1rem;
+        }
+        .plant {
+            bottom: 20rem;
+            left: 42rem;
+        }
+        .hcl-logo {
+            width: 20rem;
+        }
+        .login-form-wrapper h3 {
+            font-size: 3.8rem;
+        }
+        .login-form-wrapper-p {
+            font-size: 3.2rem;
+        }
+    }
     
     
     
@@ -279,7 +305,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
                             <span class='login-form-wrapper-p font-poppins'>Learn. Code. Act. </p>
                         </div>
                         <div class="login-form-wrapper-img">
-                            <img src="https://ik.imagekit.io/iwwbj9so6/Data_extraction-rafiki__1__2__2__bllsHrUUib.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1669198693602" />
+                            <img class="login-img" src="https://ik.imagekit.io/iwwbj9so6/Data_extraction-rafiki__1__2__2__bllsHrUUib.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1669198693602" />
                         </div>
                         <div class="sign-flex align-items-center flex-row mt-2 ">
                             <a role="button" class="btn btn-jupyter btn-lg font-poppins" href="{{authenticator_login_url}}">
