@@ -409,39 +409,58 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             font-size: 2.8rem;
         }
     }
-    @media (max-width: 1867px){
+
+    @media (max-width: 1867px) {
         .btn.btn-jupyter.btn-lg {
             font-size: 1.8rem;
         }
     }
-    @media (max-width: 1800px){
+
+    @media (max-width: 1800px) {
         .circle {
             height: 20rem;
             width: 33rem;
         }
+
         .plant {
             bottom: 15rem;
         }
+
         .student-img-wrapper {
-    bottom: 15rem;
-}
+            bottom: 15rem;
+        }
+
         .login-form-wrapper h3 {
-    padding-top: calc(6vh - 3rem);
-}
+            padding-top: calc(6vh - 3rem);
+        }
     }
-    @media (max-width: 1860px){
-.student-img-wrapper {
-    left: 45rem;
-}
+
+    @media (max-width: 1860px) {
+        .student-img-wrapper {
+            left: 45rem;
+        }
+
         .left-content-wrapper h3 {
-    font-size: 2.5rem;
-}
+            font-size: 2.5rem;
+        }
+
         .login-form-wrapper h3 {
-    font-size: 2.5rem;
-}
+            font-size: 2.5rem;
+        }
+
         .login-form-wrapper-p {
-    font-size: 2.4rem;
-}
+            font-size: 2.4rem;
+        }
+    }
+
+    @media (max-width: 1680px) {
+        .student-img-wrapper {
+            height: calc(64vh - 1rem);
+        }
+
+        .login-form-wrapper h3 {
+            padding-top: calc(10vh - 3rem);
+        }
     }
 </style>
 {% block login %}
