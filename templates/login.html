@@ -366,28 +366,48 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         .login-form-wrapper h3 {
             padding-top: calc(4vh - 3rem);
         }
+
         .plant {
             left: 30rem;
         }
     }
-    @media (max-width: 1920px){
-.login-form-wrapper-img {
-    height: calc(38vh - 2rem);
+
+    @media (max-width: 1920px) {
+        .login-form-wrapper-img {
+            height: calc(38vh - 2rem);
         }
+
         .login-form-wrapper h3 {
-    padding-top: calc(6vh - 3rem);
-}
+            padding-top: calc(6vh - 3rem);
+        }
+
         .hcl-logo {
-    width: 16rem;
-}
+            width: 16rem;
+        }
+
         .circle {
-    height: 22rem;
-    width: 35rem;
-            
-}
+            height: 22rem;
+            width: 35rem;
+
+        }
+
         .left-content-wrapper h3 {
-    font-size: 3rem;
-}
+            font-size: 3rem;
+        }
+    }
+
+    @media (max-width: 1868px) {
+        .login-form-wrapper h3 {
+            padding-top: calc(10vh - 3rem);
+        }
+
+        .login-form-wrapper-img {
+            height: calc(40vh - 2rem);
+        }
+
+        .btn.btn-jupyter.btn-lg {
+            font-size: 2.8rem;
+        }
     }
 </style>
 {% block login %}
