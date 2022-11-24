@@ -636,6 +636,14 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             font-size: 2rem;
         }
     }
+    @media (max-width: 521px){
+        .login-form-wrapper h3 {
+            font-size: 1.8rem;
+        }
+        .btn.btn-jupyter.btn-lg {
+            width: calc(70vw + 2rem);
+        }
+    }
 </style>
 {% block login %}
 <div id="login-main" class="container">
