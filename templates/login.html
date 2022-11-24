@@ -146,16 +146,17 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         padding-top: 15rem;
     }
 
-    .student-img {
-        overflow: hidden;
+    .student-img{
+         z-index: 1;
+         position: absolute;
+ 
     }
 
-     .student-img .student-2 {
-        position: absolute;
+     .student-img-wrapper{
         left: 52rem;
         bottom: 13rem;
         width: 30rem;
-        z-index: 1;
+        overflow: hidden;
     }
 
     .plant {
@@ -246,7 +247,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             bottom: 19rem;
             left: 43rem;
         }
-        .student-img .student-2 {
+        .student-img-wrapper{
             left: 80rem;
             bottom: 20rem;
             width: 33rem;
@@ -269,12 +270,12 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         }
     }
     @media(max-width: 2400px){
-        .student-img .student-2 {
+        .student-img-wrapper{
             left: 75rem;
         }
     }
     @media (max-width: 2200px){
-        .student-img .student-2 {
+        .student-img-wrapper{
             left: 65rem;
         }
         .plant {
@@ -290,7 +291,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
     }
     
     @media (max-width: 2000px){
-        .student-img .student-2 {
+        .student-img-wrapper{
             left: 60rem;
         }
         left-content-wrapper h3 {
@@ -309,7 +310,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         }
     }
     @media (max-width: 1830px){
-        .student-img .student-2 {
+        .student-img-wrapper {
             left: 55rem;
         }
     }
@@ -322,7 +323,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         .plant {
             left: 18rem;
         }
-        .student-img .student-2 {
+        .student-img-wrapper{
             left: 45rem;
         }        
     }
@@ -351,7 +352,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             right: 7rem;
             bottom: 5rem
         }
-        .student-img .student-2 {
+        .student-img-wrapper{
             left: 42rem;
             width: 30rem;
         }  
@@ -367,7 +368,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         }
     }
     @media (max-width: 1375px){
-        .student-img .student-2 {
+        .student-img-wrapper {
             left: 39rem;
             width: 30rem;
         }
@@ -392,7 +393,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             left: 14rem;
             width: 11rem;
         }
-        .student-img .student-2 {
+        student-img-wrapper {
             left: 35rem;
             width: 30rem;
         }
@@ -433,8 +434,8 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
                     <div class="left-content-wrapper">
                         <h3 class="color-fff font-poppins">Your differentiated learning journey, begins here.</h3>
                     </div>
-                    <div class="student-img student-2">
-                        <img src="https://ik.imagekit.io/iwwbj9so6/Asset_1_4_lg01xGqDc.png?ik-sdk-version=javascript-1.4.3&updatedAt=1666873279274">
+                    <div class="student-img-wrapper">
+                        <img class="student-img" src="https://ik.imagekit.io/iwwbj9so6/Asset_1_4_lg01xGqDc.png?ik-sdk-version=javascript-1.4.3&updatedAt=1666873279274">
                     </div>
                     <div class="plant">
                         <img
