@@ -501,7 +501,26 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             width: 35rem;
         }
     }
-    
+    @media (max-width: 1204px){
+        .circle {
+            height: 16rem;
+            width: 27rem;
+        }
+        .plant {
+            left: 11rem;
+            width: 10rem;
+        }
+        .student-img-wrapper {
+            height: calc(60vh - 1rem);
+            width: 27rem;
+        }
+        .left-content-wrapper h3 {
+            font-size: 2rem;
+        }
+        .btn.btn-jupyter.btn-lg {
+            width: calc(35vw + 2rem);
+        }
+    }
 </style>
 {% block login %}
 <div id="login-main" class="container">
