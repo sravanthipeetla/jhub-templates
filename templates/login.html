@@ -475,6 +475,21 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
             left: 40rem;
         }
     }
+    @media (max-width: 1400px){
+        .circle {
+           right: 10rem;
+        }
+        .plant {
+            left: 15rem;
+            width: 10rem;
+        }
+        .student-img-wrapper {
+            left: 32rem;
+        }
+        .login-form-wrapper h3 {
+            padding-top: calc(6vh - 3rem);
+        }
+    }
 </style>
 {% block login %}
 <div id="login-main" class="container">
