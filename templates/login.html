@@ -107,7 +107,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         position: relative;
     }
 
-   .left-section::before {
+    .left-section::before {
         position: absolute;
         top: 0rem;
         left: 0rem;
@@ -145,10 +145,12 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         text-align: left;
         padding-top: calc(12vh - 2rem);
     }
-    .student-img{
+
+    .student-img {
         height: 100%;
     }
-     .student-img-wrapper {
+
+    .student-img-wrapper {
         left: 51rem;
         bottom: 13rem;
         width: 33rem;
@@ -157,6 +159,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         z-index: 1;
         position: absolute;
     }
+
     .plant {
         width: 10rem;
         bottom: 12rem;
@@ -167,7 +170,8 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         top: auto;
         z-index: 100;
     }
-   .circle {
+
+    .circle {
         position: absolute;
         width: 27rem;
         height: 11rem;
@@ -185,7 +189,7 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         background: #fff;
     }
 
-   .section-header {
+    .section-header {
         padding: 2rem 2rem 2rem 2rem;
         height: 12rem;
     }
@@ -194,14 +198,14 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         width: 15rem;
     }
 
-   .login-form-wrapper {
+    .login-form-wrapper {
         width: 60%;
         align-items: center;
         text-align: center;
         margin: 0rem auto;
     }
 
-   .login-form-wrapper h3 {
+    .login-form-wrapper h3 {
         font-size: 2.5rem;
         font-weight: 600;
         padding-top: calc(10vh - 3rem);
@@ -211,20 +215,21 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         padding-top: 2rem;
     }
 
-   .login-form-wrapper h3 span {
+    .login-form-wrapper h3 span {
         color: #76ba62;
         margin-left: 0rem;
     }
 
-   .login-form-wrapper-p {
+    .login-form-wrapper-p {
         font-style: normal;
         font-weight: 600;
         font-size: 2.2rem;
         line-height: 5rem;
         color: #60BC57;
     }
-    .login-img{
-        height:100%;
+
+    .login-img {
+        height: 100%;
     }
 
     .login-form-wrapper-img {
@@ -236,98 +241,132 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         display: flex;
         flex-direction: column;
     }
-    @media (max-width: 2560px){
+
+    @media (max-width: 2560px) {
         .left-content-wrapper h3 {
             font-size: 3.8rem;
         }
+
         .circle {
             width: 45rem;
             height: 27rem;
             left: 0rem;
             bottom: 1rem;
         }
+
         .plant {
             bottom: 20rem;
             left: 42rem;
             width: 15rem;
         }
-	.student-img-wrapper {
-	    left: 75rem;
-	    bottom: 20rem;
-	    width: 45rem;
-	}
+
+        .student-img-wrapper {
+            left: 75rem;
+            bottom: 20rem;
+            width: 45rem;
+        }
+
         .hcl-logo {
-	        width: 25rem;
-	    }
+            width: 25rem;
+        }
+
         .login-form-wrapper h3 {
             font-size: 3.8rem;
         }
+
         .login-form-wrapper-p {
             font-size: 3.2rem;
         }
-	.login-form-wrapper-img {
-	    width: calc(35vw - 2rem);
-	    height: calc(45vh - 2rem);
-	}
-	.btn.btn-jupyter.btn-lg {
-	    font-size: 3.2rem;
-  	    width: calc(28vw + 2rem);
-	}
-     }
-     @media (max-width: 2300px){
-	.student-img-wrapper {
-	    left: 65rem;
-	}
-	.hcl-logo {
-	    width: 20rem;
-	}
-     }
-     @media (max-width: 2125px){
-	.left-content-wrapper h3 {
-	    font-size: 3.6rem;
-	}
-	.plant {
-	    left: 40rem;
-	    width: 11rem;
-	}
-	.student-img-wrapper {
-	    left: 62rem;
-	    width: 40rem;
-	    height: calc(60vh - 1rem);
-	}
-     }
-     
-     @media (max-width: 2013px){
-	.left-content-wrapper h3 {
-	    font-size: 3.4rem;
-	}
-	.circle {
-    width: 40rem;
-    height: 24rem;
-    bottom: 0rem;
-}
-	     .login-form-wrapper h3 {
-    font-size: 3rem;
-}
-	     .login-form-wrapper-p {
-    font-size: 2.8rem;
-}
-	     .btn.btn-jupyter.btn-lg {
-    font-size: 2.2rem;
-}
-      }
-	@media (max-width: 2300px){
-.hcl-logo {
-    width: 15rem;
-}
-	}
-	.plant {
-    left: 30rem;
-}
-	.student-img-wrapper {
-    left: 50rem;
-}
-    
+
+        .login-form-wrapper-img {
+            width: calc(35vw - 2rem);
+            height: calc(45vh - 2rem);
+        }
+
+        .btn.btn-jupyter.btn-lg {
+            font-size: 3.2rem;
+            width: calc(28vw + 2rem);
+        }
+    }
+
+    @media (max-width: 2300px) {
+        .student-img-wrapper {
+            left: 65rem;
+        }
+
+        .hcl-logo {
+            width: 20rem;
+        }
+
+        .login-form-wrapper h3 {
+            padding-top: calc(6vh - 3rem);
+        }
+
+        .btn.btn-jupyter.btn-lg {
+            font-size: 2.8rem;
+        }
+    }
+
+    @media (max-width: 2125px) {
+        .left-content-wrapper h3 {
+            font-size: 3.6rem;
+        }
+
+        .plant {
+            left: 40rem;
+            width: 11rem;
+        }
+
+        .student-img-wrapper {
+            left: 62rem;
+            width: 40rem;
+            height: calc(60vh - 1rem);
+        }
+
+        .login-form-wrapper h3 {
+            font-size: 3rem;
+        }
+
+        .login-form-wrapper-p {
+            font-size: 2.5rem;
+        }
+
+        .login-form-wrapper-img {
+            width: calc(35vw - 2rem);
+        }
+    }
+
+    @media (max-width: 2013px) {
+        .left-content-wrapper h3 {
+            font-size: 3.4rem;
+        }
+
+        .circle {
+            width: 40rem;
+            height: 24rem;
+            bottom: 0rem;
+        }
+
+        .login-form-wrapper h3 {
+            font-size: 3rem;
+        }
+
+        .login-form-wrapper-p {
+            font-size: 2.8rem;
+        }
+
+        .btn.btn-jupyter.btn-lg {
+            font-size: 2.2rem;
+        }
+
+        .student-img-wrapper {
+            left: 53rem;
+        }
+
+        .login-form-wrapper h3 {
+            padding-top: calc(4vh - 3rem);
+        }
+    }
 </style>
 {% block login %}
 <div id="login-main" class="container">
@@ -343,7 +382,8 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
                         <h3 class="color-fff font-poppins">Your differentiated learning journey, begins here.</h3>
                     </div>
                     <div class="student-img-wrapper">
-                        <img class="student-img" src="https://ik.imagekit.io/iwwbj9so6/Asset_1_4_lg01xGqDc.png?ik-sdk-version=javascript-1.4.3&updatedAt=1666873279274">
+                        <img class="student-img"
+                            src="https://ik.imagekit.io/iwwbj9so6/Asset_1_4_lg01xGqDc.png?ik-sdk-version=javascript-1.4.3&updatedAt=1666873279274">
                     </div>
                     <div class="plant">
                         <img
@@ -369,10 +409,12 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
                             <span class='login-form-wrapper-p font-poppins'>Learn. Code. Act. </p>
                         </div>
                         <div class="login-form-wrapper-img">
-                            <img class="login-img" src="https://ik.imagekit.io/iwwbj9so6/Data_extraction-rafiki__1__2__2__bllsHrUUib.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1669198693602" />
+                            <img class="login-img"
+                                src="https://ik.imagekit.io/iwwbj9so6/Data_extraction-rafiki__1__2__2__bllsHrUUib.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1669198693602" />
                         </div>
                         <div class="sign-flex align-items-center flex-row mt-2 ">
-                            <a role="button" class="btn btn-jupyter btn-lg font-poppins" href="{{authenticator_login_url}}">
+                            <a role="button" class="btn btn-jupyter btn-lg font-poppins"
+                                href="{{authenticator_login_url}}">
                                 Login with organization ID
                                 <!-- Sign in with {{login_service}} -->
                             </a>
