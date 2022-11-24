@@ -236,6 +236,31 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         display: flex;
         flex-direction: column;
     }
+    @media (max-width: 2560px){
+        .left-content-wrapper h3 {
+            font-size: 3.8rem;
+        }
+        .circle {
+            width: 45rem;
+            height: 27rem;
+            left: 0rem;
+            bottom: 1rem;
+        }
+        .plant {
+            bottom: 20rem;
+            left: 42rem;
+        }
+        .hcl-logo {
+	        width: 25rem;
+	    }
+        .login-form-wrapper h3 {
+            font-size: 3.8rem;
+        }
+        .login-form-wrapper-p {
+            font-size: 3.2rem;
+        }
+     }
+    
 </style>
 {% block login %}
 <div id="login-main" class="container">
