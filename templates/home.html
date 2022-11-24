@@ -323,7 +323,7 @@ if user.admin %} {{ super() }}
       <br />
       <br />
       <br />
-      <a id="stop"  onClick="window.location.href=window.location.href" role="button" class="btn btn-lg btn-danger">
+      <a id="stop"   role="button" class="btn btn-lg btn-danger">
         Stop My Server
       </a>
       {% endif %}
@@ -514,6 +514,8 @@ if user.admin %} {{ super() }}
   {% endblock main %} {% block script %} {{ super() }}
   <script type="text/javascript">
     require(["home"]);
+    const stopServer = document.getElementById("stop").style.visibility;
+    console.log(stopServer);
     window.onload = function() {
     const userAction = async () => {
       const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/courses');
