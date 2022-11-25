@@ -873,6 +873,7 @@
         const instructorsJson = await instructorsPromise.json();
         const instructorsDetail = await instructorsJson.instructors;
         const instructorsCount = instructorsDetail.length;
+        console.log(instructorsDetail);
         const instructorUsernam=[];
         for(const instructor in instructorsDetail){
           console.log(instructor+courseName);
