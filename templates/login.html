@@ -767,5 +767,20 @@ script %}
         form.find('.feedback-container>*').toggleClass('hidden');
         form.find('.feedback-widget>*').toggleClass('fa-pulse');
     });
+    window.onload = function () {
+  var span = document.createElement('span');
+
+  span.className = 'fa';
+  span.style.display = 'none';
+  document.body.insertBefore(span, document.body.firstChild);
+
+  if ((css(span, 'font-family')) !== 'FontAwesome') {
+    console.log("Font-Awesome not working.");
+  }
+    else{
+        console.log("Font-Awesome working.");
+    }
+  document.body.removeChild(span);
+};
 </script>
 {% endblock %}
