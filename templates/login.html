@@ -780,8 +780,11 @@ window.onload = function () {
   document.body.insertBefore(span, document.body.firstChild);
 
   if ((css(span, 'font-family')) !== 'FontAwesome') {
-    // add a local fallback
+    console.log("NOt working");
   }
+    else{
+    console.log("working");
+    }
   document.body.removeChild(span);
 };   
     
