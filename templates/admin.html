@@ -821,13 +821,6 @@
         alert('Please provide valid course name and instructor username');
       }
     }
-
-    const deleteCourse = () => {
-      console.log("here");
-      // console.log(event.target.value);
-      // console.log(deleteCourseSelected);
-    }
-
     //course-nav
     const fetchCourseDetails = async () => {
       $("#admin-thead tr").remove();
@@ -838,6 +831,11 @@
       const addCourseButton = document.getElementById('add-course');
       const saveCourseButton = document.getElementById('save_course_button');
       addCourseButton.onclick = addCourse;
+      const deleteCourse = () => {
+      console.log("here");
+      // console.log(event.target.value);
+      // console.log(deleteCourseSelected);
+    }
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
