@@ -832,7 +832,13 @@
           }
         });
       const response=await courseDeletePromise.json();
-      console.log(response);
+      if(response.success){
+        alert("Successfully deleted course");
+        fetchCourseDetails();
+      }
+      else{
+        alert("Something went wrong! Couldn't delete course");
+      }
     }
     //course-nav
     const fetchCourseDetails = async () => {
