@@ -147,7 +147,8 @@
     background-color: #ffffff;
   }
 
-  #addCourseModal , #addStudentModal{
+  #addCourseModal,
+  #addStudentModal {
     display: none;
   }
 
@@ -164,7 +165,8 @@
     background-color: rgba(0, 0, 0, 0.4);
   }
 
-  .courseModalContent, .studentModalContent {
+  .courseModalContent,
+  .studentModalContent {
     background-color: #fefefe;
     margin: 9vh auto;
     padding: 20px;
@@ -175,7 +177,8 @@
     box-shadow: 0px 2px 13px rgb(170 170 170 / 27%);
   }
 
-  .courseClose , .studentClose{
+  .courseClose,
+  .studentClose {
     color: #000000;
     float: right;
     font-size: 28px;
@@ -259,6 +262,7 @@
     height: 3.5vh;
     width: 14vw;
   }
+
   div.fileinputs {
     position: relative;
     margin-left: 2vw;
@@ -275,6 +279,7 @@
     position: relative;
     text-align: right;
   }
+
   #file {
     margin: 2vh -2vw 0vh -1.2vw;
     width: 14vh;
@@ -738,7 +743,7 @@
     const courseNameText = document.getElementById("course-name");
     const instructorUserNameInput = document.getElementById("instructor-user-name");
     const instructorsFilter = document.getElementById("instructors_filter");
- 
+
     let deleteCourseSelected;
     const addCourse = () => {
       console.log("here");
@@ -847,7 +852,7 @@
         const studentsJson = await studentsPromise.json();
         const studentsCount = studentsJson.students.length;
         const tr = `<tr><td>${courseName}</td><td>${instructorsCount}</td><td>${studentsCount}</td><td><button type='button' class="delete_course_button" id="delete_course" onclick="async()=>{
-          const reponse=await fetch(${ngshare_url}course/${courseName}, {
+          const reponse=await fetch('${ngshare_url}course/${courseName}', {
           method: 'DELETE',
           headers: {
             Accept: 'application.json',
@@ -876,10 +881,10 @@
         const instructorsDetail = await instructorsJson.instructors;
         const instructorsCount = instructorsDetail.length;
         console.log(instructorsDetail);
-        const instructorUsernam=[];
-        for(const instructor in instructorsDetail){
-          console.log(instructor+courseName);
-          console.log(typeof(instructor));
+        const instructorUsername = [];
+        for (const instructor in instructorsDetail) {
+          console.log(instructor + courseName);
+          console.log(typeof (instructor));
         }
         const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
         $("#admin-tbody").append(tr);
