@@ -743,7 +743,7 @@
     const courseNameText = document.getElementById("course-name");
     const instructorUserNameInput = document.getElementById("instructor-user-name");
     const instructorsFilter = document.getElementById("instructors_filter");
-
+    let courseNameSelected;
     let deleteCourseSelected;
     const addCourse = () => {
       console.log("here");
@@ -826,9 +826,9 @@
         alert('Please provide valid course name and instructor username');
       }
     }
-    const deleteCourse = (s) => {
+    const deleteCourse = () => {
       console.log("In delete function");
-      console.log(s);
+      console.log(courseNameSelected);
     }
     //course-nav
     const fetchCourseDetails = async () => {
@@ -851,16 +851,7 @@
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
         const studentsCount = studentsJson.students.length;
-        const tr = `<tr><td>${courseName}</td><td>${instructorsCount}</td><td>${studentsCount}</td><td><button type='button' class="delete_course_button" id="delete_course" onclick="async()=>{
-          const reponse=await fetch('${ngshare_url}course/${courseName}', {
-          method: 'DELETE',
-          headers: {
-            Accept: 'application.json',
-            'Content-Type': 'application/json'
-          }
-        });
-        console.log("response")
-        }" ><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077" /></button></td></tr>`;
+        const tr = `<tr><td>${courseName}</td><td>${instructorsCount}</td><td>${studentsCount}</td><td><button type='button' class="delete_course_button" id="delete_course" onclick="()=>{courseNameSelected=${courseName};deleteCourse()}" ><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077" /></button></td></tr>`;
         $("#admin-tbody").append(tr);
       })
     };
