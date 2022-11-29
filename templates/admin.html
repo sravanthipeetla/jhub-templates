@@ -826,9 +826,15 @@
         alert('Please provide valid course name and instructor username');
       }
     }
-    const deleteCourse = (s) => {
-      console.log("In delete function");
-      console.log(s);
+    const deleteCourse = async (courseSelected) => {
+      const courseDeletePromise = await fetch(`${ngshare_url}course/${courseSelected}`, {
+          method: 'DELETE',
+          headers: {
+            Accept: 'application.json',
+            'Content-Type': 'application/json'
+          }
+        });
+      const response=await courseDeletePromise.json();
     }
     //course-nav
     const fetchCourseDetails = async () => {
