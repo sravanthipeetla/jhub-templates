@@ -831,17 +831,14 @@
       const addCourseButton = document.getElementById('add-course');
       const saveCourseButton = document.getElementById('save_course_button');
       addCourseButton.onclick = addCourse;
-      const deleteCourse = () => {
-      console.log("here");
-      // console.log(event.target.value);
-      // console.log(deleteCourseSelected);
-    }
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
       const coursesList = courseJson.courses;
       coursesList.map(async (courseName) => {
-
+        const deleteCourse=()=>{
+          console.log("Here");
+        }
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
         const instructorsCount = instructorsJson.instructors.length;
