@@ -249,7 +249,7 @@
     border-radius: 2vw;
     border: none;
     margin: 2vh -19vw 0vh 7vw;
-    background-color: #D2EDFB;
+    background-color: #5FBEF0;
     font-size: 1vw;
     font-weight: 100;
   }
@@ -395,7 +395,25 @@
           </div>
           <div class="row-flex">
             <div>
+              <button type="button" id="cancel_course_button">Cancel</button>
+            </div>
+            <div>
               <button type="button" id="save_course_button">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="deleteCourseModal" class="modal">
+      <div class="deletecourseModalContent">
+        <span class="deletecourseClose">&times;</span>
+        <div class="column-flex">
+          <div class="row-flex-course">
+            <span></span>
+          </div>
+          <div class="row-flex">
+            <div>
+              <button type="button" id="delete_course_button">Save</button>
             </div>
             <div>
               <button type="button" id="cancel_course_button">Cancel</button>
@@ -824,6 +842,7 @@
       }
     }
     const deleteCourse = async (courseSelected) => {
+
       const courseDeletePromise = await fetch(`${ngshare_url}course/${courseSelected}`, {
           method: 'DELETE',
           headers: {
