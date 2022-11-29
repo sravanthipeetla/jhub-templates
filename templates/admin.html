@@ -833,12 +833,9 @@
       $("#admin-table tr").remove();
       $(".add-btn").text("Add Course");
       $(".add-btn").attr('id', 'add-course');
-      $(".delete_course_button").attr('id','delete-course');
       instructorsFilter.style.display = 'none';
       const addCourseButton = document.getElementById('add-course');
       const saveCourseButton = document.getElementById('save_course_button');
-      const deleteCourseButton=document.getElementById('delete-course');
-      console.log(deleteCourseButton);
       addCourseButton.onclick = addCourse;
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
       const courseFetch = await fetch(`${ngshare_url}courses`);
@@ -853,9 +850,7 @@
         const studentsJson = await studentsPromise.json();
         const studentsCount = studentsJson.students.length;
         const tr = `<tr><td>${courseName}</td><td>${instructorsCount}</td><td>${studentsCount}</td><td><button class="delete_course_button" onclick="${(() => {
-          // console.log("Inisde click");
-          // deleteCourseSelected = courseName;
-          deleteCourse();
+          console.log("heRe");
         })}"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077"/></button></td></tr>`;
         $("#admin-tbody").append(tr);
       })
