@@ -826,9 +826,9 @@
         alert('Please provide valid course name and instructor username');
       }
     }
-    const deleteCourse = () => {
+    const deleteCourse = (s) => {
       console.log("In delete function");
-      console.log(courseNameSelected);
+      console.log(s);
     }
     //course-nav
     const fetchCourseDetails = async () => {
@@ -851,7 +851,7 @@
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
         const studentsCount = studentsJson.students.length;
-        const tr = `<tr><td>${courseName}</td><td>${instructorsCount}</td><td>${studentsCount}</td><td><button type='button' class="delete_course_button" id="delete_course" onclick="()=>{console.log("Inside");courseNameSelected=${courseName};deleteCourse()}" ><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077" /></button></td></tr>`;
+        const tr = `<tr><td>${courseName}</td><td>${instructorsCount}</td><td>${studentsCount}</td><td><button type='button' class="delete_course_button" id="delete_course" onclick="deleteCourse(courseName)" ><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077" /></button></td></tr>`;
         $("#admin-tbody").append(tr);
       })
     };
