@@ -833,9 +833,14 @@
       $("#admin-table tr").remove();
       $(".add-btn").text("Add Course");
       $(".add-btn").attr('id', 'add-course');
+      $(".delete_course_button").attr('id','delete-course');
       instructorsFilter.style.display = 'none';
       const addCourseButton = document.getElementById('add-course');
       const saveCourseButton = document.getElementById('save_course_button');
+      const deleteCourseButton=document.getElementById('delete-course');
+      deleteCourseButton.onclick=(this)=>{
+        console.log(this);
+      }
       addCourseButton.onclick = addCourse;
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
       const courseFetch = await fetch(`${ngshare_url}courses`);
@@ -849,8 +854,7 @@
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
         const studentsCount = studentsJson.students.length;
-        const tr = `<tr><td>${courseName}</td><td>${instructorsCount}</td><td>${studentsCount}</td><td><button class="delete_course_button" id="delete_course_but" 
-          onclick="${(() => {
+        const tr = `<tr><td>${courseName}</td><td>${instructorsCount}</td><td>${studentsCount}</td><td><button class="delete_course_button" onclick="${(() => {
           // console.log("Inisde click");
           // deleteCourseSelected = courseName;
           deleteCourse();
