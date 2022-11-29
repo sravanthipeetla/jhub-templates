@@ -838,8 +838,8 @@
       const addCourseButton = document.getElementById('add-course');
       const saveCourseButton = document.getElementById('save_course_button');
       const deleteCourseButton=document.getElementById('delete-course');
-      deleteCourseButton.onclick=(e)=>{
-        console.log(e);
+      deleteCourseButton.onclick=()=>{
+        console.log("IN here");
       }
       addCourseButton.onclick = addCourse;
       $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
