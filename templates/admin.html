@@ -781,7 +781,6 @@
                 instructorUserName
               ]
             };
-            console.log(typeof (data));
             const hubAddUserGroupPromise = await fetch(`${hub_url}groups/instructor/users`, {
               method: 'POST',
               headers: {
@@ -791,7 +790,6 @@
               body: JSON.stringify(data)
             }
             );
-            console.log(hubAddUserGroupPromise);
             if (hubAddUserGroupPromise.status == 200 && hubAddUserGroupPromise.ok) {
               const instructorAddPromise = await fetch(`${ngshare_url}instructor/${courseName}/${instructorUserName}?first_name=&last_name=&email=`, {
                 method: 'POST',
@@ -800,11 +798,10 @@
                   'Content-Type': 'application/json'
                 }
               });
-              console.log(instructorAddPromise);
               if (instructorAddPromise.status == 200 && instructorAddPromise.ok) {
                 alert('Success created.');
                 addCourseModal.style.display = "none";
-                fetchCourseDetails;
+                fetchCourseDetails();
               }
               else {
                 const instructorAddResponse = await instructorAddPromise.json();
