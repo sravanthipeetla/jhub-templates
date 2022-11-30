@@ -654,23 +654,22 @@ if user.admin %} {{ super() }}
                   console.log(response.status);
                   switch (response.status) {
                     case 200:
-                      alert_messsage = "success, learners list added to course";
+                      alert("success, learners list added to course");
                       break;
                     case 302:
-                      alert_message = "Login required";
+                      alert( "Login required");
                       break;
                     case 403:
-                      alert_message = "Permission denied";
+                      alert("Permission denied");
                       break;
                     case 404:
-                      alert_message = "course not found";
+                      alert("course not found");
                       break;
                     case 400:
-                      alert_message = "Please supply learners/Students cannot be JSON decoded/Incorrect request format. Please refer to https://ngshare.readthedocs.io/en/latest/api/course.html#api-course-course";
+                      alert("Please supply learners/Students cannot be JSON decoded/Incorrect request format. Please refer to https://ngshare.readthedocs.io/en/latest/api/course.html#api-course-course");
                       break;
                     default:
-                      console.log(response_status);
-                      alert_message = "Something went wrong.";
+                      alert("Something went wrong.");
                   }
                 }
                 addStudent();
