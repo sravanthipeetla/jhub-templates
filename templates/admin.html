@@ -903,21 +903,21 @@
           instructorsUsername.push(hubUsersJson[i].name);
         }
       }
-      console.log(instructorsUsername);
-      // coursesList.map(async (courseName) => {
-      //   const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
-      //   const instructorsJson = await instructorsPromise.json();
-      //   const instructorsDetail = await instructorsJson.instructors;
-      //   const instructorsCount = instructorsDetail.length;
-      //   console.log(instructorsDetail);
-      //   const instructorUsername = [];
-      //   for (const instructor in instructorsDetail) {
-      //     console.log(instructor + courseName);
-      //     console.log(typeof (instructor));
-      //   }
-      //   const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
-      //   $("#admin-tbody").append(tr);
-      // });
+      coursesList.map(async (courseName) => {
+        const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
+        const instructorsJson = await instructorsPromise.json();
+        console.log(instructorsJson);
+        const instructorsDetail = await instructorsJson.instructors;
+        console.log(instructorsDetail);
+        const instructorsCount = instructorsDetail.length;
+        const instructorUsername = [];
+        // for (const instructor in instructorsDetail) {
+        //   console.log(instructor + courseName);
+        //   console.log(typeof (instructor));
+        // }
+        // const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
+        // $("#admin-tbody").append(tr);
+      });
     };
 
     const fetchLearnerDetails = async () => {
