@@ -895,20 +895,23 @@
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
       const coursesList = courseJson.courses;
-      coursesList.map(async (courseName) => {
-        const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
-        const instructorsJson = await instructorsPromise.json();
-        const instructorsDetail = await instructorsJson.instructors;
-        const instructorsCount = instructorsDetail.length;
-        console.log(instructorsDetail);
-        const instructorUsername = [];
-        for (const instructor in instructorsDetail) {
-          console.log(instructor + courseName);
-          console.log(typeof (instructor));
-        }
-        const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
-        $("#admin-tbody").append(tr);
-      });
+      const instructorFetch = await fetch(`${hub_url}users`);
+      const instructorJson = await instructorFetch.json();
+      console.log(instructorJson);
+      // coursesList.map(async (courseName) => {
+      //   const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
+      //   const instructorsJson = await instructorsPromise.json();
+      //   const instructorsDetail = await instructorsJson.instructors;
+      //   const instructorsCount = instructorsDetail.length;
+      //   console.log(instructorsDetail);
+      //   const instructorUsername = [];
+      //   for (const instructor in instructorsDetail) {
+      //     console.log(instructor + courseName);
+      //     console.log(typeof (instructor));
+      //   }
+      //   const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
+      //   $("#admin-tbody").append(tr);
+      // });
     };
 
     const fetchLearnerDetails = async () => {
