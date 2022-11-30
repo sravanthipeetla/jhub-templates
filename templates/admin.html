@@ -899,9 +899,10 @@
       const hubUsersJson = await hubUsersFetch.json();
       const instructorsUsername = [];
       for(user in hubUsersJson){
-        if(user.groups.includes('instructor')){
-          instructorsUsername.push(user.name);
-        }
+        console.log(user);
+        // if(user.groups.includes('instructor')){
+        //   instructorsUsername.push(user.name);
+        // }
       }
       console.log(instructorsUsername);
       // coursesList.map(async (courseName) => {
