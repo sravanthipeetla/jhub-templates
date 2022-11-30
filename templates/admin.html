@@ -898,6 +898,7 @@
       const hubUsersFetch = await fetch(`${hub_url}users`);
       const hubUsersJson = await hubUsersFetch.json();
       const instructorsUsername = [];
+      console.log(hubUsersJson);
       for(user in hubUsersJson){
         console.log(user);
         // if(user.groups.includes('instructor')){
