@@ -900,7 +900,7 @@
       const instructorsUsername = [];
       for(i=0;i<hubUsersJson.length;i++){
         if(hubUsersJson[i].groups.includes('instructor')){
-          instructorsUsername.push(user.name);
+          instructorsUsername.push(hubUsersJson[i].name);
         }
       }
       console.log(instructorsUsername);
