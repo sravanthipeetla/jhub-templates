@@ -927,13 +927,13 @@
       console.log(courseInstructor);
       console.log(instructorsUsername);
       const instructorCourse={};
-      instructorUsername.map((instructor)=>{
+      for(let i=0;i<instructorsUsername;i++){
         let courses=[];
         for (let [key, value] of courseInstructor.entries()){
           console.log(value);
           console.log(key);
         }
-      });
+      };
 
     };
 
