@@ -911,9 +911,9 @@
         let instructorList=[];
         const instructorUserName=[];
         for(let i=0;i<instructorsDetail.length;i++){
-         instructorList.push(instrcutor.username);
+         instructorList.push(instructorsDetail[i].username);
          if(instructorUserName.indexOf(instructor.username) === -1) {
-          instructorUserName.push(instructor.username);
+          instructorUserName.push(instructorsDetail[i].username);
          }
         };
         courseInstructor[courseName]=instructorList;
