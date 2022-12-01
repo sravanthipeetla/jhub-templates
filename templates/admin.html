@@ -909,11 +909,14 @@
         const instructorsJson = await instructorsPromise.json();
         const instructorsDetail = await instructorsJson.instructors;
         let instructorList=[];
+        const instructorUserName=[];
         for(let i=0;i<instructorsDetail.length;i++){
          instructorList.push(instructorsDetail[i].username);
+         if(instructorUserName.indexOf(instructorsDetail[i].username) === -1) {
+          instructorUserName.push(instructorsDetail[i].username);
+         }
         }
         courseInstructor[courseName]=instructorList;
-        const instructorUsername = [];
         // for (const instructor in instructorsDetail) {
         //   console.log(instructor + courseName);
         //   console.log(typeof (instructor));
@@ -922,6 +925,7 @@
         // $("#admin-tbody").append(tr);
       });
       console.log(courseInstructor);
+      console.log(instructorsUsername);
     };
 
     const fetchLearnerDetails = async () => {
