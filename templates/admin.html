@@ -844,18 +844,18 @@
     const deleteCourse = async (courseSelected) => {
 
       const courseDeletePromise = await fetch(`${ngshare_url}course/${courseSelected}`, {
-          method: 'DELETE',
-          headers: {
-            Accept: 'application.json',
-            'Content-Type': 'application/json'
-          }
-        });
-      const response=await courseDeletePromise.json();
-      if(response.success){
+        method: 'DELETE',
+        headers: {
+          Accept: 'application.json',
+          'Content-Type': 'application/json'
+        }
+      });
+      const response = await courseDeletePromise.json();
+      if (response.success) {
         alert("Successfully deleted course");
         fetchCourseDetails();
       }
-      else{
+      else {
         alert("Something went wrong! Couldn't delete course");
       }
     }
@@ -898,51 +898,40 @@
       const hubUsersFetch = await fetch(`${hub_url}users`);
       const hubUsersJson = await hubUsersFetch.json();
       const instructorsUsername = [];
-      for(let i=0;i<hubUsersJson.length;i++){
-        if(hubUsersJson[i].groups.includes('instructor')){
+      for (let i = 0; i < hubUsersJson.length; i++) {
+        if (hubUsersJson[i].groups.includes('instructor')) {
           instructorsUsername.push(hubUsersJson[i].name);
         }
       }
-      let courseInstructor={};
-      let instructorCourse={};
+      let courseInstructor = {};
+      let instructorCourse = {};
       coursesList.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
         const instructorsDetail = await instructorsJson.instructors;
-        let instructorList=[];
-        for(let i=0;i<instructorsDetail.length;i++){
-         instructorList.push(instructorsDetail[i].username);
-         if(instructorsUsername.indexOf(instructorsDetail[i].username) === -1) {
-          instructorsUsername.push(instructorsDetail[i].username);
-         }
-        };
-        courseInstructor[courseName]=instructorList;
-        for(let i=0;i<instructorsUsername.length;i++){
-          let courses=[];
-        for (let key in courseInstructor) {
-          if(courseInstructor[key].includes(instructorsUsername[i]) && courses.indexOf(key)===-1){
-            courses.push(key);
+        let instructorList = [];
+        for (let i = 0; i < instructorsDetail.length; i++) {
+          instructorList.push(instructorsDetail[i].username);
+          if (instructorsUsername.indexOf(instructorsDetail[i].username) === -1) {
+            instructorsUsername.push(instructorsDetail[i].username);
           }
-          instructorCourse[instructorsUsername[i]]=courses;
-        }    
+        };
+        courseInstructor[courseName] = instructorList;
+        for (let i = 0; i < instructorsUsername.length; i++) {
+          let courses = [];
+          for (let key in courseInstructor) {
+            if (courseInstructor[key].includes(instructorsUsername[i]) && courses.indexOf(key) === -1) {
+              courses.push(key);
+            }
+            instructorCourse[instructorsUsername[i]] = courses;
+          }
 
-      };
-      });
-      for (let key in instructorCourse) {
-      console.log(instructorCourse);
+        };
+        for (let key in instructorCourse) {
       const tr = '<tr><td>' + Object.keys(instructorCourse)[i]; + '</td><td>' +  Object.values(instructorCourse)[i].length + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
         $("#admin-tbody").append(tr);
     }
-      // for(let i=0;i<instructorsUsername.length;i++){
-      //   let courses=[];
-      //   for (let key in courseInstructor) {
-      //     console.log(key);
-      //     console.log(courseInstructor[key]);
-      //   }
-      //   for (const prop in courseInstructor) {
-      //     console.log(`key: ${prop}, value: ${obj[prop]}`);
-      //   }       
-      // };
+      });
     };
 
     const fetchLearnerDetails = async () => {
