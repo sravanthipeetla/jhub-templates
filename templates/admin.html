@@ -928,9 +928,9 @@
       const instructorCourse={};
       for(let i=0;i<instructorsUsername.length;i++){
         let courses=[];
-         for(let i=0;i<courseInstructor.length;i++){
-          console.log(courseInstructor);
-         }
+        for (const prop in courseInstructor) {
+          console.log(`key: ${prop}, value: ${obj[prop]}`);
+        }       
       };
 
     };
