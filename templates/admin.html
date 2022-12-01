@@ -905,15 +905,14 @@
       }
       let courseInstructor={};
       let instructorList=[];
-      const instructorUsername=[];
       coursesList.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
         const instructorsDetail = await instructorsJson.instructors;
         for(let i=0;i<instructorsDetail.length;i++){
          instructorList.push(instructorsDetail[i].username);
-         if(instructorUsername.indexOf(instructorsDetail[i].username) === -1) {
-          instructorUsername.push(instructorsDetail[i].username);
+         if(instructorsUsername.indexOf(instructorsDetail[i].username) === -1) {
+          instructorsUsername.push(instructorsDetail[i].username);
          }
         };
         courseInstructor[courseName]=instructorList;
@@ -929,6 +928,7 @@
       const instructorCourse={};
       for(let i=0;i<instructorsUsername;i++){
         let courses=[];
+        console.log(instructorsUsername[i])
         for (let [key, value] of courseInstructor.entries()){
           console.log(value);
           console.log(key);
