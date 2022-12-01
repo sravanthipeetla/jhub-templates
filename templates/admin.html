@@ -917,28 +917,9 @@
           }
         };
         courseInstructor[courseName] = instructorList;
-        for (let i = 0; i < instructorsUsername.length; i++) {
-          let courses = [];
-          for (let key in courseInstructor) {
-            if (courseInstructor[key].includes(instructorsUsername[i])) {
-              if(Object.keys(instructorCourse).indexOf(instructorsUsername[i])===-1){
-            instructorCourse[instructorsUsername[i]] = [key];}
-            else{
-              if(instructorCourse[instructorsUsername[i]].indexOf(key)=== -1)
-              instructorCourse[instructorsUsername[i]].push(key);
-            }
-            }
-            
-          }
-
-        };
-        for (let key in instructorCourse) {
-      const tr = '<tr><td>' + key + '</td><td>' +  instructorCourse[key].length + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
-        $("#admin-tbody").append(tr);
-    }
       });
+      console.log(courseInstructor);
     };
-
     const fetchLearnerDetails = async () => {
       $("#admin-thead tr").remove();
       $("#admin-table tr").remove();
