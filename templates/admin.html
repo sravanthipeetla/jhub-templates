@@ -912,7 +912,7 @@
         const instructorUserName=[];
         for(let i=0;i<instructorsDetail.length;i++){
          instructorList.push(instructorsDetail[i].username);
-         if(instructorUserName.indexOf(instructor.username) === -1) {
+         if(instructorUserName.indexOf(instructorsDetail[i].username) === -1) {
           instructorUserName.push(instructorsDetail[i].username);
          }
         };
