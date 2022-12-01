@@ -919,6 +919,21 @@
         courseInstructor[courseName] = instructorList;
       });
       console.log(courseInstructor);
+      for (let i = 0; i < instructorsUsername.length; i++) {
+          let courses = [];
+          for (let key in courseInstructor) {
+            if (courseInstructor[key].includes(instructorsUsername[i])) {
+              if (Object.keys(instructorCourse).indexOf(instructorsUsername[i]) === -1) {
+                instructorCourse[instructorsUsername[i]] = [key];
+              }
+              else {
+                if (instructorCourse[instructorsUsername[i]].indexOf(key) === -1)
+                  instructorCourse[instructorsUsername[i]].push(key);
+              }
+            }
+          }
+        };
+        console.log(instructorCourse);
     };
     const fetchLearnerDetails = async () => {
       $("#admin-thead tr").remove();
