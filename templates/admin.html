@@ -917,9 +917,7 @@
           }
         };
         courseInstructor[courseName] = instructorList;
-      });
-      console.log(courseInstructor);
-      for (let i = 0; i < instructorsUsername.length; i++) {
+        for (let i = 0; i < instructorsUsername.length; i++) {
           let courses = [];
           for (let key in courseInstructor) {
             if (courseInstructor[key].includes(instructorsUsername[i])) {
@@ -933,6 +931,8 @@
             }
           }
         };
+      });
+      console.log(courseInstructor);
         console.log(instructorCourse);
     };
     const fetchLearnerDetails = async () => {
