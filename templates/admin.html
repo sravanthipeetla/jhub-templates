@@ -904,12 +904,11 @@
         }
       }
       let courseInstructor={};
-      let instructorList=[];
       coursesList.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
         const instructorsDetail = await instructorsJson.instructors;
-        console.log(instructorsDetail);
+        let instructorList=[];
         for(let i=0;i<instructorsDetail.length;i++){
          instructorList.push(instructorsDetail[i].username);
          if(instructorsUsername.indexOf(instructorsDetail[i].username) === -1) {
@@ -924,6 +923,7 @@
         // const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
         // $("#admin-tbody").append(tr);
       });
+      console.log(courseInstructor);
       const instructorCourse={};
       for(let i=0;i<instructorsUsername.length;i++){
         let courses=[];
