@@ -910,12 +910,12 @@
         const instructorsDetail = await instructorsJson.instructors;
         let instructorList=[];
         const instructorUserName=[];
-        instructorsDetail.map((instructor)=>{
+        for(let i=0;i<instructorsDetail.length;i++){
          instructorList.push(instrcutor.username);
          if(instructorUserName.indexOf(instructor.username) === -1) {
           instructorUserName.push(instructor.username);
          }
-        });
+        };
         courseInstructor[courseName]=instructorList;
         // for (const instructor in instructorsDetail) {
         //   console.log(instructor + courseName);
