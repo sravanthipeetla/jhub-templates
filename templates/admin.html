@@ -912,8 +912,8 @@
         const instructorsDetail = await instructorsJson.instructors;
         for(let i=0;i<instructorsDetail.length;i++){
          instructorList.push(instructorsDetail[i].username);
-         if(instructorUserName.indexOf(instructorsDetail[i].username) === -1) {
-          instructorUserName.push(instructorsDetail[i].username);
+         if(instructorUsername.indexOf(instructorsDetail[i].username) === -1) {
+          instructorUsername.push(instructorsDetail[i].username);
          }
         };
         courseInstructor[courseName]=instructorList;
