@@ -903,8 +903,9 @@
           instructorsUsername.push(hubUsersJson[i].name);
         }
       }
-      let courseInstructor={};instructorCourse={}
+      let courseInstructor={};
       coursesList.map(async (courseName) => {
+        let instructorCourse={};
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
         const instructorsDetail = await instructorsJson.instructors;
@@ -923,16 +924,10 @@
             courses.push(key);
           }
           instructorCourse[instructorsUsername[i]]=courses;
-
-
         }    
       };
-        // for (const instructor in instructorsDetail) {
-        //   console.log(instructor + courseName);
-        //   console.log(typeof (instructor));
-        // }
-        // const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
-        // $("#admin-tbody").append(tr);
+        const tr = '<tr><td>' + Object.keys(instructorCourse)[0]; + '</td><td>' +  Object.values(instructorCourse)[0].length + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
+        $("#admin-tbody").append(tr);
       });
       console.log(instructorCourse);  
       // for(let i=0;i<instructorsUsername.length;i++){
