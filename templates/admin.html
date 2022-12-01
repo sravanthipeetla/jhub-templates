@@ -909,7 +909,8 @@
         const instructorsJson = await instructorsPromise.json();
         const instructorsDetail = await instructorsJson.instructors;
         for(let i=0;i<instructorsDetail.length;i++){
-          courseInstructor['courseName'].append(instructorsDetail.username);
+          console.log(instructor[i].username);
+          courseInstructor['courseName'].append(instructorsDetail[i].username);
         }
         console.log(courseInstructor);
         const instructorUsername = [];
