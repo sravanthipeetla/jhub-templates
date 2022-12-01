@@ -908,10 +908,12 @@
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
         const instructorsDetail = await instructorsJson.instructors;
+        let instructorList=[];
         for(let i=0;i<instructorsDetail.length;i++){
           console.log(instructorsDetail[i].username);
-          courseInstructor['courseName'].append(instructorsDetail[i].username);
+         instructorList.append(instructorsDetail[i].username);
         }
+        courseInstructor[courseName]=instructorList;
         console.log(courseInstructor);
         const instructorUsername = [];
         // for (const instructor in instructorsDetail) {
