@@ -916,6 +916,16 @@
          }
         };
         courseInstructor[courseName]=instructorList;
+        for(let i=0;i<instructorsUsername.length;i++){
+        let courses=[];
+        for (let key in courseInstructor) {
+          console.log(key);
+          console.log(courseInstructor[key]);
+        }
+        // for (const prop in courseInstructor) {
+        //   console.log(`key: ${prop}, value: ${obj[prop]}`);
+        // }       
+      };
         // for (const instructor in instructorsDetail) {
         //   console.log(instructor + courseName);
         //   console.log(typeof (instructor));
@@ -923,21 +933,17 @@
         // const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
         // $("#admin-tbody").append(tr);
       });
-      console.log(courseInstructor);
       const instructorCourse={};
-      for(let i=0;i<instructorsUsername.length;i++){
-        let courses=[];
-        console.log(instructorsUsername[i]);
-        for (let key in courseInstructor) {
-          console.log(key);
-          console.log(courseInstructor[key]);
-        }
-
-        // for (const prop in courseInstructor) {
-        //   console.log(`key: ${prop}, value: ${obj[prop]}`);
-        // }       
-      };
-
+      // for(let i=0;i<instructorsUsername.length;i++){
+      //   let courses=[];
+      //   for (let key in courseInstructor) {
+      //     console.log(key);
+      //     console.log(courseInstructor[key]);
+      //   }
+      //   for (const prop in courseInstructor) {
+      //     console.log(`key: ${prop}, value: ${obj[prop]}`);
+      //   }       
+      // };
     };
 
     const fetchLearnerDetails = async () => {
