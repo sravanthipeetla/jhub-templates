@@ -928,10 +928,9 @@
       const instructorCourse={};
       for(let i=0;i<instructorsUsername.length;i++){
         let courses=[];
-        Object.entries(courseInstructor).forEach(([key, value]) => {
-          console.log('here');
-          console.log(key, value);
-        });
+        for (const [key, value] of Object.entries(courseInstructor)) {
+  console.log(key, value);
+}
       };
 
     };
