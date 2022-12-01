@@ -925,12 +925,12 @@
           }
           instructorCourse[instructorsUsername[i]]=courses;
         }    
-        console.log(instructorCourse);
 
       };
         const tr = '<tr><td>' + Object.keys(instructorCourse)[0]; + '</td><td>' +  Object.values(instructorCourse)[0].length + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
         $("#admin-tbody").append(tr);
       });
+      console.log(instructorCourse);
       // for(let i=0;i<instructorsUsername.length;i++){
       //   let courses=[];
       //   for (let key in courseInstructor) {
