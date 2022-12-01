@@ -929,10 +929,9 @@
       for(let i=0;i<instructorsUsername.length;i++){
         let courses=[];
         console.log(instructorsUsername[i])
-        for (let [key, value] of courseInstructor.entries()){
-          console.log(value);
-          console.log(key);
-        }
+        Object.entries(courseInstructor).forEach(([key, value]) => {
+          console.log(key, value);
+        });
       };
 
     };
