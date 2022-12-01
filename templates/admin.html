@@ -903,7 +903,7 @@
           instructorsUsername.push(hubUsersJson[i].name);
         }
       }
-      let courseInstructor={};
+      let courseInstructor={};instructorCourse={}
       coursesList.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
@@ -925,8 +925,7 @@
           instructorCourse[instructorsUsername[i]]=courses;
 
 
-        }   
-        console.log(instructorCourse);   
+        }    
       };
         // for (const instructor in instructorsDetail) {
         //   console.log(instructor + courseName);
@@ -935,7 +934,7 @@
         // const tr = '<tr><td>' + courseName + '</td><td>' + instructorsCount + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
         // $("#admin-tbody").append(tr);
       });
-      const instructorCourse={};
+      console.log(instructorCourse);  
       // for(let i=0;i<instructorsUsername.length;i++){
       //   let courses=[];
       //   for (let key in courseInstructor) {
