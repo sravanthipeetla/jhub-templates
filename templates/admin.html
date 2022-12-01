@@ -917,14 +917,16 @@
         };
         courseInstructor[courseName]=instructorList;
         for(let i=0;i<instructorsUsername.length;i++){
-        let courses=[];
+          let courses=[];
         for (let key in courseInstructor) {
-          console.log(key);
-          console.log(courseInstructor[key]);
-        }
-        // for (const prop in courseInstructor) {
-        //   console.log(`key: ${prop}, value: ${obj[prop]}`);
-        // }       
+          if(courseInstructor[key].includes(instructorsUsername[i]) && courses.indexOf(key)===-1){
+            courses.push(key);
+          }
+          instructorCourse[instructorsUsername[i]]=courses;
+
+
+        }   
+        console.log(instructorCourse);   
       };
         // for (const instructor in instructorsDetail) {
         //   console.log(instructor + courseName);
