@@ -928,7 +928,7 @@
 
         };
         for (let key in instructorCourse) {
-      const tr = '<tr><td>' + Object.keys(instructorCourse)[i]; + '</td><td>' +  Object.values(instructorCourse)[i].length + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
+      const tr = '<tr><td>' + key + '</td><td>' +  instructorCourse[key].length + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
         $("#admin-tbody").append(tr);
     }
       });
