@@ -764,7 +764,6 @@
     let courseNameSelected;
     let deleteCourseSelected;
     const addCourse = () => {
-      console.log("here");
       addCourseModal.style.display = "block";
     }
     closeSpan.onclick = function () {
@@ -891,7 +890,7 @@
       $(".add-btn").text("Add instructor");
       $(".add-btn").addClass("add-instructor");
       instructorsFilter.style.display = 'block';
-      $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Actions</td></tr>');
+      $("#admin-thead").append('<tr><td>Instructor Username</td><td>Courses count</td><td>Actions</td></tr>');
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
       const coursesList = courseJson.courses;
@@ -918,7 +917,6 @@
         };
         courseInstructor[courseName] = instructorList;
         for (let i = 0; i < instructorsUsername.length; i++) {
-          let courses = [];
           for (let key in courseInstructor) {
             if (courseInstructor[key].includes(instructorsUsername[i])) {
               if (Object.keys(instructorCourse).indexOf(instructorsUsername[i]) === -1) {
@@ -932,8 +930,11 @@
           }
         };
       });
-      console.log(courseInstructor);
-        console.log(instructorCourse);
+      console.log(instructorCourse);
+      for (let key in instructorCourse) {
+      const tr = '<tr><td>' + key + '</td><td>' +  instructorCourse[key].length + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
+        $("#admin-tbody").append(tr);
+    }
     };
     const fetchLearnerDetails = async () => {
       $("#admin-thead tr").remove();
