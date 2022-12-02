@@ -8,25 +8,25 @@ if user.admin %} {{ super() }}
     .navbar-default {
         background-color: #ffffff;
         border: none;
-        font-size: 15px;
     }
-
+    .container-fluid{
+        padding: 1.5rem;
+    }
     #jupyterhub-logo .jpy-logo {
-        height: 4.5vh;
+        height: 3.5rem;
     }
 
-    .btn-lg {
-        font-size: 15px;
-        height: 44px;
-        width: 200px;
-        border-radius: 30px !important;
-        margin-right: 30px;
+   .btn-lg {
+        font-size: 1.6rem;
+        height: 4.5rem;
+        width: calc(12vw - 2rem);
+        border-radius: 4rem !important;
+        margin-right: calc(2vw - 2rem);
     }
 
     .btn-default {
         border: none;
         color: #5fbef0;
-        font-size: 15px;
     }
 
     .btn-primary {
@@ -35,16 +35,16 @@ if user.admin %} {{ super() }}
     }
 
     .text-center {
-        padding-top: 130px;
+        padding-top: 15rem;
     }
 
-    .server-info {
-        font-size: 20px;
+   .server-info {
+        font-size: 2rem;
         font-weight: 500;
     }
 
     .server-gif {
-        padding-top: 80px;
+        padding-top: 10rem;
     }
 
     @media (max-width: 768px) {
@@ -89,7 +89,7 @@ if user.admin %} {{ super() }}
         <div class="text-center">
             {% if default_server.active %}
             {{named_spawners}}
-            <span class="server-info">our server is still runnnig. You can stop or go back to your workspace
+            <span class="server-info">Your server is still runnnig. You can stop or go back to your workspace
                 again.</span>
             <br />
             <br />
@@ -113,4 +113,17 @@ if user.admin %} {{ super() }}
 <script type="text/javascript">
     require(["home"]);
 </script>
+    // To change the color for active link in top left navbar items
+    const currentUrl = window.location.href.split("/");
+    const currentAnchorTagText = currentUrl[currentUrl.length - 1];
+    $('.navbar-nav a').each(function () {
+      if ($(this).text().toLowerCase() == currentAnchorTagText) {
+        $(this).css("color", "#006BB6");
+      }
+    });
+
+    // To hide left navbar items - 'Token' and 'services'
+    const navbar_left_list = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTagName("li");
+    navbar_left_list[1].style.visibility = 'hidden';
+    navbar_left_list[3].style.visibility = 'hidden';
 {% endblock %}
