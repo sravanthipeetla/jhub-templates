@@ -50,41 +50,41 @@ if user.admin %} {{ super() }}
         padding-top: 10rem;
     }
 
-    @media (max-width: 768px) {
-        .navbar-default {
-            font-size: 12px;
+    @media (max-width: 2560px) {
+        .container-fluid {
+            padding: 2.5rem;
         }
-
-        .server-gif {
-            height: 33vh;
-            width: 46vw;
+        
+        .navbar-collapse{
+            font-size: 2rem;
         }
-
-        .btn-lg {
-            height: 40px;
+        
+        #logout {
+            font-size: 2rem;
         }
-
         #jupyterhub-logo .jpy-logo {
-            height: 2vh;
+            height: 4.5rem;
         }
+        .navbar-nav{
+            margin-left: 2vw;
+        }
+        .server-info {
+            font-size: 3rem;
+            font-weight: 500;
+        }
+        .btn-lg {
+            font-size: 2.6rem;
+            height: 6.5rem;
+            width: calc(14vw - 2rem);
+        }
+        .server-gif {
+            height: 50rem;
+        }
+       
     }
 
     @media (max-width: 425px) {
-        .server-info {
-            font-size: 12px;
-        }
-
-        .btn-lg {
-            width: 130px;
-        }
-
-        #jupyterhub-logo .jpy-logo {
-            height: 2.5vh;
-        }
-
-        .server-gif {
-            height: 20vh;
-        }
+        
     }
 </style>
 <div class="container">
