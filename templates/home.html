@@ -112,7 +112,8 @@ if user.admin %} {{ super() }}
 {{ super() }}
 <script type="text/javascript">
     require(["home"]);
-</script>
+    
+    //custom script
     // To change the color for active link in top left navbar items
     const currentUrl = window.location.href.split("/");
     const currentAnchorTagText = currentUrl[currentUrl.length - 1];
@@ -126,4 +127,5 @@ if user.admin %} {{ super() }}
     const navbar_left_list = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTagName("li");
     navbar_left_list[1].style.visibility = 'hidden';
     navbar_left_list[3].style.visibility = 'hidden';
+</script>
 {% endblock %}
