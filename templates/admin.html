@@ -950,9 +950,9 @@
       coursesList.map(async (courseName) => {
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
+        console.log(studentsJson);
         let studentsUsername=[];
         for(student in studentsJson){
-          console.log(student);
             studentsUsername.push(student.username);
         }
         // console.log(studentsUsername);
