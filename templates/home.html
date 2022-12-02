@@ -3,7 +3,9 @@ announcement = announcement_home %} {% endif %} {% block nav_bar_left_items%} {%
 if user.admin %} {{ super() }}
 {% endif %}
 {% endblock %}
-{% block stylesheet %}
+{% block main %}
+<style>
+    
 .navbar-default {
 background-color: #ffffff;
 border: none;
@@ -67,8 +69,7 @@ height: 2.5vh;
 height: 20vh;
 }
 }
-{% endblock %}
-{% block main %}
+</style>
 <div class="container">
     <div class="row">
         <div class="text-center">
