@@ -950,12 +950,13 @@
       coursesList.map(async (courseName) => {
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
+        console.log(studentsJson.students);
         let studentsUsername=[];
         for(student in studentsJson.students){
             studentsUsername.push(student.username);
-            console.log(student);
+            // console.log(student);
         }
-        console.log(studentsUsername);
+        // console.log(studentsUsername);
         const studentsCount = studentsJson.students.length;
         const tr = '<tr><td>' + courseName + '</td><td>' + studentsCount + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
         $("#admin-tbody").append(tr);
