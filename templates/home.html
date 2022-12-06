@@ -87,8 +87,18 @@ if user.admin %} {{ super() }}
     @media (max-width: 2400px) {
         .btn-lg {
             font-size: 2.2rem;
+        }   
+    }
+    @media (max-width: 2100px)
+        .server-info {
+            font-size: 2.5rem;
+            font-weight: 500;
         }
-        
+        .btn-lg {
+            font-size: 2rem;
+            height: 6rem;
+            width: calc(13vw - 2rem);
+        }
     }
 </style>
 <div class="container">
