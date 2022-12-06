@@ -285,12 +285,8 @@
                 serverInfo.innerText='Your workspace is stopping. Please wait...'
             }
         }
-        else if(serverInfo.innerText=='Your workspace is stopping. Please wait...'){
-            console.log('here');
-            
+        if(!document.getElementById('stop')){
             window.location.reload();
-        }
-        else{
             serverInfo.innerText='Your workspace is down. You can go to your workspace after starting.'
         }
     </script>
