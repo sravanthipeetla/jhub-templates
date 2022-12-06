@@ -287,7 +287,7 @@
         }
         console.log('data',document.getElementById('stop'),serverInfo.innerText)
         if(!document.getElementById('stop') && serverInfo.innerText==''){
-            console.log('Here');
+            console.log(serverInfo.innerText);
             serverInfo.innerText='Your workspace is down. You can go to your workspace after starting.'
             window.location.reload();
         }
