@@ -287,6 +287,7 @@
         }
         console.log('data',document.getElementById('stop'),serverInfo.innerText)
         if(serverInfo.innerText=='Your workspace is stopping. Please wait...'){
+            console.log('info',serverInfo.innerText);
              window.location.reload();
         }
         if(!document.getElementById('stop') && serverInfo.innerText=='Your workspace is stopping. Please wait...'){
