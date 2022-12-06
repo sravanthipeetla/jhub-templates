@@ -231,26 +231,26 @@
             }
         }
     </style>
-    <div class="container">
-        <div class="row">
-            <div class="text-center">
+    <div class='container'>
+        <div class='row'>
+            <div class='text-center'>
                 {% if default_server.active %}
                 {{named_spawners}}
-                <span class="server-info">Your server is still runnnig. You can stop or go back to your workspace
+                <span class='server-info' id='server-info'>Your server is still runnnig. You can stop or go back to your workspace
                     again.</span>
                 <br />
                 <br />
                 <br />
-                <a id="stop" role="button" class="btn btn-lg btn-danger">
+                <a id='stop' role='button' class='btn btn-lg btn-danger'>
                     Stop My Server
                 </a>
                 {% endif %}
-                <a id="start" role="button" class="btn btn-lg btn-primary" href="{{ url }}">
+                <a id='start' role='button' class='btn btn-lg btn-primary' href='{{ url }}'>
                     {% if not default_server.active %}Start{% endif %} My Workspace
                 </a>
                 <br />
-                <img class="server-gif"
-                    src="https://ik.imagekit.io/iwwbj9so6/Server_gif_hzHBX49u0.gif?ik-sdk-version=javascript-1.4.3&updatedAt=1661754020935" />
+                <img class='server-gif'
+                    src='https://ik.imagekit.io/iwwbj9so6/Server_gif_hzHBX49u0.gif?ik-sdk-version=javascript-1.4.3&updatedAt=1661754020935' />
             </div>
         </div>
     </div>
@@ -261,6 +261,7 @@
         require(["home"]);
         
         //custom script
+        
         // To change the color for active link in top left navbar items
         const currentUrl = window.location.href.split('/');
         const currentAnchorTagText = currentUrl[currentUrl.length - 1];
@@ -271,9 +272,21 @@
         });
     
         // To hide left navbar items - 'Token' and 'services'
-        const navbar_left_list = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
-        navbar_left_list[1].style.visibility = 'hidden';
-        navbar_left_list[3].style.visibility = 'hidden';
+        const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
+        navbarLeftList[1].style.visibility = 'hidden';
+        navbarLeftList[3].style.visibility = 'hidden';
+        
+        //server-info change
+        const serverInfo=document.getElementById('server-info');
+        if(document.getElementById('stop')){
+            const serverStop=document.getElementById('stop');
+            serverStop.onclick=()=>{
+                serverInfo.innerText='Your server is stopping. Please wait...'
+            }
+        }
+        else{
+            serverInfo.innerText='Your server is down. You can go to your workspace after starting your server.'
+        }
     </script>
     {% endblock %}
     
