@@ -293,6 +293,9 @@
             setTimeout(()=>{window.location.reload();}, 5000);
             setTimeout(stopServerInfo(),6000);
         }
+        if(!document.getElementById('stop')){
+            stopServerInfo();
+        }
     </script>
     {% endblock %}
     
