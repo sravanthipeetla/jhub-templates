@@ -290,8 +290,7 @@
             serverStop.onclick=()=>{
                 serverInfo.innerText='Your workspace is stopping. Please wait...'
             }
-            setTimeout(()=>{window.location.reload();}, 5000);
-            setTimeout(stopServerInfo(),6000);
+            setTimeout(()=>{window.location.reload();}, 4000);
         }
         if(!document.getElementById('stop')){
             stopServerInfo();
