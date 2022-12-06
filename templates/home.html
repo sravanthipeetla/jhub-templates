@@ -245,6 +245,8 @@
                     Stop My Server
                 </a>
                 {% endif %}
+                 <span class="server-info">Your server has stopped. You can go back to your workspace
+                    after starting your workspace.</span>
                 <a id="start" role="button" class="btn btn-lg btn-primary" href="{{ url }}">
                     {% if not default_server.active %}Start{% endif %} My Workspace
                 </a>
@@ -262,16 +264,16 @@
         
         //custom script
         // To change the color for active link in top left navbar items
-        const currentUrl = window.location.href.split("/");
+        const currentUrl = window.location.href.split('/');
         const currentAnchorTagText = currentUrl[currentUrl.length - 1];
         $('.navbar-nav a').each(function () {
           if ($(this).text().toLowerCase() == currentAnchorTagText) {
-            $(this).css("color", "#006BB6");
+            $(this).css('color', '#006BB6');
           }
         });
     
         // To hide left navbar items - 'Token' and 'services'
-        const navbar_left_list = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTagName("li");
+        const navbar_left_list = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
         navbar_left_list[1].style.visibility = 'hidden';
         navbar_left_list[3].style.visibility = 'hidden';
     </script>
