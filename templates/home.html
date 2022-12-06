@@ -285,6 +285,7 @@
                 serverInfo.innerText='Your workspace is stopping. Please wait...'
             }
         }
+        console.log('data',document.getElementById('stop'),serverInfo.innerText)
         if(!document.getElementById('stop') && serverInfo.innerText=='Your workspace is stopping. Please wait...'){
             console.log('Here');
             serverInfo.innerText='Your workspace is down. You can go to your workspace after starting.'
