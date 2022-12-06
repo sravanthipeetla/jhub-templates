@@ -246,6 +246,9 @@
                 </a>
                 {% endif %}
                 <span class='server-info' id='server-info'></span>
+                <br />
+                <br />
+                <br />
                 <a id='start' role='button' class='btn btn-lg btn-primary' href='{{ url }}'>
                     {% if not default_server.active %}Start{% endif %} My Workspace
                 </a>
@@ -290,7 +293,7 @@
             serverStop.onclick=()=>{
                 serverInfo.innerText='Your workspace is stopping. Please wait...'
             }
-            setTimeout(()=>{window.location.reload();}, 5000);
+            setTimeout(()=>{window.location.reload();}, 4500);
         }
         if(!document.getElementById('stop')){
             stopServerInfo();
