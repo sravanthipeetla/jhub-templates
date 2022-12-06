@@ -236,13 +236,13 @@
             <div class='text-center'>
                 {% if default_server.active %}
                 {{named_spawners}}
-                <span class='server-info' id='server-info'>Your server is still runnnig. You can stop or go back to your workspace
+                <span class='server-info' id='server-info'>Your workspace is still running. You can stop or go back to your workspace
                     again.</span>
                 <br />
                 <br />
                 <br />
                 <a id='stop' role='button' class='btn btn-lg btn-danger'>
-                    Stop My Server
+                    Stop My Workspace
                 </a>
                 {% endif %}
                 <span class='server-info' id='server-info'></span>
@@ -282,11 +282,12 @@
         if(document.getElementById('stop')){
             const serverStop=document.getElementById('stop');
             serverStop.onclick=()=>{
-                serverInfo.innerText='Your server is stopping. Please wait...'
+                serverInfo.innerText='Your workspace is stopping. Please wait...'
             }
+            location.reload();
         }
         else{
-            serverInfo.innerText='Your server is down. You can go to your workspace after starting your server.'
+            serverInfo.innerText='Your workspace is down. You can go to your workspace after starting.'
         }
     </script>
     {% endblock %}
