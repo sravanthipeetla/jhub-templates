@@ -1,151 +1,152 @@
 {% extends "templates/page.html" %} {% if announcement_home %} {% set
-announcement = announcement_home %} {% endif %} {% block nav_bar_left_items%} {%
-if user.admin %} {{ super() }}
-{% endif %}
-{% endblock %}
-{% block main %}
-<style>
-    .navbar-default {
-        background-color: #ffffff;
-        border: none;
-    }
-    .container-fluid{
-        padding: 1.5rem;
-    }
-    .navbar-collapse{
-        font-size: 1.6rem;
-    }
-    #jupyterhub-logo .jpy-logo {
-        height: 3.5rem;
-    }
-
-   .btn-lg {
-        font-size: 1.6rem;
-        height: 4.5rem;
-        width: calc(12vw - 2rem);
-        border-radius: 4rem !important;
-        margin-right: calc(2vw - 2rem);
-    }
-
-    .btn-default {
-        border: none;
-        color: #5fbef0;
-    }
-
-    .btn-primary {
-        background-color: #5fbef0;
-        border: transparent;
-    }
-
-    .text-center {
-        padding-top: 15rem;
-    }
-
-   .server-info {
-        font-size: 2rem;
-        font-weight: 500;
-    }
-
-    .server-gif {
-        padding-top: 10rem;
-    }
-
-    @media (max-width: 2560px) {
-        .container-fluid {
-            padding: 2.5rem;
+    announcement = announcement_home %} {% endif %} {% block nav_bar_left_items%} {%
+    if user.admin %} {{ super() }}
+    {% endif %}
+    {% endblock %}
+    {% block main %}
+    <style>
+        .navbar-default {
+            background-color: #ffffff;
+            border: none;
         }
-        
+        .container-fluid{
+            padding: 1.5rem;
+        }
         .navbar-collapse{
-            font-size: 2rem;
-        }
-        
-        #logout {
-            font-size: 2rem;
+            font-size: 1.6rem;
         }
         #jupyterhub-logo .jpy-logo {
+            height: 3.5rem;
+        }
+    
+       .btn-lg {
+            font-size: 1.6rem;
             height: 4.5rem;
-        }
-        .navbar-nav{
-            margin-left: 2vw;
-        }
-        .server-info {
-            font-size: 3rem;
-            font-weight: 500;
-        }
-        .btn-lg {
-            font-size: 2.5rem;
-            padding: 1.5rem;;
-            height: 6.5rem;
             width: calc(12vw - 2rem);
+            border-radius: 4rem !important;
+            margin-right: calc(2vw - 2rem);
         }
-        .server-gif {
-            height: 50rem;
+    
+        .btn-default {
+            border: none;
+            color: #5fbef0;
         }
-       
-    }
-
-    @media (max-width: 2400px) {
-        .btn-lg {
-            font-size: 2.2rem;
-        }   
-    }
-    @media (max-width: 2100px)
-        .server-info {
-            font-size: 2.5rem;
+    
+        .btn-primary {
+            background-color: #5fbef0;
+            border: transparent;
+        }
+    
+        .text-center {
+            padding-top: 15rem;
+        }
+    
+       .server-info {
+            font-size: 2rem;
             font-weight: 500;
         }
-        .btn-lg {
-            font-size: 2rem;
-            height: 6rem;
-            width: calc(13vw - 2rem);
-        }
+    
         .server-gif {
-            height: 40rem;
+            padding-top: 10rem;
         }
-    }
-</style>
-<div class="container">
-    <div class="row">
-        <div class="text-center">
-            {% if default_server.active %}
-            {{named_spawners}}
-            <span class="server-info">Your server is still runnnig. You can stop or go back to your workspace
-                again.</span>
-            <br />
-            <br />
-            <br />
-            <a id="stop" role="button" class="btn btn-lg btn-danger">
-                Stop My Server
-            </a>
-            {% endif %}
-            <a id="start" role="button" class="btn btn-lg btn-primary" href="{{ url }}">
-                {% if not default_server.active %}Start{% endif %} My Workspace
-            </a>
-            <br />
-            <img class="server-gif"
-                src="https://ik.imagekit.io/iwwbj9so6/Server_gif_hzHBX49u0.gif?ik-sdk-version=javascript-1.4.3&updatedAt=1661754020935" />
+    
+        @media (max-width: 2560px) {
+            .container-fluid {
+                padding: 2.5rem;
+            }
+            
+            .navbar-collapse{
+                font-size: 2rem;
+            }
+            
+            #logout {
+                font-size: 2rem;
+            }
+            #jupyterhub-logo .jpy-logo {
+                height: 4.5rem;
+            }
+            .navbar-nav{
+                margin-left: 2vw;
+            }
+            .server-info {
+                font-size: 3rem;
+                font-weight: 500;
+            }
+            .btn-lg {
+                font-size: 2.5rem;
+                padding: 1.5rem;;
+                height: 6.5rem;
+                width: calc(12vw - 2rem);
+            }
+            .server-gif {
+                height: 50rem;
+            }
+           
+        }
+    
+        @media (max-width: 2400px) {
+            .btn-lg {
+                font-size: 2.2rem;
+            }   
+        }
+        @media (max-width: 2100px){
+            .server-info {
+                font-size: 2.5rem;
+                font-weight: 500;
+            }
+            .btn-lg {
+                font-size: 2rem;
+                height: 6rem;
+                width: calc(13vw - 2rem);
+            }
+            .server-gif {
+                height: 40rem;
+            }
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="text-center">
+                {% if default_server.active %}
+                {{named_spawners}}
+                <span class="server-info">Your server is still runnnig. You can stop or go back to your workspace
+                    again.</span>
+                <br />
+                <br />
+                <br />
+                <a id="stop" role="button" class="btn btn-lg btn-danger">
+                    Stop My Server
+                </a>
+                {% endif %}
+                <a id="start" role="button" class="btn btn-lg btn-primary" href="{{ url }}">
+                    {% if not default_server.active %}Start{% endif %} My Workspace
+                </a>
+                <br />
+                <img class="server-gif"
+                    src="https://ik.imagekit.io/iwwbj9so6/Server_gif_hzHBX49u0.gif?ik-sdk-version=javascript-1.4.3&updatedAt=1661754020935" />
+            </div>
         </div>
     </div>
-</div>
-{% endblock main %}
-{% block script %}
-{{ super() }}
-<script type="text/javascript">
-    require(["home"]);
+    {% endblock main %}
+    {% block script %}
+    {{ super() }}
+    <script type="text/javascript">
+        require(["home"]);
+        
+        //custom script
+        // To change the color for active link in top left navbar items
+        const currentUrl = window.location.href.split("/");
+        const currentAnchorTagText = currentUrl[currentUrl.length - 1];
+        $('.navbar-nav a').each(function () {
+          if ($(this).text().toLowerCase() == currentAnchorTagText) {
+            $(this).css("color", "#006BB6");
+          }
+        });
     
-    //custom script
-    // To change the color for active link in top left navbar items
-    const currentUrl = window.location.href.split("/");
-    const currentAnchorTagText = currentUrl[currentUrl.length - 1];
-    $('.navbar-nav a').each(function () {
-      if ($(this).text().toLowerCase() == currentAnchorTagText) {
-        $(this).css("color", "#006BB6");
-      }
-    });
-
-    // To hide left navbar items - 'Token' and 'services'
-    const navbar_left_list = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTagName("li");
-    navbar_left_list[1].style.visibility = 'hidden';
-    navbar_left_list[3].style.visibility = 'hidden';
-</script>
-{% endblock %}
+        // To hide left navbar items - 'Token' and 'services'
+        const navbar_left_list = document.getElementsByClassName("nav navbar-nav")[0].getElementsByTagName("li");
+        navbar_left_list[1].style.visibility = 'hidden';
+        navbar_left_list[3].style.visibility = 'hidden';
+    </script>
+    {% endblock %}
+    
