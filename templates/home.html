@@ -284,12 +284,12 @@
             serverStop.onclick=()=>{
                 serverInfo.innerText='Your workspace is stopping. Please wait...'
             }
+             window.location.reload();
         }
         console.log('data',document.getElementById('stop'),serverInfo.innerText)
         if(!document.getElementById('stop') && serverInfo.innerText==''){
             console.log(serverInfo.innerText);
             serverInfo.innerText='Your workspace is down. You can go to your workspace after starting.'
-            window.location.reload();
         }
     </script>
     {% endblock %}
