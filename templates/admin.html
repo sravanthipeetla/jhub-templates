@@ -351,6 +351,7 @@
     border-top: 16px solid #3498db;
     width: 120px;
     height: 120px;
+    margin: auto;
     -webkit-animation: spin 2s linear infinite;
     /* Safari */
     animation: spin 2s linear infinite;
@@ -620,8 +621,8 @@
       (async () => {
         courseDetails = await getCourseDetails(coursesList);
         if (courseDetails.length != 0) {
-          // document.getElementsByClassName('loader')[0].style.display = 'none';
-          // document.getElementById('admin-table').style.display = 'inline-table';
+          document.getElementsByClassName('loader')[0].style.display = 'none';
+          document.getElementById('admin-table').style.display = 'inline-table';
           $("#admin-thead tr").remove();
           $("#admin-table tr").remove();
           $(".add-btn").text("Add Course");
