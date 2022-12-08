@@ -909,16 +909,16 @@
         });
         return Promise.all(details);
       }
+      if (courseDetails.length == 0) {
+        document.getElementsByClassName('loader')[0].style.display='block';
+      }
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
       const coursesList = courseJson.courses;
       let courseDetails = [];
       (async () => {
         courseDetails = await getCourseDetails(coursesList);
-        if (courseDetails.length == 0) {
-        document.getElementsByClassName('loader')[0].style.display='block';
-      }
-      else {
+      if(courseDetails.length!=0) {
         document.getElementsByClassName('loader')[0].style.display='none';
         document.getElementById('admin-table').style.display='block';
         $("#admin-thead tr").remove();
