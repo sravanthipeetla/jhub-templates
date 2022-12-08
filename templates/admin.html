@@ -624,12 +624,12 @@
         if (courseDetails.length != 0) {
           document.getElementsByClassName('loader')[0].style.display = 'none';
           document.getElementById('admin-table').style.display = 'inline-table';
+          document.getElementsByClassName('add-btn')[0].stle.display='block';
           $("#admin-thead tr").remove();
           $("#admin-table tr").remove();
           $(".add-btn").text("Add Course");
           $(".add-btn").attr('id', 'add-course');
           instructorsFilter.style.display = 'none';
-          document.getElementsByClassName('add-btn')[0].stle.display='block';
           const addCourseButton = document.getElementById('add-course');
           const saveCourseButton = document.getElementById('save_course_button');
           addCourseButton.onclick = addCourse;
