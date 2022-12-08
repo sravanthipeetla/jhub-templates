@@ -100,7 +100,7 @@
   }
 
   #admin-table {
-    display:none;
+    display: none;
     margin-bottom: 20px;
     background: #FFFFFF;
     border: 2px solid #5FBEF0;
@@ -346,25 +346,36 @@
 
   /* loader */
   .loader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
-}
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
+    animation: spin 2s linear infinite;
+  }
 
-/* Safari */
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 </style>
 {% endblock %}
 {% block main %}
@@ -456,7 +467,7 @@
   {{ super() }}
   <script type="text/javascript">
     // require(["admin"]);
-    
+
     // custom script
 
     const ngshare_url = 'https://data-labs.hcl-edtech.com/services/ngshare/';
@@ -589,7 +600,7 @@
     }
 
     //course-nav
-    const fetchCourseDetails =async () => {
+    const fetchCourseDetails = async () => {
       const getCourseDetails = async (courses) => {
         const details = coursesList.map(async (courseName) => {
           const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
@@ -608,23 +619,23 @@
       const coursesList = courseJson.courses;
       (async () => {
         courseDetails = await getCourseDetails(coursesList);
-      if(courseDetails.length!=0) {
-        document.getElementsByClassName('loader')[0].style.display='none';
-        document.getElementById('admin-table').style.display='block';
-        $("#admin-thead tr").remove();
-        $("#admin-table tr").remove();
-        $(".add-btn").text("Add Course");
-        $(".add-btn").attr('id', 'add-course');
-        instructorsFilter.style.display = 'none';
-        const addCourseButton = document.getElementById('add-course');
-        const saveCourseButton = document.getElementById('save_course_button');
-        addCourseButton.onclick = addCourse;
-        $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
-        courseDetails.map((detail) => {
-          const tr = `<tr><td>${detail.courseName}</td><td>${detail.instructorsCount}</td><td>${detail.studentsCount}</td><td><button type='button' class="delete_course_button" id=${detail.courseName} onclick="deleteCourse(this.id)" ><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077" /></button></td></tr>`;
-          $("#admin-tbody").append(tr);
-        });
-      }
+        if (courseDetails.length != 0) {
+          // document.getElementsByClassName('loader')[0].style.display = 'none';
+          // document.getElementById('admin-table').style.display = 'inline-table';
+          $("#admin-thead tr").remove();
+          $("#admin-table tr").remove();
+          $(".add-btn").text("Add Course");
+          $(".add-btn").attr('id', 'add-course');
+          instructorsFilter.style.display = 'none';
+          const addCourseButton = document.getElementById('add-course');
+          const saveCourseButton = document.getElementById('save_course_button');
+          addCourseButton.onclick = addCourse;
+          $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
+          courseDetails.map((detail) => {
+            const tr = `<tr><td>${detail.courseName}</td><td>${detail.instructorsCount}</td><td>${detail.studentsCount}</td><td><button type='button' class="delete_course_button" id=${detail.courseName} onclick="deleteCourse(this.id)" ><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077" /></button></td></tr>`;
+            $("#admin-tbody").append(tr);
+          });
+        }
       })();
     }
     const fetchInstructorDetails = async () => {
