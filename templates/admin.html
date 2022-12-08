@@ -873,29 +873,33 @@
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
       const coursesList = courseJson.courses;
-      const courseDetails=[];
-      const getCourseDetails = (courses) => {
-        let courseDict={};
-        courses.map(async (courseName) => {
+      // coursesList.map(async (courseName) => {
+      //   const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
+      //   const instructorsJson = await instructorsPromise.json();
+      //   const instructorsCount = instructorsJson.instructors.length;
+      //   const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
+      //   const studentsJson = await studentsPromise.json();
+      //   const studentsCount = studentsJson.students.length;
+      //   courseDict = { 'coursename': courseName, 'instructorsCount': instructorsCount, 'learnersCount': studentsCount };
+      //   const tr = `<tr><td>${courseName}</td><td>${instructorsCount}</td><td>${studentsCount}</td><td><button type='button' class="delete_course_button" id=${courseName} onclick="deleteCourse(this.id)" ><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077" /></button></td></tr>`;
+      //   $("#admin-tbody").append(tr);
+      // });
+      const getCourseDetails = async (courses) => {
+        const details = coursesList.map(async (courseName) => {
           const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
           const instructorsJson = await instructorsPromise.json();
           const instructorsCount = instructorsJson.instructors.length;
           const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
           const studentsJson = await studentsPromise.json();
           const studentsCount = studentsJson.students.length;
-          courseDict={'coursename':courseName,'instructorsCount':instructorsCount,'learnersCount':studentsCount};
-          // const tr = `<tr><td>${courseName}</td><td>${instructorsCount}</td><td>${studentsCount}</td><td><button type='button' class="delete_course_button" id=${courseName} onclick="deleteCourse(this.id)" ><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077" /></button></td></tr>`;
-          // $("#admin-tbody").append(tr);
-        })
-        return courseDict;
+          return { 'coursename': courseName, 'instructorsCount': instructorsCount, 'studentsCount': studentsCount };
+        });
+        return Promise.all(details);
       }
       (async () => {
-        courseDetails.push( await getCourseDetails(coursesList));
+        const courseDetails = await getCourseDetails(coursesList);
       })();
-      console.log(courseDetails);
-
-    };
-
+    }
     const fetchInstructorDetails = async () => {
       $("#admin-thead tr").remove();
       $("#admin-table tr").remove();
@@ -965,11 +969,9 @@
       coursesList.map(async (courseName) => {
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
-        // console.log(studentsJson.students);
         let studentsUsername = [];
         for (let i = 0; i < studentsJson.students.length; i++) {
           studentsUsername.push(studentsJson.students[i].username);
-          // console.log(student);
         }
         console.log(studentsUsername);
         const studentsCount = studentsJson.students.length;
