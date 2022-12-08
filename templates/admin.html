@@ -898,6 +898,7 @@
       }
       (async () => {
         const courseDetails = await getCourseDetails(coursesList);
+        console.log(courseDetails.length);
       })();
     }
     const fetchInstructorDetails = async () => {
