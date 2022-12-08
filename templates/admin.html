@@ -905,7 +905,7 @@
           const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
           const studentsJson = await studentsPromise.json();
           const studentsCount = studentsJson.students.length;
-          return { 'coursename': courseName, 'instructorsCount': instructorsCount, 'studentsCount': studentsCount };
+          return { 'courseName': courseName, 'instructorsCount': instructorsCount, 'studentsCount': studentsCount };
         });
         return Promise.all(details);
       }
