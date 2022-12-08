@@ -346,7 +346,6 @@
 
   /* loader */
   .loader {
-  display:none;
   border: 16px solid #f3f3f3;
   border-radius: 50%;
   border-top: 16px solid #3498db;
@@ -885,18 +884,7 @@
     }
 
     //course-nav
-    const fetchCourseDetails = async () => {
-      // coursesList.map(async (courseName) => {
-      //   const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
-      //   const instructorsJson = await instructorsPromise.json();
-      //   const instructorsCount = instructorsJson.instructors.length;
-      //   const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
-      //   const studentsJson = await studentsPromise.json();
-      //   const studentsCount = studentsJson.students.length;
-      //   courseDict = { 'coursename': courseName, 'instructorsCount': instructorsCount, 'learnersCount': studentsCount };
-      //   const tr = `<tr><td>${courseName}</td><td>${instructorsCount}</td><td>${studentsCount}</td><td><button type='button' class="delete_course_button" id=${courseName} onclick="deleteCourse(this.id)" ><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077" /></button></td></tr>`;
-      //   $("#admin-tbody").append(tr);
-      // });
+    const fetchCourseDetails =async () => {
       const getCourseDetails = async (courses) => {
         const details = coursesList.map(async (courseName) => {
           const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
@@ -910,16 +898,13 @@
         return Promise.all(details);
       }
       let courseDetails = [];
-      if (courseDetails.length == 0) {
-        // document.getElementsByClassName('loader')[0].style.display='block';
-      }
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
       const coursesList = courseJson.courses;
       (async () => {
         courseDetails = await getCourseDetails(coursesList);
       if(courseDetails.length!=0) {
-        // document.getElementsByClassName('loader')[0].style.display='none';
+        document.getElementsByClassName('loader')[0].style.display='none';
         document.getElementById('admin-table').style.display='block';
         $("#admin-thead tr").remove();
         $("#admin-table tr").remove();
