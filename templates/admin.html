@@ -911,7 +911,7 @@
       }
       let courseDetails = [];
       if (courseDetails.length == 0) {
-        document.getElementsByClassName('loader')[0].style.display='block';
+        // document.getElementsByClassName('loader')[0].style.display='block';
       }
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
@@ -919,7 +919,7 @@
       (async () => {
         courseDetails = await getCourseDetails(coursesList);
       if(courseDetails.length!=0) {
-        document.getElementsByClassName('loader')[0].style.display='none';
+        // document.getElementsByClassName('loader')[0].style.display='none';
         document.getElementById('admin-table').style.display='block';
         $("#admin-thead tr").remove();
         $("#admin-table tr").remove();
