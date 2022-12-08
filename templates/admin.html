@@ -858,6 +858,7 @@
         alert("Something went wrong! Couldn't delete course");
       }
     }
+
     //course-nav
     const fetchCourseDetails = async () => {
       $("#admin-thead tr").remove();
@@ -872,16 +873,23 @@
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
       const coursesList = courseJson.courses;
-      coursesList.map(async (courseName) => {
-        const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
-        const instructorsJson = await instructorsPromise.json();
-        const instructorsCount = instructorsJson.instructors.length;
-        const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
-        const studentsJson = await studentsPromise.json();
-        const studentsCount = studentsJson.students.length;
-        const tr = `<tr><td>${courseName}</td><td>${instructorsCount}</td><td>${studentsCount}</td><td><button type='button' class="delete_course_button" id=${courseName} onclick="deleteCourse(this.id)" ><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077" /></button></td></tr>`;
-        $("#admin-tbody").append(tr);
-      })
+      const getCourseDetails = (courses) => {
+        courses.map(async (courseName) => {
+          const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
+          const instructorsJson = await instructorsPromise.json();
+          const instructorsCount = instructorsJson.instructors.length;
+          const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
+          const studentsJson = await studentsPromise.json();
+          const studentsCount = studentsJson.students.length;
+          // const tr = `<tr><td>${courseName}</td><td>${instructorsCount}</td><td>${studentsCount}</td><td><button type='button' class="delete_course_button" id=${courseName} onclick="deleteCourse(this.id)" ><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077" /></button></td></tr>`;
+          // $("#admin-tbody").append(tr);
+        })
+      }
+      (async () => {
+        const courseDetails = await getCourseDetails(coursesList);
+      })();
+      console.log(courseDetails.length)
+
     };
 
     const fetchInstructorDetails = async () => {
@@ -932,13 +940,13 @@
       });
       console.log(instructorCourse);
       console.log(Object.keys(instructorCourse));
-      Object.entries(instructorCourse=(entry)=>{
+      Object.entries(instructorCourse = (entry) => {
         console.log(entry);
       })
       for (let key in Object.keys(instructorCourse)) {
-      const tr = '<tr><td>' + key + '</td><td>' +  instructorCourse[key].length + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
+        const tr = '<tr><td>' + key + '</td><td>' + instructorCourse[key].length + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
         $("#admin-tbody").append(tr);
-    }
+      }
     };
     const fetchLearnerDetails = async () => {
       $("#admin-thead tr").remove();
@@ -954,10 +962,10 @@
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
         // console.log(studentsJson.students);
-        let studentsUsername=[];
-        for(let i=0;i< studentsJson.students.length;i++){
-            studentsUsername.push(studentsJson.students[i].username);
-            // console.log(student);
+        let studentsUsername = [];
+        for (let i = 0; i < studentsJson.students.length; i++) {
+          studentsUsername.push(studentsJson.students[i].username);
+          // console.log(student);
         }
         console.log(studentsUsername);
         const studentsCount = studentsJson.students.length;
