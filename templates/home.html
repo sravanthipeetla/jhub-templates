@@ -1,9 +1,6 @@
-{% extends "templates/page.html" %} {% if announcement_home %} {% set
-    announcement = announcement_home %} {% endif %} {% block nav_bar_left_items%} {%
-    if user.admin %} {{ super() }}
-    {% endif %}
-    {% endblock %}
-    {% block main %}
+{% extends "templates/page.html" %}
+{% block stylesheet %}
+    {{ super() }}
     <style>
         .navbar-default {
             background-color: #ffffff;
@@ -231,6 +228,16 @@
             }
         }
     </style>
+{% endblock %}
+{% if announcement_home %} 
+    {% set announcement = announcement_home %} 
+{% endif %} 
+{% block nav_bar_left_items%} 
+    {% if user.admin %} 
+        {{ super() }}
+    {% endif %}
+{% endblock %}
+{% block main %}
     <div class='container'>
         <div class='row'>
             <div class='text-center'>
