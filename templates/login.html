@@ -1,7 +1,6 @@
-{% extends "templates/page.html" %} {% if announcement_login %} {% set
-announcement = announcement_login %} {% endif %} {% block login_widget %}
-{% endblock %}
-{% block nav_bar %} {% endblock %} {% block main %}
+{% extends "templates/page.html" %} 
+{% block stylesheet %}
+{{ super() }}
 <style>
     html {
         font-family: 'Poppins';
@@ -652,6 +651,15 @@ announcement = announcement_login %} {% endif %} {% block login_widget %}
         }
     }
 </style>
+{% endblock %}
+
+{% if announcement_login %}
+{% set announcement = announcement_login %} {% endif %}
+{% block login_widget %}
+{% endblock %}
+{% block nav_bar %} 
+{% endblock %}
+{% block main %}
 {% block login %}
 <div id="login-main" class="container">
     {% block login_container %}
