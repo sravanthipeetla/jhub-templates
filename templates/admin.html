@@ -909,13 +909,13 @@
         });
         return Promise.all(details);
       }
+      let courseDetails = [];
       if (courseDetails.length == 0) {
         document.getElementsByClassName('loader')[0].style.display='block';
       }
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
       const coursesList = courseJson.courses;
-      let courseDetails = [];
       (async () => {
         courseDetails = await getCourseDetails(coursesList);
       if(courseDetails.length!=0) {
