@@ -89,6 +89,7 @@
   }
 
   .add-btn {
+    display: none;
     border: none;
     background-color: #5FBEF0;
     width: 8vw;
@@ -628,6 +629,7 @@
           $(".add-btn").text("Add Course");
           $(".add-btn").attr('id', 'add-course');
           instructorsFilter.style.display = 'none';
+          document.getElementsByClassName('add-btn')[0].stle.display='block';
           const addCourseButton = document.getElementById('add-course');
           const saveCourseButton = document.getElementById('save_course_button');
           addCourseButton.onclick = addCourse;
