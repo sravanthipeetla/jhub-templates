@@ -672,10 +672,8 @@
               }
             }
           };
-          console.log(instructorCourse);
-          return instructorCourse;
         });
-        return Promise.all(details);
+        return Promise.resolve(details);
       };
       // $("#admin-thead tr").remove();
       // $("#admin-table tr").remove();
