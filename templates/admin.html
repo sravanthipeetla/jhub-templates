@@ -674,7 +674,7 @@
           };
           return 
         });
-        return Promise.all(details[details.length-1]);
+        return Promise.all(details);
       };
       // $("#admin-thead tr").remove();
       // $("#admin-table tr").remove();
@@ -707,7 +707,7 @@
       }
       (async () => {
         testDetails = await getInstructorDetails(coursesList, instructorsUsername);
-        console.log(testDetails);
+        console.log(testDetails[-1]);
         console.log(testDetails.length);
         // if (courseDetails.length != 0) {
         //   document.getElementsByClassName('loader')[0].style.display = 'none';
