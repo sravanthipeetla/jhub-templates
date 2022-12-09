@@ -644,9 +644,9 @@
 
 
     const fetchInstructorDetails = async () => {
-      const getInstructorDetails = async (courses, instructorsUsername) => {
-        let courseInstructor = {};
+      let courseInstructor = {};
         let instructorCourse = {};
+      const getInstructorDetails = async (courses, instructorsUsername) => {
         const details = courses.map(async (courseName) => {
           const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
           const instructorsJson = await instructorsPromise.json();
