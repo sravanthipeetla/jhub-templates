@@ -644,10 +644,10 @@
 
 
     const fetchInstructorDetails = async () => {
-      const getInstructorDetails = async (courses,instructorsUsername) => {
+      const getInstructorDetails = async (courses, instructorsUsername) => {
+        let courseInstructor = {};
+        let instructorCourse = {};
         const details = courses.map(async (courseName) => {
-          let courseInstructor = {};
-          let instructorCourse = {};
           const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
           const instructorsJson = await instructorsPromise.json();
           const instructorsDetail = await instructorsJson.instructors;
@@ -706,7 +706,7 @@
         }
       }
       (async () => {
-        testDetails = await getInstructorDetails(coursesList,instructorsUsername);
+        testDetails = await getInstructorDetails(coursesList, instructorsUsername);
         console.log(testDetails);
         console.log(testDetails.length);
         // if (courseDetails.length != 0) {
@@ -728,7 +728,7 @@
         //   });
         // }
       })();
-      
+
       // console.log(instructorCourse);
       // console.log(Object.keys(instructorCourse));
       // Object.entries(instructorCourse = (entry) => {
