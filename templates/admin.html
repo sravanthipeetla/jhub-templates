@@ -754,25 +754,5 @@
     course_navigation.onclick = fetchCourseDetails;
     instructor_navigation.onclick = fetchInstructorDetails;
     learner_navigation.onclick = fetchLearnerDetails;
-
-
-    const AWS = require('aws-sdk');
-    const myBucket = 'datalab-static-images';
-    const myKey = 'career_shaper_logo.png';
-    const signedUrlExpireSeconds = 60 * 1
-    const s3 = new AWS.S3({
-      accessKeyId: "AKIAR5P4LZRPGL6R7KMZ",
-      signatureVersion: 'v4',
-      region: 'ap-south-1',
-      secretAccessKey: "XR6wvnoAYfAZLxPGmezdykBHj6VW+6mGE6KGD9Uf"
-    });
-
-    const url = s3.getSignedUrl('getObject', {
-      Bucket: myBucket,
-      Key: myKey,
-      Expires: signedUrlExpireSeconds
-    })
-
-    console.log(url);
   </script>
   {% endblock %}
