@@ -347,7 +347,7 @@
 
   /* loader */
   .loader {
-    display:none;
+    display: none;
     border: 16px solid #f3f3f3;
     border-radius: 50%;
     border-top: 16px solid #3498db;
@@ -705,17 +705,30 @@
           // addCourseButton.onclick = addCourse;
           $("#admin-thead").append('<tr><td>Instructor Username</td><td>Course count</td><td>Actions</td></tr>');
           for (const [key, value] of Object.entries(instructorDetails.at(-1))) {
-            const tr = `<tr><td>${key}</td><td>${value.length}</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>`;
+            let clicked= false;
+            let trs=[];
+            const displayCourses = (value) => {
+              clicked=!clicked;
+              if(clicked){
+              value.map((val) => {
+                trs.push(`<tr><td>${val}</td><td></td><td><button class="dropdown_button" id=${val}+${key} onclick="removeInstructor(this.id)"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>`);
+              });
+            }
+            }
+            const tr = `<tr><td>${key}</td><td>${value.length}</td><td><button class="dropdown_button" id=${value} onclick="displayCourses(this.id)"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>`;
             $("#admin-tbody").append(tr);
+            if(clicked){
+              $("#admin-tbody").append(trs);
+            }
           }
         }
-        else{
+        else {
           document.getElementsByClassName('loader')[0].style.display = 'block';
         }
       })();
     };
 
-    
+
     const fetchLearnerDetails = async () => {
       $("#admin-thead tr").remove();
       $("#admin-table tr").remove();
