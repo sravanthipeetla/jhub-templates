@@ -644,7 +644,7 @@
 
 
     const fetchInstructorDetails = async () => {
-      const getInstructorDetails = async (courses) => {
+      const getInstructorDetails = async (courses,instructorsUsername) => {
         const details = courses.map(async (courseName) => {
           let courseInstructor = {};
           let instructorCourse = {};
@@ -697,8 +697,16 @@
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
       const coursesList = courseJson.courses;
+      const hubUsersFetch = await fetch(`${hub_url}users`);
+      const hubUsersJson = await hubUsersFetch.json();
+      const instructorsUsername = [];
+      for (let i = 0; i < hubUsersJson.length; i++) {
+        if (hubUsersJson[i].groups.includes('instructor')) {
+          instructorsUsername.push(hubUsersJson[i].name);
+        }
+      }
       (async () => {
-        testDetails = await getInstructorDetails(coursesList);
+        testDetails = await getInstructorDetails(coursesList,instructorsUsername);
         console.log(testDetails);
         console.log(testDetails.length);
         // if (courseDetails.length != 0) {
