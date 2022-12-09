@@ -645,17 +645,17 @@
 
     const fetchInstructorDetails = async () => {
       let courseInstructor = {};
-        let instructorCourse = {};
+      let instructorCourse = {};
       const getInstructorDetails = async (courses, instructorsUsername) => {
         const details = courses.map(async (courseName) => {
           const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
           const instructorsJson = await instructorsPromise.json();
-          const instructorsDetail = await instructorsJson.instructors;
+          const instructorsData = await instructorsJson.instructors;
           let instructorList = [];
-          for (let i = 0; i < instructorsDetail.length; i++) {
-            instructorList.push(instructorsDetail[i].username);
-            if (instructorsUsername.indexOf(instructorsDetail[i].username) === -1) {
-              instructorsUsername.push(instructorsDetail[i].username);
+          for (let i = 0; i < instructorsData.length; i++) {
+            instructorList.push(instructorsData[i].username);
+            if (instructorsUsername.indexOf(instructorsData[i].username) === -1) {
+              instructorsUsername.push(instructorsData[i].username);
             }
           };
           courseInstructor[courseName] = instructorList;
@@ -693,7 +693,7 @@
       //     instructorsUsername.push(hubUsersJson[i].name);
       //   }
       // }
-      let testDetails = [];
+      let instructorDetails = [];
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
       const coursesList = courseJson.courses;
@@ -706,27 +706,29 @@
         }
       }
       (async () => {
-        testDetails = await getInstructorDetails(coursesList, instructorsUsername);
-        console.log(testDetails.at(-1));
-        console.log(testDetails.length);
-        // if (courseDetails.length != 0) {
-        //   document.getElementsByClassName('loader')[0].style.display = 'none';
-        //   document.getElementById('admin-table').style.display = 'inline-table';
-        //   document.getElementsByClassName('add-btn')[0].style.display = 'block';
-        //   $("#admin-thead tr").remove();
-        //   $("#admin-table tr").remove();
-        //   $(".add-btn").text("Add Course");
-        //   $(".add-btn").attr('id', 'add-course');
-        //   instructorsFilter.style.display = 'none';
-        //   const addCourseButton = document.getElementById('add-course');
-        //   const saveCourseButton = document.getElementById('save_course_button');
-        //   addCourseButton.onclick = addCourse;
-        //   $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
-        //   courseDetails.map((detail) => {
-        //     const tr = `<tr><td>${detail.courseName}</td><td>${detail.instructorsCount}</td><td>${detail.studentsCount}</td><td><button type='button' class="delete_course_button" id=${detail.courseName} onclick="deleteCourse(this.id)" ><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077" /></button></td></tr>`;
-        //     $("#admin-tbody").append(tr);
-        //   });
-        // }
+        instructorDetails = await getInstructorDetails(coursesList, instructorsUsername);
+        if (courseDetails.length != 0) {
+          document.getElementsByClassName('loader')[0].style.display = 'none';
+          document.getElementById('admin-table').style.display = 'inline-table';
+          document.getElementsByClassName('add-btn')[0].style.display = 'block';
+          $("#admin-thead tr").remove();
+          $("#admin-table tr").remove();
+          $(".add-btn").text("Add Instructor");
+          $(".add-btn").attr('id', 'add-instructor');
+          instructorsFilter.style.display = 'none';
+          const addCourseButton = document.getElementById('add-instructor');
+          // const saveCourseButton = document.getElementById('save_course_button');
+          // addCourseButton.onclick = addCourse;
+          $("#admin-thead").append('<tr><td>Instructor Username</td><td>Course count</td><td>Actions</td></tr>');
+          for (const [key, value] of Object.entries(instructorDetails.at(-1))) {
+            const tr = `<tr><td>${key}</td><td>${value.length}</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>`;
+            $("#admin-tbody").append(tr);
+}
+          // instructorDetails.at(-1).map((detail) => {
+          //   const tr = `<tr><td>${detail.courseName}</td><td>${detail.instructorsCount}</td><td>${detail.studentsCount}</td><td><button type='button' class="delete_course_button" id=${detail.courseName} onclick="deleteCourse(this.id)" ><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077" /></button></td></tr>`;
+          //   $("#admin-tbody").append(tr);
+          // });
+        }
       })();
 
       // console.log(instructorCourse);
