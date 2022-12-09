@@ -604,7 +604,7 @@
     //course-nav
     const fetchCourseDetails = async () => {
       const getCourseDetails = async (courses) => {
-        const details = coursesList.map(async (courseName) => {
+        const details = courses.map(async (courseName) => {
           const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
           const instructorsJson = await instructorsPromise.json();
           const instructorsCount = instructorsJson.instructors.length;
@@ -624,7 +624,7 @@
         if (courseDetails.length != 0) {
           document.getElementsByClassName('loader')[0].style.display = 'none';
           document.getElementById('admin-table').style.display = 'inline-table';
-          document.getElementsByClassName('add-btn')[0].style.display='block';
+          document.getElementsByClassName('add-btn')[0].style.display = 'block';
           $("#admin-thead tr").remove();
           $("#admin-table tr").remove();
           $(".add-btn").text("Add Course");
@@ -640,62 +640,96 @@
           });
         }
       })();
-    }
+    };
+
+
     const fetchInstructorDetails = async () => {
-      $("#admin-thead tr").remove();
-      $("#admin-table tr").remove();
-      $(".add-btn").text("Add instructor");
-      $(".add-btn").addClass("add-instructor");
-      instructorsFilter.style.display = 'block';
-      $("#admin-thead").append('<tr><td>Instructor Username</td><td>Courses count</td><td>Actions</td></tr>');
+      const getInstructorDetails = async (courses) => {
+        const details = courses.map(async (courseName) => {
+          let courseInstructor = {};
+          let instructorCourse = {};
+          const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
+          const instructorsJson = await instructorsPromise.json();
+          const instructorsDetail = await instructorsJson.instructors;
+          let instructorList = [];
+          for (let i = 0; i < instructorsDetail.length; i++) {
+            instructorList.push(instructorsDetail[i].username);
+            if (instructorsUsername.indexOf(instructorsDetail[i].username) === -1) {
+              instructorsUsername.push(instructorsDetail[i].username);
+            }
+          };
+          courseInstructor[courseName] = instructorList;
+          for (let i = 0; i < instructorsUsername.length; i++) {
+            for (let key in courseInstructor) {
+              if (courseInstructor[key].includes(instructorsUsername[i])) {
+                if (Object.keys(instructorCourse).indexOf(instructorsUsername[i]) === -1) {
+                  instructorCourse[instructorsUsername[i]] = [key];
+                }
+                else {
+                  if (instructorCourse[instructorsUsername[i]].indexOf(key) === -1)
+                    instructorCourse[instructorsUsername[i]].push(key);
+                }
+              }
+            }
+          };
+          return instructorCourse;
+        });
+        return Promise.all(details);
+      };
+      // $("#admin-thead tr").remove();
+      // $("#admin-table tr").remove();
+      // $(".add-btn").text("Add instructor");
+      // $(".add-btn").addClass("add-instructor");
+      // instructorsFilter.style.display = 'block';
+      // $("#admin-thead").append('<tr><td>Instructor Username</td><td>Courses count</td><td>Actions</td></tr>');
+      // const courseFetch = await fetch(`${ngshare_url}courses`);
+      // const courseJson = await courseFetch.json();
+      // const coursesList = courseJson.courses;
+      // const hubUsersFetch = await fetch(`${hub_url}users`);
+      // const hubUsersJson = await hubUsersFetch.json();
+      // const instructorsUsername = [];
+      // for (let i = 0; i < hubUsersJson.length; i++) {
+      //   if (hubUsersJson[i].groups.includes('instructor')) {
+      //     instructorsUsername.push(hubUsersJson[i].name);
+      //   }
+      // }
+      let testDetails = [];
       const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
       const coursesList = courseJson.courses;
-      const hubUsersFetch = await fetch(`${hub_url}users`);
-      const hubUsersJson = await hubUsersFetch.json();
-      const instructorsUsername = [];
-      for (let i = 0; i < hubUsersJson.length; i++) {
-        if (hubUsersJson[i].groups.includes('instructor')) {
-          instructorsUsername.push(hubUsersJson[i].name);
-        }
-      }
-      let courseInstructor = {};
-      let instructorCourse = {};
-      coursesList.map(async (courseName) => {
-        const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
-        const instructorsJson = await instructorsPromise.json();
-        const instructorsDetail = await instructorsJson.instructors;
-        let instructorList = [];
-        for (let i = 0; i < instructorsDetail.length; i++) {
-          instructorList.push(instructorsDetail[i].username);
-          if (instructorsUsername.indexOf(instructorsDetail[i].username) === -1) {
-            instructorsUsername.push(instructorsDetail[i].username);
-          }
-        };
-        courseInstructor[courseName] = instructorList;
-        for (let i = 0; i < instructorsUsername.length; i++) {
-          for (let key in courseInstructor) {
-            if (courseInstructor[key].includes(instructorsUsername[i])) {
-              if (Object.keys(instructorCourse).indexOf(instructorsUsername[i]) === -1) {
-                instructorCourse[instructorsUsername[i]] = [key];
-              }
-              else {
-                if (instructorCourse[instructorsUsername[i]].indexOf(key) === -1)
-                  instructorCourse[instructorsUsername[i]].push(key);
-              }
-            }
-          }
-        };
-      });
-      console.log(instructorCourse);
-      console.log(Object.keys(instructorCourse));
-      Object.entries(instructorCourse = (entry) => {
-        console.log(entry);
-      })
-      for (let key in Object.keys(instructorCourse)) {
-        const tr = '<tr><td>' + key + '</td><td>' + instructorCourse[key].length + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
-        $("#admin-tbody").append(tr);
-      }
+      (async () => {
+        testDetails = await getInstructorDetails(coursesList);
+        console.log(testDetails);
+        console.log(testDetails.length);
+        // if (courseDetails.length != 0) {
+        //   document.getElementsByClassName('loader')[0].style.display = 'none';
+        //   document.getElementById('admin-table').style.display = 'inline-table';
+        //   document.getElementsByClassName('add-btn')[0].style.display = 'block';
+        //   $("#admin-thead tr").remove();
+        //   $("#admin-table tr").remove();
+        //   $(".add-btn").text("Add Course");
+        //   $(".add-btn").attr('id', 'add-course');
+        //   instructorsFilter.style.display = 'none';
+        //   const addCourseButton = document.getElementById('add-course');
+        //   const saveCourseButton = document.getElementById('save_course_button');
+        //   addCourseButton.onclick = addCourse;
+        //   $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
+        //   courseDetails.map((detail) => {
+        //     const tr = `<tr><td>${detail.courseName}</td><td>${detail.instructorsCount}</td><td>${detail.studentsCount}</td><td><button type='button' class="delete_course_button" id=${detail.courseName} onclick="deleteCourse(this.id)" ><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077" /></button></td></tr>`;
+        //     $("#admin-tbody").append(tr);
+        //   });
+        // }
+      })();
+      
+      // console.log(instructorCourse);
+      // console.log(Object.keys(instructorCourse));
+      // Object.entries(instructorCourse = (entry) => {
+      //   console.log(entry);
+      // })
+      // for (let key in Object.keys(instructorCourse)) {
+      //   const tr = '<tr><td>' + key + '</td><td>' + instructorCourse[key].length + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
+      //   $("#admin-tbody").append(tr);
+      // }
     };
     const fetchLearnerDetails = async () => {
       $("#admin-thead tr").remove();
