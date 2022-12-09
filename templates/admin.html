@@ -710,9 +710,9 @@
           for (const [key, value] of Object.entries(instructorDetails.at(-1))) {
             const tr = `<tr><td>${key}</td><td>${value.length}</td><td><button class="dropdown_button" id=${value}><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>`;
             $("#admin-tbody").append(tr);
-            value.map((val) => {
-                  trs.push(`<tr><td>${val}</td><td></td><td><button class="dropdown_button" id=${val}+${key}><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>`);
-            });
+            // value.map((val) => {
+            //       trs.push(`<tr><td>${val}</td><td></td><td><button class="dropdown_button" id=${val}+${key}><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>`);
+            // });
           }
         }
         else {
