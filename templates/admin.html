@@ -2,21 +2,21 @@
 {% block stylesheet %}
 {{ super() }}
 <style>
- @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
 
-.admin-container {
+  .admin-container {
     padding-left: 12vw;
     padding-right: 12vw;
     overflow: auto;
-}
+  }
 
-.admin-navbar {
+  .admin-navbar {
     overflow: hidden;
     margin-left: -1.8rem;
-}
+  }
 
-/* Style the links inside the navigation bar */
-.admin-navbar a {
+  /* Style the links inside the navigation bar */
+  .admin-navbar a {
     float: left;
     /*  display: block; */
     color: #000000;
@@ -26,37 +26,37 @@
     font-size: 2.6vh;
     border-bottom: 0.3vw solid #DBDBDB;
     overflow: auto;
-}
+  }
 
-.admin-navbar a:hover {
+  .admin-navbar a:hover {
     cursor: pointer;
-}
+  }
 
-.admin-navbar a.active {
+  .admin-navbar a.active {
     border-bottom: 0.3vw solid #006BB6;
     color: #006BB6;
-}
+  }
 
-.description-bar {
+  .description-bar {
     justify-content: space-between;
     padding-top: 1.5vw;
 
-}
+  }
 
-.description {
+  .description {
     font-family: Gothic A1;
     font-size: 2.5vh;
     padding-top: 0.7vw;
     padding-bottom: 0.7vw;
 
-}
+  }
 
-#left-description-bar {
+  #left-description-bar {
     display: flex;
     gap: 1rem;
-}
+  }
 
-.instructors_filter {
+  .instructors_filter {
     display: none;
     border: 1px solid #5FBEF0;
     background-color: white;
@@ -68,9 +68,9 @@
     cursor: pointer;
     padding: 0.1vw;
 
-}
+  }
 
-.add-btn {
+  .add-btn {
     border: none;
     background-color: #5FBEF0;
     border-radius: 1.5vw;
@@ -78,9 +78,9 @@
     font-weight: 800;
     padding: 1vh;
     font-size: 2.5vh;
-}
+  }
 
-#admin-table {
+  #admin-table {
     margin-bottom: 20px;
     background: #FFFFFF;
     border: 2px solid #5FBEF0;
@@ -91,9 +91,9 @@
     overflow: hidden;
     width: 100%;
 
-}
+  }
 
-#admin-thead {
+  #admin-thead {
 
     background: #D2EDFB;
     border-collapse: inherit;
@@ -101,13 +101,13 @@
     font-family: 'Poppins';
     font-size: 2.5vh;
     font-weight: 600;
-}
+  }
 
-th {
+  th {
     padding: 10px;
-}
+  }
 
-/* #admin-tbody {
+  /* #admin-tbody {
     font-family: 'Gothic A1';
     font-size: 18px;
 }
@@ -116,7 +116,7 @@ thead td:first-child {
     border-radius: 15px 0px 0px 0px;
 } */
 
-/* tbody td:first-child {
+  /* tbody td:first-child {
     color: #006BB6;
 } 
 
@@ -143,13 +143,13 @@ td {
     display: none;
   } */
 
-/* #addCourseModal,
+  /* #addCourseModal,
   #addStudentModal {
     display: none;
   }  */
-.courseModalContent,
-.studentModalContent,
-.deletecourseModalContent {
+  .courseModalContent,
+  .studentModalContent,
+  .deletecourseModalContent {
     background-color: #fefefe;
     margin: 9vh auto;
     border: 1px solid #5FBEF0;
@@ -157,57 +157,57 @@ td {
     border-radius: 15px;
     height: 38vh;
     box-shadow: 0px 2px 13px rgb(170 170 170 / 27%);
-}
+  }
 
-.courseClose,
-.studentClose,
-.deletecourseClose
-{
+  .courseClose,
+  .studentClose,
+  .deletecourseClose {
     top: 0;
     padding-right: 1vh;
     color: #000000;
     float: right;
     font-size: 28px;
     font-weight: bold;
-}
+  }
 
-.courseClose:hover,
-.courseClose:focus,
-.studentClose:hover,
-.studentClose:focus {
+  .courseClose:hover,
+  .courseClose:focus,
+  .studentClose:hover,
+  .studentClose:focus {
     color: #FF0000;
     text-decoration: none;
     cursor: pointer;
-}
+  }
 
-.column-flex {
+  .column-flex {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: baseline;
     margin-top: 6vh;
-}
+  }
 
-.row-flex {
+  .row-flex {
     display: flex;
     flex-direction: row;
     align-items: baseline;
 
-}
+  }
 
-.row-flex-course {
+  .row-flex-course {
     display: flex;
     flex-direction: row;
     align-items: baseline;
-}
+  }
 
-.row-flex-button {
+  .row-flex-button {
     padding-top: 1.5vw;
     margin: auto;
-}
+  }
 
-#courseLabel,
-#instructorLabel,#selectCourseLabel{
+  #courseLabel,
+  #instructorLabel,
+  #selectCourseLabel {
     font-family: 'Gothic A1';
     font-style: normal;
     font-size: 2.5vh;
@@ -216,9 +216,9 @@ td {
     font-weight: 400 !important;
     margin: 4vh 0vw 2vh 1.5vw;
     width: 14vw;
-}
+  }
 
-#cancel_course_button {
+  #cancel_course_button {
     background: white;
     font-size: 2vh;
     border-radius: 41vh;
@@ -245,9 +245,9 @@ td {
     position: absolute;
     border-width: 0.1vw !important;
     border-style: double; */
-}
+  }
 
-#save_course_button {
+  #save_course_button {
     width: 12vw;
     height: 5vh;
     font-family: 'Poppins';
@@ -268,30 +268,34 @@ td {
    background-color: #5FBEF0;
    font-size: 1vw;
    font-weight: 100; */
-}
+  }
 
-#addCourseModal input,#addStudentModal select {
+  #addCourseModal input,
+  #addStudentModal select {
     border-radius: 41vh;
     border-color: #5FBEF0;
     border-width: 0.1vw !important;
     border-style: double;
     height: 5vh;
     width: 22vw;
-}
-.selectTitle{
+  }
+
+  .selectTitle {
     width: 15vw !important;
     text-align: center;
-    font-size:2.5vh;
-}
-.upload-btn{
+    font-size: 2.5vh;
+  }
+
+  .upload-btn {
     border-radius: 41vh;
     border-color: #5FBEF0;
     border-width: 0.1vw !important;
     border-style: dashed;
     height: 5vh;
-    width:10vw;
-}
-#delete_course_button{
+    width: 10vw;
+  }
+
+  #delete_course_button {
     background-color: #F5222D;
     width: 12vw;
     height: 5vh;
@@ -303,13 +307,14 @@ td {
     border: none;
     text-align: center;
     color: #FFFFFF;
-}
-.caption{
+  }
+
+  .caption {
     font-family: Poppins;
     font-weight: 400;
     font-size: 2.5vh;
-    color:#AAAAAA
-}
+    color: #AAAAAA
+  }
 
   /* loader */
   .loader {
@@ -356,128 +361,130 @@ td {
   <div class="admin-container">
     <div class="admin-navbar">
       <ul>
-            <a class="course-nav active" id="course-nav">Courses</a>
-            <a class="instructor-nav" id="instructor-nav">Instructors</a>
-            <a class="learner-nav" id="learner-nav">Learners</a>
-       </ul>
+        <a class="course-nav active" id="course-nav">Courses</a>
+        <a class="instructor-nav" id="instructor-nav">Instructors</a>
+        <a class="learner-nav" id="learner-nav">Learners</a>
+      </ul>
     </div>
-<div class="description-bar">
-        <div class="description d-flex justify-content-between">
-            <p class="description">You can manage courses, instructors and learners from here.</p>
-            <div class="text-center">
-                <button class="add-btn" id="add-btn">Add Course</button>
-            </div>
+    <div class="description-bar">
+      <div class="description d-flex justify-content-between">
+        <p class="description">You can manage courses, instructors and learners from here.</p>
+        <div class="text-center">
+          <button class="add-btn" id="add-btn">Add Course</button>
         </div>
+      </div>
     </div>
     <div id="course-table">
-        <table id="admin-table">
-            <tr id="admin-thead">
-                <th>Course name</th>
-                <th>Trainer Name</th>
-                <th>Learner count</th>
-                <th>Actions</th>
-            </tr>
-        </table>
+      <table id="admin-table">
+        <tr id="admin-thead">
+          <th>Course name</th>
+          <th>Trainer Name</th>
+          <th>Learner count</th>
+          <th>Actions</th>
+        </tr>
+      </table>
     </div>
     <div id="instructor-table" class="d-none">
-        <table id="admin-table">
-            <tr id="admin-thead">
-                <th>Course name</th>
-                <th>Instructors count</th>
-                <th></th>
-            </tr>
-        </table>
+      <table id="admin-table">
+        <tr id="admin-thead">
+          <th>Course name</th>
+          <th>Instructors count</th>
+          <th></th>
+        </tr>
+      </table>
     </div>
     <div id="learner-table" class="d-none">
-        <table id="admin-table">
-            <tr id="admin-thead">
-                <th>Course name</th>
-                <th>Learner count</th>
-                <th></th>
+      <table id="admin-table">
+        <tr id="admin-thead">
+          <th>Course name</th>
+          <th>Learner count</th>
+          <th></th>
 
-            </tr>
-        </table>
+        </tr>
+      </table>
     </div>
-<div id="addCourseModal" class="d-none">
-    <div class="courseModalContent" >
+    <div id="addCourseModal" class="d-none">
+      <div class="courseModalContent">
         <span class="courseClose" id="courseClose">&times;</span>
         <div class="column-flex">
-            <div class="row-flex-course">
-                <label id="courseLabel" for="course-name">Course name</label>
-                <input type="text" id="course-name" />
-            </div>
-            <div class="row-flex">
-                <label id="instructorLabel" for="instructor">Instructor user Id</label>
-                <input type="text" id="instructor-user-name" class="teake-input" />
-            </div>
+          <div class="row-flex-course">
+            <label id="courseLabel" for="course-name">Course name</label>
+            <input type="text" id="course-name" />
+          </div>
+          <div class="row-flex">
+            <label id="instructorLabel" for="instructor">Instructor user Id</label>
+            <input type="text" id="instructor-user-name" class="teake-input" />
+          </div>
 
-            <div class="row-flex-button">
-                <button type="button" id="cancel_course_button">Cancel</button>
-                <button type="button" id="save_course_button">Save</button>
-            </div>
+          <div class="row-flex-button">
+            <button type="button" id="cancel_course_button">Cancel</button>
+            <button type="button" id="save_course_button">Save</button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<div id="addStudentModal" class="d-none">
-    <div class="studentModalContent">
+    <div id="addStudentModal" class="d-none">
+      <div class="studentModalContent">
         <span class="studentClose" id="studentClose">&times;</span>
         <div class="column-flex">
-            <div class="row-flex-course">
-                <label id="selectCourseLabel" for="course-name">Select course</label>
-                <select class="selectTitle">
-                    <option default value="">course name</option>
-                </select>
-            </div>
-            <div class="row-flex">
-                <label id="instructorLabel" for="upload-file">Upload file</label>
-                <button id="upload-file" class="upload-btn"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_WkJK6A0OB.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662636716269" alt="download"></button>
-            </div>
+          <div class="row-flex-course">
+            <label id="selectCourseLabel" for="course-name">Select course</label>
+            <select class="selectTitle">
+              <option default value="">course name</option>
+            </select>
+          </div>
+          <div class="row-flex">
+            <label id="instructorLabel" for="upload-file">Upload file</label>
+            <button id="upload-file" class="upload-btn"><img
+                src="https://ik.imagekit.io/iwwbj9so6/Vector_WkJK6A0OB.png?ik-sdk-version=javascript-1.4.3&updatedAt=1662636716269"
+                alt="download"></button>
+          </div>
 
-            <div class="row-flex-button">
-                <button type="button" id="cancel_course_button">Cancel</button>
-                <button type="button" id="save_course_button">Save</button>
-            </div>
+          <div class="row-flex-button">
+            <button type="button" id="cancel_course_button">Cancel</button>
+            <button type="button" id="save_course_button">Save</button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<div id="deleteCourseModal">
-    <div class="deletecourseModalContent">
-      <span class="deletecourseClose">&times;</span>
-      <div class="text-center p-5">
-        <p >Delete Data Scientist- Python & Machine Learning</p>
+    <div id="deleteCourseModal">
+      <div class="deletecourseModalContent">
+        <span class="deletecourseClose">&times;</span>
+        <div class="text-center p-5">
+          <p>Delete Data Scientist- Python & Machine Learning</p>
 
-        <div class="row-flex-button p-5">
+          <div class="row-flex-button p-5">
             <button type="button" id="delete_course_button">Delete</button>
             <button type="button" id="cancel_course_button">Cancel</button>
+          </div>
+          <p class="caption">Once deleted can't be restored again</p>
         </div>
-        <p class="caption">Once deleted can't be restored again</p>
       </div>
     </div>
-  </div>
-   <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Launch demo modal
+    </button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>    
   {% endblock %}
 
   {% block footer %}
@@ -513,319 +520,58 @@ td {
       $(event.target).addClass("active");
     });
 
-    // Courses tab functionality
-//     const addCourseModal = document.getElementById("addCourseModal");
-//     const closeSpan = document.getElementsByClassName("courseClose")[0];
-//     const cancelCourseButton = document.getElementById("cancel_course_button");
-//     const saveCourseButton = document.getElementById("save_course_button");
-//     const courseNameText = document.getElementById("course-name");
-//     const instructorUserNameInput = document.getElementById("instructor-user-name");
-//     const instructorsFilter = document.getElementById("instructors_filter");
-//     let courseNameSelected;
-//     let deleteCourseSelected;
-//     const addCourse = () => {
-//       addCourseModal.style.display = "block";
-//     }
-//     closeSpan.onclick = function () {
-//       addCourseModal.style.display = "none";
-//     }
-//     cancelCourseButton.onclick = function () {
-//       addCourseModal.style.display = "none";
-//     }
 
-//     saveCourseButton.onclick = async () => {
-//       const courseName = courseNameText.value;
-//       const instructorUserName = instructorUserNameInput.value;
-//       if (courseName.length > 0 && instructorUserName.length > 0) {
-//         const coursePromise = await fetch(`${ngshare_url}course/${courseName}`, {
-//           method: 'POST',
-//           headers: {
-//             Accept: 'application.json',
-//             'Content-Type': 'application/json'
-//           }
-//         });
-//         if (coursePromise.status == 200 && coursePromise.ok) {
-//           const hubAddUserPromise = await fetch(`${hub_url}users/${instructorUserName}`, {
-//             method: 'POST',
-//             headers: {
-//               Accept: 'application.json',
-//               'Content-Type': 'application/json'
-//             }
-//           });
-//           if (hubAddUserPromise.status == 201 && hubAddUserPromise.ok) {
-//             const data = {
-//               "users": [
-//                 instructorUserName
-//               ]
-//             };
-//             const hubAddUserGroupPromise = await fetch(`${hub_url}groups/instructor/users`, {
-//               method: 'POST',
-//               headers: {
-//                 Accept: 'application.json',
-//                 'Content-Type': 'application/json'
-//               },
-//               body: JSON.stringify(data)
-//             }
-//             );
-//             if (hubAddUserGroupPromise.status == 200 && hubAddUserGroupPromise.ok) {
-//               const instructorAddPromise = await fetch(`${ngshare_url}instructor/${courseName}/${instructorUserName}?first_name=&last_name=&email=`, {
-//                 method: 'POST',
-//                 headers: {
-//                   Accept: 'application.json',
-//                   'Content-Type': 'application/json'
-//                 }
-//               });
-//               if (instructorAddPromise.status == 200 && instructorAddPromise.ok) {
-//                 alert('Success created.');
-//                 addCourseModal.style.display = "none";
-//                 fetchCourseDetails();
-//               }
-//               else {
-//                 const instructorAddResponse = await instructorAddPromise.json();
-//                 alert(instructorAddResponse.message);
-//               }
-//             }
-//           }
-//           else {
-//             const hubAddUserResponse = await hubAddUserPromise.json();
-//             alert(hubAddUserResponse.message);
-//           }
-//         }
-//         else {
-//           const courseResponse = await coursePromise.json();
-//           alert(courseResponse.message);
-//         }
-//       }
-//       else {
-//         alert('Please provide valid course name and instructor username');
-//       }
-//     }
-//     const deleteCourse = async (courseSelected) => {
-
-//       const courseDeletePromise = await fetch(`${ngshare_url}course/${courseSelected}`, {
-//         method: 'DELETE',
-//         headers: {
-//           Accept: 'application.json',
-//           'Content-Type': 'application/json'
-//         }
-//       });
-//       const response = await courseDeletePromise.json();
-//       if (response.success) {
-//         alert("Successfully deleted course");
-//         fetchCourseDetails();
-//       }
-//       else {
-//         alert("Something went wrong! Couldn't delete course");
-//       }
-//     }
-
-//     //course-nav
-//     const fetchCourseDetails = async () => {
-//       const getCourseDetails = async (courses) => {
-//         const details = courses.map(async (courseName) => {
-//           const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
-//           const instructorsJson = await instructorsPromise.json();
-//           const instructorsCount = instructorsJson.instructors.length;
-//           const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
-//           const studentsJson = await studentsPromise.json();
-//           const studentsCount = studentsJson.students.length;
-//           return { 'courseName': courseName, 'instructorsCount': instructorsCount, 'studentsCount': studentsCount };
-//         });
-//         return Promise.all(details);
-//       }
-//       let courseDetails = [];
-//       const courseFetch = await fetch(`${ngshare_url}courses`);
-//       const courseJson = await courseFetch.json();
-//       const coursesList = courseJson.courses;
-//       (async () => {
-//         courseDetails = await getCourseDetails(coursesList);
-//         if (courseDetails.length != 0) {
-//           document.getElementsByClassName('loader')[0].style.display = 'none';
-//           document.getElementById('admin-table').style.display = 'inline-table';
-//           document.getElementsByClassName('add-btn')[0].style.display = 'block';
-//           $("#admin-thead tr").remove();
-//           $("#admin-table tr").remove();
-//           $(".add-btn").text("Add Course");
-//           $(".add-btn").attr('id', 'add-course');
-//           instructorsFilter.style.display = 'none';
-//           const addCourseButton = document.getElementById('add-course');
-//           const saveCourseButton = document.getElementById('save_course_button');
-//           addCourseButton.onclick = addCourse;
-//           $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
-//           courseDetails.map((detail) => {
-//             const tr = `<tr><td>${detail.courseName}</td><td>${detail.instructorsCount}</td><td>${detail.studentsCount}</td><td><button type='button' class="delete_course_button" id=${detail.courseName} onclick="deleteCourse(this.id)" ><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077" /></button></td></tr>`;
-//             $("#admin-tbody").append(tr);
-//           });
-//         }
-//         else {
-//           document.getElementsByClassName('loader')[0].style.display = 'block';
-
-//         }
-//       })();
-//     };
-
-
-//     const fetchInstructorDetails = async () => {
-//       let courseInstructor = {};
-//       let instructorCourse = {};
-//       const getInstructorDetails = async (courses, instructorsUsername) => {
-//         const details = courses.map(async (courseName) => {
-//           const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
-//           const instructorsJson = await instructorsPromise.json();
-//           const instructorsData = await instructorsJson.instructors;
-//           let instructorList = [];
-//           for (let i = 0; i < instructorsData.length; i++) {
-//             instructorList.push(instructorsData[i].username);
-//             if (instructorsUsername.indexOf(instructorsData[i].username) === -1) {
-//               instructorsUsername.push(instructorsData[i].username);
-//             }
-//           };
-//           courseInstructor[courseName] = instructorList;
-//           for (let i = 0; i < instructorsUsername.length; i++) {
-//             for (let key in courseInstructor) {
-//               if (courseInstructor[key].includes(instructorsUsername[i])) {
-//                 if (Object.keys(instructorCourse).indexOf(instructorsUsername[i]) === -1) {
-//                   instructorCourse[instructorsUsername[i]] = [key];
-//                 }
-//                 else {
-//                   if (instructorCourse[instructorsUsername[i]].indexOf(key) === -1)
-//                     instructorCourse[instructorsUsername[i]].push(key);
-//                 }
-//               }
-//             }
-//           };
-//           return instructorCourse;
-//         });
-//         return Promise.all(details);
-//       };
-//       let instructorDetails = [];
-//       const courseFetch = await fetch(`${ngshare_url}courses`);
-//       const courseJson = await courseFetch.json();
-//       const coursesList = courseJson.courses;
-//       const hubUsersFetch = await fetch(`${hub_url}users`);
-//       const hubUsersJson = await hubUsersFetch.json();
-//       const instructorsUsername = [];
-//       for (let i = 0; i < hubUsersJson.length; i++) {
-//         if (hubUsersJson[i].groups.includes('instructor')) {
-//           instructorsUsername.push(hubUsersJson[i].name);
-//         }
-//       }
-//       (async () => {
-//         instructorDetails = await getInstructorDetails(coursesList, instructorsUsername);
-//         if (instructorDetails.length != 0) {
-//           document.getElementsByClassName('loader')[0].style.display = 'none';
-//           document.getElementById('admin-table').style.display = 'inline-table';
-//           document.getElementsByClassName('add-btn')[0].style.display = 'block';
-//           $("#admin-thead tr").remove();
-//           $("#admin-table tr").remove();
-//           $(".add-btn").text("Add Instructor");
-//           $(".add-btn").attr('id', 'add-instructor');
-//           instructorsFilter.style.display = 'none';
-//           const addCourseButton = document.getElementById('add-instructor');
-//           // const saveCourseButton = document.getElementById('save_course_button');
-//           // addCourseButton.onclick = addCourse;
-//           $("#admin-thead").append('<tr><td>Instructor Username</td><td>Course count</td><td>Actions</td></tr>');
-//           for (const [key, value] of Object.entries(instructorDetails.at(-1))) {
-//             const tr = `<tr><td>${key}</td><td>${value.length}</td><td><button class="dropdown_button" id=${value}><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>`;
-//             $("#admin-tbody").append(tr);
-//             // value.map((val) => {
-//             //       trs.push(`<tr><td>${val}</td><td></td><td><button class="dropdown_button" id=${val}+${key}><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>`);
-//             // });
-//           }
-//         }
-//         else {
-//           document.getElementsByClassName('loader')[0].style.display = 'block';
-//         }
-//       })();
-//     };
-
-
-//     const fetchLearnerDetails = async () => {
-//       $("#admin-thead tr").remove();
-//       $("#admin-table tr").remove();
-//       instructorsFilter.style.display = 'block';
-//       $(".add-btn").text("Add learner");
-//       // $(".add-btn").addClass("addStudentBtn");
-//       instructorsFilter.style.display = 'none';
-//       $("#admin-thead").append('<tr><td>Course name</td><td>Learner count</td><td>Actions</td></tr>');
-//       const courseFetch = await fetch(`${ngshare_url}courses`);
-//       const courseJson = await courseFetch.json();
-//       const coursesList = courseJson.courses;
-//       coursesList.map(async (courseName) => {
-//         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
-//         const studentsJson = await studentsPromise.json();
-//         let studentsUsername = [];
-//         for (let i = 0; i < studentsJson.students.length; i++) {
-//           studentsUsername.push(studentsJson.students[i].username);
-//         }
-//         console.log(studentsUsername);
-//         const studentsCount = studentsJson.students.length;
-//         const tr = '<tr><td>' + courseName + '</td><td>' + studentsCount + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
-//         $("#admin-tbody").append(tr);
-//       });
-//     };
-
-//     window.onload = fetchCourseDetails;
-//     const course_navigation = document.getElementById('course-nav');
-//     const instructor_navigation = document.getElementById('instructor-nav');
-//     const learner_navigation = document.getElementById('learner-nav');
-//     course_navigation.onclick = fetchCourseDetails;
-//     instructor_navigation.onclick = fetchInstructorDetails;
-//     learner_navigation.onclick = fetchLearnerDetails;
-    
-    
-    
     let instructor = document.getElementById('instructor-nav');
-let courses = document.getElementById('course-nav');
-let learner = document.getElementById('learner-nav');
-let courseTable = document.getElementById('course-table');
-let instructorTable = document.getElementById('instructor-table');
-let learnerTable = document.getElementById('learner-table');
-let addBtn = document.getElementById('add-btn');
-let addCourseModal = document.getElementById('addCourseModal');
-let courseClose = document.getElementById('courseClose');
-let addStudentModal = document.getElementById('addStudentModal');
-let studentClose = document.getElementById('studentClose')
-courses.onclick = function() {
-    addBtn.textContent = "Add Course";
-    instructor.classList.remove('active');
-    courses.classList.add('active');
-    learner.classList.remove('active');
-    courseTable.classList.remove('d-none');
-    instructorTable.classList.add('d-none');
-    learnerTable.classList.add('d-none');
-}
-instructor.onclick = function() {
-    addBtn.textContent = "Add Instructor";
-    instructor.classList.add('active');
-    courses.classList.remove('active');
-    learner.classList.remove('active');
-    courseTable.classList.add('d-none');
-    instructorTable.classList.remove('d-none');
-    learnerTable.classList.add('d-none');
-}
-learner.onclick = function() {
-    addBtn.textContent = "Add Learner";
-    instructor.classList.remove('active');
-    courses.classList.remove('active');
-    learner.classList.add('active');
-    courseTable.classList.add('d-none');
-    instructorTable.classList.add('d-none');
-    learnerTable.classList.remove('d-none');
-}
-addBtn.onclick = function() {
-    if (addBtn.textContent==="Add Course" || addBtn.textContent==="Add Instructor"){
-    addCourseModal.classList.remove('d-none');
+    let courses = document.getElementById('course-nav');
+    let learner = document.getElementById('learner-nav');
+    let courseTable = document.getElementById('course-table');
+    let instructorTable = document.getElementById('instructor-table');
+    let learnerTable = document.getElementById('learner-table');
+    let addBtn = document.getElementById('add-btn');
+    let addCourseModal = document.getElementById('addCourseModal');
+    let courseClose = document.getElementById('courseClose');
+    let addStudentModal = document.getElementById('addStudentModal');
+    let studentClose = document.getElementById('studentClose')
+    courses.onclick = function () {
+      addBtn.textContent = "Add Course";
+      instructor.classList.remove('active');
+      courses.classList.add('active');
+      learner.classList.remove('active');
+      courseTable.classList.remove('d-none');
+      instructorTable.classList.add('d-none');
+      learnerTable.classList.add('d-none');
     }
-    else if (addBtn.textContent==="Add Learner"){
+    instructor.onclick = function () {
+      addBtn.textContent = "Add Instructor";
+      instructor.classList.add('active');
+      courses.classList.remove('active');
+      learner.classList.remove('active');
+      courseTable.classList.add('d-none');
+      instructorTable.classList.remove('d-none');
+      learnerTable.classList.add('d-none');
+    }
+    learner.onclick = function () {
+      addBtn.textContent = "Add Learner";
+      instructor.classList.remove('active');
+      courses.classList.remove('active');
+      learner.classList.add('active');
+      courseTable.classList.add('d-none');
+      instructorTable.classList.add('d-none');
+      learnerTable.classList.remove('d-none');
+    }
+    addBtn.onclick = function () {
+      if (addBtn.textContent === "Add Course" || addBtn.textContent === "Add Instructor") {
+        addCourseModal.classList.remove('d-none');
+      }
+      else if (addBtn.textContent === "Add Learner") {
         addStudentModal.classList.remove('d-none');
+      }
     }
-}
-courseClose.onclick = function() {
-    addCourseModal.classList.add('d-none');
-}
-studentClose.onclick = function(){
-    addStudentModal.classList.add('d-none');
-}
+    courseClose.onclick = function () {
+      addCourseModal.classList.add('d-none');
+    }
+    studentClose.onclick = function () {
+      addStudentModal.classList.add('d-none');
+    }
   </script>
   {% endblock %}
