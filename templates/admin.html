@@ -469,11 +469,13 @@
   {{ super() }}
   <script type="text/javascript">
     // require(["admin"]);
-
+     console.log({{ base_url }});
     // custom script
-
+    const base_url={{ base_url }};
+    const hub_url = `${base_url}api/'`;
+    console.log(window.href.split("/"));
+    
     const ngshare_url = 'https://data-labs.hcl-edtech.com/services/ngshare/';
-    const hub_url = 'https://data-labs.hcl-edtech.com/hub/api/';
 
     // To change the color for active link in top left navbar items
     const currentUrl = window.location.href.split("/");
