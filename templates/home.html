@@ -556,6 +556,7 @@ if user.admin %} {{ super() }}
 
     };
     // custom script
+    console.log({{ base_url }});
     const currentUrl = window.location.href.split("/");
     const currentAnchorTagText = currentUrl[currentUrl.length - 1];
     $('.navbar-nav a').each(function () {
