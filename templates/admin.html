@@ -471,12 +471,14 @@
     // require(["admin"]);
     
     // custom script
+    
     const hub_url = `/api/`;    
     const ngshare_url = `/services/ngshare/`;
-    console.log(window.location.pathname);
+    
     // To change the color for active link in top left navbar items
-    const currentUrl = window.location.href.split("/");
+    const currentUrl = window.location.pathname.split("/");
     const currentAnchorTagText = currentUrl[currentUrl.length - 1];
+    
     $('.navbar-nav a').each(function () {
       if ($(this).text().toLowerCase() == currentAnchorTagText) {
         $(this).css("color", "#006BB6");
