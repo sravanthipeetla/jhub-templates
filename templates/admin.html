@@ -285,125 +285,6 @@ td {
         </div>
         <div id="courseDetails">
             <div class="courseDetails" id="courseDetails">
-                <div class="courseCard" id="courseCard">
-                    <div class="course-card-left">
-                        <p class="course-title">Data Scientist -Python and ML Basics</p>
-                        <div class="arrange-row">
-                            <div class="arrange-col">
-                                <span class="learner-count-title">Learner count</span>
-                                <span class="learner-count">123</span>
-                                
-                            </div>
-                            <div class="arrange-col">
-                                <span class="learner-count-title">Trainer name</span>
-                                <span class="learner-count">Sidhartha Chinthapally</span>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="delete-icon">
-                        <img src="delete.png" alt="del">
-                    </div>
-                </div> 
-                <div class="courseCard">
-                    <div class="course-card-left">
-                        <p class="course-title">Data Scientist -Python and ML Basics</p>
-                        <div class="arrange-row">
-                            <div class="arrange-col">
-                                <span class="learner-count-title">Learner count</span>
-                                <span class="learner-count">123</span>
-                                
-                            </div>
-                            <div class="arrange-col">
-                                <span class="learner-count-title">Trainer name</span>
-                                <span class="learner-count">Sidhartha Chinthapally</span>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="delete-icon">
-                        <img src="delete.png" alt="del">
-                    </div>
-                </div> 
-                <div class="courseCard">
-                    <div class="course-card-left">
-                        <p class="course-title">Data Scientist -Python and ML Basics</p>
-                        <div class="arrange-row">
-                            <div class="arrange-col">
-                                <span class="learner-count-title">Learner count</span>
-                                <span class="learner-count">123</span>
-                                
-                            </div>
-                            <div class="arrange-col">
-                                <span class="learner-count-title">Trainer name</span>
-                                <span class="learner-count">Sidhartha Chinthapally</span>
-                            </div>
-                        </div>  
-                    </div>
-                    <div class="delete-icon">
-                        <img src="delete.png" alt="del">
-                    </div>
-                </div> 
-                <div class="courseCard">
-                    <div class="course-card-left">
-                        <p class="course-title">Data Scientist -Python and ML Basics</p>
-                        <div class="arrange-row">
-                            <div class="arrange-col">
-                                <span class="learner-count-title">Learner count</span>
-                                <span class="learner-count">123</span>
-                                
-                            </div>
-                            <div class="arrange-col">
-                                <span class="learner-count-title">Trainer name</span>
-                                <span class="learner-count">Sidhartha Chinthapally</span>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="delete-icon">
-                        <img src="delete.png" alt="del">
-                    </div>
-                </div> 
-                <div class="courseCard">
-                    <div class="course-card-left">
-                        <p class="course-title">Data Scientist -Python and ML Basics</p>
-                        <div class="arrange-row">
-                            <div class="arrange-col">
-                                <span class="learner-count-title">Learner count</span>
-                                <span class="learner-count">123</span>
-                                
-                            </div>
-                            <div class="arrange-col">
-                                <span class="learner-count-title">Trainer name</span>
-                                <span class="learner-count">Sidhartha Chinthapally</span>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="delete-icon">
-                        <img src="delete.png" alt="del">
-                    </div>
-                </div> 
-                <div class="courseCard">
-                    <div class="course-card-left">
-                        <p class="course-title">Data Scientist -Python and ML Basics</p>
-                        <div class="arrange-row">
-                            <div class="arrange-col">
-                                <span class="learner-count-title">Learner count</span>
-                                <span class="learner-count">123</span>
-                                
-                            </div>
-                            <div class="arrange-col">
-                                <span class="learner-count-title">Trainer name</span>
-                                <span class="learner-count">Sidhartha Chinthapally</span>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="delete-icon">
-                        <img src="delete.png" alt="del">
-                    </div>
-                </div>    
             </div>
         </div>
         <div id="trainerDetails" class="stop-visible">
@@ -605,7 +486,7 @@ let courseCard = document.getElementById('courseCard');
 let trainerDetails = document.getElementById('trainerDetails');
 let instructorsFilter = document.getElementById('instructors_filter');
 let learnerDetails = document.getElementById('learnerDetails');
-courses.onclick = function() {
+courses.onclick = async function() {
     instructorsFilter.classList.add('stop-visible');
     addBtn.textContent = "Add Course";
     description.textContent = "You can manage Course details here.";
