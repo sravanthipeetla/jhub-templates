@@ -594,270 +594,49 @@ td {
     navbar_left_list[1].style.visibility = 'hidden';
     navbar_left_list[3].style.visibility = 'hidden';
 
-    // To change the color for active link in admin-navbar items
-    $(".admin-navbar a").click((event) => {
-      $(".admin-navbar .active").removeClass("active");
-      $(event.target).addClass("active");
-    });
-
-    // Courses tab functionality
-    const addCourseModal = document.getElementById("addCourseModal");
-    const closeSpan = document.getElementsByClassName("courseClose")[0];
-    const cancelCourseButton = document.getElementById("cancel_course_button");
-    const saveCourseButton = document.getElementById("save_course_button");
-    const courseNameText = document.getElementById("course-name");
-    const instructorUserNameInput = document.getElementById("instructor-user-name");
-    const instructorsFilter = document.getElementById("instructors_filter");
-    let courseNameSelected;
-    let deleteCourseSelected;
-    const addCourse = () => {
-      addCourseModal.style.display = "block";
-    }
-    closeSpan.onclick = function () {
-      addCourseModal.style.display = "none";
-    }
-    cancelCourseButton.onclick = function () {
-      addCourseModal.style.display = "none";
-    }
-
-    saveCourseButton.onclick = async () => {
-      const courseName = courseNameText.value;
-      const instructorUserName = instructorUserNameInput.value;
-      if (courseName.length > 0 && instructorUserName.length > 0) {
-        const coursePromise = await fetch(`${ngshare_url}course/${courseName}`, {
-          method: 'POST',
-          headers: {
-            Accept: 'application.json',
-            'Content-Type': 'application/json'
-          }
-        });
-        if (coursePromise.status == 200 && coursePromise.ok) {
-          const hubAddUserPromise = await fetch(`${hub_url}users/${instructorUserName}`, {
-            method: 'POST',
-            headers: {
-              Accept: 'application.json',
-              'Content-Type': 'application/json'
-            }
-          });
-          if (hubAddUserPromise.status == 201 && hubAddUserPromise.ok) {
-            const data = {
-              "users": [
-                instructorUserName
-              ]
-            };
-            const hubAddUserGroupPromise = await fetch(`${hub_url}groups/instructor/users`, {
-              method: 'POST',
-              headers: {
-                Accept: 'application.json',
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(data)
-            }
-            );
-            if (hubAddUserGroupPromise.status == 200 && hubAddUserGroupPromise.ok) {
-              const instructorAddPromise = await fetch(`${ngshare_url}instructor/${courseName}/${instructorUserName}?first_name=&last_name=&email=`, {
-                method: 'POST',
-                headers: {
-                  Accept: 'application.json',
-                  'Content-Type': 'application/json'
-                }
-              });
-              if (instructorAddPromise.status == 200 && instructorAddPromise.ok) {
-                alert('Success created.');
-                addCourseModal.style.display = "none";
-                fetchCourseDetails();
-              }
-              else {
-                const instructorAddResponse = await instructorAddPromise.json();
-                alert(instructorAddResponse.message);
-              }
-            }
-          }
-          else {
-            const hubAddUserResponse = await hubAddUserPromise.json();
-            alert(hubAddUserResponse.message);
-          }
-        }
-        else {
-          const courseResponse = await coursePromise.json();
-          alert(courseResponse.message);
-        }
-      }
-      else {
-        alert('Please provide valid course name and instructor username');
-      }
-    }
-    const deleteCourse = async (courseSelected) => {
-
-      const courseDeletePromise = await fetch(`${ngshare_url}course/${courseSelected}`, {
-        method: 'DELETE',
-        headers: {
-          Accept: 'application.json',
-          'Content-Type': 'application/json'
-        }
-      });
-      const response = await courseDeletePromise.json();
-      if (response.success) {
-        alert("Successfully deleted course");
-        fetchCourseDetails();
-      }
-      else {
-        alert("Something went wrong! Couldn't delete course");
-      }
-    }
-
-    //course-nav
-    const fetchCourseDetails = async () => {
-      const getCourseDetails = async (courses) => {
-        const details = courses.map(async (courseName) => {
-          const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
-          const instructorsJson = await instructorsPromise.json();
-          const instructorsCount = instructorsJson.instructors.length;
-          const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
-          const studentsJson = await studentsPromise.json();
-          const studentsCount = studentsJson.students.length;
-          return { 'courseName': courseName, 'instructorsCount': instructorsCount, 'studentsCount': studentsCount };
-        });
-        return Promise.all(details);
-      }
-      let courseDetails = [];
-      const courseFetch = await fetch(`${ngshare_url}courses`);
-      const courseJson = await courseFetch.json();
-      const coursesList = courseJson.courses;
-      (async () => {
-        courseDetails = await getCourseDetails(coursesList);
-        if (courseDetails.length != 0) {
-          document.getElementsByClassName('loader')[0].style.display = 'none';
-          document.getElementById('admin-table').style.display = 'inline-table';
-          document.getElementsByClassName('add-btn')[0].style.display = 'block';
-          $("#admin-thead tr").remove();
-          $("#admin-table tr").remove();
-          $(".add-btn").text("Add Course");
-          $(".add-btn").attr('id', 'add-course');
-          instructorsFilter.style.display = 'none';
-          const addCourseButton = document.getElementById('add-course');
-          const saveCourseButton = document.getElementById('save_course_button');
-          addCourseButton.onclick = addCourse;
-          $("#admin-thead").append('<tr><td>Course name</td><td>Instructor count</td><td>Learner count</td><td>Actions</td></tr>');
-          courseDetails.map((detail) => {
-            const tr = `<tr><td>${detail.courseName}</td><td>${detail.instructorsCount}</td><td>${detail.studentsCount}</td><td><button type='button' class="delete_course_button" id=${detail.courseName} onclick="deleteCourse(this.id)" ><img src="https://ik.imagekit.io/iwwbj9so6/Vector_SF-xac8QM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1668752579077" /></button></td></tr>`;
-            $("#admin-tbody").append(tr);
-          });
-        }
-        else {
-          document.getElementsByClassName('loader')[0].style.display = 'block';
-
-        }
-      })();
-    };
-
-
-    const fetchInstructorDetails = async () => {
-      let courseInstructor = {};
-      let instructorCourse = {};
-      const getInstructorDetails = async (courses, instructorsUsername) => {
-        const details = courses.map(async (courseName) => {
-          const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
-          const instructorsJson = await instructorsPromise.json();
-          const instructorsData = await instructorsJson.instructors;
-          let instructorList = [];
-          for (let i = 0; i < instructorsData.length; i++) {
-            instructorList.push(instructorsData[i].username);
-            if (instructorsUsername.indexOf(instructorsData[i].username) === -1) {
-              instructorsUsername.push(instructorsData[i].username);
-            }
-          };
-          courseInstructor[courseName] = instructorList;
-          for (let i = 0; i < instructorsUsername.length; i++) {
-            for (let key in courseInstructor) {
-              if (courseInstructor[key].includes(instructorsUsername[i])) {
-                if (Object.keys(instructorCourse).indexOf(instructorsUsername[i]) === -1) {
-                  instructorCourse[instructorsUsername[i]] = [key];
-                }
-                else {
-                  if (instructorCourse[instructorsUsername[i]].indexOf(key) === -1)
-                    instructorCourse[instructorsUsername[i]].push(key);
-                }
-              }
-            }
-          };
-          return instructorCourse;
-        });
-        return Promise.all(details);
-      };
-      let instructorDetails = [];
-      const courseFetch = await fetch(`${ngshare_url}courses`);
-      const courseJson = await courseFetch.json();
-      const coursesList = courseJson.courses;
-      const hubUsersFetch = await fetch(`${hub_url}users`);
-      const hubUsersJson = await hubUsersFetch.json();
-      const instructorsUsername = [];
-      for (let i = 0; i < hubUsersJson.length; i++) {
-        if (hubUsersJson[i].groups.includes('instructor')) {
-          instructorsUsername.push(hubUsersJson[i].name);
-        }
-      }
-      (async () => {
-        instructorDetails = await getInstructorDetails(coursesList, instructorsUsername);
-        if (instructorDetails.length != 0) {
-          document.getElementsByClassName('loader')[0].style.display = 'none';
-          document.getElementById('admin-table').style.display = 'inline-table';
-          document.getElementsByClassName('add-btn')[0].style.display = 'block';
-          $("#admin-thead tr").remove();
-          $("#admin-table tr").remove();
-          $(".add-btn").text("Add Instructor");
-          $(".add-btn").attr('id', 'add-instructor');
-          instructorsFilter.style.display = 'none';
-          const addCourseButton = document.getElementById('add-instructor');
-          // const saveCourseButton = document.getElementById('save_course_button');
-          // addCourseButton.onclick = addCourse;
-          $("#admin-thead").append('<tr><td>Instructor Username</td><td>Course count</td><td>Actions</td></tr>');
-          for (const [key, value] of Object.entries(instructorDetails.at(-1))) {
-            const tr = `<tr><td>${key}</td><td>${value.length}</td><td><button class="dropdown_button" id=${value}><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>`;
-            $("#admin-tbody").append(tr);
-            // value.map((val) => {
-            //       trs.push(`<tr><td>${val}</td><td></td><td><button class="dropdown_button" id=${val}+${key}><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>`);
-            // });
-          }
-        }
-        else {
-          document.getElementsByClassName('loader')[0].style.display = 'block';
-        }
-      })();
-    };
-
-
-    const fetchLearnerDetails = async () => {
-      $("#admin-thead tr").remove();
-      $("#admin-table tr").remove();
-      instructorsFilter.style.display = 'block';
-      $(".add-btn").text("Add learner");
-      // $(".add-btn").addClass("addStudentBtn");
-      instructorsFilter.style.display = 'none';
-      $("#admin-thead").append('<tr><td>Course name</td><td>Learner count</td><td>Actions</td></tr>');
-      const courseFetch = await fetch(`${ngshare_url}courses`);
-      const courseJson = await courseFetch.json();
-      const coursesList = courseJson.courses;
-      coursesList.map(async (courseName) => {
-        const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
-        const studentsJson = await studentsPromise.json();
-        let studentsUsername = [];
-        for (let i = 0; i < studentsJson.students.length; i++) {
-          studentsUsername.push(studentsJson.students[i].username);
-        }
-        console.log(studentsUsername);
-        const studentsCount = studentsJson.students.length;
-        const tr = '<tr><td>' + courseName + '</td><td>' + studentsCount + '</td><td><button class="dropdown_button"><img src="https://ik.imagekit.io/iwwbj9so6/Vector_9_c4obhy8x5.png?ik-sdk-version=javascript-1.4.3&updatedAt=1660643960909"/></button></td></tr>';
-        $("#admin-tbody").append(tr);
-      });
-    };
-
-    window.onload = fetchCourseDetails;
-    const course_navigation = document.getElementById('course-nav');
-    const instructor_navigation = document.getElementById('instructor-nav');
-    const learner_navigation = document.getElementById('learner-nav');
-    course_navigation.onclick = fetchCourseDetails;
-    instructor_navigation.onclick = fetchInstructorDetails;
-    learner_navigation.onclick = fetchLearnerDetails;
+    let instructor = document.getElementById('instructor-nav');
+let courses = document.getElementById('course-nav');
+let learner = document.getElementById('learner-nav');
+let addBtn = document.getElementById('add-btn');
+let courseDetails = document.getElementById('courseDetails');
+let description = document.getElementById('description');
+let req = document.getElementById('req');
+let courseCard = document.getElementById('courseCard');
+let trainerDetails = document.getElementById('trainerDetails');
+let instructorsFilter = document.getElementById('instructors_filter');
+let learnerDetails = document.getElementById('learnerDetails');
+courses.onclick = function() {
+    instructorsFilter.classList.add('stop-visible');
+    addBtn.textContent = "Add Course";
+    description.textContent = "You can manage Course details here.";
+    instructor.classList.remove('active');
+    courses.classList.add('active');
+    learner.classList.remove('active');
+    courseDetails.classList.remove('stop-visible');
+    trainerDetails.classList.add('stop-visible');
+    learnerDetails.classList.add('stop-visible');
+}
+instructor.onclick = function() {
+    instructorsFilter.classList.remove('stop-visible');
+    addBtn.textContent = "Add Trainer";
+    description.textContent = "You can manage Trainer details here.";
+    instructor.classList.add('active');
+    courses.classList.remove('active');
+    learner.classList.remove('active');
+    courseDetails.classList.add('stop-visible');
+    trainerDetails.classList.remove('stop-visible');
+    learnerDetails.classList.add('stop-visible');
+}
+learner.onclick = function() {
+    instructorsFilter.classList.add('stop-visible');
+    addBtn.textContent = "Add Learners";
+    description.textContent = "You can manage Learner details here.";
+    instructor.classList.remove('active');
+    courses.classList.remove('active');
+    learner.classList.add('active');
+    courseDetails.classList.add('stop-visible');
+    trainerDetails.classList.add('stop-visible');
+    learnerDetails.classList.remove('stop-visible');
+}
   </script>
   {% endblock %}
