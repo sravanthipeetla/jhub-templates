@@ -284,7 +284,7 @@ td {
                 </div>
         </div>
         <div id="courseDetails">
-            <div class="courseDetails" id="req">
+            <div class="courseDetails" id="courseDetails">
                 <div class="courseCard" id="courseCard">
                     <div class="course-card-left">
                         <p class="course-title">Data Scientist -Python and ML Basics</p>
@@ -598,7 +598,7 @@ td {
 let courses = document.getElementById('course-nav');
 let learner = document.getElementById('learner-nav');
 let addBtn = document.getElementById('add-btn');
-let courseDetails = document.getElementById('courseDetails');
+let courseDetailsDiv = document.getElementById('courseDetails');
 let description = document.getElementById('description');
 let req = document.getElementById('req');
 let courseCard = document.getElementById('courseCard');
@@ -615,6 +615,50 @@ courses.onclick = function() {
     courseDetails.classList.remove('stop-visible');
     trainerDetails.classList.add('stop-visible');
     learnerDetails.classList.add('stop-visible');
+    const getCourseDetails = async (courses) => {
+        const details = courses.map(async (courseName) => {
+          const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
+          const instructorsJson = await instructorsPromise.json();
+          const instructorsCount = instructorsJson.instructors.length;
+          const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
+          const studentsJson = await studentsPromise.json();
+          const studentsCount = studentsJson.students.length;
+          return { 'courseName': courseName, 'instructorsCount': instructorsCount, 'studentsCount': studentsCount };
+        });
+        return Promise.all(details);
+      }
+      let courseDetails = [];
+      const courseFetch = await fetch(`${ngshare_url}courses`);
+      const courseJson = await courseFetch.json();
+      const coursesList = courseJson.courses;
+      (async () => {
+        courseDetails = await getCourseDetails(coursesList);
+        if (courseDetails.length != 0) {
+          courseDetails.map((detail) => {
+            courseDetailsDiv.appendChild(`
+   <div class="courseCard" id="courseCard">
+                    <div class="course-card-left">
+                        <p class="course-title">${detail.courseName}</p>
+                        <div class="arrange-row">
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Learner count</span>
+                                <span class="learner-count">${detail.studentsCount}</span>
+                                
+                            </div>
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Trainer name</span>
+                                <span class="learner-count"></span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="delete-icon">
+                        <img src="delete.png" alt="del">
+                    </div>
+                </div> `);
+          });
+        }
+      })();
 }
 instructor.onclick = function() {
     instructorsFilter.classList.remove('stop-visible');
