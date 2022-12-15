@@ -271,7 +271,7 @@
         //custom script
         
         // To change the color for active link in top left navbar items
-        const currentUrl = window.location.href.split('/');
+        const currentUrl = window.location.pathname.split('/');
         const currentAnchorTagText = currentUrl[currentUrl.length - 1];
         $('.navbar-nav a').each(function () {
           if ($(this).text().toLowerCase() == currentAnchorTagText) {
