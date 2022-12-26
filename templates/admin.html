@@ -1,574 +1,19 @@
-{% extends "templates/page.html" %}
+{% extends "page.html" %}
 {% block stylesheet %}
 {{ super() }}
-<style>
-   @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600&family=Poppins:wght@500&display=swap');
-.stop-visible{
-    display:none;
-}
-.admin-container {
-    padding-left: 12vw;
-    padding-right: 12vw;
-    overflow: auto;
-    position: relative;
-}
-
-.admin-navbar {
-    overflow: hidden;
-    /* border: 2px solid black; */
-    margin-left: -3rem;
-}
-
-/* Style the links inside the navigation bar */
-.admin-navbar a {
-    float: left;
-    color: #000000;
-    text-align: center;
-    padding: 1vw 4vw;
-    text-decoration: none;
-    font-size: 1rem;
-    border-bottom: 0.3vw solid #DBDBDB;
-    overflow: auto;
-    font-weight:500;
-    font-family:'Poppins';
-}
-
-.admin-navbar a:hover {
-    cursor: pointer;
-}
-
-.admin-navbar a.active {
-    border-bottom: 0.3vw solid #006BB6;
-    color: #006BB6;
-}
-
-.description-bar {
-    border-bottom:2px solid #DBDBDB;
-    display:flex;
-    justify-content: space-between;
-    /* padding-top: 1.5vw; */
-    margin-top:3vh;
-    padding-bottom: 1.5vh;
-    margin-bottom: 1.5vh;
-    align-items: center;
-}
-
-.description {
-    font-family: 'Poppins';
-    color:#4D4D4D;
-    font-weight:500;
-    font-size: 1rem;
-}
-#left-description-bar select{
-    border-radius:50px;
-    height:2.5rem;
-    width:13.75rem;
-    border:1px solid #5FBEF0;
-    padding: 0rem 1rem;
-    font-size: 1rem;
-    font-weight: 0;
-    color: black;
-    outline: none;
-}
-#left-description-bar input{
-    border: none;
-    outline: none;
-}
-#left-description-bar input::placeholder {
-    color: #ccc;
-}
-
-#left-description-bar {
-    display: flex;
-    gap: 1rem;
-}
-.searchIcon{
-    text-indent: -999px;
-    overflow: hidden;
-    width: 40px;
-    padding: 0;
-    margin: 0;
-    border: 1px solid transparent;
-    border-radius: inherit;
-    background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
-    cursor: pointer;
-    opacity: 0.7;
-}
-
-.add-btn {
-    border:none;
-    font-family: 'Poppins';
-    background-color: #5FBEF0;
-    border-radius: 1.5vw;
-    color: white;
-    font-weight: 500;
-    font-size: 1rem;
-    height:2.5rem;
-    display: inline-block;
-    padding: 0px 1rem;
-    text-align: center;
-    cursor: pointer;
-} 
-.courseDetails, .trainerDetails{
-    display: flex;
-    flex-wrap: wrap;
-    
-}
-
-.courseCard,.trainerCard{
-    display: flex;
-    justify-content: space-between;
-    background: linear-gradient(108.02deg, rgba(246, 251, 254, 0) 64.53%, #D6F0FF 122.73%), linear-gradient(179.46deg, rgba(246, 251, 254, 0) 1.56%, #DBF2FF 127.02%);
-    border-radius: 10px;
-    margin: 0.8rem 1%;
-    width:23%;
-}
-.trainerCard-width{
-    width: 18%;
-}
-.delete-icon{
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    align-items: center;
-    background: linear-gradient(180deg, rgba(254, 245, 245, 0.2) -6.12%, #FCEAE8 106.76%);
-    border-radius: 0px 10px 10px 0px;
-    padding: 0.5rem;
-    cursor: pointer;
-}
-.delete-icon img{
-    width:1rem;
-}
-.eye-icon{
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    align-items: center;
-    background: linear-gradient(180deg, rgba(230, 244, 255, 0) -6.12%, #C2E6FF 106.76%);
-    border-radius: 0px 10px 10px 0px;
-    padding: 0.5rem;
-    cursor: pointer;
-}
-.course-card-left,.trainer-card-left{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding:0.5rem;
-    font-family: 'Gothic A1';
-    width: 100%;
-}
-.course-title,.trainer-title{
-    color:#006BB6;
-    font-weight: 600;
-    font-size: 1rem;
-}
-.learner-count-title{
-    color:#999;
-    font-weight: 400;
-    font-size: 0.75rem;
-}
-.learner-count{
-    font-weight: 500;
-    font-size: 0.875rem;
-}
-.arrange-row{
-    display: flex;
-    justify-content: space-between;
-}
-.arrange-col{
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-}
-
-#learner-table {
-    margin-bottom: 20px;
-    background: #FFFFFF;
-    /* border: 2px solid #5FBEF0; */
-    border-collapse: inherit;
-    border-spacing: 0px;
-    border-radius: 14px 14px 0px 0px;
-    table-layout: fixed;
-    overflow: hidden;
-    width: 100%;
-    border: 1px solid #C6E7FB;
-}
-
-#learner-thead {
-    background: #D2EDFB;;
-    border-collapse: inherit;
-    border-radius: 12px 12px 0px 0px; 
-}
-tbody tr td:last-child{
-    text-align: right;
-    padding: 0.5rem 3rem;
-}
-tbody tr td:first-child{
-    padding: 0.5rem 1.5rem; 
-}
-tr th:first-child{
-    text-align: left;
-}
-tr th:last-child{
-    text-align: right;
-}
-tr th:nth-child(2){
-    text-align: end;
-    padding-right: 0rem;
-}
-tbody tr:nth-child(even) {
-    background-color:#FAFDFF;
-  }
-tbody tr:nth-child(odd) {
-    background-color: #F1F9FE;;
-  }
-
-  tr td:nth-child(2){
-    text-align: end;
-}
-
-th{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1rem;
-    color:#006BB6;
-    padding: 0.5rem 1.5rem;
-}
-.bg-model{
-    /* display: none; */
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background-color: rgba(0,0,0, .2);
-}
-.course-model{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background:#FFFFFF;
-    box-shadow: 0px 2px 13px rgba(170, 170, 170, 0.27);
-    border-radius: 1rem;
-    width:30rem;
-    height:15rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: animatemodal .3s;
-}
-@keyframes animatemodal {
-    0% {
-        top: -300px;
-        opacity: 0;
-    }
-
-    100% {
-        top: -50%;
-        opacity: 1;
-    }
-}
-.delete-course-model-top-first{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #FEEBEC;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.08);
-    border-radius: 12px 12px 0px 0px;
-    padding: 0.5rem 1rem;
-   
-}
-
-.delete-course-model-top-first h1{
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 600;
-font-size: 1rem;
-color: #F63C46;
-}
-.delete-course-model-top-first span{
-    font-size: 2rem;
-    color: #F7545D;
-    font-weight: bold;
-    background: #FDCED1;
-    border-radius: 50%;
-    cursor: pointer;
-    height: 1rem;
-    width: 1rem;
-    padding: 0 0.5rem;
-}
-.delete-title{
-    font-size: 1rem;
-    text-align: center;
-    font-family: 'Gothic A1';
-    font-style: Medium;
-    font-size:1rem;
-}
-
-.delete-course-model-bottom{
-   
-    text-align: center;
-}
-.delete-course-model-bottom p{
-    color: #AAAAAA;
-    font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 0.75rem;
-}
-
-.delete-button{
-    border:none;
-    background: #F7545D;
-    border-radius: 1rem;
-    padding: 0.5rem 1rem;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 0.75rem;
-    text-align: center;
-    color: #FFFFFF;
-    width: 5rem;
-}
-
-.cancel-button{
-background: #FFFFFF;
-border: 1px solid #5FBEF0;
-border-radius: 1rem;
-padding: 0.5rem 1rem;
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 0.75rem;
-color: #5FBEF0;
-width: 5rem;
-}
-
-.add-course-model-height,.add-learner-model-height{
-    height:18rem;
-}
-.add-course-model-top-first,.add-learner-model-top-first{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    border-radius: 12px 12px 0px 0px;
-    background: #F6FBFE;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.08);
-    border-radius: 12px 12px 0px 0px;
-}
-
-.add-course-model-top-first h1,.add-learner-model-top-first h1{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1rem;
-    color: #5FBEF0;
-}
-.add-course-model-top-first span,.add-learner-model-top-first span{
-    font-size: 2rem;
-    color: #5FBEF0;
-    font-weight: bold;
-    background: #E8F6FD;
-    border-radius: 50%;
-    cursor: pointer;
-    height: 1rem;
-    width: 1rem;
-    padding: 0 0.5rem;
-}
-.add-course-name,.choose-trainer-name,.add-learner{
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-}
-.add-course-name p{
-font-family: 'Gothic A1';
-font-style: normal;
-font-weight: 400;
-font-size: 0.875rem;
-color: #000000;
-width:8rem;
-
-}
-.add-course-name input,.choose-trainer-name select,.add-learner input{
-    border-radius:50px;
-    height:2rem;
-    border:1px solid #5FBEF0;
-    padding: 0rem 1rem;
-    font-size: 0.875rem;
-    font-weight: 0;
-    width:20rem;
-    color: #A6A6A6;
-}
-.add-course-name input::placeholder{
-    font-size: 0.875rem;
-    font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-color: #A6A6A6;
-}
-.choose-trainer-arrange,.choose-learner-arrange{
-    display: flex;
-    flex-direction: column;
-}
-.choose-trainer-arrange p{
-    margin-top: -0.3rem;
-    font-family: 'Gothic A1';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 0.875rem;
-    color: #000000;
-    width:8rem;
-   
-    }
-.choose-trainer-arrange span{
-   
-font-family: 'Gothic A1';
-font-style: normal;
-font-weight: 400;
-font-size: 0.75rem;
-color: #A6A6A6;
-margin-top: -0.8rem;
-
-width:8rem;
-}
-.add-course-model-bottom{
-    text-align: center;
-    background: #FFFFFF;
-    box-shadow: 0px 2px 13px rgba(170, 170, 170, 0.27);
-    border: 1px solid #DBDBDB;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-    padding: 1.5rem;
-}
-.add-button{
-    border:none;
-    background: #5FBEF0;
-    border-radius: 1rem;
-    padding: 0.5rem 1rem;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 0.75rem;
-    text-align: center;
-    color: #FFFFFF;
-    width: 5rem;
-}
-.trainer-model{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background:#FFFFFF;
-    box-shadow: 0px 2px 13px rgba(170, 170, 170, 0.27);
-    border-radius: 1rem;
-    width:50rem;
-    height:32rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: animatemodal .3s;
-}
-.delete-trainer-model-top-first{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    border-radius: 12px 12px 0px 0px;
-    background: #F6FBFE;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.08);
-    border-radius: 12px 12px 0px 0px;
-}
-.delete-trainer-title{
-    font-family: 'Poppins';
-font-style: normal;
-font-weight: 600;
-font-size: 1rem;
-color: #999999;
-}
-.delete-trainer-name{
-color: #006BB6;
-}
-#deleteTrainerCancel{
-    font-size: 2rem;
-    text-align: center;
-    color: #006BB6;
-    font-weight: bold;
-    background: #D2EDFB;
-    border-radius: 50%;
-    cursor: pointer;
-    height: 2rem;
-    width: 2rem;
-    padding-bottom: 0.25rem; 
-}
-.change-learner{
-    padding: 2rem;
-}
-.learner-inactive{
-    font-size: 0.8rem;
-    border-radius: 1rem;
-    padding: 0.5rem 2rem;
-    border: 1px solid #DBDBDB;
-    background: #FFFFFF;
-    color: #DBDBDB;
-    cursor: pointer;
-}
-.learner-active{
-    color: #5FBEF0;
-    border: 1px solid #5FBEF0;
-}
-.upload-btn{
-    border-radius:50px;
-    height:2rem;
-    border:1px dashed #5FBEF0;
-    padding: 0rem 1rem;
-    font-size: 0.875rem;
-    font-weight: 0;
-    width:10rem;
-    color: #A6A6A6;
-    text-align: center;
-}
-
-@media(max-width:1440px){
-    html{
-        font-size: 90%;
-    }
-    .courseCard{
-        width: 30%;
-    }
-    .trainerCard{
-        width: 23%;
-    }
-}
-form {
-    color: #555;
-    display: flex;
-    border: 2px solid blue;
-    border-radius: 5px;
-    border-radius:50px;
-    height:2.5rem;
-    width:13.75rem;
-    border:1px solid #5FBEF0;
-    padding: 0rem 1rem;
-    font-size: 1rem;
-    font-weight: 0;
-    color: black;
-}
-</style>
+<link rel="stylesheet" href="{{ static_url("css/admin_add.css") }}" type="text/css"/> 
 {% endblock %}
+
 {% block main %}
 <div id="react-admin-hook">
   <script id="jupyterhub-admin-config">
     window.api_page_limit = parseInt("{{ api_page_limit|safe }}")
     window.base_url = "{{ base_url|safe }}"
   </script>
-  <script src={{ static_url("js/admin.js") }}></script>
-      <div class="admin-container">
-          <div class="admin-container">
+  <!-- <script src={{ static_url("js/admin-react.js") }}></script> -->
+</div>
+<div>
+    <div class="admin-container">
         <div class="admin-navbar">
             <ul>
                 <a class="course-nav active" id="course-nav">Courses</a>
@@ -579,11 +24,7 @@ form {
         <div class="description-bar">
                 <p class="description" id="description">You can manage Course details here.</p>
                 <div id="left-description-bar" >
-                    <form>
-                        <input type="search" value="" placeholder="Search...">
-                        <button class="searchIcon" type="submit"></button>
-                    </form>
-                   
+                    <input type="search" value="" placeholder="Search...">
                     <select  id="instructors_filter" class="stop-visible">
                         <option default  value="all">All</option>
                         <option value="mapped">Mapped</option>
@@ -613,6 +54,106 @@ form {
                         <img src="https://i.postimg.cc/prKj8HZB/delete.png" alt="del">
                     </div>
                 </div> 
+                <div class="courseCard" id="courseCard">
+                    <div class="course-card-left">
+                        <p class="course-title">Data Science -Python and ML Basics</p>
+                        <div class="arrange-row">
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Learner count</span>
+                                <span class="learner-count">123</span>
+                                
+                            </div>
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Trainer name</span>
+                                <span class="learner-count">Sidhartha Chinthapally</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="delete-icon" id="delete-icon">
+                        <img src="https://i.postimg.cc/prKj8HZB/delete.png" alt="del">
+                    </div>
+                </div> 
+                <div class="courseCard" id="courseCard">
+                    <div class="course-card-left">
+                        <p class="course-title">Data Science -Python and ML Basics</p>
+                        <div class="arrange-row">
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Learner count</span>
+                                <span class="learner-count">123</span>
+                                
+                            </div>
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Trainer name</span>
+                                <span class="learner-count">Sidhartha Chinthapally</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="delete-icon" id="delete-icon">
+                        <img src="https://i.postimg.cc/prKj8HZB/delete.png" alt="del">
+                    </div>
+                </div> 
+                <div class="courseCard" id="courseCard">
+                    <div class="course-card-left">
+                        <p class="course-title">Data Science -Python and ML Basics</p>
+                        <div class="arrange-row">
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Learner count</span>
+                                <span class="learner-count">123</span>
+                                
+                            </div>
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Trainer name</span>
+                                <span class="learner-count">Sidhartha Chinthapally</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="delete-icon" id="delete-icon">
+                        <img src="https://i.postimg.cc/prKj8HZB/delete.png" alt="del">
+                    </div>
+                </div> 
+                <div class="courseCard" id="courseCard">
+                    <div class="course-card-left">
+                        <p class="course-title">Data Science -Python and ML Basics</p>
+                        <div class="arrange-row">
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Learner count</span>
+                                <span class="learner-count">123</span>
+                                
+                            </div>
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Trainer name</span>
+                                <span class="learner-count">Sidhartha Chinthapally</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="delete-icon" id="delete-icon">
+                        <img src="https://i.postimg.cc/prKj8HZB/delete.png" alt="del">
+                    </div>
+                </div> 
+                <div class="courseCard" id="courseCard">
+                    <div class="course-card-left">
+                        <p class="course-title">Data Science -Python and ML Basics</p>
+                        <div class="arrange-row">
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Learner count</span>
+                                <span class="learner-count">123</span>
+                                
+                            </div>
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Trainer name</span>
+                                <span class="learner-count">Sidhartha Chinthapally</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="delete-icon" id="delete-icon">
+                        <img src="https://i.postimg.cc/prKj8HZB/delete.png" alt="del">
+                    </div>
+                </div> 
             </div>
         </div>
         <div id="trainerDetails" class="stop-visible">
@@ -632,6 +173,132 @@ form {
                         </div>  
                     </div>
                     <div class="eye-icon" id="trainer-eye-icon">
+                        <img src="https://i.postimg.cc/KzLzhpXT/eye.png" alt="eye">
+                    </div>
+                </div>
+                <div class="trainerCard trainerCard-width">
+                    <div class="trainer-card-left">
+                        <p class="trainer-title">Sidhartha Chinthapally</p>
+                        <div class="arrange-row">
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Course count</span>
+                                <span class="learner-count">12</span>
+                            </div>
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Status</span>
+                                <span class="learner-count">Mapped</span>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="eye-icon">
+                        <img src="https://i.postimg.cc/KzLzhpXT/eye.png" alt="eye">
+                    </div>
+                </div>
+                <div class="trainerCard trainerCard-width">
+                    <div class="trainer-card-left">
+                        <p class="trainer-title">Sidhartha Chinthapally</p>
+                        <div class="arrange-row">
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Course count</span>
+                                <span class="learner-count">12</span>
+                            </div>
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Status</span>
+                                <span class="learner-count">Mapped</span>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="eye-icon">
+                        <img src="https://i.postimg.cc/KzLzhpXT/eye.png" alt="eye">
+                    </div>
+                </div>
+                <div class="trainerCard trainerCard-width">
+                    <div class="trainer-card-left">
+                        <p class="trainer-title">Sidhartha Chinthapally</p>
+                        <div class="arrange-row">
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Course count</span>
+                                <span class="learner-count">12</span>
+                            </div>
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Status</span>
+                                <span class="learner-count">Mapped</span>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="eye-icon">
+                        <img src="https://i.postimg.cc/KzLzhpXT/eye.png" alt="eye">
+                    </div>
+                </div>
+                <div class="trainerCard trainerCard-width">
+                    <div class="trainer-card-left">
+                        <p class="trainer-title">Sidhartha Chinthapally</p>
+                        <div class="arrange-row">
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Course count</span>
+                                <span class="learner-count">12</span>
+                            </div>
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Status</span>
+                                <span class="learner-count">Mapped</span>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="eye-icon">
+                        <img src="https://i.postimg.cc/KzLzhpXT/eye.png" alt="eye">
+                    </div>
+                </div>
+                <div class="trainerCard trainerCard-width">
+                    <div class="trainer-card-left">
+                        <p class="trainer-title">Sidhartha Chinthapally</p>
+                        <div class="arrange-row">
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Course count</span>
+                                <span class="learner-count">12</span>
+                            </div>
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Status</span>
+                                <span class="learner-count">Mapped</span>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="eye-icon">
+                        <img src="https://i.postimg.cc/KzLzhpXT/eye.png" alt="eye">
+                    </div>
+                </div>
+                <div class="trainerCard trainerCard-width">
+                    <div class="trainer-card-left">
+                        <p class="trainer-title">Sidhartha Chinthapally</p>
+                        <div class="arrange-row">
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Course count</span>
+                                <span class="learner-count">12</span>
+                            </div>
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Status</span>
+                                <span class="learner-count">Mapped</span>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="eye-icon">
+                        <img src="https://i.postimg.cc/KzLzhpXT/eye.png" alt="eye">
+                    </div>
+                </div>
+                <div class="trainerCard trainerCard-width">
+                    <div class="trainer-card-left">
+                        <p class="trainer-title">Sidhartha Chinthapally</p>
+                        <div class="arrange-row">
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Course count</span>
+                                <span class="learner-count">12</span>
+                            </div>
+                            <div class="arrange-col">
+                                <span class="learner-count-title">Status</span>
+                                <span class="learner-count">Mapped</span>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="eye-icon">
                         <img src="https://i.postimg.cc/KzLzhpXT/eye.png" alt="eye">
                     </div>
                 </div>
@@ -723,8 +390,8 @@ form {
             <div>
                 <div class="delete-trainer-model-top-first">
                     <h1 class="delete-trainer-title">Trainer-<span class="delete-trainer-name">Sidhartha Chinthapally</span></h1>
-                    <div id="deleteTrainerCancel">
-                        <span>&times;</span>
+                    <div >
+                        <span id="deleteTrainerCancel">&times;</span>
                     </div>
                 </div>
             </div> 
@@ -770,231 +437,10 @@ form {
         </div>
        
     </div>
-    
-   </div>
-        
-  </div>
-  {% endblock %}
+</div>
 
-  {% block footer %}
-  {% endblock %}
-
-  {% block script %}
-  {{ super() }}
-  <script type="text/javascript">
-    // require(["admin"]);
-    
-    // custom script
-    
-    const hub_url = `/api/`;    
-    const ngshare_url = `/services/ngshare/`;
-    
-    // To change the color for active link in top left navbar items
-    const currentUrl = window.location.pathname.split("/");
-    const currentAnchorTagText = currentUrl[currentUrl.length - 1];
-    
-    $('.navbar-nav a').each(function () {
-      if ($(this).text().toLowerCase() == currentAnchorTagText) {
-        $(this).css("color", "#006BB6");
-      }
-    });
-
-    // To hide left navbar items - 'Token' and 'services'
-    let instructor = document.getElementById('instructor-nav');
-let courses = document.getElementById('course-nav');
-let learner = document.getElementById('learner-nav');
-let addBtn = document.getElementById('add-btn');
-let courseDetails = document.getElementById('courseDetails');
-let description = document.getElementById('description');
-let req = document.getElementById('req');
-let courseCard = document.getElementById('courseCard');
-let trainerDetails = document.getElementById('trainerDetails');
-let instructorsFilter = document.getElementById('instructors_filter');
-let learnerDetails = document.getElementById('learnerDetails');
-let deleteIcon = document.getElementById('delete-icon');
-let deleteCourseModal = document.getElementById('deleteCourseModal');
-let deleteCancel = document.getElementById('deleteCancel');
-let addLearnerModal = document.getElementById('addLearnerModal');
-let addCourseCancel = document.getElementById('addCourseCancel');
-let courseCardCont = document.getElementById('courseCardCont');
-let trainerEyeIcon = document.getElementById('trainer-eye-icon');
-let deleteTrainerModal = document.getElementById('deleteTrainerModal');
-let deleteTrainerCancel = document.getElementById('deleteTrainerCancel');
-let addLearnerCancel = document.getElementById('addLearnerCancel');
-let singleUserBtn = document.getElementById('singleUser');
-let multipleUserBtn = document.getElementById('multipleUser');
-let singleLearner = document.getElementById('singleLearner');
-let multipleLearners = document.getElementById('multipleLearners');
-let modelTitle = document.getElementById('modelTitle');
-let courses_ =[
-    {
-        id:1,
-        courseName :'Data Science - Python and ML Basics',
-        learnerCount : '123',
-        trainer:'Sidhartha Chinthapally'
-    },
-    {
-        id:2,
-        courseName :'Python',
-        learnerCount : '13',
-        trainer:'Sravanthi Peetla'
-    },
-    {
-        id:3,
-        courseName :'Statistics',
-        learnerCount : '12',
-        trainer:'Sidhartha Chinthapally'
-    },
-    {
-        id:4,
-        courseName :'Data Science - Python and ML Basics',
-        learnerCount : '103',
-        trainer:'Sidhartha Chinthapally'
-    },
-    {
-        id:5,
-        courseName :'python',
-        learnerCount : '11',
-        trainer:'Sidhartha Chinthapally'
-    },
-    {
-        id:6,
-        courseName :'Data Science - Python and ML Basics',
-        learnerCount : '93',
-        trainer:'Sidhartha Chinthapally'
-    },
-]
-
-
-function addAndAppendCourse(course) {
-    let courseCardId = 'courseCard' + course.id;
-    let courseCont = document.createElement('div');
-    courseCont.classList.add('courseCard');
-    courseCont.id = courseCardId;
-    courseCardCont.appendChild(courseCont);
-
-    let courseLeft = document.createElement('div');
-    courseLeft.classList.add('course-card-left');
-    courseCont.appendChild(courseLeft);
-
-    let courseTitle = document.createElement('p');
-    courseTitle.classList.add('course-title');
-    courseLeft.appendChild(courseTitle);
-    courseTitle.textContent = course.courseName;
-
-    let arrangeRow = document.createElement('div');
-    arrangeRow.classList.add('arrange-row');
-    courseLeft.appendChild(arrangeRow);
-
-    let arrangeCol = document.createElement('div');
-    arrangeCol.classList.add('arrange-col');
-    arrangeRow.appendChild(arrangeCol);
-
-    let countTitle = document.createElement('span');
-    countTitle.classList.add('learner-count-title');
-    countTitle.textContent = 'Learner count';
-    arrangeCol.appendChild(countTitle);
-    let count = document.createElement('span');
-    arrangeCol.appendChild(count);
-    count.textContent = course.learnerCount;
-    count.classList.add('learner-count');
-
-    let arrangeColTrain = document.createElement('div');
-    arrangeColTrain.classList.add('arrange-col');
-    arrangeRow.appendChild(arrangeColTrain);
-
-    let trainTitle = document.createElement('span');
-    trainTitle.classList.add('learner-count-title');
-    trainTitle.textContent = 'Trainer name';
-    arrangeColTrain.appendChild(trainTitle);
-    let trainName = document.createElement('span');
-    arrangeColTrain.appendChild(trainName);
-    trainName.textContent = course.trainer;
-    trainName.classList.add('learner-count');
-
-    let deleteIconCont = document.createElement('div');
-    deleteIconCont.classList.add('delete-icon');
-    let deleteIconI = document.createElement('img');
-    deleteIconI.src = 'https://i.postimg.cc/prKj8HZB/delete.png';
-    deleteIconCont.appendChild(deleteIconI);
-    courseCont.appendChild(deleteIconCont);
-
-}
-for (let course of courses_) {
-    addAndAppendCourse(course);
-}
-
-courses.onclick = function() {
-    instructorsFilter.classList.add('stop-visible');
-    addBtn.textContent = "Add Course";
-    description.textContent = "You can manage Course details here.";
-    instructor.classList.remove('active');
-    courses.classList.add('active');
-    learner.classList.remove('active');
-    courseDetails.classList.remove('stop-visible');
-    trainerDetails.classList.add('stop-visible');
-    learnerDetails.classList.add('stop-visible');
-}
-instructor.onclick = function() {
-    instructorsFilter.classList.remove('stop-visible');
-    addBtn.textContent = "Add Trainer";
-    description.textContent = "You can manage Trainer details here.";
-    instructor.classList.add('active');
-    courses.classList.remove('active');
-    learner.classList.remove('active');
-    courseDetails.classList.add('stop-visible');
-    trainerDetails.classList.remove('stop-visible');
-    learnerDetails.classList.add('stop-visible');
-}
-learner.onclick = function() {
-    instructorsFilter.classList.add('stop-visible');
-    addBtn.textContent = "Add Learners";
-    description.textContent = "You can manage Learner details here.";
-    instructor.classList.remove('active');
-    courses.classList.remove('active');
-    learner.classList.add('active');
-    courseDetails.classList.add('stop-visible');
-    trainerDetails.classList.add('stop-visible');
-    learnerDetails.classList.remove('stop-visible');
-}
-deleteIcon.onclick=function(){
-    deleteCourseModal.style.display='block';
-}
-deleteCancel.onclick=function(){
-    deleteCourseModal.style.display = 'none';
-}
-addCourseCancel.onclick=function(){
-    addCourseModal.style.display = 'none';
-}
-addBtn.onclick = function() {
-    if (addBtn.textContent==="Add Course" || addBtn.textContent==="Add Trainer"){
-    addCourseModal.style.display='block';
-    modelTitle.textContent = addBtn.textContent;
-    }
-    else if (addBtn.textContent==="Add Learners"){
-        addLearnerModal.style.display='block';
-    }
-}
-trainerEyeIcon.onclick = function(){
-    deleteTrainerModal.style.display ='block';
-}
-deleteTrainerCancel.onclick = function(){
-    deleteTrainerModal.style.display ='none';
-}
-addLearnerCancel.onclick = function(){
-    addLearnerModal.style.display = 'none';
-}
-singleUserBtn.onclick=function(){
-    singleUserBtn.classList.add('learner-active');
-    multipleUserBtn.classList.remove('learner-active');
-    singleLearner.style.display='block';
-    multipleLearners.style.display='none';
-}
-multipleUserBtn.onclick=function(){
-    singleUserBtn.classList.remove('learner-active');
-    multipleUserBtn.classList.add('learner-active');
-    singleLearner.style.display='none';
-    multipleLearners.style.display='block';
-}
-  </script>
-  {% endblock %}
+{% endblock %}
+{% block script %}
+{{ super() }}
+<script src={{ static_url("js/admin_add.js") }}></script> 
+{% endblock %}

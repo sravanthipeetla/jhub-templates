@@ -1,5 +1,5 @@
-{% extends "templates/page.html" %}
-{% if announcement_spawn %}
+{% extends "page.html" %}
+{% if announcement_spawn is string %}
   {% set announcement = announcement_spawn %}
 {% endif %}
 

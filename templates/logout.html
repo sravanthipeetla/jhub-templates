@@ -1,5 +1,5 @@
-{% extends "templates/page.html" %}
-{% if announcement_logout %}
+{% extends "page.html" %}
+{% if announcement_logout is string %}
   {% set announcement = announcement_logout %}
 {% endif %}
 
