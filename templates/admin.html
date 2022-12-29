@@ -895,45 +895,26 @@
   let multipleLearners = document.getElementById('multipleLearners');
   let modelTitle = document.getElementById('modelTitle');
   
-  let courses_ = [
-    {
-      id: 1,
-      courseName: 'Data Science - Python and ML Basics',
-      learnerCount: '123',
-      trainer: 'Sidhartha Chinthapally'
-    },
-    {
-      id: 2,
-      courseName: 'Python',
-      learnerCount: '13',
-      trainer: 'Sravanthi Peetla'
-    },
-    {
-      id: 3,
-      courseName: 'Statistics',
-      learnerCount: '12',
-      trainer: 'Sidhartha Chinthapally'
-    },
-    {
-      id: 4,
-      courseName: 'Data Science - Python and ML Basics',
-      learnerCount: '103',
-      trainer: 'Sidhartha Chinthapally'
-    },
-    {
-      id: 5,
-      courseName: 'python',
-      learnerCount: '11',
-      trainer: 'Sidhartha Chinthapally'
-    },
-    {
-      id: 6,
-      courseName: 'Data Science - Python and ML Basics',
-      learnerCount: '93',
-      trainer: 'Sidhartha Chinthapally'
-    },
-  ]
-
+//   course-tab data fetching
+  let courseDetails = [];
+  const getCourseDetails = async (courses) => {
+        const details = courses.map(async (courseName) => {
+          const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
+          const instructorsJson = await instructorsPromise.json();
+          const instructorsCount = instructorsJson.instructors.length;
+          const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
+          const studentsJson = await studentsPromise.json();
+          const studentsCount = studentsJson.students.length;
+          return { 'courseName': courseName, 'trainer': instructorsCount, 'studentsCount': studentsCount };
+        });
+        return Promise.all(details);
+      }
+      const courseFetch = await fetch(`${ngshare_url}courses`);
+      const courseJson = await courseFetch.json();
+      const coursesList = courseJson.courses;
+      (async () => {
+        courseDetails = await getCourseDetails(coursesList);
+      });
 
   function addAndAppendCourse(course) {
     let courseCardId = 'courseCard' + course.id;
@@ -989,7 +970,7 @@
     courseCont.appendChild(deleteIconCont);
 
   }
-  for (let course of courses_) {
+  for (let course of courseDetails) {
     addAndAppendCourse(course);
   }
 
