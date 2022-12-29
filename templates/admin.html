@@ -915,7 +915,7 @@
       const courseJson = await courseFetch.json();
       const coursesList = await courseJson.courses;
         courseDetails = await getCourseDetails(coursesList);
-      });
+      })();
 
   function addAndAppendCourse(course) {
     let courseCardId = 'courseCard' + course.id;
