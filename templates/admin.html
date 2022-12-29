@@ -896,7 +896,7 @@
   let modelTitle = document.getElementById('modelTitle');
   
 //   course-tab data fetching
-  let courseDetails = [];
+  let courseFetchDetails = [];
   const getCourseDetails = async (courses) => {
         const details = courses.map(async (courseName) => {
           const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
@@ -970,7 +970,7 @@
     courseCont.appendChild(deleteIconCont);
 
   }
-  for (let course of courseDetails) {
+  for (let course of courseFetchDetails) {
     addAndAppendCourse(course);
   }
 
