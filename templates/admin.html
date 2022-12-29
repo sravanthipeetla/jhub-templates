@@ -908,9 +908,9 @@
           return { 'courseName': courseName, 'trainer': instructorsCount, 'studentsCount': studentsCount };
         });
         return Promise.all(details);
-      }
-      const courseFetch = await fetch(`${ngshare_url}courses`);
-      const courseJson = await courseFetch.json();
+  }
+      const courseFetch = fetch(`${ngshare_url}courses`);
+      const courseJson = courseFetch.json();
       const coursesList = courseJson.courses;
       (async () => {
         courseDetails = await getCourseDetails(coursesList);
