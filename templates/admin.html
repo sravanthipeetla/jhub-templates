@@ -858,19 +858,20 @@
   
   const hub_url = `/api/`;
   const ngshare_url = `/services/ngshare/`;
-
-  // To change the color for active link in top left navbar items
   
-  const currentUrl = window.location.pathname.split("/");
-  const currentAnchorTagText = currentUrl[currentUrl.length - 1];
-
-  $('.navbar-nav a').each(function () {
-    if ($(this).text().toLowerCase() == currentAnchorTagText) {
-      $(this).css("color", "#006BB6");
-    }
-  });
-
-  // To hide left navbar items - 'Token' and 'services'
+  // To change the color for active link in top left navbar items
+        const currentUrl = window.location.pathname.split('/');
+        const currentAnchorTagText = currentUrl[currentUrl.length - 1];
+        $('.navbar-nav a').each(function () {
+          if ($(this).text().toLowerCase() == currentAnchorTagText) {
+            $(this).css('color', '#006BB6');
+          }
+        });
+    
+        // To hide left navbar items - 'Token' and 'services'
+        const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
+        navbarLeftList[1].style.visibility = 'hidden';
+        navbarLeftList[3].style.visibility = 'hidden';
   
   let instructor = document.getElementById('instructor-nav');
   let courses = document.getElementById('course-nav');
