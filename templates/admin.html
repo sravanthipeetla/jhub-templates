@@ -909,7 +909,7 @@
     const details = courses.map(async (courseName) => {
       const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
       const instructorsJson = await instructorsPromise.json();
-      const instructorsCount = instructorsJson.instructors.length;
+      const instructorsCount = instructorsJson.instructors[0].username;
       const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
       const studentsJson = await studentsPromise.json();
       const studentsCount = studentsJson.students.length;
@@ -962,7 +962,7 @@
     arrangeColTrain.appendChild(trainTitle);
     let trainName = document.createElement('span');
     arrangeColTrain.appendChild(trainName);
-    trainName.textContent = course.instructors[0].username;
+    trainName.textContent = course.trainer;
     trainName.classList.add('learner-count');
 
     let deleteIconCont = document.createElement('div');
