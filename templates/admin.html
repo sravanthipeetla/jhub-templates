@@ -902,6 +902,7 @@
 //   course-tab data fetching
   let courseFetchDetails = [];
   const getCourseDetails = async (courses) => {
+        console.log("In course fetch details");
         const details = courses.map(async (courseName) => {
           const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
           const instructorsJson = await instructorsPromise.json();
