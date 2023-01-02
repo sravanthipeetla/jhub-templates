@@ -909,11 +909,11 @@
     const details = courses.map(async (courseName) => {
       const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
       const instructorsJson = await instructorsPromise.json();
-      const instructorsCount = instructorsJson.instructors[0].username;
+      const instructorName = instructorsJson.instructors[0].username;
       const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
       const studentsJson = await studentsPromise.json();
       const studentsCount = studentsJson.students.length;
-      return { 'courseName': courseName, 'trainer': instructorsCount, 'studentsCount': studentsCount };
+      return { 'courseName': courseName, 'trainer': instructorName, 'studentsCount': studentsCount };
     });
     return Promise.all(details);
   }
