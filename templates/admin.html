@@ -871,8 +871,8 @@
 
   // To hide left navbar items - 'Token' and 'services'
   const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
-  navbarLeftList[1].style.visibility = 'hidden';
-  navbarLeftList[3].style.visibility = 'hidden';
+  navbarLeftList[1].style.display = 'none';
+  navbarLeftList[3].style.display = 'none';
 
   let instructor = document.getElementById('instructor-nav');
   let courses = document.getElementById('course-nav');
@@ -978,7 +978,7 @@
     const courseFetch = await fetch(`${ngshare_url}courses`);
     const courseJson = await courseFetch.json();
     const coursesList = await courseJson.courses;
-    courseFetchDetails.append(await getCourseDetails(coursesList));
+    courseFetchDetails.push(await getCourseDetails(coursesList));
     console.log(courseFetchDetails);
     for (let course of courseFetchDetails) {
     addAndAppendCourse(course);
