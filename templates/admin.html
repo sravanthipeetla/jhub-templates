@@ -962,7 +962,7 @@
     arrangeColTrain.appendChild(trainTitle);
     let trainName = document.createElement('span');
     arrangeColTrain.appendChild(trainName);
-    trainName.textContent = course.trainer;
+    trainName.textContent = course.instructors[0].username;
     trainName.classList.add('learner-count');
 
     let deleteIconCont = document.createElement('div');
