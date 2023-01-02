@@ -917,12 +917,13 @@
   }
       
       (async () => {
+        console.log("In sync");
         const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
       const coursesList = await courseJson.courses;
         courseFetchDetails = await getCourseDetails(coursesList);
       })();
-
+   
   function addAndAppendCourse(course) {
     console.log(courseFetchDetails);
     let courseCardId = 'courseCard' + course.id;
