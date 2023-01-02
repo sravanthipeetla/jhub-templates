@@ -2,7 +2,7 @@
 {% block stylesheet %}
 {{ super() }}
 <style>
- @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600&family=Poppins:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600&family=Poppins:wght@500;600&display=swap');
 *{
     box-sizing: border-box;
 }
@@ -23,7 +23,7 @@ body {
 
 .admin-navbar {
     overflow: hidden;  
-    margin: 3.5vh 0;
+    margin-bottom: 3.5vh;
 }
 
 .admin-navbar a {
@@ -322,11 +322,11 @@ th{
     padding: 0rem 0.4rem;
 }
 .delete-title{
-    font-size: 1rem;
     text-align: center;
     font-family: 'Gothic A1';
     font-style: Medium;
     font-size:1rem;
+    font-weight: 600;
 }
 
 .delete-course-model-bottom{
@@ -554,7 +554,7 @@ color: #006BB6;
 @media(max-width:1600px){
     html{
         font-size: 100%;
-    } 
+    }
     .courseCard{
         width: 31%;
     }
@@ -576,6 +576,7 @@ color: #006BB6;
     }
 
 }
+
 
 </style>
 {% endblock %}
