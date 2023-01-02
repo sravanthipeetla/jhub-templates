@@ -979,12 +979,15 @@
     const courseJson = await courseFetch.json();
     const coursesList = await courseJson.courses;
     courseFetchDetails = await getCourseDetails(coursesList);
+    for (let course of courseFetchDetails) {
+    addAndAppendCourse(course);
+  }
   })();
 
   console.log(courseFetchDetails);
-  for (let course of courseFetchDetails) {
-    addAndAppendCourse(course);
-  }
+//   for (let course of courseFetchDetails) {
+//     addAndAppendCourse(course);
+//   }
 
   courses.onclick = function () {
     instructorsFilter.classList.add('stop-visible');
