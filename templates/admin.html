@@ -901,7 +901,7 @@
   let modelTitle = document.getElementById('modelTitle');
   
 //   course-tab data fetching
-  let courseFetchDetails = [];
+  const courseFetchDetails = [];
   const getCourseDetails = async (courses) => {
         console.log("In course fetch details");
         const details = courses.map(async (courseName) => {
@@ -921,7 +921,7 @@
         const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
       const coursesList = await courseJson.courses;
-        courseFetchDetails = await getCourseDetails(coursesList);
+        courseFetchDetails.append(await getCourseDetails(coursesList));
         console.log(courseFetchDetails);
       })();
    
