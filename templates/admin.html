@@ -978,7 +978,7 @@
     const courseFetch = await fetch(`${ngshare_url}courses`);
     const courseJson = await courseFetch.json();
     const coursesList = await courseJson.courses;
-    courseFetchDetails.append(await getCourseDetails(coursesList));
+    courseFetchDetails.push(await getCourseDetails(coursesList));
     console.log(courseFetchDetails);
     for (let course of courseFetchDetails) {
     console.log(coursefetchDetails);
