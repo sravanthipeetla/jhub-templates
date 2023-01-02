@@ -854,10 +854,13 @@
 
   // custom script
 
+  // url for hub and ngshare
+  
   const hub_url = `/api/`;
   const ngshare_url = `/services/ngshare/`;
 
   // To change the color for active link in top left navbar items
+  
   const currentUrl = window.location.pathname.split("/");
   const currentAnchorTagText = currentUrl[currentUrl.length - 1];
 
@@ -868,6 +871,7 @@
   });
 
   // To hide left navbar items - 'Token' and 'services'
+  
   let instructor = document.getElementById('instructor-nav');
   let courses = document.getElementById('course-nav');
   let learner = document.getElementById('learner-nav');
@@ -914,7 +918,7 @@
         const courseFetch = await fetch(`${ngshare_url}courses`);
       const courseJson = await courseFetch.json();
       const coursesList = await courseJson.courses;
-        courseDetails = await getCourseDetails(coursesList);
+        courseFetchDetails = await getCourseDetails(coursesList);
       })();
 
   function addAndAppendCourse(course) {
