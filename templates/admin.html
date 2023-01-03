@@ -176,6 +176,9 @@ body {
     flex-direction: column;
     justify-content: end;
 }
+.arrange-col-first{
+    width:35%;
+}
 .delete-icon img{
     width:1rem;
 }
@@ -851,7 +854,7 @@ let deleteTitle = document.getElementById('deleteTitle');
     courseLeft.appendChild(arrangeRow);
 
     let arrangeCol = document.createElement('div');
-    arrangeCol.classList.add('arrange-col');
+    arrangeCol.classList.add('arrange-col','arrange-col-first');
     arrangeRow.appendChild(arrangeCol);
 
     let countTitle = document.createElement('span');
