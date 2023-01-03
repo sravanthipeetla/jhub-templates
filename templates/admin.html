@@ -937,15 +937,15 @@ deleteBtn.onclick = function(){
     deleteCourse(deleteId);
 }
 
-    // const hubUsersFetch = await fetch(`${hub_url}users`);
-    // const hubUsersJson = await hubUsersFetch.json();
-    // const instructorsUsername = [];
-    // for (let i = 0; i < hubUsersJson.length; i++) {
-    //     if (hubUsersJson[i].groups.includes('instructor')) {
-    //       instructorsUsername.push(hubUsersJson[i].name);
-    //     }
-    //   }
-    // console.log(instructorName);
+    const hubUsersFetch = await fetch(`${hub_url}users`);
+    const hubUsersJson = await hubUsersFetch.json();
+    const instructorsUsername = [];
+    for (let i = 0; i < hubUsersJson.length; i++) {
+        if (hubUsersJson[i].groups.includes('instructor')) {
+          instructorsUsername.push(hubUsersJson[i].name);
+        }
+      }
+    console.log(instructorsUsername);
 
 let trainers_ =[
     {
