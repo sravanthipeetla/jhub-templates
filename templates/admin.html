@@ -781,7 +781,7 @@ color: #006BB6;
   const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
   navbarLeftList[1].style.display = 'none';
   navbarLeftList[3].style.display = 'none';
-  
+
 let instructor = document.getElementById('instructor-nav');
 let courses = document.getElementById('course-nav');
 let learner = document.getElementById('learner-nav');
@@ -860,7 +860,7 @@ let deleteTitle = document.getElementById('deleteTitle');
     arrangeCol.appendChild(countTitle);
     let count = document.createElement('span');
     arrangeCol.appendChild(count);
-    count.textContent = course.learnerCount;
+    count.textContent = course.studentsCount;
     count.classList.add('learner-count');
 
     let arrangeColTrain = document.createElement('div');
@@ -939,9 +939,7 @@ let deleteTitle = document.getElementById('deleteTitle');
     trainerDetails.classList.add('stop-visible');
     learnerDetails.classList.remove('stop-visible');
   }
-  deleteIcon.onclick = function () {
-    deleteCourseModal.style.display = 'block';
-  }
+  
   deleteCancel.onclick = function () {
     deleteCourseModal.style.display = 'none';
   }
