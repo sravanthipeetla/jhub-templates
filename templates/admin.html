@@ -816,6 +816,7 @@ let multipleLearners = document.getElementById('multipleLearners');
 let modelTitle = document.getElementById('modelTitle');
 let deleteBtn = document.getElementById('delete-button');
 let deleteTitle = document.getElementById('deleteTitle');
+let deleteId = null;
 
   //   course-tab data fetching
 
@@ -835,7 +836,7 @@ let deleteTitle = document.getElementById('deleteTitle');
   }
 
   function addAndAppendCourse(course) {
-    let courseCardId = 'courseCard' + course.id;
+    let courseCardId = course.courseName;
     let courseCont = document.createElement('div');
     courseCont.classList.add('courseCard');
     courseCont.id = courseCardId;
@@ -884,6 +885,8 @@ let deleteTitle = document.getElementById('deleteTitle');
     deleteIconCont.onclick = function(){
         deleteCourseModal.style.display='block';
         deleteTitle.textContent = course.courseName;
+        deleteId = courseCardId;
+
       
     }
     deleteIconCont.classList.add('delete-icon');
@@ -909,6 +912,29 @@ let deleteTitle = document.getElementById('deleteTitle');
 //   for (let course of courseFetchDetails) {
 //     addAndAppendCourse(course);
 //   }
+deleteBtn.onclick = function(){
+    // let deleteCard = document.getElementById(deleteId);
+    // courseCardCont.removeChild(deleteCard);
+    // deleteCourseModal.style.display = 'none';
+    const deleteCourse = async (deleteId) => {
+    const courseDeletePromise = await fetch(`${ngshare_url}course/${deleteId}`, {
+    method: 'DELETE',
+    headers: {
+    Accept: 'application.json',
+    'Content-Type': 'application/json'
+    }
+    });
+    const response = await courseDeletePromise.json();
+        if (response.success) {
+    alert("Successfully deleted course");
+    fetchCourseDetails();
+    }
+    else {
+    alert("Something went wrong! Couldn't delete course");
+    }   
+}
+  
+}
 
 let trainers_ =[
     {
