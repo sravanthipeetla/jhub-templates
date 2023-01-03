@@ -906,6 +906,120 @@ let deleteTitle = document.getElementById('deleteTitle');
 //     addAndAppendCourse(course);
 //   }
 
+let trainers_ =[
+    {
+        id:1,
+        trainerName :'Sidhartha Chinthapally',
+        courseCount : '13',
+        status_:'Mapped'
+    },
+    {
+        id:2,
+        trainerName :'Sravanthi Peetla',
+        courseCount : '18',
+        status_:'Mapped'
+    },
+    {
+        id:3,
+        trainerName :'Saraswathi Pasumarthi',
+        courseCount : '19',
+        status_:'Mapped'
+    },
+    {
+        id:4,
+        trainerName :'Sidhartha Chinthapally',
+        courseCount : '10',
+        status_:'Mapped'
+    },
+    {
+        id:5,
+        trainerName :'Sravanthi Peetla',
+        courseCount : '13',
+        status_:'Mapped'
+    },
+    {
+        id:6,
+        trainerName :'Sravanthi Peetla',
+        courseCount : '12',
+        status_:'Mapped'
+    },
+    {
+        id:7,
+        trainerName :'Saraswathi Pasumarthi',
+        courseCount : '23',
+        status_:'Mapped'
+    },
+]
+
+
+function addAndAppendTrainer(trainer) {
+    let trainerCardId = 'trainerCard' + trainer.id;
+    let trainerCont = document.createElement('div');
+    trainerCont.classList.add('trainerCard','trainerCard-width');
+    trainerCont.id = trainerCardId;
+    trainerCardCont.appendChild(trainerCont);
+
+    let trainerLeft = document.createElement('div');
+    trainerLeft.classList.add('trainer-card-left');
+    trainerCont.appendChild(trainerLeft);
+
+    let trainerTitle = document.createElement('p');
+    trainerTitle.classList.add('trainer-title');
+    trainerLeft.appendChild(trainerTitle);
+    trainerTitle.textContent = trainer.trainerName;
+
+    let arrangeRow = document.createElement('div');
+    arrangeRow.classList.add('arrange-row');
+    trainerLeft.appendChild(arrangeRow);
+
+    let arrangeCol = document.createElement('div');
+    arrangeCol.classList.add('arrange-col');
+    arrangeRow.appendChild(arrangeCol);
+
+    let countTitle = document.createElement('span');
+    countTitle.classList.add('learner-count-title');
+    countTitle.textContent = 'Course count';
+    arrangeCol.appendChild(countTitle);
+    let count = document.createElement('span');
+    arrangeCol.appendChild(count);
+    count.textContent = trainer.courseCount;
+    count.classList.add('learner-count');
+
+    let arrangeColTrain = document.createElement('div');
+    arrangeColTrain.classList.add('arrange-col');
+    arrangeRow.appendChild(arrangeColTrain);
+
+    let statusTitle = document.createElement('span');
+    statusTitle.classList.add('learner-count-title');
+    statusTitle.textContent = 'Status';
+    arrangeColTrain.appendChild(statusTitle);
+    let statusName = document.createElement('span');
+    arrangeColTrain.appendChild(statusName);
+    statusName.textContent = trainer.status_;
+    statusName.classList.add('learner-count');
+
+    let eyeIconCont = document.createElement('div');
+    eyeIconCont.onclick = function(){
+        deleteTrainerModal.style.display='block';
+        deleteTrainer.textContent = trainer.trainerName;
+        // function deleteCourse(){
+        //     courses_.splice(course.id,1);
+
+        //      deleteCourseModal.style.display = 'none';
+        // }
+      
+    }
+    eyeIconCont.classList.add('eye-icon');
+    let eyeIconI = document.createElement('img');
+    eyeIconI.src = 'https://i.postimg.cc/KzLzhpXT/eye.png';
+    eyeIconCont.appendChild(eyeIconI);
+    trainerCont.appendChild(eyeIconCont);
+
+}
+for (let trainer of trainers_) {
+    addAndAppendTrainer(trainer);
+}
+
   courses.onclick = function () {
     instructorsFilter.classList.add('stop-visible');
     addBtn.textContent = "Add Course";
@@ -954,9 +1068,6 @@ let deleteTitle = document.getElementById('deleteTitle');
     else if (addBtn.textContent === "Add Learners") {
       addLearnerModal.style.display = 'block';
     }
-  }
-  trainerEyeIcon.onclick = function () {
-    deleteTrainerModal.style.display = 'block';
   }
   deleteTrainerCancel.onclick = function () {
     deleteTrainerModal.style.display = 'none';
