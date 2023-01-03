@@ -937,15 +937,7 @@ deleteBtn.onclick = function(){
     deleteCourse(deleteId);
 }
 
-    const hubUsersFetch = await fetch(`${hub_url}users`);
-    const hubUsersJson = await hubUsersFetch.json();
-    const instructorsUsername = [];
-    for (let i = 0; i < hubUsersJson.length; i++) {
-        if (hubUsersJson[i].groups.includes('instructor')) {
-          instructorsUsername.push(hubUsersJson[i].name);
-        }
-      }
-    console.log(instructorsUsername);
+   
 
 let trainers_ =[
     {
@@ -1101,10 +1093,19 @@ for (let trainer of trainers_) {
   addCourseCancel.onclick = function () {
     addCourseModal.style.display = 'none';
   }
-  addBtn.onclick = function () {
+  addBtn.onclick = async function () {
     if (addBtn.textContent === "Add Course" || addBtn.textContent === "Add Trainer") {
-      addCourseModal.style.display = 'block';
-      modelTitle.textContent = addBtn.textContent;
+        addCourseModal.style.display = 'block';
+        modelTitle.textContent = addBtn.textContent;
+        const hubUsersFetch = await fetch(`${hub_url}users`);
+        const hubUsersJson = await hubUsersFetch.json();
+        const instructorsUsername = [];
+        for (let i = 0; i < hubUsersJson.length; i++) {
+            if (hubUsersJson[i].groups.includes('instructor')) {
+            instructorsUsername.push(hubUsersJson[i].name);
+            }
+        }
+        console.log(instructorsUsername);
     }
     else if (addBtn.textContent === "Add Learners") {
       addLearnerModal.style.display = 'block';
