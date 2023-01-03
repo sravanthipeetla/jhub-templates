@@ -912,8 +912,9 @@ let deleteId = null;
 //   for (let course of courseFetchDetails) {
 //     addAndAppendCourse(course);
 //   }
-const deleteCourse = async (deleteId) => {
-    const courseDeletePromise = await fetch(`${ngshare_url}course/${deleteId}`, {
+
+const deleteCourse = async (courseName) => {
+    const courseDeletePromise = await fetch(`${ngshare_url}course/${courseName}`, {
     method: 'DELETE',
     headers: {
     Accept: 'application.json',
@@ -934,8 +935,17 @@ deleteBtn.onclick = function(){
     // courseCardCont.removeChild(deleteCard);
     // deleteCourseModal.style.display = 'none';
     deleteCourse(deleteId);
-  
 }
+
+    const hubUsersFetch = await fetch(`${hub_url}users`);
+    const hubUsersJson = await hubUsersFetch.json();
+    const instructorsUsername = [];
+    for (let i = 0; i < hubUsersJson.length; i++) {
+        if (hubUsersJson[i].groups.includes('instructor')) {
+          instructorsUsername.push(hubUsersJson[i].name);
+        }
+      }
+    console.log(instructorName);
 
 let trainers_ =[
     {
