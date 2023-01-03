@@ -912,11 +912,7 @@ let deleteId = null;
 //   for (let course of courseFetchDetails) {
 //     addAndAppendCourse(course);
 //   }
-deleteBtn.onclick = function(){
-    // let deleteCard = document.getElementById(deleteId);
-    // courseCardCont.removeChild(deleteCard);
-    // deleteCourseModal.style.display = 'none';
-    const deleteCourse = async (deleteId) => {
+const deleteCourse = async (deleteId) => {
     const courseDeletePromise = await fetch(`${ngshare_url}course/${deleteId}`, {
     method: 'DELETE',
     headers: {
@@ -933,6 +929,11 @@ deleteBtn.onclick = function(){
     alert("Something went wrong! Couldn't delete course");
     }   
 }
+deleteBtn.onclick = function(){
+    // let deleteCard = document.getElementById(deleteId);
+    // courseCardCont.removeChild(deleteCard);
+    // deleteCourseModal.style.display = 'none';
+    deleteCourse(deleteId);
   
 }
 
