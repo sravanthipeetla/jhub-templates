@@ -781,33 +781,37 @@ color: #006BB6;
   const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
   navbarLeftList[1].style.display = 'none';
   navbarLeftList[3].style.display = 'none';
-
-  let instructor = document.getElementById('instructor-nav');
-  let courses = document.getElementById('course-nav');
-  let learner = document.getElementById('learner-nav');
-  let addBtn = document.getElementById('add-btn');
-  let courseDetails = document.getElementById('courseDetails');
-  let description = document.getElementById('description');
-  let req = document.getElementById('req');
-  let courseCard = document.getElementById('courseCard');
-  let trainerDetails = document.getElementById('trainerDetails');
-  let instructorsFilter = document.getElementById('instructors_filter');
-  let learnerDetails = document.getElementById('learnerDetails');
-  let deleteIcon = document.getElementById('delete-icon');
-  let deleteCourseModal = document.getElementById('deleteCourseModal');
-  let deleteCancel = document.getElementById('deleteCancel');
-  let addLearnerModal = document.getElementById('addLearnerModal');
-  let addCourseCancel = document.getElementById('addCourseCancel');
-  let courseCardCont = document.getElementById('courseCardCont');
-  let trainerEyeIcon = document.getElementById('trainer-eye-icon');
-  let deleteTrainerModal = document.getElementById('deleteTrainerModal');
-  let deleteTrainerCancel = document.getElementById('deleteTrainerCancel');
-  let addLearnerCancel = document.getElementById('addLearnerCancel');
-  let singleUserBtn = document.getElementById('singleUser');
-  let multipleUserBtn = document.getElementById('multipleUser');
-  let singleLearner = document.getElementById('singleLearner');
-  let multipleLearners = document.getElementById('multipleLearners');
-  let modelTitle = document.getElementById('modelTitle');
+  
+let instructor = document.getElementById('instructor-nav');
+let courses = document.getElementById('course-nav');
+let learner = document.getElementById('learner-nav');
+let addBtn = document.getElementById('add-btn');
+let courseDetails = document.getElementById('courseDetails');
+let description = document.getElementById('description');
+let req = document.getElementById('req');
+let courseCard = document.getElementById('courseCard');
+let trainerDetails = document.getElementById('trainerDetails');
+let instructorsFilter = document.getElementById('instructors_filter');
+let learnerDetails = document.getElementById('learnerDetails');
+let deleteIcon = document.getElementById('delete-icon');
+let deleteCourseModal = document.getElementById('deleteCourseModal');
+let deleteCancel = document.getElementById('deleteCancel');
+let addLearnerModal = document.getElementById('addLearnerModal');
+let addCourseCancel = document.getElementById('addCourseCancel');
+let courseCardCont = document.getElementById('courseCardCont');
+let trainerCardCont = document.getElementById('trainerCardCont');
+let trainerEyeIcon = document.getElementById('trainer-eye-icon');
+let deleteTrainerModal = document.getElementById('deleteTrainerModal');
+let deleteTrainer = document.getElementById('deleteTrainer');
+let deleteTrainerCancel = document.getElementById('deleteTrainerCancel');
+let addLearnerCancel = document.getElementById('addLearnerCancel');
+let singleUserBtn = document.getElementById('singleUser');
+let multipleUserBtn = document.getElementById('multipleUser');
+let singleLearner = document.getElementById('singleLearner');
+let multipleLearners = document.getElementById('multipleLearners');
+let modelTitle = document.getElementById('modelTitle');
+let deleteBtn = document.getElementById('delete-button');
+let deleteTitle = document.getElementById('deleteTitle');
 
   //   course-tab data fetching
 
@@ -827,7 +831,6 @@ color: #006BB6;
   }
 
   function addAndAppendCourse(course) {
-    console.log(courseFetchDetails);
     let courseCardId = 'courseCard' + course.id;
     let courseCont = document.createElement('div');
     courseCont.classList.add('courseCard');
@@ -857,7 +860,7 @@ color: #006BB6;
     arrangeCol.appendChild(countTitle);
     let count = document.createElement('span');
     arrangeCol.appendChild(count);
-    count.textContent = course.studentsCount;
+    count.textContent = course.learnerCount;
     count.classList.add('learner-count');
 
     let arrangeColTrain = document.createElement('div');
@@ -874,12 +877,18 @@ color: #006BB6;
     trainName.classList.add('learner-count');
 
     let deleteIconCont = document.createElement('div');
+    deleteIconCont.onclick = function(){
+        deleteCourseModal.style.display='block';
+        deleteTitle.textContent = course.courseName;
+      
+    }
     deleteIconCont.classList.add('delete-icon');
     let deleteIconI = document.createElement('img');
     deleteIconI.src = 'https://i.postimg.cc/prKj8HZB/delete.png';
     deleteIconCont.appendChild(deleteIconI);
     courseCont.appendChild(deleteIconCont);
-  };
+
+}
 
   (async () => {
     console.log("In sync");
