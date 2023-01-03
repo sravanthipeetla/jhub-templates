@@ -280,9 +280,10 @@
         });
     
         // To hide left navbar items - 'Token' and 'services'
-        const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
-        navbarLeftList[1].style.display = 'hidden';
-        navbarLeftList[3].style.display = 'hidden';
+          const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
+          navbarLeftList[1].style.display = 'none';
+          navbarLeftList[3].style.display = 'none';
+
         
         //server-info change
         const serverInfo=document.getElementById('server-info');
