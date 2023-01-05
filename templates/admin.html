@@ -985,8 +985,9 @@ let trainers_ =[
         status_:'Mapped'
     },
 ]
-
+const fetchinst = async() =>{
 const getInstructorDetails = async (courses, instructorsUsername) => {
+
     console.log("In instructor fetch details");
     let instructorCourse = {};
     for(let inst of instructorsUsername){
@@ -997,9 +998,8 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
         const instructorsJson = await instructorsPromise.json();
         const instructorName = instructorsJson.instructors[0].username;
         instructorCourse[instructorName].push(courseName);
-        return instructorCourse;
     });
-    return  Promise.all(details);
+    return instructorCourse;
     // let instructorDetails=[];
     // for (key in instructorCourse){
     //     let status = null;
@@ -1032,6 +1032,8 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
 //     // return Promise.all(details);
 //   };
 
+};
+return  Promise.all(details);
 };
 let trainerFetchDetails = null;
 function addAndAppendTrainer(trainer) {
