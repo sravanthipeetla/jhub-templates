@@ -1113,8 +1113,9 @@ function addAndAppendTrainer(trainer) {
       }
       console.log("instructors list",instructorsUsername);
         trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
-        console.log(trainerFetchDetails);
+        // console.log(trainerFetchDetails);
       })();
+      console.log(trainerFetchDetails);
 for (let trainer of trainers_) {
     addAndAppendTrainer(trainer);
 }
