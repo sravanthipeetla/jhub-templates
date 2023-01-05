@@ -987,7 +987,7 @@ let trainers_ =[
     },
 ]
 
-const getInstructorDetails = async (coursesList, instructorsUsername) => {
+const getInstructorDetails = async (courses, instructorsUsername) => {
     console.log("In instructor fetch details");
     let courseInstructor = {};
     let instructorCourse = {};
@@ -998,6 +998,7 @@ const getInstructorDetails = async (coursesList, instructorsUsername) => {
         courseInstructor[courseName] = instructorList;
         return '';
     });
+    
     console.log(courseInstructor);
     return Promise.all(details);
   };
