@@ -990,28 +990,35 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     console.log("In instructor fetch details");
     let courseInstructor = {};
     let instructorCourse = {};
+    for(let inst of instructorsUsername){
+        instructorCourse[inst] = [];
+    }
     courses.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
         const instructorName = instructorsJson.instructors[0].username;
         courseInstructor[courseName] = instructorName;
+        instructorCourse[instructorName].push(courseName);
+
     });
-    for await(let inst of instructorsUsername ){
-        instructorCourse[inst]=[];
-        for (let key in courseInstructor){
-            for (let key in courseInstructor){
-            console.log("key",key);
-            console.log("inst",inst);
-            if (courseInstructor[key] === inst){
-                instructorCourse[inst].push(key);
-                console.log(instructorCourse);
-            }
-        }
-        console.log(courseInstructor);
-        console.log(instructorCourse);
-    }
-    // return Promise.all(details);
-  };
+    console.log(courseInstructor);
+    console.log(instructorCourse);
+//     for (let inst of instructorsUsername ){
+//         instructorCourse[inst]=[];
+//         for (let key in courseInstructor){
+//             for (let key in courseInstructor){
+//             console.log("key",key);
+//             console.log("inst",inst);
+//             if (courseInstructor[key] === inst){
+//                 instructorCourse[inst].push(key);
+//                 console.log(instructorCourse);
+//             }
+//         }
+//         console.log(courseInstructor);
+//         console.log(instructorCourse);
+//     }
+//     // return Promise.all(details);
+//   };
 
 };
 let trainerFetchDetails = null;
