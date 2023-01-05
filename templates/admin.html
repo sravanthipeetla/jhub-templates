@@ -995,7 +995,7 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
         const instructorName = instructorsJson.instructors[0].username;
-        courseInstructor[courseName] = instructorList;
+        courseInstructor[courseName] = instructorName;
         return '';
     });
     
