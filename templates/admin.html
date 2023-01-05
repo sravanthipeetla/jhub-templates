@@ -1113,7 +1113,19 @@ function addAndAppendTrainer(trainer) {
       }
       console.log("instructors list",instructorsUsername);
         trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
-        // console.log(trainerFetchDetails);
+        console.log(trainerFetchDetails);
+        let instructorDetails=[];
+        for (key in instructorCourse){
+        let status = null;
+        if (instructorCourse[key].length > 0){
+            status='Mapped';
+        }
+        else{
+            status='Unmapped';
+        }
+        instructorDetails.push({'name':key,'course':instructorCourse[key],'status':status});
+    }
+    console.log(instructorDetails);
       })();
       console.log(trainerFetchDetails);
 for (let trainer of trainers_) {
