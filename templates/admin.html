@@ -999,7 +999,7 @@ const fetchinst = async (courses, instructorsUsername) => {
         const instructorName = instructorsJson.instructors[0].username;
         instructorCourse[instructorName].push(courseName);
     });
-    return await instructorCourse;
+    return Promise(instructorCourse);
     // let instructorDetails=[];
     // for (key in instructorCourse){
     //     let status = null;
