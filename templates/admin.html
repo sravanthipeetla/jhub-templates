@@ -923,7 +923,7 @@ const deleteCourse = async (courseName) => {
     });
     const response = await courseDeletePromise.json();
         if (response.success) {
-    alert("Successfully deleted course");
+    // alert("Successfully deleted course");
     let deleteCard = document.getElementById(courseName);
     courseCardCont.removeChild(deleteCard);
     fetchCourseDetails();
