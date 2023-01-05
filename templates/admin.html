@@ -1048,7 +1048,7 @@ function addAndAppendTrainer(trainer) {
     let trainerTitle = document.createElement('p');
     trainerTitle.classList.add('trainer-title');
     trainerLeft.appendChild(trainerTitle);
-    trainerTitle.textContent = trainer.trainerName;
+    trainerTitle.textContent = trainer.name;
 
     let arrangeRow = document.createElement('div');
     arrangeRow.classList.add('arrange-row');
@@ -1064,7 +1064,7 @@ function addAndAppendTrainer(trainer) {
     arrangeCol.appendChild(countTitle);
     let count = document.createElement('span');
     arrangeCol.appendChild(count);
-    count.textContent = trainer.courseCount;
+    count.textContent = trainer.course.length;
     count.classList.add('learner-count');
 
     let arrangeColTrain = document.createElement('div');
@@ -1077,7 +1077,7 @@ function addAndAppendTrainer(trainer) {
     arrangeColTrain.appendChild(statusTitle);
     let statusName = document.createElement('span');
     arrangeColTrain.appendChild(statusName);
-    statusName.textContent = trainer.status_;
+    statusName.textContent = trainer.status;
     statusName.classList.add('learner-count');
 
     let eyeIconCont = document.createElement('div');
@@ -1130,7 +1130,7 @@ function addAndAppendTrainer(trainer) {
     console.log(instructorDetails);
       })();
       console.log(trainerFetchDetails);
-for (let trainer of trainers_) {
+for (let trainer of instructorDetails) {
     addAndAppendTrainer(trainer);
 }
 
