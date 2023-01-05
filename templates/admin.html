@@ -173,11 +173,13 @@ body {
 .arrange-col{
     display: flex;
     flex-direction: column;
-    align-items: space-between;
     justify-content: end;
 }
 .arrange-col-first{
     width:35%;
+}
+.arrange-row-first{
+    justify-content: space-between;
 }
 .delete-icon img{
     width:1rem;
@@ -1052,7 +1054,7 @@ function addAndAppendTrainer(trainer) {
     trainerTitle.textContent = trainer.name;
 
     let arrangeRow = document.createElement('div');
-    arrangeRow.classList.add('arrange-row');
+    arrangeRow.classList.add('arrange-row','arrange-row-first');
     trainerLeft.appendChild(arrangeRow);
 
     let arrangeCol = document.createElement('div');
