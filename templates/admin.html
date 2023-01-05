@@ -992,13 +992,14 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     for(let inst of instructorsUsername){
         instructorCourse[inst] = [];
     }
-    courses.map(async (courseName) => {
+    const details=courses.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
         const instructorName = instructorsJson.instructors[0].username;
         instructorCourse[instructorName].push(courseName);
+        return instructorCourse;
     });
-    return Promise.all(instructorCourse);
+    return  Promise.all(details);
     // let instructorDetails=[];
     // for (key in instructorCourse){
     //     let status = null;
