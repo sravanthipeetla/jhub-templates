@@ -996,9 +996,10 @@ const getInstructorDetails = async (coursesList, instructorsUsername) => {
         const instructorsJson = await instructorsPromise.json();
         const instructorName = instructorsJson.instructors[0].username;
         courseInstructor[courseName] = instructorList;
+        return '';
     });
     console.log(courseInstructor);
-    // return Promise.all(details);
+    return Promise.all(details);
   };
 
 
