@@ -998,7 +998,7 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
         const instructorName = instructorsJson.instructors[0].username;
         instructorCourse[instructorName].push(courseName);
     });
-    return instructorCourse;
+    return Promise.all(instructorCourse);
     // let instructorDetails=[];
     // for (key in instructorCourse){
     //     let status = null;
