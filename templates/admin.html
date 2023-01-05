@@ -1000,7 +1000,7 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     for(let inst of instructorsUsername ){
         console.log("In for");
         instructorCourse[inst]=[];
-        for (let key in courseInstructor){
+        for (const key in courseInstructor){
             console.log("key",key);
             console.log("inst",inst);
             if (courseInstructor[key] === inst){
@@ -1010,6 +1010,11 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
             }
         }
     }
+    // instructorsUsername.forEach(instructor => {
+    //     console.log('in for');
+    //     instructorCourse[instructor] = [];
+
+    // })
     console.log(instructorCourse);
     // console.log(courseInstructor);
   };
