@@ -999,7 +999,7 @@ const fetchinst = async (courses, instructorsUsername) => {
         const instructorName = instructorsJson.instructors[0].username;
         instructorCourse[instructorName].push(courseName);
     });
-    return instructorCourse;
+    return await instructorCourse;
     // let instructorDetails=[];
     // for (key in instructorCourse){
     //     let status = null;
@@ -1033,7 +1033,7 @@ const fetchinst = async (courses, instructorsUsername) => {
 //   };
 
 };
-return  Promise.all(details);
+// return  Promise.all(details);
 };
 let trainerFetchDetails = null;
 function addAndAppendTrainer(trainer) {
