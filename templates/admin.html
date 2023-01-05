@@ -1000,15 +1000,18 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     for(let inst of instructorsUsername ){
         console.log("In for");
         instructorCourse[inst]=[];
-        for (const key in courseInstructor){
-            console.log("key",key);
-            console.log("inst",inst);
-            // if (courseInstructor[key] === inst){
-            //     console.log(key);
-            //     instructorCourse[inst].push(key);
-            //     console.log(instructorCourse);
-            // }
-        }
+        Object.entries(courseInstructor).map((el)=>{
+            console.log(el);
+        })
+        // for (const key in courseInstructor){
+        //     console.log("key",key);
+        //     console.log("inst",inst);
+        //     // if (courseInstructor[key] === inst){
+        //     //     console.log(key);
+        //     //     instructorCourse[inst].push(key);
+        //     //     console.log(instructorCourse);
+        //     // }
+        // }
     }
     // instructorsUsername.forEach(instructor => {
     //     console.log('in for');
