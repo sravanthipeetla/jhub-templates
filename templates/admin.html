@@ -1081,10 +1081,11 @@ function addAndAppendTrainer(trainer) {
         const instructorsUsername = [];
     for (let i = 0; i < hubUsersJson.length; i++) {
         if (hubUsersJson[i].groups.includes('instructor')) {
+            console.log("in if");
           instructorsUsername.push(hubUsersJson[i].name);
         }
       }
-      console.log(instructorsUsername);
+      console.log("instructors list",instructorsUsername);
         trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
       })();
 for (let trainer of trainers_) {
