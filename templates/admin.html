@@ -991,14 +991,13 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     console.log("In instructor fetch details");
     let courseInstructor = {};
     let instructorCourse = {};
-    const details = courses.map(async (courseName) => {
+    courses.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
         const instructorName = instructorsJson.instructors[0].username;
         courseInstructor[courseName] = instructorName;
-        return '';
     });
-    
+
     console.log(courseInstructor);
     return Promise.all(details);
   };
@@ -1077,11 +1076,9 @@ function addAndAppendTrainer(trainer) {
         const coursesList = courseJson.courses;
         const hubUsersFetch = await fetch(`${hub_url}users`);
         const hubUsersJson = await hubUsersFetch.json();
-        console.log(hubUsersJson);
         const instructorsUsername = [];
     for (let i = 0; i < hubUsersJson.length; i++) {
         if (hubUsersJson[i].groups.includes('instructor')) {
-            console.log("in if");
           instructorsUsername.push(hubUsersJson[i].name);
         }
       }
