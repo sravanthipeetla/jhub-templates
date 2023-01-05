@@ -1128,11 +1128,12 @@ function addAndAppendTrainer(trainer) {
         instructorDetails.push({'name':key,'course':trainerFetchDetails[key],'status':status});
     }
     console.log(instructorDetails);
-      })();
-      console.log(trainerFetchDetails);
-for (let trainer of instructorDetails) {
+    for (let trainer of instructorDetails) {
     addAndAppendTrainer(trainer);
 }
+      })();
+      console.log(trainerFetchDetails);
+
 
   
 
