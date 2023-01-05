@@ -1001,6 +1001,19 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
         instructorCourse[instructorName].push(courseName);
 
     });
+    let instructorDetails=[];
+    for (key in instructorCourse){
+        let status = null;
+        if (instructorCourse[key].length > 0){
+            status='Mapped';
+        }
+        else{
+            status='Unmapped';
+        }
+        instructorDetails.push({'name':key,'course':instructorCourse[key],'status':status});
+
+    }
+    console.log(instructorDetails);
     console.log(courseInstructor);
     console.log(instructorCourse);
 //     for (let inst of instructorsUsername ){
