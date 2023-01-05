@@ -999,6 +999,8 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     for(let inst of instructorsUsername ){
         instructorCourse[inst]=[];
         for (let key in courseInstructor){
+            console.log("key",key);
+            console.log("inst",inst);
             if (courseInstructor[key] === inst){
                 console.log(key);
                 instructorCourse[inst].push(key);
