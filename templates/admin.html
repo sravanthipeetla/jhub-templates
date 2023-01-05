@@ -996,10 +996,11 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
         const instructorName = instructorsJson.instructors[0].username;
         courseInstructor[courseName] = instructorName;
     });
+    console.log(courseInstructor);
     for(let inst of instructorsUsername ){
         console.log("In for");
         instructorCourse[inst]=[];
-        for (let key in Object.entries(courseInstructor)){
+        for (let key in courseInstructor){
             console.log("key",key);
             console.log("inst",inst);
             if (courseInstructor[key] === inst){
@@ -1010,7 +1011,7 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
         }
     }
     console.log(instructorCourse);
-    console.log(courseInstructor);
+    // console.log(courseInstructor);
   };
 
 
