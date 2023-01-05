@@ -999,8 +999,7 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     for(let inst of instructorsUsername ){
         console.log("In for");
         instructorCourse[inst]=[];
-        console.log("Before for for dict",courseInstructor);
-        for (let key in courseInstructor){
+        for (let key in Object.entries(courseInstructor)){
             console.log("key",key);
             console.log("inst",inst);
             if (courseInstructor[key] === inst){
