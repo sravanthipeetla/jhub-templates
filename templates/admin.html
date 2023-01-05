@@ -998,15 +998,17 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     });
     for(let inst of instructorsUsername ){
         instructorCourse[inst]=[];
-        for (const key in courseInstructor){
-            console.log("key",key);
-            console.log("inst",inst);
-            if (courseInstructor[key] === inst){
-                instructorCourse[inst].push(key);
-                console.log(instructorCourse);
-            }
-        }
-        console.log(instructorCourse);
+        // for (let key in courseInstructor){
+        //     for (let key in courseInstructor){
+        //     console.log("key",key);
+        //     console.log("inst",inst);
+        //     if (courseInstructor[key] === inst){
+        //         instructorCourse[inst].push(key);
+        //         console.log(instructorCourse);
+        //     }
+        // }
+        console.log(courseInstructor);
+        // console.log(instructorCourse);
     }
     return Promise.all(details);
   };
