@@ -1113,7 +1113,7 @@ function addAndAppendTrainer(trainer) {
         }
       }
       console.log("instructors list",instructorsUsername);
-        trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername)[0];
+        trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
         console.log(trainerFetchDetails);
         let instructorDetails=[];
         for (key in trainerFetchDetails){
