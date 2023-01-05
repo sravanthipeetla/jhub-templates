@@ -990,7 +990,7 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     console.log("In instructor fetch details");
     let courseInstructor = {};
     let instructorCourse = {};
-    courses.map(async (courseName) => {
+    const details =courses.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
         const instructorName = instructorsJson.instructors[0].username;
@@ -998,8 +998,6 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     });
     for(let inst of instructorsUsername ){
         instructorCourse[inst]=[];
-        console.log('0',courseInstructor['DataScience']);
-        console.log(courseInstructor)
         for (const key in courseInstructor){
             console.log("key",key);
             console.log("inst",inst);
@@ -1008,7 +1006,9 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
                 console.log(instructorCourse);
             }
         }
+        console.log(instructorCourse);
     }
+    return Promise.all(details);
   };
 
 
