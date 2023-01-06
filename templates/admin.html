@@ -929,7 +929,7 @@ const deleteCourse = async (courseName) => {
     // alert("Successfully deleted course");
     let deleteCard = document.getElementById(courseName);
     courseCardCont.removeChild(deleteCard);
-    fetchCourseDetails();
+    alert("Successfully deleted ${courseName} course");
     }
     else {
     alert("Something went wrong! Couldn't delete course");
@@ -1003,37 +1003,6 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
         return instructorCourse;
     });
     return  Promise.all(details);
-    // let instructorDetails=[];
-    // for (key in instructorCourse){
-    //     let status = null;
-    //     if (instructorCourse[key].length > 0){
-    //         status='Mapped';
-    //     }
-    //     else{
-    //         status='Unmapped';
-    //     }
-    //     instructorDetails.push({'name':key,'course':instructorCourse[key],'status':status});
-
-    // }
-    // console.log(instructorDetails);
-    // console.log(courseInstructor);
-    // console.log(instructorCourse);
-//     for (let inst of instructorsUsername ){
-//         instructorCourse[inst]=[];
-//         for (let key in courseInstructor){
-//             for (let key in courseInstructor){
-//             console.log("key",key);
-//             console.log("inst",inst);
-//             if (courseInstructor[key] === inst){
-//                 instructorCourse[inst].push(key);
-//                 console.log(instructorCourse);
-//             }
-//         }
-//         console.log(courseInstructor);
-//         console.log(instructorCourse);
-//     }
-//     // return Promise.all(details);
-//   };
 
 };
 let trainerFetchDetails = null;
