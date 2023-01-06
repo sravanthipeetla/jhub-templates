@@ -958,8 +958,11 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     const details=courses.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
+        const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
+        const studentsJson = await studentsPromise.json();
+        const studentsCount = studentsJson.students.length;
         const instructorName = instructorsJson.instructors[0].username;
-        instructorCourse[instructorName].push(courseName);
+        instructorCourse[instructorName].push({courseName:studentsCount});
         return instructorCourse;
     });
     return  Promise.all(details);
@@ -1048,23 +1051,23 @@ function addAndAppendTrainer(trainer) {
         trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
         trainerFetchDetails = trainerFetchDetails[0];
         console.log(trainerFetchDetails);
-        let instructorDetails=[];
-        for (key in trainerFetchDetails){
-        let status = null;
-        if (trainerFetchDetails[key].length > 0){
-            status='Mapped';
-        }
-        else if(trainerFetchDetails[key].length === 0) {
-            status='Unmapped';
-        }
-        instructorDetails.push({'name':key,'course':trainerFetchDetails[key],'status':status});
-    }
-    console.log(instructorDetails);
-    for (let trainer of instructorDetails) {
-    addAndAppendTrainer(trainer);
-}
+        // let instructorDetails=[];
+        // for (key in trainerFetchDetails){
+        // let status = null;
+        // if (trainerFetchDetails[key].length > 0){
+        //     status='Mapped';
+        // }
+        // else if(trainerFetchDetails[key].length === 0) {
+        //     status='Unmapped';
+        // }
+        // instructorDetails.push({'name':key,'course':trainerFetchDetails[key],'status':status});
+    // }
+    // console.log(instructorDetails);
+    // for (let trainer of instructorDetails) {
+    // addAndAppendTrainer(trainer);
+// }
       })();
-      console.log(trainerFetchDetails);
+    //   console.log(trainerFetchDetails);
 
 
   
