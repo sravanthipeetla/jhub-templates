@@ -946,16 +946,15 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     for(let inst of instructorsUsername){
         instructorCourse[inst] = [];
     }
-    const instDet = async () =>{
     const details=courses.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         const instructorsJson = await instructorsPromise.json();
         const instructorName = instructorsJson.instructors[0].username;
-        instructorCourse[instructorName].push(courseName); 
+        instructorCourse[instructorName].push(courseName);
+        return instructorCourse;
     });
-    return instructorCourse;
-};
-return  Promise.all(instDet);
+    return  Promise.all(details);
+
 };
 let trainerFetchDetails = null;
 function addAndAppendTrainer(trainer) {
@@ -1008,13 +1007,22 @@ function addAndAppendTrainer(trainer) {
     eyeIconCont.onclick = function(){
         deleteTrainerModal.style.display='block';
         deleteTrainer.textContent = trainer.name;
+        // function deleteCourse(){
+        //     courses_.splice(course.id,1);
+
+        //      deleteCourseModal.style.display = 'none';
+        // }
+      
     }
     eyeIconCont.classList.add('eye-icon');
     let eyeIconI = document.createElement('img');
     eyeIconI.src = 'https://i.postimg.cc/KzLzhpXT/eye.png';
     eyeIconCont.appendChild(eyeIconI);
     trainerCont.appendChild(eyeIconCont);
+
 }
+
+    
       (async () => {
         const courseFetch = await fetch(`${ngshare_url}courses`);
         const courseJson = await courseFetch.json();
@@ -1029,6 +1037,7 @@ function addAndAppendTrainer(trainer) {
       }
       console.log("instructors list",instructorsUsername);
         trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
+        trainerFetchDetails = trainerFetchDetails[0];
         console.log(trainerFetchDetails);
         let instructorDetails=[];
         for (key in trainerFetchDetails){
