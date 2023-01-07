@@ -959,8 +959,20 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     }
     const details=courses.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
-        const instructorsJson = await instructorsPromise.json();
-        const instructorName = instructorsJson.instructors[0].username;
+        let instructorName = '';
+      const instructorsJson = await instructorsPromise.json()
+      .then( instructorsJson=> {
+        console.log('inside then');
+        if (instructorsJson.instructors.length === 0){
+        instructorName = '-';
+      }
+      else{
+        instructorName = instructorsJson.instructors[0].username;
+      }
+      console.log(instructorsJson);
+      console.log(instructorsJson.instructors.length);
+      });
+        
         instructorCourse[instructorName].push(courseName);
         return instructorCourse;
     });
