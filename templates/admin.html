@@ -993,11 +993,11 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
       console.log(instructorsJson);
       console.log(instructorsJson.instructors.length);
       if(instructorName in instructorCourse){
-      instructorCourse[instructorName].push(courseName);
       };
       });
-        
-        
+      const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
+      const studentsJson = await studentsPromise.json();
+      instructorCourse[instructorName].push(courseName);
         return instructorCourse;
     });
     return  Promise.all(details);
