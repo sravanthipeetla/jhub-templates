@@ -923,6 +923,7 @@ let deleteItemId = null;
         deleteItemTitle.textContent =  'Delete Course';
         deleteTitle.textContent = course.courseName;
         deleteItem = course.CourseName;
+        deleteItemId = courseCardId;
     }
     deleteIconCont.classList.add('delete-icon');
     let deleteIconI = document.createElement('img');
@@ -949,7 +950,7 @@ let deleteItemId = null;
 
 async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
     if (deleteItemTitle.textContent ==='Delete Course'){
-    const courseDeletePromise = await fetch(`${ngshare_url}course/${deleteCourseName}`, {
+    const courseDeletePromise = await fetch(`${ngshare_url}course/${deleteItem}`, {
     method: 'DELETE',
     headers: {
     Accept: 'application.json',
