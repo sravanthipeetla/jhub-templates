@@ -1062,7 +1062,7 @@ function addAndAppendTrainer(trainer) {
            trainerCourseCardLeft.classList.add('course-card-left');
            trainerCourseCard.appendChild(trainerCourseCardLeft);
            let trainerCourseTitle = document.createElement('p');
-           trainerCourseTitle.textContent = each.key;
+           trainerCourseTitle.textContent = Object.keys(each)[0];
            trainerCourseTitle.classList.add('course-title');
            trainerCourseCardLeft.appendChild(trainerCourseTitle);
            let trainerCourseArrangeRow = document.createElement('div');
@@ -1077,7 +1077,7 @@ function addAndAppendTrainer(trainer) {
            trainerCourseLearnerCountTitle.classList.add('learner-count-title');
            let trainerCourseLearnerCount = document.createElement('span');
            trainerCourseArrangeCol.appendChild(trainerCourseLearnerCount);
-           trainerCourseLearnerCount.textContent =each.value ;
+           trainerCourseLearnerCount.textContent =Object.values(each)[0] ;
            trainerCourseLearnerCount.classList.add('learner-count');
            let trainerCourseCardDelete = document.createElement('div');
            trainerCourseCard.appendChild(trainerCourseCardDelete);
