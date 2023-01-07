@@ -1035,6 +1035,9 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     });
     return instructorCourse;
 };
+details().then(data=>{
+    return data;
+});
 };
 let trainerFetchDetails = null;
 function addAndAppendTrainer(trainer) {
