@@ -832,13 +832,16 @@ let deleteId = null;
       console.log(instructorsJson);
       console.log(instructorsJson.instructors.length);
       const instructorName = instructorsJson.instructors[0].username;
-
-    //   if (instructorsJson.instructors.length === 0){
-    //     const instructorName = '-';
-    //   }
-    //   else{
-    //     const instructorName = instructorsJson.instructors[0].username;
-    //   }
+      instructorName.then(() =>{
+        console.log('inside then');
+        if (instructorsJson.instructors.length === 0){
+        const instructorName = '-';
+      }
+      else{
+        const instructorName = instructorsJson.instructors[0].username;
+      }
+      });
+      
       const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
       const studentsJson = await studentsPromise.json();
       const studentsCount = studentsJson.students.length;
