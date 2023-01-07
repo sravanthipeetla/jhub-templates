@@ -859,6 +859,7 @@ let deleteItemTitle = document.getElementById('deleteItemTitle');
 let deleteItem = null;
 let deleteCourseName = null;
 let deleteItemId = null;
+let loaderDisplay = document.getElementsByClassName('loader');
 
   //   course-tab data fetching
 
@@ -952,19 +953,12 @@ let deleteItemId = null;
     const courseFetch = await fetch(`${ngshare_url}courses`);
     const courseJson = await courseFetch.json();
     const coursesList = await courseJson.courses;
+    loaderDisplay.style.display ='block';
     courseFetchDetails = await getCourseDetails(coursesList);
-    let loaderDisplay = document.getElementsByClassName('loader');
-    console.log(loaderDisplay);
-    if (courseFetchDetails === null){
-        loaderDisplay.style.display ='block';
-    }
-    else{
-        loaderDisplay.style.display ='none';
-        for (let course of courseFetchDetails) {
+    loaderDisplay.style.display ='none';
+    for (let course of courseFetchDetails) {
     addAndAppendCourse(course);
   }
-    }
-  
   })();
 
   console.log(courseFetchDetails);
