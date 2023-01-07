@@ -837,9 +837,10 @@ let deleteId = null;
       else{
         const instructorName = instructorsJson.instructors[0].username;
       }
-      });
       console.log(instructorsJson);
       console.log(instructorsJson.instructors.length);
+      });
+     
   
       
       const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
