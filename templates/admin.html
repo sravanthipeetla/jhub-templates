@@ -992,7 +992,9 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
       }
       console.log(instructorsJson);
       console.log(instructorsJson.instructors.length);
+      if(instructorName in instructorCourse){
       instructorCourse[instructorName].push(courseName);
+      };
       });
         
         
