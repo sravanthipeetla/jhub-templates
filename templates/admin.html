@@ -1052,7 +1052,7 @@ function addAndAppendTrainer(trainer) {
     eyeIconCont.onclick = function(){
         trainerCourseCardCont.innerHTML = "";
         deleteTrainerModal.style.display='block';
-        deleteTrainer.textContent = trainer.trainerName;
+        deleteTrainer.textContent = trainer.name;
         for (let each of trainer.course){
            let trainerCourseCard = document.createElement('div');
            trainerCourseCardCont.appendChild(trainerCourseCard);
