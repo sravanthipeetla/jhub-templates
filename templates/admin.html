@@ -144,6 +144,16 @@ body {
 .trainerCard-width{
     width: 18%;
 }
+.trainer-course-card{
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(108.02deg, rgba(246, 251, 254, 0) 64.53%, #D6F0FF 122.73%), linear-gradient(179.46deg, rgba(246, 251, 254, 0) 1.56%, #DBF2FF 127.02%);
+    border-radius: 10px;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-bottom: 1.5vh;
+    width:46%;
+}
 
 .course-card-left,.trainer-card-left{
     display: flex;
@@ -318,7 +328,7 @@ th{
 .delete-course-model-top-first span{
     font-size: 1.8rem;
     color: #F7545D;
-    font-weight: 500;
+    font-weight: 900;
     background: #FDCED1;
     border-radius: 50%;
     cursor: pointer;
@@ -331,7 +341,7 @@ th{
     text-align: center;
     font-family: 'Gothic A1';
     font-style: Medium;
-    font-weight: 500;
+    font-size:1rem;
 }
 
 .delete-course-model-bottom{
@@ -343,7 +353,6 @@ th{
     font-style: normal;
     font-weight: 400;
     font-size: 0.875rem;
-    margin-top:1rem;
 }
 
 .delete-button{
@@ -484,9 +493,6 @@ width:8rem;
     width: 5rem;
 }
 .trainer-model{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     background:#FFFFFF;
     box-shadow: 0px 2px 13px rgba(170, 170, 170, 0.27);
     border-radius: 1rem;
@@ -529,6 +535,13 @@ color: #006BB6;
     width: 1rem;
     padding: 0 0.5rem;
 }
+.trainerCourseDetails{
+    display: flex;
+    flex-wrap: wrap; 
+    max-height:28rem;
+    overflow: auto;
+    padding: 1rem; 
+}
 .change-learner{
     padding: 2rem;
 }
@@ -557,6 +570,8 @@ color: #006BB6;
     text-align: center;
 }
 
+
+
 @media(max-width:1600px){
     html{
         font-size: 100%;
@@ -582,6 +597,8 @@ color: #006BB6;
     }
 
 }
+
+
 
 
 
@@ -716,6 +733,9 @@ color: #006BB6;
                     </div>
                 </div>
             </div> 
+            <div class="trainerCourseDetails" id="trainerCourseCardCont">
+
+            </div>
         </div>
     </div>
     <div class="bg-model" id="addLearnerModal">
@@ -819,6 +839,7 @@ let multipleLearners = document.getElementById('multipleLearners');
 let modelTitle = document.getElementById('modelTitle');
 let deleteBtn = document.getElementById('delete-button');
 let deleteTitle = document.getElementById('deleteTitle');
+let trainerCourseCardCont = document.getElementById('trainerCourseCardCont');
 let deleteId = null;
 
   //   course-tab data fetching
@@ -1029,13 +1050,41 @@ function addAndAppendTrainer(trainer) {
 
     let eyeIconCont = document.createElement('div');
     eyeIconCont.onclick = function(){
+        trainerCourseCardCont.innerHTML = "";
         deleteTrainerModal.style.display='block';
-        deleteTrainer.textContent = trainer.name;
-        // function deleteCourse(){
-        //     courses_.splice(course.id,1);
-
-        //      deleteCourseModal.style.display = 'none';
-        // }
+        deleteTrainer.textContent = trainer.trainerName;
+        for (let each of trainer.course){
+           let trainerCourseCard = document.createElement('div');
+           trainerCourseCardCont.appendChild(trainerCourseCard);
+           trainerCourseCard.classList.add('trainer-course-card');
+           let trainerCourseCardLeft = document.createElement('div');
+           trainerCourseCardLeft.classList.add('course-card-left');
+           trainerCourseCard.appendChild(trainerCourseCardLeft);
+           let trainerCourseTitle = document.createElement('p');
+           trainerCourseTitle.textContent = each;
+           trainerCourseTitle.classList.add('course-title');
+           trainerCourseCardLeft.appendChild(trainerCourseTitle);
+           let trainerCourseArrangeRow = document.createElement('div');
+           trainerCourseArrangeRow.classList.add('arrange-row');
+           trainerCourseCardLeft.appendChild(trainerCourseArrangeRow);
+           let trainerCourseArrangeCol = document.createElement('div');
+           trainerCourseArrangeRow.appendChild(trainerCourseArrangeCol);
+           trainerCourseArrangeCol.classList.add('arrange-col');
+           let trainerCourseLearnerCountTitle = document.createElement('span');
+           trainerCourseArrangeCol.appendChild(trainerCourseLearnerCountTitle);
+           trainerCourseLearnerCountTitle.textContent = 'Learner Count';
+           trainerCourseLearnerCountTitle.classList.add('learner-count-title');
+           let trainerCourseLearnerCount = document.createElement('span');
+           trainerCourseArrangeCol.appendChild(trainerCourseLearnerCount);
+           trainerCourseLearnerCount.textContent = '123';
+           trainerCourseLearnerCount.classList.add('learner-count');
+           let trainerCourseCardDelete = document.createElement('div');
+           trainerCourseCard.appendChild(trainerCourseCardDelete);
+           trainerCourseCardDelete.classList.add('delete-icon');
+           let trainerCourseCardDeleteImg = document.createElement('img');
+           trainerCourseCardDeleteImg.src='https://i.postimg.cc/prKj8HZB/delete.png';
+           trainerCourseCardDelete.appendChild(trainerCourseCardDeleteImg);
+        };
       
     }
     eyeIconCont.classList.add('eye-icon');
@@ -1144,6 +1193,7 @@ function addAndAppendTrainer(trainer) {
     }
   }
   deleteTrainerCancel.onclick = function () {
+    trainerCourseCardCont.innerHTML = "";
     deleteTrainerModal.style.display = 'none';
   }
   addLearnerCancel.onclick = function () {
