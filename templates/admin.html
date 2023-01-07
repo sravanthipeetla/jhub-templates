@@ -1032,7 +1032,7 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
       instructorCourse[instructorName].push(obj);
       };
         // return instructorCourse;
-    }).then(()=>{
+    }).then((details)=>{
         return instructorCourse;
     });
     // return  Promise.all(details);
