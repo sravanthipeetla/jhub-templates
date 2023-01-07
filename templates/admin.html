@@ -828,21 +828,19 @@ let deleteId = null;
     console.log("In course fetch details");
     const details = courses.map(async (courseName) => {
       const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
+      let instructorName = '';
       const instructorsJson = await instructorsPromise.json()
       .then( instructorsJson=> {
         console.log('inside then');
         if (instructorsJson.instructors.length === 0){
-        const instructorName = '-';
+        instructorName = '-';
       }
       else{
-        const instructorName = instructorsJson.instructors[0].username;
+        instructorName = instructorsJson.instructors[0].username;
       }
       console.log(instructorsJson);
       console.log(instructorsJson.instructors.length);
       });
-     
-  
-      
       const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
       const studentsJson = await studentsPromise.json();
       const studentsCount = studentsJson.students.length;
