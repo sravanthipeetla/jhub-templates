@@ -678,7 +678,7 @@ color: #006BB6;
         <div class="course-model">
             <div>
                 <div class="delete-course-model-top-first">
-                    <h1>Delete Course</h1>
+                    <h1 id="deleteItemTitle"></h1>
                     <div id="deleteCancel">
                         <span> &times;</span>
                     </div>
@@ -840,11 +840,14 @@ let modelTitle = document.getElementById('modelTitle');
 let deleteBtn = document.getElementById('delete-button');
 let deleteTitle = document.getElementById('deleteTitle');
 let trainerCourseCardCont = document.getElementById('trainerCourseCardCont');
-let deleteId = null;
+let deleteItemTitle = document.getElementById('deleteItemTitle');
+let deleteItem = null;
+let deleteCourseName = null;
+let deleteItemId = null;
 
   //   course-tab data fetching
 
-  let courseFetchDetails = null;
+  let courseFetchDetails = null;  
   const getCourseDetails = async (courses) => {
     console.log("In course fetch details");
     const details = courses.map(async (courseName) => {
@@ -917,17 +920,15 @@ let deleteId = null;
     let deleteIconCont = document.createElement('div');
     deleteIconCont.onclick = function(){
         deleteCourseModal.style.display='block';
+        deleteItemTitle =  'Delete Course';
         deleteTitle.textContent = course.courseName;
-        deleteId = courseCardId;
-
-      
+        deleteItem = course.CourseName;
     }
     deleteIconCont.classList.add('delete-icon');
     let deleteIconI = document.createElement('img');
     deleteIconI.src = 'https://i.postimg.cc/prKj8HZB/delete.png';
     deleteIconCont.appendChild(deleteIconI);
     courseCont.appendChild(deleteIconCont);
-
 }
 
   (async () => {
@@ -946,8 +947,9 @@ let deleteId = null;
 //     addAndAppendCourse(course);
 //   }
 
-const deleteCourse = async (courseName) => {
-    const courseDeletePromise = await fetch(`${ngshare_url}course/${courseName}`, {
+async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
+    if (deleteItemTitle ==='Delete Course'){
+    const courseDeletePromise = await fetch(`${ngshare_url}course/${deleteCourseName}`, {
     method: 'DELETE',
     headers: {
     Accept: 'application.json',
@@ -957,7 +959,7 @@ const deleteCourse = async (courseName) => {
     const response = await courseDeletePromise.json();
         if (response.success) {
     // alert("Successfully deleted course");
-    let deleteCard = document.getElementById(courseName);
+    let deleteCard = document.getElementById(deleteItemId);
     courseCardCont.removeChild(deleteCard);
     alert(`Successfully deleted ${courseName} course`);
     }
@@ -965,9 +967,10 @@ const deleteCourse = async (courseName) => {
     alert("Something went wrong! Couldn't delete course");
     }   
 }
+}
 deleteBtn.onclick = function(){
-    deleteCourse(deleteId);
-    deleteCourseModal.style.display = 'none';
+    deleteItemNext (deleteItem,deleteCourseName,deleteItemId);
+    // deleteCourseModal.style.display = 'none';
 }
 
 const getInstructorDetails = async (courses, instructorsUsername) => {
