@@ -683,7 +683,7 @@ color: #006BB6;
                         <span> &times;</span>
                     </div>
                 </div>
-                    <h1 class="delete-title" >Delete <span id="deleteTitle"></span>?</h1>
+                    <h1 class="delete-title" id="deleteTitle"></h1>
             </div>
                 <div class="delete-course-model-bottom">
                     <button id="delete-button" class="delete-button">Delete</button>
@@ -921,7 +921,7 @@ let deleteItemId = null;
     deleteIconCont.onclick = function(){
         deleteCourseModal.style.display='block';
         deleteItemTitle.textContent =  'Delete Course';
-        deleteTitle.textContent = course.courseName;
+        deleteTitle.textContent = `Delete ${course.courseName} course?`;
         deleteItem = course.courseName;
         deleteItemId = courseCardId;
     }
@@ -1097,7 +1097,7 @@ function addAndAppendTrainer(trainer) {
            trainerCourseCardDelete.onclick=function(){
                 deleteCourseModal.style.display='block';
                 deleteItemTitle.textContent =  'Remove Trainer';
-                deleteTitle.textContent = trainer.name;
+                deleteTitle.textContent = `Remove ${trainer.name} from ${course.courseName} course?`;
                 deleteItem = trainer.name;
                 deleteItemId = trainerCourseCardId;
                 trainerCourseCardCont.innerHTML = "";
