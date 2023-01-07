@@ -954,6 +954,7 @@ let deleteItemId = null;
     const coursesList = await courseJson.courses;
     courseFetchDetails = await getCourseDetails(coursesList);
     let loaderDisplay = document.getElementsByClassName('loader');
+    console.log(loaderDisplay);
     if (courseFetchDetails === null){
         loaderDisplay.style.display ='block';
     }
