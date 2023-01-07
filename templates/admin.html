@@ -920,7 +920,7 @@ let deleteItemId = null;
     let deleteIconCont = document.createElement('div');
     deleteIconCont.onclick = function(){
         deleteCourseModal.style.display='block';
-        deleteItemTitle =  'Delete Course';
+        deleteItemTitle.textContent =  'Delete Course';
         deleteTitle.textContent = course.courseName;
         deleteItem = course.CourseName;
     }
@@ -948,7 +948,7 @@ let deleteItemId = null;
 //   }
 
 async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
-    if (deleteItemTitle ==='Delete Course'){
+    if (deleteItemTitle.textContent ==='Delete Course'){
     const courseDeletePromise = await fetch(`${ngshare_url}course/${deleteCourseName}`, {
     method: 'DELETE',
     headers: {
