@@ -973,13 +973,39 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
     deleteItem=null;
     deleteCourseName=null;
     deleteItemId=null;
-    }   
+    };
 }
-}
+
+ else if(deleteItemTitle.textContent ==='Remove Trainer'){
+    const removeTrainerPromise = await fetch(`${ngshare_url}instructor/${deleteCourseName}/${deleteItem}`, {
+    method: 'DELETE',
+    headers: {
+    Accept: 'application.json',
+    'Content-Type': 'application/json'
+    }
+    });
+    const response = await courseDeletePromise.json();
+        if (response.success) {
+    // alert("Successfully deleted course");
+    // let deleteCard = document.getElementById(deleteItemId);
+    // courseCardCont.removeChild(deleteCard);
+    alert(`Successfully removed ${deleteItem} from ${deleteCourseName} course`);
+    deleteItem=null;
+    deleteCourseName=null;
+    deleteItemId=null;
+    }
+    else {
+    alert("Something went wrong! Couldn't delete course");
+    deleteItem=null;
+    deleteCourseName=null;
+    deleteItemId=null;
+    };
+};  
+};
 deleteBtn.onclick = function(){
     deleteItemNext (deleteItem,deleteCourseName,deleteItemId);
     deleteCourseModal.style.display = 'none';
-}
+};
 
 const getInstructorDetails = async (courses, instructorsUsername) => {
     console.log("In instructor fetch details");
@@ -1101,8 +1127,8 @@ function addAndAppendTrainer(trainer) {
                 deleteTitle.textContent = `Remove ${trainer.name} from ${Object.keys(each)[0]} course?`;
                 deleteItem = trainer.name;
                 deleteItemId = trainerCourseCardId;
+                deleteCourseName = Object.keys(each)[0];
                 trainerCourseCardCont.innerHTML = "";
-                
            }
            trainerCourseCardDelete.classList.add('delete-icon');
            let trainerCourseCardDeleteImg = document.createElement('img');
