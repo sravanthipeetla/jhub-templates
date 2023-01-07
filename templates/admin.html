@@ -1031,11 +1031,9 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
         obj[courseName] = studentsCount;
       instructorCourse[instructorName].push(obj);
       };
-        // return instructorCourse;
-    }).then(details=>{
-        return instructorCourse;
+       
     });
-    // return  Promise.all(details);
+    return instructorCourse;
 };
 let trainerFetchDetails = null;
 function addAndAppendTrainer(trainer) {
