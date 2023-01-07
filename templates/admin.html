@@ -992,7 +992,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
     deleteItemId=null;
     }
     else {
-    alert("Something went wrong! Couldn't delete course");
+    alert("Something went wrong! Couldn't trainer from course");
     deleteItem=null;
     deleteCourseName=null;
     deleteItemId=null;
@@ -1031,10 +1031,11 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
         obj[courseName] = studentsCount;
       instructorCourse[instructorName].push(obj);
       };
+        // return instructorCourse;
+    }).then(()=>{
         return instructorCourse;
     });
-    return  Promise.all(details);
-
+    // return  Promise.all(details);
 };
 let trainerFetchDetails = null;
 function addAndAppendTrainer(trainer) {
@@ -1156,23 +1157,23 @@ function addAndAppendTrainer(trainer) {
         };
       };
         trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
-        trainerFetchDetails = trainerFetchDetails[0];
+        // trainerFetchDetails = trainerFetchDetails[0];
         console.log(trainerFetchDetails);
-        let instructorDetails=[];
-        for (key in trainerFetchDetails){
-        let status = null;
-        if (trainerFetchDetails[key].length > 0){
-            status='Mapped';
-        }
-        else if(trainerFetchDetails[key].length === 0) {
-            status='Unmapped';
-        }
-        instructorDetails.push({'name':key,'course':trainerFetchDetails[key],'status':status});
-    }
-    console.log(instructorDetails);
-    for (let trainer of instructorDetails) {
-    addAndAppendTrainer(trainer);
-}
+//         let instructorDetails=[];
+//         for (key in trainerFetchDetails){
+//         let status = null;
+//         if (trainerFetchDetails[key].length > 0){
+//             status='Mapped';
+//         }
+//         else if(trainerFetchDetails[key].length === 0) {
+//             status='Unmapped';
+//         }
+//         instructorDetails.push({'name':key,'course':trainerFetchDetails[key],'status':status});
+//     }
+//     console.log(instructorDetails);
+//     for (let trainer of instructorDetails) {
+//     addAndAppendTrainer(trainer);
+// }
       })();
       console.log(trainerFetchDetails);
 
