@@ -964,15 +964,21 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
     let deleteCard = document.getElementById(deleteItemId);
     courseCardCont.removeChild(deleteCard);
     alert(`Successfully deleted ${deleteItem} course`);
+    deleteItem=null;
+    deleteCourseName=null;
+    deleteItemId=null;
     }
     else {
     alert("Something went wrong! Couldn't delete course");
+    deleteItem=null;
+    deleteCourseName=null;
+    deleteItemId=null;
     }   
 }
 }
 deleteBtn.onclick = function(){
     deleteItemNext (deleteItem,deleteCourseName,deleteItemId);
-    // deleteCourseModal.style.display = 'none';
+    deleteCourseModal.style.display = 'none';
 }
 
 const getInstructorDetails = async (courses, instructorsUsername) => {
