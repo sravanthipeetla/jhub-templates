@@ -1156,7 +1156,7 @@ function addAndAppendTrainer(trainer) {
       };
         trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
         trainerFetchDetails = trainerFetchDetails[0];
-        console.log(trainerFetchDetails);
+        console.log(trainerFetchDetails===null);
         let instructorDetails=[];
         for (key in trainerFetchDetails){
         let status = null;
