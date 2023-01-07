@@ -994,7 +994,7 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
       const studentsCount = studentsJson.students.length;
       if(instructorName in instructorCourse){
         let obj = {};
-        obj[courseName] = someValueArray;
+        obj[courseName] = studentsCount;
       instructorCourse[instructorName].push(obj);
       };
         return instructorCourse;
