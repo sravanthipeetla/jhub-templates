@@ -953,8 +953,8 @@ let deleteItemId = null;
     const courseJson = await courseFetch.json();
     const coursesList = await courseJson.courses;
     courseFetchDetails = await getCourseDetails(coursesList);
+    let loaderDisplay = document.getElementsByClassName('loader');
     if (courseFetchDetails === null){
-        let loaderDisplay = document.getElementsByClassName('loader');
         loaderDisplay.style.display ='block';
     }
     else{
