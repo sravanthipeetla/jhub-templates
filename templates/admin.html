@@ -1010,7 +1010,7 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     for(let inst of instructorsUsername){
         instructorCourse[inst] = [];
     }
-    const details=() =>{courses.map(async (courseName) => {
+    const details=() =>{courses.map(async(courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         let instructorName = '';
       const instructorsJson = await instructorsPromise.json()
@@ -1035,7 +1035,6 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     });
     return instructorCourse;
 };
-   return details();
 };
 let trainerFetchDetails = null;
 function addAndAppendTrainer(trainer) {
