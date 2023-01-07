@@ -872,7 +872,7 @@ let deleteItemId = null;
   }
 
   function addAndAppendCourse(course) {
-    let courseCardId = course.courseName;
+    let courseCardId = course.courseName+'course';
     let courseCont = document.createElement('div');
     courseCont.classList.add('courseCard');
     courseCont.id = courseCardId;
@@ -1067,6 +1067,8 @@ function addAndAppendTrainer(trainer) {
         deleteTrainer.textContent = trainer.name;
         for (let each of trainer.course){
            let trainerCourseCard = document.createElement('div');
+           let trainerCourseCardId = trainer.name + Object.keys(each)[0];
+           trainerCourseCard.id = trainerCourseCardId;
            trainerCourseCardCont.appendChild(trainerCourseCard);
            trainerCourseCard.classList.add('trainer-course-card');
            let trainerCourseCardLeft = document.createElement('div');
@@ -1092,6 +1094,13 @@ function addAndAppendTrainer(trainer) {
            trainerCourseLearnerCount.classList.add('learner-count');
            let trainerCourseCardDelete = document.createElement('div');
            trainerCourseCard.appendChild(trainerCourseCardDelete);
+           trainerCourseCardDelete.onclick=function(){
+                deleteCourseModal.style.display='block';
+                deleteItemTitle.textContent =  'Remove Trainer';
+                deleteTitle.textContent = trainer.name;
+                deleteItem = trainer.name;
+                deleteItemId = trainerCourseCardId;
+           }
            trainerCourseCardDelete.classList.add('delete-icon');
            let trainerCourseCardDeleteImg = document.createElement('img');
            trainerCourseCardDeleteImg.src='https://i.postimg.cc/prKj8HZB/delete.png';
