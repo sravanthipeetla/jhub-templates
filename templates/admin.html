@@ -571,13 +571,14 @@ color: #006BB6;
 }
 
 .loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border: 10px solid #f3f3f3; /* Light grey */
+  border-top: 10px solid #3498db; /* Blue */
   border-radius: 50%;
   width: 60px;
   height: 60px;
   margin:auto;
   animation: spin 2s linear infinite;
+  display: none;
 }
 
 @keyframes spin {
@@ -952,9 +953,17 @@ let deleteItemId = null;
     const courseJson = await courseFetch.json();
     const coursesList = await courseJson.courses;
     courseFetchDetails = await getCourseDetails(coursesList);
-    for (let course of courseFetchDetails) {
+    if (courseFetchDetails === null){
+        let loaderDisplay = document.getElementsByClassName('loader');
+        loaderDisplay.style.display ='block';
+    }
+    else{
+        loaderDisplay.style.display ='none';
+        for (let course of courseFetchDetails) {
     addAndAppendCourse(course);
   }
+    }
+  
   })();
 
   console.log(courseFetchDetails);
