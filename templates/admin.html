@@ -569,14 +569,16 @@ color: #006BB6;
     color: #A6A6A6;
     text-align: center;
 }
-
+body.loading {
+  overflow: hidden;
+}
 .loader {
   border: 10px solid #f3f3f3; /* Light grey */
   border-top: 10px solid #3498db; /* Blue */
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  text-align: center;
+  margin:auto;
   animation: spin 2s linear infinite;
   display: none;
 }
