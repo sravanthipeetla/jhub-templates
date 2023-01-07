@@ -1154,7 +1154,9 @@ function addAndAppendTrainer(trainer) {
           instructorsUsername.push(hubUsersJson[i].name);
         };
       };
-        trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
+        getInstructorDetails(coursesList, instructorsUsername).then((data)=>{
+            trainerFetchDetails=data;
+        });
         // trainerFetchDetails = trainerFetchDetails[0];
         console.log(trainerFetchDetails);
         let instructorDetails=[];
