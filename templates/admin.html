@@ -1100,6 +1100,8 @@ function addAndAppendTrainer(trainer) {
                 deleteTitle.textContent = trainer.name;
                 deleteItem = trainer.name;
                 deleteItemId = trainerCourseCardId;
+                trainerCourseCardCont.innerHTML = "";
+                deleteTrainerModal.style.display = 'none';
            }
            trainerCourseCardDelete.classList.add('delete-icon');
            let trainerCourseCardDeleteImg = document.createElement('img');
