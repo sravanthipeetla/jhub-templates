@@ -1009,6 +1009,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
     const response = await removeTrainerPromise.json();
         if (response.success) {
     alert(`Successfully removed ${deleteItem} from ${deleteCourseName} course`);
+    location.reload();
     deleteItem=null;
     deleteCourseName=null;
     deleteItemId=null;
