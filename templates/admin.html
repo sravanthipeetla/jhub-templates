@@ -1095,13 +1095,14 @@ function addAndAppendTrainer(trainer) {
            let trainerCourseCardDelete = document.createElement('div');
            trainerCourseCard.appendChild(trainerCourseCardDelete);
            trainerCourseCardDelete.onclick=function(){
+                deleteTrainerModal.style.display = 'none';
                 deleteCourseModal.style.display='block';
                 deleteItemTitle.textContent =  'Remove Trainer';
-                deleteTitle.textContent = `Remove ${trainer.name} from ${course.courseName} course?`;
+                deleteTitle.textContent = `Remove ${trainer.name} from ${Object.keys(each)[0]} course?`;
                 deleteItem = trainer.name;
                 deleteItemId = trainerCourseCardId;
                 trainerCourseCardCont.innerHTML = "";
-                deleteTrainerModal.style.display = 'none';
+                
            }
            trainerCourseCardDelete.classList.add('delete-icon');
            let trainerCourseCardDeleteImg = document.createElement('img');
