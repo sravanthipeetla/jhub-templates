@@ -852,15 +852,13 @@ let deleteId = null;
       let instructorName = '';
       const instructorsJson = await instructorsPromise.json()
       .then( instructorsJson=> {
-        console.log('inside then');
         if (instructorsJson.instructors.length === 0){
         instructorName = '-';
       }
       else{
         instructorName = instructorsJson.instructors[0].username;
       }
-      console.log(instructorsJson);
-      console.log(instructorsJson.instructors.length);
+
       });
       const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
       const studentsJson = await studentsPromise.json();
@@ -983,21 +981,19 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
         let instructorName = '';
       const instructorsJson = await instructorsPromise.json()
       .then( instructorsJson=> {
-        console.log('inside then');
         if (instructorsJson.instructors.length === 0){
         instructorName = '-';
       }
       else{
         instructorName = instructorsJson.instructors[0].username;
       }
-      console.log(instructorsJson);
-      console.log(instructorsJson.instructors.length);
      
       });
       const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
       const studentsJson = await studentsPromise.json();
+      const studentsCount = studentsJson.students.length;
       if(instructorName in instructorCourse){
-      instructorCourse[instructorName].push(courseName);
+      instructorCourse[instructorName].push({courseName:studentsCount});
       };
         return instructorCourse;
     });
@@ -1109,27 +1105,26 @@ function addAndAppendTrainer(trainer) {
     for (let i = 0; i < hubUsersJson.length; i++) {
         if (hubUsersJson[i].groups.includes('instructor')) {
           instructorsUsername.push(hubUsersJson[i].name);
-        }
-      }
-      console.log("instructors list",instructorsUsername);
+        };
+      };
         trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
         trainerFetchDetails = trainerFetchDetails[0];
         console.log(trainerFetchDetails);
-        let instructorDetails=[];
-        for (key in trainerFetchDetails){
-        let status = null;
-        if (trainerFetchDetails[key].length > 0){
-            status='Mapped';
-        }
-        else if(trainerFetchDetails[key].length === 0) {
-            status='Unmapped';
-        }
-        instructorDetails.push({'name':key,'course':trainerFetchDetails[key],'status':status});
-    }
-    console.log(instructorDetails);
-    for (let trainer of instructorDetails) {
-    addAndAppendTrainer(trainer);
-}
+//         let instructorDetails=[];
+//         for (key in trainerFetchDetails){
+//         let status = null;
+//         if (trainerFetchDetails[key].length > 0){
+//             status='Mapped';
+//         }
+//         else if(trainerFetchDetails[key].length === 0) {
+//             status='Unmapped';
+//         }
+//         instructorDetails.push({'name':key,'course':trainerFetchDetails[key],'status':status});
+//     }
+//     console.log(instructorDetails);
+//     for (let trainer of instructorDetails) {
+//     addAndAppendTrainer(trainer);
+// }
       })();
       console.log(trainerFetchDetails);
 
