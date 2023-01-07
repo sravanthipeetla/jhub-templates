@@ -1062,7 +1062,7 @@ function addAndAppendTrainer(trainer) {
            trainerCourseCardLeft.classList.add('course-card-left');
            trainerCourseCard.appendChild(trainerCourseCardLeft);
            let trainerCourseTitle = document.createElement('p');
-           trainerCourseTitle.textContent = each;
+           trainerCourseTitle.textContent = each.key;
            trainerCourseTitle.classList.add('course-title');
            trainerCourseCardLeft.appendChild(trainerCourseTitle);
            let trainerCourseArrangeRow = document.createElement('div');
@@ -1077,7 +1077,7 @@ function addAndAppendTrainer(trainer) {
            trainerCourseLearnerCountTitle.classList.add('learner-count-title');
            let trainerCourseLearnerCount = document.createElement('span');
            trainerCourseArrangeCol.appendChild(trainerCourseLearnerCount);
-           trainerCourseLearnerCount.textContent = '123';
+           trainerCourseLearnerCount.textContent =each.value ;
            trainerCourseLearnerCount.classList.add('learner-count');
            let trainerCourseCardDelete = document.createElement('div');
            trainerCourseCard.appendChild(trainerCourseCardDelete);
@@ -1112,21 +1112,21 @@ function addAndAppendTrainer(trainer) {
         trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
         trainerFetchDetails = trainerFetchDetails[0];
         console.log(trainerFetchDetails);
-//         let instructorDetails=[];
-//         for (key in trainerFetchDetails){
-//         let status = null;
-//         if (trainerFetchDetails[key].length > 0){
-//             status='Mapped';
-//         }
-//         else if(trainerFetchDetails[key].length === 0) {
-//             status='Unmapped';
-//         }
-//         instructorDetails.push({'name':key,'course':trainerFetchDetails[key],'status':status});
-//     }
-//     console.log(instructorDetails);
-//     for (let trainer of instructorDetails) {
-//     addAndAppendTrainer(trainer);
-// }
+        let instructorDetails=[];
+        for (key in trainerFetchDetails){
+        let status = null;
+        if (trainerFetchDetails[key].length > 0){
+            status='Mapped';
+        }
+        else if(trainerFetchDetails[key].length === 0) {
+            status='Unmapped';
+        }
+        instructorDetails.push({'name':key,'course':trainerFetchDetails[key],'status':status});
+    }
+    console.log(instructorDetails);
+    for (let trainer of instructorDetails) {
+    addAndAppendTrainer(trainer);
+}
       })();
       console.log(trainerFetchDetails);
 
