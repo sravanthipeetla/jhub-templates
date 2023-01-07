@@ -949,6 +949,7 @@ let deleteItemId = null;
 //   }
 
 async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
+    console.log(deleteItem);
     if (deleteItemTitle.textContent ==='Delete Course'){
     const courseDeletePromise = await fetch(`${ngshare_url}course/${deleteItem}`, {
     method: 'DELETE',
@@ -962,7 +963,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
     // alert("Successfully deleted course");
     let deleteCard = document.getElementById(deleteItemId);
     courseCardCont.removeChild(deleteCard);
-    alert(`Successfully deleted ${courseName} course`);
+    alert(`Successfully deleted ${deleteItem} course`);
     }
     else {
     alert("Something went wrong! Couldn't delete course");
