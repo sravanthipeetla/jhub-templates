@@ -1233,10 +1233,12 @@ deleteCancel.onclick = function () {
 
 addCourseCancel.onclick = function () {
     addCourseModal.style.display = 'none';
+    chooseTrainerSelect.innerHTML = '';
 };
 
 addBtn.onclick = async function () {
     if (addBtn.textContent === "Add Course" || addBtn.textContent === "Add Trainer") {
+        chooseTrainerSelect.innerHTML = '';
         addCourseModal.style.display = 'block';
         modelTitle.textContent = addBtn.textContent;
         const hubUsersFetch = await fetch(`${hub_url}users`);
