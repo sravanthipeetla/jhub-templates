@@ -731,7 +731,7 @@ margin: auto;
                             <span>Existing Trainer</span>
                         </div> 
                         <select id="chooseTrainerSelect">
-                            <option default  value="" class="choose-trainer-option">Choose trainer</option>
+            
                         </select>
                     </div>
             </div>
@@ -1249,6 +1249,12 @@ addBtn.onclick = async function () {
             instructorsUsername.push(hubUsersJson[i].name);
             }
         }; 
+        const defaultOption = document.createElement('option');
+        defaultOption.text = 'Choose trainer';
+        defaultOption.value = '';
+        defaultOption.selected = true;
+        defaultOption.disabled = true;
+        chooseTrainerSelect.insertBefore(defaultOption, select.firstChild);
         for (let option of instructorsUsername){
             const newOption = document.createElement('option');
             newOption.text = option;
