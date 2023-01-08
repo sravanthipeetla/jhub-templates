@@ -1254,7 +1254,7 @@ addBtn.onclick = async function () {
         defaultOption.value = '';
         defaultOption.selected = true;
         defaultOption.disabled = true;
-        chooseTrainerSelect.insertBefore(defaultOption, select.firstChild);
+        chooseTrainerSelect.add(defaultOption);
         for (let option of instructorsUsername){
             const newOption = document.createElement('option');
             newOption.text = option;
