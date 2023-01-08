@@ -1047,7 +1047,7 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     for(let inst of instructorsUsername){
         instructorCourse[inst] = [];
     };
-    const details=async ()=>{ courses.map(async(courseName) => {
+    const details= courses.map(async(courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         let instructorName = '';
         const instructorsJson = await instructorsPromise.json()
@@ -1067,10 +1067,9 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
         obj[courseName] = studentsCount;
         instructorCourse[instructorName].push(obj);
     };
-    });
     return instructorCourse;
-}
-    return await details();
+    });
+    return Promise.all(details);
 };
 
 let trainerFetchDetails = null;
@@ -1198,22 +1197,21 @@ function addAndAppendTrainer(trainer) {
         };
     };
     trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
-    console.log(trainerFetchDetails);
-    // trainerFetchDetails = trainerFetchDetails[0];
-    // let instructorDetails=[];
-    // for (key in trainerFetchDetails){
-    //     let status = null;
-    //     if (trainerFetchDetails[key].length > 0){
-    //         status='Mapped';
-    //     }
-    //     else if(trainerFetchDetails[key].length === 0) {
-    //         status='Unmapped';
-    //     }
-    //     instructorDetails.push({'name':key,'course':trainerFetchDetails[key],'status':status});
-    // };
-    // for (let trainer of instructorDetails) {
-    //     addAndAppendTrainer(trainer);
-    // }
+    trainerFetchDetails = trainerFetchDetails[0];
+    let instructorDetails=[];
+    for (key in trainerFetchDetails){
+        let status = null;
+        if (trainerFetchDetails[key].length > 0){
+            status='Mapped';
+        }
+        else if(trainerFetchDetails[key].length === 0) {
+            status='Unmapped';
+        }
+        instructorDetails.push({'name':key,'course':trainerFetchDetails[key],'status':status});
+    };
+    for (let trainer of instructorDetails) {
+        addAndAppendTrainer(trainer);
+    }
 })();
 
 
