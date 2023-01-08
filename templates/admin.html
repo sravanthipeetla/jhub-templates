@@ -668,27 +668,8 @@ margin: auto;
                     <th>Actions</th>
                     <th>Remove</th>
                 </tr>
-                <tbody>
-                    <tr>
-                        <td>Sravanthi Peetla</td>
-                        <td><img src="https://i.postimg.cc/KzLzhpXT/eye.png" alt=""></td>
-                        <td><img src="https://i.postimg.cc/prKj8HZB/delete.png" alt=""></td>
-                    </tr>
-                    <tr>
-                        <td>Sravanthi Peetla</td>
-                        <td><img src="https://i.postimg.cc/KzLzhpXT/eye.png" alt=""></td>
-                        <td><img src="https://i.postimg.cc/prKj8HZB/delete.png" alt=""></td>
-                    </tr>
-                    <tr>
-                        <td>Sravanthi Peetla</td>
-                        <td><img src="https://i.postimg.cc/KzLzhpXT/eye.png" alt=""></td>
-                        <td><img src="https://i.postimg.cc/prKj8HZB/delete.png" alt=""></td>
-                    </tr>
-                    <tr>
-                        <td>Sravanthi Peetla</td>
-                        <td><img src="https://i.postimg.cc/KzLzhpXT/eye.png" alt=""></td>
-                        <td><img src="https://i.postimg.cc/prKj8HZB/delete.png" alt=""></td>
-                    </tr>
+                <tbody id="learnerRowsBody">
+                   
                 </tbody>
             </table>
         </div>
@@ -883,6 +864,7 @@ let deleteTitle = document.getElementById('deleteTitle');
 let trainerCourseCardCont = document.getElementById('trainerCourseCardCont');
 let deleteItemTitle = document.getElementById('deleteItemTitle');
 let chooseTrainerSelect = document.getElementById('chooseTrainerSelect');
+let learnerRowsBody = document.getElementById('learnerRowsBody');
 let deleteItem = null;
 let deleteCourseName = null;
 let deleteItemId = null;
@@ -1214,7 +1196,34 @@ function addAndAppendTrainer(trainer) {
     }
 })();
 
+let learners_=[{'Sairamkumar':['python','Django','Java']},{'Sravanthi':['Docker','Kubernetes','React']},{'Anil':['python','Django','Java']},{'Saraswathi':['Docker','Kubernetes','React']},];
 
+
+function addAndAppendLearner(learner){
+    let learnerRow = document.createElement('tr');
+    learnerRowsBody.appendChild(learnerRow);
+
+    let learnerDet = document.createElement('td');
+    learnerDet.textContent = Object.keys(learner)[0];
+    learnerRow.appendChild(learnerDet);
+
+    let learnerEye = document.createElement('td');
+    let learnerEyeImg = document.createElement('img');
+    learnerEye.appendChild(learnerEyeImg);
+    learnerEyeImg.src = "https://i.postimg.cc/KzLzhpXT/eye.png";
+    learnerRow.appendChild(learnerEye);
+
+    let learnerDelete = document.createElement('td');
+    let learnerDeleteImg = document.createElement('img');
+    learnerDeleteImg.src = 'https://i.postimg.cc/prKj8HZB/delete.png';
+    learnerDelete.appendChild(learnerDeleteImg);
+    learnerRow.appendChild(learnerDelete);
+
+};
+for (let each of learners_){
+    addAndAppendLearner(each);
+
+};
 courses.onclick = function () {
     instructorsFilter.classList.add('stop-visible');
     addBtn.textContent = "Add Course";
