@@ -822,6 +822,29 @@ if ($(this).text().toLowerCase() == currentAnchorTagText) {
 }
 });
 
+window.onload = async () =>{
+    const hubUsersFetch = await fetch(`${hub_url}users`);
+        const hubUsersJson = await hubUsersFetch.json();
+        const instructorsUsername = [];
+        for (let i = 0; i < hubUsersJson.length; i++) {
+            if (hubUsersJson[i].groups.includes('instructor')) {
+            instructorsUsername.push(hubUsersJson[i].name);
+            }
+        }; 
+        const defaultOption = document.createElement('option');
+        defaultOption.text = 'Choose trainer';
+        defaultOption.value = '';
+        defaultOption.selected = true;
+        defaultOption.disabled = true;
+        chooseTrainerSelect.add(defaultOption);
+        for (let option of instructorsUsername){
+            const newOption = document.createElement('option');
+            newOption.text = option;
+            newOption.value = option;
+            chooseTrainerSelect.add(newOption);
+        };
+};
+
 //   // To hide left navbar items - 'Token' and 'services'
 //   const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
 //   navbarLeftList[1].style.display = 'none';
@@ -1233,34 +1256,14 @@ deleteCancel.onclick = function () {
 
 addCourseCancel.onclick = function () {
     addCourseModal.style.display = 'none';
-    chooseTrainerSelect.innerHTML = '';
+    // chooseTrainerSelect.innerHTML = '';
 };
 
 addBtn.onclick = async function () {
     if (addBtn.textContent === "Add Course" || addBtn.textContent === "Add Trainer") {
-        chooseTrainerSelect.innerHTML = '';
         addCourseModal.style.display = 'block';
         modelTitle.textContent = addBtn.textContent;
-        const hubUsersFetch = await fetch(`${hub_url}users`);
-        const hubUsersJson = await hubUsersFetch.json();
-        const instructorsUsername = [];
-        for (let i = 0; i < hubUsersJson.length; i++) {
-            if (hubUsersJson[i].groups.includes('instructor')) {
-            instructorsUsername.push(hubUsersJson[i].name);
-            }
-        }; 
-        const defaultOption = document.createElement('option');
-        defaultOption.text = 'Choose trainer';
-        defaultOption.value = '';
-        defaultOption.selected = true;
-        defaultOption.disabled = true;
-        chooseTrainerSelect.add(defaultOption);
-        for (let option of instructorsUsername){
-            const newOption = document.createElement('option');
-            newOption.text = option;
-            newOption.value = option;
-            chooseTrainerSelect.add(newOption);
-        };
+        
 }
 else if (addBtn.textContent === "Add Learners") {
       addLearnerModal.style.display = 'block';
