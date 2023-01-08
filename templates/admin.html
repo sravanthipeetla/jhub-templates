@@ -824,25 +824,25 @@ if ($(this).text().toLowerCase() == currentAnchorTagText) {
 
 window.onload = async () =>{
     const hubUsersFetch = await fetch(`${hub_url}users`);
-        const hubUsersJson = await hubUsersFetch.json();
-        const instructorsUsername = [];
-        for (let i = 0; i < hubUsersJson.length; i++) {
-            if (hubUsersJson[i].groups.includes('instructor')) {
-            instructorsUsername.push(hubUsersJson[i].name);
-            }
-        }; 
-        const defaultOption = document.createElement('option');
-        defaultOption.text = 'Choose trainer';
-        defaultOption.value = '';
-        defaultOption.selected = true;
-        defaultOption.disabled = true;
-        chooseTrainerSelect.add(defaultOption);
-        for (let option of instructorsUsername){
-            const newOption = document.createElement('option');
-            newOption.text = option;
-            newOption.value = option;
-            chooseTrainerSelect.add(newOption);
-        };
+    const hubUsersJson = await hubUsersFetch.json();
+    const instructorsUsername = [];
+    for (let i = 0; i < hubUsersJson.length; i++) {
+        if (hubUsersJson[i].groups.includes('instructor')) {
+        instructorsUsername.push(hubUsersJson[i].name);
+        }
+    }; 
+    const defaultOption = document.createElement('option');
+    defaultOption.text = 'Choose trainer';
+    defaultOption.value = '';
+    defaultOption.selected = true;
+    defaultOption.disabled = true;
+    chooseTrainerSelect.add(defaultOption);
+    for (let option of instructorsUsername){
+        const newOption = document.createElement('option');
+        newOption.text = option;
+        newOption.value = option;
+        chooseTrainerSelect.add(newOption);
+    };
 };
 
 //   // To hide left navbar items - 'Token' and 'services'
@@ -1047,7 +1047,7 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
     for(let inst of instructorsUsername){
         instructorCourse[inst] = [];
     };
-    const details= courses.map(async(courseName) => {
+    const details=()=>{ courses.map(async(courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         let instructorName = '';
         const instructorsJson = await instructorsPromise.json()
@@ -1067,9 +1067,10 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
         obj[courseName] = studentsCount;
         instructorCourse[instructorName].push(obj);
     };
-    return instructorCourse;
     });
-    return Promise.all(details);
+    return instructorCourse;
+}
+    return details().then((response) => {return response})();
 };
 
 let trainerFetchDetails = null;
@@ -1197,21 +1198,22 @@ function addAndAppendTrainer(trainer) {
         };
     };
     trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
-    trainerFetchDetails = trainerFetchDetails[0];
-    let instructorDetails=[];
-    for (key in trainerFetchDetails){
-        let status = null;
-        if (trainerFetchDetails[key].length > 0){
-            status='Mapped';
-        }
-        else if(trainerFetchDetails[key].length === 0) {
-            status='Unmapped';
-        }
-        instructorDetails.push({'name':key,'course':trainerFetchDetails[key],'status':status});
-    };
-    for (let trainer of instructorDetails) {
-        addAndAppendTrainer(trainer);
-    }
+    console.log(trainerFetchDetails);
+    // trainerFetchDetails = trainerFetchDetails[0];
+    // let instructorDetails=[];
+    // for (key in trainerFetchDetails){
+    //     let status = null;
+    //     if (trainerFetchDetails[key].length > 0){
+    //         status='Mapped';
+    //     }
+    //     else if(trainerFetchDetails[key].length === 0) {
+    //         status='Unmapped';
+    //     }
+    //     instructorDetails.push({'name':key,'course':trainerFetchDetails[key],'status':status});
+    // };
+    // for (let trainer of instructorDetails) {
+    //     addAndAppendTrainer(trainer);
+    // }
 })();
 
 
