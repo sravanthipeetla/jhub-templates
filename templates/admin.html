@@ -1204,21 +1204,26 @@ const getLearnerDetails = async () => {
     const coursesList = courseJson.courses;
     const hubUsersFetch = await fetch(`${hub_url}users`);
     const hubUsersJson = await hubUsersFetch.json();
-    const learnerCourse =[];
+    const learnerCourse ={};
     const learnersUsername = [];
     for (let i = 0; i < hubUsersJson.length; i++) {
         if (hubUsersJson[i].groups.includes('learner')) {
             learnersUsername.push(hubUsersJson[i].name);
         };
     };
+    for (let stu of learnersUsername){
+        learnerCourse[stu]=[];
+    }
     const details= coursesList.map(async(courseName) => {
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
         const students = studentsJson.students;
-        console.log(students);
+        for (let each of students){
+            students[each.user].push(courseName);
+        }
 
     });
-    console.log(learnersUsername);
+    console.log(learnerCourse);
 };
 
 getLearnerDetails();
