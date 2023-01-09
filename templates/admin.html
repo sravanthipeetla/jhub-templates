@@ -1221,9 +1221,9 @@ const getLearnerDetails = async () => {
         for (let each of students){
             learnerCourse[each.username].push(courseName);
         }
-
+        return learnerCourse;
     });
-    console.log(learnerCourse);
+    console.log(Promise.all(details)[0]);
 };
 
 getLearnerDetails();
