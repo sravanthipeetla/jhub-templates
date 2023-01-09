@@ -1282,8 +1282,7 @@ instructor.onclick = function () {
     learnerDetails.classList.add('stop-visible');
 };
 
-learner.onclick = function () {
-    getLearnerDetails();
+learner.onclick = async function () {
     instructorsFilter.classList.add('stop-visible');
     addBtn.textContent = "Add Learners";
     description.textContent = "You can manage Learner details here.";
@@ -1292,6 +1291,7 @@ learner.onclick = function () {
     learner.classList.add('active');
     courseDetails.classList.add('stop-visible');
     trainerDetails.classList.add('stop-visible');
+    await getLearnerDetails();
     learnerDetails.classList.remove('stop-visible');
 };
   
