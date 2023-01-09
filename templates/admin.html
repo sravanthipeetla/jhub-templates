@@ -1249,8 +1249,9 @@ const getLearnerDetails = async () => {
     detailsLearnerCourse = detailsLearnerCourse[0];
     
     for (key in detailsLearnerCourse){
-        console.log(detailsLearnerCourse[key]);
-        addAndAppendLearner(detailsLearnerCourse[key]);
+        let obj ={};
+        obj[key]=detailsLearnerCourse[key]
+        addAndAppendLearner(obj);
     };
 };
 
