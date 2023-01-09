@@ -1242,6 +1242,17 @@ function addAndAppendLearner(learner){
             trainerCourseTitle.classList.add('course-title');
             trainerCourseCardLeft.appendChild(trainerCourseTitle);
             let trainerCourseCardDelete = document.createElement('div');
+            trainerCourseCardDelete.onclick=function(){
+                deleteTrainerModal.style.display = 'none';
+                deleteCourseModal.style.display='block';
+                deleteItemTitle.textContent =  'Remove Learner';
+                deleteBtn.textContent ='Remove';
+                deleteTitle.textContent = `Remove ${Object.keys(learner)[0]} from ${each} course?`;
+                deleteItem = trainer.name;
+                deleteItemId = trainerCourseCardId;
+                deleteCourseName = Object.keys(each)[0];
+                trainerCourseCardCont.innerHTML = "";
+           };
             trainerCourseCard.appendChild(trainerCourseCardDelete);
             trainerCourseCardDelete.classList.add('delete-icon');
             let trainerCourseCardDeleteImg = document.createElement('img');
