@@ -1196,8 +1196,30 @@ function addAndAppendTrainer(trainer) {
     }
 })();
 
-let learners_=[{'Sairamkumar':['python','Django','Java']},{'Sravanthi':['Docker','Kubernetes','React']},{'Anil':['python','Django','Java']},{'Saraswathi':['Docker','Kubernetes','React']},];
+// let learners_=[{'Sairamkumar':['python','Django','Java']},{'Sravanthi':['Docker','Kubernetes','React']},{'Anil':['python','Django','Java']},{'Saraswathi':['Docker','Kubernetes','React']},];
 
+
+function addAndAppendLearner(learner){
+    let learnerRow = document.createElement('tr');
+    learnerRowsBody.appendChild(learnerRow);
+
+    let learnerDet = document.createElement('td');
+    learnerDet.textContent = Object.keys(learner)[0];
+    learnerRow.appendChild(learnerDet);
+
+    let learnerEye = document.createElement('td');
+    let learnerEyeImg = document.createElement('img');
+    learnerEye.appendChild(learnerEyeImg);
+    learnerEyeImg.src = "https://i.postimg.cc/KzLzhpXT/eye.png";
+    learnerRow.appendChild(learnerEye);
+
+    let learnerDelete = document.createElement('td');
+    let learnerDeleteImg = document.createElement('img');
+    learnerDeleteImg.src = 'https://i.postimg.cc/prKj8HZB/delete.png';
+    learnerDelete.appendChild(learnerDeleteImg);
+    learnerRow.appendChild(learnerDelete);
+
+};
 const getLearnerDetails = async () => {
     const courseFetch = await fetch(`${ngshare_url}courses`);
     const courseJson = await courseFetch.json();
@@ -1226,34 +1248,16 @@ const getLearnerDetails = async () => {
     let detailsLearnerCourse = await Promise.all(details);
     detailsLearnerCourse = detailsLearnerCourse[0];
     console.log(detailsLearnerCourse);
+    for (key in detailsLearnerCourse){
+        addAndAppendLearner(detailsLearnerCourse[key]);
+    };
 };
 
 getLearnerDetails();
-function addAndAppendLearner(learner){
-    let learnerRow = document.createElement('tr');
-    learnerRowsBody.appendChild(learnerRow);
+// for (let each of learners_){
+//     addAndAppendLearner(each);
 
-    let learnerDet = document.createElement('td');
-    learnerDet.textContent = Object.keys(learner)[0];
-    learnerRow.appendChild(learnerDet);
-
-    let learnerEye = document.createElement('td');
-    let learnerEyeImg = document.createElement('img');
-    learnerEye.appendChild(learnerEyeImg);
-    learnerEyeImg.src = "https://i.postimg.cc/KzLzhpXT/eye.png";
-    learnerRow.appendChild(learnerEye);
-
-    let learnerDelete = document.createElement('td');
-    let learnerDeleteImg = document.createElement('img');
-    learnerDeleteImg.src = 'https://i.postimg.cc/prKj8HZB/delete.png';
-    learnerDelete.appendChild(learnerDeleteImg);
-    learnerRow.appendChild(learnerDelete);
-
-};
-for (let each of learners_){
-    addAndAppendLearner(each);
-
-};
+// };
 courses.onclick = function () {
     instructorsFilter.classList.add('stop-visible');
     addBtn.textContent = "Add Course";
