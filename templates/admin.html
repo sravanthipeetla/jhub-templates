@@ -1198,6 +1198,27 @@ function addAndAppendTrainer(trainer) {
 
 let learners_=[{'Sairamkumar':['python','Django','Java']},{'Sravanthi':['Docker','Kubernetes','React']},{'Anil':['python','Django','Java']},{'Saraswathi':['Docker','Kubernetes','React']},];
 
+const getLearnerDetails = async () => {
+    const courseFetch = await fetch(`${ngshare_url}courses`);
+    const courseJson = await courseFetch.json();
+    const coursesList = courseJson.courses;
+    const learnerCourse =[];
+    const learnersUsername = [];
+    for (let i = 0; i < hubUsersJson.length; i++) {
+        if (hubUsersJson[i].groups.includes('learner')) {
+            learnersUsername.push(hubUsersJson[i].name);
+        };
+    };
+    const details= coursesList.map(async(courseName) => {
+        const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
+        const studentsJson = await studentsPromise.json();
+        const students = studentsJson.students;
+        console.log(students);
+
+    });
+    console.log(learnersUsername);
+};
+
 
 function addAndAppendLearner(learner){
     let learnerRow = document.createElement('tr');
