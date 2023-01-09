@@ -1247,8 +1247,9 @@ const getLearnerDetails = async () => {
     });
     let detailsLearnerCourse = await Promise.all(details);
     detailsLearnerCourse = detailsLearnerCourse[0];
-    console.log(detailsLearnerCourse);
+    
     for (key in detailsLearnerCourse){
+        console.log(detailsLearnerCourse[key]);
         addAndAppendLearner(detailsLearnerCourse[key]);
     };
 };
