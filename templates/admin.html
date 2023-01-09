@@ -1223,7 +1223,7 @@ const getLearnerDetails = async () => {
         }
         return learnerCourse;
     });
-    const detailsLearnerCourse = await Promise.all(details);
+    let detailsLearnerCourse = await Promise.all(details);
     detailsLearnerCourse = detailsLearnerCourse[0];
     console.log(detailsLearnerCourse);
 };
