@@ -524,6 +524,10 @@ width:8rem;
 .delete-trainer-name{
 color: #006BB6;
 }
+.arrange-title-row{
+    display:flex;
+    align-items: center;
+}
 #deleteTrainerCancel{
     font-size: 2rem;
     text-align: center;
@@ -542,6 +546,9 @@ color: #006BB6;
     max-height:28rem;
     overflow: auto;
     padding: 1rem; 
+}
+.eye-action{
+    cursor: pointer;
 }
 .change-learner{
     padding: 2rem;
@@ -728,8 +735,10 @@ margin: auto;
         <div class="trainer-model">
             <div>
                 <div class="delete-trainer-model-top-first">
+                    <div class="arrange-title-row">
                     <span class="delete-trainer-title" id="actionTitle"></span>
                     <span class="delete-trainer-title delete-trainer-name" id="deleteTrainer"></span>
+                    </div>
                     <div >
                         <span id="deleteTrainerCancel">&times;</span>
                     </div>
@@ -1215,6 +1224,7 @@ function addAndAppendLearner(learner){
 
     let learnerEye = document.createElement('td');
     let learnerEyeImg = document.createElement('img');
+    learnerEyeImg.classList.add("eye-action");
     learnerEyeImg.onclick = function(){
         trainerCourseCardCont.innerHTML = "";
         deleteTrainerModal.style.display='block';
