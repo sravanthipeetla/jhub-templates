@@ -1219,7 +1219,7 @@ const getLearnerDetails = async () => {
         const studentsJson = await studentsPromise.json();
         const students = studentsJson.students;
         for (let each of students){
-            students[each.user].push(courseName);
+            learnerCourse[each.user].push(courseName);
         }
 
     });
