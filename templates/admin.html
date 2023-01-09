@@ -1245,16 +1245,17 @@ const getLearnerDetails = async () => {
         }
         return learnerCourse;
     });
+    learnerDetails.classList.add('stop-visible');
     let detailsLearnerCourse = await Promise.all(details);
     detailsLearnerCourse = detailsLearnerCourse[0];
-    
+    learnerDetails.classList.remove('stop-visible');
     for (key in detailsLearnerCourse){
         let obj ={};
         obj[key]=detailsLearnerCourse[key]
         addAndAppendLearner(obj);
     };
 };
-
+getLearnerDetails();
 // for (let each of learners_){
 //     addAndAppendLearner(each);
 
@@ -1282,7 +1283,7 @@ instructor.onclick = function () {
     learnerDetails.classList.add('stop-visible');
 };
 
-learner.onclick = async function () {
+learner.onclick = function () {
     instructorsFilter.classList.add('stop-visible');
     addBtn.textContent = "Add Learners";
     description.textContent = "You can manage Learner details here.";
@@ -1291,7 +1292,6 @@ learner.onclick = async function () {
     learner.classList.add('active');
     courseDetails.classList.add('stop-visible');
     trainerDetails.classList.add('stop-visible');
-    await getLearnerDetails();
     learnerDetails.classList.remove('stop-visible');
 };
   
