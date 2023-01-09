@@ -652,7 +652,7 @@ margin: auto;
                     <button class="add-btn" id="add-btn">Add Course</button>
                 </div>
         </div>
-        <div class="loader"></div>
+       
         <div id="courseDetails">
             <div class="courseDetails" id="courseCardCont">
             </div>
@@ -673,6 +673,7 @@ margin: auto;
                 </tbody>
             </table>
         </div>
+        <div class="loader"></div>
     </div>
     <div class="bg-model" id="deleteCourseModal">
         <div class="course-model">
@@ -1178,8 +1179,10 @@ function addAndAppendTrainer(trainer) {
             instructorsUsername.push(hubUsersJson[i].name);
         };
     };
+    loaderDisplay.style.display ='block';
     trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
     trainerFetchDetails = trainerFetchDetails[0];
+    loaderDisplay.style.display ='none';
     let instructorDetails=[];
     for (key in trainerFetchDetails){
         let status = null;
@@ -1245,10 +1248,10 @@ const getLearnerDetails = async () => {
         }
         return learnerCourse;
     });
-    learnerDetails.classList.add('stop-visible');
+    loaderDisplay.style.display ='block';
     let detailsLearnerCourse = await Promise.all(details);
+    loaderDisplay.style.display ='none';
     detailsLearnerCourse = detailsLearnerCourse[0];
-    learnerDetails.classList.remove('stop-visible');
     for (key in detailsLearnerCourse){
         let obj ={};
         obj[key]=detailsLearnerCourse[key]
