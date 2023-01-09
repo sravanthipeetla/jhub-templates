@@ -586,7 +586,7 @@ body.loading {
   border-radius: 50%;
   width: 60px;
   height: 60px;
-margin: auto;
+  margin: auto;
   animation: spin 2s linear infinite;
   display: none;
   overflow: hidden;
@@ -696,7 +696,7 @@ margin: auto;
                 <div class="delete-course-model-bottom">
                     <button id="delete-button" class="delete-button">Delete</button>
                     <button id="cancel-button" class="cancel-button">Cancel</button>
-                    <p>once deleted can't be restore again</p>  
+                    <p id="deleteCaution">once deleted can't be restore again</p>  
                 </div>  
         </div>
        
@@ -881,7 +881,7 @@ let deleteItem = null;
 let deleteCourseName = null;
 let deleteItemId = null;
 let loaderDisplay = document.getElementsByClassName('loader')[0];
-
+let deleteCaution = document.getElementById('deleteCaution');
   //   course-tab data fetching
 
 let courseFetchDetails = null;  
@@ -1246,6 +1246,7 @@ function addAndAppendLearner(learner){
                 deleteTrainerModal.style.display = 'none';
                 deleteCourseModal.style.display='block';
                 deleteItemTitle.textContent =  'Remove Learner';
+                deleteCaution.style.display = 'none';
                 deleteBtn.textContent ='Remove';
                 deleteTitle.textContent = `Remove ${Object.keys(learner)[0]} from ${each} course?`;
                 deleteItem = trainer.name;
