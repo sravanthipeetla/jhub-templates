@@ -1255,7 +1255,6 @@ const getLearnerDetails = async () => {
     };
 };
 
-getLearnerDetails();
 // for (let each of learners_){
 //     addAndAppendLearner(each);
 
@@ -1284,6 +1283,7 @@ instructor.onclick = function () {
 };
 
 learner.onclick = function () {
+    getLearnerDetails();
     instructorsFilter.classList.add('stop-visible');
     addBtn.textContent = "Add Learners";
     description.textContent = "You can manage Learner details here.";
