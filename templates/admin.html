@@ -728,7 +728,8 @@ margin: auto;
         <div class="trainer-model">
             <div>
                 <div class="delete-trainer-model-top-first">
-                    <h1 class="delete-trainer-title">Trainer-<span class="delete-trainer-name" id="deleteTrainer"></span></h1>
+                    <span class="delete-trainer-title" id="actionTitle"></span>
+                    <span class="delete-trainer-title delete-trainer-name" id="deleteTrainer"></span>
                     <div >
                         <span id="deleteTrainerCancel">&times;</span>
                     </div>
@@ -866,6 +867,7 @@ let trainerCourseCardCont = document.getElementById('trainerCourseCardCont');
 let deleteItemTitle = document.getElementById('deleteItemTitle');
 let chooseTrainerSelect = document.getElementById('chooseTrainerSelect');
 let learnerRowsBody = document.getElementById('learnerRowsBody');
+let actionTitle = document.getElementById('actionTitle');
 let deleteItem = null;
 let deleteCourseName = null;
 let deleteItemId = null;
@@ -1106,6 +1108,7 @@ function addAndAppendTrainer(trainer) {
     eyeIconCont.onclick = function(){
         trainerCourseCardCont.innerHTML = "";
         deleteTrainerModal.style.display='block';
+        actionTitle.textContent = "Trainer-";
         deleteTrainer.textContent = trainer.name;
         for (let each of trainer.course){
            let trainerCourseCard = document.createElement('div');
@@ -1212,6 +1215,30 @@ function addAndAppendLearner(learner){
 
     let learnerEye = document.createElement('td');
     let learnerEyeImg = document.createElement('img');
+    learnerEyeImg.onclick = function(){
+        trainerCourseCardCont.innerHTML = "";
+        deleteTrainerModal.style.display='block';
+        actionTitle.textContent="Learner-";
+        deleteTrainer.textContent = Object.keys(learner)[0];
+        for (let each of Object.values(learner)[0]){
+            let trainerCourseCard = document.createElement('div');
+            trainerCourseCardCont.appendChild(trainerCourseCard);
+            trainerCourseCard.classList.add('trainer-course-card');
+            let trainerCourseCardLeft = document.createElement('div');
+            trainerCourseCardLeft.classList.add('course-card-left');
+            trainerCourseCard.appendChild(trainerCourseCardLeft);
+            let trainerCourseTitle = document.createElement('p');
+            trainerCourseTitle.textContent = each;
+            trainerCourseTitle.classList.add('course-title');
+            trainerCourseCardLeft.appendChild(trainerCourseTitle);
+            let trainerCourseCardDelete = document.createElement('div');
+            trainerCourseCard.appendChild(trainerCourseCardDelete);
+            trainerCourseCardDelete.classList.add('delete-icon');
+            let trainerCourseCardDeleteImg = document.createElement('img');
+            trainerCourseCardDeleteImg.src='https://i.postimg.cc/prKj8HZB/delete.png';
+            trainerCourseCardDelete.appendChild(trainerCourseCardDeleteImg);
+         };
+    }
     learnerEye.appendChild(learnerEyeImg);
     learnerEyeImg.src = "https://i.postimg.cc/KzLzhpXT/eye.png";
     learnerRow.appendChild(learnerEye);
