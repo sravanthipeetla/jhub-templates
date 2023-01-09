@@ -1202,6 +1202,8 @@ const getLearnerDetails = async () => {
     const courseFetch = await fetch(`${ngshare_url}courses`);
     const courseJson = await courseFetch.json();
     const coursesList = courseJson.courses;
+    const hubUsersFetch = await fetch(`${hub_url}users`);
+    const hubUsersJson = await hubUsersFetch.json();
     const learnerCourse =[];
     const learnersUsername = [];
     for (let i = 0; i < hubUsersJson.length; i++) {
