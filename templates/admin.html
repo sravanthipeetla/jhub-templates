@@ -1318,18 +1318,17 @@ const getLearnerDetails = async () => {
     for (let stu of learnersUsername){
         learnerCourse[stu]=[];
     }
-    const details = coursesList.map(async(courseName) => {
+    coursesList.map(async(courseName) => {
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
         const students = studentsJson.students;
         for (let each of students){
             learnerCourse[each.username].push(courseName);
             console.log('checking', each, learnerCourse);
-        }
-        return learnerCourse;
+        }        
     });
     loaderDisplay.style.display ='block';
-    let detailsLearnerCourse = await details;
+    let detailsLearnerCourse = await learnerCourse;
     console.log('test',detailsLearnerCourse);
     loaderDisplay.style.display ='none';
     detailsLearnerCourse = detailsLearnerCourse[0];
