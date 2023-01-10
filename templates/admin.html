@@ -1021,7 +1021,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
         if (response.success) {
             $('#messageDisplay').text(`Successfully removed ${deleteItem} from ${deleteCourseName} course`).show().fadeOut(5000);
             // alert(`Successfully removed ${deleteItem} from ${deleteCourseName} course`);
-            location.reload();
+            // location.reload();
             deleteItem=null;
             deleteCourseName=null;
             deleteItemId=null;
