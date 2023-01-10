@@ -1315,9 +1315,9 @@ const getLearnerDetails = async () => {
             learnersUsername.push(hubUsersJson[i].name);
         };
     };
-    // for (let stu of learnersUsername){
-    //     learnerCourse[stu]=[];
-    // }
+    for (let stu of learnersUsername){
+        learnerCourse[stu]=[];
+    }
     const details = coursesList.map(async(courseName) => {
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
