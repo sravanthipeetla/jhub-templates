@@ -1024,7 +1024,30 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
             deleteItemId=null;
         }
         else {
-            alert("Something went wrong! Couldn't trainer from course");
+            alert("Something went wrong! Couldn't remove trainer from course");
+            deleteItem=null;
+            deleteCourseName=null;
+            deleteItemId=null;
+        };
+    }
+    else if(deleteItemTitle.textContent ==='Remove Learner'){
+        const removeTrainerPromise = await fetch(`${ngshare_url}student/${deleteCourseName}/${deleteItem}`, {
+            method: 'DELETE',
+            headers: {
+            Accept: 'application.json',
+            'Content-Type': 'application/json'
+            }
+        });
+        const response = await removeTrainerPromise.json();
+        if (response.success) {
+            alert(`Successfully removed ${deleteItem} from ${deleteCourseName} course`);
+            location.reload();
+            deleteItem=null;
+            deleteCourseName=null;
+            deleteItemId=null;
+        }
+        else {
+            alert("Something went wrong! Couldn't remove learner from course");
             deleteItem=null;
             deleteCourseName=null;
             deleteItemId=null;
@@ -1216,7 +1239,10 @@ function addAndAppendTrainer(trainer) {
 
 function addAndAppendLearner(learner){
     let learnerRow = document.createElement('tr');
+    let learnerRowId = Object.keys(learner)[0] + 'learner';
+    learnerRow.id = learnerRowId;
     learnerRowsBody.appendChild(learnerRow);
+
 
     let learnerDet = document.createElement('td');
     learnerDet.textContent = Object.keys(learner)[0];
@@ -1249,9 +1275,9 @@ function addAndAppendLearner(learner){
                 deleteCaution.textContent = "once removed can't be restore again";
                 deleteBtn.textContent ='Remove';
                 deleteTitle.textContent = `Remove ${Object.keys(learner)[0]} from ${each} course?`;
-                deleteItem = trainer.name;
-                deleteItemId = trainerCourseCardId;
-                deleteCourseName = Object.keys(each)[0];
+                deleteItem = Object.keys(learner)[0];
+                deleteItemId = learnerRowId;
+                deleteCourseName = each;
                 trainerCourseCardCont.innerHTML = "";
            };
             trainerCourseCard.appendChild(trainerCourseCardDelete);
