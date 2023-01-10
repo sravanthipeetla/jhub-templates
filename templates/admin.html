@@ -1329,7 +1329,7 @@ const getLearnerDetails = async () => {
         return learnerCourse;
     });
     loaderDisplay.style.display ='block';
-    let detailsLearnerCourse = await Promise(details);
+    let detailsLearnerCourse = new Promise(details);
     console.log('test',detailsLearnerCourse);
     loaderDisplay.style.display ='none';
     detailsLearnerCourse = detailsLearnerCourse[0];
