@@ -1019,11 +1019,12 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
         });
         const response = await removeTrainerPromise.json();
         if (response.success) {
-            $('#messageDisplay').text(`Successfully removed ${deleteItem} from ${deleteCourseName} course`).show().fadeOut(5000);
-            // alert(`Successfully removed ${deleteItem} from ${deleteCourseName} course`);
-            // location.reload();
+            // $('#messageDisplay').text(`Successfully removed ${deleteItem} from ${deleteCourseName} course`).show().fadeOut(5000);
+            alert(`Successfully removed ${deleteItem} from ${deleteCourseName} course`);
+            location.reload();
             deleteItem=null;
             deleteCourseName=null;
+
             deleteItemId=null;
         }
         else {
@@ -1314,15 +1315,16 @@ const getLearnerDetails = async () => {
             learnersUsername.push(hubUsersJson[i].name);
         };
     };
-    for (let stu of learnersUsername){
-        learnerCourse[stu]=[];
-    }
-    const details= coursesList.map(async(courseName) => {
+    // for (let stu of learnersUsername){
+    //     learnerCourse[stu]=[];
+    // }
+    const details = coursesList.map(async(courseName) => {
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
         const students = studentsJson.students;
         for (let each of students){
             learnerCourse[each.username].push(courseName);
+            console.log('checking', each, learnerCourse);
         }
         return learnerCourse;
     });
