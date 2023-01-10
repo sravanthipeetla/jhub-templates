@@ -1318,7 +1318,7 @@ const getLearnerDetails = async () => {
     for (let stu of learnersUsername){
         learnerCourse[stu]=[];
     }
-    coursesList.map(async(courseName) => {
+    const details = coursesList.map(async(courseName) => {
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
         const students = studentsJson.students;
@@ -1328,15 +1328,18 @@ const getLearnerDetails = async () => {
         }        
     });
     loaderDisplay.style.display ='block';
-    let detailsLearnerCourse = await learnerCourse;
+    const detailsLearnerCourse = await Promise.all(details);
     console.log('test',detailsLearnerCourse);
     loaderDisplay.style.display ='none';
-    detailsLearnerCourse = detailsLearnerCourse[0];
-    for (key in detailsLearnerCourse){
+    // detailsLearnerCourse = detailsLearnerCourse[0];
+    if(detailsLearnerCourse){
+        console.log('inside if');
+    for (key in learnerCourse){
         let obj ={};
-        obj[key]=detailsLearnerCourse[key]
+        obj[key]=learnerCourse[key]
         addAndAppendLearner(obj);
     };
+}
 };
 getLearnerDetails();
 // for (let each of learners_){
