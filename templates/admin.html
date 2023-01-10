@@ -1329,7 +1329,8 @@ const getLearnerDetails = async () => {
         return learnerCourse;
     });
     loaderDisplay.style.display ='block';
-    let detailsLearnerCourse = await Promise.all(details);
+    let detailsLearnerCourse = await details.then();
+    console.log('test',detailsLearnerCourse);
     loaderDisplay.style.display ='none';
     detailsLearnerCourse = detailsLearnerCourse[0];
     for (key in detailsLearnerCourse){
