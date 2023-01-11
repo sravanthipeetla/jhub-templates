@@ -737,6 +737,31 @@ body.loading {
         </div>
        
     </div>
+    <div class="bg-model" id="addTrainerModal">
+        <div class="course-model add-course-model-height">
+            <div>
+                <div class="add-course-model-top-first">
+                    <h1 id="modelTitle">Add Trainer</h1>
+                    <div id="addCourseCancel">
+                        <span> &times;</span>
+                    </div>
+                </div>
+                    <!-- <p>* course name should not contain spaces</p> -->
+                    <div class="add-course-name">
+                        <div class="choose-trainer-arrange">
+                            <p>User Name</p>
+                            <span>New trainer</span>
+                        </div> 
+                        <input type="text" placeholder="Enter user name">
+                    </div>
+            </div>
+                <div class="add-course-model-bottom">
+                    <button id="trainerAddBtn" class="add-button">Add</button>
+                    <button id="trainerCancelBtn" class="cancel-button">Cancel</button>
+                </div>  
+        </div>
+       
+    </div>
     <div class="bg-model" id="deleteTrainerModal">
         <div class="trainer-model">
             <div>
@@ -890,9 +915,8 @@ let loaderDisplay = document.getElementsByClassName('loader')[0];
 let deleteCaution = document.getElementById('deleteCaution');
 let courseNameText = document.getElementById('courseNameText');
 const addCourseBtn = document.getElementById('addCourse');
+const addTrainerModal = document.getElementById('addTrainerModal');
   //   course-tab data fetching
-
-
 addCourseBtn.onclick=async () => {
     console.log(courseNameText.value);
     console.log(chooseTrainerSelect.value);
@@ -1451,10 +1475,11 @@ addCourseCancel.onclick = function () {
 };
 
 addBtn.onclick = async function () {
-    if (addBtn.textContent === "Add Course" || addBtn.textContent === "Add Trainer") {
-        addCourseModal.style.display = 'block';
-        modelTitle.textContent = addBtn.textContent;
-        
+    if (addBtn.textContent === "Add Course") {
+        addCourseModal.style.display = 'block'; 
+}
+else if(addBtn.textContent === "Add Trainer"){
+        addTrainerModal.style.display = 'block';
 }
 else if (addBtn.textContent === "Add Learners") {
       addLearnerModal.style.display = 'block';
