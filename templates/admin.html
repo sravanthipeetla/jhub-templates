@@ -922,7 +922,15 @@ addCourseBtn.onclick=async () => {
                 alert(instructorAddResponse.message);
               }
         }
+        else {
+          const courseResponse = await coursePromise.json();
+          alert(courseResponse.message);
+        }
+    
     }
+    else {
+        alert('Please provide valid course name and instructor username');
+      }
 }
 
 
