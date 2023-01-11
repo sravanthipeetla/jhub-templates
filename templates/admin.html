@@ -742,7 +742,7 @@ body.loading {
             <div>
                 <div class="add-course-model-top-first">
                     <h1 id="modelTitle">Add Trainer</h1>
-                    <div id="addCourseCancel">
+                    <div id="addTrainerCancel">
                         <span> &times;</span>
                     </div>
                 </div>
@@ -916,6 +916,7 @@ let deleteCaution = document.getElementById('deleteCaution');
 let courseNameText = document.getElementById('courseNameText');
 const addCourseBtn = document.getElementById('addCourse');
 const addTrainerModal = document.getElementById('addTrainerModal');
+const addTrainerCancel = document.getElementById('addTrainerCancel');
   //   course-tab data fetching
 addCourseBtn.onclick=async () => {
     console.log(courseNameText.value);
@@ -1469,9 +1470,11 @@ deleteCancel.onclick = function () {
     deleteCourseModal.style.display = 'none';
 };
 
+addTrainerCancel.onclick = function(){
+    addTrainerModal.style.display = 'none';
+}
 addCourseCancel.onclick = function () {
     addCourseModal.style.display = 'none';
-    // chooseTrainerSelect.innerHTML = '';
 };
 
 addBtn.onclick = async function () {
