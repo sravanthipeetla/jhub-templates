@@ -921,8 +921,6 @@ const addTrainerBtn = document.getElementById('trainerAddBtn');
 const trainerUsername = document.getElementById('trainerUsername');
   //   course-tab data fetching
 addCourseBtn.onclick=async () => {
-    console.log(courseNameText.value);
-    console.log(chooseTrainerSelect.value);
     const courseName = courseNameText.value;
     const instructorUserName = chooseTrainerSelect.value;
     if (courseName.includes(' ')){
@@ -962,8 +960,57 @@ addCourseBtn.onclick=async () => {
         alert('Please provide valid course name and instructor username');
       }
 }
-addTrainerBtn.onclick=() =>{
+addTrainerBtn.onclick=async () =>{
     console.log(trainerUsername.value)
+    let  instructorUserName = trainerUsername.value;
+    if (instructorUserName.includes(' ')){
+        alert('trainer name should not contain spaces');
+    }
+    else if (instructorUserName.length > 0){
+        const hubAddUserPromise = await fetch(`${hub_url}users/${instructorUserName}`, {
+            method: 'POST',
+            headers: {
+              Accept: 'application.json',
+              'Content-Type': 'application/json'
+            }
+          });
+        if (hubAddUserPromise.status == 201 && hubAddUserPromise.ok) {
+            const data = {
+              "users": [
+                instructorUserName
+              ]
+            };
+            const hubAddUserGroupPromise = await fetch(`${hub_url}groups/instructor/users`, {
+              method: 'POST',
+              headers: {
+                Accept: 'application.json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            }
+            );
+            if (hubAddUserGroupPromise.status == 200 && hubAddUserGroupPromise.ok) {
+              const instructorAddPromise = await fetch(`${ngshare_url}instructor/${courseName}/${instructorUserName}?first_name=&last_name=&email=`, {
+                method: 'POST',
+                headers: {
+                  Accept: 'application.json',
+                  'Content-Type': 'application/json'
+                }
+              });
+              if (instructorAddPromise.status == 200 && instructorAddPromise.ok) {
+                alert('Success created.');
+              }
+              else {
+                const instructorAddResponse = await instructorAddPromise.json();
+                alert(instructorAddResponse.message);
+              }
+            }
+          }
+    }
+    else{
+        alert('Please provide valide trainer name');
+    }
+    
 }
 
 
