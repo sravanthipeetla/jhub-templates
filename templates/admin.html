@@ -893,10 +893,76 @@ const addCourseBtn = document.getElementById('addCourse');
   //   course-tab data fetching
 
 
-addCourseBtn.onclick=() => {
+addCourseBtn.onclick=async () => {
     console.log(courseNameText.value);
     console.log(chooseTrainerSelect.value);
-}
+    const courseName = courseNameText.value;
+    const instructorUserName = chooseTrainerSelect.value;
+      if (courseName.length > 0 && instructorUserName.length > 0) {
+        const coursePromise = await fetch(`${ngshare_url}course/${courseName}`, {
+          method: 'POST',
+          headers: {
+            Accept: 'application.json',
+            'Content-Type': 'application/json'
+          }
+        });
+        if (coursePromise.status == 200 && coursePromise.ok) {
+          const hubAddUserPromise = await fetch(`${hub_url}users/${instructorUserName}`, {
+            method: 'POST',
+            headers: {
+              Accept: 'application.json',
+              'Content-Type': 'application/json'
+            }
+          });
+          if (hubAddUserPromise.status == 201 && hubAddUserPromise.ok) {
+            const data = {
+              "users": [
+                instructorUserName
+              ]
+            };
+            const hubAddUserGroupPromise = await fetch(`${hub_url}groups/instructor/users`, {
+              method: 'POST',
+              headers: {
+                Accept: 'application.json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            }
+            );
+            if (hubAddUserGroupPromise.status == 200 && hubAddUserGroupPromise.ok) {
+              const instructorAddPromise = await fetch(`${ngshare_url}instructor/${courseName}/${instructorUserName}?first_name=&last_name=&email=`, {
+                method: 'POST',
+                headers: {
+                  Accept: 'application.json',
+                  'Content-Type': 'application/json'
+                }
+              });
+              if (instructorAddPromise.status == 200 && instructorAddPromise.ok) {
+                alert('Success created.');
+                addCourseModal.style.display = "none";
+                fetchCourseDetails();
+              }
+              else {
+                const instructorAddResponse = await instructorAddPromise.json();
+                alert(instructorAddResponse.message);
+              }
+            }
+          }
+          else {
+            const hubAddUserResponse = await hubAddUserPromise.json();
+            alert(hubAddUserResponse.message);
+          }
+        }
+        else {
+          const courseResponse = await coursePromise.json();
+          alert(courseResponse.message);
+        }
+      }
+      else {
+        alert('Please provide valid course name and instructor username');
+      }
+    }
+
 
 
 
