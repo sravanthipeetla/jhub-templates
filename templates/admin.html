@@ -592,9 +592,13 @@ body.loading {
   overflow: hidden;
 }
 
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+.learner-coursecaed-height{
+    height:5rem;
 }
 
 @media(max-width:1600px){
@@ -1263,7 +1267,7 @@ function addAndAppendLearner(learner){
         for (let each of Object.values(learner)[0]){
             let trainerCourseCard = document.createElement('div');
             trainerCourseCardCont.appendChild(trainerCourseCard);
-            trainerCourseCard.classList.add('trainer-course-card');
+            trainerCourseCard.classList.add('trainer-course-card','learner-coursecaed-height');
             let trainerCourseCardLeft = document.createElement('div');
             trainerCourseCardLeft.classList.add('course-card-left');
             trainerCourseCard.appendChild(trainerCourseCardLeft);
