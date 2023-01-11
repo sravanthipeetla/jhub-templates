@@ -1265,18 +1265,18 @@ function addAndAppendLearner(learner){
         actionTitle.textContent="Learner-";
         deleteTrainer.textContent = Object.keys(learner)[0];
         for (let each of Object.values(learner)[0]){
-            let trainerCourseCard = document.createElement('div');
-            trainerCourseCardCont.appendChild(trainerCourseCard);
-            trainerCourseCard.classList.add('trainer-course-card','learner-coursecaed-height');
-            let trainerCourseCardLeft = document.createElement('div');
-            trainerCourseCardLeft.classList.add('course-card-left');
-            trainerCourseCard.appendChild(trainerCourseCardLeft);
-            let trainerCourseTitle = document.createElement('p');
-            trainerCourseTitle.textContent = each;
-            trainerCourseTitle.classList.add('course-title');
-            trainerCourseCardLeft.appendChild(trainerCourseTitle);
-            let trainerCourseCardDelete = document.createElement('div');
-            trainerCourseCardDelete.onclick=function(){
+            let learnerCourseCard = document.createElement('div');
+            trainerCourseCardCont.appendChild(learnerCourseCard);
+            learnerCourseCard.classList.add('trainer-course-card','learner-coursecaed-height');
+            let learnerCourseCardLeft = document.createElement('div');
+            learnerCourseCardLeft.classList.add('course-card-left');
+            learnerCourseCard.appendChild(trainerCourseCardLeft);
+            let learnerCourseTitle = document.createElement('p');
+            learnerCourseTitle.textContent = each;
+            learnerCourseTitle.classList.add('course-title');
+            learnerCourseCardLeft.appendChild(learnerCourseTitle);
+            let learnerCourseCardDelete = document.createElement('div');
+            learnerCourseCardDelete.onclick=function(){
                 deleteTrainerModal.style.display = 'none';
                 deleteCourseModal.style.display='block';
                 deleteItemTitle.textContent =  'Remove Learner';
@@ -1288,11 +1288,11 @@ function addAndAppendLearner(learner){
                 deleteCourseName = each;
                 trainerCourseCardCont.innerHTML = "";
            };
-            trainerCourseCard.appendChild(trainerCourseCardDelete);
-            trainerCourseCardDelete.classList.add('delete-icon');
-            let trainerCourseCardDeleteImg = document.createElement('img');
-            trainerCourseCardDeleteImg.src='https://i.postimg.cc/prKj8HZB/delete.png';
-            trainerCourseCardDelete.appendChild(trainerCourseCardDeleteImg);
+            learnerCourseCard.appendChild(learnerCourseCardDelete);
+            learnerCourseCardDelete.classList.add('delete-icon');
+            let learnerCourseCardDeleteImg = document.createElement('img');
+            learnerCourseCardDeleteImg.src='https://i.postimg.cc/prKj8HZB/delete.png';
+            learnerCourseCardDelete.appendChild(learnerCourseCardDeleteImg);
          };
     }
     learnerEye.appendChild(learnerEyeImg);
