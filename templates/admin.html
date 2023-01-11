@@ -752,7 +752,7 @@ body.loading {
                             <p>User Name</p>
                             <span>New trainer</span>
                         </div> 
-                        <input type="text" placeholder="Enter user name">
+                        <input type="text" placeholder="Enter user name" id="trainerUsername">
                     </div>
             </div>
                 <div class="add-course-model-bottom">
@@ -917,6 +917,8 @@ let courseNameText = document.getElementById('courseNameText');
 const addCourseBtn = document.getElementById('addCourse');
 const addTrainerModal = document.getElementById('addTrainerModal');
 const addTrainerCancel = document.getElementById('addTrainerCancel');
+const addTrainerBtn = document.getElementById('trainerAddBtn');
+const trainerUsername = document.getElementById('trainerUsername');
   //   course-tab data fetching
 addCourseBtn.onclick=async () => {
     console.log(courseNameText.value);
@@ -959,6 +961,9 @@ addCourseBtn.onclick=async () => {
     else {
         alert('Please provide valid course name and instructor username');
       }
+}
+addTrainerBtn.onclick=() =>{
+    console.log(trainerUsername.value)
 }
 
 
