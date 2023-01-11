@@ -898,7 +898,7 @@ addCourseBtn.onclick=async () => {
     console.log(chooseTrainerSelect.value);
     const courseName = courseNameText.value;
     const instructorUserName = chooseTrainerSelect.value;
-      if (courseName.length > 0 && instructorUserName.length > 0) {
+    if (courseName.length > 0 && instructorUserName.length > 0) {
         const coursePromise = await fetch(`${ngshare_url}course/${courseName}`, {
           method: 'POST',
           headers: {
@@ -906,31 +906,24 @@ addCourseBtn.onclick=async () => {
             'Content-Type': 'application/json'
           }
         });
-        if (coursePromise.status == 200 && coursePromise.ok) {
+        if (coursePromise.status == 200 && coursePromise.ok){
             const instructorAddPromise = await fetch(`${ngshare_url}instructor/${courseName}/${instructorUserName}?first_name=&last_name=&email=`, {
                 method: 'POST',
                 headers: {
                   Accept: 'application.json',
                   'Content-Type': 'application/json'
                 }
-            });
-            if (instructorAddPromise.status == 200 && instructorAddPromise.ok) {
+              });
+              if (instructorAddPromise.status == 200 && instructorAddPromise.ok) {
                 alert('Success created.');
-                location.reload();
-                // addCourseModal.style.display = "none";
-                // fetchCourseDetails();
               }
               else {
                 const instructorAddResponse = await instructorAddPromise.json();
                 alert(instructorAddResponse.message);
               }
-            
-      }
-      else {
-        alert('Please provide valid course name and instructor username');
-      }
+        }
     }
-
+}
 
 
 
