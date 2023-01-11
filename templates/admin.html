@@ -898,7 +898,10 @@ addCourseBtn.onclick=async () => {
     console.log(chooseTrainerSelect.value);
     const courseName = courseNameText.value;
     const instructorUserName = chooseTrainerSelect.value;
-    if (courseName.length > 0 && instructorUserName.length > 0) {
+    if (courseName.includes(' ')){
+        alert('Course Name should not contain spaces');
+    }
+    else if (courseName.length > 0 && instructorUserName.length > 0) {
         const coursePromise = await fetch(`${ngshare_url}course/${courseName}`, {
           method: 'POST',
           headers: {
