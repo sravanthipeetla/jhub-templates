@@ -1225,10 +1225,10 @@ function addAndAppendTrainer(trainer) {
             instructorsUsername.push(hubUsersJson[i].name);
         };
     };
-    loaderDisplay.style.display ='block';
+    // loaderDisplay.style.display ='block';
     trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
     trainerFetchDetails = trainerFetchDetails[0];
-    loaderDisplay.style.display ='none';
+    // loaderDisplay.style.display ='none';
     let instructorDetails=[];
     for (key in trainerFetchDetails){
         let status = null;
@@ -1334,10 +1334,10 @@ const getLearnerDetails = async () => {
             console.log('checking', each, learnerCourse);
         }        
     });
-    loaderDisplay.style.display ='block';
+    // loaderDisplay.style.display ='block';
     const detailsLearnerCourse = await Promise.all(details);
     console.log('test',detailsLearnerCourse);
-    loaderDisplay.style.display ='none';
+    // loaderDisplay.style.display ='none';
     // detailsLearnerCourse = detailsLearnerCourse[0];
     if(detailsLearnerCourse){
         console.log('inside if');
