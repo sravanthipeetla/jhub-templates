@@ -981,7 +981,10 @@ function addAndAppendCourse(course) {
     console.log(loaderDisplay);
     loaderDisplay.style.display ='block';
     courseFetchDetails = await getCourseDetails(coursesList);
-    loaderDisplay.style.display ='none';
+    if(courseFetchDetails){
+        loaderDisplay.style.display ='none';
+    }
+    
     for (let course of courseFetchDetails) {
         addAndAppendCourse(course);
     };
