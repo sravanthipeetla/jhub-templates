@@ -855,7 +855,7 @@ body.loading {
                     </div>
             </div>
                 <div class="add-course-model-bottom">
-                    <button id="delete-button" class="add-button">Add</button>
+                    <button id="student-submit" class="add-button">Add</button>
                     <button id="cancel-button" class="cancel-button">Cancel</button>
                 </div>  
         </div>
@@ -966,6 +966,42 @@ const fileChosen = document.getElementById('file-chosen');
 actualBtn.addEventListener('change', function() {
     fileChosen.textContent = this.files[0].name;
 })
+
+const studentSubmitBtn = document.getElementById("student-submit");
+
+studentSubmitBtn.addEventListener("click", function(e) {
+    e.preventDefault();
+    console.log(actualBtn.files);
+    const input = actualBtn.files[0];
+    const reader = new FileReader();
+
+    reader.readAsText(input);
+
+    function csvToArray(str, delimiter = ",") {
+        const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
+        const rows = str.slice(str.indexOf("\n") + 1).split("\n");
+        const arr = rows.map(function(row) {
+            const values = row.split(delimiter);
+            const el = headers.reduce(function(object, header, index) {
+                object[header] = values[index];
+                return object;
+            }, {});
+            return el;
+        });
+        return arr;
+    }
+    reader.onload = function(e) {
+        const text = e.target.result;
+        StudentData = csvToArray(text);
+        console.log(StudentData);
+    };
+});
+console.log(StudentData);
+
+
+
+
+
   //   course-tab data fetching
 addCourseBtn.onclick=async () => {
     const courseName = courseNameText.value;
