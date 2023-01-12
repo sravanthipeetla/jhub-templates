@@ -996,7 +996,7 @@ studentSubmitBtn.addEventListener("click", function(e) {
         console.log(studentsList);
         const studentData=JSON.stringify(studentsList);
                   const addStudent = async () => {
-    	        const selectedCourse = selected.options[selected.selectedIndex].text;
+    	        // const selectedCourse = selected.options[selected.selectedIndex].text;
       	      	// const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/'+selectedCourse+'?students='+studentData, {
                     const response =fetch(`${ngshare_url}students/Dart?students=${studentData}`, {
         			method: 'POST',
