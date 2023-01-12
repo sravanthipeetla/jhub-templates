@@ -993,9 +993,8 @@ studentSubmitBtn.addEventListener("click", function(e) {
     reader.onload = function(e) {
         const text = e.target.result;
         const studentsList = csvToArray(text);
-        let reqStudentsList = [];
-        console.log(reqStudentsList);
-        const studentData=JSON.stringify(reqStudentsList).replace(/\\n/g, '');
+        console.log(studentsList);
+        const studentData=JSON.stringify(studentsList).replace(/\\n/g, '');
                   const addStudent = async () => {
                     console.log("In add student");
     	        // const selectedCourse = selected.options[selected.selectedIndex].text;
