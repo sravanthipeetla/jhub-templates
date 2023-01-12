@@ -991,7 +991,7 @@ studentSubmitBtn.addEventListener("click", function(e) {
     }
     reader.onload = function(e) {
         const text = e.target.result;
-        const StudentData = csvToArray(text);
+        const studentData = csvToArray(text);
         console.log(studentData);
     };
 });
