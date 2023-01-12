@@ -662,7 +662,9 @@ body.loading {
 .alert-closebtn:hover {
   color: black;
 }
-
+#actual-btn{
+    display: none;
+}
 
 </style>
 {% endblock %}
@@ -842,7 +844,7 @@ body.loading {
                                 <p>Upload CSV file</p>
                                 <span>Multiple learners</span>
                             </div> 
-                            <input type="file" id="actual-btn" hidden accept=".csv" />
+                            <input type="file" id="actual-btn"  accept=".csv" />
                             <label for="actual-btn" class="upload-btn"><img src="https://i.postimg.cc/7Z71QKgW/Vector-4.png" alt=""></label>
                             <span id="file-chosen">No file chosen</span>
                         </div>
