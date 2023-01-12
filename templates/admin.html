@@ -573,7 +573,7 @@ color: #006BB6;
     font-size: 0.875rem;
     font-weight: 0;
     width:10rem;
-    padding-top: 0.3rem;
+    padding-top: 0.2rem;
     color: #A6A6A6;
     text-align: center;
     cursor: pointer;
@@ -633,29 +633,33 @@ body.loading {
 }
 
 .alert {
-  padding: 20px;
-  background-color: #f44336; /* Red */
-  color: white;
-  margin-bottom: 15px;
-  position: fixed;
-  top:20px;
-  right:0;
-  width:50%;
-  z-index: 1;
-  font-size: 1rem;
-}
-
-/* The close button */
-.alert-closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f5aeba; 
+    color: #c51306; /* Red */
+    margin-bottom: 15px;
+    position: fixed;
+    top:20px;
+    right:20px;
+    width:30%;
+    height:3rem;
+    z-index: 1;
+    font-size: 1rem;
+  }
+  
+  /* The close button */
+  .closebtn {
+    margin-left: 15px;
+    color: #c51306;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
 
 /* When moving the mouse over the close button */
 .alert-closebtn:hover {
