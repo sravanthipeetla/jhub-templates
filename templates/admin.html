@@ -626,10 +626,36 @@ body.loading {
     }
 
 }
-#messageDisplay{
-    display:none;
+
+.alert {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+  position: fixed;
+  top:20px;
+  right:0;
+  width:50%;
+  z-index: 1;
+  font-size: 1rem;
 }
 
+/* The close button */
+.alert-closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.alert-closebtn:hover {
+  color: black;
+}
 
 
 </style>
@@ -642,7 +668,9 @@ body.loading {
   </script>
   <script src={{ static_url("js/admin.js") }}></script>
 <div>
-    <p id ='messageDisplay'></p>
+    <div class="alert" id="alertMsg">
+        <span class="alert-closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      </div>
     <div class="admin-container">
         <div class="admin-navbar">
                 <a class="course-nav active" id="course-nav">Courses</a>
