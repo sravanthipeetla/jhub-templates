@@ -968,7 +968,7 @@ actualBtn.addEventListener('change', function() {
 })
 
 const studentSubmitBtn = document.getElementById("student-submit");
-
+let studentData = null;
 studentSubmitBtn.addEventListener("click", function(e) {
     e.preventDefault();
     console.log(actualBtn.files);
@@ -993,10 +993,10 @@ studentSubmitBtn.addEventListener("click", function(e) {
     reader.onload = function(e) {
         const text = e.target.result;
         StudentData = csvToArray(text);
-        console.log(StudentData);
+        console.log(studentData);
     };
 });
-console.log(StudentData);
+console.log(studentData);
 
 
 
