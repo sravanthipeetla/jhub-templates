@@ -969,7 +969,7 @@ actualBtn.addEventListener('change', function() {
 
 const studentSubmitBtn = document.getElementById("student-submit");
 studentSubmitBtn.addEventListener("click", function(e) {
-    const studentData=null;
+    let studentData=null;
     e.preventDefault();
     console.log(actualBtn.files[0]);
     const input = actualBtn.files[0];
