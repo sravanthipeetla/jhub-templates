@@ -968,15 +968,14 @@ actualBtn.addEventListener('change', function() {
 })
 
 const studentSubmitBtn = document.getElementById("student-submit");
+if (window.File && window.FileReader && window.FileList && window.Blob){
+    alert('add file');
 studentSubmitBtn.addEventListener("click", function(e) {
     let studentData=null;
     e.preventDefault();
     console.log(actualBtn.files[0]);
     const input = actualBtn.files[0];
     const reader = new FileReader();
-
-    reader.readAsText(input);
-
     function csvToArray(str, delimiter = ",") {
         const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
         const rows = str.slice(str.indexOf("\n") + 1).split("\n");
@@ -1011,7 +1010,7 @@ studentSubmitBtn.addEventListener("click", function(e) {
     console.log(studentData);
     }
 });
-
+};
 
 
 
