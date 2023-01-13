@@ -893,7 +893,7 @@ body.loading {
                         <span> &times;</span>
                     </div>
                 </div>
-                    <!-- <div class="change-learner">
+                    <div class="change-learner">
                         <button id="singleUser" class="learner-inactive learner-active">Single User</button>
                         <button id="multipleUser" class="learner-inactive">Bulk Users</button>
                     </div>
@@ -905,7 +905,7 @@ body.loading {
                             </div> 
                             <input type="text" placeholder="Enter user ID">
                         </div>
-                    </div> -->
+                    </div>
                     <div id="multipleLearners">
                         <div class="add-learner">
                             <div class="choose-trainer-arrange">
@@ -1751,18 +1751,18 @@ mapLearnerCancel.onclick = function(){
     mapLearnerModal.style.display = 'none';
 }
 
-// singleUserBtn.onclick = function () {
-//     singleUserBtn.classList.add('learner-active');
-//     multipleUserBtn.classList.remove('learner-active');
-//     singleLearner.style.display = 'block';
-//     multipleLearners.style.display = 'none';
-// };
+singleUserBtn.onclick = function () {
+    singleUserBtn.classList.add('learner-active');
+    multipleUserBtn.classList.remove('learner-active');
+    singleLearner.style.display = 'block';
+    multipleLearners.style.display = 'none';
+};
   
-// multipleUserBtn.onclick = function () {
-//     singleUserBtn.classList.remove('learner-active');
-//     multipleUserBtn.classList.add('learner-active');
-//     singleLearner.style.display = 'none';
-//     multipleLearners.style.display = 'block';
-// };
+multipleUserBtn.onclick = function () {
+    singleUserBtn.classList.remove('learner-active');
+    multipleUserBtn.classList.add('learner-active');
+    singleLearner.style.display = 'none';
+    multipleLearners.style.display = 'block';
+};
 </script>
 {% endblock %}
