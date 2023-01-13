@@ -841,7 +841,7 @@ body.loading {
             <div>
                 <div class="add-learner-model-top-first">
                     <h1>Add Learners</h1>
-                    <div id="addLearnerCancel">
+                    <div id="mapLearnerCancel">
                         <span> &times;</span>
                     </div>
                 </div>
@@ -1028,6 +1028,7 @@ let deleteTrainerModal = document.getElementById('deleteTrainerModal');
 let deleteTrainer = document.getElementById('deleteTrainer');
 let deleteTrainerCancel = document.getElementById('deleteTrainerCancel');
 let addLearnerCancel = document.getElementById('addLearnerCancel');
+let mapLearnerCancel = document.getElementById('mapLearnerCancel');
 // let singleUserBtn = document.getElementById('singleUser');
 // let multipleUserBtn = document.getElementById('multipleUser');
 let singleLearner = document.getElementById('singleLearner');
@@ -1746,6 +1747,9 @@ deleteTrainerCancel.onclick = function () {
 addLearnerCancel.onclick = function () {
     addLearnerModal.style.display = 'none';
 };
+mapLearnerCancel.onclick = function(){
+    mapLearnerModal.style.display = 'none';
+}
 
 // singleUserBtn.onclick = function () {
 //     singleUserBtn.classList.add('learner-active');
