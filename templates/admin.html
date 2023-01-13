@@ -1081,6 +1081,7 @@ addTrainerBtn.onclick=async () =>{
               'Content-Type': 'application/json'
             }
           });
+          console.log(hubAddUserPromise.status);
         if (hubAddUserPromise.status == 201 && hubAddUserPromise.ok) {
             const data = {
               "users": [
