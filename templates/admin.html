@@ -1049,6 +1049,8 @@ addCourseBtn.onclick=async () => {
               });
               if (instructorAddPromise.status == 200 && instructorAddPromise.ok) {
                 alert('Success created.');
+                location.reload();
+
               }
               else {
                 const instructorAddResponse = await instructorAddPromise.json();
@@ -1097,6 +1099,7 @@ addTrainerBtn.onclick=async () =>{
             );
             if (hubAddUserGroupPromise.status == 200 && hubAddUserGroupPromise.ok) {
               alert('trainer successfully added')
+              location.reload();
             }
           }
     }
