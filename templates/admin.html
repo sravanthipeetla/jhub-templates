@@ -1675,7 +1675,7 @@ addCourseCancel.onclick = function () {
     addCourseModal.style.display = 'none';
 };
 
-addBtn.onclick = async function () {
+addBtn.onclick =  function () {
     if (addBtn.textContent === "Add Course") {
         addCourseModal.style.display = 'block'; 
 }
@@ -1683,10 +1683,12 @@ else if(addBtn.textContent === "Add Trainer"){
         addTrainerModal.style.display = 'block';
 }
 else if (addBtn.textContent === "Add Learners") {
-      addLearnerModal.style.display = 'block';
+    //   addLearnerModal.style.display = 'block';
     };
 };
-
+mapBtn.onclick = function(){
+    addLearnerModal.style.display = 'block';
+}
 deleteTrainerCancel.onclick = function () {
     trainerCourseCardCont.innerHTML = "";
     deleteTrainerModal.style.display = 'none';
