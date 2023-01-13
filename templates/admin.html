@@ -905,10 +905,10 @@ window.onload = async () =>{
         }
     }; 
     const trainDefaultOption = document.createElement('option');
-    defaultOption.text = 'Choose trainer';
-    defaultOption.value = '';
-    defaultOption.selected = true;
-    defaultOption.disabled = true;
+    trainDefaultOption.text = 'Choose trainer';
+    trainDefaultOption.value = '';
+    trainDefaultOption.selected = true;
+    trainDefaultOption.disabled = true;
     chooseTrainerSelect.add(trainDefaultOption);
     for (let option of instructorsUsername){
         const newOption = document.createElement('option');
@@ -921,10 +921,10 @@ window.onload = async () =>{
     const courseJson = await courseFetch.json();
     const coursesList = await courseJson.courses;
     const courseDefaultOption = document.createElement('option');
-    defaultOption.text = 'Choose trainer';
-    defaultOption.value = '';
-    defaultOption.selected = true;
-    defaultOption.disabled = true;
+    courseDefaultOption.text = 'Choose course';
+    courseDefaultOption.value = '';
+    courseDefaultOption.selected = true;
+    courseDefaultOption.disabled = true;
     chooseCourseSelect.add(courseDefaultOption);
     for (let option of coursesList){
         const newOption = document.createElement('option');
