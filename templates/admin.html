@@ -968,18 +968,25 @@ actualBtn.addEventListener('change', function() {
 })
 
 const studentSubmitBtn = document.getElementById("student-submit");
-if (window.File && window.FileReader && window.FileList && window.Blob){
-    alert('add file');
 studentSubmitBtn.addEventListener("click", function(e) {
     let studentData=null;
     e.preventDefault();
     console.log(actualBtn.files[0]);
     const input = actualBtn.files[0];
     const reader = new FileReader();
+
+    reader.readAsText(input);
+
     function csvToArray(str, delimiter = ",") {
         const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
         const rows = str.slice(str.indexOf("\n") + 1).split("\n");
-        const arr = rows.map(function(row) {
+        let reqrows =[];
+                for (let each of rows){
+                    if (each !== ""){
+                        reqrows.push(each);
+                    }
+                }
+        const arr = reqrows.map(function(row) {
             const values = row.split(delimiter);
             const el = headers.reduce(function(object, header, index) {
                 object[header] = values[index];
@@ -992,6 +999,7 @@ studentSubmitBtn.addEventListener("click", function(e) {
     reader.onload = function(e) {
         const text = e.target.result;
         const studentsList = csvToArray(text);
+        console.log(studentsList);
         const studentData=JSON.stringify(studentsList).replace(/\\n/g, '');
                   const addStudent = async () => {
                     console.log("In add student");
@@ -1005,12 +1013,13 @@ studentSubmitBtn.addEventListener("click", function(e) {
     			    // 'Authorization':'token 1199d73de2bc4d37900e19c6539833e4'
       			}
       		});
+    		console.log(response.status);
     };
     addStudent();
     console.log(studentData);
     }
 });
-};
+
 
 
 
