@@ -1101,7 +1101,16 @@ addTrainerBtn.onclick=async () =>{
               alert('trainer successfully added')
               location.reload();
             }
-          }
+            
+            else{
+                alert('Something went wrong');
+            }
+        }
+           
+        else{
+            alert('User not added to hub');
+        }
+    
     }
     else{
         alert('Please provide valide trainer name');
