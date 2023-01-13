@@ -906,31 +906,24 @@ body.loading {
                             <input type="text" placeholder="Enter user ID">
                         </div>
                     </div>
-                    <div id="multipleLearners">
+                    <div id="multipleLearners" class="stop-visible">
                         <div class="add-learner">
                             <div class="choose-trainer-arrange">
                                 <p>Upload CSV file</p>
                                 <span>Multiple learners</span>
                             </div> 
-                            <input type="file" id="actual-btn"  accept=".csv" />
+                            <input type="file" id="actual-btn" hidden accept=".csv" />
                             <label for="actual-btn" class="upload-btn"><img src="https://i.postimg.cc/7Z71QKgW/Vector-4.png" alt=""></label>
                             <span id="file-chosen">No file chosen</span>
                         </div>
                     </div>
-                    <div class="choose-trainer-name">
-                        <div class="choose-trainer-arrange">
-                            <p>Choose Course</p>
-                        </div> 
-                        <select id="chooseCourseSelect">
-            
-                        </select>
-                    </div>
             </div>
-                <div class="add-course-model-bottom">
-                    <button id="student-submit" class="add-button">Add</button>
-                    <button id="cancel-button" class="cancel-button">Cancel</button>
-                </div>  
+            <div class="add-course-model-bottom">
+                <button id="student-submit" class="add-button">Add</button>
+                <button id="cancel-button" class="cancel-button">Cancel</button>
+            </div>  
         </div>
+       
     </div>
 </div>
 </div>
@@ -1029,8 +1022,8 @@ let deleteTrainer = document.getElementById('deleteTrainer');
 let deleteTrainerCancel = document.getElementById('deleteTrainerCancel');
 let addLearnerCancel = document.getElementById('addLearnerCancel');
 let mapLearnerCancel = document.getElementById('mapLearnerCancel');
-// let singleUserBtn = document.getElementById('singleUser');
-// let multipleUserBtn = document.getElementById('multipleUser');
+let singleUserBtn = document.getElementById('singleUser');
+let multipleUserBtn = document.getElementById('multipleUser');
 let singleLearner = document.getElementById('singleLearner');
 let multipleLearners = document.getElementById('multipleLearners');
 let modelTitle = document.getElementById('modelTitle');
