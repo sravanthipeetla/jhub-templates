@@ -483,7 +483,7 @@ width:8rem;
 .add-button{
     border:none;
     background: #5FBEF0;
-    border-radius:  14px;
+    border-radius:  21px;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
@@ -492,6 +492,19 @@ width:8rem;
     color: #FFFFFF;
     height:1.75rem;
     width: 5rem;
+}
+.map-button{
+    display:none;
+    background: #FFFFFF;
+    border: 1px solid #5FBEF0;
+    border-radius: 22px;
+    height:1.75rem;
+    width: 5rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.75rem;
+    text-align: center;
 }
 .trainer-model{
     background:#FFFFFF;
@@ -702,7 +715,7 @@ body.loading {
                         <option value="mapped">Mapped</option>
                         <option value="unmapped">Unmapped</option>
                     </select>
-                    <button class="add-btn stop-visible" id="map-btn">Map Course</button>
+                    <button class="map-button" id="map-btn">Map Course</button>
                     <button class="add-btn" id="add-btn">Add Course</button>
                 </div>
         </div>
