@@ -1047,7 +1047,7 @@ studentSubmitBtn.addEventListener("click", function(e) {
                     console.log("In add student");
     	        // const selectedCourse = selected.options[selected.selectedIndex].text;
       	      	// const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/'+selectedCourse+'?students='+studentData, {
-                    const response =await fetch(`${ngshare_url}students/Dart?students=${studentData}`, {
+                    const response =await fetch(`${ngshare_url}students/${chooseCourseSelect.value}?students=${studentData}`, {
         			method: 'POST',
         			headers: {
     			    'Accept': 'application/json, text/plain, */*',
@@ -1055,6 +1055,7 @@ studentSubmitBtn.addEventListener("click", function(e) {
     			    // 'Authorization':'token 1199d73de2bc4d37900e19c6539833e4'
       			}
       		});
+            console.log(chooseCourseSelect.value);
     		console.log(response.status);
     };
     addStudent();
