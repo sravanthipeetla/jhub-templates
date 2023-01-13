@@ -836,6 +836,54 @@ body.loading {
             </div>
         </div>
     </div>
+    <div class="bg-model" id="mapLearnerModal">
+        <div class="course-model add-learner-model-height">
+            <div>
+                <div class="add-learner-model-top-first">
+                    <h1>Add Learners</h1>
+                    <div id="addLearnerCancel">
+                        <span> &times;</span>
+                    </div>
+                </div>
+                    <!-- <div class="change-learner">
+                        <button id="singleUser" class="learner-inactive learner-active">Single User</button>
+                        <button id="multipleUser" class="learner-inactive">Bulk Users</button>
+                    </div>
+                    <div id="singleLearner">
+                        <div class="add-learner">
+                            <div class="choose-trainer-arrange">
+                                <p>User ID</p>
+                                <span>Single learner</span>
+                            </div> 
+                            <input type="text" placeholder="Enter user ID">
+                        </div>
+                    </div> -->
+                    <div id="multipleLearners">
+                        <div class="add-learner">
+                            <div class="choose-trainer-arrange">
+                                <p>Upload CSV file</p>
+                                <span>Multiple learners</span>
+                            </div> 
+                            <input type="file" id="actual-btn"  accept=".csv" />
+                            <label for="actual-btn" class="upload-btn"><img src="https://i.postimg.cc/7Z71QKgW/Vector-4.png" alt=""></label>
+                            <span id="file-chosen">No file chosen</span>
+                        </div>
+                    </div>
+                    <div class="choose-trainer-name">
+                        <div class="choose-trainer-arrange">
+                            <p>Choose Course</p>
+                        </div> 
+                        <select id="chooseCourseSelect">
+            
+                        </select>
+                    </div>
+            </div>
+                <div class="add-course-model-bottom">
+                    <button id="student-submit" class="add-button">Add</button>
+                    <button id="cancel-button" class="cancel-button">Cancel</button>
+                </div>  
+        </div>
+    </div>
     <div class="bg-model" id="addLearnerModal">
         <div class="course-model add-learner-model-height">
             <div>
@@ -971,6 +1019,7 @@ let deleteIcon = document.getElementById('delete-icon');
 let deleteCourseModal = document.getElementById('deleteCourseModal');
 let deleteCancel = document.getElementById('deleteCancel');
 let addLearnerModal = document.getElementById('addLearnerModal');
+let mapLearnerModal = document.getElementById('mapLearnerModal');
 let addCourseCancel = document.getElementById('addCourseCancel');
 let courseCardCont = document.getElementById('courseCardCont');
 let trainerCardCont = document.getElementById('trainerCardCont');
@@ -1683,11 +1732,11 @@ else if(addBtn.textContent === "Add Trainer"){
         addTrainerModal.style.display = 'block';
 }
 else if (addBtn.textContent === "Add Learners") {
-    //   addLearnerModal.style.display = 'block';
+      addLearnerModal.style.display = 'block';
     };
 };
 mapBtn.onclick = function(){
-    addLearnerModal.style.display = 'block';
+    mapLearnerModal.style.display = 'block';
 }
 deleteTrainerCancel.onclick = function () {
     trainerCourseCardCont.innerHTML = "";
