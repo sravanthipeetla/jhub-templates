@@ -855,10 +855,9 @@ body.loading {
                     </div>
                     <div class="choose-trainer-name">
                         <div class="choose-trainer-arrange">
-                            <p>Choose Trainer</p>
-                            <span>Existing Trainer</span>
+                            <p>Choose Course</p>
                         </div> 
-                        <select id="chooseTrainerSelect">
+                        <select id="chooseCourseSelect">
             
                         </select>
                     </div>
@@ -905,18 +904,34 @@ window.onload = async () =>{
         instructorsUsername.push(hubUsersJson[i].name);
         }
     }; 
-    const defaultOption = document.createElement('option');
+    const trainDefaultOption = document.createElement('option');
     defaultOption.text = 'Choose trainer';
     defaultOption.value = '';
     defaultOption.selected = true;
     defaultOption.disabled = true;
-    chooseTrainerSelect.add(defaultOption);
+    chooseTrainerSelect.add(trainDefaultOption);
     for (let option of instructorsUsername){
         const newOption = document.createElement('option');
         newOption.text = option;
         newOption.value = option;
         chooseTrainerSelect.add(newOption);
     };
+
+    const courseFetch = await fetch(`${ngshare_url}courses`);
+    const courseJson = await courseFetch.json();
+    const coursesList = await courseJson.courses;
+    const courseDefaultOption = document.createElement('option');
+    defaultOption.text = 'Choose trainer';
+    defaultOption.value = '';
+    defaultOption.selected = true;
+    defaultOption.disabled = true;
+    chooseCourseSelect.add(courseDefaultOption);
+    for (let option of coursesList){
+        const newOption = document.createElement('option');
+        newOption.text = option;
+        newOption.value = option;
+        chooseCourseSelect.add(newOption);
+    }
 };
 
 //   // To hide left navbar items - 'Token' and 'services'
@@ -957,6 +972,7 @@ let deleteTitle = document.getElementById('deleteTitle');
 let trainerCourseCardCont = document.getElementById('trainerCourseCardCont');
 let deleteItemTitle = document.getElementById('deleteItemTitle');
 let chooseTrainerSelect = document.getElementById('chooseTrainerSelect');
+let chooseLearnerSelect = document.getElementById('chooseLearnerSelect');
 let learnerRowsBody = document.getElementById('learnerRowsBody');
 let actionTitle = document.getElementById('actionTitle');
 let deleteItem = null;
