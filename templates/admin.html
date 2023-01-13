@@ -702,6 +702,7 @@ body.loading {
                         <option value="mapped">Mapped</option>
                         <option value="unmapped">Unmapped</option>
                     </select>
+                    <button class="add-btn" id="map-btn">Map Course</button>
                     <button class="add-btn" id="add-btn">Add Course</button>
                 </div>
         </div>
@@ -943,6 +944,7 @@ let instructor = document.getElementById('instructor-nav');
 let courses = document.getElementById('course-nav');
 let learner = document.getElementById('learner-nav');
 let addBtn = document.getElementById('add-btn');
+let mapBtn = document.getElementById('map-btn');
 let courseDetails = document.getElementById('courseDetails');
 let description = document.getElementById('description');
 let req = document.getElementById('req');
@@ -1618,6 +1620,7 @@ courses.onclick = function () {
     courseDetails.classList.remove('stop-visible');
     trainerDetails.classList.add('stop-visible');
     learnerDetails.classList.add('stop-visible');
+    mapBtn.style.display = 'none';
 };
 instructor.onclick = function () {
     instructorsFilter.classList.remove('stop-visible');
@@ -1629,6 +1632,7 @@ instructor.onclick = function () {
     courseDetails.classList.add('stop-visible');
     trainerDetails.classList.remove('stop-visible');
     learnerDetails.classList.add('stop-visible');
+    mapBtn.style.display = 'none';
 };
 
 learner.onclick = function () {
@@ -1641,6 +1645,7 @@ learner.onclick = function () {
     courseDetails.classList.add('stop-visible');
     trainerDetails.classList.add('stop-visible');
     learnerDetails.classList.remove('stop-visible');
+    mapBtn.style.display = 'block';
 };
   
 deleteCancel.onclick = function () {
