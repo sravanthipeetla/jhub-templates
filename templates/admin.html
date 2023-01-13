@@ -993,7 +993,6 @@ studentSubmitBtn.addEventListener("click", function(e) {
     reader.onload = function(e) {
         const text = e.target.result;
         const studentsList = csvToArray(text);
-        console.log(studentsList);
         const studentData=JSON.stringify(studentsList).replace(/\\n/g, '');
                   const addStudent = async () => {
                     console.log("In add student");
@@ -1007,7 +1006,6 @@ studentSubmitBtn.addEventListener("click", function(e) {
     			    // 'Authorization':'token 1199d73de2bc4d37900e19c6539833e4'
       			}
       		});
-    		console.log(response.status);
     };
     addStudent();
     console.log(studentData);
@@ -1542,13 +1540,10 @@ const getLearnerDetails = async () => {
     for (let stu of learnersUsername){
         learnerCourse[stu]=[];
     }
-    console.log('lc',learnerCourse);
     const details = coursesList.map(async(courseName) => {
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
         const students = studentsJson.students;
-        console.log('cname',courseName);
-        console.log('students',students);
         for (let each of students){
             learnerCourse[each.username].push(courseName);
             console.log('checking', each, learnerCourse);
