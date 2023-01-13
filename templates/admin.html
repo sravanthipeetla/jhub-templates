@@ -1089,7 +1089,7 @@ addTrainerBtn.onclick=async () =>{
               ]
             };
             console.log('hub user added');
-            const hubAddUserGroupPromise = await fetch(`${hub_url}groups/instructor`, {
+            const hubAddUserGroupPromise = await fetch(`${hub_url}groups/instructor/users`, {
               method: 'POST',
               headers: {
                 Accept: 'application.json',
