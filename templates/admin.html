@@ -1058,7 +1058,7 @@ actualBtn.addEventListener('change', function() {
 })
 
 
-$('#courseNameText').keypress(function(){
+$('#courseNameText').keyup(function(){
     if($('#courseNameText').val().includes(" ")){
         $('#courseNameWarn').show();
     }
