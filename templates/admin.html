@@ -991,7 +991,7 @@ window.onload = async () =>{
         newOption.value = option;
         chooseCourseSelect.add(newOption);
     }
-    getLearnerDetails(coursesList,hubUsersJson);
+   
 };
 
 //   // To hide left navbar items - 'Token' and 'services'
@@ -1630,13 +1630,12 @@ function addAndAppendLearner(learner){
     learnerRow.appendChild(learnerDelete);
 
 };
-const getLearnerDetails = async (c,h) => {
-    // const courseFetch = await fetch(`${ngshare_url}courses`);
-    // const courseJson = await courseFetch.json();
-    const coursesList = c;
-    // const hubUsersFetch = await fetch(`${hub_url}users`);
-    // const hubUsersJson = await hubUsersFetch.json();
-    const hubUsersJson = h;
+const getLearnerDetails = async () => {
+    const courseFetch = await fetch(`${ngshare_url}courses`);
+    const courseJson = await courseFetch.json();
+    const coursesList = courseJson.courses;
+    const hubUsersFetch = await fetch(`${hub_url}users`);
+    const hubUsersJson = await hubUsersFetch.json();
     const learnerCourse ={};
     const learnersUsername = [];
     for (let i = 0; i < hubUsersJson.length; i++) {
@@ -1661,16 +1660,24 @@ const getLearnerDetails = async (c,h) => {
     console.log('test',detailsLearnerCourse);
     // loaderDisplay.style.display ='none';
     // detailsLearnerCourse = detailsLearnerCourse[0];
-    if(detailsLearnerCourse){
-        console.log('inside if');
+//     if(detailsLearnerCourse){
+//         console.log('inside if');
+//     for (key in learnerCourse){
+//         let obj ={};
+//         obj[key]=learnerCourse[key]
+//         addAndAppendLearner(obj);
+//     };
+// 
+return learnerCourse;
+};
+getLearnerDetails().then((resp)=>{
+    let learnerCourse = resp;
     for (key in learnerCourse){
         let obj ={};
         obj[key]=learnerCourse[key]
         addAndAppendLearner(obj);
     };
-}
-};
-
+});
 // for (let each of learners_){
 //     addAndAppendLearner(each);
 
