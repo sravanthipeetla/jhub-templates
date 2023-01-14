@@ -953,6 +953,7 @@ if ($(this).text().toLowerCase() == currentAnchorTagText) {
 });
 
 window.onload = async () =>{
+    getLearnerDetails();
     const hubUsersFetch = await fetch(`${hub_url}users`);
     const hubUsersJson = await hubUsersFetch.json();
     const instructorsUsername = [];
@@ -990,7 +991,7 @@ window.onload = async () =>{
         newOption.value = option;
         chooseCourseSelect.add(newOption);
     }
-    getLearnerDetails();
+    
 };
 
 //   // To hide left navbar items - 'Token' and 'services'
