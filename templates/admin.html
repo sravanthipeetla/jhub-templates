@@ -81,6 +81,8 @@ body {
 }
 #right-description-bar input::placeholder {
     font-size: 1.4rem;
+    font-weight: 400;
+    font-style: normal;
     color: #ccc;
 }
 
@@ -100,18 +102,13 @@ body {
     opacity: 0.7;
 }
 #right-description-bar form {
-    color: #555;
     display: flex;
     justify-content: space-between;
-    border: 2px solid blue;
-    border-radius: 5px;
+    border: 2px solid #5FBEF0;
     border-radius:50px;
     height:4rem;
     width:22rem;
     border:0.1rem solid #5FBEF0;
-    font-size: 1.6rem;
-    font-weight: 0;
-    color: black;
 }
 .add-btn {
     border:none;
@@ -1716,9 +1713,9 @@ else if (addBtn.textContent === "Add Learners") {
       addLearnerModal.style.display = 'block';
     };
 };
-mapBtn.onclick = function(){
-    mapLearnerModal.style.display = 'block';
-}
+$('#mapBtn').click (function(){
+    $('#mapLearnerModal').show()
+});
 deleteTrainerCancel.onclick = function () {
     trainerCourseCardCont.innerHTML = "";
     deleteTrainerModal.style.display = 'none';
