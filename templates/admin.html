@@ -787,7 +787,7 @@ body.loading {
                         <p>Course Name</p>
                         <input type="text" placeholder="Enter course name" id="courseNameText">
                     </div>
-                    <span class="course-name-warn">* course name should not contain spaces</span>
+                    <span class="course-name-warn" id="courseNameWarn">* course name should not contain spaces</span>
                     <div class="choose-trainer-name add-trainer-top-arr">
                         <div class="choose-trainer-arrange">
                             <p>Choose Trainer</p>
@@ -1056,6 +1056,15 @@ actualBtn.addEventListener('change', function() {
     fileChosen.textContent = this.files[0].name;
 })
 
+
+$('#courseNameText').keyup(function(){
+    if($('#courseName').text().includes(' ')){
+        $('#courseNameWarn').show();
+    }
+    else{
+        $('#courseNameWarn').hide();
+    }
+});
 const studentSubmitBtn = document.getElementById("student-submit");
 studentSubmitBtn.addEventListener("click", function(e) {
     let studentData=null;
