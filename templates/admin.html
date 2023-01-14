@@ -792,7 +792,7 @@ body.loading {
             </div>
                 <div class="add-course-model-bottom">
                     <button id="addCourse" class="add-button">Add</button>
-                    <button id="cancelCourse" class="cancel-button">Cancel</button>
+                    <button id="cancelAddCourse" class="cancel-button">Cancel</button>
                 </div>  
         </div>
        
@@ -1008,7 +1008,6 @@ let deleteCourseModal = document.getElementById('deleteCourseModal');
 let deleteCancel = document.getElementById('deleteCancel');
 let addLearnerModal = document.getElementById('addLearnerModal');
 let mapLearnerModal = document.getElementById('mapLearnerModal');
-let addCourseCancel = document.getElementById('addCourseCancel');
 let courseCardCont = document.getElementById('courseCardCont');
 let trainerCardCont = document.getElementById('trainerCardCont');
 let trainerEyeIcon = document.getElementById('trainer-eye-icon');
@@ -1699,9 +1698,7 @@ deleteCancel.onclick = function () {
 addTrainerCancel.onclick = function(){
     addTrainerModal.style.display = 'none';
 }
-addCourseCancel.onclick = function () {
-    addCourseModal.style.display = 'none';
-};
+
 
 $('#addBtn').click (function () {
     if ($('#addBtn').text() === "Add Course") {
@@ -1716,6 +1713,12 @@ $('#addBtn').click (function () {
 });
 $('#mapBtn').click (function(){
     $('#mapLearnerModal').show();
+});
+$('#addCourseCancel').click(function(){
+    $('#addCourseModal').hide();
+});
+$('#cancelAddCourse').click(function(){
+    $('#addCourseModal').hide();
 });
 deleteTrainerCancel.onclick = function () {
     trainerCourseCardCont.innerHTML = "";
