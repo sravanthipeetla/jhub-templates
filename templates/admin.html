@@ -674,7 +674,7 @@ body.loading {
     height:4rem;
     z-index: 1;
     font-size: 1.4rem;
-    display:none;
+    /* display:none; */
   }
   
   /* The close button */
@@ -1130,7 +1130,7 @@ addCourseBtn.onclick=async () => {
     const courseName = courseNameText.value;
     const instructorUserName = chooseTrainerSelect.value;
     if (courseName.includes(' ')){
-        $('#alertMsg').show();
+        $('#alertMsgCont').show();
         $('#alertMsg').text('Please remove spaces in course name');
         // alert('Course Name should not contain spaces');
     }
