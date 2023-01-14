@@ -739,9 +739,9 @@ body.loading {
                     <th>Remove</th>
                 </tr>
                 <tbody id="learnerRowsBody">
-                    <div class="loader" id="learnersLoader"></div>
                 </tbody>
             </table>
+            <div class="loader" id="learnersLoader"></div>
         </div>
     </div>
     <div class="bg-model" id="deleteCourseModal">
@@ -1304,22 +1304,7 @@ getCourseDetails().then((resp)=>{
         addAndAppendCourse(course);
     };
 });
-// (async () => {
-//     console.log("In sync");
-//     const courseFetch = await fetch(`${ngshare_url}courses`);
-//     const courseJson = await courseFetch.json();
-//     const coursesList = await courseJson.courses;
-//     console.log(loaderDisplay);
-//     loaderDisplay.style.display ='block';
-//     courseFetchDetails = await getCourseDetails(coursesList);
-//     if(courseFetchDetails){
-//         loaderDisplay.style.display ='none';
-//     }
-    
-//     for (let course of courseFetchDetails) {
-//         addAndAppendCourse(course);
-//     };
-// })();
+
 
 async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
     console.log(deleteItem);
