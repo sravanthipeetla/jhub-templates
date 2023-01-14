@@ -731,8 +731,7 @@ body.loading {
             <div class="trainerDetails" id="trainerCardCont">
             </div>
         </div>
-        <div id="learnerDetails" class="stop-visible">
-            <div class="loader" id="learnersLoader"></div>
+        <div id="learnerDetails" class="stop-visible">     
             <table id="learner-table">
                 <tr id="learner-thead">
                     <th>Learners Name</th>
@@ -740,7 +739,7 @@ body.loading {
                     <th>Remove</th>
                 </tr>
                 <tbody id="learnerRowsBody">
-                   
+                    <div class="loader" id="learnersLoader"></div>
                 </tbody>
             </table>
         </div>
@@ -1402,12 +1401,23 @@ deleteBtn.onclick = function(){
     deleteCourseModal.style.display = 'none';
 };
 
-const getInstructorDetails = async (courses, instructorsUsername) => {
+const getInstructorDetails = async () => {
+    const courseFetch = await fetch(`${ngshare_url}courses`);
+    const courseJson = await courseFetch.json();
+    const coursesList = courseJson.courses;
+    const hubUsersFetch = await fetch(`${hub_url}users`);
+    const hubUsersJson = await hubUsersFetch.json();
+    const instructorsUsername = [];
+    for (let i = 0; i < hubUsersJson.length; i++) {
+        if (hubUsersJson[i].groups.includes('instructor')) {
+            instructorsUsername.push(hubUsersJson[i].name);
+        };
+    };
     let instructorCourse = {};
     for(let inst of instructorsUsername){
         instructorCourse[inst] = [];
     };
-    const details= courses.map(async(courseName) => {
+    const details= coursesList.map(async(courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         let instructorName = '';
         const instructorsJson = await instructorsPromise.json()
@@ -1427,12 +1437,11 @@ const getInstructorDetails = async (courses, instructorsUsername) => {
         obj[courseName] = studentsCount;
         instructorCourse[instructorName].push(obj);
     };
-    return instructorCourse;
     });
-    return Promise.all(details);
+    let instructorCourseAwait = await Promise.all(details);
+    return instructorCourse;
 };
 
-let trainerFetchDetails = null;
 function addAndAppendTrainer(trainer) {
     let trainerCardId = 'trainerCard' + trainer.id;
     let trainerCont = document.createElement('div');
@@ -1545,22 +1554,40 @@ function addAndAppendTrainer(trainer) {
 };
 
     
-(async () => {
-    const courseFetch = await fetch(`${ngshare_url}courses`);
-    const courseJson = await courseFetch.json();
-    const coursesList = courseJson.courses;
-    const hubUsersFetch = await fetch(`${hub_url}users`);
-    const hubUsersJson = await hubUsersFetch.json();
-    const instructorsUsername = [];
-    for (let i = 0; i < hubUsersJson.length; i++) {
-        if (hubUsersJson[i].groups.includes('instructor')) {
-            instructorsUsername.push(hubUsersJson[i].name);
-        };
-    };
-    // loaderDisplay.style.display ='block';
-    trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
-    trainerFetchDetails = trainerFetchDetails[0];
-    // loaderDisplay.style.display ='none';
+// (async () => {
+//     const courseFetch = await fetch(`${ngshare_url}courses`);
+//     const courseJson = await courseFetch.json();
+//     const coursesList = courseJson.courses;
+//     const hubUsersFetch = await fetch(`${hub_url}users`);
+//     const hubUsersJson = await hubUsersFetch.json();
+//     const instructorsUsername = [];
+//     for (let i = 0; i < hubUsersJson.length; i++) {
+//         if (hubUsersJson[i].groups.includes('instructor')) {
+//             instructorsUsername.push(hubUsersJson[i].name);
+//         };
+//     };
+//     // loaderDisplay.style.display ='block';
+//     trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
+//     trainerFetchDetails = trainerFetchDetails[0];
+//     // loaderDisplay.style.display ='none';
+//     let instructorDetails=[];
+//     for (key in trainerFetchDetails){
+//         let status = null;
+//         if (trainerFetchDetails[key].length > 0){
+//             status='Mapped';
+//         }
+//         else if(trainerFetchDetails[key].length === 0) {
+//             status='Unmapped';
+//         }
+//         instructorDetails.push({'name':key,'course':trainerFetchDetails[key],'status':status});
+//     };
+//     for (let trainer of instructorDetails) {
+//         addAndAppendTrainer(trainer);
+//     }
+// })();
+
+getInstructorDetails().then((resp)=>{
+    let trainerFetchDetails = resp;
     let instructorDetails=[];
     for (key in trainerFetchDetails){
         let status = null;
@@ -1575,9 +1602,7 @@ function addAndAppendTrainer(trainer) {
     for (let trainer of instructorDetails) {
         addAndAppendTrainer(trainer);
     }
-})();
-
-
+})
 
 
 function addAndAppendLearner(learner){
