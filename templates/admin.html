@@ -1642,9 +1642,6 @@ function addAndAppendLearner(learner){
 
 };
 const getLearnerDetails = async () => {
-    $('#trainersLoader').hide()
-    $('#learnersLoader').show()
-    $('#coursesLoader').hide()
     const courseFetch = await fetch(`${ngshare_url}courses`);
     const courseJson = await courseFetch.json();
     const coursesList = courseJson.courses;
