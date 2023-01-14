@@ -1554,7 +1554,7 @@ function addAndAppendTrainer(trainer) {
 };
 
 getInstructorDetails().then((resp)=>{
-    $('#instructorsLoader').hide();
+    $('#trainersLoader').hide();
     let trainerFetchDetails = resp;
     let instructorDetails=[];
     for (key in trainerFetchDetails){
