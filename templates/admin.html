@@ -1058,8 +1058,8 @@ actualBtn.addEventListener('change', function() {
 })
 
 
-$('#courseNameText').keyup(function(){
-    if($('#courseName').text().includes(' ')){
+$('#courseNameText').keypress(function(){
+    if($('#courseName').val().includes(' ')){
         $('#courseNameWarn').show();
     }
     else{
