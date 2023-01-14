@@ -1165,14 +1165,16 @@ addCourseBtn.onclick=async () => {
               }
         }
         else {
-          const courseResponse = await coursePromise.json();
-          alert(courseResponse.message);
+            const courseResponse = await coursePromise.json();
+            $('#alertMsgCont').show();
+            $('#alertMsg').text(courseResponse.message);
+            $('#addCourseModal').hide();
         }
     
     }
     else {
         $('#alertMsgCont').show();
-        $('#alertMsg').text('Please provide valid course name and instructor username................');
+        $('#alertMsg').text('Please provide valid course name and instructor username');
         $('#addCourseModal').hide();
       }
 }
