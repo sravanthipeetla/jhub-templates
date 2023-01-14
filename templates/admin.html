@@ -1000,7 +1000,6 @@ window.onload = async () =>{
 //   const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
 //   navbarLeftList[1].style.display = 'none';
 //   navbarLeftList[3].style.display = 'none';
-
 let courseCard = document.getElementById('courseCard');
 let deleteIcon = document.getElementById('delete-icon');
 let deleteCourseModal = document.getElementById('deleteCourseModal');
@@ -1702,19 +1701,19 @@ addCourseCancel.onclick = function () {
     addCourseModal.style.display = 'none';
 };
 
-addBtn.onclick =  function () {
-    if (addBtn.textContent === "Add Course") {
-        addCourseModal.style.display = 'block'; 
+$('#addBtn').click (function () {
+    if ($('#addBtn').text() === "Add Course") {
+        $('#addCourseModal').show();
 }
-else if(addBtn.textContent === "Add Trainer"){
-        addTrainerModal.style.display = 'block';
-}
-else if (addBtn.textContent === "Add Learners") {
-      addLearnerModal.style.display = 'block';
-    };
-};
+    else if($('#addBtn').text()  === "Add Trainer"){
+        $('#addTrainerModal').show();
+    }
+    else if ($('#addBtn').text()  === "Add Learners") {
+        $('#addLearnerModal').show();
+        };
+});
 $('#mapBtn').click (function(){
-    $('#mapLearnerModal').show()
+    $('#mapLearnerModal').show();
 });
 deleteTrainerCancel.onclick = function () {
     trainerCourseCardCont.innerHTML = "";
