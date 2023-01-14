@@ -608,7 +608,6 @@ body.loading {
   height: 60px;
   margin: auto;
   animation: spin 2s linear infinite;
-  display: none;
   overflow: hidden;
 }
 
@@ -1235,9 +1234,6 @@ const getCourseDetails = async () => {
         const studentsCount = studentsJson.students.length;
         return { 'courseName': courseName, 'trainer': instructorName, 'studentsCount': studentsCount };
     });
-    $('#trainersLoader').hide()
-    $('#learnersLoader').hide()
-    $('#coursesLoader').show()
     return Promise.all(details);
 };
 
