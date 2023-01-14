@@ -1233,6 +1233,7 @@ const getCourseDetails = async () => {
         const studentsCount = studentsJson.students.length;
         return { 'courseName': courseName, 'trainer': instructorName, 'studentsCount': studentsCount };
     });
+    loaderDisplay.style.display ='block';
     return Promise.all(details);
 };
 
@@ -1298,6 +1299,7 @@ function addAndAppendCourse(course) {
 };
 
 getCourseDetails().then((resp)=>{
+    loaderDisplay.style.display ='none';
     let courseFetchDetails = resp;
     for (let course of courseFetchDetails) {
         addAndAppendCourse(course);
