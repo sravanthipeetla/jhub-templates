@@ -977,6 +977,7 @@ window.onload = async () =>{
     const courseFetch = await fetch(`${ngshare_url}courses`);
     const courseJson = await courseFetch.json();
     const coursesList = await courseJson.courses;
+    coursesListTotal = coursesList;
     const courseDefaultOption = document.createElement('option');
     courseDefaultOption.text = 'Choose course';
     courseDefaultOption.value = '';
@@ -1048,6 +1049,8 @@ const addTrainerBtn = document.getElementById('trainerAddBtn');
 const trainerUsername = document.getElementById('trainerUsername');
 const actualBtn = document.getElementById('actual-btn');
 const fileChosen = document.getElementById('file-chosen');
+let coursesListTotal = null;
+console.log('coursesList',coursesListTotal);
 actualBtn.addEventListener('change', function() {
     fileChosen.textContent = this.files[0].name;
 })
