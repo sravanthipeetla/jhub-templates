@@ -1303,7 +1303,7 @@ function addAndAppendCourse(course) {
 };
 
 getCourseDetails().then((resp)=>{
-    $('#coursesLoader').show();
+    $('#coursesLoader').hide();
     let courseFetchDetails = resp;
     for (let course of courseFetchDetails) {
         addAndAppendCourse(course);
