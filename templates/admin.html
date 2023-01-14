@@ -1125,11 +1125,6 @@ studentSubmitBtn.addEventListener("click", function(e) {
     }
 });
 
-
-
-
-
-  //   course-tab data fetching
 addCourseBtn.onclick=async () => {
     const courseName = courseNameText.value;
     const instructorUserName = chooseTrainerSelect.value;
@@ -1161,7 +1156,9 @@ addCourseBtn.onclick=async () => {
               }
               else {
                 const instructorAddResponse = await instructorAddPromise.json();
-                alert(instructorAddResponse.message);
+                $('#alertMsgCont').show();
+                $('#alertMsg').text(instructorAddResponse.message);
+                $('#addCourseModal').hide();
               }
         }
         else {
