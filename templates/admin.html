@@ -1210,32 +1210,6 @@ addTrainerBtn.onclick=async () =>{
     
 }
 
-
-
-const getCourseDetails = async () => {
-    const courseFetch = await fetch(`${ngshare_url}courses`);
-    const courseJson = await courseFetch.json();
-    const coursesList = await courseJson.courses;
-    const details = coursesList.map(async (courseName) => {
-        const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
-        let instructorName = '';
-        const instructorsJson = await instructorsPromise.json()
-        .then( instructorsJson=> {
-            if (instructorsJson.instructors.length === 0){
-            instructorName = '-';
-            }
-            else{
-            instructorName = instructorsJson.instructors[0].username;
-            };
-        });
-        const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
-        const studentsJson = await studentsPromise.json();
-        const studentsCount = studentsJson.students.length;
-        return { 'courseName': courseName, 'trainer': instructorName, 'studentsCount': studentsCount };
-    });
-    return Promise.all(details);
-};
-
 function addAndAppendCourse(course) {
     let courseCardId = course.courseName+'course';
     let courseCont = document.createElement('div');
@@ -1295,6 +1269,30 @@ function addAndAppendCourse(course) {
     deleteIconI.src = 'https://i.postimg.cc/prKj8HZB/delete.png';
     deleteIconCont.appendChild(deleteIconI);
     courseCont.appendChild(deleteIconCont);
+};
+
+const getCourseDetails = async () => {
+    const courseFetch = await fetch(`${ngshare_url}courses`);
+    const courseJson = await courseFetch.json();
+    const coursesList = await courseJson.courses;
+    const details = coursesList.map(async (courseName) => {
+        const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
+        let instructorName = '';
+        const instructorsJson = await instructorsPromise.json()
+        .then( instructorsJson=> {
+            if (instructorsJson.instructors.length === 0){
+            instructorName = '-';
+            }
+            else{
+            instructorName = instructorsJson.instructors[0].username;
+            };
+        });
+        const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
+        const studentsJson = await studentsPromise.json();
+        const studentsCount = studentsJson.students.length;
+        return { 'courseName': courseName, 'trainer': instructorName, 'studentsCount': studentsCount };
+    });
+    return Promise.all(details);
 };
 
 getCourseDetails().then((resp)=>{
@@ -1384,47 +1382,6 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
 deleteBtn.onclick = function(){
     deleteItemNext (deleteItem,deleteCourseName,deleteItemId);
     deleteCourseModal.style.display = 'none';
-};
-
-const getInstructorDetails = async () => {
-    const courseFetch = await fetch(`${ngshare_url}courses`);
-    const courseJson = await courseFetch.json();
-    const coursesList = courseJson.courses;
-    const hubUsersFetch = await fetch(`${hub_url}users`);
-    const hubUsersJson = await hubUsersFetch.json();
-    const instructorsUsername = [];
-    for (let i = 0; i < hubUsersJson.length; i++) {
-        if (hubUsersJson[i].groups.includes('instructor')) {
-            instructorsUsername.push(hubUsersJson[i].name);
-        };
-    };
-    let instructorCourse = {};
-    for(let inst of instructorsUsername){
-        instructorCourse[inst] = [];
-    };
-    const details= coursesList.map(async(courseName) => {
-        const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
-        let instructorName = '';
-        const instructorsJson = await instructorsPromise.json()
-        .then( instructorsJson=> {
-            if (instructorsJson.instructors.length === 0){
-            instructorName = '-';
-            }
-            else{
-            instructorName = instructorsJson.instructors[0].username;
-            };
-    });
-    const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
-    const studentsJson = await studentsPromise.json();
-    const studentsCount = studentsJson.students.length;
-    if(instructorName in instructorCourse){
-        let obj = {};
-        obj[courseName] = studentsCount;
-        instructorCourse[instructorName].push(obj);
-    };
-    });
-    let instructorCourseAwait = await Promise.all(details);
-    return instructorCourse;
 };
 
 function addAndAppendTrainer(trainer) {
@@ -1538,6 +1495,47 @@ function addAndAppendTrainer(trainer) {
     trainerCont.appendChild(eyeIconCont);
 };
 
+const getInstructorDetails = async () => {
+    const courseFetch = await fetch(`${ngshare_url}courses`);
+    const courseJson = await courseFetch.json();
+    const coursesList = courseJson.courses;
+    const hubUsersFetch = await fetch(`${hub_url}users`);
+    const hubUsersJson = await hubUsersFetch.json();
+    const instructorsUsername = [];
+    for (let i = 0; i < hubUsersJson.length; i++) {
+        if (hubUsersJson[i].groups.includes('instructor')) {
+            instructorsUsername.push(hubUsersJson[i].name);
+        };
+    };
+    let instructorCourse = {};
+    for(let inst of instructorsUsername){
+        instructorCourse[inst] = [];
+    };
+    const details= coursesList.map(async(courseName) => {
+        const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
+        let instructorName = '';
+        const instructorsJson = await instructorsPromise.json()
+        .then( instructorsJson=> {
+            if (instructorsJson.instructors.length === 0){
+            instructorName = '-';
+            }
+            else{
+            instructorName = instructorsJson.instructors[0].username;
+            };
+    });
+    const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
+    const studentsJson = await studentsPromise.json();
+    const studentsCount = studentsJson.students.length;
+    if(instructorName in instructorCourse){
+        let obj = {};
+        obj[courseName] = studentsCount;
+        instructorCourse[instructorName].push(obj);
+    };
+    });
+    let instructorCourseAwait = await Promise.all(details);
+    return instructorCourse;
+};
+
 getInstructorDetails().then((resp)=>{
     $('#trainersLoader').hide();
     let trainerFetchDetails = resp;
@@ -1619,6 +1617,7 @@ function addAndAppendLearner(learner){
     learnerRow.appendChild(learnerDelete);
 
 };
+
 const getLearnerDetails = async () => {
     const courseFetch = await fetch(`${ngshare_url}courses`);
     const courseJson = await courseFetch.json();
@@ -1648,6 +1647,7 @@ const getLearnerDetails = async () => {
     console.log('test',detailsLearnerCourse);
 return learnerCourse;
 };
+
 getLearnerDetails().then((resp)=>{
     $('#learnersLoader').hide();
     let learnerCourse = resp;
@@ -1657,10 +1657,7 @@ getLearnerDetails().then((resp)=>{
         addAndAppendLearner(obj);
     };
 });
-// for (let each of learners_){
-//     addAndAppendLearner(each);
 
-// };
 courses.onclick = function () {
     instructorsFilter.classList.add('stop-visible');
     addBtn.textContent = "Add Course";
