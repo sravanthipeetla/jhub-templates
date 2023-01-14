@@ -6,7 +6,9 @@
 *{
     box-sizing: border-box;
 }
-
+/* html{
+    font-size: 62.5%;
+} */
 body {
     margin: 0px;
     padding:0px;
@@ -32,7 +34,7 @@ body {
     text-align: center;
     padding: 1vw 4vw;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.6rem;
     border-bottom: 0.3vw solid #DBDBDB;
     /* overflow: auto; */
     font-weight:500;
@@ -49,7 +51,7 @@ body {
 }
 
 .description-bar {
-    border-bottom:2px solid #DBDBDB;
+    border-bottom:0.2rem solid #DBDBDB;
     display:flex;
     justify-content: space-between;
     padding-bottom: 2vh;
@@ -60,15 +62,15 @@ body {
     font-family: 'Poppins';
     color:#4D4D4D;
     font-weight:500;
-    font-size: 1rem;
+    font-size: 1.6rem;
 }
 #right-description-bar select{
     border-radius:50px;
-    height:2.5rem;
-    width:13.75rem;
-    border:1px solid #5FBEF0;
-    padding: 0rem 1rem;
-    font-size: 1rem;
+    height:3.8rem;
+    width:19rem;
+    border:0.1rem solid #5FBEF0;
+    padding: 0rem 1.6rem;
+    font-size: 1.6rem;
     font-weight: 0;
     color: black;
     outline: none;
@@ -76,8 +78,8 @@ body {
 #right-description-bar input{
     border: none;
     outline: none;
-    width:10rem;
-    margin-left:1rem;
+    width:15rem;
+    margin-left:1.6rem;
 }
 #right-description-bar input::placeholder {
     color: #ccc;
@@ -85,11 +87,11 @@ body {
 
 #right-description-bar {
     display: flex;
-    gap: 1rem;
+    gap: 1.6rem;
 }
 .searchIcon{
     overflow: hidden;
-    width: 40px;
+    width: 4rem;
     padding: 0;
     margin: 0;
     border: 1px solid transparent;
@@ -105,10 +107,10 @@ body {
     border: 2px solid blue;
     border-radius: 5px;
     border-radius:50px;
-    height:2.5rem;
-    width:13.75rem;
-    border:1px solid #5FBEF0;
-    font-size: 1rem;
+    height:4rem;
+    width:22rem;
+    border:0.1rem solid #5FBEF0;
+    font-size: 1.6rem;
     font-weight: 0;
     color: black;
 }
@@ -116,28 +118,28 @@ body {
     border:none;
     font-family: 'Poppins';
     background-color: #5FBEF0;
-    border-radius: 21px;
+    border-radius: 2.1rem;
     color: white;
     font-weight: 500;
-    font-size: 1rem;
-    height:2.5rem;
+    font-size: 1.6rem;
+    height:4rem;
     display: inline-block;
-    padding: 0px 1rem;
+    padding: 0.5rem 1.6rem;
     text-align: center;
     cursor: pointer;
 } 
 .map-btn{
     display:none;
     background: #FFFFFF;
-    border: 1px solid #5FBEF0;
-    border-radius: 22px;
-    height:2.5rem;
+    border: 0.1rem solid #5FBEF0;
+    border-radius: 2.2rem;
+    height:4rem;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.6rem;
     text-align: center;
-    padding: 0px 1rem;
+    padding: 0.5rem 1.6rem;
     color: #5FBEF0;
 }
 .courseDetails, .trainerDetails{
@@ -149,7 +151,7 @@ body {
     display: flex;
     justify-content: space-between;
     background: linear-gradient(108.02deg, rgba(246, 251, 254, 0) 64.53%, #D6F0FF 122.73%), linear-gradient(179.46deg, rgba(246, 251, 254, 0) 1.56%, #DBF2FF 127.02%);
-    border-radius: 10px;
+    border-radius: 1rem;
     margin-right: 1%;
     margin-left: 1%;
     margin-bottom: 1.5vh;
@@ -162,7 +164,7 @@ body {
     display: flex;
     justify-content: space-between;
     background: linear-gradient(108.02deg, rgba(246, 251, 254, 0) 64.53%, #D6F0FF 122.73%), linear-gradient(179.46deg, rgba(246, 251, 254, 0) 1.56%, #DBF2FF 127.02%);
-    border-radius: 10px;
+    border-radius: 1rem;
     margin-right: 2%;
     margin-left: 2%;
     margin-bottom: 1.5vh;
@@ -173,23 +175,23 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 0rem 0.75rem 1rem;
+    padding: 0rem 1.2rem 1.6rem;
     font-family: 'Gothic A1';
     width: 100%;
 }
 .course-title,.trainer-title{
     color:#006BB6;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.6rem;
 }
 .learner-count-title{
     color:#999;
     font-weight: 400;
-    font-size: 0.75rem;
+    font-size: 1.2rem;
 }
 .learner-count{
     font-weight: 500;
-    font-size: 0.875rem;
+    font-size: 1.4rem;
 }
 .arrange-row{
     display: flex;
@@ -206,7 +208,7 @@ body {
     justify-content: space-between;
 }
 .delete-icon img{
-    width:1rem;
+    width:1.6rem;
 }
 .eye-icon{
     display: flex;
@@ -215,7 +217,7 @@ body {
     align-items: center;
     background: linear-gradient(180deg, rgba(230, 244, 255, 0) -6.12%, #C2E6FF 106.76%);
     border-radius: 0px 10px 10px 0px;
-    padding: 0.5rem;
+    padding: 0.8rem;
     cursor: pointer;
 }
 
@@ -225,24 +227,24 @@ body {
     /* border: 2px solid #5FBEF0; */
     border-collapse: inherit;
     border-spacing: 0px;
-    border-radius: 14px 14px 0px 0px;
+    border-radius: 1.4rem 1.4rem 0px 0px;
     table-layout: fixed;
     overflow: hidden;
     width: 100%;
-    border: 1px solid #C6E7FB;
+    border: 0.1px solid #C6E7FB;
 }
 
 #learner-thead {
     background: #D2EDFB;;
     border-collapse: inherit;
-    border-radius: 12px 12px 0px 0px; 
+    border-radius: 1.2rem 1.2rem 0px 0px; 
 }
 tbody tr td:last-child{
     text-align: right;
-    padding: 0.5rem 3rem;
+    padding: 0.8rem 5rem;
 }
 tbody tr td:first-child{
-    padding: 0.5rem 1.5rem; 
+    padding: 0.8rem 2.4rem; 
 }
 tr th:first-child{
     text-align: left;
@@ -256,9 +258,11 @@ tr th:nth-child(2){
 }
 tbody tr:nth-child(even) {
     background-color:#FAFDFF;
+    font-size: 1.6rem;
   }
 tbody tr:nth-child(odd) {
     background-color: #F1F9FE;;
+    font-size: 1.6rem;
   }
 
   tr td:nth-child(2){
@@ -270,9 +274,9 @@ th{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.6rem;
     color:#006BB6;
-    padding: 0.5rem 1.5rem;
+    padding: 0.8rem 2.5rem;
 }
 .bg-model{
     /* display: none; */
@@ -291,7 +295,7 @@ th{
     justify-content: space-between;
     background:#FFFFFF;
     box-shadow: 0px 2px 13px rgba(170, 170, 170, 0.27);
-    border-radius: 16px;
+    border-radius: 1.6rem;
     width:30rem;
     height:14rem;
     position: absolute;
@@ -621,9 +625,9 @@ body.loading {
 }
 
 @media(max-width:1600px){
-    html{
+    /* html{
         font-size: 100%;
-    } 
+    }  */
     .courseCard{
         width: 31%;
     }
@@ -633,16 +637,16 @@ body.loading {
 }
 
 @media(max-width:1200px){
-    html{
+    /* html{
         font-size: 87.5%;
-    }
+    } */
 
 }
 
 @media(max-width:1000px){
-    html{
+    /* html{
         font-size: 75%;
-    }
+    } */
 
 }
 
