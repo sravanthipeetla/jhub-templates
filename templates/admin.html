@@ -706,8 +706,8 @@ body.loading {
   </script>
   <script src={{ static_url("js/admin.js") }}></script>
 <div>
-    <div class="alert" id="alertMsgCont">
-        <p id="alertMsg"> Warning message</p>
+    <div class="alert" id="alertMsg">
+
         <span class="alert-closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
       </div>
     <div class="admin-container">
@@ -1130,7 +1130,7 @@ addCourseBtn.onclick=async () => {
     const courseName = courseNameText.value;
     const instructorUserName = chooseTrainerSelect.value;
     if (courseName.includes(' ')){
-        $('#alertMsgCont').show();
+        $('#alertMsg').show();
         $('#alertMsg').text('Please remove spaces in course name');
         // alert('Course Name should not contain spaces');
     }
