@@ -663,31 +663,32 @@ body.loading {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 2rem;
     background-color: #f5aeba; 
     color: #c51306; /* Red */
-    margin-bottom: 15px;
+    margin-bottom: 1.5rem;
     position: fixed;
-    top:20px;
-    right:20px;
-    width:30%;
-    height:3rem;
+    top:2rem;
+    right:2rem;
+    min-width:30%;
+    height:4rem;
     z-index: 1;
-    font-size: 1rem;
+    font-size: 1.4rem;
+    display:none;
   }
   
   /* The close button */
   .alert-closebtn {
-    margin-left: 15px;
+    margin-left: 1.5rem;
     color: #c51306;
     font-weight: bold;
     float: right;
-    font-size: 22px;
-    line-height: 20px;
+    font-size: 2.2rem;
     cursor: pointer;
     transition: 0.3s;
   }
 
+/* When moving the mouse over the close button */
 .alert-closebtn:hover {
   color: black;
 }
