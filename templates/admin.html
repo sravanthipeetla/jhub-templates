@@ -674,9 +674,10 @@ body.loading {
     height:4rem;
     z-index: 1;
     font-size: 1.4rem;
-    display:none;
   }
-  
+  #alertMsgCont{
+    display: none;
+  }
   /* The close button */
   .alert-closebtn {
     margin-left: 1.5rem;
@@ -706,10 +707,13 @@ body.loading {
   </script>
   <script src={{ static_url("js/admin.js") }}></script>
 <div>
-    <div class="alert" id="alertMsgCont">
-        <p id="alertMsg"></p>
-        <span class="alert-closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <div id="alertMsgCont">
+        <div class="alert" >
+            <p id="alertMsg"></p>
+            <span class="alert-closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div>
     </div>
+    
     <div class="admin-container">
         <div class="admin-navbar">
                 <a class="course-nav active" id="courseNav">Courses</a>
