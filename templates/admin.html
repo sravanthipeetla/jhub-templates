@@ -723,14 +723,17 @@ body.loading {
         </div>
        
         <div id="courseDetails">
+            <div class="loader" id="coursesLoader"></div>
             <div class="courseDetails" id="courseCardCont">
             </div>
         </div>
         <div id="trainerDetails" class="stop-visible">
+            <div class="loader" id="trainersLoader"></div>
             <div class="trainerDetails" id="trainerCardCont">
             </div>
         </div>
         <div id="learnerDetails" class="stop-visible">
+            <div class="loader" id="learnersLoader"></div>
             <table id="learner-table">
                 <tr id="learner-thead">
                     <th>Learners Name</th>
@@ -742,7 +745,6 @@ body.loading {
                 </tbody>
             </table>
         </div>
-        <div class="loader"></div>
     </div>
     <div class="bg-model" id="deleteCourseModal">
         <div class="course-model">
@@ -1233,7 +1235,9 @@ const getCourseDetails = async () => {
         const studentsCount = studentsJson.students.length;
         return { 'courseName': courseName, 'trainer': instructorName, 'studentsCount': studentsCount };
     });
-    loaderDisplay.style.display ='block';
+    $('#trainersLoader').hide()
+    $('#learnersLoader').hide()
+    $('#coursesLoader').show()
     return Promise.all(details);
 };
 
@@ -1299,7 +1303,7 @@ function addAndAppendCourse(course) {
 };
 
 getCourseDetails().then((resp)=>{
-    loaderDisplay.style.display ='none';
+    $('#coursesLoader').show();
     let courseFetchDetails = resp;
     for (let course of courseFetchDetails) {
         addAndAppendCourse(course);
@@ -1642,6 +1646,9 @@ function addAndAppendLearner(learner){
 
 };
 const getLearnerDetails = async () => {
+    $('#trainersLoader').hide()
+    $('#learnersLoader').show()
+    $('#coursesLoader').hide()
     const courseFetch = await fetch(`${ngshare_url}courses`);
     const courseJson = await courseFetch.json();
     const coursesList = courseJson.courses;
@@ -1666,22 +1673,12 @@ const getLearnerDetails = async () => {
             console.log('checking', each, learnerCourse);
         }        
     });
-    // loaderDisplay.style.display ='block';
     const detailsLearnerCourse = await Promise.all(details);
     console.log('test',detailsLearnerCourse);
-    // loaderDisplay.style.display ='none';
-    // detailsLearnerCourse = detailsLearnerCourse[0];
-//     if(detailsLearnerCourse){
-//         console.log('inside if');
-//     for (key in learnerCourse){
-//         let obj ={};
-//         obj[key]=learnerCourse[key]
-//         addAndAppendLearner(obj);
-//     };
-// 
 return learnerCourse;
 };
 getLearnerDetails().then((resp)=>{
+    $('#learnersLoader').hide()
     let learnerCourse = resp;
     for (key in learnerCourse){
         let obj ={};
