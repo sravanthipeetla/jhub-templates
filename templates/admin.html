@@ -696,7 +696,7 @@ body.loading {
     window.base_url = "{{ base_url|safe }}"
   </script>
   <script src={{ static_url("js/admin.js") }}></script>
-
+<div>
     <div class="alert" id="alertMsgCont">
         <p id="alertMsg"> Warning message</p>
         <span class="alert-closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -929,6 +929,7 @@ body.loading {
         </div>
        
     </div>
+</div>
 </div>
 {% endblock %}
 
