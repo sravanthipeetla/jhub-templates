@@ -1553,40 +1553,8 @@ function addAndAppendTrainer(trainer) {
     trainerCont.appendChild(eyeIconCont);
 };
 
-    
-// (async () => {
-//     const courseFetch = await fetch(`${ngshare_url}courses`);
-//     const courseJson = await courseFetch.json();
-//     const coursesList = courseJson.courses;
-//     const hubUsersFetch = await fetch(`${hub_url}users`);
-//     const hubUsersJson = await hubUsersFetch.json();
-//     const instructorsUsername = [];
-//     for (let i = 0; i < hubUsersJson.length; i++) {
-//         if (hubUsersJson[i].groups.includes('instructor')) {
-//             instructorsUsername.push(hubUsersJson[i].name);
-//         };
-//     };
-//     // loaderDisplay.style.display ='block';
-//     trainerFetchDetails = await getInstructorDetails(coursesList, instructorsUsername);
-//     trainerFetchDetails = trainerFetchDetails[0];
-//     // loaderDisplay.style.display ='none';
-//     let instructorDetails=[];
-//     for (key in trainerFetchDetails){
-//         let status = null;
-//         if (trainerFetchDetails[key].length > 0){
-//             status='Mapped';
-//         }
-//         else if(trainerFetchDetails[key].length === 0) {
-//             status='Unmapped';
-//         }
-//         instructorDetails.push({'name':key,'course':trainerFetchDetails[key],'status':status});
-//     };
-//     for (let trainer of instructorDetails) {
-//         addAndAppendTrainer(trainer);
-//     }
-// })();
-
 getInstructorDetails().then((resp)=>{
+    $('#instructorsLoader').hide();
     let trainerFetchDetails = resp;
     let instructorDetails=[];
     for (key in trainerFetchDetails){
@@ -1696,7 +1664,7 @@ const getLearnerDetails = async () => {
 return learnerCourse;
 };
 getLearnerDetails().then((resp)=>{
-    $('#learnersLoader').hide()
+    $('#learnersLoader').hide();
     let learnerCourse = resp;
     for (key in learnerCourse){
         let obj ={};
