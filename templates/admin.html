@@ -953,7 +953,7 @@ if ($(this).text().toLowerCase() == currentAnchorTagText) {
 });
 
 window.onload = async () =>{
-    getLearnerDetails();
+    
     const hubUsersFetch = await fetch(`${hub_url}users`);
     const hubUsersJson = await hubUsersFetch.json();
     const instructorsUsername = [];
@@ -991,7 +991,7 @@ window.onload = async () =>{
         newOption.value = option;
         chooseCourseSelect.add(newOption);
     }
-    
+    getLearnerDetails(coursesList,hubUsersJson);
 };
 
 //   // To hide left navbar items - 'Token' and 'services'
@@ -1630,12 +1630,13 @@ function addAndAppendLearner(learner){
     learnerRow.appendChild(learnerDelete);
 
 };
-const getLearnerDetails = async () => {
-    const courseFetch = await fetch(`${ngshare_url}courses`);
-    const courseJson = await courseFetch.json();
-    const coursesList = courseJson.courses;
-    const hubUsersFetch = await fetch(`${hub_url}users`);
-    const hubUsersJson = await hubUsersFetch.json();
+const getLearnerDetails = async (c,h) => {
+    // const courseFetch = await fetch(`${ngshare_url}courses`);
+    // const courseJson = await courseFetch.json();
+    const coursesList = c;
+    // const hubUsersFetch = await fetch(`${hub_url}users`);
+    // const hubUsersJson = await hubUsersFetch.json();
+    const hubUsersJson = h;
     const learnerCourse ={};
     const learnersUsername = [];
     for (let i = 0; i < hubUsersJson.length; i++) {
