@@ -953,7 +953,7 @@ if ($(this).text().toLowerCase() == currentAnchorTagText) {
 });
 
 window.onload = async () =>{
-    
+    getLearnerDetails;
     const hubUsersFetch = await fetch(`${hub_url}users`);
     const hubUsersJson = await hubUsersFetch.json();
     const instructorsUsername = [];
