@@ -6,9 +6,6 @@
 *{
     box-sizing: border-box;
 }
-/* html{
-    font-size: 62.5%;
-} */
 body {
     margin: 0px;
     padding:0px;
@@ -19,7 +16,6 @@ body {
 .admin-container {
     margin-left: 10vw;
     margin-right: 10vw;
-    /* overflow: auto; */
     position: relative;
 }
 
@@ -36,7 +32,7 @@ body {
     text-decoration: none;
     font-size: 1.6rem;
     border-bottom: 0.3vw solid #DBDBDB;
-    /* overflow: auto; */
+    overflow: auto;
     font-weight:500;
     font-family:'Poppins';
 }
@@ -84,6 +80,7 @@ body {
     margin-left:1.6rem;
 }
 #right-description-bar input::placeholder {
+    font-size: 1.4rem;
     color: #ccc;
 }
 
@@ -143,6 +140,9 @@ body {
     text-align: center;
     padding: 0.5rem 1.6rem;
     color: #5FBEF0;
+}
+#trainerDetails, #learnerDetails{
+    display:none;
 }
 .courseDetails, .trainerDetails{
     display: flex;
@@ -681,7 +681,6 @@ body.loading {
     transition: 0.3s;
   }
 
-/* When moving the mouse over the close button */
 .alert-closebtn:hover {
   color: black;
 }
@@ -732,12 +731,12 @@ body.loading {
             <div class="courseDetails" id="courseCardCont">
             </div>
         </div>
-        <div id="trainerDetails" class="stop-visible">
+        <div id="trainerDetails">
             <div class="loader" id="trainersLoader"></div>
             <div class="trainerDetails" id="trainerCardCont">
             </div>
         </div>
-        <div id="learnerDetails" class="stop-visible">     
+        <div id="learnerDetails">     
             <table id="learner-table">
                 <tr id="learner-thead">
                     <th>Learners Name</th>
