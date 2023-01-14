@@ -1211,9 +1211,12 @@ addTrainerBtn.onclick=async () =>{
 }
 
 
-let courseFetchDetails = null;  
-const getCourseDetails = async (courses) => {
-    const details = courses.map(async (courseName) => {
+
+const getCourseDetails = async () => {
+    const courseFetch = await fetch(`${ngshare_url}courses`);
+    const courseJson = await courseFetch.json();
+    const coursesList = await courseJson.courses;
+    const details = coursesList.map(async (courseName) => {
         const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
         let instructorName = '';
         const instructorsJson = await instructorsPromise.json()
@@ -1294,22 +1297,28 @@ function addAndAppendCourse(course) {
     courseCont.appendChild(deleteIconCont);
 };
 
-(async () => {
-    console.log("In sync");
-    const courseFetch = await fetch(`${ngshare_url}courses`);
-    const courseJson = await courseFetch.json();
-    const coursesList = await courseJson.courses;
-    console.log(loaderDisplay);
-    loaderDisplay.style.display ='block';
-    courseFetchDetails = await getCourseDetails(coursesList);
-    if(courseFetchDetails){
-        loaderDisplay.style.display ='none';
-    }
-    
+getCourseDetails().then((resp)=>{
+    let courseFetchDetails = resp;
     for (let course of courseFetchDetails) {
         addAndAppendCourse(course);
     };
-})();
+});
+// (async () => {
+//     console.log("In sync");
+//     const courseFetch = await fetch(`${ngshare_url}courses`);
+//     const courseJson = await courseFetch.json();
+//     const coursesList = await courseJson.courses;
+//     console.log(loaderDisplay);
+//     loaderDisplay.style.display ='block';
+//     courseFetchDetails = await getCourseDetails(coursesList);
+//     if(courseFetchDetails){
+//         loaderDisplay.style.display ='none';
+//     }
+    
+//     for (let course of courseFetchDetails) {
+//         addAndAppendCourse(course);
+//     };
+// })();
 
 async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
     console.log(deleteItem);
