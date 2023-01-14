@@ -710,7 +710,7 @@ body.loading {
     <div id="alertMsgCont">
         <div class="alert" >
             <p id="alertMsg"></p>
-            <span class="alert-closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <span class="alert-closebtn" id="alertMsgClose">&times;</span>
         </div>
     </div>
     
@@ -1749,6 +1749,9 @@ $('#addCourseCancel').click(function(){
 $('#cancelAddCourse').click(function(){
     $('#addCourseModal').hide();
 });
+$("#alertMsgClose").click((function(){
+    $('#alertMsgCont').hide();
+}))
 deleteTrainerCancel.onclick = function () {
     trainerCourseCardCont.innerHTML = "";
     deleteTrainerModal.style.display = 'none';
