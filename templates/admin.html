@@ -1132,6 +1132,7 @@ addCourseBtn.onclick=async () => {
     if (courseName.includes(' ')){
         $('#alertMsgCont').show();
         $('#alertMsg').text('Please remove spaces in course name');
+        $('#addCourseModal').hide();
         // alert('Course Name should not contain spaces');
     }
     else if (courseName.length > 0 && instructorUserName.length > 0) {
