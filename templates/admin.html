@@ -1652,7 +1652,7 @@ getLearnerDetails().then((resp)=>{
 $('#courseNav').click(function(){
     $('#trainersFilter').hide();
     $('#addBtn').text('Add Course');
-    $('mapBtn').hide();
+    $('#mapBtn').hide();
     $('#description').text('You can manage Course details here.');
     $('#courseNav').addClass('active');
     $('#trainerNav').removeClass('active');
@@ -1666,7 +1666,7 @@ $('#courseNav').click(function(){
 $('#trainerNav').click(function(){
     $('#trainersFilter').show();
     $('#addBtn').text('Add Trainer');
-    $('mapBtn').hide();
+    $('#mapBtn').hide();
     $('#description').text('You can manage Trainer details here.');
     $('#courseNav').removeClass('active');
     $('#trainerNav').addClass('active');
@@ -1680,7 +1680,7 @@ $('#trainerNav').click(function(){
 $('#learnerNav').click(function(){
     $('#trainersFilter').hide();
     $('#addBtn').text('Add Learners');
-    $('mapBtn').show();
+    $('#mapBtn').show();
     $('#description').text('You can manage Learners details here.');
     $('#courseNav').removeClass('active');
     $('#trainerNav').removeClass('active');
