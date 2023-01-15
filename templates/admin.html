@@ -849,7 +849,7 @@ body.loading {
             <div>
                 <div class="add-course-model-top-first">
                     <h1 id="successModelTitle">Add Course</h1>
-                    <div id="addCourseCancel">
+                    <div id="addSuccessCancel">
                         <span> &times;</span>
                     </div>
                 </div>
@@ -1805,6 +1805,10 @@ $('#successAddMore').click(() =>{
 });
 $('#mapBtn').click (() =>{
     $('#mapLearnerModal').show();
+});
+$('#addSuccessCancel').click(() =>{
+    $('#addSuccessModal').hide();
+    location.reload();
 });
 $('#addCourseCancel').click(() =>{
     $('#addCourseModal').hide();
