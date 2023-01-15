@@ -892,7 +892,6 @@ body.loading {
                     <button id="trainerCancelBtn" class="cancel-button">Cancel</button>
                 </div>  
         </div>
-       
     </div>
     <div class="bg-model" id="deleteTrainerModal">
         <div class="trainer-model">
@@ -1238,10 +1237,11 @@ addCourseBtn.onclick=async () => {
       }
 }
 addTrainerBtn.onclick=async () =>{
-    console.log(trainerUsername.value)
     let  instructorUserName = trainerUsername.value;
     if (instructorUserName.includes(' ')){
-        alert('trainer name should not contain spaces');
+        $('#alertMsgCont').show();
+        $('#alertMsg').text('Please remove spaces in trainer name');
+        $('#addTrainerModal').hide();
     }
     else if (instructorUserName.length > 0){
         const hubAddUserPromise = await fetch(`${hub_url}users/${instructorUserName}`, {
@@ -1274,17 +1274,26 @@ addTrainerBtn.onclick=async () =>{
             }
             
             else{
-                alert('Something went wrong');
+                const hubAddUserGroupPromise = await hubAddUserGroupPromise.json();
+                $('#alertMsgCont').show();
+                $('#alertMsg').text(hubAddUserGroupPromise);
+                $('#addTrainerModal').hide();
+                // alert('Something went wrong');
             }
         }
            
         else{
-            alert('User not added to hub');
+            const hubAddUserPromise = await hubAddUserPromise.json();
+            $('#alertMsgCont').show();
+            $('#alertMsg').text(hubAddUserPromise);
+            $('#addTrainerModal').hide();
         }
     
     }
     else{
-        alert('Please provide valide trainer name');
+        $('#alertMsgCont').show();
+        $('#alertMsg').text('Please provide valide trainer name');
+        $('#addTrainerModal').hide();
     }
     
 }
