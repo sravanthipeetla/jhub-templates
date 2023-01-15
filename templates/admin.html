@@ -330,16 +330,16 @@ th{
     justify-content: space-between;
     align-items: center;
     background: #FEEBEC;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.08);
-    border-radius: 12px 12px 0px 0px;
-    padding: 0.25rem 1rem;
+    box-shadow: 0px 0.3rem 0.5rem rgba(0, 0, 0, 0.08);
+    border-radius: 1.2rem 1.2rem 0rem 0rem;
+    padding: 0rem 2rem;
 }
 
 .delete-course-model-top-first h1{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.6rem;
     color: #F63C46;
 }
 .delete-course-model-top-first span{
@@ -349,12 +349,12 @@ th{
     background: #FDCED1;
     border-radius: 50%;
     cursor: pointer;
-    height: 0.5rem;
-    width: 0.5rem;
-    padding: 0rem 0.4rem;
+    height: 1rem;
+    width: 1rem;
+    padding: 0rem 0.5rem;
 }
 .delete-title{
-    font-size: 1rem;
+    font-size: 1.6rem;
     text-align: center;
     font-family: 'Gothic A1';
     font-style: Medium;
@@ -369,22 +369,23 @@ th{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 0.875rem;
-    padding: 0.5rem;
+    font-size: 1.4rem;
+    padding: 0.2rem;
 }
 
 .delete-button{
     border:none;
     background: #F7545D;
-    border-radius: 14px;
+    border-radius: 1.4rem;
     font-family: 'Poppins';
     font-style: normal;
-    font-weight: 400;
-    font-size: 0.75rem;
+    font-weight: 600;
+    font-size: 1.3rem;
     text-align: center;
     color: #FFFFFF;
-    height:1.75rem;
-    width: 5rem;
+    height:2.8rem;
+    width: 8rem;
+    margin-right: 1rem;
 }
 
 .cancel-button{
@@ -398,6 +399,8 @@ font-size: 1.3rem;
 color: #5FBEF0;
 height:2.8rem;
 width: 8rem;
+text-align: center;
+cursor: pointer;
 }
 
 .add-course-model-height,.add-learner-model-height{
@@ -1115,7 +1118,6 @@ actualBtn.addEventListener('change', function() {
     fileChosen.textContent = this.files[0].name;
 })
 
-
 $('#courseNameText').keyup(function(){
     if($('#courseNameText').val().includes(" ")){
         $('#courseNameWarn').show();
@@ -1124,6 +1126,7 @@ $('#courseNameText').keyup(function(){
         $('#courseNameWarn').hide();
     }
 });
+
 $('#trainerUsername').keyup(function(){
     if($('#trainerUsername').val().includes(" ")){
         $('#trainerNameWarn').show();
