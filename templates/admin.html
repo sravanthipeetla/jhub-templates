@@ -1191,6 +1191,7 @@ studentSubmitBtn.addEventListener("click", function(e) {
 
 $('#addCourseBtn').click(async () => {
     const courseName = $('#courseNameText').val();
+    console.log('courseName',courseName);
     const instructorUserName = $('#chooseTrainerSelect').find(":selected").val();
     if (courseName.includes(' ')){
         $('#alertMsgCont').show();
@@ -1820,7 +1821,6 @@ $('#successDone').click(() =>{
     location.reload();
 });
 $('#successAddMore').click(() =>{
-    $('#successModelTitle').text('Add Trainer');
     if ($('#successModelTitle').text() === 'Add Course' ){
     $('#addSuccessModal').hide();
     $('#addCourseModal').show();
