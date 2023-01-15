@@ -613,10 +613,11 @@ color: #006BB6;
     max-height:48rem;
     overflow: auto;
     padding: 1.6rem; 
+    margin-top: 1rem;
 }
 .eye-action{
     cursor: pointer;
-    width:1.6rem;
+    width:2.2rem;
 }
 .change-learner{
     padding: 3rem;
@@ -670,8 +671,8 @@ body.loading {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-.learner-coursecaed-height{
-    height:4rem;
+.learner-coursecard-height{
+    height:7rem;
 }
 
 @media(max-width:1600px){
@@ -1677,7 +1678,7 @@ function addAndAppendLearner(learner){
         for (let each of Object.values(learner)[0]){
             let learnerCourseCard = document.createElement('div');
             trainerCourseCardCont.appendChild(learnerCourseCard);
-            learnerCourseCard.classList.add('trainer-course-card','learner-coursecaed-height');
+            learnerCourseCard.classList.add('trainer-course-card','learner-coursecard-height');
             let learnerCourseCardLeft = document.createElement('div');
             learnerCourseCardLeft.classList.add('course-card-left');
             learnerCourseCard.appendChild(learnerCourseCardLeft);
@@ -1743,7 +1744,6 @@ const getLearnerDetails = async () => {
         }        
     });
     const detailsLearnerCourse = await Promise.all(details);
-    console.log('test',detailsLearnerCourse);
 return learnerCourse;
 };
 
