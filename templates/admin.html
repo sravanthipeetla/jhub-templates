@@ -1207,8 +1207,9 @@ addCourseBtn.onclick=async () => {
                 }
               });
               if (instructorAddPromise.status == 200 && instructorAddPromise.ok) {
-                alert('Success created.');
-                location.reload();
+                // alert('Success created.');
+                // location.reload();
+                $("#addSuccessModal").show();
 
               }
               else {
