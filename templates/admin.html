@@ -886,6 +886,7 @@ body.loading {
                         </div> 
                         <input type="text" placeholder="Enter user name" id="trainerUsername">
                     </div>
+                    <span class="course-name-warn" id="trainerNameWarn">* trainer name should not contain spaces</span>
             </div>
                 <div class="add-course-model-bottom">
                     <button id="trainerAddBtn" class="add-button">Add</button>
@@ -1128,6 +1129,14 @@ $('#courseNameText').keyup(function(){
     }
     else{
         $('#courseNameWarn').hide();
+    }
+});
+$('#trainerUsername').keyup(function(){
+    if($('#trainerUsername').val().includes(" ")){
+        $('#trainerNameWarn').show();
+    }
+    else{
+        $('#trainerNameWarn').hide();
     }
 });
 const studentSubmitBtn = document.getElementById("student-submit");
