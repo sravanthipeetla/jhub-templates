@@ -890,7 +890,7 @@ body.loading {
             </div>
                 <div class="add-course-model-bottom">
                     <button id="addTrainerBtn" class="add-button">Add</button>
-                    <button id="trainerCancelBtn" class="cancel-button">Cancel</button>
+                    <button id="cancelAddTrainer" class="cancel-button">Cancel</button>
                 </div>  
         </div>
     </div>
@@ -1107,9 +1107,6 @@ let deleteCourseName = null;
 let deleteItemId = null;
 let loaderDisplay = document.getElementsByClassName('loader')[0];
 let deleteCaution = document.getElementById('deleteCaution');
-const addTrainerModal = document.getElementById('addTrainerModal');
-const addTrainerCancel = document.getElementById('addTrainerCancel');
-const trainerUsername = document.getElementById('trainerUsername');
 const actualBtn = document.getElementById('actual-btn');
 const fileChosen = document.getElementById('file-chosen');
 let coursesListTotal = null;
@@ -1817,9 +1814,11 @@ $('#addBtn').click (()=> {
         $('#addLearnerModal').show();
         };
 });
+
 $('#successDone').click(() =>{
     location.reload();
 });
+
 $('#successAddMore').click(() =>{
     if ($('#successModelTitle').text() === 'Add Course' ){
     $('#addSuccessModal').hide();
@@ -1833,19 +1832,34 @@ $('#successAddMore').click(() =>{
 $('#mapBtn').click (() =>{
     $('#mapLearnerModal').show();
 });
+
 $('#addSuccessCancel').click(() =>{
     $('#addSuccessModal').hide();
     location.reload();
 });
+
 $('#addCourseCancel').click(() =>{
     $('#addCourseModal').hide();
 });
+
 $('#cancelAddCourse').click(() =>{
     $('#addCourseModal').hide();
 });
+
+$('#addTrainerCancel').click(() =>{
+    $('#addTrainerModal').hide();
+});
+
+$('#cancelAddTrainer').click(() =>{
+    $('#addTrainerModal').hide();
+});
+
+
+
 $("#alertMsgClose").click(() =>{
     $('#alertMsgCont').hide();
 });
+
 deleteTrainerCancel.onclick = function () {
     trainerCourseCardCont.innerHTML = "";
     deleteTrainerModal.style.display = 'none';
