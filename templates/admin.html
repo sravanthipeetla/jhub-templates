@@ -1276,7 +1276,7 @@ addTrainerBtn.onclick=async () =>{
             else{
                 const hubAddUserGroupPromiseResp = await hubAddUserGroupPromise.json();
                 $('#alertMsgCont').show();
-                $('#alertMsg').text(hubAddUserGroupPromise);
+                $('#alertMsg').text(hubAddUserGroupPromise.message);
                 $('#addTrainerModal').hide();
                 // alert('Something went wrong');
             }
@@ -1285,7 +1285,7 @@ addTrainerBtn.onclick=async () =>{
         else{
             const hubAddUserResp = await hubAddUserPromise.json();
             $('#alertMsgCont').show();
-            $('#alertMsg').text(hubAddUserPromise);
+            $('#alertMsg').text(hubAddUserPromise.message);
             $('#addTrainerModal').hide();
         }
     
