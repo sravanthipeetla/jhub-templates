@@ -1191,7 +1191,6 @@ studentSubmitBtn.addEventListener("click", function(e) {
 
 $('#addCourseBtn').click(async () => {
     const courseName = $('#courseNameText').val();
-    console.log('courseName',courseName);
     const instructorUserName = $('#chooseTrainerSelect').find(":selected").val();
     if (courseName.includes(' ')){
         $('#alertMsgCont').show();
@@ -1245,7 +1244,7 @@ $('#addCourseBtn').click(async () => {
 });
 
 $('#addTrainerBtn').click(async () =>{
-    let  instructorUserName = trainerUsername.value;
+    let  instructorUserName = $('#trainerUsername').val();
     if (instructorUserName.includes(' ')){
         $('#alertMsgCont').show();
         $('#alertMsg').text('Please remove spaces in trainer name');
@@ -1281,6 +1280,7 @@ $('#addTrainerBtn').click(async () =>{
                 $('#successModelTitle').text('Add Trainer');
                 $('#addSuccessMsg').text('Selected trainer added successfully');
                 $("#addSuccessModal").show();
+                $('#trainerUsername').val('');
             }
             
             else{
