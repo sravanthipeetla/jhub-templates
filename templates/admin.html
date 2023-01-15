@@ -861,7 +861,7 @@ body.loading {
             </div>
                 <div class="add-success-model-bottom">
                     <button id="successDone" class="add-button">Done</button>
-                    <button id="successaddMore" class="cancel-button">Add more</button>
+                    <button id="successAddMore" class="cancel-button">Add more</button>
                 </div>  
         </div>
        
@@ -1800,6 +1800,7 @@ $('#successDone').click(() =>{
     location.reload();
 });
 $('#successAddMore').click(() =>{
+    $('#addSuccessModal').hide();
     $('#addCourseModal').show();
 });
 $('#mapBtn').click (() =>{
