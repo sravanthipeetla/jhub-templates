@@ -1211,6 +1211,7 @@ addCourseBtn.onclick=async () => {
               if (instructorAddPromise.status == 200 && instructorAddPromise.ok) {
                 $('#addCourseModal').hide();
                 $('#successModelTitle').text('Add Course');
+                $('#addSuccessMsg').text('Selected course added successfully');
                 $("#addSuccessModal").show();
 
               }
@@ -1218,7 +1219,6 @@ addCourseBtn.onclick=async () => {
                 const instructorAddResponse = await instructorAddPromise.json();
                 $('#alertMsgCont').show();
                 $('#alertMsg').text(instructorAddResponse.message);
-                $('#addSuccessMsg').text('Selected course added successfully');
                 $('#addCourseModal').hide();
               }
         }
@@ -1269,8 +1269,10 @@ addTrainerBtn.onclick=async () =>{
             }
             );
             if (hubAddUserGroupPromise.status == 200 && hubAddUserGroupPromise.ok) {
-              alert('trainer successfully added')
-              location.reload();
+                $('#addCourseModal').hide();
+                $('#successModelTitle').text('Add Trainer');
+                $('#addSuccessMsg').text('Selected trainer added successfully');
+                $("#addSuccessModal").show();
             }
             
             else{
@@ -1278,7 +1280,6 @@ addTrainerBtn.onclick=async () =>{
                 $('#alertMsgCont').show();
                 $('#alertMsg').text(hubAddUserGroupResp.message);
                 $('#addTrainerModal').hide();
-                // alert('Something went wrong');
             }
         }
            
