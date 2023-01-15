@@ -1798,7 +1798,7 @@ addTrainerCancel.onclick = function(){
 }
 
 
-$('#addBtn').click (function () {
+$('#addBtn').click (()=> {
     if ($('#addBtn').text() === "Add Course") {
         $('#addCourseModal').show();
 }
@@ -1813,8 +1813,15 @@ $('#successDone').click(() =>{
     location.reload();
 });
 $('#successAddMore').click(() =>{
+    $('#successModelTitle').text('Add Trainer');
+    if ($('#successModelTitle').text() === 'Add Course' ){
     $('#addSuccessModal').hide();
     $('#addCourseModal').show();
+    }
+    else if ($('#successModelTitle').text() === 'Add Trainer' ){
+    $('#addSuccessModal').hide();
+    $('#addTrainerModal').show();
+    }
 });
 $('#mapBtn').click (() =>{
     $('#mapLearnerModal').show();
