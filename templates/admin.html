@@ -1207,8 +1207,8 @@ addCourseBtn.onclick=async () => {
                 }
               });
               if (instructorAddPromise.status == 200 && instructorAddPromise.ok) {
-                // alert('Success created.');
-                // location.reload();
+                $('#addCourseModal').hide();
+                $('#successModelTitle').text('Add Course');
                 $("#addSuccessModal").show();
 
               }
@@ -1216,6 +1216,7 @@ addCourseBtn.onclick=async () => {
                 const instructorAddResponse = await instructorAddPromise.json();
                 $('#alertMsgCont').show();
                 $('#alertMsg').text(instructorAddResponse.message);
+                $('#addSuccessMsg').text('Selected course added successfully');
                 $('#addCourseModal').hide();
               }
         }
@@ -1795,18 +1796,24 @@ $('#addBtn').click (function () {
         $('#addLearnerModal').show();
         };
 });
-$('#mapBtn').click (function(){
+$('#successDone').click(() =>{
+    location.reload();
+});
+$('#successAddMore').click(() =>{
+    $('#addCourseModal').show();
+});
+$('#mapBtn').click (() =>{
     $('#mapLearnerModal').show();
 });
-$('#addCourseCancel').click(function(){
+$('#addCourseCancel').click(() =>{
     $('#addCourseModal').hide();
 });
-$('#cancelAddCourse').click(function(){
+$('#cancelAddCourse').click(() =>{
     $('#addCourseModal').hide();
 });
-$("#alertMsgClose").click((function(){
+$("#alertMsgClose").click(() =>{
     $('#alertMsgCont').hide();
-}))
+});
 deleteTrainerCancel.onclick = function () {
     trainerCourseCardCont.innerHTML = "";
     deleteTrainerModal.style.display = 'none';
