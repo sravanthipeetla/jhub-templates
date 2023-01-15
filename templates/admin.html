@@ -2,9 +2,9 @@
 {% block stylesheet %}
 {{ super() }}
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600&family=Poppins:wght@500;600&family=Roboto:wght@400;500&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500&display=swap");
 
-  *{
+*{
     box-sizing: border-box;
 }
 body {
@@ -513,6 +513,32 @@ width:12.5rem;
     border-bottom-right-radius: 1.6rem;
     padding: 2.4rem;
 }
+.add-success-img-arrange{
+    text-align: center;
+    margin-top: 2.4rem;
+    margin-bottom: 2.5rem;
+}
+.add-success-img{
+ height: 5rem;
+ width: 5rem;
+ text-align: center;
+}
+.add-success-text{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    color: #263238;
+
+}
+.add-success-model-bottom{
+    text-align: center;
+    background: #FFFFFF;
+    border-bottom-left-radius: 1.6rem;
+    border-bottom-right-radius: 1.6rem;
+    margin-bottom: 3rem;
+}
 .add-button{
     border:none;
     background: #5FBEF0;
@@ -814,6 +840,28 @@ body.loading {
                 <div class="add-course-model-bottom">
                     <button id="addCourse" class="add-button">Add</button>
                     <button id="cancelAddCourse" class="cancel-button">Cancel</button>
+                </div>  
+        </div>
+       
+    </div>
+    <div class="bg-model display-block" id="addSuccessModal">
+        <div class="course-model add-course-model-height">
+            <div>
+                <div class="add-course-model-top-first">
+                    <h1 id="successModelTitle">Add Course</h1>
+                    <div id="addCourseCancel">
+                        <span> &times;</span>
+                    </div>
+                </div>
+                <div class="add-success-img-arrange">
+                    <img src="https://i.postimg.cc/cJj23Mwc/succes.png" alt="success" class="add-success-img">  
+                </div>
+                
+                <p class="add-success-text" id="addSuccessMsg">Selected course added successfully</p> 
+            </div>
+                <div class="add-success-model-bottom">
+                    <button id="successDone" class="add-button">Done</button>
+                    <button id="successaddMore" class="cancel-button">Add more</button>
                 </div>  
         </div>
        
