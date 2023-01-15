@@ -841,7 +841,7 @@ body.loading {
                     </div>
             </div>
                 <div class="add-course-model-bottom">
-                    <button id="addCourse" class="add-button">Add</button>
+                    <button id="addCourseBtn" class="add-button">Add</button>
                     <button id="cancelAddCourse" class="cancel-button">Cancel</button>
                 </div>  
         </div>
@@ -889,7 +889,7 @@ body.loading {
                     <span class="course-name-warn" id="trainerNameWarn">* trainer name should not contain spaces</span>
             </div>
                 <div class="add-course-model-bottom">
-                    <button id="trainerAddBtn" class="add-button">Add</button>
+                    <button id="addTrainerBtn" class="add-button">Add</button>
                     <button id="trainerCancelBtn" class="cancel-button">Cancel</button>
                 </div>  
         </div>
@@ -1099,7 +1099,6 @@ let deleteBtn = document.getElementById('delete-button');
 let deleteTitle = document.getElementById('deleteTitle');
 let trainerCourseCardCont = document.getElementById('trainerCourseCardCont');
 let deleteItemTitle = document.getElementById('deleteItemTitle');
-let chooseTrainerSelect = document.getElementById('chooseTrainerSelect');
 let chooseLearnerSelect = document.getElementById('chooseLearnerSelect');
 let learnerRowsBody = document.getElementById('learnerRowsBody');
 let actionTitle = document.getElementById('actionTitle');
@@ -1108,11 +1107,8 @@ let deleteCourseName = null;
 let deleteItemId = null;
 let loaderDisplay = document.getElementsByClassName('loader')[0];
 let deleteCaution = document.getElementById('deleteCaution');
-let courseNameText = document.getElementById('courseNameText');
-const addCourseBtn = document.getElementById('addCourse');
 const addTrainerModal = document.getElementById('addTrainerModal');
 const addTrainerCancel = document.getElementById('addTrainerCancel');
-const addTrainerBtn = document.getElementById('trainerAddBtn');
 const trainerUsername = document.getElementById('trainerUsername');
 const actualBtn = document.getElementById('actual-btn');
 const fileChosen = document.getElementById('file-chosen');
@@ -1193,9 +1189,9 @@ studentSubmitBtn.addEventListener("click", function(e) {
     }
 });
 
-addCourseBtn.onclick=async () => {
-    const courseName = courseNameText.value;
-    const instructorUserName = chooseTrainerSelect.value;
+$('#addCourseBtn').click(async () => {
+    const courseName = $('#courseNameText').val();
+    const instructorUserName = $('#chooseTrainerSelect').val();
     if (courseName.includes(' ')){
         $('#alertMsgCont').show();
         $('#alertMsg').text('Please remove spaces in course name');
@@ -1244,8 +1240,9 @@ addCourseBtn.onclick=async () => {
         $('#alertMsg').text('Please provide valid course name and instructor username');
         $('#addCourseModal').hide();
       }
-}
-addTrainerBtn.onclick=async () =>{
+});
+
+$('#addCourseBtn').click(async () =>{
     let  instructorUserName = trainerUsername.value;
     if (instructorUserName.includes(' ')){
         $('#alertMsgCont').show();
@@ -1306,7 +1303,7 @@ addTrainerBtn.onclick=async () =>{
         $('#addTrainerModal').hide();
     }
     
-}
+});
 
 function addAndAppendCourse(course) {
     let courseCardId = course.courseName+'course';
