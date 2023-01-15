@@ -2,8 +2,9 @@
 {% block stylesheet %}
 {{ super() }}
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600&family=Poppins:wght@500;600&display=swap');
-*{
+  @import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600&family=Poppins:wght@500;600&family=Roboto:wght@400;500&display=swap");
+
+  *{
     box-sizing: border-box;
 }
 body {
@@ -412,7 +413,13 @@ width: 8rem;
     box-shadow: 0px 0.3rem 0.5rem rgba(0, 0, 0, 0.08);
     border-radius: 1.6rem 1.6rem 0px 0px;
 }
-
+.choose-option{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #263238;
+}
 .add-course-model-top-first h1,.add-learner-model-top-first h1{
     font-family: 'Poppins';
     font-style: normal;
@@ -990,6 +997,7 @@ window.onload = async () =>{
         const newOption = document.createElement('option');
         newOption.text = option;
         newOption.value = option;
+        newOption.classList.add('choose-option');
         chooseTrainerSelect.add(newOption);
     };
 
@@ -1007,6 +1015,7 @@ window.onload = async () =>{
         const newOption = document.createElement('option');
         newOption.text = option;
         newOption.value = option;
+        newOption.classList.add('choose-option');
         chooseCourseSelect.add(newOption);
     }
    
