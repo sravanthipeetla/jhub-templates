@@ -1361,7 +1361,7 @@ getCourseDetails().then((resp)=>{
 
 async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
     console.log(deleteItem);
-    if (deleteItemTitle.textContent ==='Delete Course'){
+    if ($('#deleteModalTitle').text() ==='Delete Course'){
         const courseDeletePromise = await fetch(`${ngshare_url}course/${deleteItem}`,{
             method: 'DELETE',
             headers: {
@@ -1385,7 +1385,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
             deleteItemId=null;
         };
     }
-    else if(deleteItemTitle.textContent ==='Remove Trainer'){
+    else if($('#deleteModalTitle').text() ==='Remove Trainer'){
         const removeTrainerPromise = await fetch(`${ngshare_url}instructor/${deleteCourseName}/${deleteItem}`, {
             method: 'DELETE',
             headers: {
@@ -1400,7 +1400,6 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
             location.reload();
             deleteItem=null;
             deleteCourseName=null;
-
             deleteItemId=null;
         }
         else {
@@ -1410,7 +1409,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
             deleteItemId=null;
         };
     }
-    else if(deleteItemTitle.textContent ==='Remove Learner'){
+    else if($('#deleteModalTitle').text() ==='Remove Learner'){
         const removeTrainerPromise = await fetch(`${ngshare_url}student/${deleteCourseName}/${deleteItem}`, {
             method: 'DELETE',
             headers: {
