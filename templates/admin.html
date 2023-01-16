@@ -1347,18 +1347,17 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
         };
     }
     else if($('#deleteModalTitle').text() ==='Remove Learner'){
-        const removeTrainerPromise = await fetch(`${ngshare_url}student/${deleteCourseName}/${deleteItem}`, {
+        const removeLearnerPromise = await fetch(`${ngshare_url}student/${deleteCourseName}/${deleteItem}`, {
             method: 'DELETE',
             headers: {
             Accept: 'application.json',
             'Content-Type': 'application/json'
             }
         });
-        const response = await removeTrainerPromise.json();
+        const response = await removeLearnerPromise.json();
         if (response.success) {
             $('#deleteSuccessModal').show();
             $('#deletedItemMsg').text('Removed successfully');
-            location.reload();
             deleteItem=null;
             deleteCourseName=null;
             deleteItemId=null;
