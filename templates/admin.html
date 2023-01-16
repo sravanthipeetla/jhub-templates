@@ -983,7 +983,7 @@ body.loading {
                     </div>
                     <div class="choose-trainer-name">
                         <p class="choose-course-name">Choose Course</p>
-                        <select id="chooseCourseSelect">
+                        <select id="mapLearnerCourseSelect">
                         </select>
                     </div>
             </div>
@@ -1131,7 +1131,7 @@ mapLearnerAdd.addEventListener("click", async function(e) {
         const fileData =await e.target.result;
         const titles = fileData.slice(0, fileData.indexOf('\n')).split(',');
         const titleValues = fileData.slice(fileData.indexOf('\n') + 1).split('\n');
-        const reqArray=[];
+        const studentData=[];
         const learnerArray=[];
         titleValues.map(function(v) {
             if (v !== "") {
@@ -1142,16 +1142,29 @@ mapLearnerAdd.addEventListener("click", async function(e) {
                     let index = titles.indexOf(each);
                     obj[each] = values[index];
                 }
-                reqArray.push(obj);
+                studentData.push(obj);
             }
         });
         console.log(learnerArray);
         let checker = (arr, target) => target.every(v => arr.includes(v));
         if(checker(hubLearnerGroupList, learnerArray)){
             console.log('all learners there');
+            // const selectedCourse = selected.options[selected.selectedIndex].text;
+      	      	// const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/'+selectedCourse+'?students='+studentData, {
+            
+            const selectedCourse = $('#mapLearnerCourseSelect').find(":selected").val();
+            const response =await fetch(`${ngshare_url}students/${selectedCourse}?students=${studentData}`, {
+        			method: 'POST',
+        			headers: {
+    			    'Accept': 'application/json, text/plain, */*',
+    			    'Content-Type': 'application/json',
+      			}
+      		});
+            console.log(selectedCourse);
+    		console.log(response.status);
         }
         else{
-            alert('please check some of the students not exist');
+            alert('please check some of the students are not exist');
         }
         }
     }
@@ -1987,13 +2000,13 @@ window.onload = async () =>{
     courseDefaultOption.value = '';
     courseDefaultOption.selected = true;
     courseDefaultOption.disabled = true;
-    chooseCourseSelect.add(courseDefaultOption);
+    mapLearnerCourseSelect.add(courseDefaultOption);
     for (let option of coursesList){
         const newOption = document.createElement('option');
         newOption.text = option;
         newOption.value = option;
         newOption.classList.add('choose-option');
-        chooseCourseSelect.add(newOption);
+        mapLearnerCourseSelect.add(newOption);
     }
    
 };
