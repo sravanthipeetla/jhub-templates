@@ -642,20 +642,24 @@ color: #006BB6;
     width:2.2rem;
 }
 .change-learner{
-    padding: 3rem;
+    padding-top: -0.5rem;
+    padding-left: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 .learner-inactive{
-    font-size: 0.8rem;
-    border-radius: 1rem;
-    padding: 0.5rem 2rem;
-    border: 1px solid #DBDBDB;
+    font-size: 1.3rem;
+    border-radius: 1.4rem;
+    padding: 0.5rem 3.2rem;
     background: #FFFFFF;
-    color: #DBDBDB;
+    border: 1px solid #5FBEF0;
+    color: #5FBEF0;
     cursor: pointer;
+    margin-right: 1rem;
 }
 .learner-active{
-    color: #5FBEF0;
+    color: #fff;
+    background: #5FBEF0;
     border: 1px solid #5FBEF0;
 }
 .upload-btn{
@@ -842,34 +846,49 @@ body.loading {
         </div>
        
     </div>
-    <div class="bg-model" id="addCourseModal">
-        <div class="course-model add-course-model-height">
-            <div>
-                <div class="add-course-model-top-first">
-                    <h1 id="modelTitle">Add Course</h1>
-                    <div id="addCourseCancel">
+    <div class="bg-model" id="addLearnerModal">
+        <div class="learner-course-add-model">
+                <div class="add-learner-model-top-first">
+                    <h1>Add Learners</h1>
+                    <div id="addLearnerCancel">
                         <span> &times;</span>
                     </div>
                 </div>
-                    <div class="add-course-name">
-                        <p>Course Name</p>
-                        <input type="text" placeholder="Enter course name" id="courseNameText">
+                <div>
+                   <div class="change-learner">
+                        <button id="singleUser" class="learner-inactive learner-active">Single User</button>
+                        <button id="multipleUser" class="learner-inactive">Bulk Users</button>
                     </div>
-                    <span class="course-name-warn" id="courseNameWarn">* course name should not contain spaces</span>
+                    <div id="singleLearner">
+                        <div class="add-learner">
+                            <div class="choose-trainer-arrange">
+                                <p>User ID</p>
+                                <span>Single learner</span>
+                            </div> 
+                            <input type="text" placeholder="Enter user ID">
+                        </div>
+                    </div>
+                    <div id="multipleLearners" class="stop-visible">
+                    <div class="add-learner">
+                            <div class="choose-trainer-arrange">
+                                <p>Upload CSV file</p>
+                                <span>Multiple learners</span>
+                            </div> 
+                            <input type="file" id="actual-btn" hidden accept=".csv" />
+                            <label for="actual-btn" class="upload-btn"><img src="https://i.postimg.cc/7Z71QKgW/Vector-4.png" alt=""></label>
+                            <span id="file-chosen">No file chosen</span>
+                    </div>
+                    </div>
                     <div class="choose-trainer-name">
-                        <div class="choose-trainer-arrange">
-                            <p>Choose Trainer</p>
-                            <span>Existing Trainer</span>
-                        </div> 
-                        <select id="chooseTrainerSelect">
-            
+                        <p class="choose-course-name">Choose Course</p>
+                        <select id="mapLearnerCourseSelect">
                         </select>
                     </div>
-            </div>
-                <div class="add-course-model-bottom">
-                    <button id="addCourseBtn" class="add-button">Add</button>
-                    <button id="cancelAddCourse" class="cancel-button">Cancel</button>
-                </div>  
+                </div>
+            <div class="add-course-model-bottom">
+                <button id="student-submit" class="add-button">Add</button>
+                <button id="cancel-button" class="cancel-button">Cancel</button>
+            </div>  
         </div>
        
     </div>
@@ -963,7 +982,7 @@ body.loading {
         <div class="course-model add-learner-model-height">
             <div>
                 <div class="add-learner-model-top-first">
-                    <h1>Add Learners</h1>
+                    <h1>Map Learners</h1>
                     <div id="mapLearnerClose">
                         <span> &times;</span>
                     </div>
