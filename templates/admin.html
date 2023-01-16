@@ -1124,8 +1124,8 @@ mapLearnerAdd.addEventListener("click", function(e) {
         const input = mapUploadBtn.files[0];
         const reader = new FileReader();
         reader.readAsText(input);
-        const reqArray = null;
-        const learnerArray = null;
+        let reqArray = null;
+        let learnerArray = null;
         reader.onload = function(e) {
         const fileData = e.target.result;
         const titles = fileData.slice(0, fileData.indexOf('\n')).split(',');
