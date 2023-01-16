@@ -1096,7 +1096,6 @@ let trainerCardCont = document.getElementById('trainerCardCont');
 let trainerEyeIcon = document.getElementById('trainer-eye-icon');
 let deleteTrainerModal = document.getElementById('deleteTrainerModal');
 let deleteTrainer = document.getElementById('deleteTrainer');
-let deleteTrainerCancel = document.getElementById('deleteTrainerCancel');
 let addLearnerCancel = document.getElementById('addLearnerCancel');
 let mapLearnerCancel = document.getElementById('mapLearnerCancel');
 let singleUserBtn = document.getElementById('singleUser');
@@ -1806,11 +1805,6 @@ deleteCancel.onclick = function () {
     deleteCourseModal.style.display = 'none';
 };
 
-addTrainerCancel.onclick = function(){
-    addTrainerModal.style.display = 'none';
-}
-
-
 $('#addBtn').click (()=> {
     if ($('#addBtn').text() === "Add Course") {
         $('#addCourseModal').show();
@@ -1862,16 +1856,18 @@ $('#cancelAddTrainer').click(() =>{
     $('#addTrainerModal').hide();
 });
 
-
-
 $("#alertMsgClose").click(() =>{
     $('#alertMsgCont').hide();
 });
 
-deleteTrainerCancel.onclick = function () {
+// deleteTrainerCancel.onclick = function () {
+//     trainerCourseCardCont.innerHTML = "";
+//     deleteTrainerModal.style.display = 'none';
+// };
+$('#deleteTrainerCancel').click(()=>{
     trainerCourseCardCont.innerHTML = "";
-    deleteTrainerModal.style.display = 'none';
-};
+    $('#deleteTrainerModal').hide();
+});
 
 addLearnerCancel.onclick = function () {
     addLearnerModal.style.display = 'none';
