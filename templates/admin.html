@@ -1153,7 +1153,7 @@ mapLearnerAdd.addEventListener("click", async function(e) {
       	      	// const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/'+selectedCourse+'?students='+studentData, {
             const studentData=JSON.stringify(reqArray);
             const selectedCourse = $('#mapLearnerCourseSelect').find(":selected").val();
-            const response =await fetch(`${ngshare_url}students/ML?students=${studentData}`, {
+            const response =await fetch(`${ngshare_url}students/${selectedCourse}?students=${studentData}`, {
         			method: 'POST',
         			headers: {
     			    'Accept': 'application/json, text/plain, */*',
