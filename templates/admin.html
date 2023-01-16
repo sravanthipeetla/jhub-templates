@@ -1037,51 +1037,6 @@ if ($(this).text().toLowerCase() == currentAnchorTagText) {
 }
 });
 
-window.onload = async () =>{
-    getInstructorDetails();
-    getCourseDetails();
-    getLearnerDetails();
-    const hubUsersFetch = await fetch(`${hub_url}users`);
-    const hubUsersJson = await hubUsersFetch.json();
-    const instructorsUsername = [];
-    for (let i = 0; i < hubUsersJson.length; i++) {
-        if (hubUsersJson[i].groups.includes('instructor')) {
-        instructorsUsername.push(hubUsersJson[i].name);
-        }
-    }; 
-    const trainDefaultOption = document.createElement('option');
-    trainDefaultOption.text = 'Choose trainer';
-    trainDefaultOption.value = '';
-    trainDefaultOption.selected = true;
-    trainDefaultOption.disabled = true;
-    chooseTrainerSelect.add(trainDefaultOption);
-    for (let option of instructorsUsername){
-        const newOption = document.createElement('option');
-        newOption.text = option;
-        newOption.value = option;
-        newOption.classList.add('choose-option');
-        chooseTrainerSelect.add(newOption);
-    };
-
-    const courseFetch = await fetch(`${ngshare_url}courses`);
-    const courseJson = await courseFetch.json();
-    const coursesList = await courseJson.courses;
-    coursesListTotal = coursesList;
-    const courseDefaultOption = document.createElement('option');
-    courseDefaultOption.text = 'Choose course';
-    courseDefaultOption.value = '';
-    courseDefaultOption.selected = true;
-    courseDefaultOption.disabled = true;
-    chooseCourseSelect.add(courseDefaultOption);
-    for (let option of coursesList){
-        const newOption = document.createElement('option');
-        newOption.text = option;
-        newOption.value = option;
-        newOption.classList.add('choose-option');
-        chooseCourseSelect.add(newOption);
-    }
-   
-};
 
 //   // To hide left navbar items - 'Token' and 'services'
 //   const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
@@ -1899,5 +1854,52 @@ multipleUserBtn.onclick = function () {
     singleLearner.style.display = 'none';
     multipleLearners.style.display = 'block';
 };
+
+window.onload = async () =>{
+    getInstructorDetails();
+    getCourseDetails();
+    getLearnerDetails();
+    const hubUsersFetch = await fetch(`${hub_url}users`);
+    const hubUsersJson = await hubUsersFetch.json();
+    const instructorsUsername = [];
+    for (let i = 0; i < hubUsersJson.length; i++) {
+        if (hubUsersJson[i].groups.includes('instructor')) {
+        instructorsUsername.push(hubUsersJson[i].name);
+        }
+    }; 
+    const trainDefaultOption = document.createElement('option');
+    trainDefaultOption.text = 'Choose trainer';
+    trainDefaultOption.value = '';
+    trainDefaultOption.selected = true;
+    trainDefaultOption.disabled = true;
+    chooseTrainerSelect.add(trainDefaultOption);
+    for (let option of instructorsUsername){
+        const newOption = document.createElement('option');
+        newOption.text = option;
+        newOption.value = option;
+        newOption.classList.add('choose-option');
+        chooseTrainerSelect.add(newOption);
+    };
+
+    const courseFetch = await fetch(`${ngshare_url}courses`);
+    const courseJson = await courseFetch.json();
+    const coursesList = await courseJson.courses;
+    coursesListTotal = coursesList;
+    const courseDefaultOption = document.createElement('option');
+    courseDefaultOption.text = 'Choose course';
+    courseDefaultOption.value = '';
+    courseDefaultOption.selected = true;
+    courseDefaultOption.disabled = true;
+    chooseCourseSelect.add(courseDefaultOption);
+    for (let option of coursesList){
+        const newOption = document.createElement('option');
+        newOption.text = option;
+        newOption.value = option;
+        newOption.classList.add('choose-option');
+        chooseCourseSelect.add(newOption);
+    }
+   
+};
+
 </script>
 {% endblock %}
