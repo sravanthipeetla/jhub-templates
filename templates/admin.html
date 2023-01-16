@@ -1131,7 +1131,7 @@ mapLearnerAdd.addEventListener("click", async function(e) {
         const fileData =await e.target.result;
         const titles = fileData.slice(0, fileData.indexOf('\n')).split(',');
         const titleValues = fileData.slice(fileData.indexOf('\n') + 1).split('\n');
-        const studentData=[];
+        const reqArray=[];
         const learnerArray=[];
         titleValues.map(function(v) {
             if (v !== "") {
@@ -1142,7 +1142,7 @@ mapLearnerAdd.addEventListener("click", async function(e) {
                     let index = titles.indexOf(each);
                     obj[each] = values[index];
                 }
-                studentData.push(obj);
+                reqArray.push(obj);
             }
         });
         console.log(learnerArray);
@@ -1151,7 +1151,7 @@ mapLearnerAdd.addEventListener("click", async function(e) {
             console.log('all learners there');
             // const selectedCourse = selected.options[selected.selectedIndex].text;
       	      	// const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/'+selectedCourse+'?students='+studentData, {
-            
+            const studentData=JSON.stringify(reqArray);
             const selectedCourse = $('#mapLearnerCourseSelect').find(":selected").val();
             const response =await fetch(`${ngshare_url}students/${selectedCourse}?students=${studentData}`, {
         			method: 'POST',
