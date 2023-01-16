@@ -1315,7 +1315,8 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
             deleteItemId=null;
         }
         else {
-            alert("Something went wrong! Couldn't delete course");
+            $('#alertMsgCont').show();
+            $('#alertMsg').text("Something went wrong! Couldn't delete course");
             deleteItem=null;
             deleteCourseName=null;
             deleteItemId=null;
@@ -1331,15 +1332,15 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
         });
         const response = await removeTrainerPromise.json();
         if (response.success) {
-            // $('#messageDisplay').text(`Successfully removed ${deleteItem} from ${deleteCourseName} course`).show().fadeOut(5000);
-            alert(`Successfully removed ${deleteItem} from ${deleteCourseName} course`);
-            location.reload();
+            $('#deleteSuccessModal').show();
+            $('#deletedItemMsg').text('Removed successfully');
             deleteItem=null;
             deleteCourseName=null;
             deleteItemId=null;
         }
         else {
-            alert("Something went wrong! Couldn't remove trainer from course");
+            $('#alertMsgCont').show();
+            $('#alertMsg').text("Something went wrong! Couldn't remove course");
             deleteItem=null;
             deleteCourseName=null;
             deleteItemId=null;
@@ -1355,14 +1356,16 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
         });
         const response = await removeTrainerPromise.json();
         if (response.success) {
-            alert(`Successfully removed ${deleteItem} from ${deleteCourseName} course`);
+            $('#deleteSuccessModal').show();
+            $('#deletedItemMsg').text('Removed successfully');
             location.reload();
             deleteItem=null;
             deleteCourseName=null;
             deleteItemId=null;
         }
         else {
-            alert("Something went wrong! Couldn't remove learner from course");
+            $('#alertMsgCont').show();
+            $('#alertMsg').text("Something went wrong! Couldn't remove course");
             deleteItem=null;
             deleteCourseName=null;
             deleteItemId=null;
@@ -1889,7 +1892,7 @@ $('#deleteDoneBtn').click(()=>{
 
 $('#deleteSuccessClose').click(()=>{
     $('deleteSuccessModal').hide();
-    location.reload();
+    // location.reload();
 });
 
 
