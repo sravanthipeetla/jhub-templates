@@ -1308,7 +1308,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
         });
         const response = await courseDeletePromise.json();
         if (response.success) {
-            $('deleteSuccessModal').show();
+            $('#deleteSuccessModal').show();
             $('#deletedItemMsg').text('Deleted successfully');
             deleteItem=null;
             deleteCourseName=null;
