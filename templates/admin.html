@@ -781,8 +781,7 @@ body.loading {
                     <button class="map-btn" id="mapBtn">Map Learners</button>
                     <button class="add-btn" id="addBtn">Add Course</button>
                 </div>
-        </div>
-       
+        </div>    
         <div id="courseDetails">
             <div class="loader" id="coursesLoader"></div>
             <div class="courseDetails" id="courseCardCont">
@@ -806,20 +805,20 @@ body.loading {
             <div class="loader" id="learnersLoader"></div>
         </div>
     </div>
-    <div class="bg-model" id="deleteCourseModal">
+    <div class="bg-model" id="deleteCourseModel">
         <div class="course-model">
             <div>
                 <div class="delete-course-model-top-first">
                     <h1 id="deleteItemTitle"></h1>
-                    <div id="deleteCancel">
+                    <div id="deleteModelClose">
                         <span> &times;</span>
                     </div>
                 </div>
                     <h1 class="delete-title" id="deleteTitle"></h1>
             </div>
                 <div class="delete-course-model-bottom">
-                    <button id="delete-button" class="delete-button">Delete</button>
-                    <button id="cancel-button" class="cancel-button">Cancel</button>
+                    <button id="deleteBtn" class="delete-button">Delete</button>
+                    <button id="deleteCancelBtn" class="cancel-button">Cancel</button>
                     <p id="deleteCaution">once deleted can't be restore again</p>  
                 </div>  
         </div>
@@ -1044,8 +1043,6 @@ if ($(this).text().toLowerCase() == currentAnchorTagText) {
 //   navbarLeftList[3].style.display = 'none';
 let courseCard = document.getElementById('courseCard');
 let deleteIcon = document.getElementById('delete-icon');
-let deleteCourseModal = document.getElementById('deleteCourseModal');
-let deleteCancel = document.getElementById('deleteCancel');
 let addLearnerModal = document.getElementById('addLearnerModal');
 let mapLearnerModal = document.getElementById('mapLearnerModal');
 let courseCardCont = document.getElementById('courseCardCont');
@@ -1060,7 +1057,6 @@ let multipleUserBtn = document.getElementById('multipleUser');
 let singleLearner = document.getElementById('singleLearner');
 let multipleLearners = document.getElementById('multipleLearners');
 let modelTitle = document.getElementById('modelTitle');
-let deleteBtn = document.getElementById('delete-button');
 let deleteTitle = document.getElementById('deleteTitle');
 let trainerCourseCardCont = document.getElementById('trainerCourseCardCont');
 let deleteItemTitle = document.getElementById('deleteItemTitle');
@@ -1439,10 +1435,10 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
         };
     };  
 };
-deleteBtn.onclick = function(){
+$('#deleteBtn').click(() =>{
     deleteItemNext (deleteItem,deleteCourseName,deleteItemId);
-    deleteCourseModal.style.display = 'none';
-};
+    $('#deleteCourseModel').hide();
+});
 
 function addAndAppendTrainer(trainer) {
     let trainerCardId = 'trainerCard' + trainer.id;
@@ -1843,10 +1839,12 @@ $("#alertMsgClose").click(() =>{
     $('#alertMsgCont').hide();
 });
 
-// deleteTrainerCancel.onclick = function () {
-//     trainerCourseCardCont.innerHTML = "";
-//     deleteTrainerModal.style.display = 'none';
-// };
+$('#deleteModelClose').click(()=>{
+    $('#deleteCourseModel').hide();
+});
+
+$('#deleteCancelBtn').click(()=> $('#deleteCourseModel').hide());
+
 $('#deleteTrainerCancel').click(()=>{
     trainerCourseCardCont.innerHTML = "";
     $('#deleteTrainerModal').hide();
