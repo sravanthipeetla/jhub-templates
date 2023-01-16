@@ -1119,9 +1119,9 @@ $('#trainerUsername').keyup(function(){
 const mapLearnerAdd = document.getElementById("mapLearnerAdd");
 mapLearnerAdd.addEventListener("click", async function(e) {
     if (mapUploadBtn.files[0]){
-        const hubUsersFetch = await fetch(`${hub_url}groups/learner`);
-        const hubUsersJson = await hubUsersFetch.json();
-        console.log(hubUsersJson.users);
+        const hubLearnerGroupFetch = await fetch(`${hub_url}groups/learner`);
+        const hubLearnerGroupJson = await hubLearnerGroupFetch.json();
+        const hubLearnerGroupList = hubLearnerGroupJson.users;
         console.log('Start Prrocess');
         e.preventDefault();
         const input = mapUploadBtn.files[0];
@@ -1145,8 +1145,14 @@ mapLearnerAdd.addEventListener("click", async function(e) {
                 reqArray.push(obj);
             }
         });
-        console.log(reqArray);
         console.log(learnerArray);
+        let checker = (arr, target) => target.every(v => arr.includes(v));
+        if(checker(hubLearnerGroupList, learnerArray)){
+            console.log('all learners there');
+        }
+        else{
+            alert('please check some of the students not exist');
+        }
         }
     }
     else{
