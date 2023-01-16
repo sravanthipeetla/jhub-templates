@@ -1315,7 +1315,7 @@ function addAndAppendCourse(course) {
         $('#deleteModalTitle').text('Delete Course');
         $('#deleteItemText').text(`Delete ${course.courseName} course?`);
         $('#deleteCourseBtn').text('Delete');
-        $('$deleteCourseCaution').text("once deleted can't be restore again");
+        $('#deleteCourseCaution').text("once deleted can't be restore again");
         deleteItem = course.courseName;
         deleteItemId = courseCardId;
     };
@@ -1533,7 +1533,7 @@ function addAndAppendTrainer(trainer) {
                 $('#deleteModalTitle').text('Remove Trainer');
                 $('#deleteItemText').text(`Remove ${trainer.name} from ${Object.keys(each)[0]} course?`);
                 $('#deleteCourseBtn').text('Remove');
-                $('$deleteCourseCaution').text("once removed can't be restore again");
+                $('#deleteCourseCaution').text("once removed can't be restore again");
                 deleteItem = trainer.name;
                 deleteItemId = trainerCourseCardId;
                 deleteCourseName = Object.keys(each)[0];
@@ -1673,7 +1673,7 @@ function addAndAppendLearner(learner){
                 deleteTrainerModal.style.display = 'none';
                 $('#deleteCourseModal').show();
                 $('#deleteModalTitle').text('Remove Learner');
-                $('$deleteCourseCaution').text("once removed can't be restore again");
+                $('#deleteCourseCaution').text("once removed can't be restore again");
                 $('#deleteCourseBtn').text('Remove');
                 $('#deleteItemText').text(`Remove ${Object.keys(learner)[0]} from ${each} course?`);
                 deleteItem = Object.keys(learner)[0];
