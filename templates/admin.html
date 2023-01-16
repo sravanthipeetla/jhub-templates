@@ -1615,12 +1615,13 @@ getInstructorDetails().then((resp)=>{
         }
         instructorDetailsAll.push({'name':key,'course':trainerFetchDetails[key],'status':status});
     };
-    console.log('all',instructorDetailsAll);
-    console.log('mapped',instructorDetailsMapped);
-    console.log('unmapped',instructorDetailsUnMapped);
     for (let trainer of instructorDetailsAll) {
         addAndAppendTrainer(trainer);
     }
+    $('#trainersFilter').change(()=>{
+        console.log('select value',$('#trainersFilter').find(":selected").val());
+
+    });
 })
 
 
