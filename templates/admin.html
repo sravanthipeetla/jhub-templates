@@ -1094,7 +1094,12 @@ const mapUploadBtn = document.getElementById('mapUploadBtn');
 const mapFileChosen = document.getElementById('mapFileChosen');
 
 mapUploadBtn.addEventListener('change', function() {
+    if (this.files[0].name){
     $('#mapFileChosen').text(this.files[0].name);
+    }
+    else{
+        $('#mapFileChosen').text('No file chosen'); 
+    }
 })
 
 $('#courseNameText').keyup(function(){
