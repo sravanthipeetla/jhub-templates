@@ -1126,9 +1126,9 @@ mapLearnerAdd.addEventListener("click", function(e) {
         reader.readAsText(input);
         reader.onload = function(e) {
         const fileData = e.target.result;
-        const titles = fileData.slice(0, data.indexOf('\n')).split(',');
+        const titles = fileData.slice(0, fileData.indexOf('\n')).split(',');
         console.log(titles);
-        const titleValues = fileData.slice(data.indexOf('\n') + 1).split('\n');
+        const titleValues = fileData.slice(fileData.indexOf('\n') + 1).split('\n');
         console.log(titleValues);
         }
     }
