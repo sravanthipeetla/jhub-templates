@@ -1124,14 +1124,12 @@ mapLearnerAdd.addEventListener("click", function(e) {
         const input = mapUploadBtn.files[0];
         const reader = new FileReader();
         reader.readAsText(input);
-        let reqArray = null;
-        let learnerArray = null;
         reader.onload = function(e) {
         const fileData = e.target.result;
         const titles = fileData.slice(0, fileData.indexOf('\n')).split(',');
         const titleValues = fileData.slice(fileData.indexOf('\n') + 1).split('\n');
-        reqArray=[];
-        learnerArray=[];
+        const reqArray=[];
+        const learnerArray=[];
         titleValues.map(function(v) {
             if (v !== "") {
                 const values = v.split(',');
@@ -1144,8 +1142,6 @@ mapLearnerAdd.addEventListener("click", function(e) {
                 reqArray.push(obj);
             }
         });
-        }
-        if(reqArray){
         console.log(reqArray);
         console.log(learnerArray);
         }
