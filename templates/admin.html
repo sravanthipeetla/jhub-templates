@@ -314,6 +314,32 @@ th{
         opacity: 1;
     }
 }
+.learner-course-add-model{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background:#FFFFFF;
+    box-shadow: 0px 0.2rem 1.3rem rgba(170, 170, 170, 0.27);
+    border-radius: 1.6rem;
+    width:45rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: animatemodal .3s;
+    height:32rem;
+}
+@keyframes animatemodal {
+    0% {
+        top: -30rem;
+        opacity: 0;
+    }
+
+    100% {
+        top: -50%;
+        opacity: 1;
+    }
+}
 .delete-icon{
     display: flex;
     flex-direction: column;
