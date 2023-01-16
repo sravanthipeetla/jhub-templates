@@ -1117,15 +1117,18 @@ $('#trainerUsername').keyup(function(){
 
 
 const mapLearnerAdd = document.getElementById("mapLearnerAdd");
-mapLearnerAdd.addEventListener("click", function(e) {
+mapLearnerAdd.addEventListener("click", async function(e) {
     if (mapUploadBtn.files[0]){
+        const hubUsersFetch = await fetch(`${hub_url}groups/learner`);
+        const hubUsersJson = await hubUsersFetch.json();
+        console.log(hubUsersJson.users);
         console.log('Start Prrocess');
         e.preventDefault();
         const input = mapUploadBtn.files[0];
         const reader = new FileReader();
         reader.readAsText(input);
-        reader.onload = function(e) {
-        const fileData = e.target.result;
+        reader.onload = async function(e) {
+        const fileData =await e.target.result;
         const titles = fileData.slice(0, fileData.indexOf('\n')).split(',');
         const titleValues = fileData.slice(fileData.indexOf('\n') + 1).split('\n');
         const reqArray=[];
