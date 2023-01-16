@@ -1167,6 +1167,7 @@ mapLearnerAdd.addEventListener("click", async function(e) {
       		});
             if (response.status == 200 && response.ok){
                 alert('Successfully added');
+                mapUploadBtn.value=null;
             }
             else{
                 const responseMessage = await response.json();
