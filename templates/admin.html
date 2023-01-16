@@ -1038,7 +1038,9 @@ if ($(this).text().toLowerCase() == currentAnchorTagText) {
 });
 
 window.onload = async () =>{
-    getLearnerDetails;
+    getInstructorDetails();
+    getCourseDetails();
+    getLearnerDetails();
     const hubUsersFetch = await fetch(`${hub_url}users`);
     const hubUsersJson = await hubUsersFetch.json();
     const instructorsUsername = [];
@@ -1139,7 +1141,7 @@ $('#trainerUsername').keyup(function(){
     else{
         $('#trainerNameWarn').hide();
     }
-});
+});getInstructorDetails();
 const studentSubmitBtn = document.getElementById("student-submit");
 studentSubmitBtn.addEventListener("click", function(e) {
     let studentData=null;
@@ -1640,19 +1642,27 @@ const getInstructorDetails = async () => {
 
 getInstructorDetails().then((resp)=>{
     $('#trainersLoader').hide();
-    let trainerFetchDetails = resp;
-    let instructorDetails=[];
+    const trainerFetchDetails = resp;
+    const instructorDetailsAll=[];
+    const instructorDetailsMapped = [];
+    const instructorDetailsUnMapped = [];
+
     for (key in trainerFetchDetails){
         let status = null;
         if (trainerFetchDetails[key].length > 0){
             status='Mapped';
+            instructorDetailsMapped.push({'name':key,'course':trainerFetchDetails[key],'status':status});
         }
         else if(trainerFetchDetails[key].length === 0) {
             status='Unmapped';
+            instructorDetailsUnMapped.push({'name':key,'course':trainerFetchDetails[key],'status':status});
         }
-        instructorDetails.push({'name':key,'course':trainerFetchDetails[key],'status':status});
+        instructorDetailsAll.push({'name':key,'course':trainerFetchDetails[key],'status':status});
     };
-    for (let trainer of instructorDetails) {
+    console.log('all',instructorDetailsAll);
+    console.log('mapped',instructorDetailsMapped);
+    console.log('unmapped',instructorDetailsUnMapped);
+    for (let trainer of instructorDetailsAll) {
         addAndAppendTrainer(trainer);
     }
 })
