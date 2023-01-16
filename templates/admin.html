@@ -805,16 +805,16 @@ body.loading {
             <div class="loader" id="learnersLoader"></div>
         </div>
     </div>
-    <div class="bg-model" id="deleteCourseModel">
+    <div class="bg-model" id="deleteCourseModal">
         <div class="course-model">
             <div>
                 <div class="delete-course-model-top-first">
-                    <h1 id="deleteItemTitle"></h1>
-                    <div id="deleteModelClose">
+                    <h1 id="deleteModalTitle"></h1>
+                    <div id="deleteModalClose">
                         <span> &times;</span>
                     </div>
                 </div>
-                    <h1 class="delete-title" id="deleteTitle"></h1>
+                    <h1 class="delete-title" id="deleteItemText"></h1>
             </div>
                 <div class="delete-course-model-bottom">
                     <button id="deleteBtn" class="delete-button">Delete</button>
@@ -1314,9 +1314,9 @@ function addAndAppendCourse(course) {
 
     let deleteIconCont = document.createElement('div');
     deleteIconCont.onclick = function(){
-        deleteCourseModal.style.display='block';
-        deleteItemTitle.textContent =  'Delete Course';
-        deleteTitle.textContent = `Delete ${course.courseName} course?`;
+        $('#deleteCourseModal').show();
+        $('#deleteModalTitle').text('Delete Course');
+        $('#deleteItemText').text(`Delete ${course.courseName} course?`);
         deleteItem = course.courseName;
         deleteItemId = courseCardId;
     };
@@ -1437,7 +1437,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
 };
 $('#deleteBtn').click(() =>{
     deleteItemNext (deleteItem,deleteCourseName,deleteItemId);
-    $('#deleteCourseModel').hide();
+    $('#deleteCourseModal').hide();
 });
 
 function addAndAppendTrainer(trainer) {
@@ -1839,11 +1839,11 @@ $("#alertMsgClose").click(() =>{
     $('#alertMsgCont').hide();
 });
 
-$('#deleteModelClose').click(()=>{
-    $('#deleteCourseModel').hide();
+$('#deleteModalClose').click(()=>{
+    $('#deleteCourseModal').hide();
 });
 
-$('#deleteCancelBtn').click(()=> $('#deleteCourseModel').hide());
+$('#deleteCancelBtn').click(()=> $('#deleteCourseModal').hide());
 
 $('#deleteTrainerCancel').click(()=>{
     trainerCourseCardCont.innerHTML = "";
