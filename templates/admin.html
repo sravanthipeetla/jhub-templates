@@ -1164,7 +1164,7 @@ mapLearnerAdd.addEventListener("click", async function(e) {
                 alert('Successfully added');
             }
             else{
-                const responseMessage = response.json();
+                const responseMessage = await response.json();
                 console.log(responseMessage);
                 alert(responseMessage.message);
             }
