@@ -1433,7 +1433,8 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
         };
     };  
 };
-$('deleteCourseBtn').click(() =>{
+
+$('#deleteCourseBtn').click(() =>{
     deleteItemNext (deleteItem,deleteCourseName,deleteItemId);
     $('#deleteCourseModal').hide();
 });
