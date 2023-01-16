@@ -963,7 +963,7 @@ body.loading {
             <div>
                 <div class="add-learner-model-top-first">
                     <h1>Add Learners</h1>
-                    <div id="mapLearnerCancel">
+                    <div id="mapLearnerClose">
                         <span> &times;</span>
                     </div>
                 </div>
@@ -973,9 +973,9 @@ body.loading {
                                 <p>Upload CSV file</p>
                                 <span>Multiple learners</span>
                             </div> 
-                            <input type="file" id="actual-btn"  accept=".csv" />
-                            <label for="actual-btn" class="upload-btn"><img src="https://i.postimg.cc/7Z71QKgW/Vector-4.png" alt=""></label>
-                            <span id="file-chosen">No file chosen</span>
+                            <input type="file" id="mapUploadBtn"  accept=".csv" />
+                            <label for="mapUploadBtn" class="upload-btn"><img src="https://i.postimg.cc/7Z71QKgW/Vector-4.png" alt=""></label>
+                            <span id="mapFileChosen">No file chosen</span>
                         </div>
                     </div>
                     <div class="choose-trainer-name">
@@ -985,8 +985,8 @@ body.loading {
                     </div>
             </div>
                 <div class="add-course-model-bottom">
-                    <button id="student-submit" class="add-button">Add</button>
-                    <button id="cancel-button" class="cancel-button">Cancel</button>
+                    <button id="mapLearnerAdd" class="add-button">Add</button>
+                    <button id="mapLearnerCancel" class="cancel-button">Cancel</button>
                 </div>  
         </div>
     </div>
@@ -1087,8 +1087,8 @@ let deleteItem = null;
 let deleteCourseName = null;
 let deleteItemId = null;
 let loaderDisplay = document.getElementsByClassName('loader')[0];
-const actualBtn = document.getElementById('actual-btn');
-const fileChosen = document.getElementById('file-chosen');
+const mapUploadBtn = document.getElementById('mapUploadBtn');
+const mapFileChosen = document.getElementById('mapFileChosen');
 
 actualBtn.addEventListener('change', function() {
     fileChosen.textContent = this.files[0].name;
@@ -1113,58 +1113,64 @@ $('#trainerUsername').keyup(function(){
 });
 
 
-const studentSubmitBtn = document.getElementById("student-submit");
-studentSubmitBtn.addEventListener("click", function(e) {
-    let studentData=null;
-    e.preventDefault();
-    console.log(actualBtn.files[0]);
-    const input = actualBtn.files[0];
-    const reader = new FileReader();
-
-    reader.readAsText(input);
-
-    function csvToArray(str, delimiter = ",") {
-        const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
-        const rows = str.slice(str.indexOf("\n") + 1).split("\n");
-        let reqrows =[];
-                for (let each of rows){
-                    if (each !== ""){
-                        reqrows.push(each);
-                    }
-                }
-        const arr = reqrows.map(function(row) {
-            const values = row.split(delimiter);
-            const el = headers.reduce(function(object, header, index) {
-                object[header] = values[index];
-                return object;
-            }, {});
-            return el;
-        });
-        return arr;
+const mapLearnerAdd = document.getElementById("mapLearnerAdd");
+mapLearnerAdd.addEventListener("click", function(e) {
+    if (mapUploadBtn.files[0]){
+        console.log('Start Prrocess');
     }
-    reader.onload = function(e) {
-        const text = e.target.result;
-        const studentsList = csvToArray(text);
-        console.log(studentsList);
-        const studentData=JSON.stringify(studentsList).replace(/\\n/g, '');
-                  const addStudent = async () => {
-                    console.log("In add student");
-    	        // const selectedCourse = selected.options[selected.selectedIndex].text;
-      	      	// const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/'+selectedCourse+'?students='+studentData, {
-                    const response =await fetch(`${ngshare_url}students/${chooseCourseSelect.value}?students=${studentData}`, {
-        			method: 'POST',
-        			headers: {
-    			    'Accept': 'application/json, text/plain, */*',
-    			    'Content-Type': 'application/json',
-    			    // 'Authorization':'token 1199d73de2bc4d37900e19c6539833e4'
-      			}
-      		});
-            console.log(chooseCourseSelect.value);
-    		console.log(response.status);
-    };
-    addStudent();
-    console.log(studentData);
+    else{
+        alert('Please select file');
     }
+
+
+    // let studentData=null;
+    // e.preventDefault();
+    // console.log(mapUploadBtn.files[0]);
+    // const input = mapUploadBtn.files[0];
+    // const reader = new FileReader();
+    // reader.readAsText(input);
+
+    // function csvToArray(str, delimiter = ",") {
+    //     const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
+    //     const rows = str.slice(str.indexOf("\n") + 1).split("\n");
+    //     let reqrows =[];
+    //             for (let each of rows){
+    //                 if (each !== ""){
+    //                     reqrows.push(each);
+    //                 }
+    //             }
+    //     const arr = reqrows.map(function(row) {
+    //         const values = row.split(delimiter);
+    //         const el = headers.reduce(function(object, header, index) {
+    //             object[header] = values[index];
+    //             return object;
+    //         }, {});
+    //         return el;
+    //     });
+    //     return arr;
+    // }
+    // reader.onload = function(e) {
+    //     const text = e.target.result;
+    //     const studentsList = csvToArray(text);
+    //     console.log(studentsList);
+    //     const studentData=JSON.stringify(studentsList).replace(/\\n/g, '');
+    //               const addStudent = async () => {
+    //                 console.log("In add student");
+    // 	        // const selectedCourse = selected.options[selected.selectedIndex].text;
+    //   	      	// const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/'+selectedCourse+'?students='+studentData, {
+    //                 const response =await fetch(`${ngshare_url}students/${chooseCourseSelect.value}?students=${studentData}`, {
+    //     			method: 'POST',
+    //     			headers: {
+    // 			    'Accept': 'application/json, text/plain, */*',
+    // 			    'Content-Type': 'application/json',
+    //   			}
+    //   		});
+    //         console.log(chooseCourseSelect.value);
+    // 		console.log(response.status);
+    // };
+    // addStudent();
+    // console.log(studentData);
+    // }
 });
 
 $('#addCourseBtn').click(async () => {
@@ -1883,14 +1889,17 @@ $('#deleteSuccessClose').click(()=>{
     $('#deleteSuccessModal').hide();
     location.reload();
 });
-
+$('#mapLearnerClose').click(()=>{
+    $('#mapLearnerModal').hide();
+});
+$('#mapLearnerCancel').click(()=>{
+    $('#mapLearnerModal').hide();
+});
 
 addLearnerCancel.onclick = function () {
     addLearnerModal.style.display = 'none';
 };
-mapLearnerCancel.onclick = function(){
-    mapLearnerModal.style.display = 'none';
-}
+
 
 singleUserBtn.onclick = function () {
     singleUserBtn.classList.add('learner-active');
