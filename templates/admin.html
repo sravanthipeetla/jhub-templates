@@ -1619,7 +1619,19 @@ getInstructorDetails().then((resp)=>{
         addAndAppendTrainer(trainer);
     }
     $('#trainersFilter').change(()=>{
+        trainerCardCont.innerHTML='';
         console.log('select value',$('#trainersFilter').find(":selected").val());
+        if ($('#trainersFilter').find(":selected").val() === 'mapped'){
+
+        }
+        else if($('#trainersFilter').find(":selected").val() === 'unmapped'){
+
+        }
+        else if ($('#trainersFilter').find(":selected").val() === 'all'){
+            for (let trainer of instructorDetailsAll) {
+                addAndAppendTrainer(trainer);
+            }
+        }
 
     });
 })
