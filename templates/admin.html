@@ -1622,10 +1622,14 @@ getInstructorDetails().then((resp)=>{
         trainerCardCont.innerHTML='';
         console.log('select value',$('#trainersFilter').find(":selected").val());
         if ($('#trainersFilter').find(":selected").val() === 'mapped'){
-
+            for (let trainer of instructorDetailsMapped) {
+                addAndAppendTrainer(trainer);
+            }
         }
         else if($('#trainersFilter').find(":selected").val() === 'unmapped'){
-
+            for (let trainer of instructorDetailsUnMapped) {
+                addAndAppendTrainer(trainer);
+            }
         }
         else if ($('#trainersFilter').find(":selected").val() === 'all'){
             for (let trainer of instructorDetailsAll) {
