@@ -1123,7 +1123,7 @@ $('#trainerUsername').keyup(function(){
 
 const mapLearnerAdd = document.getElementById("mapLearnerAdd");
 mapLearnerAdd.addEventListener("click", async function(e) {
-    if (mapUploadBtn.files[0]){
+    if (mapUploadBtn.files[0] && $('#mapLearnerCourseSelect').find(":selected").val() !==''){
         const hubLearnerGroupFetch = await fetch(`${hub_url}groups/learner`);
         const hubLearnerGroupJson = await hubLearnerGroupFetch.json();
         const hubLearnerGroupList = hubLearnerGroupJson.users;
@@ -1181,7 +1181,7 @@ mapLearnerAdd.addEventListener("click", async function(e) {
         }
     }
     else{
-        alert('Please select file');
+        alert('Please select file and course');
     }
 
 
