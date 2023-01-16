@@ -1124,11 +1124,13 @@ mapLearnerAdd.addEventListener("click", function(e) {
         const input = mapUploadBtn.files[0];
         const reader = new FileReader();
         reader.readAsText(input);
-        const csvData=reader.onload(function(e) {
-            const text = e.target.result;
-            return text;
-        });
-        console.log('csvData',csvData());
+        reader.onload = function(e) {
+        const fileData = e.target.result;
+        const titles = fileData.slice(0, data.indexOf('\n')).split(',');
+        console.log(titles);
+        const titleValues = fileData.slice(data.indexOf('\n') + 1).split('\n');
+        console.log(titleValues);
+        }
     }
     else{
         alert('Please select file');
