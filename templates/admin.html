@@ -532,6 +532,17 @@ width:12.5rem;
  width: 5rem;
  text-align: center;
 }
+
+.delete-success-img-arrange{
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: -1rem;
+}
+.delete-success-img{
+    height: 4rem;
+    width: 4rem;
+   }
+
 .add-success-text{
     font-family: 'Poppins';
     font-style: normal;
@@ -855,12 +866,12 @@ body.loading {
         </div>
        
     </div>
-    <div class="bg-model display-block" id="addSuccessModal">
+    <div class="bg-model" id="addSuccessModal">
         <div class="course-model add-course-model-height">
             <div>
                 <div class="add-course-model-top-first">
                     <h1 id="successModelTitle">Add Course</h1>
-                    <div id="addSuccessCancel">
+                    <div id="addSuccessClose">
                         <span> &times;</span>
                     </div>
                 </div>
@@ -873,6 +884,27 @@ body.loading {
                 <div class="add-success-model-bottom">
                     <button id="successDone" class="add-button">Done</button>
                     <button id="successAddMore" class="cancel-button">Add more</button>
+                </div>  
+        </div>
+       
+    </div>
+    <div class="bg-model" id="deleteSuccessModal">
+        <div class="course-model">
+            <div>
+                <div class="delete-course-model-top-first">
+                    <h1 id="successModelTitle">Delete Course</h1>
+                    <div id="deleteSuccessClose">
+                        <span> &times;</span>
+                    </div>
+                </div>
+                <div class="delete-success-img-arrange">
+                    <img src="https://i.postimg.cc/SRMpDTPm/delete-succcess.png" alt="success" class="delete-success-img">  
+                </div>
+                
+                <p class="add-success-text" id="deletedItemMsg">Removed successfully</p> 
+            </div>
+                <div class="add-success-model-bottom">
+                    <button id="deleteDoneBtn" class="add-button">Done</button>
                 </div>  
         </div>
        
@@ -1067,8 +1099,7 @@ let deleteItemId = null;
 let loaderDisplay = document.getElementsByClassName('loader')[0];
 const actualBtn = document.getElementById('actual-btn');
 const fileChosen = document.getElementById('file-chosen');
-let coursesListTotal = null;
-console.log('coursesList',coursesListTotal);
+
 actualBtn.addEventListener('change', function() {
     fileChosen.textContent = this.files[0].name;
 })
@@ -1090,6 +1121,7 @@ $('#trainerUsername').keyup(function(){
         $('#trainerNameWarn').hide();
     }
 });
+
 
 const studentSubmitBtn = document.getElementById("student-submit");
 studentSubmitBtn.addEventListener("click", function(e) {
@@ -1263,6 +1295,86 @@ $('#addTrainerBtn').click(async () =>{
     
 });
 
+
+async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
+    console.log(deleteItem);
+    if ($('#deleteModalTitle').text() ==='Delete Course'){
+        const courseDeletePromise = await fetch(`${ngshare_url}course/${deleteItem}`,{
+            method: 'DELETE',
+            headers: {
+            Accept: 'application.json',
+            'Content-Type': 'application/json'
+            }
+        });
+        const response = await courseDeletePromise.json();
+        if (response.success) {
+            $('deleteSuccessModal').show();
+            $('#deletedItemMsg').text('Deleted successfully');
+            deleteItem=null;
+            deleteCourseName=null;
+            deleteItemId=null;
+        }
+        else {
+            alert("Something went wrong! Couldn't delete course");
+            deleteItem=null;
+            deleteCourseName=null;
+            deleteItemId=null;
+        };
+    }
+    else if($('#deleteModalTitle').text() ==='Remove Trainer'){
+        const removeTrainerPromise = await fetch(`${ngshare_url}instructor/${deleteCourseName}/${deleteItem}`, {
+            method: 'DELETE',
+            headers: {
+            Accept: 'application.json',
+            'Content-Type': 'application/json'
+            }
+        });
+        const response = await removeTrainerPromise.json();
+        if (response.success) {
+            // $('#messageDisplay').text(`Successfully removed ${deleteItem} from ${deleteCourseName} course`).show().fadeOut(5000);
+            alert(`Successfully removed ${deleteItem} from ${deleteCourseName} course`);
+            location.reload();
+            deleteItem=null;
+            deleteCourseName=null;
+            deleteItemId=null;
+        }
+        else {
+            alert("Something went wrong! Couldn't remove trainer from course");
+            deleteItem=null;
+            deleteCourseName=null;
+            deleteItemId=null;
+        };
+    }
+    else if($('#deleteModalTitle').text() ==='Remove Learner'){
+        const removeTrainerPromise = await fetch(`${ngshare_url}student/${deleteCourseName}/${deleteItem}`, {
+            method: 'DELETE',
+            headers: {
+            Accept: 'application.json',
+            'Content-Type': 'application/json'
+            }
+        });
+        const response = await removeTrainerPromise.json();
+        if (response.success) {
+            alert(`Successfully removed ${deleteItem} from ${deleteCourseName} course`);
+            location.reload();
+            deleteItem=null;
+            deleteCourseName=null;
+            deleteItemId=null;
+        }
+        else {
+            alert("Something went wrong! Couldn't remove learner from course");
+            deleteItem=null;
+            deleteCourseName=null;
+            deleteItemId=null;
+        };
+    };  
+};
+
+$('#deleteCourseBtn').click(() =>{
+    deleteItemNext (deleteItem,deleteCourseName,deleteItemId);
+    $('#deleteCourseModal').hide();
+});
+
 function addAndAppendCourse(course) {
     let courseCardId = course.courseName+'course';
     let courseCont = document.createElement('div');
@@ -1359,85 +1471,7 @@ getCourseDetails().then((resp)=>{
 });
 
 
-async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
-    console.log(deleteItem);
-    if ($('#deleteModalTitle').text() ==='Delete Course'){
-        const courseDeletePromise = await fetch(`${ngshare_url}course/${deleteItem}`,{
-            method: 'DELETE',
-            headers: {
-            Accept: 'application.json',
-            'Content-Type': 'application/json'
-            }
-        });
-        const response = await courseDeletePromise.json();
-        if (response.success) {
-            let deleteCard = document.getElementById(deleteItemId);
-            courseCardCont.removeChild(deleteCard);
-            alert(`Successfully deleted ${deleteItem} course`);
-            deleteItem=null;
-            deleteCourseName=null;
-            deleteItemId=null;
-        }
-        else {
-            alert("Something went wrong! Couldn't delete course");
-            deleteItem=null;
-            deleteCourseName=null;
-            deleteItemId=null;
-        };
-    }
-    else if($('#deleteModalTitle').text() ==='Remove Trainer'){
-        const removeTrainerPromise = await fetch(`${ngshare_url}instructor/${deleteCourseName}/${deleteItem}`, {
-            method: 'DELETE',
-            headers: {
-            Accept: 'application.json',
-            'Content-Type': 'application/json'
-            }
-        });
-        const response = await removeTrainerPromise.json();
-        if (response.success) {
-            // $('#messageDisplay').text(`Successfully removed ${deleteItem} from ${deleteCourseName} course`).show().fadeOut(5000);
-            alert(`Successfully removed ${deleteItem} from ${deleteCourseName} course`);
-            location.reload();
-            deleteItem=null;
-            deleteCourseName=null;
-            deleteItemId=null;
-        }
-        else {
-            alert("Something went wrong! Couldn't remove trainer from course");
-            deleteItem=null;
-            deleteCourseName=null;
-            deleteItemId=null;
-        };
-    }
-    else if($('#deleteModalTitle').text() ==='Remove Learner'){
-        const removeTrainerPromise = await fetch(`${ngshare_url}student/${deleteCourseName}/${deleteItem}`, {
-            method: 'DELETE',
-            headers: {
-            Accept: 'application.json',
-            'Content-Type': 'application/json'
-            }
-        });
-        const response = await removeTrainerPromise.json();
-        if (response.success) {
-            alert(`Successfully removed ${deleteItem} from ${deleteCourseName} course`);
-            location.reload();
-            deleteItem=null;
-            deleteCourseName=null;
-            deleteItemId=null;
-        }
-        else {
-            alert("Something went wrong! Couldn't remove learner from course");
-            deleteItem=null;
-            deleteCourseName=null;
-            deleteItemId=null;
-        };
-    };  
-};
 
-$('#deleteCourseBtn').click(() =>{
-    deleteItemNext (deleteItem,deleteCourseName,deleteItemId);
-    $('#deleteCourseModal').hide();
-});
 
 function addAndAppendTrainer(trainer) {
     let trainerCardId = 'trainerCard' + trainer.id;
@@ -1812,7 +1846,7 @@ $('#mapBtn').click (() =>{
     $('#mapLearnerModal').show();
 });
 
-$('#addSuccessCancel').click(() =>{
+$('#addSuccessClose').click(() =>{
     $('#addSuccessModal').hide();
     location.reload();
 });
@@ -1847,6 +1881,17 @@ $('#deleteTrainerCancel').click(()=>{
     trainerCourseCardCont.innerHTML = "";
     $('#deleteTrainerModal').hide();
 });
+
+$('#deleteDoneBtn').click(()=>{
+    $('deleteSuccessModal').hide();
+    location.reload();
+});
+
+$('#deleteSuccessClose').click(()=>{
+    $('deleteSuccessModal').hide();
+    location.reload();
+});
+
 
 addLearnerCancel.onclick = function () {
     addLearnerModal.style.display = 'none';
