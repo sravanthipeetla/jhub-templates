@@ -1120,6 +1120,15 @@ const mapLearnerAdd = document.getElementById("mapLearnerAdd");
 mapLearnerAdd.addEventListener("click", function(e) {
     if (mapUploadBtn.files[0]){
         console.log('Start Prrocess');
+        e.preventDefault();
+        const input = mapUploadBtn.files[0];
+        const reader = new FileReader();
+        reader.readAsText(input);
+        const csvData=reader.onload(function(e) {
+            const text = e.target.result;
+            return text;
+        });
+        console.log('csvData',csvData());
     }
     else{
         alert('Please select file');
