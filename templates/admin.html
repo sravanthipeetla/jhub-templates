@@ -1090,8 +1090,8 @@ let loaderDisplay = document.getElementsByClassName('loader')[0];
 const mapUploadBtn = document.getElementById('mapUploadBtn');
 const mapFileChosen = document.getElementById('mapFileChosen');
 
-actualBtn.addEventListener('change', function() {
-    fileChosen.textContent = this.files[0].name;
+mapUploadBtn.addEventListener('change', function() {
+    $('#mapFileChosen').text(this.files[0].name);
 })
 
 $('#courseNameText').keyup(function(){
