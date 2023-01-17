@@ -1300,8 +1300,7 @@ $('#addTrainerBtn').click(async () =>{
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify(data)
-            }
-            );
+            });
             if (hubAddUserGroupPromise.status == 200 && hubAddUserGroupPromise.ok) {
                 $('#addTrainerModal').hide();
                 $('#successModelTitle').text('Add Trainer');
@@ -1346,12 +1345,65 @@ $('#addLearnerCourseBtn').click(async ()=>{
             const hubAddUserPromise = await fetch(`${hub_url}users/${learnerName}`, {
             method: 'POST',
             headers: {
-              Accept: 'application.json',
-              'Content-Type': 'application/json'
+                Accept: 'application.json',
+                'Content-Type': 'application/json'
             }
-          });
-          console.log(hubAddUserPromise.status);
+            });
+            console.log(hubAddUserPromise.status);
+            if (hubAddUserPromise.status == 201 && hubAddUserPromise.ok) {
+                const data = {
+                "users": [
+                    learnerName
+                ]
+                };
+            console.log('hub user added');
+            const hubAddUserGroupPromise = await fetch(`${hub_url}groups/learner/users`, {
+              method: 'POST',
+              headers: {
+                Accept: 'application.json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            });
+            if (hubAddUserGroupPromise.status == 200 && hubAddUserGroupPromise.ok) {
+                const learnerAddPromise = await fetch(`${ngshare_url}students/${courseName}/${learnerName}?first_name=&last_name=&email=`, {
+                method: 'POST',
+                headers: {
+                  Accept: 'application.json',
+                  'Content-Type': 'application/json'
+                }
+                });
+                
+                if (learnerAddPromise.status == 200 && learnerAddPromise.ok) {
+                // $('#addCourseModal').hide();
+                $('#successModelTitle').text('Add Course');
+                $('#addSuccessMsg').text('Selected course added successfully');
+                $("#addSuccessModal").show();
+                // $('#courseNameText').val('');
+                }
+                else {
+                const learnerAddResponse = await learnerAddPromise.json();
+                $('#alertMsgCont').show();
+                $('#alertMsg').text(learnerAddResponse.message);
+                $('#addCourseModal').hide();
+                }
+            }
+            else{
+                const hubAddUserGroupResp = await hubAddUserGroupPromise.json();
+                $('#alertMsgCont').show();
+                $('#alertMsg').text(hubAddUserGroupResp.message);
+                // $('#addTrainerModal').hide();
+            }
 
+
+
+            }
+            else{
+                const hubAddUserResp = await hubAddUserPromise.json();
+                $('#alertMsgCont').show();
+                $('#alertMsg').text(hubAddUserResp.message);
+                // $('#addTrainerModal').hide();
+            }
         }
 
     }
