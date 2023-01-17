@@ -1519,7 +1519,7 @@ getCourseDetails().then((resp)=>{
     $('#coursesLoader').hide();
     let courseFetchDetails = resp;
     console.log('courses',courseFetchDetails);
-    $('#coursesSearch').change(()=>{
+    $('#coursesSearch').keyup(()=>{
         console.log('changing');
         console.log($('#courseSearch').val());
     })
