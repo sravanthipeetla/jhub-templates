@@ -1050,9 +1050,9 @@ body.loading {
                                 <p>Upload CSV file</p>
                                 <span>Multiple learners</span>
                             </div> 
-                            <input type="file" id="actual-btn" hidden accept=".csv" />
-                            <label for="actual-btn" class="upload-btn"><img src="https://i.postimg.cc/7Z71QKgW/Vector-4.png" alt=""></label>
-                            <span id="file-chosen">No file chosen</span>
+                            <input type="file" id="addUploadBtn" hidden accept=".csv" />
+                            <label for="addUploadBtn" class="upload-btn"><img src="https://i.postimg.cc/7Z71QKgW/Vector-4.png" alt=""></label>
+                            <span id="addFileChosen">No file chosen</span>
                     </div>
                     </div>
                     <div class="choose-trainer-name">
@@ -1119,6 +1119,7 @@ let deleteCourseName = null;
 let deleteItemId = null;
 let loaderDisplay = document.getElementsByClassName('loader')[0];
 const mapUploadBtn = document.getElementById('mapUploadBtn');
+const addUploadBtn = document.getElementById('addUploadBtn');
 const mapFileChosen = document.getElementById('mapFileChosen');
 let presentUser = 'singleUser';
 
@@ -1128,6 +1129,14 @@ mapUploadBtn.addEventListener('change', function() {
     }
     else{
         $('#mapFileChosen').text('No file chosen'); 
+    }
+})
+addUploadBtn.addEventListener('change', function() {
+    if (this.files[0].name){
+    $('#addFileChosen').text(this.files[0].name);
+    }
+    else{
+        $('#addFileChosen').text('No file chosen'); 
     }
 })
 
@@ -1408,6 +1417,9 @@ $('#addLearnerCourseBtn').click(async ()=>{
     }
     else if(presentUser === 'multipleUsers'){
         console.log('presentUser',presentUser);
+        if (mapUploadBtn.files[0]){
+            
+        }
 
     }
 });
