@@ -907,7 +907,7 @@ body.loading {
         <div class="learner-course-add-model">
                 <div class="add-learner-model-top-first">
                     <h1>Add Learners</h1>
-                    <div id="addLearnerCancel">
+                    <div id="addLearnerClose">
                         <span> &times;</span>
                     </div>
                 </div>
@@ -943,8 +943,8 @@ body.loading {
                     </div>
                 </div>
             <div class="add-course-model-bottom">
-                <button id="student-submit" class="add-button">Add</button>
-                <button id="cancel-button" class="cancel-button">Cancel</button>
+                <button id="addLearnerCourseBtn" class="add-button">Add</button>
+                <button id="addLearnerCancel" class="cancel-button">Cancel</button>
             </div>  
         </div>
        
@@ -1110,7 +1110,6 @@ let trainerCardCont = document.getElementById('trainerCardCont');
 let trainerEyeIcon = document.getElementById('trainer-eye-icon');
 let deleteTrainerModal = document.getElementById('deleteTrainerModal');
 let deleteTrainer = document.getElementById('deleteTrainer');
-let addLearnerCancel = document.getElementById('addLearnerCancel');
 let mapLearnerCancel = document.getElementById('mapLearnerCancel');
 let singleUserBtn = document.getElementById('singleUser');
 let multipleUserBtn = document.getElementById('multipleUser');
@@ -1219,55 +1218,6 @@ mapLearnerAdd.addEventListener("click", async function(e) {
         alert('Please select file and course');
     }
 
-
-    // let studentData=null;
-    // e.preventDefault();
-    // console.log(mapUploadBtn.files[0]);
-    // const input = mapUploadBtn.files[0];
-    // const reader = new FileReader();
-    // reader.readAsText(input);
-
-    // function csvToArray(str, delimiter = ",") {
-    //     const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
-    //     const rows = str.slice(str.indexOf("\n") + 1).split("\n");
-    //     let reqrows =[];
-    //             for (let each of rows){
-    //                 if (each !== ""){
-    //                     reqrows.push(each);
-    //                 }
-    //             }
-    //     const arr = reqrows.map(function(row) {
-    //         const values = row.split(delimiter);
-    //         const el = headers.reduce(function(object, header, index) {
-    //             object[header] = values[index];
-    //             return object;
-    //         }, {});
-    //         return el;
-    //     });
-    //     return arr;
-    // }
-    // reader.onload = function(e) {
-    //     const text = e.target.result;
-    //     const studentsList = csvToArray(text);
-    //     console.log(studentsList);
-    //     const studentData=JSON.stringify(studentsList).replace(/\\n/g, '');
-    //               const addStudent = async () => {
-    //                 console.log("In add student");
-    // 	        // const selectedCourse = selected.options[selected.selectedIndex].text;
-    //   	      	// const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/'+selectedCourse+'?students='+studentData, {
-    //                 const response =await fetch(`${ngshare_url}students/${chooseCourseSelect.value}?students=${studentData}`, {
-    //     			method: 'POST',
-    //     			headers: {
-    // 			    'Accept': 'application/json, text/plain, */*',
-    // 			    'Content-Type': 'application/json',
-    //   			}
-    //   		});
-    //         console.log(chooseCourseSelect.value);
-    // 		console.log(response.status);
-    // };
-    // addStudent();
-    // console.log(studentData);
-    // }
 });
 
 $('#addCourseBtn').click(async () => {
@@ -1994,10 +1944,12 @@ $('#mapLearnerCancel').click(()=>{
     $('#mapLearnerModal').hide();
 });
 
-addLearnerCancel.onclick = function () {
-    addLearnerModal.style.display = 'none';
-};
-
+$('#addLearnerCancel').click(() =>{
+    $('#addLearnerModal').hide();
+});
+$('#addLearnerClose').click(() =>{
+    $('#addLearnerModal').hide();
+});
 
 singleUserBtn.onclick = function () {
     singleUserBtn.classList.add('learner-active');
