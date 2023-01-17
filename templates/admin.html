@@ -1334,14 +1334,24 @@ $('#addTrainerBtn').click(async () =>{
     
 });
 
-$('#addLearnerCourseBtn').click(()=>{
+$('#addLearnerCourseBtn').click(async ()=>{
     if (presentUser === 'singleUser'){
         console.log('presentUser',presentUser);
         if($('#singleLearnerName').val() === ''){
-            alert('Please enter valid username')
+            alert('Please enter valid username');
         }
         else if( $('#singleLearnerName').val().length > 0 && $('#addLearnerCourseSelect').find(":selected").val().length > 0 ){
-            console.log('start add course');
+            const courseName = $('#addLearnerCourseSelect').find(":selected").val();
+            const learnerName = $('#singleLearnerName').val();
+            const hubAddUserPromise = await fetch(`${hub_url}users/${learnerName}`, {
+            method: 'POST',
+            headers: {
+              Accept: 'application.json',
+              'Content-Type': 'application/json'
+            }
+          });
+          console.log(hubAddUserPromise.status);
+
         }
 
     }
@@ -1536,9 +1546,6 @@ getCourseDetails().then((resp)=>{
         addAndAppendCourse(course);
     };
 });
-
-
-
 
 function addAndAppendTrainer(trainer) {
     let trainerCardId = 'trainerCard' + trainer.id;
@@ -1737,7 +1744,6 @@ getInstructorDetails().then((resp)=>{
 
     });
 })
-
 
 function addAndAppendLearner(learner){
     let learnerRow = document.createElement('tr');
