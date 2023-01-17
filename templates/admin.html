@@ -1042,7 +1042,7 @@ body.loading {
                                 <p>User ID</p>
                                 <span>Single learner</span>
                             </div> 
-                            <input type="text" placeholder="Enter user ID">
+                            <input type="text" placeholder="Enter user ID" id="singleLearnerName">
                         </div>
                     </div>
                     <div id="multipleLearners" class="stop-visible">
@@ -1335,7 +1335,19 @@ $('#addTrainerBtn').click(async () =>{
 });
 
 $('#addLearnerCourseBtn').click(()=>{
-    console.log(presentUser);
+    if (presentUser === 'singleUser'){
+        console.log('presentUser',presentUser);
+        if($('#singleLearnerName').val() === ''){
+            alert('Please enter valid username')
+        }
+        else if ($('#addLearnerCourseSelect').find(":selected").val() === ''){
+            alert('Please select valid course name');
+        }
+        else if( $('#singleLearnerName').val().length > 0 && $('#addLearnerCourseSelect').find(":selected").val() > 0 ){
+            console.log('start adding course');
+        }
+
+    }
 });
 
 async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
