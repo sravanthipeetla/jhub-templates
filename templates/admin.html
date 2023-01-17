@@ -1365,6 +1365,7 @@ $('#addLearnerCourseBtn').click(async ()=>{
               body: JSON.stringify(data)
             });
                 if (hubAddUserGroupPromise.status == 200 && hubAddUserGroupPromise.ok) {
+                    if($('#addLearnerCourseSelect').find(":selected").val().length > 0){
                     const learnerAddPromise = await fetch(`${ngshare_url}student/${courseName}/${learnerName}?first_name=&last_name=&email=`, {
                     method: 'POST',
                     headers: {
@@ -1386,6 +1387,10 @@ $('#addLearnerCourseBtn').click(async ()=>{
                     $('#alertMsg').text(learnerAddResponse.message);
                     $('#addLearnerModal').hide();
                     }
+                    }
+                    else{
+                        alert('user added successfully');
+                    }
                 }
                 else{
                     const hubAddUserGroupResp = await hubAddUserGroupPromise.json();
@@ -1401,9 +1406,9 @@ $('#addLearnerCourseBtn').click(async ()=>{
                 $('#addLearnerModal').hide();
             }
         }
-        else if ( $('#singleLearnerName').val().length > 0 && $('#addLearnerCourseSelect').find(":selected").val()===''){
-            alert('only wants to add learners');
-        }
+        // else if ( $('#singleLearnerName').val().length > 0 && $('#addLearnerCourseSelect').find(":selected").val()===''){
+        //     alert()
+        // }
     }
 });
 
