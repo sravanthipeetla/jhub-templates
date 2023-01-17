@@ -877,13 +877,13 @@ body.loading {
             <div>
                 <div class="add-course-model-top-first">
                     <h1 id="modelTitle">Add Course</h1>
-                    <div id="addCourseCancel">
+                    <div id="addCourseClose">
                         <span> &times;</span>
                     </div>
                 </div>
                     <div class="add-course-name">
                         <p>Course Name</p>
-                        <input type="text" placeholder="Enter course name">
+                        <input type="text" placeholder="Enter course name" id="courseNameText">
                     </div>
                     <span class="course-name-warn">* course name should not contain spaces</span>
                     <div class="choose-trainer-name">
@@ -897,8 +897,8 @@ body.loading {
                     </div>
             </div>
                 <div class="add-course-model-bottom">
-                    <button id="delete-button" class="add-button">Add</button>
-                    <button id="cancel-button" class="cancel-button">Cancel</button>
+                    <button id="addCourseBtn" class="add-button">Add</button>
+                    <button id="addCourseCancel" class="cancel-button">Cancel</button>
                 </div>  
         </div>
        
@@ -1984,7 +1984,7 @@ $('#addCourseCancel').click(() =>{
     $('#addCourseModal').hide();
 });
 
-$('#cancelAddCourse').click(() =>{
+$('#addCourseClose').click(() =>{
     $('#addCourseModal').hide();
 });
 
