@@ -1520,6 +1520,7 @@ getCourseDetails().then((resp)=>{
     let courseFetchDetails = resp;
     console.log('courses',courseFetchDetails);
     $('#coursesSearch').change(()=>{
+        console.log('changing');
         console.log($('#courseSearch').val());
     })
     for (let course of courseFetchDetails) {
