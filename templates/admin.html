@@ -2058,10 +2058,10 @@ window.onload = async () =>{
    
     coursesListTotal = coursesList;
     const addCourseDefaultOption = document.createElement('option');
-    courseDefaultOption.text = 'Choose course';
-    courseDefaultOption.value = '';
-    courseDefaultOption.selected = true;
-    courseDefaultOption.disabled = true;
+    addCourseDefaultOption.text = 'Choose course';
+    addCourseDefaultOption.value = '';
+    addCourseDefaultOption.selected = true;
+    addCourseDefaultOption.disabled = true;
     addLearnerCourseSelect.add(addCourseDefaultOption);
     for (let option of coursesList){
         const newOption = document.createElement('option');
