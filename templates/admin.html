@@ -1401,7 +1401,9 @@ $('#addLearnerCourseBtn').click(async ()=>{
                 $('#addLearnerModal').hide();
             }
         }
-
+        else if ( $('#singleLearnerName').val().length > 0 && $('#addLearnerCourseSelect').find(":selected").val()===''){
+            alert('only wants to add learners');
+        }
     }
 });
 
