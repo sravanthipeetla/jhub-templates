@@ -1445,7 +1445,6 @@ $('#addLearnerCourseBtn').click(async ()=>{
             const data = {
                 "usernames":learnerArray
             };
-            console.log('hub user added');
             const hubAddUserPromise = await fetch(`${hub_url}users`, {
               method: 'POST',
               headers: {
@@ -1455,7 +1454,7 @@ $('#addLearnerCourseBtn').click(async ()=>{
               body: JSON.stringify(data)
             });
 
-            console.log("status",hubAddUserGroupPromise.status);
+            console.log("status",hubAddUserPromise.status);
             if (hubAddUserPromise.status == 201 && hubAddUserPromise.ok) {
                 const data = {
                 "users": learnerArray
