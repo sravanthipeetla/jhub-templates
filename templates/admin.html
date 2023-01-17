@@ -1522,6 +1522,10 @@ getCourseDetails().then((resp)=>{
     $('#coursesSearch').keyup(()=>{
         let searchValue=$('#coursesSearch').val();
         console.log(searchValue);
+        let searchList = courseFetchDetails.filter((course)=>{
+            course.courseName.includes(searchValue);
+        });
+        console.log(searchList);
     })
     for (let course of courseFetchDetails) {
         addAndAppendCourse(course);
