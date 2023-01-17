@@ -1442,13 +1442,11 @@ $('#addLearnerCourseBtn').click(async ()=>{
                     reqArray.push(obj);
                 }
             });
-            // console.log('learnerArray',learnerArray);
-            // console.log('reqArray',reqArray);
             const data = {
                 "usernames":learnerArray
-                };
+            };
             console.log('hub user added');
-            const hubAddUserGroupPromise = await fetch(`${hub_url}users`, {
+            const hubAddUserPromise = await fetch(`${hub_url}users`, {
               method: 'POST',
               headers: {
                 Accept: 'application.json',
@@ -1456,6 +1454,7 @@ $('#addLearnerCourseBtn').click(async ()=>{
               },
               body: JSON.stringify(data)
             });
+
             console.log("status",hubAddUserGroupPromise.status);
             if (hubAddUserPromise.status == 201 && hubAddUserPromise.ok) {
                 const data = {
