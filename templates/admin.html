@@ -1335,6 +1335,8 @@ $('#addTrainerBtn').click(async () =>{
 });
 
 $('#addLearnerCourseBtn').click(()=>{
+    console.log($('#singleLearnerName').val().length);
+    console.log($('#addLearnerCourseSelect').find(":selected").val().length);
     if (presentUser === 'singleUser'){
         console.log('presentUser',presentUser);
         if($('#singleLearnerName').val() === ''){
@@ -1343,7 +1345,7 @@ $('#addLearnerCourseBtn').click(()=>{
         else if ($('#addLearnerCourseSelect').find(":selected").val() === ''){
             alert('Please select valid course name');
         }
-        else if( $('#singleLearnerName').val().length > 0 && $('#addLearnerCourseSelect').find(":selected").val() > 0 ){
+        else if( $('#singleLearnerName').val().length > 0 && $('#addLearnerCourseSelect').find(":selected").val().length > 0 ){
             console.log('start adding course');
         }
 
