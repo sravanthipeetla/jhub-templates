@@ -903,52 +903,6 @@ body.loading {
         </div>
        
     </div>
-    <div class="bg-model" id="addLearnerModal">
-        <div class="learner-course-add-model">
-                <div class="add-learner-model-top-first">
-                    <h1>Add Learners</h1>
-                    <div id="addLearnerClose">
-                        <span> &times;</span>
-                    </div>
-                </div>
-                <div>
-                   <div class="change-learner">
-                        <button id="singleUserBtn" class="learner-inactive learner-active">Single User</button>
-                        <button id="multipleUserBtn" class="learner-inactive">Bulk Users</button>
-                    </div>
-                    <div id="singleLearner">
-                        <div class="add-learner">
-                            <div class="choose-trainer-arrange">
-                                <p>User ID</p>
-                                <span>Single learner</span>
-                            </div> 
-                            <input type="text" placeholder="Enter user ID">
-                        </div>
-                    </div>
-                    <div id="multipleLearners" class="stop-visible">
-                    <div class="add-learner">
-                            <div class="choose-trainer-arrange">
-                                <p>Upload CSV file</p>
-                                <span>Multiple learners</span>
-                            </div> 
-                            <input type="file" id="actual-btn" hidden accept=".csv" />
-                            <label for="actual-btn" class="upload-btn"><img src="https://i.postimg.cc/7Z71QKgW/Vector-4.png" alt=""></label>
-                            <span id="file-chosen">No file chosen</span>
-                    </div>
-                    </div>
-                    <div class="choose-trainer-name">
-                        <p class="choose-course-name">Choose Course</p>
-                        <select id="addLearnerCourseSelect">
-                        </select>
-                    </div>
-                </div>
-            <div class="add-course-model-bottom">
-                <button id="addLearnerCourseBtn" class="add-button">Add</button>
-                <button id="addLearnerCancel" class="cancel-button">Cancel</button>
-            </div>  
-        </div>
-       
-    </div>
     <div class="bg-model" id="addSuccessModal">
         <div class="course-model add-course-model-height">
             <div>
@@ -1069,6 +1023,52 @@ body.loading {
                 </div>  
         </div>
     </div>
+    <div class="bg-model" id="addLearnerModal">
+        <div class="learner-course-add-model">
+                <div class="add-learner-model-top-first">
+                    <h1>Add Learners</h1>
+                    <div id="addLearnerClose">
+                        <span> &times;</span>
+                    </div>
+                </div>
+                <div>
+                   <div class="change-learner">
+                        <button id="singleUserBtn" class="learner-inactive learner-active">Single User</button>
+                        <button id="multipleUserBtn" class="learner-inactive">Bulk Users</button>
+                    </div>
+                    <div id="singleLearner">
+                        <div class="add-learner">
+                            <div class="choose-trainer-arrange">
+                                <p>User ID</p>
+                                <span>Single learner</span>
+                            </div> 
+                            <input type="text" placeholder="Enter user ID">
+                        </div>
+                    </div>
+                    <div id="multipleLearners" class="stop-visible">
+                    <div class="add-learner">
+                            <div class="choose-trainer-arrange">
+                                <p>Upload CSV file</p>
+                                <span>Multiple learners</span>
+                            </div> 
+                            <input type="file" id="actual-btn" hidden accept=".csv" />
+                            <label for="actual-btn" class="upload-btn"><img src="https://i.postimg.cc/7Z71QKgW/Vector-4.png" alt=""></label>
+                            <span id="file-chosen">No file chosen</span>
+                    </div>
+                    </div>
+                    <div class="choose-trainer-name">
+                        <p class="choose-course-name">Choose Course</p>
+                        <select id="addLearnerCourseSelect">
+                        </select>
+                    </div>
+                </div>
+            <div class="add-course-model-bottom">
+                <button id="addLearnerCourseBtn" class="add-button">Add</button>
+                <button id="addLearnerCancel" class="cancel-button">Cancel</button>
+            </div>  
+        </div>
+       
+    </div>
 </div>
 </div>
 {% endblock %}
@@ -1121,6 +1121,7 @@ let deleteItemId = null;
 let loaderDisplay = document.getElementsByClassName('loader')[0];
 const mapUploadBtn = document.getElementById('mapUploadBtn');
 const mapFileChosen = document.getElementById('mapFileChosen');
+let presentUser = 'singleUser';
 
 mapUploadBtn.addEventListener('change', function() {
     if (this.files[0].name){
@@ -1333,6 +1334,9 @@ $('#addTrainerBtn').click(async () =>{
     
 });
 
+$('#addLearnerCourseBtn').click(()=>{
+    console.log(presentUser);
+});
 
 async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
     console.log(deleteItem);
@@ -1951,6 +1955,7 @@ $('#singleUserBtn').click(function () {
     $('#multipleUserBtn').removeClass('learner-active');
     $('#singleLearner').show();
     $('#multipleLearners').hide();
+    presentUser = 'singleUser';
 });
   
 multipleUserBtn.onclick = function () {
@@ -1958,6 +1963,7 @@ multipleUserBtn.onclick = function () {
     $('#multipleUserBtn').addClass('learner-active');
     $('#singleLearner').hide();
     $('#multipleLearners').show();
+    presentUser = 'multipleUsers';
 };
 
 window.onload = async () =>{
