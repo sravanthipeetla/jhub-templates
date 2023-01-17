@@ -1420,7 +1420,31 @@ $('#addLearnerCourseBtn').click(async ()=>{
     else if(presentUser === 'multipleUsers'){
         console.log('presentUser',presentUser);
         if (addUploadBtn.files[0]){
-            console.log('addUpload activated');
+            const input = addUploadBtn.files[0];
+            const reader = new FileReader();
+            reader.readAsText(input);                
+            reader.onload = async function(e) {
+            const fileData =await e.target.result;
+            const titles = fileData.slice(0, fileData.indexOf('\n')).split(',');
+            const titleValues = fileData.slice(fileData.indexOf('\n') + 1).split('\n');
+            const reqArray=[];
+            const learnerArray=[];
+            titleValues.map(function(v) {
+                if (v !== "") {
+                    const values = v.split(',');
+                    learnerArray.push(values[0]);
+                    let obj = {};
+                    for (let each of titles) {
+                        let index = titles.indexOf(each);
+                        obj[each] = values[index];
+                    }
+                    reqArray.push(obj);
+                }
+            });
+            console.log('learnerArray',learnerArray);
+            console.log('reqArray',reqArray);
+    }
+
         }
 
     }
