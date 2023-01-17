@@ -1203,7 +1203,7 @@ mapLearnerAdd.addEventListener("click", async function(e) {
       			}
       		});
             if (response.status == 200 && response.ok){
-                $('mapLearnerModal').hide();
+                $('#mapLearnerModal').hide();
                 $('#successModelTitle').text('Map Learners');
                 $('#addSuccessMsg').text('Learners mapped to the course successfully');
                 $("#addSuccessModal").show();
