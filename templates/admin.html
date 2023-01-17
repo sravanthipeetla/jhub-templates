@@ -2048,12 +2048,14 @@ window.onload = async () =>{
     courseDefaultOption.selected = true;
     courseDefaultOption.disabled = true;
     mapLearnerCourseSelect.add(courseDefaultOption);
+    addLearnerCourseSelect.add(courseDefaultOption);
     for (let option of coursesList){
         const newOption = document.createElement('option');
         newOption.text = option;
         newOption.value = option;
         newOption.classList.add('choose-option');
         mapLearnerCourseSelect.add(newOption);
+        addLearnerCourseSelect.add(newOption);
     }
    
 };
