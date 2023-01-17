@@ -1955,14 +1955,14 @@ $('#singleUserBtn').click(function () {
     $('#singleUserBtn').addClass('learner-active');
     $('#multipleUserBtn').removeClass('learner-active');
     $('#singleLearner').show();
-    $('#multipleLearner').hide();
+    $('#multipleLearners').hide();
 });
   
 multipleUserBtn.onclick = function () {
     $('#singleUserBtn').removeClass('learner-active');
     $('#multipleUserBtn').addClass('learner-active');
     $('#singleLearner').hide();
-    $('#multipleLearner').show();
+    $('#multipleLearners').show();
 };
 
 window.onload = async () =>{
