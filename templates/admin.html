@@ -1850,8 +1850,9 @@ const getLearnerDetails = async () => {
         const studentsJson = await studentsPromise.json();
         const students = studentsJson.students;
         for (let each of students){
+            if(each.username in learnerCourse){
             learnerCourse[each.username].push(courseName);
-            console.log('checking', each, learnerCourse);
+            }
         }        
     });
     const detailsLearnerCourse = await Promise.all(details);
