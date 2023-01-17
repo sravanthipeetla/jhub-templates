@@ -1521,7 +1521,7 @@ getCourseDetails().then((resp)=>{
     console.log('courses',courseFetchDetails);
     $('#coursesSearch').keyup(()=>{
         console.log('changing');
-        console.log($('#courseSearch').val());
+        console.log($('#coursesSearch').val());
     })
     for (let course of courseFetchDetails) {
         addAndAppendCourse(course);
