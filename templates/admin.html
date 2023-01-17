@@ -1526,6 +1526,10 @@ getCourseDetails().then((resp)=>{
             return course.courseName.toLowerCase().includes(searchValue.toLowerCase());
         });
         console.log(searchList);
+        for (let course of searchList) {
+        addAndAppendCourse(course);
+    };
+      
     })
     for (let course of courseFetchDetails) {
         addAndAppendCourse(course);
