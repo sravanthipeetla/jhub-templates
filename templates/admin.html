@@ -1203,8 +1203,10 @@ mapLearnerAdd.addEventListener("click", async function(e) {
       			}
       		});
             if (response.status == 200 && response.ok){
-                alert('Successfully added');
-                mapUploadBtn.value=null;
+                $('mapLearnerModal').hide();
+                $('#successModelTitle').text('Map Learners');
+                $('#addSuccessMsg').text('Learners mapped to the course successfully');
+                $("#addSuccessModal").show();
             }
             else{
                 const responseMessage = await response.json();
@@ -2078,6 +2080,10 @@ $('#successAddMore').click(() =>{
     else if ($('#successModelTitle').text() === 'Add Trainer' ){
     $('#addSuccessModal').hide();
     $('#addTrainerModal').show();
+    }
+    else if ($('#successModelTitle').text() === 'Map Learners' ){
+    $('#addSuccessModal').hide();
+    $('#mapLearnerModal').show();
     }
 });
 $('#mapBtn').click (() =>{
