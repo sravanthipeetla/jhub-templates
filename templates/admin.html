@@ -1523,7 +1523,7 @@ getCourseDetails().then((resp)=>{
         let searchValue=$('#coursesSearch').val();
         console.log(searchValue);
         let searchList = courseFetchDetails.filter((course)=>{
-            return course.courseName.includes(searchValue);
+            return course.courseName.lowercase().includes(searchValue.lowercase());
         });
         console.log(searchList);
     })
