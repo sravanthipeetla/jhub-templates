@@ -1520,6 +1520,7 @@ getCourseDetails().then((resp)=>{
     let courseFetchDetails = resp;
     console.log('courses',courseFetchDetails);
     $('#coursesSearch').keyup(()=>{
+        courseCardCont.innerHTML='';
         let searchValue=$('#coursesSearch').val();
         console.log(searchValue);
         let searchList = courseFetchDetails.filter((course)=>{
