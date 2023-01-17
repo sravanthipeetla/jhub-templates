@@ -1210,17 +1210,22 @@ mapLearnerAdd.addEventListener("click", async function(e) {
             }
             else{
                 const responseMessage = await response.json();
-                console.log(responseMessage);
-                alert(responseMessage.message);
+                $('#alertMsgCont').show();
+                $('#alertMsg').text(responseMessage.message);
+                $('#mapLearnerModal').hide();
             }
         }
         else{
-            alert('please check some of the students are not exist');
+            $('#alertMsgCont').show();
+            $('#alertMsg').text('please check some of the students are not exist');
+            $('#mapLearnerModal').hide();
         }
         }
     }
     else{
-        alert('Please select file and course');
+        $('#alertMsgCont').show();
+        $('#alertMsg').text('Please select file and course');
+        $('#mapLearnerModal').hide();
     }
 
 });
