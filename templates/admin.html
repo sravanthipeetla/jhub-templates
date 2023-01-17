@@ -1190,7 +1190,6 @@ mapLearnerAdd.addEventListener("click", async function(e) {
                 reqArray.push(obj);
             }
         });
-        console.log(learnerArray);
         let checker = (arr, target) => target.every(v => arr.includes(v));
         if(checker(hubLearnerGroupList, learnerArray)){
             console.log('all learners there');
