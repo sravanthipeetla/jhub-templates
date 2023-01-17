@@ -2048,16 +2048,28 @@ window.onload = async () =>{
     courseDefaultOption.selected = true;
     courseDefaultOption.disabled = true;
     mapLearnerCourseSelect.add(courseDefaultOption);
-    addLearnerCourseSelect.add(courseDefaultOption);
     for (let option of coursesList){
         const newOption = document.createElement('option');
         newOption.text = option;
         newOption.value = option;
         newOption.classList.add('choose-option');
         mapLearnerCourseSelect.add(newOption);
-        addLearnerCourseSelect.add(newOption);
     }
    
+    coursesListTotal = coursesList;
+    const addCourseDefaultOption = document.createElement('option');
+    courseDefaultOption.text = 'Choose course';
+    courseDefaultOption.value = '';
+    courseDefaultOption.selected = true;
+    courseDefaultOption.disabled = true;
+    addLearnerCourseSelect.add(addCourseDefaultOption);
+    for (let option of coursesList){
+        const newOption = document.createElement('option');
+        newOption.text = option;
+        newOption.value = option;
+        newOption.classList.add('choose-option');
+        addLearnerCourseSelect.add(newOption);
+    }
 };
 
 </script>
