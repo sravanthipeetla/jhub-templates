@@ -1335,18 +1335,13 @@ $('#addTrainerBtn').click(async () =>{
 });
 
 $('#addLearnerCourseBtn').click(()=>{
-    console.log($('#singleLearnerName').val().length);
-    console.log($('#addLearnerCourseSelect').find(":selected").val().length);
     if (presentUser === 'singleUser'){
         console.log('presentUser',presentUser);
         if($('#singleLearnerName').val() === ''){
             alert('Please enter valid username')
         }
-        else if ($('#addLearnerCourseSelect').find(":selected").val() === ''){
-            alert('Please select valid course name');
-        }
         else if( $('#singleLearnerName').val().length > 0 && $('#addLearnerCourseSelect').find(":selected").val().length > 0 ){
-            console.log('start adding course');
+            console.log('start add course');
         }
 
     }
@@ -1523,6 +1518,7 @@ const getCourseDetails = async () => {
 getCourseDetails().then((resp)=>{
     $('#coursesLoader').hide();
     let courseFetchDetails = resp;
+    console.log('courses',courseFetchDetails);
     for (let course of courseFetchDetails) {
         addAndAppendCourse(course);
     };
