@@ -1444,7 +1444,7 @@ $('#addLearnerCourseBtn').click(async ()=>{
             // console.log('learnerArray',learnerArray);
             // console.log('reqArray',reqArray);
             const data = {
-                "usersusernames":learnerArray
+                "usernames":learnerArray
                 };
             console.log('hub user added');
             const hubAddUserGroupPromise = await fetch(`${hub_url}users`, {
