@@ -1194,8 +1194,6 @@ mapLearnerAdd.addEventListener("click", async function(e) {
         let checker = (arr, target) => target.every(v => arr.includes(v));
         if(checker(hubLearnerGroupList, learnerArray)){
             console.log('all learners there');
-            // const selectedCourse = selected.options[selected.selectedIndex].text;
-      	      	// const response = await fetch('https://data-labs.hcl-edtech.com/services/ngshare/students/'+selectedCourse+'?students='+studentData, {
             const studentData=JSON.stringify(reqArray);
             const selectedCourse = $('#mapLearnerCourseSelect').find(":selected").val();
             const response =await fetch(`${ngshare_url}students/${selectedCourse}?students=${studentData}`, {
@@ -1470,7 +1468,8 @@ $('#addLearnerCourseBtn').click(async ()=>{
                 if (hubAddUserGroupPromise.status == 200 && hubAddUserGroupPromise.ok) {
                     if($('#addLearnerCourseSelect').find(":selected").val().length > 0){
                         const courseName = $('#addLearnerCourseSelect').find(":selected").val();
-                        const learnerAddPromise = await fetch(`${ngshare_url}student/${courseName}/${learnerName}?first_name=&last_name=&email=`, {
+                        const studentData=JSON.stringify(reqArray);
+                        const learnerAddPromise = await await fetch(`${ngshare_url}students/${courseName}?students=${studentData}`, {
                         method: 'POST',
                         headers: {
                         Accept: 'application.json',
