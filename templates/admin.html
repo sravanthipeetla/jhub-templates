@@ -1869,6 +1869,7 @@ getInstructorDetails().then((resp)=>{
     const instructorDetailsAll=[];
     const instructorDetailsMapped = [];
     const instructorDetailsUnMapped = [];
+    let reqList =[];
 
     for (key in trainerFetchDetails){
         let status = null;
@@ -1887,22 +1888,18 @@ getInstructorDetails().then((resp)=>{
     }
     $('#trainersFilter').change(()=>{
         trainerCardCont.innerHTML='';
-        console.log('select value',$('#trainersFilter').find(":selected").val());
         if ($('#trainersFilter').find(":selected").val() === 'mapped'){
-            for (let trainer of instructorDetailsMapped) {
-                addAndAppendTrainer(trainer);
-            }
+           reqList = instructorDetailsMapped;
         }
         else if($('#trainersFilter').find(":selected").val() === 'unmapped'){
-            for (let trainer of instructorDetailsUnMapped) {
-                addAndAppendTrainer(trainer);
-            }
+           reqList = instructorDetailsUnMapped;
         }
         else if ($('#trainersFilter').find(":selected").val() === 'all'){
-            for (let trainer of instructorDetailsAll) {
+           reqList = instructorDetailsAll;
+        }
+        for (let trainer of reqList) {
                 addAndAppendTrainer(trainer);
             }
-        }
 
     });
 })
