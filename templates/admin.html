@@ -1366,7 +1366,7 @@ $('#addLearnerCourseBtn').click(async ()=>{
               body: JSON.stringify(data)
             });
             if (hubAddUserGroupPromise.status == 200 && hubAddUserGroupPromise.ok) {
-                const learnerAddPromise = await fetch(`${ngshare_url}students/${courseName}/${learnerName}?first_name=&last_name=&email=`, {
+                const learnerAddPromise = await fetch(`${ngshare_url}student/${courseName}/${learnerName}?first_name=&last_name=&email=`, {
                 method: 'POST',
                 headers: {
                   Accept: 'application.json',
