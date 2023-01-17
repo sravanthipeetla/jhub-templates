@@ -1339,7 +1339,7 @@ $('#addLearnerCourseBtn').click(async ()=>{
         if($('#singleLearnerName').val() === ''){
             alert('Please enter valid username');
         }
-        else if( $('#singleLearnerName').val().length > 0 && $('#addLearnerCourseSelect').find(":selected").val().length > 0 ){
+        else if( $('#singleLearnerName').val().length > 0){
             const courseName = $('#addLearnerCourseSelect').find(":selected").val();
             const learnerName = $('#singleLearnerName').val();
             const hubAddUserPromise = await fetch(`${hub_url}users/${learnerName}`, {
