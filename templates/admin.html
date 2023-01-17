@@ -1044,7 +1044,7 @@ body.loading {
                         <span> &times;</span>
                     </div>
                 </div>
-                    <div id="multipleLearners">
+                    <div>
                         <div class="add-learner">
                             <div class="choose-trainer-arrange">
                                 <p>Upload CSV file</p>
@@ -1951,18 +1951,18 @@ $('#addLearnerClose').click(() =>{
     $('#addLearnerModal').hide();
 });
 
-singleUserBtn.onclick = function () {
-    singleUserBtn.classList.add('learner-active');
-    multipleUserBtn.classList.remove('learner-active');
-    singleLearner.style.display = 'block';
-    multipleLearners.style.display = 'none';
-};
+$('#singleUserBtn').click(function () {
+    $('#singleUserBtn').addClass('learner-active');
+    $('#multipleUserBtn').removeClass('learner-active');
+    $('#singleLearner').show();
+    $('#multipleLearner').hide();
+});
   
 multipleUserBtn.onclick = function () {
-    singleUserBtn.classList.remove('learner-active');
-    multipleUserBtn.classList.add('learner-active');
-    singleLearner.style.display = 'none';
-    multipleLearners.style.display = 'block';
+    $('#singleUserBtn').removeClass('learner-active');
+    $('#multipleUserBtn').addClass('learner-active');
+    $('#singleLearner').hide();
+    $('#multipleLearner').show();
 };
 
 window.onload = async () =>{
