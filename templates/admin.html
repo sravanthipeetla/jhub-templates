@@ -1530,6 +1530,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
         });
         const response = await courseDeletePromise.json();
         if (response.success) {
+            $('#deleteCourseModal').hide();
             $('#deleteSuccessModal').show();
             $('#deletedItemMsg').text('Deleted successfully');
             deleteItem=null;
@@ -1537,6 +1538,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
             deleteItemId=null;
         }
         else {
+            $('#deleteCourseModal').hide();
             $('#alertMsgCont').show();
             $('#alertMsg').text(response.message);
             deleteItem=null;
@@ -1554,6 +1556,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
         });
         const response = await removeTrainerPromise.json();
         if (response.success) {
+            $('#deleteCourseModal').hide();
             $('#deleteSuccessModal').show();
             $('#deletedItemMsg').text('Removed successfully');
             deleteItem=null;
@@ -1561,6 +1564,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
             deleteItemId=null;
         }
         else {
+            $('#deleteCourseModal').hide();
             $('#alertMsgCont').show();
             $('#alertMsg').text(response.message);
             deleteItem=null;
@@ -1578,6 +1582,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
         });
         const response = await removeLearnerPromise.json();
         if (response.success) {
+            $('#deleteCourseModal').hide();
             $('#deleteSuccessModal').show();
             $('#deletedItemMsg').text('Removed successfully');
             deleteItem=null;
@@ -1585,6 +1590,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
             deleteItemId=null;
         }
         else {
+            $('#deleteCourseModal').hide();
             $('#alertMsgCont').show();
             $('#alertMsg').text(response.message);
             deleteItem=null;
@@ -1596,7 +1602,6 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
 
 $('#deleteCourseBtn').click(() =>{
     deleteItemNext (deleteItem,deleteCourseName,deleteItemId);
-    $('#deleteCourseModal').hide();
 });
 
 function addAndAppendCourse(course) {
