@@ -875,6 +875,25 @@ body.loading {
         </div>
        
     </div>
+    <div class="bg-model" id="removeLearnerCourseModal">
+        <div class="course-model">
+            <div>
+                <div class="delete-course-model-top-first">
+                    <h1 id="removeLearnerModalTitle">Remove Learner</h1>
+                    <div id="removeLearnerModalClose">
+                        <span> &times;</span>
+                    </div>
+                </div>
+                    <h1 class="delete-title" id="removeLearnerModalItemText"></h1>
+            </div>
+                <div class="delete-course-model-bottom">
+                    <button id="removeLearnerCourseBtn" class="delete-button">Remove</button>
+                    <button id="removeLearnerCourseCancelBtn" class="cancel-button">Cancel</button>
+                    <p id="removeLearnerCourseCaution">once removed can't be restore again</p>  
+                </div>  
+        </div>
+       
+    </div>
     <div class="bg-model" id="addCourseModal">
         <div class="course-model add-course-model-height">
             <div>
@@ -1529,8 +1548,9 @@ $('#addLearnerCourseBtn').click(async ()=>{
 });
 
 function  removeLearnerFromAllCourse(learnerName,coursesList){
-    alert(learnerName);
-    console.log(coursesList);
+    for (let each of coursesList){
+
+    }
 }
 
 
@@ -1982,6 +2002,8 @@ function addAndAppendLearner(learner){
     let learnerDeleteImg = document.createElement('img');
     learnerDeleteImg.onclick = function(){
         removeLearnerFromAllCourse(Object.keys(learner)[0],Object.values(learner)[0]);
+        $('removeLearnerCourseModal').show();
+        $('#removeLearnerModalItemText').text(`Remove ${Object.keys(learner)[0]} from all courses?`);
     }
     learnerDeleteImg.src = 'https://i.postimg.cc/prKj8HZB/delete.png';
     learnerDeleteImg.classList.add('learner-all-course-remove');
