@@ -825,8 +825,16 @@ body.loading {
         <div class="description-bar">
                 <p class="description" id="description">You can manage Course details here.</p>
                 <div id="right-description-bar" >
-                    <form>
-                        <input type="search" placeholder="Search..." id="coursesSearch" ">
+                    <form id="courseSearchCont">
+                        <input type="search" placeholder="Search..." id="coursesSearch">
+                        <span class="searchIcon"></span>
+                    </form>
+                    <form id="trainerSearchCont" class="stop-visible">
+                        <input type="search" placeholder="Search..." id="trainersSearch">
+                        <span class="searchIcon"></span>
+                    </form>
+                    <form id="learnerSearchCont" class="stop-visible">
+                        <input type="search" placeholder="Search..." id="learnersSearch">
                         <span class="searchIcon"></span>
                     </form>
                    
@@ -2100,6 +2108,9 @@ getLearnerDetails().then((resp)=>{
 });
 
 $('#courseNav').click(function(){
+    $('trainerSearchCont').hide();
+    $('learnerSearchCont').hide();
+    $('courseSearchCont').show();
     $('#trainersFilter').hide();
     $('#addBtn').text('Add Course');
     $('#mapBtn').hide();
@@ -2114,6 +2125,9 @@ $('#courseNav').click(function(){
 });
 
 $('#trainerNav').click(function(){
+    $('courseSearchCont').hide();
+    $('learnerSearchCont').hide();
+    $('trainerSearchCont').show();
     $('#trainersFilter').show();
     $('#addBtn').text('Add Trainer');
     $('#mapBtn').hide();
@@ -2128,6 +2142,9 @@ $('#trainerNav').click(function(){
 });
 
 $('#learnerNav').click(function(){
+    $('trainerSearchCont').hide();
+    $('courseSearchCont').hide();
+    $('learnerSearchCont').show();
     $('#trainersFilter').hide();
     $('#addBtn').text('Add Learners');
     $('#mapBtn').show();
