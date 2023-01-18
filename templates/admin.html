@@ -2150,9 +2150,19 @@ getLearnerDetails().then((resp)=>{
         // for (let trainer of searchList) {
         //         addAndAppendTrainer(trainer);
         // }
+        learnerRowsBody.innerHTML='';
         let searchValue=$('#learnersSearch').val();
-        console.log('searchValue',searchValue);
-        console.log('learnerCourse',learnerCourse);
+        let searchObj={};
+        for (let key in learnerCourse){
+            if (key.toLowerCase().includes(searchValue.toLowerCase())){
+                searchObj[key] = learnerCourse[key];
+            }
+        }
+        for (key in searchObj){
+        let obj ={};
+        obj[key]=learnerCourse[key]
+        addAndAppendLearner(obj);
+    };
       
     })
 
