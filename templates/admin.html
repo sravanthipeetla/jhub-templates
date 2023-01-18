@@ -1528,8 +1528,8 @@ $('#addLearnerCourseBtn').click(async ()=>{
     }
 });
 
-function  removeLearnerFromAllCourse(learnerName){
-    alert(learnerName);
+function  removeLearnerFromAllCourse(learnerName,coursesList){
+    alert(learnerName,coursesList);
 }
 
 
@@ -1980,7 +1980,7 @@ function addAndAppendLearner(learner){
     let learnerDelete = document.createElement('td');
     let learnerDeleteImg = document.createElement('img');
     learnerDeleteImg.onclick = function(){
-        removeLearnerFromAllCourse(Object.keys(learner)[0]);
+        removeLearnerFromAllCourse(Object.keys(learner)[0],Object.values(learner)[0]);
     }
     learnerDeleteImg.src = 'https://i.postimg.cc/prKj8HZB/delete.png';
     learnerDeleteImg.classList.add('learner-all-course-remove');
