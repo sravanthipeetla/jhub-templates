@@ -2157,7 +2157,7 @@ getLearnerDetails().then((resp)=>{
             if (key.toLowerCase().includes(searchValue.toLowerCase())){
                 searchObj[key] = learnerCourse[key];
             }
-            else if (learnerCourse[key].includes(searchValue)){
+            else if (learnerCourse[key].join('|').toLowerCase().split('|').includes(searchValue.toLowerCase())){
                 searchObj[key] = learnerCourse[key];
             }
         }
