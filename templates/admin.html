@@ -6,6 +6,14 @@
 *{
     box-sizing: border-box;
 }
+:root {
+    --font16:1.6rem;
+    --font14:1.4rem;
+    --font12:1.2rem;
+    --font21:2.1rem;
+    --font13:1.3rem;
+    --font25:2.5rem;
+  }
 
 body {
     margin: 0px;
@@ -33,7 +41,7 @@ body {
     text-align: center;
     padding: 1vw 4vw;
     text-decoration: none;
-    font-size: 1.6rem;
+    font-size: var(--font16);
     border-bottom: 0.3vw solid #DBDBDB;
     overflow: auto;
     font-weight:500;
@@ -62,7 +70,7 @@ body {
     font-family: 'Poppins';
     color:#4D4D4D;
     font-weight:500;
-    font-size: 1.6rem;
+    font-size: var(--font16);
     margin-bottom: -0.3rem;
 }
 
@@ -72,7 +80,7 @@ body {
     width:19rem;
     border:0.1rem solid #5FBEF0;
     padding: 0rem 1.6rem;
-    font-size: 1.6rem;
+    font-size: var(--font16);
     font-weight: 0;
     color: black;
     outline: none;
@@ -86,7 +94,7 @@ body {
 }
 
 #right-description-bar input::placeholder {
-    font-size: 1.4rem;
+    font-size: var(--font14);
     font-weight: 400;
     font-style: normal;
     color: #ccc;
@@ -124,7 +132,7 @@ body {
     border-radius: 2.1rem;
     color: white;
     font-weight: 500;
-    font-size: 1.6rem;
+    font-size: var(--font16);
     height:4rem;
     display: inline-block;
     padding: 0.5rem 1.6rem;
@@ -140,7 +148,7 @@ body {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: 1.6rem;
+    font-size: var(--font16);
     text-align: center;
     padding: 0.5rem 1.6rem;
     color: #5FBEF0;
@@ -188,16 +196,16 @@ body {
 .course-title,.trainer-title{
     color:#006BB6;
     font-weight: 600;
-    font-size: 1.6rem;
+    font-size: var(--font16);
 }
 .learner-count-title{
     color:#999;
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: var(--font12);
 }
 .learner-count{
     font-weight: 500;
-    font-size: 1.4rem;
+    font-size: var(--font14);
 }
 .arrange-row{
     display: flex;
@@ -264,11 +272,11 @@ tr th:nth-child(2){
 }
 tbody tr:nth-child(even) {
     background-color:#FAFDFF;
-    font-size: 1.6rem;
+    font-size: var(--font16);
   }
 tbody tr:nth-child(odd) {
     background-color: #F1F9FE;;
-    font-size: 1.6rem;
+    font-size: var(--font16);
   }
 
   tr td:nth-child(2){
@@ -280,7 +288,7 @@ th{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: 1.6rem;
+    font-size: var(--font16);
     color:#006BB6;
     padding: 0.8rem 2.5rem;
 }
@@ -373,12 +381,12 @@ th{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: 1.6rem;
+    font-size: var(--font16);
     color: #F63C46;
     padding-bottom: 0.2rem;
 }
 .delete-course-model-top-first span{
-    font-size: 2.1rem;
+    font-size: var(--font21);
     color: #F7545D;
     font-weight: 400;
     background: #FDCED1;
@@ -389,7 +397,7 @@ th{
     padding: 0rem 0.4rem;
 }
 .delete-title{
-    font-size: 1.6rem;
+    font-size: var(--font16);
     text-align: center;
     font-family: 'Gothic A1';
     font-style: Medium;
@@ -404,7 +412,7 @@ th{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: var(--font14);
     padding: 0.8rem;
 }
 
@@ -415,7 +423,7 @@ th{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: 1.3rem;
+    font-size: var(--font13);
     text-align: center;
     color: #FFFFFF;
     height:2.8rem;
@@ -430,7 +438,7 @@ border-radius:  1.4rem;
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 400;
-font-size: 1.3rem;
+font-size: var(--font13);
 color: #5FBEF0;
 height:2.8rem;
 width: 8rem;
@@ -458,18 +466,18 @@ cursor: pointer;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: var(--font12);
     color: #263238;
 }
 .add-course-model-top-first h1,.add-learner-model-top-first h1{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: 1.6rem;
+    font-size: var(--font16);
     color: #5FBEF0;
 }
 .add-course-model-top-first span,.add-learner-model-top-first span{
-    font-size: 2.5rem;
+    font-size: var(--font25);
     color: #5FBEF0;
     font-weight: 400;
     background: #E8F6FD;
@@ -492,14 +500,14 @@ cursor: pointer;
     font-family: 'Gothic A1';
     font-style: normal;
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: var(--font14);
     color: #000000;
     width:12.5rem;
 }
 .course-name-warn{
     color: #c51306;
     padding-left:15rem;
-    font-size: 1.2rem;
+    font-size: var(--font12);
     display: none;
 }
 .add-course-name input,.choose-trainer-name select,.add-learner input{
@@ -507,7 +515,7 @@ cursor: pointer;
     height:3rem;
     border:1px solid #5FBEF0;
     padding: 0rem 1.6rem;
-    font-size: 1.2rem;
+    font-size: var(--font12);
     font-weight: 400;
     width:28rem;
     color: #263238;;
@@ -515,7 +523,7 @@ cursor: pointer;
     background-color: #fff;
 }
 .add-course-name input::placeholder{
-    font-size: 1.2rem;
+    font-size: var(--font12);
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
@@ -530,7 +538,7 @@ cursor: pointer;
     font-family: 'Gothic A1';
     font-style: normal;
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: var(--font14);
     color: #000000;
     width:12.5rem;
     }
@@ -538,7 +546,7 @@ cursor: pointer;
     font-family: 'Gothic A1';
     font-style: normal;
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: var(--font14);
     color: #000000;
     width:12.5rem;
     margin-top: 0.5rem;
@@ -548,7 +556,7 @@ cursor: pointer;
 font-family: 'Gothic A1';
 font-style: normal;
 font-weight: 400;
-font-size: 1.2rem;
+font-size: var(--font12);
 color: #A6A6A6;
 margin-top: -0.8rem;
 width:12.5rem;
@@ -587,7 +595,7 @@ width:12.5rem;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: var(--font16);
     text-align: center;
     color: #263238;
 
@@ -606,7 +614,7 @@ width:12.5rem;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: 1.3rem;
+    font-size: var(--font13);
     text-align: center;
     color: #FFFFFF;
     height:2.8rem;
@@ -639,7 +647,7 @@ width:12.5rem;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: 1.6rem;
+    font-size: var(--font16);
     color: #999999;
 }
 .delete-trainer-name{
@@ -650,7 +658,7 @@ color: #006BB6;
     align-items: center;
 }
 #deleteTrainerCancel{
-    font-size: 2.5rem;
+    font-size: var(--font25);
     text-align: center;
     color: #006BB6;
     font-weight: 400;
@@ -684,7 +692,7 @@ color: #006BB6;
 }
 
 .learner-inactive{
-    font-size: 1.3rem;
+    font-size: var(--font13);
     border-radius: 1.4rem;
     padding: 0.5rem 3.2rem;
     background: #FFFFFF;
@@ -776,7 +784,7 @@ body.loading {
     min-width:30%;
     height:4rem;
     z-index: 1;
-    font-size: 1.4rem;
+    font-size: var(--font14);
   }
   #alertMsgCont{
     display: none;
@@ -787,7 +795,7 @@ body.loading {
     color: #c51306;
     font-weight: bold;
     float: right;
-    font-size: 2.2rem;
+    font-size: var(--font21);
     cursor: pointer;
     transition: 0.3s;
   }
@@ -798,6 +806,9 @@ body.loading {
 #actual-btn{
     display: none;
 }
+
+
+
 
 </style>
 {% endblock %}
@@ -2130,6 +2141,7 @@ getLearnerDetails().then((resp)=>{
         obj[key]=learnerCourse[key]
         addAndAppendLearner(obj);
     };
+
 });
 
 $('#courseNav').click(function(){
