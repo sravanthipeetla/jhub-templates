@@ -2,18 +2,20 @@
 {% block stylesheet %}
 {{ super() }}
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500&display=swap");
 *{
     box-sizing: border-box;
 }
+
 body {
     margin: 0px;
     padding:0px;
-  }
+}
+
 .stop-visible{
     display:none;
 }
+
 .admin-container {
     margin-left: 10vw;
     margin-right: 10vw;
@@ -63,6 +65,7 @@ body {
     font-size: 1.6rem;
     margin-bottom: -0.3rem;
 }
+
 #right-description-bar select{
     border-radius:50px;
     height:3.8rem;
@@ -74,12 +77,14 @@ body {
     color: black;
     outline: none;
 }
+
 #right-description-bar input{
     border: none;
     outline: none;
     width:15rem;
     margin-left:1.6rem;
 }
+
 #right-description-bar input::placeholder {
     font-size: 1.4rem;
     font-weight: 400;
@@ -91,6 +96,7 @@ body {
     display: flex;
     gap: 1.6rem;
 }
+
 .searchIcon{
     overflow: hidden;
     width: 4rem;
@@ -101,6 +107,7 @@ body {
     background: transparent url("https://i.postimg.cc/RC7FPYL5/search.png") no-repeat center;
     opacity: 0.7;
 }
+
 #right-description-bar form {
     display: flex;
     justify-content: space-between;
@@ -785,7 +792,6 @@ body.loading {
     transition: 0.3s;
   }
 
-/* When moving the mouse over the close button */
 .alert-closebtn:hover {
   color: black;
 }
@@ -907,7 +913,7 @@ body.loading {
                         <p>Course Name</p>
                         <input type="text" placeholder="Enter course name" id="courseNameText">
                     </div>
-                    <span class="course-name-warn">* course name should not contain spaces</span>
+                    <span class="course-name-warn" id="courseNameWarn">* course name should not contain spaces</span>
                     <div class="choose-trainer-name">
                         <div class="choose-trainer-arrange">
                             <p>Choose Trainer</p>
