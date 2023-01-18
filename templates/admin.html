@@ -2004,6 +2004,22 @@ getInstructorDetails().then((resp)=>{
             }
 
     });
+    $('#trainersSearch').keyup(()=>{
+    //     trainerCardCont.innerHTML='';
+        let searchValue=$('#trainersSearch').val();
+        console.log('searchValue',searchValue);
+        console.log('reqList',reqList)
+    //     let searchList = reqList.filter((course)=>{
+    //         return course.courseName.toLowerCase().includes(searchValue.toLowerCase());
+    //     });
+    //     console.log(searchList);
+    //     for (let course of searchList) {
+    //     addAndAppendCourse(course);
+    // };
+      
+    })
+
+
 })
 
 function addAndAppendLearner(learner){
