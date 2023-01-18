@@ -880,7 +880,7 @@ body.loading {
             <div>
                 <div class="delete-course-model-top-first">
                     <h1 id="removeLearnerModalTitle">Remove Learner</h1>
-                    <div id="removeLearnerModalClose">
+                    <div id="removeLearnerCourseModalClose">
                         <span> &times;</span>
                     </div>
                 </div>
@@ -888,7 +888,7 @@ body.loading {
             </div>
                 <div class="delete-course-model-bottom">
                     <button id="removeLearnerCourseBtn" class="delete-button">Remove</button>
-                    <button id="removeLearnerCourseCancelBtn" class="cancel-button">Cancel</button>
+                    <button id="removeLearnerCourseCancel" class="cancel-button">Cancel</button>
                     <p id="removeLearnerCourseCaution">once removed can't be restore again</p>  
                 </div>  
         </div>
@@ -2188,6 +2188,12 @@ $('#addLearnerCancel').click(() =>{
 $('#addLearnerClose').click(() =>{
     $('#addLearnerModal').hide();
 });
+$('#removeLearnerCourseModalClose').click(()=>{
+    $('#removeLearnerCourseModal').hide();
+});
+$('#removeLearnerCourseCancel').click(()=>{
+    $('#removeLearnerCourseModal').hide();
+})
 
 $('#singleUserBtn').click(function () {
     $('#singleUserBtn').addClass('learner-active');
