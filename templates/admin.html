@@ -1989,6 +1989,7 @@ getInstructorDetails().then((resp)=>{
         addAndAppendTrainer(trainer);
     }
     $('#trainersFilter').change(()=>{
+        $('#trainersSearch').val('');
         trainerCardCont.innerHTML='';
         if ($('#trainersFilter').find(":selected").val() === 'mapped'){
            reqList = instructorDetailsMapped;
