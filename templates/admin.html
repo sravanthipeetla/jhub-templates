@@ -2157,6 +2157,9 @@ getLearnerDetails().then((resp)=>{
             if (key.toLowerCase().includes(searchValue.toLowerCase())){
                 searchObj[key] = learnerCourse[key];
             }
+            else if (learnerCourse[key].includes(searchValue)){
+                searchObj[key] = learnerCourse[key];
+            }
         }
         for (key in searchObj){
         let obj ={};
