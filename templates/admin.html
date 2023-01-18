@@ -1160,7 +1160,6 @@ $('#trainerUsername').keyup(function(){
     }
 });
 
-
 const mapLearnerAdd = document.getElementById("mapLearnerAdd");
 mapLearnerAdd.addEventListener("click", async function(e) {
     if (mapUploadBtn.files[0] && $('#mapLearnerCourseSelect').find(":selected").val() !==''){
@@ -1217,14 +1216,14 @@ mapLearnerAdd.addEventListener("click", async function(e) {
         }
         else{
             $('#alertMsgCont').show();
-            $('#alertMsg').text('please check some of the students are not exist');
+            $('#alertMsg').text('Some of the students does not exist');
             $('#mapLearnerModal').hide();
         }
         }
     }
     else{
         $('#alertMsgCont').show();
-        $('#alertMsg').text('Please select file and course');
+        $('#alertMsg').text('Choose file and course');
         $('#mapLearnerModal').hide();
     }
 
@@ -2078,17 +2077,17 @@ $('#successDone').click(() =>{
 
 $('#successAddMore').click(() =>{
     if ($('#successModelTitle').text() === 'Add Course' ){
-    $('#addSuccessModal').hide();
-    $('#addCourseModal').show();
-    $('#courseNameText').val('');
-    }
+        $('#addSuccessModal').hide();
+        $('#addCourseModal').show();
+        $('#courseNameText').val('');
+        }
     else if ($('#successModelTitle').text() === 'Add Trainer' ){
-    $('#addSuccessModal').hide();
-    $('#addTrainerModal').show();
+        $('#addSuccessModal').hide();
+        $('#addTrainerModal').show();
     }
     else if ($('#successModelTitle').text() === 'Map Learners' ){
-    $('#addSuccessModal').hide();
-    $('#mapLearnerModal').show();
+        $('#addSuccessModal').hide();
+        $('#mapLearnerModal').show();
     }
 });
 $('#mapBtn').click (() =>{
