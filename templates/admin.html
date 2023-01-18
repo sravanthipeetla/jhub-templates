@@ -666,6 +666,9 @@ color: #006BB6;
     cursor: pointer;
     width:2.2rem;
 }
+.learner-all-course-remove{
+    width:1.5rem;
+}
 .change-learner{
     padding-top: -0.5rem;
     padding-left: 2rem;
@@ -1524,6 +1527,11 @@ $('#addLearnerCourseBtn').click(async ()=>{
     }
 });
 
+function  removeLearnerFromAllCourse(learnerName){
+    alert(learnerName);
+}
+
+
 async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
     console.log(deleteItem);
     if ($('#deleteModalTitle').text() ==='Delete Course'){
@@ -1970,7 +1978,11 @@ function addAndAppendLearner(learner){
 
     let learnerDelete = document.createElement('td');
     let learnerDeleteImg = document.createElement('img');
+    learnerDeleteImg.onclick = function(){
+        removeLearnerFromAllCourse(Object.keys(learner)[0]);
+    }
     learnerDeleteImg.src = 'https://i.postimg.cc/prKj8HZB/delete.png';
+    learnerDeleteImg.classList.add('learner-all-course-remove');
     learnerDelete.appendChild(learnerDeleteImg);
     learnerRow.appendChild(learnerDelete);
 
