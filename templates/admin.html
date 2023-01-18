@@ -1549,13 +1549,36 @@ $('#addLearnerCourseBtn').click(async ()=>{
     }
 });
 
-function  removeLearnerFromAllCourse(learnerName,coursesList){
+async function  removeLearnerFromAllCourse (learnerName,coursesList){
     if(coursesList.length > 0){
         console.log('name',learnerName);
         console.log('courseList',coursesList);
-         // for (let each of coursesList){
+        let k=0;
+         for (let course of coursesList){
+            const removeLearnerPromise = await fetch(`${ngshare_url}student/${course}/${learnerName}`, {
+            method: 'DELETE',
+            headers: {
+            Accept: 'application.json',
+            'Content-Type': 'application/json'
+            }
+        });
+        const response = await removeLearnerPromise.json();
+        if (response.success) {
+            k+=1;
+        }
+        else {
+            $('#alertMsgCont').show();
+            $('#alertMsg').text(response.message);
+        };
 
-         // }
+
+         }
+         if (k === coursesList.length){
+            alert('Removed learner from all courses');
+         }
+         else{
+            alert('Please check learner not removed from some courses');
+         }
     }
     else{
         alert('Learner not enrolled in any course');
