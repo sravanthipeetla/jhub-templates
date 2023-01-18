@@ -2108,9 +2108,9 @@ getLearnerDetails().then((resp)=>{
 });
 
 $('#courseNav').click(function(){
-    $('trainerSearchCont').hide();
-    $('learnerSearchCont').hide();
-    $('courseSearchCont').show();
+    $('#trainerSearchCont').hide();
+    $('#learnerSearchCont').hide();
+    $('#courseSearchCont').show();
     $('#trainersFilter').hide();
     $('#addBtn').text('Add Course');
     $('#mapBtn').hide();
@@ -2125,9 +2125,9 @@ $('#courseNav').click(function(){
 });
 
 $('#trainerNav').click(function(){
-    $('courseSearchCont').hide();
-    $('learnerSearchCont').hide();
-    $('trainerSearchCont').show();
+    $('#courseSearchCont').hide();
+    $('#learnerSearchCont').hide();
+    $('#trainerSearchCont').show();
     $('#trainersFilter').show();
     $('#addBtn').text('Add Trainer');
     $('#mapBtn').hide();
@@ -2142,9 +2142,9 @@ $('#trainerNav').click(function(){
 });
 
 $('#learnerNav').click(function(){
-    $('trainerSearchCont').hide();
-    $('courseSearchCont').hide();
-    $('learnerSearchCont').show();
+    $('#trainerSearchCont').hide();
+    $('#courseSearchCont').hide();
+    $('#learnerSearchCont').show();
     $('#trainersFilter').hide();
     $('#addBtn').text('Add Learners');
     $('#mapBtn').show();
