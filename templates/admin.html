@@ -825,18 +825,26 @@ body.loading {
         <div class="description-bar">
                 <p class="description" id="description">You can manage Course details here.</p>
                 <div id="right-description-bar" >
-                    <div id="courseSearchCont" class="search-container">
-                        <input type="search" placeholder="Search..." id="coursesSearch">
-                        <span class="searchIcon"></span>
+                    <div id="courseSearchCont">
+                        <div  class="search-container">
+                            <input type="search" placeholder="Search..." id="coursesSearch">
+                            <span class="searchIcon"></span>
+                        </div>
                     </div>
-                    <div id="trainerSearchCont" class="search-container stop-visible">
-                        <input type="search" placeholder="Search..." id="trainersSearch">
-                        <span class="searchIcon"></span>
+                    <div id="trainerSearchCont" class="stop-visible">
+                        <div class="search-container">
+                            <input type="search" placeholder="Search..." id="trainersSearch">
+                            <span class="searchIcon"></span>
+                        </div>
                     </div>
-                    <div id="learnerSearchCont" class="search-container stop-visible">
-                        <input type="search" placeholder="Search..." id="learnersSearch">
-                        <span class="searchIcon"></span>
+                    
+                    <div id="learnerSearchCont" class="stop-visible">
+                        <div class="search-container">
+                            <input type="search" placeholder="Search..." id="learnersSearch">
+                            <span class="searchIcon"></span>
+                        </div>
                     </div>
+                   
                    
                     <select  id="trainersFilter" class="stop-visible">
                         <option default  value="all">All</option>
