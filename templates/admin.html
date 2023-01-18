@@ -1379,9 +1379,10 @@ $('#addTrainerBtn').click(async () =>{
 
 $('#addLearnerCourseBtn').click(async ()=>{
     if (presentUser === 'singleUser'){
-        console.log('presentUser',presentUser);
         if($('#singleLearnerName').val() === ''){
-            alert('Please enter valid username');
+            $('#alertMsgCont').show();
+            $('#alertMsg').text('Please enter valid username');
+            $('#addLearnerModal').hide();
         }
         else if( $('#singleLearnerName').val().length > 0){
             const courseName = $('#addLearnerCourseSelect').find(":selected").val();
@@ -1454,7 +1455,6 @@ $('#addLearnerCourseBtn').click(async ()=>{
         }
     }
     else if(presentUser === 'multipleUsers'){
-        console.log('presentUser',presentUser);
         if (addUploadBtn.files[0]){
             const input = addUploadBtn.files[0];
             const reader = new FileReader();
