@@ -1550,11 +1550,18 @@ $('#addLearnerCourseBtn').click(async ()=>{
 });
 
 function  removeLearnerFromAllCourse(learnerName,coursesList){
-    console.log('name',learnerName);
-    console.log('courseList',coursesList);
-    // for (let each of coursesList){
+    if(coursesList.length > 0){
+        console.log('name',learnerName);
+        console.log('courseList',coursesList);
+         // for (let each of coursesList){
 
-    // }
+         // }
+    }
+    else{
+        alert('Learner not enrolled in any course');
+    }
+    
+   
 }
 
 $('#removeLearnerCourseBtn').click(() =>{
