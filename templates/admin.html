@@ -1515,10 +1515,9 @@ $('#addLearnerCourseBtn').click(async ()=>{
                         
                         if (learnerAddPromise.status == 200 && learnerAddPromise.ok) {
                         $('#addLearnerModal').hide();
-                        $('#successModelTitle').text('Add Course');
-                        $('#addSuccessMsg').text('Selected course added successfully');
+                        $('#successModelTitle').text('Add Learner');
+                        $('#addSuccessMsg').text('Learner and course added successfully');
                         $("#addSuccessModal").show();
-                        // $('#courseNameText').val('');
                         }
                         else {
                             const learnerAddResponse = await learnerAddPromise.json();
@@ -1528,7 +1527,10 @@ $('#addLearnerCourseBtn').click(async ()=>{
                         }
                     }
                     else{
-                        alert('user added successfully');
+                        $('#addLearnerModal').hide();
+                        $('#successModelTitle').text('Add Learner');
+                        $('#addSuccessMsg').text('Learner added successfully');
+                        $("#addSuccessModal").show();
                     }
                 }
                 else{
@@ -1549,7 +1551,9 @@ $('#addLearnerCourseBtn').click(async ()=>{
 
         }
         else{
-            alert('Please select valid CSV file');
+            $('#alertMsgCont').show();
+            $('#alertMsg').text('Select valid CSV file');
+            $('#addLearnerModal').hide();
         }
 
     }
