@@ -1420,7 +1420,7 @@ $('#addLearnerCourseBtn').click(async ()=>{
                     
                         if (learnerAddPromise.status == 200 && learnerAddPromise.ok) {
                             $('#addLearnerModal').hide();
-                            $('#successModelTitle').text('Add Learner');
+                            $('#successModelTitle').text('Add Learners');
                             $('#addSuccessMsg').text('Learner and course added successfully');
                             $("#addSuccessModal").show();
                         }
@@ -1433,7 +1433,7 @@ $('#addLearnerCourseBtn').click(async ()=>{
                     }
                     else{
                         $('#addLearnerModal').hide();
-                        $('#successModelTitle').text('Add Learner');
+                        $('#successModelTitle').text('Add Learners');
                         $('#addSuccessMsg').text('Learner added successfully');
                         $("#addSuccessModal").show();
                     }
@@ -2173,6 +2173,14 @@ $('#successAddMore').click(() =>{
     else if ($('#successModelTitle').text() === 'Map Learners' ){
         $('#addSuccessModal').hide();
         $('#mapLearnerModal').show();
+    }
+    else if ($('#successModelTitle').text() === 'Map Learners' ){
+        $('#addSuccessModal').hide();
+        $('#mapLearnerModal').show();
+    }
+    else if ($('#successModelTitle').text() === 'Add Learners' ){
+        $('#addSuccessModal').hide();
+        $('#addLearnerModal').show();
     }
 });
 $('#mapBtn').click (() =>{
