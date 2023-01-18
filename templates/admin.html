@@ -2002,7 +2002,7 @@ function addAndAppendLearner(learner){
     let learnerDeleteImg = document.createElement('img');
     learnerDeleteImg.onclick = function(){
         removeLearnerFromAllCourse(Object.keys(learner)[0],Object.values(learner)[0]);
-        $('removeLearnerCourseModal').show();
+        $('#removeLearnerCourseModal').show();
         $('#removeLearnerModalItemText').text(`Remove ${Object.keys(learner)[0]} from all courses?`);
     }
     learnerDeleteImg.src = 'https://i.postimg.cc/prKj8HZB/delete.png';
