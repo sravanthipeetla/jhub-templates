@@ -86,14 +86,11 @@ body {
     outline: none;
 }
 
-#right-description-bar input{
+.search-input{
     border: none;
     outline: none;
     width:15rem;
     margin-left:1.6rem;
-}
-
-#right-description-bar input::placeholder {
     font-size: var(--font14);
     font-weight: 400;
     font-style: normal;
@@ -843,20 +840,20 @@ body.loading {
                 <div id="right-description-bar" >
                     <div id="courseSearchCont">
                         <div  class="search-container">
-                            <input type="search" placeholder="Search..." id="coursesSearch">
+                            <input type="search" placeholder="Search..." id="coursesSearch" class="search-input">
                             <span class="searchIcon"></span>
                         </div>
                     </div>
                     <div id="trainerSearchCont" class="stop-visible">
                         <div class="search-container">
-                            <input type="search" placeholder="Search..." id="trainersSearch">
+                            <input type="search" placeholder="Search..." id="trainersSearch" class="search-input">
                             <span class="searchIcon"></span>
                         </div>
                     </div>
                     
                     <div id="learnerSearchCont" class="stop-visible">
                         <div class="search-container learner-search">
-                            <input type="search" placeholder="Search Learner or Course Name" id="learnersSearch">
+                            <input type="search" placeholder="Search Learner or Course Name" id="learnersSearch" class="search-input">
                             <span class="searchIcon"></span>
                         </div>
                     </div>
