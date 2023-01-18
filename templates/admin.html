@@ -1147,6 +1147,8 @@ const mapUploadBtn = document.getElementById('mapUploadBtn');
 const addUploadBtn = document.getElementById('addUploadBtn');
 const mapFileChosen = document.getElementById('mapFileChosen');
 let presentUser = 'singleUser';
+let coursesRemoveLearner = null;
+let coursesRemoveList = null;
 
 mapUploadBtn.addEventListener('change', function() {
     if (this.files[0].name){
@@ -1548,11 +1550,16 @@ $('#addLearnerCourseBtn').click(async ()=>{
 });
 
 function  removeLearnerFromAllCourse(learnerName,coursesList){
-    for (let each of coursesList){
+    console.log('name',learnerName);
+    console.log('courseList',coursesList);
+    // for (let each of coursesList){
 
-    }
+    // }
 }
 
+$('#removeLearnerCourseBtn').click(() =>{
+    removeLearnerFromAllCourse(coursesRemoveLearner,coursesRemoveList);
+});
 
 async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
     console.log(deleteItem);
@@ -2001,7 +2008,8 @@ function addAndAppendLearner(learner){
     let learnerDelete = document.createElement('td');
     let learnerDeleteImg = document.createElement('img');
     learnerDeleteImg.onclick = function(){
-        removeLearnerFromAllCourse(Object.keys(learner)[0],Object.values(learner)[0]);
+        coursesRemoveLearner = Object.keys(learner)[0];
+        coursesRemoveList = Object.values(learner)[0];
         $('#removeLearnerCourseModal').show();
         $('#removeLearnerModalItemText').text(`Remove ${Object.keys(learner)[0]} from all courses?`);
     }
