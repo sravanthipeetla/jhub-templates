@@ -1971,7 +1971,7 @@ getInstructorDetails().then((resp)=>{
     const instructorDetailsAll=[];
     const instructorDetailsMapped = [];
     const instructorDetailsUnMapped = [];
-    let reqList =[];
+    let reqList =instructorDetailsAll;
 
     for (key in trainerFetchDetails){
         let status = null;
