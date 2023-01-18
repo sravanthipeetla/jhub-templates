@@ -1410,30 +1410,32 @@ $('#addLearnerCourseBtn').click(async ()=>{
             });
                 if (hubAddUserGroupPromise.status == 200 && hubAddUserGroupPromise.ok) {
                     if($('#addLearnerCourseSelect').find(":selected").val().length > 0){
-                    const learnerAddPromise = await fetch(`${ngshare_url}student/${courseName}/${learnerName}?first_name=&last_name=&email=`, {
-                    method: 'POST',
-                    headers: {
-                    Accept: 'application.json',
-                    'Content-Type': 'application/json'
-                    }
+                        const learnerAddPromise = await fetch(`${ngshare_url}student/${courseName}/${learnerName}?first_name=&last_name=&email=`, {
+                        method: 'POST',
+                        headers: {
+                        Accept: 'application.json',
+                        'Content-Type': 'application/json'
+                        }
                     });
                     
-                    if (learnerAddPromise.status == 200 && learnerAddPromise.ok) {
-                    $('#addLearnerModal').hide();
-                    $('#successModelTitle').text('Add Course');
-                    $('#addSuccessMsg').text('Selected course added successfully');
-                    $("#addSuccessModal").show();
-                    // $('#courseNameText').val('');
-                    }
-                    else {
-                        const learnerAddResponse = await learnerAddPromise.json();
-                    $('#alertMsgCont').show();
-                    $('#alertMsg').text(learnerAddResponse.message);
-                    $('#addLearnerModal').hide();
-                    }
+                        if (learnerAddPromise.status == 200 && learnerAddPromise.ok) {
+                            $('#addLearnerModal').hide();
+                            $('#successModelTitle').text('Add Learner');
+                            $('#addSuccessMsg').text('Learner and course added successfully');
+                            $("#addSuccessModal").show();
+                        }
+                        else {
+                            const learnerAddResponse = await learnerAddPromise.json();
+                            $('#alertMsgCont').show();
+                            $('#alertMsg').text(learnerAddResponse.message);
+                            $('#addLearnerModal').hide();
+                        }
                     }
                     else{
-                        alert('user added successfully');
+                        $('#addLearnerModal').hide();
+                        $('#successModelTitle').text('Add Learner');
+                        $('#addSuccessMsg').text('Learner added successfully');
+                        $("#addSuccessModal").show();
                     }
                 }
                 else{
