@@ -2020,7 +2020,6 @@ getInstructorDetails().then((resp)=>{
       
     })
 
-
 })
 
 function addAndAppendLearner(learner){
@@ -2125,6 +2124,7 @@ return learnerCourse;
 getLearnerDetails().then((resp)=>{
     $('#learnersLoader').hide();
     let learnerCourse = resp;
+    console.log('learnerCourse',resp);
     for (key in learnerCourse){
         let obj ={};
         obj[key]=learnerCourse[key]
