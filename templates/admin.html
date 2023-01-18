@@ -1488,8 +1488,6 @@ $('#addLearnerCourseBtn').click(async ()=>{
               },
               body: JSON.stringify(data)
             });
-
-            console.log("status",hubAddUserPromise.status);
             if (hubAddUserPromise.status == 201 && hubAddUserPromise.ok) {
                 const data = {
                 "users": learnerArray
@@ -1515,10 +1513,10 @@ $('#addLearnerCourseBtn').click(async ()=>{
                         });
                         
                         if (learnerAddPromise.status == 200 && learnerAddPromise.ok) {
-                        $('#addLearnerModal').hide();
-                        $('#successModelTitle').text('Add Learner');
-                        $('#addSuccessMsg').text('Learner and course added successfully');
-                        $("#addSuccessModal").show();
+                            $('#addLearnerModal').hide();
+                            $('#successModelTitle').text('Add Learners');
+                            $('#addSuccessMsg').text('Learners and course added successfully');
+                            $("#addSuccessModal").show();
                         }
                         else {
                             const learnerAddResponse = await learnerAddPromise.json();
@@ -1530,7 +1528,7 @@ $('#addLearnerCourseBtn').click(async ()=>{
                     else{
                         $('#addLearnerModal').hide();
                         $('#successModelTitle').text('Add Learner');
-                        $('#addSuccessMsg').text('Learner added successfully');
+                        $('#addSuccessMsg').text('Learners added successfully');
                         $("#addSuccessModal").show();
                     }
                 }
