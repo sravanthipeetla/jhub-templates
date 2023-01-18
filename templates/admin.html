@@ -1303,7 +1303,7 @@ $('#addCourseBtn').click(async () => {
               if (instructorAddPromise.status == 200 && instructorAddPromise.ok) {
                 $('#addCourseModal').hide();
                 $('#successModelTitle').text('Add Course');
-                $('#addSuccessMsg').text('Selected course added successfully');
+                $('#addSuccessMsg').text('Course added successfully');
                 $("#addSuccessModal").show();
                 $('#courseNameText').val('');
 
@@ -1364,7 +1364,7 @@ $('#addTrainerBtn').click(async () =>{
             if (hubAddUserGroupPromise.status == 200 && hubAddUserGroupPromise.ok) {
                 $('#addTrainerModal').hide();
                 $('#successModelTitle').text('Add Trainer');
-                $('#addSuccessMsg').text('Selected trainer added successfully');
+                $('#addSuccessMsg').text('Trainer added successfully');
                 $("#addSuccessModal").show();
                 $('#trainerUsername').val('');
             }
