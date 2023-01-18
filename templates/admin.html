@@ -2169,9 +2169,11 @@ $('#learnerNav').click(function(){
 
 $('#addBtn').click (()=> {
     if ($('#addBtn').text() === "Add Course") {
+        $('#courseNameText').val('');
         $('#addCourseModal').show();
 }
     else if($('#addBtn').text()  === "Add Trainer"){
+        $('#trainerUsername').val('');
         $('#addTrainerModal').show();
     }
     else if ($('#addBtn').text()  === "Add Learners") {
