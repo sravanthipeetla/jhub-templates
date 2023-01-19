@@ -288,11 +288,9 @@ tr th:nth-child(2){
 }
 tbody tr:nth-child(even) {
     background-color:#FAFDFF;
-    font-size: var(--font16);
   }
 tbody tr:nth-child(odd) {
-    background-color: #F1F9FE;;
-    font-size: var(--font16);
+    background-color: #F1F9FE;
   }
 
   tr td:nth-child(2){
@@ -304,7 +302,6 @@ th{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: var(--font16);
     color:#006BB6;
     padding: 0.8rem 2.5rem;
 }
@@ -846,7 +843,7 @@ body.loading {
                 <a class="instructor-nav" id="trainerNav">Trainers</a>
                 <a class="learner-nav" id="learnerNav">Learners</a>
         </div>
-        <div class="description-bar fs-16">
+        <div class="description-bar">
                 <p class="description" id="description">You can manage Course details here.</p>
                 <div id="right-description-bar" >
                     <div id="courseSearchCont">
@@ -879,17 +876,17 @@ body.loading {
                     <button class="add-btn" id="addBtn">Add Course</button>
                 </div>
         </div>    
-        <div id="courseDetails" class="fs-16">
+        <div id="courseDetails">
             <div class="loader" id="coursesLoader"></div>
             <div class="courseDetails" id="courseCardCont">
             </div>
         </div>
-        <div id="trainerDetails" class="fs-16">
+        <div id="trainerDetails">
             <div class="loader" id="trainersLoader"></div>
             <div class="trainerDetails" id="trainerCardCont">
             </div>
         </div>
-        <div id="learnerDetails" class="fs-16">     
+        <div id="learnerDetails">     
             <table id="learner-table">
                 <tr id="learner-thead">
                     <th>Learners Name</th>
