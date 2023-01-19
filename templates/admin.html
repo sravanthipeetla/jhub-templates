@@ -851,7 +851,7 @@ body.loading {
                     
                     <div id="learnerSearchCont" class="stop-visible">
                         <div class="search-container learner-search">
-                            <input type="search" placeholder="Search Learner or Course Name..." id="learnersSearch" class="search-input">
+                            <input type="search" placeholder="Search Learner or Course Name" id="learnersSearch" class="search-input">
                             <span class="searchIcon"></span>
                         </div>
                     </div>
@@ -940,7 +940,7 @@ body.loading {
                         <p>Course Name</p>
                         <input type="text" placeholder="Enter course name" id="courseNameText">
                     </div>
-                    <span class="course-name-warn" id="courseNameWarn">* Course name should not contain spaces</span>
+                    <span class="course-name-warn" id="courseNameWarn">* course name should not contain spaces</span>
                     <div class="choose-trainer-name">
                         <div class="choose-trainer-arrange">
                             <p>Choose Trainer</p>
@@ -1018,7 +1018,7 @@ body.loading {
                         </div> 
                         <input type="text" placeholder="Enter user name" id="trainerUsername">
                     </div>
-                    <span class="course-name-warn" id="trainerNameWarn">* Trainer name should not contain spaces</span>
+                    <span class="course-name-warn" id="trainerNameWarn">* user name should not contain spaces</span>
             </div>
                 <div class="add-course-model-bottom">
                     <button id="addTrainerBtn" class="add-button">Add</button>
@@ -1099,7 +1099,7 @@ body.loading {
                             </div> 
                             <input type="text" placeholder="Enter user ID" id="singleLearnerName">
                         </div>
-                        <span class="course-name-warn" id="singleLearnerNameWarn">* Learner name should not contain spaces</span>
+                        <span class="course-name-warn" id="singleLearnerNameWarn">* user name should not contain spaces</span>
                     </div>
                     <div id="multipleLearners" class="stop-visible">
                     <div class="add-learner">
@@ -1416,9 +1416,14 @@ $('#addTrainerBtn').click(async () =>{
 
 $('#addLearnerCourseBtn').click(async ()=>{
     if (presentUser === 'singleUser'){
-        if($('#singleLearnerName').val() === ''){
+        if($('#singleLearnerName').val().includes(' ')){
             $('#alertMsgCont').show();
-            $('#alertMsg').text('Please enter valid username');
+            $('#alertMsg').text('Avoid spaces in username');
+            $('#addLearnerModal').hide();
+        }
+        else if($('#singleLearnerName').val() === ''){
+            $('#alertMsgCont').show();
+            $('#alertMsg').text('Enter valid username');
             $('#addLearnerModal').hide();
         }
         else if( $('#singleLearnerName').val().length > 0){
