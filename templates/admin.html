@@ -1786,7 +1786,7 @@ function addAndAppendCourse(course) {
     };
     deleteIconCont.classList.add('delete-icon');
     let deleteIconI = document.createElement('img');
-    deleteIconI.src = 'https://i.postimg.cc/prKj8HZB/delete.png';
+    deleteIconI.src = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
     deleteIconCont.appendChild(deleteIconI);
     courseCont.appendChild(deleteIconCont);
 };
@@ -1939,13 +1939,13 @@ function addAndAppendTrainer(trainer) {
            };
            trainerCourseCardDelete.classList.add('delete-icon');
            let trainerCourseCardDeleteImg = document.createElement('img');
-           trainerCourseCardDeleteImg.src='https://i.postimg.cc/prKj8HZB/delete.png';
+           trainerCourseCardDeleteImg.src='https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
            trainerCourseCardDelete.appendChild(trainerCourseCardDeleteImg);
         };
     };
     eyeIconCont.classList.add('eye-icon');
     let eyeIconI = document.createElement('img');
-    eyeIconI.src = 'https://i.postimg.cc/KzLzhpXT/eye.png';
+    eyeIconI.src = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_eye.png';
     eyeIconCont.appendChild(eyeIconI);
     trainerCont.appendChild(eyeIconCont);
 };
@@ -2094,12 +2094,12 @@ function addAndAppendLearner(learner){
             learnerCourseCard.appendChild(learnerCourseCardDelete);
             learnerCourseCardDelete.classList.add('delete-icon');
             let learnerCourseCardDeleteImg = document.createElement('img');
-            learnerCourseCardDeleteImg.src='https://i.postimg.cc/prKj8HZB/delete.png';
+            learnerCourseCardDeleteImg.src='https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
             learnerCourseCardDelete.appendChild(learnerCourseCardDeleteImg);
          };
     }
     learnerEye.appendChild(learnerEyeImg);
-    learnerEyeImg.src = "https://i.postimg.cc/KzLzhpXT/eye.png";
+    learnerEyeImg.src = "https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_eye.png";
     learnerRow.appendChild(learnerEye);
 
     let learnerDelete = document.createElement('td');
@@ -2110,7 +2110,7 @@ function addAndAppendLearner(learner){
         $('#removeLearnerCourseModal').show();
         $('#removeLearnerModalItemText').text(`Remove ${Object.keys(learner)[0]} from all courses?`);
     }
-    learnerDeleteImg.src = 'https://i.postimg.cc/prKj8HZB/delete.png';
+    learnerDeleteImg.src = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
     learnerDeleteImg.classList.add('learner-all-course-remove');
     learnerDelete.appendChild(learnerDeleteImg);
     learnerRow.appendChild(learnerDelete);
