@@ -6,14 +6,6 @@
 *{
     box-sizing: border-box;
 }
-:root {
-    --font16:1.6rem;
-    --font14:1.4rem;
-    --font12:1.2rem;
-    --font21:2.1rem;
-    --font13:1.3rem;
-    --font25:2.5rem;
-  }
 
 .fs-16{
     font-size: 1.6rem;
@@ -216,7 +208,6 @@ body {
 .learner-count-title{
     color:#999;
     font-weight: 400;
-    font-size: var(--font12);
 }
 .learner-count{
     font-weight: 500;
@@ -396,7 +387,7 @@ th{
     padding-bottom: 0.2rem;
 }
 .delete-course-model-top-first span{
-    font-size: var(--font21);
+    font-size: 2.2rem;
     color: #F7545D;
     font-weight: 400;
     background: #FDCED1;
@@ -431,7 +422,7 @@ th{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: var(--font13);
+    font-size: 1.3rem;
     text-align: center;
     color: #FFFFFF;
     height:2.8rem;
@@ -440,18 +431,18 @@ th{
 }
 
 .cancel-button{
-background: #FFFFFF;
-border: 0.1rem solid #5FBEF0;
-border-radius:  1.4rem;
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: var(--font13);
-color: #5FBEF0;
-height:2.8rem;
-width: 8rem;
-text-align: center;
-cursor: pointer;
+    background: #FFFFFF;
+    border: 0.1rem solid #5FBEF0;
+    border-radius:  1.4rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: #5FBEF0;
+    height:2.8rem;
+    width: 8rem;
+    text-align: center;
+    cursor: pointer;
 }
 
 .add-course-model-height,.add-learner-model-height{
@@ -474,7 +465,6 @@ cursor: pointer;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: var(--font12);
     color: #263238;
 }
 .add-course-model-top-first h1,.add-learner-model-top-first h1{
@@ -484,7 +474,7 @@ cursor: pointer;
     color: #5FBEF0;
 }
 .add-course-model-top-first span,.add-learner-model-top-first span{
-    font-size: var(--font25);
+    font-size: 2.5rem;
     color: #5FBEF0;
     font-weight: 400;
     background: #E8F6FD;
@@ -513,7 +503,6 @@ cursor: pointer;
 .course-name-warn{
     color: #c51306;
     padding-left:15rem;
-    font-size: var(--font12);
     display: none;
 }
 .add-course-name input,.choose-trainer-name select,.add-learner input{
@@ -521,7 +510,7 @@ cursor: pointer;
     height:3rem;
     border:1px solid #5FBEF0;
     padding: 0rem 1.6rem;
-    font-size: var(--font12);
+    /* font-size: var(--font12); */
     font-weight: 400;
     width:28rem;
     color: #263238;;
@@ -529,7 +518,6 @@ cursor: pointer;
     background-color: #fff;
 }
 .add-course-name input::placeholder{
-    font-size: var(--font12);
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
@@ -556,14 +544,13 @@ cursor: pointer;
     margin-top: 0.5rem;
 }
 .choose-trainer-arrange span{
-   
-font-family: 'Gothic A1';
-font-style: normal;
-font-weight: 400;
-font-size: var(--font12);
-color: #A6A6A6;
-margin-top: -0.8rem;
-width:12.5rem;
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 400;
+    font-size: var(--font12);
+    color: #A6A6A6;
+    margin-top: -0.8rem;
+    width:12.5rem;
 }
 .add-course-model-bottom{
     text-align: center;
@@ -601,7 +588,6 @@ width:12.5rem;
     font-weight: 400;
     text-align: center;
     color: #263238;
-
 }
 .add-success-model-bottom{
     text-align: center;
@@ -617,7 +603,7 @@ width:12.5rem;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: var(--font13);
+    font-size: 1.3rem;
     text-align: center;
     color: #FFFFFF;
     height:2.8rem;
@@ -660,7 +646,7 @@ color: #006BB6;
     align-items: center;
 }
 #deleteTrainerCancel{
-    font-size: var(--font25);
+    font-size: 2.5rem;
     text-align: center;
     color: #006BB6;
     font-weight: 400;
@@ -694,7 +680,7 @@ color: #006BB6;
 }
 
 .learner-inactive{
-    font-size: var(--font13);
+    font-size: 1.3rem;
     border-radius: 1.4rem;
     padding: 0.5rem 3.2rem;
     background: #FFFFFF;
@@ -786,7 +772,6 @@ body.loading {
     min-width:30%;
     height:4rem;
     z-index: 1;
-    /* font-size: var(--font14); */
   }
   #alertMsgCont{
     display: none;
@@ -797,7 +782,7 @@ body.loading {
     color: #c51306;
     font-weight: bold;
     float: right;
-    font-size: var(--font21);
+    font-size: 2.2rem;
     cursor: pointer;
     transition: 0.3s;
   }
@@ -937,16 +922,16 @@ body.loading {
                 </div>
                     <div class="add-course-name">
                         <p class="fs-14">Course Name</p>
-                        <input type="text" placeholder="Enter course name" id="courseNameText">
+                        <input type="text" placeholder="Enter course name" id="courseNameText" class="fs-12">
                     </div>
-                    <span class="course-name-warn" id="courseNameWarn">* course name should not contain spaces</span>
+                    <span class="course-name-warn fs-12" id="courseNameWarn">* course name should not contain spaces</span>
                     <div class="choose-trainer-name">
                         <div class="choose-trainer-arrange">
                             <p class="fs-14">Choose Trainer</p>
-                            <span>Existing Trainer</span>
+                            <span class="fs-12">Existing Trainer</span>
                         </div> 
-                        <select placeholder="Enter course name" id="chooseTrainerSelect">
-                            <option default  value="" class="choose-option">Choose trainer</option>
+                        <select placeholder="Enter course name" id="chooseTrainerSelect" class="fs-12">
+                            <option default  value="" class="choose-option fs-12">Choose trainer</option>
                         </select>
                     </div>
             </div>
@@ -1009,15 +994,14 @@ body.loading {
                         <span> &times;</span>
                     </div>
                 </div>
-                    <!-- <p>* course name should not contain spaces</p> -->
                     <div class="add-course-name">
                         <div class="choose-trainer-arrange">
                             <p class="fs-14">User Name</p>
-                            <span>New trainer</span>
+                            <span class="fs-12">New trainer</span>
                         </div> 
-                        <input type="text" placeholder="Enter user name" id="trainerUsername">
+                        <input type="text" placeholder="Enter user name" id="trainerUsername" class="fs-12">
                     </div>
-                    <span class="course-name-warn" id="trainerNameWarn">* user name should not contain spaces</span>
+                    <span class="course-name-warn fs-12" id="trainerNameWarn">* user name should not contain spaces</span>
             </div>
                 <div class="add-course-model-bottom">
                     <button id="addTrainerBtn" class="add-button">Add</button>
@@ -1056,10 +1040,10 @@ body.loading {
                         <div class="add-learner">
                             <div class="choose-trainer-arrange">
                                 <p class="fs-14">Upload CSV file</p>
-                                <span>Multiple learners</span>
+                                <span class="fs-12">Multiple learners</span>
                             </div> 
                             <div class="stop-visible">
-                            <input type="file" id="mapUploadBtn"  accept=".csv"/>
+                            <input type="file" id="mapUploadBtn" accept=".csv"/>
                             </div>
                             <label for="mapUploadBtn" class="upload-btn"><img src="https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_upload.png" alt=""></label>
                             <span id="mapFileChosen">No file chosen</span>
@@ -1067,7 +1051,7 @@ body.loading {
                     </div>
                     <div class="choose-trainer-name">
                         <p class="choose-course-name fs-14">Choose Course</p>
-                        <select id="mapLearnerCourseSelect">
+                        <select id="mapLearnerCourseSelect" class="fs-12">
                         </select>
                     </div>
             </div>
@@ -1094,17 +1078,17 @@ body.loading {
                         <div class="add-learner">
                             <div class="choose-trainer-arrange">
                                 <p class="fs-14">User ID</p>
-                                <span>Single learner</span>
+                                <span class="fs-12">Single learner</span>
                             </div> 
-                            <input type="text" placeholder="Enter user ID" id="singleLearnerName">
+                            <input type="text" placeholder="Enter user ID" class="fs-12" id="singleLearnerName">
                         </div>
-                        <span class="course-name-warn" id="singleLearnerNameWarn">* user name should not contain spaces</span>
+                        <span class="course-name-warn fs-12" id="singleLearnerNameWarn">* user name should not contain spaces</span>
                     </div>
                     <div id="multipleLearners" class="stop-visible">
                     <div class="add-learner">
                             <div class="choose-trainer-arrange">
                                 <p class="fs-14">Upload CSV file</p>
-                                <span>Multiple learners</span>
+                                <span class="fs-12">Multiple learners</span>
                             </div> 
                             <div class="stop-visible">
                             <input type="file" id="addUploadBtn" accept=".csv" />
@@ -1115,7 +1099,7 @@ body.loading {
                     </div>
                     <div class="choose-trainer-name">
                         <p class="choose-course-name fs-14">Choose Course</p>
-                        <select id="addLearnerCourseSelect">
+                        <select id="addLearnerCourseSelect" class="fs-12">
                         </select>
                     </div>
                 </div>
@@ -1757,7 +1741,7 @@ function addAndAppendCourse(course) {
     arrangeRow.appendChild(arrangeCol);
 
     let countTitle = document.createElement('span');
-    countTitle.classList.add('learner-count-title');
+    countTitle.classList.add('learner-count-title','fs-12');
     countTitle.textContent = 'Learner count';
     arrangeCol.appendChild(countTitle);
     let count = document.createElement('span');
@@ -1770,7 +1754,7 @@ function addAndAppendCourse(course) {
     arrangeRow.appendChild(arrangeColTrain);
 
     let trainTitle = document.createElement('span');
-    trainTitle.classList.add('learner-count-title');
+    trainTitle.classList.add('learner-count-title','fs-12');
     trainTitle.textContent = 'Trainer name';
     arrangeColTrain.appendChild(trainTitle);
     let trainName = document.createElement('span');
@@ -1866,7 +1850,7 @@ function addAndAppendTrainer(trainer) {
     arrangeRow.appendChild(arrangeCol);
 
     let countTitle = document.createElement('span');
-    countTitle.classList.add('learner-count-title');
+    countTitle.classList.add('learner-count-title','fs-12');
     countTitle.textContent = 'Course count';
     arrangeCol.appendChild(countTitle);
     let count = document.createElement('span');
@@ -1879,7 +1863,7 @@ function addAndAppendTrainer(trainer) {
     arrangeRow.appendChild(arrangeColTrain);
 
     let statusTitle = document.createElement('span');
-    statusTitle.classList.add('learner-count-title');
+    statusTitle.classList.add('learner-count-title','fs-12');
     statusTitle.textContent = 'Status';
     arrangeColTrain.appendChild(statusTitle);
     let statusName = document.createElement('span');
@@ -1920,7 +1904,7 @@ function addAndAppendTrainer(trainer) {
            let trainerCourseLearnerCountTitle = document.createElement('span');
            trainerCourseArrangeCol.appendChild(trainerCourseLearnerCountTitle);
            trainerCourseLearnerCountTitle.textContent = 'Learner Count';
-           trainerCourseLearnerCountTitle.classList.add('learner-count-title');
+           trainerCourseLearnerCountTitle.classList.add('learner-count-title','fs-12');
 
            let trainerCourseLearnerCount = document.createElement('span');
            trainerCourseArrangeCol.appendChild(trainerCourseLearnerCount);
@@ -2382,7 +2366,7 @@ window.onload = async () =>{
         const newOption = document.createElement('option');
         newOption.text = option;
         newOption.value = option;
-        newOption.classList.add('choose-option');
+        newOption.classList.add('choose-option','fs-12');
         chooseTrainerSelect.add(newOption);
     };
 
@@ -2400,7 +2384,7 @@ window.onload = async () =>{
         const newOption = document.createElement('option');
         newOption.text = option;
         newOption.value = option;
-        newOption.classList.add('choose-option');
+        newOption.classList.add('choose-option','fs-12');
         mapLearnerCourseSelect.add(newOption);
     }
    
@@ -2415,7 +2399,7 @@ window.onload = async () =>{
         const newOption = document.createElement('option');
         newOption.text = option;
         newOption.value = option;
-        newOption.classList.add('choose-option');
+        newOption.classList.add('choose-option','fs-12');
         addLearnerCourseSelect.add(newOption);
     }
 };
