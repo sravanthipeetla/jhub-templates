@@ -14,24 +14,6 @@
     --font13:1.3rem;
     --font25:2.5rem;
   }
-.fs-16{
-    font-size: 1.6rem;
-}
-.fs-14{
-    font-size: 1.4rem;
-}
-.fs-12{
-    font-size: 1.2rem;
-}
-.fs-13{
-    font-size: 1.3rem;
-}
-.fs-22{
-    font-size: 2.2rem;
-}
-.fs-25{
-    font-size: 2.5rem;
-}
 
 body {
     margin: 0px;
@@ -59,6 +41,7 @@ body {
     text-align: center;
     padding: 1vw 4vw;
     text-decoration: none;
+    font-size: var(--font16);
     border-bottom: 0.3vw solid #DBDBDB;
     overflow: auto;
     font-weight:500;
@@ -87,6 +70,7 @@ body {
     font-family: 'Poppins';
     color:#4D4D4D;
     font-weight:500;
+    font-size: var(--font16);
     margin-bottom: -0.3rem;
 }
 
@@ -96,6 +80,7 @@ body {
     width:19rem;
     border:0.1rem solid #5FBEF0;
     padding: 0rem 1.6rem;
+    font-size: var(--font16);
     font-weight: 0;
     color: black;
     outline: none;
@@ -106,6 +91,7 @@ body {
     outline: none;
     width:15rem;
     margin-left:1.6rem;
+    font-size: var(--font14);
     font-weight: 400;
     font-style: normal;
     color: black;
@@ -121,7 +107,7 @@ body {
     width: 4rem;
     padding: 0;
     margin: 0;
-    border: 0.1rem solid transparent;
+    border: 1px solid transparent;
     border-radius: inherit;
     background: transparent url("https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_search.png") no-repeat center;
     opacity: 0.7;
@@ -149,6 +135,7 @@ body {
     border-radius: 2.1rem;
     color: white;
     font-weight: 500;
+    font-size: var(--font16);
     height:4rem;
     display: inline-block;
     padding: 0.5rem 1.6rem;
@@ -164,6 +151,7 @@ body {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
+    font-size: var(--font16);
     text-align: center;
     padding: 0.5rem 1.6rem;
     color: #5FBEF0;
@@ -211,13 +199,16 @@ body {
 .course-title,.trainer-title{
     color:#006BB6;
     font-weight: 600;
+    font-size: var(--font16);
 }
 .learner-count-title{
     color:#999;
     font-weight: 400;
+    font-size: var(--font12);
 }
 .learner-count{
     font-weight: 500;
+    font-size: var(--font14);
 }
 .arrange-row{
     display: flex;
@@ -284,9 +275,11 @@ tr th:nth-child(2){
 }
 tbody tr:nth-child(even) {
     background-color:#FAFDFF;
+    font-size: var(--font16);
   }
 tbody tr:nth-child(odd) {
     background-color: #F1F9FE;;
+    font-size: var(--font16);
   }
 
   tr td:nth-child(2){
@@ -298,6 +291,7 @@ th{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
+    font-size: var(--font16);
     color:#006BB6;
     padding: 0.8rem 2.5rem;
 }
@@ -834,17 +828,17 @@ body.loading {
     </div>
     
     <div class="admin-container">
-        <div class="admin-navbar fs-16">
+        <div class="admin-navbar">
                 <a class="course-nav active" id="courseNav">Courses</a>
                 <a class="instructor-nav" id="trainerNav">Trainers</a>
                 <a class="learner-nav" id="learnerNav">Learners</a>
         </div>
-        <div class="description-bar fs-16">
+        <div class="description-bar">
                 <p class="description" id="description">You can manage Course details here.</p>
                 <div id="right-description-bar" >
                     <div id="courseSearchCont">
                         <div  class="search-container">
-                            <input type="search" placeholder="Search..." id="coursesSearch" class="search-input fs-14">
+                            <input type="search" placeholder="Search..." id="coursesSearch" class="search-input">
                             <span class="searchIcon"></span>
                         </div>
                     </div>
@@ -872,17 +866,17 @@ body.loading {
                     <button class="add-btn" id="addBtn">Add Course</button>
                 </div>
         </div>    
-        <div id="courseDetails fs-16">
+        <div id="courseDetails">
             <div class="loader" id="coursesLoader"></div>
             <div class="courseDetails" id="courseCardCont">
             </div>
         </div>
-        <div id="trainerDetails fs-16">
+        <div id="trainerDetails">
             <div class="loader" id="trainersLoader"></div>
             <div class="trainerDetails" id="trainerCardCont">
             </div>
         </div>
-        <div id="learnerDetails fs-16">     
+        <div id="learnerDetails">     
             <table id="learner-table">
                 <tr id="learner-thead">
                     <th>Learners Name</th>
@@ -1751,7 +1745,7 @@ function addAndAppendCourse(course) {
     courseCont.appendChild(courseLeft);
 
     let courseTitle = document.createElement('p');
-    courseTitle.classList.add('course-title','fs-16');
+    courseTitle.classList.add('course-title');
     courseLeft.appendChild(courseTitle);
     courseTitle.textContent = course.courseName;
 
@@ -1764,26 +1758,26 @@ function addAndAppendCourse(course) {
     arrangeRow.appendChild(arrangeCol);
 
     let countTitle = document.createElement('span');
-    countTitle.classList.add('learner-count-title','fs-12');
+    countTitle.classList.add('learner-count-title');
     countTitle.textContent = 'Learner count';
     arrangeCol.appendChild(countTitle);
     let count = document.createElement('span');
     arrangeCol.appendChild(count);
     count.textContent = course.studentsCount;
-    count.classList.add('learner-count','fs-14');
+    count.classList.add('learner-count');
 
     let arrangeColTrain = document.createElement('div');
     arrangeColTrain.classList.add('arrange-col');
     arrangeRow.appendChild(arrangeColTrain);
 
     let trainTitle = document.createElement('span');
-    trainTitle.classList.add('learner-count-title','fs-12');
+    trainTitle.classList.add('learner-count-title');
     trainTitle.textContent = 'Trainer name';
     arrangeColTrain.appendChild(trainTitle);
     let trainName = document.createElement('span');
     arrangeColTrain.appendChild(trainName);
     trainName.textContent = course.trainer;
-    trainName.classList.add('learner-count','fs-14');
+    trainName.classList.add('learner-count');
 
     let deleteIconCont = document.createElement('div');
     deleteIconCont.onclick = function(){
@@ -1860,7 +1854,7 @@ function addAndAppendTrainer(trainer) {
     trainerCont.appendChild(trainerLeft);
 
     let trainerTitle = document.createElement('p');
-    trainerTitle.classList.add('trainer-title','fs-16');
+    trainerTitle.classList.add('trainer-title');
     trainerLeft.appendChild(trainerTitle);
     trainerTitle.textContent = trainer.name;
 
@@ -1873,26 +1867,26 @@ function addAndAppendTrainer(trainer) {
     arrangeRow.appendChild(arrangeCol);
 
     let countTitle = document.createElement('span');
-    countTitle.classList.add('learner-count-title','fs-12');
+    countTitle.classList.add('learner-count-title');
     countTitle.textContent = 'Course count';
     arrangeCol.appendChild(countTitle);
     let count = document.createElement('span');
     arrangeCol.appendChild(count);
     count.textContent = trainer.course.length;
-    count.classList.add('learner-count','fs-14');
+    count.classList.add('learner-count');
 
     let arrangeColTrain = document.createElement('div');
     arrangeColTrain.classList.add('arrange-col');
     arrangeRow.appendChild(arrangeColTrain);
 
     let statusTitle = document.createElement('span');
-    statusTitle.classList.add('learner-count-title','fs-12');
+    statusTitle.classList.add('learner-count-title');
     statusTitle.textContent = 'Status';
     arrangeColTrain.appendChild(statusTitle);
     let statusName = document.createElement('span');
     arrangeColTrain.appendChild(statusName);
     statusName.textContent = trainer.status;
-    statusName.classList.add('learner-count','fs-14');
+    statusName.classList.add('learner-count');
 
     let eyeIconCont = document.createElement('div');
     eyeIconCont.onclick = function(){
@@ -1913,7 +1907,7 @@ function addAndAppendTrainer(trainer) {
 
            let trainerCourseTitle = document.createElement('p');
            trainerCourseTitle.textContent = Object.keys(each)[0];
-           trainerCourseTitle.classList.add('course-title','fs-16');
+           trainerCourseTitle.classList.add('course-title');
            trainerCourseCardLeft.appendChild(trainerCourseTitle);
 
            let trainerCourseArrangeRow = document.createElement('div');
@@ -1927,12 +1921,12 @@ function addAndAppendTrainer(trainer) {
            let trainerCourseLearnerCountTitle = document.createElement('span');
            trainerCourseArrangeCol.appendChild(trainerCourseLearnerCountTitle);
            trainerCourseLearnerCountTitle.textContent = 'Learner Count';
-           trainerCourseLearnerCountTitle.classList.add('learner-count-title','fs-12');
+           trainerCourseLearnerCountTitle.classList.add('learner-count-title');
 
            let trainerCourseLearnerCount = document.createElement('span');
            trainerCourseArrangeCol.appendChild(trainerCourseLearnerCount);
            trainerCourseLearnerCount.textContent =Object.values(each)[0] ;
-           trainerCourseLearnerCount.classList.add('learner-count','fs-14');
+           trainerCourseLearnerCount.classList.add('learner-count');
 
            let trainerCourseCardDelete = document.createElement('div');
            trainerCourseCard.appendChild(trainerCourseCardDelete);
