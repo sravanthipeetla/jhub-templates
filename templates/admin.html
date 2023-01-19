@@ -1587,8 +1587,6 @@ $('#addLearnerCourseBtn').click(async ()=>{
 
 async function  removeLearnerFromAllCourse (learnerName,coursesList){
     if(coursesList.length > 0){
-        console.log('name',learnerName);
-        console.log('courseList',coursesList);
         let k=0;
          for (let course of coursesList){
             const removeLearnerPromise = await fetch(`${ngshare_url}student/${course}/${learnerName}`, {
@@ -1603,6 +1601,7 @@ async function  removeLearnerFromAllCourse (learnerName,coursesList){
             k+=1;
         }
         else {
+            $('#removeLearnerCourseModal').hide();
             $('#alertMsgCont').show();
             $('#alertMsg').text(response.message);
         };
@@ -1610,10 +1609,14 @@ async function  removeLearnerFromAllCourse (learnerName,coursesList){
 
          }
          if (k === coursesList.length){
-            alert('Removed learner from all courses');
+            $('#removeLearnerCourseModal').hide();
+            $('#deleteSuccessModal').show();
+            $('#deletedItemMsg').text('Removed successfully');
          }
          else{
-            alert('Please check learner not removed from some courses');
+            $('#removeLearnerCourseModal').hide();
+            $('#alertMsgCont').show();
+            $('#alertMsg').text('Please check learner not removed from some courses');
          }
     }
     else{
