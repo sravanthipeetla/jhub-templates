@@ -394,7 +394,6 @@ th{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: var(--font16);
     color: #F63C46;
     padding-bottom: 0.2rem;
 }
@@ -410,7 +409,6 @@ th{
     padding: 0rem 0.4rem;
 }
 .delete-title{
-    font-size: var(--font16);
     text-align: center;
     font-family: 'Gothic A1';
     font-style: Medium;
@@ -486,7 +484,6 @@ cursor: pointer;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: var(--font16);
     color: #5FBEF0;
 }
 .add-course-model-top-first span,.add-learner-model-top-first span{
@@ -608,7 +605,6 @@ width:12.5rem;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: var(--font16);
     text-align: center;
     color: #263238;
 
@@ -660,7 +656,6 @@ width:12.5rem;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: var(--font16);
     color: #999999;
 }
 .delete-trainer-name{
@@ -829,7 +824,7 @@ body.loading {
     window.base_url = "{{ base_url|safe }}"
   </script>
   <script src={{ static_url("js/admin.js") }}></script>
-<div>
+<div class="fs-16">
     <div id="alertMsgCont">
         <div class="alert" >
             <p id="alertMsg"></p>
@@ -837,7 +832,7 @@ body.loading {
         </div>
     </div>
     
-    <div class="admin-container fs-16">
+    <div class="admin-container">
         <div class="admin-navbar">
                 <a class="course-nav active" id="courseNav">Courses</a>
                 <a class="instructor-nav" id="trainerNav">Trainers</a>
