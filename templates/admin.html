@@ -1617,7 +1617,9 @@ async function  removeLearnerFromAllCourse (learnerName,coursesList){
          }
     }
     else{
-        alert('Learner not enrolled in any course');
+        $('#removeLearnerCourseModal').hide();
+        $('#alertMsgCont').show();
+        $('#alertMsg').text('Learner not enrolled in any course');
     }
     
    
