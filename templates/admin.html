@@ -107,7 +107,6 @@ body {
     outline: none;
     width:15rem;
     margin-left:1.6rem;
-    font-size: var(--font14);
     font-weight: 400;
     font-style: normal;
     color: black;
@@ -221,7 +220,6 @@ body {
 }
 .learner-count{
     font-weight: 500;
-    font-size: var(--font14);
 }
 .arrange-row{
     display: flex;
@@ -423,7 +421,6 @@ th{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: var(--font14);
     padding: 0.8rem;
 }
 
@@ -510,7 +507,6 @@ cursor: pointer;
     font-family: 'Gothic A1';
     font-style: normal;
     font-weight: 400;
-    font-size: var(--font14);
     color: #000000;
     width:12.5rem;
 }
@@ -548,7 +544,6 @@ cursor: pointer;
     font-family: 'Gothic A1';
     font-style: normal;
     font-weight: 400;
-    font-size: var(--font14);
     color: #000000;
     width:12.5rem;
     }
@@ -556,7 +551,6 @@ cursor: pointer;
     font-family: 'Gothic A1';
     font-style: normal;
     font-weight: 400;
-    font-size: var(--font14);
     color: #000000;
     width:12.5rem;
     margin-top: 0.5rem;
@@ -792,7 +786,7 @@ body.loading {
     min-width:30%;
     height:4rem;
     z-index: 1;
-    font-size: var(--font14);
+    /* font-size: var(--font14); */
   }
   #alertMsgCont{
     display: none;
@@ -826,7 +820,7 @@ body.loading {
   <script src={{ static_url("js/admin.js") }}></script>
 <div class="fs-16">
     <div id="alertMsgCont">
-        <div class="alert" >
+        <div class="alert fs-14" >
             <p id="alertMsg"></p>
             <span class="alert-closebtn" id="alertMsgClose">&times;</span>
         </div>
@@ -843,20 +837,20 @@ body.loading {
                 <div id="right-description-bar" >
                     <div id="courseSearchCont">
                         <div  class="search-container">
-                            <input type="search" placeholder="Search..." id="coursesSearch" class="search-input">
+                            <input type="search" placeholder="Search..." id="coursesSearch" class="search-input fs-14">
                             <span class="searchIcon"></span>
                         </div>
                     </div>
                     <div id="trainerSearchCont" class="stop-visible">
                         <div class="search-container">
-                            <input type="search" placeholder="Search..." id="trainersSearch" class="search-input">
+                            <input type="search" placeholder="Search..." id="trainersSearch" class="search-input fs-14">
                             <span class="searchIcon"></span>
                         </div>
                     </div>
                     
                     <div id="learnerSearchCont" class="stop-visible">
                         <div class="search-container learner-search">
-                            <input type="search" placeholder="Search Learner or Course Name" id="learnersSearch" class="search-input">
+                            <input type="search" placeholder="Search Learner or Course Name" id="learnersSearch" class="search-input fs-14">
                             <span class="searchIcon"></span>
                         </div>
                     </div>
@@ -908,7 +902,7 @@ body.loading {
                 <div class="delete-course-model-bottom">
                     <button id="deleteCourseBtn" class="delete-button">Delete</button>
                     <button id="deleteCancelBtn" class="cancel-button">Cancel</button>
-                    <p id="deleteCourseCaution">once deleted can't be restore again</p>  
+                    <p id="deleteCourseCaution" class="fs-14">once deleted can't be restore again</p>  
                 </div>  
         </div>
        
@@ -927,7 +921,7 @@ body.loading {
                 <div class="delete-course-model-bottom">
                     <button id="removeLearnerCourseBtn" class="delete-button">Remove</button>
                     <button id="removeLearnerCourseCancel" class="cancel-button">Cancel</button>
-                    <p id="removeLearnerCourseCaution">once removed can't be restore again</p>  
+                    <p id="removeLearnerCourseCaution" class="fs-14">once removed can't be restore again</p>  
                 </div>  
         </div>
        
@@ -942,13 +936,13 @@ body.loading {
                     </div>
                 </div>
                     <div class="add-course-name">
-                        <p>Course Name</p>
+                        <p class="fs-14">Course Name</p>
                         <input type="text" placeholder="Enter course name" id="courseNameText">
                     </div>
                     <span class="course-name-warn" id="courseNameWarn">* course name should not contain spaces</span>
                     <div class="choose-trainer-name">
                         <div class="choose-trainer-arrange">
-                            <p>Choose Trainer</p>
+                            <p class="fs-14">Choose Trainer</p>
                             <span>Existing Trainer</span>
                         </div> 
                         <select placeholder="Enter course name" id="chooseTrainerSelect">
@@ -1018,7 +1012,7 @@ body.loading {
                     <!-- <p>* course name should not contain spaces</p> -->
                     <div class="add-course-name">
                         <div class="choose-trainer-arrange">
-                            <p>User Name</p>
+                            <p class="fs-14">User Name</p>
                             <span>New trainer</span>
                         </div> 
                         <input type="text" placeholder="Enter user name" id="trainerUsername">
@@ -1061,7 +1055,7 @@ body.loading {
                     <div>
                         <div class="add-learner">
                             <div class="choose-trainer-arrange">
-                                <p>Upload CSV file</p>
+                                <p class="fs-14">Upload CSV file</p>
                                 <span>Multiple learners</span>
                             </div> 
                             <div class="stop-visible">
@@ -1072,7 +1066,7 @@ body.loading {
                         </div>
                     </div>
                     <div class="choose-trainer-name">
-                        <p class="choose-course-name">Choose Course</p>
+                        <p class="choose-course-name fs-14">Choose Course</p>
                         <select id="mapLearnerCourseSelect">
                         </select>
                     </div>
@@ -1099,7 +1093,7 @@ body.loading {
                     <div id="singleLearner">
                         <div class="add-learner">
                             <div class="choose-trainer-arrange">
-                                <p>User ID</p>
+                                <p class="fs-14">User ID</p>
                                 <span>Single learner</span>
                             </div> 
                             <input type="text" placeholder="Enter user ID" id="singleLearnerName">
@@ -1109,7 +1103,7 @@ body.loading {
                     <div id="multipleLearners" class="stop-visible">
                     <div class="add-learner">
                             <div class="choose-trainer-arrange">
-                                <p>Upload CSV file</p>
+                                <p class="fs-14">Upload CSV file</p>
                                 <span>Multiple learners</span>
                             </div> 
                             <div class="stop-visible">
@@ -1120,7 +1114,7 @@ body.loading {
                     </div>
                     </div>
                     <div class="choose-trainer-name">
-                        <p class="choose-course-name">Choose Course</p>
+                        <p class="choose-course-name fs-14">Choose Course</p>
                         <select id="addLearnerCourseSelect">
                         </select>
                     </div>
@@ -1769,7 +1763,7 @@ function addAndAppendCourse(course) {
     let count = document.createElement('span');
     arrangeCol.appendChild(count);
     count.textContent = course.studentsCount;
-    count.classList.add('learner-count');
+    count.classList.add('learner-count','fs-14');
 
     let arrangeColTrain = document.createElement('div');
     arrangeColTrain.classList.add('arrange-col');
@@ -1782,7 +1776,7 @@ function addAndAppendCourse(course) {
     let trainName = document.createElement('span');
     arrangeColTrain.appendChild(trainName);
     trainName.textContent = course.trainer;
-    trainName.classList.add('learner-count');
+    trainName.classList.add('learner-count','fs-14');
 
     let deleteIconCont = document.createElement('div');
     deleteIconCont.onclick = function(){
@@ -1878,7 +1872,7 @@ function addAndAppendTrainer(trainer) {
     let count = document.createElement('span');
     arrangeCol.appendChild(count);
     count.textContent = trainer.course.length;
-    count.classList.add('learner-count');
+    count.classList.add('learner-count','fs-14');
 
     let arrangeColTrain = document.createElement('div');
     arrangeColTrain.classList.add('arrange-col');
@@ -1891,7 +1885,7 @@ function addAndAppendTrainer(trainer) {
     let statusName = document.createElement('span');
     arrangeColTrain.appendChild(statusName);
     statusName.textContent = trainer.status;
-    statusName.classList.add('learner-count');
+    statusName.classList.add('learner-count','fs-14');
 
     let eyeIconCont = document.createElement('div');
     eyeIconCont.onclick = function(){
@@ -1931,7 +1925,7 @@ function addAndAppendTrainer(trainer) {
            let trainerCourseLearnerCount = document.createElement('span');
            trainerCourseArrangeCol.appendChild(trainerCourseLearnerCount);
            trainerCourseLearnerCount.textContent =Object.values(each)[0] ;
-           trainerCourseLearnerCount.classList.add('learner-count');
+           trainerCourseLearnerCount.classList.add('learner-count','fs-14');
 
            let trainerCourseCardDelete = document.createElement('div');
            trainerCourseCard.appendChild(trainerCourseCardDelete);
