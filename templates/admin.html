@@ -1099,6 +1099,7 @@ body.loading {
                             </div> 
                             <input type="text" placeholder="Enter user ID" id="singleLearnerName">
                         </div>
+                        <span class="course-name-warn" id="singleLearnerNameWarn">* course name should not contain spaces</span>
                     </div>
                     <div id="multipleLearners" class="stop-visible">
                     <div class="add-learner">
@@ -1206,6 +1207,15 @@ $('#courseNameText').keyup(function(){
     }
     else{
         $('#courseNameWarn').hide();
+    }
+});
+
+$('#singleLearnerName').keyup(function(){
+    if($('#singleLearnerName').val().includes(" ")){
+        $('#singleLearnerNameWarn').show();
+    }
+    else{
+        $('#singleLearnerNameWarn').hide();
     }
 });
 
