@@ -14,6 +14,13 @@
     --font13:1.3rem;
     --font25:2.5rem;
   }
+.fs-16{
+    font-size: 16px;
+}
+.fs-14{
+    font-size: 14px;
+}
+
 
 body {
     margin: 0px;
@@ -41,7 +48,6 @@ body {
     text-align: center;
     padding: 1vw 4vw;
     text-decoration: none;
-    font-size: var(--font16);
     border-bottom: 0.3vw solid #DBDBDB;
     overflow: auto;
     font-weight:500;
@@ -70,7 +76,7 @@ body {
     font-family: 'Poppins';
     color:#4D4D4D;
     font-weight:500;
-    font-size: var(--font16);
+    /* font-size: var(--font16); */
     margin-bottom: -0.3rem;
 }
 
@@ -80,7 +86,7 @@ body {
     width:19rem;
     border:0.1rem solid #5FBEF0;
     padding: 0rem 1.6rem;
-    font-size: var(--font16);
+    /* font-size: var(--font16); */
     font-weight: 0;
     color: black;
     outline: none;
@@ -91,7 +97,7 @@ body {
     outline: none;
     width:15rem;
     margin-left:1.6rem;
-    font-size: var(--font14);
+    /* font-size: var(--font14); */
     font-weight: 400;
     font-style: normal;
     color: black;
@@ -135,7 +141,7 @@ body {
     border-radius: 2.1rem;
     color: white;
     font-weight: 500;
-    font-size: var(--font16);
+    /* font-size: var(--font16); */
     height:4rem;
     display: inline-block;
     padding: 0.5rem 1.6rem;
@@ -828,17 +834,17 @@ body.loading {
     </div>
     
     <div class="admin-container">
-        <div class="admin-navbar">
+        <div class="admin-navbar fs-16">
                 <a class="course-nav active" id="courseNav">Courses</a>
                 <a class="instructor-nav" id="trainerNav">Trainers</a>
                 <a class="learner-nav" id="learnerNav">Learners</a>
         </div>
-        <div class="description-bar">
+        <div class="description-bar fs-16">
                 <p class="description" id="description">You can manage Course details here.</p>
                 <div id="right-description-bar" >
                     <div id="courseSearchCont">
                         <div  class="search-container">
-                            <input type="search" placeholder="Search..." id="coursesSearch" class="search-input">
+                            <input type="search" placeholder="Search..." id="coursesSearch" class="search-input fs-14">
                             <span class="searchIcon"></span>
                         </div>
                     </div>
