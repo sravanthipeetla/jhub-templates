@@ -846,7 +846,16 @@ body.loading {
     }
 }
 
+@media(max-width:1100px){
+
+    .fs-16{
+        font-size: 1.3rem;
+    }
+
+}
+
 @media(max-width:1200px){
+
     .courseCard{
         width: 47%;
     }
@@ -854,11 +863,11 @@ body.loading {
         width: 31%;
     }
     .fs-16{
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
     .learner-search {
     width: 27rem;
-}
+    }
 
 }
 
@@ -1206,31 +1215,31 @@ const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getE
 navbarLeftList[1].style.display = 'none';
 navbarLeftList[3].style.display = 'none';
 
-let courseCard = document.getElementById('courseCard');
-let deleteIcon = document.getElementById('delete-icon');
-let addLearnerModal = document.getElementById('addLearnerModal');
-let mapLearnerModal = document.getElementById('mapLearnerModal');
-let courseCardCont = document.getElementById('courseCardCont');
-let trainerCardCont = document.getElementById('trainerCardCont');
-let trainerEyeIcon = document.getElementById('trainer-eye-icon');
-let deleteTrainerModal = document.getElementById('deleteTrainerModal');
-let deleteTrainer = document.getElementById('deleteTrainer');
-let modelTitle = document.getElementById('modelTitle');
-let trainerCourseCardCont = document.getElementById('trainerCourseCardCont');
-let chooseLearnerSelect = document.getElementById('chooseLearnerSelect');
-let learnerRowsBody = document.getElementById('learnerRowsBody');
-let actionTitle = document.getElementById('actionTitle');
-let deleteItem = null;
-let deleteCourseName = null;
-let deleteItemId = null;
-let loaderDisplay = document.getElementsByClassName('loader')[0];
+const courseCard = document.getElementById('courseCard');
+const deleteIcon = document.getElementById('delete-icon');
+const addLearnerModal = document.getElementById('addLearnerModal');
+const mapLearnerModal = document.getElementById('mapLearnerModal');
+const courseCardCont = document.getElementById('courseCardCont');
+const trainerCardCont = document.getElementById('trainerCardCont');
+const trainerEyeIcon = document.getElementById('trainer-eye-icon');
+const deleteTrainerModal = document.getElementById('deleteTrainerModal');
+const deleteTrainer = document.getElementById('deleteTrainer');
+const modelTitle = document.getElementById('modelTitle');
+const trainerCourseCardCont = document.getElementById('trainerCourseCardCont');
+const chooseLearnerSelect = document.getElementById('chooseLearnerSelect');
+const learnerRowsBody = document.getElementById('learnerRowsBody');
+const actionTitle = document.getElementById('actionTitle');
 const mapUploadBtn = document.getElementById('mapUploadBtn');
 const addUploadBtn = document.getElementById('addUploadBtn');
 const mapFileChosen = document.getElementById('mapFileChosen');
+const mapLearnerAdd = document.getElementById("mapLearnerAdd");
+const loaderDisplay = document.getElementsByClassName('loader')[0];
+let deleteItem = null;
+let deleteCourseName = null;
+let deleteItemId = null;
 let presentUser = 'singleUser';
 let coursesRemoveLearner = null;
 let coursesRemoveList = null;
-const mapLearnerAdd = document.getElementById("mapLearnerAdd");
 
 mapUploadBtn.addEventListener('change', function() {
     if (this.files[0].name){
@@ -1282,7 +1291,6 @@ mapLearnerAdd.addEventListener("click", async function(e) {
         const hubLearnerGroupFetch = await fetch(`${hub_url}groups/learner`);
         const hubLearnerGroupJson = await hubLearnerGroupFetch.json();
         const hubLearnerGroupList = hubLearnerGroupJson.users;
-        console.log('Start Prrocess');
         e.preventDefault();
         const input = mapUploadBtn.files[0];
         const reader = new FileReader();
@@ -1307,7 +1315,6 @@ mapLearnerAdd.addEventListener("click", async function(e) {
         });
         let checker = (arr, target) => target.every(v => arr.includes(v));
         if(checker(hubLearnerGroupList, learnerArray)){
-            console.log('all learners there');
             const studentData=JSON.stringify(reqArray);
             const selectedCourse = $('#mapLearnerCourseSelect').find(":selected").val();
             const response =await fetch(`${ngshare_url}students/${selectedCourse}?students=${studentData}`, {
@@ -2472,5 +2479,4 @@ window.onload = async () =>{
 };
 
 </script>
-
 {% endblock %}
