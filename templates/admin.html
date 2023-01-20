@@ -2248,13 +2248,10 @@ $('#successAddMore').click(() =>{
         $('#addSuccessModal').hide();
         $('#mapLearnerModal').show();
     }
-    else if ($('#successModelTitle').text() === 'Map Learners' ){
-        $('#addSuccessModal').hide();
-        $('#mapLearnerModal').show();
-    }
     else if ($('#successModelTitle').text() === 'Add Learners' ){
         $('#addSuccessModal').hide();
         $('#addLearnerModal').show();
+        $('#singleLearnerName').val('');
     }
 });
 $('#mapBtn').click (() =>{
