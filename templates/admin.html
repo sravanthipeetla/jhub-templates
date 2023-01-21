@@ -2226,7 +2226,7 @@ getAllDetails().then(async (resp)=>{
     }
     for(let key in learnerCourses){
         for (let det of allDetails){
-            consloe.log('stuList',det.students)
+            console.log('stuList',det.students)
             if(det.students.includes(key)){
                 learnerCourses[key].push(det.courseName);
             }
