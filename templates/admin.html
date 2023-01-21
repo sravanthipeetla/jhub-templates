@@ -1824,14 +1824,14 @@ getAllDetails().then((resp)=>{
     $('#coursesSearch').keyup(()=>{
         courseCardCont.innerHTML='';
         let searchValue=$('#coursesSearch').val();
-        let searchList = courseFetchDetails.filter((course)=>{
+        let searchList = allDetails.filter((course)=>{
             return course.courseName.toLowerCase().includes(searchValue.toLowerCase());
         });
         for (let course of searchList) {
             addAndAppendCourse(course);
         }; 
     });
-    for (let course of courseFetchDetails) {
+    for (let course of allDetails) {
         addAndAppendCourse(course);
     };
 
