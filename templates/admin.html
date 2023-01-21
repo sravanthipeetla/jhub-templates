@@ -1839,10 +1839,10 @@ getAllDetails().then(async (resp)=>{
     };
 
     //Display of trainer tab
-    const hubtrainerGroupFetch = await fetch(`${hub_url}groups/instructor`);
-    const hubtrainerGroupJson = await hubLearnerGroupFetch.json();
-    const hubtrainerGroupList = hubLearnerGroupJson.users;
-    console.log('trainerGroup',hubLearnerGroupList);
+    const hubTrainerGroupFetch = await fetch(`${hub_url}groups/instructor`);
+    const hubTrainerGroupJson = await hubTrainerGroupFetch.json();
+    const hubTrainerGroupList = hubTrainerGroupJson.users;
+    console.log('trainerGroup',hubTrainerGroupList);
 
 });
 
