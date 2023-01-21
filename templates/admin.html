@@ -1234,7 +1234,6 @@ mapLearnerAdd.addEventListener("click", async function(e) {
         const hubLearnerGroupFetch = await fetch(`${hub_url}groups/learner`);
         const hubLearnerGroupJson = await hubLearnerGroupFetch.json();
         const hubLearnerGroupList = hubLearnerGroupJson.users;
-        console.log('Start Prrocess');
         e.preventDefault();
         const input = mapUploadBtn.files[0];
         const reader = new FileReader();
@@ -1819,9 +1818,10 @@ const getAllDetails = async () => {
     return Promise.all(details);
 };
 
-getAllDetails().then((resp)=>{
+getAllDetails().then(async (resp)=>{
     const allDetails = resp;
     console.log('AllDet',resp);
+
     //Display of course tab
     $('#coursesLoader').hide();
     $('#coursesSearch').keyup(()=>{
@@ -1837,6 +1837,12 @@ getAllDetails().then((resp)=>{
     for (let course of allDetails) {
         addAndAppendCourse(course);
     };
+
+    //Display of trainer tab
+    const hubtrainerGroupFetch = await fetch(`${hub_url}groups/instructor`);
+    const hubtrainerGroupJson = await hubLearnerGroupFetch.json();
+    const hubtrainerGroupList = hubLearnerGroupJson.users;
+    console.log('trainerGroup',hubLearnerGroupList);
 
 });
 
