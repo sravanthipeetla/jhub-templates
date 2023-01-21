@@ -1843,6 +1843,11 @@ getAllDetails().then(async (resp)=>{
     const hubTrainerGroupJson = await hubTrainerGroupFetch.json();
     const hubTrainerGroupList = hubTrainerGroupJson.users;
     console.log('trainerGroup',hubTrainerGroupList);
+    const trainerCourses = {};
+    for (let trainer of hubTrainerGroupList){
+        trainerCourses[trainer]=[];
+    }
+    console.log(trainerCourses);
 
 });
 
