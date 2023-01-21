@@ -1853,10 +1853,10 @@ getAllDetails().then(async (resp)=>{
         if(det.trainer in trainerCourses){
             let obj ={};
             obj[det.courseName] = det.students.length
-            trainerCourses[det.trainer].push({obj});
+            trainerCourses[det.trainer].push(obj);
         }
     }
-    console.log(trainerCourses);
+    console.log('trainrDet',trainerCourses);
 
 });
 
