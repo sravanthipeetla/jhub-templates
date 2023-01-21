@@ -6,14 +6,30 @@
 *{
     box-sizing: border-box;
 }
-:root {
-    --font16:1.6rem;
-    --font14:1.4rem;
-    --font12:1.2rem;
-    --font21:2.1rem;
-    --font13:1.3rem;
-    --font25:2.5rem;
-  }
+
+.fs-16{
+    font-size: 1.6rem;
+}
+
+.fs-14{
+    font-size: 1.4rem;
+}
+
+.fs-13{
+    font-size: 1.3rem;
+}
+
+.fs-12{
+    font-size: 1.2rem;
+}
+
+.fs-22{
+    font-size: 2.2rem;
+}
+
+.fs-25{
+    font-size: 2.5rem;
+}
 
 body {
     margin: 0px;
@@ -41,7 +57,6 @@ body {
     text-align: center;
     padding: 1vw 4vw;
     text-decoration: none;
-    font-size: var(--font16);
     border-bottom: 0.3vw solid #DBDBDB;
     overflow: auto;
     font-weight:500;
@@ -70,7 +85,6 @@ body {
     font-family: 'Poppins';
     color:#4D4D4D;
     font-weight:500;
-    font-size: var(--font16);
     margin-bottom: -0.3rem;
 }
 
@@ -80,7 +94,6 @@ body {
     width:19rem;
     border:0.1rem solid #5FBEF0;
     padding: 0rem 1.6rem;
-    font-size: var(--font16);
     font-weight: 0;
     color: black;
     outline: none;
@@ -91,7 +104,6 @@ body {
     outline: none;
     width:15rem;
     margin-left:1.6rem;
-    font-size: var(--font14);
     font-weight: 400;
     font-style: normal;
     color: black;
@@ -122,12 +134,15 @@ body {
     width:22rem;
     border:0.1rem solid #5FBEF0;
 }
+
 #learnersSearch{
     width:25rem;
 }
+
 .learner-search{
     width: 30rem;
 }
+
 .add-btn {
     border:none;
     font-family: 'Poppins';
@@ -135,13 +150,13 @@ body {
     border-radius: 2.1rem;
     color: white;
     font-weight: 500;
-    font-size: var(--font16);
     height:4rem;
     display: inline-block;
     padding: 0.5rem 1.6rem;
     text-align: center;
     cursor: pointer;
 } 
+
 .map-btn{
     display:none;
     background: #FFFFFF;
@@ -151,14 +166,15 @@ body {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: var(--font16);
     text-align: center;
     padding: 0.5rem 1.6rem;
     color: #5FBEF0;
 }
+
 #trainerDetails, #learnerDetails{
     display:none;
 }
+
 .courseDetails, .trainerDetails{
     display: flex;
     flex-wrap: wrap; 
@@ -174,9 +190,11 @@ body {
     margin-bottom: 1.5vh;
     width:23%;
 }
+
 .trainerCard-width{
     width: 18%;
 }
+
 .trainer-course-card{
     display: flex;
     justify-content: space-between;
@@ -196,37 +214,43 @@ body {
     font-family: 'Gothic A1';
     width: 100%;
 }
+
 .course-title,.trainer-title{
     color:#006BB6;
     font-weight: 600;
-    font-size: var(--font16);
 }
+
 .learner-count-title{
     color:#999;
     font-weight: 400;
-    font-size: var(--font12);
 }
+
 .learner-count{
     font-weight: 500;
-    font-size: var(--font14);
 }
+
 .arrange-row{
     display: flex;
 }
+
 .arrange-col{
     display: flex;
     flex-direction: column;
     justify-content: end;
 }
+
 .arrange-col-first{
     width:35%;
 }
+
 .arrange-row-first{
     justify-content: space-between;
 }
+
 .delete-icon img{
     width:1.6rem;
 }
+
 .eye-icon{
     display: flex;
     flex-direction: column;
@@ -256,33 +280,38 @@ body {
     border-collapse: inherit;
     border-radius: 1.2rem 1.2rem 0px 0px; 
 }
+
 tbody tr td:last-child{
     text-align: right;
     padding: 0.8rem 5rem;
 }
+
 tbody tr td:first-child{
     padding: 0.8rem 2.4rem; 
 }
+
 tr th:first-child{
     text-align: left;
     width:80%;
 }
+
 tr th:last-child{
     text-align: right;
 }
+
 tr th:nth-child(2){
     text-align: center;
 }
+
 tbody tr:nth-child(even) {
     background-color:#FAFDFF;
-    font-size: var(--font16);
-  }
-tbody tr:nth-child(odd) {
-    background-color: #F1F9FE;;
-    font-size: var(--font16);
-  }
+}
 
-  tr td:nth-child(2){
+tbody tr:nth-child(odd) {
+    background-color: #F1F9FE;
+}
+
+tr td:nth-child(2){
     text-align: center;
     
 }
@@ -291,10 +320,10 @@ th{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
-    font-size: var(--font16);
     color:#006BB6;
     padding: 0.8rem 2.5rem;
 }
+
 .bg-model{
     display: none;
     position: fixed;
@@ -305,6 +334,7 @@ th{
     z-index: 1;
     background-color: rgba(0,0,0, .2);
 }
+
 .course-model{
     display: flex;
     flex-direction: column;
@@ -331,6 +361,7 @@ th{
         opacity: 1;
     }
 }
+
 .learner-course-add-model{
     display: flex;
     flex-direction: column;
@@ -357,6 +388,7 @@ th{
         opacity: 1;
     }
 }
+
 .delete-icon{
     display: flex;
     flex-direction: column;
@@ -384,12 +416,12 @@ th{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: var(--font16);
     color: #F63C46;
     padding-bottom: 0.2rem;
 }
+
 .delete-course-model-top-first span{
-    font-size: var(--font21);
+    font-size: 2.2rem;
     color: #F7545D;
     font-weight: 400;
     background: #FDCED1;
@@ -399,8 +431,8 @@ th{
     width: 1rem;
     padding: 0rem 0.4rem;
 }
+
 .delete-title{
-    font-size: var(--font16);
     text-align: center;
     font-family: 'Gothic A1';
     font-style: Medium;
@@ -410,12 +442,12 @@ th{
 .delete-course-model-bottom{
     text-align: center;
 }
+
 .delete-course-model-bottom p{
     color: #AAAAAA;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: var(--font14);
     padding: 0.8rem;
 }
 
@@ -426,7 +458,7 @@ th{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: var(--font13);
+    font-size: 1.3rem;
     text-align: center;
     color: #FFFFFF;
     height:2.8rem;
@@ -435,26 +467,28 @@ th{
 }
 
 .cancel-button{
-background: #FFFFFF;
-border: 0.1rem solid #5FBEF0;
-border-radius:  1.4rem;
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: var(--font13);
-color: #5FBEF0;
-height:2.8rem;
-width: 8rem;
-text-align: center;
-cursor: pointer;
+    background: #FFFFFF;
+    border: 0.1rem solid #5FBEF0;
+    border-radius:  1.4rem;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: #5FBEF0;
+    height:2.8rem;
+    width: 8rem;
+    text-align: center;
+    cursor: pointer;
 }
 
 .add-course-model-height,.add-learner-model-height{
     height:26rem;
 }
+
 .add-trainer-model-height{
     height:23rem;
 }
+
 .add-course-model-top-first,.add-learner-model-top-first{
     display: flex;
     justify-content: space-between;
@@ -465,22 +499,23 @@ cursor: pointer;
     box-shadow: 0px 0.3rem 0.5rem rgba(0, 0, 0, 0.08);
     border-radius: 1.6rem 1.6rem 0px 0px;
 }
+
 .choose-option{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: var(--font12);
     color: #263238;
 }
+
 .add-course-model-top-first h1,.add-learner-model-top-first h1{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: var(--font16);
     color: #5FBEF0;
 }
+
 .add-course-model-top-first span,.add-learner-model-top-first span{
-    font-size: var(--font25);
+    font-size: 2.5rem;
     color: #5FBEF0;
     font-weight: 400;
     background: #E8F6FD;
@@ -490,80 +525,83 @@ cursor: pointer;
     width: 1rem;
     padding: 0 0.5rem;
 }
+
 .add-course-name,.choose-trainer-name,.add-learner{
     padding-left:2rem;
     padding-top:2rem;
     display: flex;
     align-items: center;
 }
+
 .add-trainer-top-arr{
     padding-top: 1.5rem;
 }
+
 .add-course-name p{
     font-family: 'Gothic A1';
     font-style: normal;
     font-weight: 400;
-    font-size: var(--font14);
     color: #000000;
     width:12.5rem;
 }
+
 .course-name-warn{
     color: #c51306;
     padding-left:15rem;
-    font-size: var(--font12);
     display: none;
 }
+
 .add-course-name input,.choose-trainer-name select,.add-learner input{
     border-radius:5rem;
     height:3rem;
     border:1px solid #5FBEF0;
     padding: 0rem 1.6rem;
-    font-size: var(--font12);
     font-weight: 400;
     width:28rem;
     color: #263238;;
     outline: none;
     background-color: #fff;
 }
+
 .add-course-name input::placeholder{
-    font-size: var(--font12);
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     color: #A6A6A6;
 }
+
 .choose-trainer-arrange,.choose-learner-arrange{
     display: flex;
     flex-direction: column;
 }
+
 .choose-trainer-arrange p{
     margin-top: -0.45rem;
     font-family: 'Gothic A1';
     font-style: normal;
     font-weight: 400;
-    font-size: var(--font14);
     color: #000000;
     width:12.5rem;
-    }
+}
+
 .choose-course-name{
     font-family: 'Gothic A1';
     font-style: normal;
     font-weight: 400;
-    font-size: var(--font14);
     color: #000000;
     width:12.5rem;
     margin-top: 0.5rem;
 }
+
 .choose-trainer-arrange span{
-   
-font-family: 'Gothic A1';
-font-style: normal;
-font-weight: 400;
-font-size: var(--font12);
-color: #A6A6A6;
-margin-top: -0.8rem;
-width:12.5rem;
+    font-family: 'Gothic A1';
+    font-style: normal;
+    font-weight: 400;
+    color: #A6A6A6;
+    margin-top: -0.8rem;
+    width:12.5rem;
 }
+
 .add-course-model-bottom{
     text-align: center;
     background: #FFFFFF;
@@ -573,11 +611,13 @@ width:12.5rem;
     border-bottom-right-radius: 1.6rem;
     padding: 2.4rem;
 }
+
 .add-success-img-arrange{
     text-align: center;
     margin-top: 2.4rem;
     margin-bottom: 2.5rem;
 }
+
 .add-success-img{
  height: 5rem;
  width: 5rem;
@@ -589,20 +629,20 @@ width:12.5rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
 }
+
 .delete-success-img{
     height: 4rem;
     width: 4rem;
-   }
+}
 
 .add-success-text{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    font-size: var(--font16);
     text-align: center;
     color: #263238;
-
 }
+
 .add-success-model-bottom{
     text-align: center;
     background: #FFFFFF;
@@ -610,6 +650,7 @@ width:12.5rem;
     border-bottom-right-radius: 1.6rem;
     margin-bottom: 3rem;
 }
+
 .add-button{
     border:none;
     background: #5FBEF0;
@@ -617,7 +658,7 @@ width:12.5rem;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: var(--font13);
+    font-size: 1.3rem;
     text-align: center;
     color: #FFFFFF;
     height:2.8rem;
@@ -637,6 +678,7 @@ width:12.5rem;
     transform: translate(-50%, -50%);
     animation: animatemodal .3s;
 }
+
 .delete-trainer-model-top-first{
     display: flex;
     justify-content: space-between;
@@ -646,22 +688,25 @@ width:12.5rem;
     background: #F6FBFE;
     box-shadow: 0px 0.3rem 0.5rem rgba(0, 0, 0, 0.08);
 }
+
 .delete-trainer-title{
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
-    font-size: var(--font16);
     color: #999999;
 }
+
 .delete-trainer-name{
-color: #006BB6;
+    color: #006BB6;
 }
+
 .arrange-title-row{
     display:flex;
     align-items: center;
 }
+
 #deleteTrainerCancel{
-    font-size: var(--font25);
+    font-size: 2.5rem;
     text-align: center;
     color: #006BB6;
     font-weight: 400;
@@ -672,6 +717,7 @@ color: #006BB6;
     width: 1rem;
     padding: 0 0.5rem;
 }
+
 .trainerCourseDetails{
     display: flex;
     flex-wrap: wrap; 
@@ -680,6 +726,7 @@ color: #006BB6;
     padding: 1.6rem; 
     margin-top: 1rem;
 }
+
 .eye-action{
     cursor: pointer;
     width:2.2rem;
@@ -688,6 +735,7 @@ color: #006BB6;
     width:1.5rem;
     cursor: pointer;
 }
+
 .change-learner{
     padding-top: -0.5rem;
     padding-left: 2rem;
@@ -695,7 +743,7 @@ color: #006BB6;
 }
 
 .learner-inactive{
-    font-size: var(--font13);
+    font-size: 1.3rem;
     border-radius: 1.4rem;
     padding: 0.5rem 3.2rem;
     background: #FFFFFF;
@@ -704,11 +752,13 @@ color: #006BB6;
     cursor: pointer;
     margin-right: 1rem;
 }
+
 .learner-active{
     color: #fff;
     background: #5FBEF0;
     border: 1px solid #5FBEF0;
 }
+
 .upload-btn{
     border-radius:1.5rem;
     height:3rem;
@@ -720,13 +770,16 @@ color: #006BB6;
     cursor: pointer;
     margin-right: 1rem;
 }
+
 #file-chosen {
     margin-left: 0.5rem;
     font-family: 'Gothic A1';
 }
+
 body.loading {
   overflow: hidden;
 }
+
 .loader {
   border: 10px solid #f3f3f3; /* Light grey */
   border-top: 10px solid #3498db; /* Blue */
@@ -737,40 +790,13 @@ body.loading {
   animation: spin 2s linear infinite;
   overflow: hidden;
 }
-
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
 .learner-coursecard-height{
     height:7rem;
-}
-
-@media(max-width:1600px){
-    /* html{
-        font-size: 100%;
-    }  */
-    .courseCard{
-        width: 31%;
-    }
-    .trainerCard{
-        width: 23%;
-    }
-}
-
-@media(max-width:1200px){
-    /* html{
-        font-size: 87.5%;
-    } */
-
-}
-
-@media(max-width:1000px){
-    /* html{
-        font-size: 75%;
-    } */
-
 }
 
 .alert {
@@ -787,347 +813,380 @@ body.loading {
     min-width:30%;
     height:4rem;
     z-index: 1;
-    font-size: var(--font14);
-  }
-  #alertMsgCont{
+}
+
+#alertMsgCont{
     display: none;
-  }
-  /* The close button */
-  .alert-closebtn {
+}
+
+.alert-closebtn {
     margin-left: 1.5rem;
     color: #c51306;
     font-weight: bold;
     float: right;
-    font-size: var(--font21);
+    font-size: 2.2rem;
     cursor: pointer;
     transition: 0.3s;
-  }
+}
 
 .alert-closebtn:hover {
-  color: black;
+    color: black;
 }
+
 #actual-btn{
     display: none;
+}
+
+@media(max-width:1600px){
+    .courseCard{
+        width: 31%;
+    }
+    .trainerCard{
+        width: 23%;
+    }
+}
+
+@media(max-width:1200px){
+
+    .courseCard{
+        width: 47%;
+    }
+    .trainerCard{
+        width: 31%;
+    }
+    .fs-16{
+        font-size: 1.4rem;
+    }
+    .learner-search {
+    width: 27rem;
+    }
+
+}
+
+@media(max-width:1100px){
+    
+    .fs-16{
+        font-size: 1.3rem;
+    }
+
 }
 
 </style>
 {% endblock %}
 {% block main %}
 <div id="react-admin-hook">
-  <script id="jupyterhub-admin-config">
+    <script id="jupyterhub-admin-config">
     window.api_page_limit = parseInt("{{ api_page_limit|safe }}")
     window.base_url = "{{ base_url|safe }}"
-  </script>
-  <script src={{ static_url("js/admin.js") }}></script>
-<div>
-    <div id="alertMsgCont">
-        <div class="alert" >
-            <p id="alertMsg"></p>
-            <span class="alert-closebtn" id="alertMsgClose">&times;</span>
+    </script>
+    <script src={{ static_url("js/admin.js") }}></script>
+    <div class="fs-16">
+        <div id="alertMsgCont">
+            <div class="alert fs-14" >
+                <p id="alertMsg"></p>
+                <span class="alert-closebtn" id="alertMsgClose">&times;</span>
+            </div>
         </div>
-    </div>
-    
-    <div class="admin-container">
-        <div class="admin-navbar">
-                <a class="course-nav active" id="courseNav">Courses</a>
-                <a class="instructor-nav" id="trainerNav">Trainers</a>
-                <a class="learner-nav" id="learnerNav">Learners</a>
+        <div class="admin-container">
+            <div class="admin-navbar">
+                    <a class="course-nav active" id="courseNav">Courses</a>
+                    <a class="instructor-nav" id="trainerNav">Trainers</a>
+                    <a class="learner-nav" id="learnerNav">Learners</a>
+            </div>
+            <div class="description-bar">
+                    <p class="description" id="description">You can manage Course details here.</p>
+                    <div id="right-description-bar" >
+                        <div id="courseSearchCont">
+                            <div  class="search-container">
+                                <input type="search" placeholder="Search..." id="coursesSearch" class="search-input fs-14">
+                                <span class="searchIcon"></span>
+                            </div>
+                        </div>
+                        <div id="trainerSearchCont" class="stop-visible">
+                            <div class="search-container">
+                                <input type="search" placeholder="Search..." id="trainersSearch" class="search-input fs-14">
+                                <span class="searchIcon"></span>
+                            </div>
+                        </div>
+                        
+                        <div id="learnerSearchCont" class="stop-visible">
+                            <div class="search-container learner-search">
+                                <input type="search" placeholder="Search Learner or Course Name" id="learnersSearch" class="search-input fs-14">
+                                <span class="searchIcon"></span>
+                            </div>
+                        </div>
+                    
+                    
+                        <select  id="trainersFilter" class="stop-visible">
+                            <option default  value="all">All</option>
+                            <option value="mapped">Mapped</option>
+                            <option value="unmapped">Unmapped</option>
+                        </select>
+                        <button class="map-btn" id="mapBtn">Map Learners</button>
+                        <button class="add-btn" id="addBtn">Add Course</button>
+                    </div>
+            </div>    
+            <div id="courseDetails">
+                <div class="loader" id="coursesLoader"></div>
+                <div class="courseDetails" id="courseCardCont">
+                </div>
+            </div>
+            <div id="trainerDetails">
+                <div class="loader" id="trainersLoader"></div>
+                <div class="trainerDetails" id="trainerCardCont">
+                </div>
+            </div>
+            <div id="learnerDetails">     
+                <table id="learner-table">
+                    <tr id="learner-thead">
+                        <th>Learners Name</th>
+                        <th>Actions</th>
+                        <th>Remove</th>
+                    </tr>
+                    <tbody id="learnerRowsBody">
+                    </tbody>
+                </table>
+                <div class="loader" id="learnersLoader"></div>
+            </div>
         </div>
-        <div class="description-bar">
-                <p class="description" id="description">You can manage Course details here.</p>
-                <div id="right-description-bar" >
-                    <div id="courseSearchCont">
-                        <div  class="search-container">
-                            <input type="search" placeholder="Search..." id="coursesSearch" class="search-input">
-                            <span class="searchIcon"></span>
+        <div class="bg-model" id="deleteCourseModal">
+            <div class="course-model">
+                <div>
+                    <div class="delete-course-model-top-first fs-16">
+                        <h1 id="deleteModalTitle" class="fs-16"></h1>
+                        <div id="deleteModalClose">
+                            <span> &times;</span>
                         </div>
                     </div>
-                    <div id="trainerSearchCont" class="stop-visible">
-                        <div class="search-container">
-                            <input type="search" placeholder="Search..." id="trainersSearch" class="search-input">
-                            <span class="searchIcon"></span>
+                        <h1 class="delete-title fs-16" id="deleteItemText"></h1>
+                </div>
+                    <div class="delete-course-model-bottom">
+                        <button id="deleteCourseBtn" class="delete-button">Delete</button>
+                        <button id="deleteCancelBtn" class="cancel-button">Cancel</button>
+                        <p id="deleteCourseCaution" class="fs-14">once deleted can't be restore again</p>  
+                    </div>  
+            </div>
+        
+        </div>
+        <div class="bg-model" id="removeLearnerCourseModal">
+            <div class="course-model">
+                <div>
+                    <div class="delete-course-model-top-first">
+                        <h1 id="removeLearnerModalTitle" class="fs-16">Remove Learner</h1>
+                        <div id="removeLearnerCourseModalClose">
+                            <span> &times;</span>
                         </div>
+                    </div>
+                        <h1 class="delete-title fs-16" id="removeLearnerModalItemText"></h1>
+                </div>
+                    <div class="delete-course-model-bottom">
+                        <button id="removeLearnerCourseBtn" class="delete-button">Remove</button>
+                        <button id="removeLearnerCourseCancel" class="cancel-button">Cancel</button>
+                        <p id="removeLearnerCourseCaution" class="fs-14">once removed can't be restore again</p>  
+                    </div>  
+            </div>
+        
+        </div>
+        <div class="bg-model" id="addCourseModal">
+            <div class="course-model add-course-model-height">
+                <div>
+                    <div class="add-course-model-top-first">
+                        <h1 id="modelTitle" class="fs-16">Add Course</h1>
+                        <div id="addCourseClose">
+                            <span> &times;</span>
+                        </div>
+                    </div>
+                        <div class="add-course-name">
+                            <p class="fs-14">Course Name</p>
+                            <input type="text" placeholder="Enter course name" id="courseNameText" class="fs-12">
+                        </div>
+                        <span class="course-name-warn fs-12" id="courseNameWarn">* course name should not contain spaces</span>
+                        <div class="choose-trainer-name">
+                            <div class="choose-trainer-arrange">
+                                <p class="fs-14">Choose Trainer</p>
+                                <span class="fs-12">Existing Trainer</span>
+                            </div> 
+                            <select placeholder="Enter course name" id="chooseTrainerSelect" class="fs-12">
+                                <option default  value="" class="choose-option fs-12">Choose trainer</option>
+                            </select>
+                        </div>
+                </div>
+                    <div class="add-course-model-bottom">
+                        <button id="addCourseBtn" class="add-button">Add</button>
+                        <button id="addCourseCancel" class="cancel-button">Cancel</button>
+                    </div>  
+            </div>
+        
+        </div>
+        <div class="bg-model" id="addSuccessModal">
+            <div class="course-model add-course-model-height">
+                <div>
+                    <div class="add-course-model-top-first">
+                        <h1 id="successModelTitle" class="fs-16">Add Course</h1>
+                        <div id="addSuccessClose">
+                            <span> &times;</span>
+                        </div>
+                    </div>
+                    <div class="add-success-img-arrange">
+                        <img src="https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_confirm.png" alt="success" class="add-success-img">  
                     </div>
                     
-                    <div id="learnerSearchCont" class="stop-visible">
-                        <div class="search-container learner-search">
-                            <input type="search" placeholder="Search Learner or Course Name" id="learnersSearch" class="search-input">
-                            <span class="searchIcon"></span>
-                        </div>
-                    </div>
-                   
-                   
-                    <select  id="trainersFilter" class="stop-visible">
-                        <option default  value="all">All</option>
-                        <option value="mapped">Mapped</option>
-                        <option value="unmapped">Unmapped</option>
-                    </select>
-                    <button class="map-btn" id="mapBtn">Map Learners</button>
-                    <button class="add-btn" id="addBtn">Add Course</button>
+                    <p class="add-success-text" id="addSuccessMsg">Selected course added successfully</p> 
                 </div>
-        </div>    
-        <div id="courseDetails">
-            <div class="loader" id="coursesLoader"></div>
-            <div class="courseDetails" id="courseCardCont">
+                    <div class="add-success-model-bottom">
+                        <button id="successDone" class="add-button">Done</button>
+                        <button id="successAddMore" class="cancel-button">Add more</button>
+                    </div>  
             </div>
+        
         </div>
-        <div id="trainerDetails">
-            <div class="loader" id="trainersLoader"></div>
-            <div class="trainerDetails" id="trainerCardCont">
-            </div>
-        </div>
-        <div id="learnerDetails">     
-            <table id="learner-table">
-                <tr id="learner-thead">
-                    <th>Learners Name</th>
-                    <th>Actions</th>
-                    <th>Remove</th>
-                </tr>
-                <tbody id="learnerRowsBody">
-                </tbody>
-            </table>
-            <div class="loader" id="learnersLoader"></div>
-        </div>
-    </div>
-    <div class="bg-model" id="deleteCourseModal">
-        <div class="course-model">
-            <div>
-                <div class="delete-course-model-top-first">
-                    <h1 id="deleteModalTitle"></h1>
-                    <div id="deleteModalClose">
-                        <span> &times;</span>
-                    </div>
-                </div>
-                    <h1 class="delete-title" id="deleteItemText"></h1>
-            </div>
-                <div class="delete-course-model-bottom">
-                    <button id="deleteCourseBtn" class="delete-button">Delete</button>
-                    <button id="deleteCancelBtn" class="cancel-button">Cancel</button>
-                    <p id="deleteCourseCaution">once deleted can't be restore again</p>  
-                </div>  
-        </div>
-       
-    </div>
-    <div class="bg-model" id="removeLearnerCourseModal">
-        <div class="course-model">
-            <div>
-                <div class="delete-course-model-top-first">
-                    <h1 id="removeLearnerModalTitle">Remove Learner</h1>
-                    <div id="removeLearnerCourseModalClose">
-                        <span> &times;</span>
-                    </div>
-                </div>
-                    <h1 class="delete-title" id="removeLearnerModalItemText"></h1>
-            </div>
-                <div class="delete-course-model-bottom">
-                    <button id="removeLearnerCourseBtn" class="delete-button">Remove</button>
-                    <button id="removeLearnerCourseCancel" class="cancel-button">Cancel</button>
-                    <p id="removeLearnerCourseCaution">once removed can't be restore again</p>  
-                </div>  
-        </div>
-       
-    </div>
-    <div class="bg-model" id="addCourseModal">
-        <div class="course-model add-course-model-height">
-            <div>
-                <div class="add-course-model-top-first">
-                    <h1 id="modelTitle">Add Course</h1>
-                    <div id="addCourseClose">
-                        <span> &times;</span>
-                    </div>
-                </div>
-                    <div class="add-course-name">
-                        <p>Course Name</p>
-                        <input type="text" placeholder="Enter course name" id="courseNameText">
-                    </div>
-                    <span class="course-name-warn" id="courseNameWarn">* course name should not contain spaces</span>
-                    <div class="choose-trainer-name">
-                        <div class="choose-trainer-arrange">
-                            <p>Choose Trainer</p>
-                            <span>Existing Trainer</span>
-                        </div> 
-                        <select placeholder="Enter course name" id="chooseTrainerSelect">
-                            <option default  value="" class="choose-option">Choose trainer</option>
-                        </select>
-                    </div>
-            </div>
-                <div class="add-course-model-bottom">
-                    <button id="addCourseBtn" class="add-button">Add</button>
-                    <button id="addCourseCancel" class="cancel-button">Cancel</button>
-                </div>  
-        </div>
-       
-    </div>
-    <div class="bg-model" id="addSuccessModal">
-        <div class="course-model add-course-model-height">
-            <div>
-                <div class="add-course-model-top-first">
-                    <h1 id="successModelTitle">Add Course</h1>
-                    <div id="addSuccessClose">
-                        <span> &times;</span>
-                    </div>
-                </div>
-                <div class="add-success-img-arrange">
-                    <img src="https://i.postimg.cc/cJj23Mwc/succes.png" alt="success" class="add-success-img">  
-                </div>
-                
-                <p class="add-success-text" id="addSuccessMsg">Selected course added successfully</p> 
-            </div>
-                <div class="add-success-model-bottom">
-                    <button id="successDone" class="add-button">Done</button>
-                    <button id="successAddMore" class="cancel-button">Add more</button>
-                </div>  
-        </div>
-       
-    </div>
-    <div class="bg-model" id="deleteSuccessModal">
-        <div class="course-model">
-            <div>
-                <div class="delete-course-model-top-first">
-                    <h1 id="successModelTitle">Delete Course</h1>
-                    <div id="deleteSuccessClose">
-                        <span> &times;</span>
-                    </div>
-                </div>
-                <div class="delete-success-img-arrange">
-                    <img src="https://i.postimg.cc/SRMpDTPm/delete-succcess.png" alt="success" class="delete-success-img">  
-                </div>
-                
-                <p class="add-success-text" id="deletedItemMsg">Removed successfully</p> 
-            </div>
-                <div class="add-success-model-bottom">
-                    <button id="deleteDoneBtn" class="add-button">Done</button>
-                </div>  
-        </div>
-       
-    </div>
-    <div class="bg-model" id="addTrainerModal">
-        <div class="course-model add-trainer-model-height">
-            <div>
-                <div class="add-course-model-top-first">
-                    <h1 id="modelTitle">Add Trainer</h1>
-                    <div id="addTrainerCancel">
-                        <span> &times;</span>
-                    </div>
-                </div>
-                    <!-- <p>* course name should not contain spaces</p> -->
-                    <div class="add-course-name">
-                        <div class="choose-trainer-arrange">
-                            <p>User Name</p>
-                            <span>New trainer</span>
-                        </div> 
-                        <input type="text" placeholder="Enter user name" id="trainerUsername">
-                    </div>
-                    <span class="course-name-warn" id="trainerNameWarn">* user name should not contain spaces</span>
-            </div>
-                <div class="add-course-model-bottom">
-                    <button id="addTrainerBtn" class="add-button">Add</button>
-                    <button id="cancelAddTrainer" class="cancel-button">Cancel</button>
-                </div>  
-        </div>
-    </div>
-    <div class="bg-model" id="deleteTrainerModal">
-        <div class="trainer-model">
-            <div>
-                <div class="delete-trainer-model-top-first">
-                    <div class="arrange-title-row">
-                    <span class="delete-trainer-title" id="actionTitle"></span>
-                    <span class="delete-trainer-title delete-trainer-name" id="deleteTrainer"></span>
-                    </div>
-                    <div >
-                        <span id="deleteTrainerCancel">&times;</span>
-                    </div>
-                </div>
-            </div> 
-            <div class="trainerCourseDetails" id="trainerCourseCardCont">
-
-            </div>
-        </div>
-    </div>
-    <div class="bg-model" id="mapLearnerModal">
-        <div class="course-model add-learner-model-height">
-            <div>
-                <div class="add-learner-model-top-first">
-                    <h1>Map Learners</h1>
-                    <div id="mapLearnerClose">
-                        <span> &times;</span>
-                    </div>
-                </div>
-                    <div>
-                        <div class="add-learner">
-                            <div class="choose-trainer-arrange">
-                                <p>Upload CSV file</p>
-                                <span>Multiple learners</span>
-                            </div> 
-                            <div class="stop-visible">
-                            <input type="file" id="mapUploadBtn"  accept=".csv"/>
-                            </div>
-                            <label for="mapUploadBtn" class="upload-btn"><img src="https://i.postimg.cc/7Z71QKgW/Vector-4.png" alt=""></label>
-                            <span id="mapFileChosen">No file chosen</span>
-                        </div>
-                    </div>
-                    <div class="choose-trainer-name">
-                        <p class="choose-course-name">Choose Course</p>
-                        <select id="mapLearnerCourseSelect">
-                        </select>
-                    </div>
-            </div>
-                <div class="add-course-model-bottom">
-                    <button id="mapLearnerAdd" class="add-button">Add</button>
-                    <button id="mapLearnerCancel" class="cancel-button">Cancel</button>
-                </div>  
-        </div>
-    </div>
-    <div class="bg-model" id="addLearnerModal">
-        <div class="learner-course-add-model">
-                <div class="add-learner-model-top-first">
-                    <h1>Add Learners</h1>
-                    <div id="addLearnerClose">
-                        <span> &times;</span>
-                    </div>
-                </div>
+        <div class="bg-model" id="deleteSuccessModal">
+            <div class="course-model">
                 <div>
-                   <div class="change-learner">
-                        <button id="singleUserBtn" class="learner-inactive learner-active">Single User</button>
-                        <button id="multipleUserBtn" class="learner-inactive">Bulk Users</button>
-                    </div>
-                    <div id="singleLearner">
-                        <div class="add-learner">
-                            <div class="choose-trainer-arrange">
-                                <p>User ID</p>
-                                <span>Single learner</span>
-                            </div> 
-                            <input type="text" placeholder="Enter user ID" id="singleLearnerName">
+                    <div class="delete-course-model-top-first">
+                        <h1 id="successModelTitle" class="fs-16">Delete Course</h1>
+                        <div id="deleteSuccessClose">
+                            <span> &times;</span>
                         </div>
-                        <span class="course-name-warn" id="singleLearnerNameWarn">* user name should not contain spaces</span>
                     </div>
-                    <div id="multipleLearners" class="stop-visible">
-                    <div class="add-learner">
-                            <div class="choose-trainer-arrange">
-                                <p>Upload CSV file</p>
-                                <span>Multiple learners</span>
-                            </div> 
-                            <div class="stop-visible">
-                            <input type="file" id="addUploadBtn" accept=".csv" />
-                            </div>
-                            <label for="addUploadBtn" class="upload-btn"><img src="https://i.postimg.cc/7Z71QKgW/Vector-4.png" alt=""></label>
-                            <span id="addFileChosen">No file chosen</span>
+                    <div class="delete-success-img-arrange">
+                        <img src="https://datalab-static-images.s3.ap-south-1.amazonaws.com/remove_confirm.png" alt="success" class="delete-success-img">  
                     </div>
-                    </div>
-                    <div class="choose-trainer-name">
-                        <p class="choose-course-name">Choose Course</p>
-                        <select id="addLearnerCourseSelect">
-                        </select>
-                    </div>
+                    
+                    <p class="add-success-text" id="deletedItemMsg">Removed successfully</p> 
                 </div>
-            <div class="add-course-model-bottom">
-                <button id="addLearnerCourseBtn" class="add-button">Add</button>
-                <button id="addLearnerCancel" class="cancel-button">Cancel</button>
-            </div>  
+                    <div class="add-success-model-bottom">
+                        <button id="deleteDoneBtn" class="add-button">Done</button>
+                    </div>  
+            </div>
+        
         </div>
-       
+        <div class="bg-model" id="addTrainerModal">
+            <div class="course-model add-trainer-model-height">
+                <div>
+                    <div class="add-course-model-top-first">
+                        <h1 id="modelTitle" class="fs-16">Add Trainer</h1>
+                        <div id="addTrainerCancel">
+                            <span> &times;</span>
+                        </div>
+                    </div>
+                        <div class="add-course-name">
+                            <div class="choose-trainer-arrange">
+                                <p class="fs-14">User Name</p>
+                                <span class="fs-12">New trainer</span>
+                            </div> 
+                            <input type="text" placeholder="Enter user name" id="trainerUsername" class="fs-12">
+                        </div>
+                        <span class="course-name-warn fs-12" id="trainerNameWarn">* user name should not contain spaces</span>
+                </div>
+                    <div class="add-course-model-bottom">
+                        <button id="addTrainerBtn" class="add-button">Add</button>
+                        <button id="cancelAddTrainer" class="cancel-button">Cancel</button>
+                    </div>  
+            </div>
+        </div>
+        <div class="bg-model" id="deleteTrainerModal">
+            <div class="trainer-model">
+                <div>
+                    <div class="delete-trainer-model-top-first">
+                        <div class="arrange-title-row">
+                        <span class="delete-trainer-title" id="actionTitle"></span>
+                        <span class="delete-trainer-title delete-trainer-name" id="deleteTrainer"></span>
+                        </div>
+                        <div >
+                            <span id="deleteTrainerCancel">&times;</span>
+                        </div>
+                    </div>
+                </div> 
+                <div class="trainerCourseDetails" id="trainerCourseCardCont">
+
+                </div>
+            </div>
+        </div>
+        <div class="bg-model" id="mapLearnerModal">
+            <div class="course-model add-learner-model-height">
+                <div>
+                    <div class="add-learner-model-top-first">
+                        <h1 class="fs-16">Map Learners</h1>
+                        <div id="mapLearnerClose">
+                            <span> &times;</span>
+                        </div>
+                    </div>
+                        <div>
+                            <div class="add-learner">
+                                <div class="choose-trainer-arrange">
+                                    <p class="fs-14">Upload CSV file</p>
+                                    <span class="fs-12">Multiple learners</span>
+                                </div> 
+                                <div class="stop-visible">
+                                <input type="file" id="mapUploadBtn" accept=".csv"/>
+                                </div>
+                                <label for="mapUploadBtn" class="upload-btn"><img src="https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_upload.png" alt=""></label>
+                                <span id="mapFileChosen">No file chosen</span>
+                            </div>
+                        </div>
+                        <div class="choose-trainer-name">
+                            <p class="choose-course-name fs-14">Choose Course</p>
+                            <select id="mapLearnerCourseSelect" class="fs-12">
+                            </select>
+                        </div>
+                </div>
+                    <div class="add-course-model-bottom">
+                        <button id="mapLearnerAdd" class="add-button">Add</button>
+                        <button id="mapLearnerCancel" class="cancel-button">Cancel</button>
+                    </div>  
+            </div>
+        </div>
+        <div class="bg-model" id="addLearnerModal">
+            <div class="learner-course-add-model">
+                    <div class="add-learner-model-top-first">
+                        <h1 class="fs-16">Add Learners</h1>
+                        <div id="addLearnerClose">
+                            <span> &times;</span>
+                        </div>
+                    </div>
+                    <div>
+                    <div class="change-learner">
+                            <button id="singleUserBtn" class="learner-inactive learner-active">Single User</button>
+                            <button id="multipleUserBtn" class="learner-inactive">Bulk Users</button>
+                        </div>
+                        <div id="singleLearner">
+                            <div class="add-learner">
+                                <div class="choose-trainer-arrange">
+                                    <p class="fs-14">User ID</p>
+                                    <span class="fs-12">Single learner</span>
+                                </div> 
+                                <input type="text" placeholder="Enter user ID" class="fs-12" id="singleLearnerName">
+                            </div>
+                            <span class="course-name-warn fs-12" id="singleLearnerNameWarn">* user name should not contain spaces</span>
+                        </div>
+                        <div id="multipleLearners" class="stop-visible">
+                        <div class="add-learner">
+                                <div class="choose-trainer-arrange">
+                                    <p class="fs-14">Upload CSV file</p>
+                                    <span class="fs-12">Multiple learners</span>
+                                </div> 
+                                <div class="stop-visible">
+                                <input type="file" id="addUploadBtn" accept=".csv" />
+                                </div>
+                                <label for="addUploadBtn" class="upload-btn"><img src="https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_upload.png" alt=""></label>
+                                <span id="addFileChosen">No file chosen</span>
+                        </div>
+                        </div>
+                        <div class="choose-trainer-name">
+                            <p class="choose-course-name fs-14">Choose Course</p>
+                            <select id="addLearnerCourseSelect" class="fs-12">
+                            </select>
+                        </div>
+                    </div>
+                <div class="add-course-model-bottom">
+                    <button id="addLearnerCourseBtn" class="add-button">Add</button>
+                    <button id="addLearnerCancel" class="cancel-button">Cancel</button>
+                </div>  
+            </div>
+        
+        </div>
     </div>
-</div>
 </div>
 {% endblock %}
 
@@ -1137,10 +1196,7 @@ body.loading {
 {% block script %}
 {{ super() }}
 <script type="text/javascript">
-  // require(["admin"]);
-
   // custom script
-
   // url for hub and ngshare
 const hub_url = `/hub/api/`;
 const ngshare_url = `/services/ngshare/`;
@@ -1154,32 +1210,33 @@ if ($(this).text().toLowerCase() == currentAnchorTagText) {
 }
 });
 
-
 //   // To hide left navbar items - 'Token' and 'services'
-//   const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
-//   navbarLeftList[1].style.display = 'none';
-//   navbarLeftList[3].style.display = 'none';
-let courseCard = document.getElementById('courseCard');
-let deleteIcon = document.getElementById('delete-icon');
-let addLearnerModal = document.getElementById('addLearnerModal');
-let mapLearnerModal = document.getElementById('mapLearnerModal');
-let courseCardCont = document.getElementById('courseCardCont');
-let trainerCardCont = document.getElementById('trainerCardCont');
-let trainerEyeIcon = document.getElementById('trainer-eye-icon');
-let deleteTrainerModal = document.getElementById('deleteTrainerModal');
-let deleteTrainer = document.getElementById('deleteTrainer');
-let modelTitle = document.getElementById('modelTitle');
-let trainerCourseCardCont = document.getElementById('trainerCourseCardCont');
-let chooseLearnerSelect = document.getElementById('chooseLearnerSelect');
-let learnerRowsBody = document.getElementById('learnerRowsBody');
-let actionTitle = document.getElementById('actionTitle');
-let deleteItem = null;
-let deleteCourseName = null;
-let deleteItemId = null;
-let loaderDisplay = document.getElementsByClassName('loader')[0];
+// const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
+// navbarLeftList[1].style.display = 'none';
+// navbarLeftList[3].style.display = 'none';
+
+const courseCard = document.getElementById('courseCard');
+const deleteIcon = document.getElementById('delete-icon');
+const addLearnerModal = document.getElementById('addLearnerModal');
+const mapLearnerModal = document.getElementById('mapLearnerModal');
+const courseCardCont = document.getElementById('courseCardCont');
+const trainerCardCont = document.getElementById('trainerCardCont');
+const trainerEyeIcon = document.getElementById('trainer-eye-icon');
+const deleteTrainerModal = document.getElementById('deleteTrainerModal');
+const deleteTrainer = document.getElementById('deleteTrainer');
+const modelTitle = document.getElementById('modelTitle');
+const trainerCourseCardCont = document.getElementById('trainerCourseCardCont');
+const chooseLearnerSelect = document.getElementById('chooseLearnerSelect');
+const learnerRowsBody = document.getElementById('learnerRowsBody');
+const actionTitle = document.getElementById('actionTitle');
 const mapUploadBtn = document.getElementById('mapUploadBtn');
 const addUploadBtn = document.getElementById('addUploadBtn');
 const mapFileChosen = document.getElementById('mapFileChosen');
+const mapLearnerAdd = document.getElementById("mapLearnerAdd");
+const loaderDisplay = document.getElementsByClassName('loader')[0];
+let deleteItem = null;
+let deleteCourseName = null;
+let deleteItemId = null;
 let presentUser = 'singleUser';
 let coursesRemoveLearner = null;
 let coursesRemoveList = null;
@@ -1192,6 +1249,7 @@ mapUploadBtn.addEventListener('change', function() {
         $('#mapFileChosen').text('No file chosen'); 
     }
 })
+
 addUploadBtn.addEventListener('change', function() {
     if (this.files[0].name){
     $('#addFileChosen').text(this.files[0].name);
@@ -1228,7 +1286,6 @@ $('#trainerUsername').keyup(function(){
     }
 });
 
-const mapLearnerAdd = document.getElementById("mapLearnerAdd");
 mapLearnerAdd.addEventListener("click", async function(e) {
     if (mapUploadBtn.files[0] && $('#mapLearnerCourseSelect').find(":selected").val() !==''){
         const hubLearnerGroupFetch = await fetch(`${hub_url}groups/learner`);
@@ -1258,7 +1315,6 @@ mapLearnerAdd.addEventListener("click", async function(e) {
         });
         let checker = (arr, target) => target.every(v => arr.includes(v));
         if(checker(hubLearnerGroupList, learnerArray)){
-            console.log('all learners there');
             const studentData=JSON.stringify(reqArray);
             const selectedCourse = $('#mapLearnerCourseSelect').find(":selected").val();
             const response =await fetch(`${ngshare_url}students/${selectedCourse}?students=${studentData}`, {
@@ -2210,7 +2266,6 @@ $('#learnerNav').click(function(){
     
 });
 
-
 $('#addBtn').click (()=> {
     if ($('#addBtn').text() === "Add Course") {
         $('#courseNameText').val('');
@@ -2243,15 +2298,13 @@ $('#successAddMore').click(() =>{
         $('#addSuccessModal').hide();
         $('#mapLearnerModal').show();
     }
-    else if ($('#successModelTitle').text() === 'Map Learners' ){
-        $('#addSuccessModal').hide();
-        $('#mapLearnerModal').show();
-    }
     else if ($('#successModelTitle').text() === 'Add Learners' ){
         $('#addSuccessModal').hide();
         $('#addLearnerModal').show();
+        $('#singleLearnerName').val('');
     }
 });
+
 $('#mapBtn').click (() =>{
     $('#mapLearnerModal').show();
 });
@@ -2301,9 +2354,11 @@ $('#deleteSuccessClose').click(()=>{
     $('#deleteSuccessModal').hide();
     location.reload();
 });
+
 $('#mapLearnerClose').click(()=>{
     $('#mapLearnerModal').hide();
 });
+
 $('#mapLearnerCancel').click(()=>{
     $('#mapLearnerModal').hide();
 });
@@ -2311,12 +2366,15 @@ $('#mapLearnerCancel').click(()=>{
 $('#addLearnerCancel').click(() =>{
     $('#addLearnerModal').hide();
 });
+
 $('#addLearnerClose').click(() =>{
     $('#addLearnerModal').hide();
 });
+
 $('#removeLearnerCourseModalClose').click(()=>{
     $('#removeLearnerCourseModal').hide();
 });
+
 $('#removeLearnerCourseCancel').click(()=>{
     $('#removeLearnerCourseModal').hide();
 })
@@ -2338,6 +2396,9 @@ multipleUserBtn.onclick = function () {
 };
 
 window.onload = async () =>{
+    getInstructorDetails();
+    getCourseDetails();
+    getLearnerDetails();
     const hubUsersFetch = await fetch(`${hub_url}users`);
     const hubUsersJson = await hubUsersFetch.json();
     const instructorsUsername = [];
@@ -2356,7 +2417,7 @@ window.onload = async () =>{
         const newOption = document.createElement('option');
         newOption.text = option;
         newOption.value = option;
-        newOption.classList.add('choose-option');
+        newOption.classList.add('choose-option','fs-12');
         chooseTrainerSelect.add(newOption);
     };
 
@@ -2374,7 +2435,7 @@ window.onload = async () =>{
         const newOption = document.createElement('option');
         newOption.text = option;
         newOption.value = option;
-        newOption.classList.add('choose-option');
+        newOption.classList.add('choose-option','fs-12');
         mapLearnerCourseSelect.add(newOption);
     }
    
@@ -2389,7 +2450,7 @@ window.onload = async () =>{
         const newOption = document.createElement('option');
         newOption.text = option;
         newOption.value = option;
-        newOption.classList.add('choose-option');
+        newOption.classList.add('choose-option','fs-12');
         addLearnerCourseSelect.add(newOption);
     }
 };
