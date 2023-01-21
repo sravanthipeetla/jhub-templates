@@ -2224,14 +2224,13 @@ getAllDetails().then(async (resp)=>{
     for (let learner of hubLearnerGroupList){
         learnerCourses[learner]=[];
     }
-    
-    // for (let det of allDetails){
-    //     if(det.trainer in trainerCourses){
-    //         let obj ={};
-    //         obj[det.courseName] = det.students.length
-    //         trainerCourses[det.trainer].push(obj);
-    //     }
-    // }
+    for(key in learnerCourses){
+        for (let det of allDetails){
+            if(det.students.includes(key)){
+                learnerCourses[key].push(det.courseName);
+            }
+        }
+}
     console.log('learner',learnerCourses);
 
 
