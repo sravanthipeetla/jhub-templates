@@ -1732,6 +1732,29 @@ $('#deleteCourseBtn').click(() =>{
     deleteItemNext (deleteItem,deleteCourseName,deleteItemId);
 });
 
+const getAllDetails = async () => {
+    const courseFetch = await fetch(`${ngshare_url}courses`);
+    const courseJson = await courseFetch.json();
+    const coursesList = await courseJson.courses;
+    const details = coursesList.map(async (courseName) => {
+        const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
+        let instructorName = '';
+        const instructorsJson = await instructorsPromise.json()
+        .then( instructorsJson=> {
+            if (instructorsJson.instructors.length === 0){
+            instructorName = '-';
+            }
+            else{
+            instructorName = instructorsJson.instructors[0].username;
+            };
+        });
+        const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
+        const studentsJson = await studentsPromise.json();
+        return { 'courseName': courseName, 'trainer': instructorName, 'students': studentsJson.students};
+    });
+    return Promise.all(details);
+};
+
 function addAndAppendCourse(course) {
     let courseCardId = course.courseName+'course';
     let courseCont = document.createElement('div');
@@ -1793,29 +1816,6 @@ function addAndAppendCourse(course) {
     deleteIconI.src = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
     deleteIconCont.appendChild(deleteIconI);
     courseCont.appendChild(deleteIconCont);
-};
-
-const getAllDetails = async () => {
-    const courseFetch = await fetch(`${ngshare_url}courses`);
-    const courseJson = await courseFetch.json();
-    const coursesList = await courseJson.courses;
-    const details = coursesList.map(async (courseName) => {
-        const instructorsPromise = await fetch(`${ngshare_url}instructors/${courseName}`);
-        let instructorName = '';
-        const instructorsJson = await instructorsPromise.json()
-        .then( instructorsJson=> {
-            if (instructorsJson.instructors.length === 0){
-            instructorName = '-';
-            }
-            else{
-            instructorName = instructorsJson.instructors[0].username;
-            };
-        });
-        const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
-        const studentsJson = await studentsPromise.json();
-        return { 'courseName': courseName, 'trainer': instructorName, 'students': studentsJson.students};
-    });
-    return Promise.all(details);
 };
 
 function addAndAppendTrainer(trainer) {
