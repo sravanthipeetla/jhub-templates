@@ -2057,36 +2057,6 @@ function addAndAppendLearner(learner){
 
 };
 
-// const getLearnerDetails = async () => {
-//     const courseFetch = await fetch(`${ngshare_url}courses`);
-//     const courseJson = await courseFetch.json();
-//     const coursesList = courseJson.courses;
-//     const hubUsersFetch = await fetch(`${hub_url}users`);
-//     const hubUsersJson = await hubUsersFetch.json();
-//     const learnerCourse ={};
-//     const learnersUsername = [];
-//     for (let i = 0; i < hubUsersJson.length; i++) {
-//         if (hubUsersJson[i].groups.includes('learner')) {
-//             learnersUsername.push(hubUsersJson[i].name);
-//         };
-//     };
-//     for (let stu of learnersUsername){
-//         learnerCourse[stu]=[];
-//     }
-//     const details = coursesList.map(async(courseName) => {
-//         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
-//         const studentsJson = await studentsPromise.json();
-//         const students = studentsJson.students;
-//         for (let each of students){
-//             if(each.username in learnerCourse){
-//             learnerCourse[each.username].push(courseName);
-//             }
-//         }        
-//     });
-//     const detailsLearnerCourse = await Promise.all(details);
-// return learnerCourse;
-// };
-
 // getLearnerDetails().then((resp)=>{
 //     $('#learnersLoader').hide();
 //     let learnerCourse = resp;
@@ -2227,15 +2197,37 @@ getAllDetails().then(async (resp)=>{
     }
     for(let key in learnerCourses){
         for (let det of allDetails){
-            console.log('stuList',det.students)
             if(det.students.includes(key)){
                 learnerCourses[key].push(det.courseName);
             }
         }
     }
+    $('#learnersLoader').hide();
     console.log('learner',learnerCourses);
+    for (key in learnerCourses){
+        let obj ={};
+        obj[key]=learnerCourses[key]
+        addAndAppendLearner(obj);
+    };
 
-
+    $('#learnersSearch').keyup(()=>{
+        learnerRowsBody.innerHTML='';
+        let searchValue=$('#learnersSearch').val();
+        let searchObj={};
+        for (let key in learnerCourses){
+            if (key.toLowerCase().includes(searchValue.toLowerCase())){
+                searchObj[key] = learnerCourse[key];
+            }
+            else if (learnerCourses[key].join('|').toLowerCase().includes(searchValue.toLowerCase())){
+                searchObj[key] = learnerCourses[key];
+            }
+        }
+        for (key in searchObj){
+            let obj ={};
+            obj[key]=learnerCourses[key]
+            addAndAppendLearner(obj);
+        };
+    })
 });
 
 
