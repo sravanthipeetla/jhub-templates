@@ -1806,7 +1806,8 @@ const getAllDetails = async () => {
         });
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
-        return { 'courseName': courseName, 'trainer': instructorName, 'students': studentsJson.students};
+        const studentsUserNameList = studentsJson.students.map((studentDet)=> {return studentsUserNameList.username});
+        return { 'courseName': courseName, 'trainer': instructorName, 'students': studentsUserNameList};
     });
     return Promise.all(details);
 };
