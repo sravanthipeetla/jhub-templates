@@ -1841,7 +1841,7 @@ function addAndAppendCourse(course) {
     arrangeCol.appendChild(countTitle);
     let count = document.createElement('span');
     arrangeCol.appendChild(count);
-    count.textContent = course.studentsCount;
+    count.textContent = course.students.length;
     count.classList.add('learner-count','fs-14');
 
     let arrangeColTrain = document.createElement('div');
