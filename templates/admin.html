@@ -2420,9 +2420,7 @@ multipleUserBtn.onclick = function () {
 };
 
 window.onload = async () =>{
-    getInstructorDetails();
-    getCourseDetails();
-    getLearnerDetails();
+    getAllDetails();
     const hubUsersFetch = await fetch(`${hub_url}users`);
     const hubUsersJson = await hubUsersFetch.json();
     const instructorsUsername = [];
