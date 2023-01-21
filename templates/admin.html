@@ -1836,26 +1836,26 @@ function addAndAppendCourse(course) {
     arrangeRow.appendChild(arrangeCol);
 
     let countTitle = document.createElement('span');
-    countTitle.classList.add('learner-count-title');
+    countTitle.classList.add('learner-count-title','fs-12');
     countTitle.textContent = 'Learner count';
     arrangeCol.appendChild(countTitle);
     let count = document.createElement('span');
     arrangeCol.appendChild(count);
-    count.textContent = course.students.length;
-    count.classList.add('learner-count');
+    count.textContent = course.studentsCount;
+    count.classList.add('learner-count','fs-14');
 
     let arrangeColTrain = document.createElement('div');
     arrangeColTrain.classList.add('arrange-col');
     arrangeRow.appendChild(arrangeColTrain);
 
     let trainTitle = document.createElement('span');
-    trainTitle.classList.add('learner-count-title');
+    trainTitle.classList.add('learner-count-title','fs-12');
     trainTitle.textContent = 'Trainer name';
     arrangeColTrain.appendChild(trainTitle);
     let trainName = document.createElement('span');
     arrangeColTrain.appendChild(trainName);
     trainName.textContent = course.trainer;
-    trainName.classList.add('learner-count');
+    trainName.classList.add('learner-count','fs-14');
 
     let deleteIconCont = document.createElement('div');
     deleteIconCont.onclick = function(){
@@ -1899,26 +1899,26 @@ function addAndAppendTrainer(trainer) {
     arrangeRow.appendChild(arrangeCol);
 
     let countTitle = document.createElement('span');
-    countTitle.classList.add('learner-count-title');
+    countTitle.classList.add('learner-count-title','fs-12');
     countTitle.textContent = 'Course count';
     arrangeCol.appendChild(countTitle);
     let count = document.createElement('span');
     arrangeCol.appendChild(count);
     count.textContent = trainer.course.length;
-    count.classList.add('learner-count');
+    count.classList.add('learner-count','fs-14');
 
     let arrangeColTrain = document.createElement('div');
     arrangeColTrain.classList.add('arrange-col');
     arrangeRow.appendChild(arrangeColTrain);
 
     let statusTitle = document.createElement('span');
-    statusTitle.classList.add('learner-count-title');
+    statusTitle.classList.add('learner-count-title','fs-12');
     statusTitle.textContent = 'Status';
     arrangeColTrain.appendChild(statusTitle);
     let statusName = document.createElement('span');
     arrangeColTrain.appendChild(statusName);
     statusName.textContent = trainer.status;
-    statusName.classList.add('learner-count');
+    statusName.classList.add('learner-count','fs-14');
 
     let eyeIconCont = document.createElement('div');
     eyeIconCont.onclick = function(){
@@ -1953,12 +1953,12 @@ function addAndAppendTrainer(trainer) {
            let trainerCourseLearnerCountTitle = document.createElement('span');
            trainerCourseArrangeCol.appendChild(trainerCourseLearnerCountTitle);
            trainerCourseLearnerCountTitle.textContent = 'Learner Count';
-           trainerCourseLearnerCountTitle.classList.add('learner-count-title');
+           trainerCourseLearnerCountTitle.classList.add('learner-count-title','fs-12');
 
            let trainerCourseLearnerCount = document.createElement('span');
            trainerCourseArrangeCol.appendChild(trainerCourseLearnerCount);
            trainerCourseLearnerCount.textContent =Object.values(each)[0] ;
-           trainerCourseLearnerCount.classList.add('learner-count');
+           trainerCourseLearnerCount.classList.add('learner-count','fs-14');
 
            let trainerCourseCardDelete = document.createElement('div');
            trainerCourseCard.appendChild(trainerCourseCardDelete);
