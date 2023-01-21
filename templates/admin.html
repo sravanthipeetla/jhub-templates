@@ -1763,7 +1763,7 @@ function addAndAppendCourse(course) {
     arrangeCol.appendChild(countTitle);
     let count = document.createElement('span');
     arrangeCol.appendChild(count);
-    count.textContent = course.studentsCount;
+    count.textContent = course.students.length;
     count.classList.add('learner-count');
 
     let arrangeColTrain = document.createElement('div');
@@ -1814,12 +1814,28 @@ const getAllDetails = async () => {
         });
         const studentsPromise = await fetch(`${ngshare_url}students/${courseName}`);
         const studentsJson = await studentsPromise.json();
-        // const studentsCount = studentsJson.students.length;
         return { 'courseName': courseName, 'trainer': instructorName, 'students': studentsJson.students};
     });
     return Promise.all(details);
 };
-console.log('AllDetails',getAllDetails());
+
+getAllDetails().then((resp)=>{
+    const allDetails = resp;
+    $('#coursesSearch').keyup(()=>{
+        courseCardCont.innerHTML='';
+        let searchValue=$('#coursesSearch').val();
+        let searchList = courseFetchDetails.filter((course)=>{
+            return course.courseName.toLowerCase().includes(searchValue.toLowerCase());
+        });
+        for (let course of searchList) {
+            addAndAppendCourse(course);
+        }; 
+    });
+    for (let course of courseFetchDetails) {
+        addAndAppendCourse(course);
+    };
+
+});
 
 // getCourseDetails().then((resp)=>{
 //     $('#coursesLoader').hide();
