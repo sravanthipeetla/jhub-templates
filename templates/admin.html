@@ -846,14 +846,6 @@ body.loading {
     }
 }
 
-@media(max-width:1100px){
-
-    .fs-16{
-        font-size: 1.3rem;
-    }
-
-}
-
 @media(max-width:1200px){
 
     .courseCard{
@@ -867,6 +859,14 @@ body.loading {
     }
     .learner-search {
     width: 27rem;
+    }
+
+}
+
+@media(max-width:1100px){
+    
+    .fs-16{
+        font-size: 1.3rem;
     }
 
 }
@@ -1211,9 +1211,9 @@ if ($(this).text().toLowerCase() == currentAnchorTagText) {
 });
 
 //   // To hide left navbar items - 'Token' and 'services'
-const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
-navbarLeftList[1].style.display = 'none';
-navbarLeftList[3].style.display = 'none';
+// const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
+// navbarLeftList[1].style.display = 'none';
+// navbarLeftList[3].style.display = 'none';
 
 const courseCard = document.getElementById('courseCard');
 const deleteIcon = document.getElementById('delete-icon');
