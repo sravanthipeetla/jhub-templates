@@ -2216,7 +2216,7 @@ getAllDetails().then(async (resp)=>{
         let searchObj={};
         for (let key in learnerCourses){
             if (key.toLowerCase().includes(searchValue.toLowerCase())){
-                searchObj[key] = learnerCourse[key];
+                searchObj[key] = learnerCourses[key];
             }
             else if (learnerCourses[key].join('|').toLowerCase().includes(searchValue.toLowerCase())){
                 searchObj[key] = learnerCourses[key];
@@ -2227,7 +2227,7 @@ getAllDetails().then(async (resp)=>{
             obj[key]=learnerCourses[key]
             addAndAppendLearner(obj);
         };
-    })
+    });
 });
 
 
