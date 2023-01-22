@@ -1803,66 +1803,48 @@ const getAllDetails = async () => {
     return Promise.all(details);
 };
 
-function createEl(el,cls){
+function createEl(el,cls,text){
     const elem= document.createElement(el);
-    if (typeof(cls) === 'string'){
+    if (text){
+        elem.textContent = text;
+    }
+    if (typeof(cls) === 'string' && cls !== ''){
          elem.classList.add(cls);
     }
-    else{
+    else if(typeof(cls) === 'object'){
         for(let each of cls){
             elem.classList.add(each);
         }
+    }
+    else{
+        return elem;
     }
     return elem;
 }
 
 function addAndAppendCourse(course) {
-    let courseCardId = course.courseName+'course';
-    let courseCont = document.createElement('div');
-    courseCont.classList.add('courseCard');
-    courseCont.id = courseCardId;
+    const courseCont = createEl('div','courseCard');
     courseCardCont.appendChild(courseCont);
-
-    let courseLeft = document.createElement('div');
-    courseLeft.classList.add('course-card-left');
+    const courseLeft = createEl('div','course-card-left');
     courseCont.appendChild(courseLeft);
-
-    let courseTitle = document.createElement('p');
-    courseTitle.classList.add('course-title');
+    const courseTitle = createEl('p','course-title',course.courseName);
     courseLeft.appendChild(courseTitle);
-    courseTitle.textContent = course.courseName;
-
-    let arrangeRow = document.createElement('div');
-    arrangeRow.classList.add('arrange-row');
+    const arrangeRow = createEl('div','arrange-row');
     courseLeft.appendChild(arrangeRow);
-
-    let arrangeCol = document.createElement('div');
-    arrangeCol.classList.add('arrange-col','arrange-col-first');
+    const arrangeCol = createEl('div',['arrange-col','arrange-col-first']);
     arrangeRow.appendChild(arrangeCol);
-
-    let countTitle = document.createElement('span');
-    countTitle.classList.add('learner-count-title','fs-12');
-    countTitle.textContent = 'Learner count';
+    const countTitle = createEl('span',['learner-count-title','fs-12'],'Learner count');
     arrangeCol.appendChild(countTitle);
-    let count = document.createElement('span');
+    const count = createEl('span',['learner-count','fs-14'],course.students.length);
     arrangeCol.appendChild(count);
-    count.textContent = course.students.length;
-    count.classList.add('learner-count','fs-14');
-
-    let arrangeColTrain = document.createElement('div');
-    arrangeColTrain.classList.add('arrange-col');
+    const arrangeColTrain = createEl('div','arrange-col');
     arrangeRow.appendChild(arrangeColTrain);
-
-    let trainTitle = document.createElement('span');
-    trainTitle.classList.add('learner-count-title','fs-12');
-    trainTitle.textContent = 'Trainer name';
+    const trainTitle = createEl('span',['learner-count-title','fs-12'],'Trainer name');
     arrangeColTrain.appendChild(trainTitle);
-    let trainName = document.createElement('span');
+    const trainName = createEl('span',['learner-count','fs-14'],course.trainer);
     arrangeColTrain.appendChild(trainName);
-    trainName.textContent = course.trainer;
-    trainName.classList.add('learner-count','fs-14');
 
-    let deleteIconCont = document.createElement('div');
+    const deleteIconCont = createEl('div','delete-icon');
     deleteIconCont.onclick = function(){
         $('#deleteCourseModal').show();
         $('#deleteModalTitle').text('Delete Course');
@@ -1871,8 +1853,7 @@ function addAndAppendCourse(course) {
         $('#deleteCourseCaution').text("once deleted can't be restore again");
         deleteItem = course.courseName;
     };
-    deleteIconCont.classList.add('delete-icon');
-    let deleteIconI = document.createElement('img');
+    const deleteIconI = createEl('img');
     deleteIconI.src = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
     deleteIconCont.appendChild(deleteIconI);
     courseCont.appendChild(deleteIconCont);
