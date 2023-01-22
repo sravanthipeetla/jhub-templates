@@ -2057,37 +2057,6 @@ function addAndAppendLearner(learner){
 
 };
 
-// getLearnerDetails().then((resp)=>{
-//     $('#learnersLoader').hide();
-//     let learnerCourse = resp;
-//     console.log('learnerCourse',resp);
-//     for (key in learnerCourse){
-//         let obj ={};
-//         obj[key]=learnerCourse[key]
-//         addAndAppendLearner(obj);
-//     };
-//     $('#learnersSearch').keyup(()=>{
-//         learnerRowsBody.innerHTML='';
-//         let searchValue=$('#learnersSearch').val();
-//         let searchObj={};
-//         for (let key in learnerCourse){
-//             if (key.toLowerCase().includes(searchValue.toLowerCase())){
-//                 searchObj[key] = learnerCourse[key];
-//             }
-//             else if (learnerCourse[key].join('|').toLowerCase().includes(searchValue.toLowerCase())){
-//                 searchObj[key] = learnerCourse[key];
-//             }
-//         }
-//         for (key in searchObj){
-//         let obj ={};
-//         obj[key]=learnerCourse[key]
-//         addAndAppendLearner(obj);
-//     };
-      
-//     })
-
-// });
-
 getAllDetails().then(async (resp)=>{
     const allDetails = resp;
     console.log('AllDet',resp);
@@ -2229,7 +2198,6 @@ getAllDetails().then(async (resp)=>{
         };
     });
 });
-
 
 $('#courseNav').click(function(){
     $('#trainerSearchCont').hide();
