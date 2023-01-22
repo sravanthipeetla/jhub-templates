@@ -2096,7 +2096,7 @@ getAllDetails().then(async (resp)=>{
     const instructorDetailsUnMapped = [];
     let reqList =instructorDetailsAll;
 
-    for (key in trainerCourses){
+    for (const key in trainerCourses){
         let status = null;
         if (trainerCourses[key].length > 0){
             status='Mapped';
