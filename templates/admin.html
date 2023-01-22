@@ -2124,9 +2124,7 @@ getAllDetails().then(async (resp)=>{
         $('#trainersSearch').val('');
         trainerCardCont.innerHTML='';
         if ($('#trainersFilter').find(":selected").val() === 'mapped'){
-            console.log('entered to map')
            reqList = instructorDetailsMapped;
-           console.log('mapList',reqList)
         }
         else if($('#trainersFilter').find(":selected").val() === 'unmapped'){
            reqList = instructorDetailsUnMapped;
@@ -2380,7 +2378,6 @@ window.onload = async () =>{
     const hubTrainerGroupFetch = await fetch(`${hub_url}groups/instructor`);
     const hubTrainerGroupJson = await hubTrainerGroupFetch.json();
     const hubTrainerGroupList = hubTrainerGroupJson.users.sort();
-    console.log(hubTrainerGroupList);
     const trainDefaultOption = document.createElement('option');
     trainDefaultOption.text = 'Choose trainer';
     trainDefaultOption.value = '';
