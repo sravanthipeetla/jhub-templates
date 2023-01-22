@@ -1832,31 +1832,31 @@ function deleteCourse(courseName){
     };
 
 
-function creatingCard(courseName,countNum,trainerName,deleteCourse){
+function creatingCard(displayObj,deleteCourse){
     const courseCont = createEl('div','courseCard');
     courseCardCont.appendChild(courseCont);
     const courseLeft = createEl('div','course-card-left');
     courseCont.appendChild(courseLeft);
-    const courseTitle = createEl('p','course-title',courseName);
+    const courseTitle = createEl('p','course-title',displayObj.name);
     courseLeft.appendChild(courseTitle);
     const arrangeRow = createEl('div','arrange-row');
     courseLeft.appendChild(arrangeRow);
     const arrangeCol = createEl('div',['arrange-col','arrange-col-first']);
     arrangeRow.appendChild(arrangeCol);
-    const countTitle = createEl('span',['learner-count-title','fs-12'],'Learner count');
+    const countTitle = createEl('span',['learner-count-title','fs-12'],displayObj.display1);
     arrangeCol.appendChild(countTitle);
-    let count = createEl('span',['learner-count','fs-14'], countNum);
+    let count = createEl('span',['learner-count','fs-14'], displayObj.display1_c);
     arrangeCol.appendChild(count);
     const arrangeColTrain = createEl('div','arrange-col');
     arrangeRow.appendChild(arrangeColTrain);
-    const trainTitle = createEl('span',['learner-count-title','fs-12'],'Trainer name');
+    const trainTitle = createEl('span',['learner-count-title','fs-12'],displayObj.display2);
     arrangeColTrain.appendChild(trainTitle);
-    const trainName = createEl('span',['learner-count','fs-14'],trainerName);
+    const trainName = createEl('span',['learner-count','fs-14'],display2_c);
     arrangeColTrain.appendChild(trainName);
 
     const deleteIconCont = createEl('div','delete-icon');
     deleteIconCont.onclick = () =>{
-        deleteCourse(courseName);
+        deleteCourse(displayObj.name);
     }
     const deleteIconI = createEl('img');
     deleteIconI.src = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
@@ -1867,7 +1867,8 @@ return courseCont;
 }
 
 function addAndAppendCourse(course) {
-    const courseCont=creatingCard(course.courseName,course.students.length,course.trainer,deleteCourse);
+    const displayObj = {name:course.courseName,display1:'Learner count',display1_c:course.students.length,display2:'Trainer name',display2_c:course.trainer}
+    const courseCont=creatingCard(displayObj,deleteCourse);
     courseCardCont.appendChild(courseCont);
    
 };
