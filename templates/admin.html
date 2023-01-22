@@ -2094,7 +2094,7 @@ getAllDetails().then(async (resp)=>{
     const instructorDetailsAll=[];
     const instructorDetailsMapped = [];
     const instructorDetailsUnMapped = [];
-    const reqList =instructorDetailsAll;
+    let reqList =instructorDetailsAll;
 
     for (key in trainerCourses){
         let status = null;
@@ -2117,7 +2117,9 @@ getAllDetails().then(async (resp)=>{
         $('#trainersSearch').val('');
         trainerCardCont.innerHTML='';
         if ($('#trainersFilter').find(":selected").val() === 'mapped'){
+            console.log('entered to map')
            reqList = instructorDetailsMapped;
+           console.log('mapList',reqList)
         }
         else if($('#trainersFilter').find(":selected").val() === 'unmapped'){
            reqList = instructorDetailsUnMapped;
@@ -2127,7 +2129,7 @@ getAllDetails().then(async (resp)=>{
         }
 
         for (const trainer of reqList) {
-                addAndAppendTrainer(trainer);
+            addAndAppendTrainer(trainer);
         }
 
     });
