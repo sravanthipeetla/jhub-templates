@@ -1822,7 +1822,17 @@ function createEl(el,cls,text){
     return elem;
 }
 
-function creatingCard(courseName,countNum,trainerName){
+function deleteCourse(courseName){
+        $('#deleteCourseModal').show();
+        $('#deleteModalTitle').text('Delete Course');
+        $('#deleteItemText').text(`Delete ${courseName} course?`);
+        $('#deleteCourseBtn').text('Delete');
+        $('#deleteCourseCaution').text("once deleted can't be restore again");
+        deleteItem = courseName;
+    };
+
+
+function creatingCard(courseName,countNum,trainerName,deleteCourse){
     const courseCont = createEl('div','courseCard');
     courseCardCont.appendChild(courseCont);
     const courseLeft = createEl('div','course-card-left');
@@ -1845,14 +1855,7 @@ function creatingCard(courseName,countNum,trainerName){
     arrangeColTrain.appendChild(trainName);
 
     const deleteIconCont = createEl('div','delete-icon');
-    deleteIconCont.onclick = function(){
-        $('#deleteCourseModal').show();
-        $('#deleteModalTitle').text('Delete Course');
-        $('#deleteItemText').text(`Delete ${courseName} course?`);
-        $('#deleteCourseBtn').text('Delete');
-        $('#deleteCourseCaution').text("once deleted can't be restore again");
-        deleteItem = courseName;
-    };
+    deleteIconCont.onclick = deleteCourse;
     const deleteIconI = createEl('img');
     deleteIconI.src = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
     deleteIconCont.appendChild(deleteIconI);
@@ -1862,7 +1865,7 @@ return courseCont;
 }
 
 function addAndAppendCourse(course) {
-    const courseCont=creatingCard(course.courseName,course.students.length,course.trainer)
+    const courseCont=creatingCard(course.courseName,course.students.length,course.trainer,deleteCourse(course.courseName))
     courseCardCont.appendChild(courseCont);
    
 };
