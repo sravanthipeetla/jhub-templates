@@ -1822,7 +1822,7 @@ function createEl(el,cls,text){
     return elem;
 }
 
-function creatingCard(courseName,count){
+function creatingCard(courseName,countNum){
     const courseCont = createEl('div','courseCard');
     courseCardCont.appendChild(courseCont);
     const courseLeft = createEl('div','course-card-left');
@@ -1835,7 +1835,7 @@ function creatingCard(courseName,count){
     arrangeRow.appendChild(arrangeCol);
     const countTitle = createEl('span',['learner-count-title','fs-12'],'Learner count');
     arrangeCol.appendChild(countTitle);
-    let count = createEl('span',['learner-count','fs-14'], count);
+    let count = createEl('span',['learner-count','fs-14'], countNum);
     arrangeCol.appendChild(count);
     const arrangeColTrain = createEl('div','arrange-col');
     arrangeRow.appendChild(arrangeColTrain);
