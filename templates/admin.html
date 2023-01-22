@@ -1822,15 +1822,6 @@ function createEl(el,cls,text){
     return elem;
 }
 
-function deleteCourse(courseName){
-        $('#deleteCourseModal').show();
-        $('#deleteModalTitle').text('Delete Course');
-        $('#deleteItemText').text(`Delete ${courseName} course?`);
-        $('#deleteCourseBtn').text('Delete');
-        $('#deleteCourseCaution').text("once deleted can't be restore again");
-        deleteItem = courseName;
-    };
-
 
 function creatingCard(displayObj,deleteCourse){
     const courseCont = createEl('div','courseCard');
@@ -1856,7 +1847,7 @@ function creatingCard(displayObj,deleteCourse){
 
     const deleteIconCont = createEl('div','delete-icon');
     deleteIconCont.onclick = () =>{
-        deleteCourse(displayObj.name);
+        deleteCourse();
     }
     const deleteIconI = createEl('img');
     deleteIconI.src = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
@@ -1868,7 +1859,15 @@ return courseCont;
 
 function addAndAppendCourse(course) {
     const displayObj = {name:course.courseName,display1:'Learner count',display1_c:course.students.length,display2:'Trainer name',display2_c:course.trainer}
-    const courseCont=creatingCard(displayObj,deleteCourse);
+    const deleteItem = () =>{
+        $('#deleteCourseModal').show();
+        $('#deleteModalTitle').text('Delete Course');
+        $('#deleteItemText').text(`Delete ${course.courseName} course?`);
+        $('#deleteCourseBtn').text('Delete');
+        $('#deleteCourseCaution').text("once deleted can't be restore again");
+        deleteItem = course.courseName;
+    }
+    const courseCont=creatingCard(displayObj,deleteItem);
     courseCardCont.appendChild(courseCont);
    
 };
