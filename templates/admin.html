@@ -1851,7 +1851,7 @@ function creatingCard(courseName,countNum,trainerName){
         $('#deleteItemText').text(`Delete ${courseName} course?`);
         $('#deleteCourseBtn').text('Delete');
         $('#deleteCourseCaution').text("once deleted can't be restore again");
-        deleteItem = course.courseName;
+        deleteItem = courseName;
     };
     const deleteIconI = createEl('img');
     deleteIconI.src = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
