@@ -1044,7 +1044,7 @@ body.loading {
             <div class="course-model">
                 <div>
                     <div class="delete-course-model-top-first">
-                        <h1 id="successModelTitle" class="fs-16">Delete Course</h1>
+                        <h1 id="DeleteSuccessModelTitle" class="fs-16">Delete Course</h1>
                         <div id="deleteSuccessClose">
                             <span> &times;</span>
                         </div>
@@ -1676,6 +1676,7 @@ async function  removeLearnerFromAllCourse (learnerName,coursesList){
          if (k === coursesList.length){
             $('#removeLearnerCourseModal').hide();
             $('#deleteSuccessModal').show();
+            $('#DeleteSuccessModelTitle').text('Remove Learner');
             $('#deletedItemMsg').text('Removed successfully');
          }
          else{
@@ -1710,6 +1711,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName) {
         if (response.success) {
             $('#deleteCourseModal').hide();
             $('#deleteSuccessModal').show();
+            $('#DeleteSuccessModelTitle').text('Delete Course');
             $('#deletedItemMsg').text('Deleted successfully');
             deleteItem=null;
             deleteCourseName=null;
@@ -1734,6 +1736,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName) {
         if (response.success) {
             $('#deleteCourseModal').hide();
             $('#deleteSuccessModal').show();
+            $('#DeleteSuccessModelTitle').text('Remove Trainer');
             $('#deletedItemMsg').text('Removed successfully');
             deleteItem=null;
             deleteCourseName=null;
@@ -1758,6 +1761,7 @@ async function deleteItemNext  (deleteItem,deleteCourseName) {
         if (response.success) {
             $('#deleteCourseModal').hide();
             $('#deleteSuccessModal').show();
+            $('#DeleteSuccessModelTitle').text('Remove Learner');
             $('#deletedItemMsg').text('Removed successfully');
             deleteItem=null;
             deleteCourseName=null;
