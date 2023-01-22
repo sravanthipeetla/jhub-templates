@@ -1305,15 +1305,15 @@ mapLearnerAdd.addEventListener("click", async function(e) {
             if (v !== "") {
                 const values = v.split(',');
                 learnerArray.push(values[0]);
-                let obj = {};
-                for (let each of titles) {
-                    let index = titles.indexOf(each);
+                const obj = {};
+                for (const each of titles) {
+                    const index = titles.indexOf(each);
                     obj[each] = values[index];
                 }
                 reqArray.push(obj);
             }
         });
-        let checker = (arr, target) => target.every(v => arr.includes(v));
+        const checker = (arr, target) => target.every(v => arr.includes(v));
         if(checker(hubLearnerGroupList, learnerArray)){
             const studentData=JSON.stringify(reqArray);
             const selectedCourse = $('#mapLearnerCourseSelect').find(":selected").val();
@@ -1407,7 +1407,7 @@ $('#addCourseBtn').click(async () => {
 });
 
 $('#addTrainerBtn').click(async () =>{
-    let  instructorUserName = $('#trainerUsername').val();
+    const  instructorUserName = $('#trainerUsername').val();
     if (instructorUserName.includes(' ')){
         $('#alertMsgCont').show();
         $('#alertMsg').text('Please remove spaces in trainer name');
@@ -1562,9 +1562,9 @@ $('#addLearnerCourseBtn').click(async ()=>{
                 if (v !== "") {
                     const values = v.split(',');
                     learnerArray.push(values[0]);
-                    let obj = {};
-                    for (let each of titles) {
-                        let index = titles.indexOf(each);
+                    const obj = {};
+                    for (const each of titles) {
+                        const index = titles.indexOf(each);
                         obj[each] = values[index];
                     }
                     reqArray.push(obj);
@@ -2371,7 +2371,7 @@ window.onload = async () =>{
     const hubUsersFetch = await fetch(`${hub_url}users`);
     const hubUsersJson = await hubUsersFetch.json();
     const instructorsUsername = [];
-    for (let i = 0; i < hubUsersJson.length; i++) {
+    for (const i = 0; i < hubUsersJson.length; i++) {
         if (hubUsersJson[i].groups.includes('instructor')) {
         instructorsUsername.push(hubUsersJson[i].name);
         }
@@ -2382,7 +2382,7 @@ window.onload = async () =>{
     trainDefaultOption.selected = true;
     trainDefaultOption.disabled = true;
     chooseTrainerSelect.add(trainDefaultOption);
-    for (let option of instructorsUsername){
+    for (const option of instructorsUsername){
         const newOption = document.createElement('option');
         newOption.text = option;
         newOption.value = option;
@@ -2400,7 +2400,7 @@ window.onload = async () =>{
     courseDefaultOption.selected = true;
     courseDefaultOption.disabled = true;
     mapLearnerCourseSelect.add(courseDefaultOption);
-    for (let option of coursesList){
+    for (const option of coursesList){
         const newOption = document.createElement('option');
         newOption.text = option;
         newOption.value = option;
@@ -2415,7 +2415,7 @@ window.onload = async () =>{
     addCourseDefaultOption.selected = true;
     addCourseDefaultOption.disabled = true;
     addLearnerCourseSelect.add(addCourseDefaultOption);
-    for (let option of coursesList){
+    for (const option of coursesList){
         const newOption = document.createElement('option');
         newOption.text = option;
         newOption.value = option;
