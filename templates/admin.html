@@ -1822,14 +1822,12 @@ function createEl(el,cls,text){
     return elem;
 }
 
-function addAndAppendCourse(course) {
-    const countNum = course.students.length;
-    console.log(countNum);
+function creatingCard(courseName,count){
     const courseCont = createEl('div','courseCard');
     courseCardCont.appendChild(courseCont);
     const courseLeft = createEl('div','course-card-left');
     courseCont.appendChild(courseLeft);
-    const courseTitle = createEl('p','course-title',course.courseName);
+    const courseTitle = createEl('p','course-title',courseName);
     courseLeft.appendChild(courseTitle);
     const arrangeRow = createEl('div','arrange-row');
     courseLeft.appendChild(arrangeRow);
@@ -1837,7 +1835,7 @@ function addAndAppendCourse(course) {
     arrangeRow.appendChild(arrangeCol);
     const countTitle = createEl('span',['learner-count-title','fs-12'],'Learner count');
     arrangeCol.appendChild(countTitle);
-    let count = createEl('span',['learner-count','fs-14'], countNum);
+    let count = createEl('span',['learner-count','fs-14'], count);
     arrangeCol.appendChild(count);
     const arrangeColTrain = createEl('div','arrange-col');
     arrangeRow.appendChild(arrangeColTrain);
@@ -1850,7 +1848,7 @@ function addAndAppendCourse(course) {
     deleteIconCont.onclick = function(){
         $('#deleteCourseModal').show();
         $('#deleteModalTitle').text('Delete Course');
-        $('#deleteItemText').text(`Delete ${course.courseName} course?`);
+        $('#deleteItemText').text(`Delete ${courseName} course?`);
         $('#deleteCourseBtn').text('Delete');
         $('#deleteCourseCaution').text("once deleted can't be restore again");
         deleteItem = course.courseName;
@@ -1859,6 +1857,14 @@ function addAndAppendCourse(course) {
     deleteIconI.src = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
     deleteIconCont.appendChild(deleteIconI);
     courseCont.appendChild(deleteIconCont);
+
+return courseCont;
+}
+
+function addAndAppendCourse(course) {
+    const courseCont=creatingCard(course.courseName,course.students.length)
+    courseCardCont.appendChild(courseCont);
+   
 };
 
 function addAndAppendTrainer(trainer) {
