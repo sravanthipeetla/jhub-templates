@@ -1835,7 +1835,8 @@ function addAndAppendCourse(course) {
     arrangeRow.appendChild(arrangeCol);
     const countTitle = createEl('span',['learner-count-title','fs-12'],'Learner count');
     arrangeCol.appendChild(countTitle);
-    const count = createEl('span',['learner-count','fs-14'],course.students.length);
+    const count = createEl('span',['learner-count','fs-14'], course.students.length);
+    console.log(count);
     arrangeCol.appendChild(count);
     const arrangeColTrain = createEl('div','arrange-col');
     arrangeRow.appendChild(arrangeColTrain);
