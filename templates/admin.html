@@ -1859,7 +1859,7 @@ return courseCont;
 
 function addAndAppendCourse(course) {
     const displayObj = {name:course.courseName,display1:'Learner count',display1_c:course.students.length,display2:'Trainer name',display2_c:course.trainer}
-    const deleteItem = () =>{
+    const deleteCourse = () =>{
         $('#deleteCourseModal').show();
         $('#deleteModalTitle').text('Delete Course');
         $('#deleteItemText').text(`Delete ${course.courseName} course?`);
@@ -1867,7 +1867,7 @@ function addAndAppendCourse(course) {
         $('#deleteCourseCaution').text("once deleted can't be restore again");
         deleteItem = course.courseName;
     }
-    const courseCont=creatingCard(displayObj,deleteItem);
+    const courseCont=creatingCard(displayObj,deleteCourse);
     courseCardCont.appendChild(courseCont);
    
 };
