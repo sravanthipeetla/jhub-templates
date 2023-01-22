@@ -1822,7 +1822,7 @@ function createEl(el,cls,text){
     return elem;
 }
 
-function creatingCard(courseName,countNum){
+function creatingCard(courseName,countNum,trainerName){
     const courseCont = createEl('div','courseCard');
     courseCardCont.appendChild(courseCont);
     const courseLeft = createEl('div','course-card-left');
@@ -1841,7 +1841,7 @@ function creatingCard(courseName,countNum){
     arrangeRow.appendChild(arrangeColTrain);
     const trainTitle = createEl('span',['learner-count-title','fs-12'],'Trainer name');
     arrangeColTrain.appendChild(trainTitle);
-    const trainName = createEl('span',['learner-count','fs-14'],course.trainer);
+    const trainName = createEl('span',['learner-count','fs-14'],trainerName);
     arrangeColTrain.appendChild(trainName);
 
     const deleteIconCont = createEl('div','delete-icon');
@@ -1862,7 +1862,7 @@ return courseCont;
 }
 
 function addAndAppendCourse(course) {
-    const courseCont=creatingCard(course.courseName,course.students.length)
+    const courseCont=creatingCard(course.courseName,course.students.length,course.trainer)
     courseCardCont.appendChild(courseCont);
    
 };
