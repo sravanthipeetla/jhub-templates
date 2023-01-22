@@ -1236,7 +1236,6 @@ const mapLearnerAdd = document.getElementById("mapLearnerAdd");
 const loaderDisplay = document.getElementsByClassName('loader')[0];
 let deleteItem = null;
 let deleteCourseName = null;
-let deleteItemId = null;
 let presentUser = 'singleUser';
 let coursesRemoveLearner = null;
 let coursesRemoveList = null;
@@ -1698,7 +1697,7 @@ $('#removeLearnerCourseBtn').click(() =>{
     removeLearnerFromAllCourse(coursesRemoveLearner,coursesRemoveList);
 });
 
-async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
+async function deleteItemNext  (deleteItem,deleteCourseName) {
     if ($('#deleteModalTitle').text() ==='Delete Course'){
         const courseDeletePromise = await fetch(`${ngshare_url}course/${deleteItem}`,{
             method: 'DELETE',
@@ -1714,7 +1713,6 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
             $('#deletedItemMsg').text('Deleted successfully');
             deleteItem=null;
             deleteCourseName=null;
-            deleteItemId=null;
         }
         else {
             $('#deleteCourseModal').hide();
@@ -1722,7 +1720,6 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
             $('#alertMsg').text(response.message);
             deleteItem=null;
             deleteCourseName=null;
-            deleteItemId=null;
         };
     }
     else if($('#deleteModalTitle').text() ==='Remove Trainer'){
@@ -1740,7 +1737,6 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
             $('#deletedItemMsg').text('Removed successfully');
             deleteItem=null;
             deleteCourseName=null;
-            deleteItemId=null;
         }
         else {
             $('#deleteCourseModal').hide();
@@ -1748,7 +1744,6 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
             $('#alertMsg').text(response.message);
             deleteItem=null;
             deleteCourseName=null;
-            deleteItemId=null;
         };
     }
     else if($('#deleteModalTitle').text() ==='Remove Learner'){
@@ -1766,7 +1761,6 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
             $('#deletedItemMsg').text('Removed successfully');
             deleteItem=null;
             deleteCourseName=null;
-            deleteItemId=null;
         }
         else {
             $('#deleteCourseModal').hide();
@@ -1774,13 +1768,12 @@ async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
             $('#alertMsg').text(response.message);
             deleteItem=null;
             deleteCourseName=null;
-            deleteItemId=null;
         };
     };  
 };
 
 $('#deleteCourseBtn').click(() =>{
-    deleteItemNext (deleteItem,deleteCourseName,deleteItemId);
+    deleteItemNext (deleteItem,deleteCourseName);
 });
 
 const getAllDetails = async () => {
@@ -1806,6 +1799,19 @@ const getAllDetails = async () => {
     });
     return Promise.all(details);
 };
+
+function createEl(el,cls){
+    const elem= document.createElement(el);
+    if (typeof(cls) === 'string'){
+         elem.classList.add(cls);
+    }
+    else{
+        for(let each of cls){
+            elem.classList.add(each);
+        }
+    }
+    return elem;
+}
 
 function addAndAppendCourse(course) {
     let courseCardId = course.courseName+'course';
@@ -1861,7 +1867,6 @@ function addAndAppendCourse(course) {
         $('#deleteCourseBtn').text('Delete');
         $('#deleteCourseCaution').text("once deleted can't be restore again");
         deleteItem = course.courseName;
-        deleteItemId = courseCardId;
     };
     deleteIconCont.classList.add('delete-icon');
     let deleteIconI = document.createElement('img');
@@ -1966,7 +1971,6 @@ function addAndAppendTrainer(trainer) {
                 $('#deleteCourseBtn').text('Remove');
                 $('#deleteCourseCaution').text("once removed can't be restore again");
                 deleteItem = trainer.name;
-                deleteItemId = trainerCourseCardId;
                 deleteCourseName = Object.keys(each)[0];
                 trainerCourseCardCont.innerHTML = "";
            };
@@ -2022,7 +2026,6 @@ function addAndAppendLearner(learner){
                 $('#deleteCourseBtn').text('Remove');
                 $('#deleteItemText').text(`Remove ${Object.keys(learner)[0]} from ${each} course?`);
                 deleteItem = Object.keys(learner)[0];
-                deleteItemId = learnerRowId;
                 deleteCourseName = each;
                 trainerCourseCardCont.innerHTML = ""; 
            };
