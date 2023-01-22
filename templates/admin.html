@@ -1233,6 +1233,7 @@ const addUploadBtn = document.getElementById('addUploadBtn');
 const mapFileChosen = document.getElementById('mapFileChosen');
 const mapLearnerAdd = document.getElementById("mapLearnerAdd");
 const loaderDisplay = document.getElementsByClassName('loader')[0];
+const deleteIconImg = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
 let deleteItem = null;
 let deleteCourseName = null;
 let presentUser = 'singleUser';
@@ -1823,7 +1824,7 @@ function createEl(el,cls,text){
 }
 
 
-function creatingCard(displayObj,deleteCourse){
+function creatingCard(displayObj,deleteCourse, deleteIconImg){
     const courseCont = createEl('div','courseCard');
     const courseLeft = createEl('div','course-card-left');
     courseCont.appendChild(courseLeft);
@@ -1849,7 +1850,7 @@ function creatingCard(displayObj,deleteCourse){
         deleteCourse();
     }
     const deleteIconI = createEl('img');
-    deleteIconI.src = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
+    deleteIconI.src =  deleteIconImg;
     deleteIconCont.appendChild(deleteIconI);
     courseCont.appendChild(deleteIconCont);
 
@@ -1866,121 +1867,131 @@ function addAndAppendCourse(course) {
         $('#deleteCourseCaution').text("once deleted can't be restore again");
         deleteItem = course.courseName;
     }
-    const courseCont=creatingCard(displayObj,deleteCourse);
+    const courseCont=creatingCard(displayObj,deleteCourse, deleteIconImg);
     courseCardCont.appendChild(courseCont);
    
 };
 
 function addAndAppendTrainer(trainer) {
-    let trainerCardId = 'trainerCard' + trainer.id;
-    let trainerCont = document.createElement('div');
-    trainerCont.classList.add('trainerCard','trainerCard-width');
-    trainerCont.id = trainerCardId;
-    trainerCardCont.appendChild(trainerCont);
+    const displayObj = {name:trainer.name,display1:'Course count',display1_c:trainer.course.length,display2_c:'Status',display2_c:trainer.status}
+    const trainerCont=creatingCard(displayObj,deleteCourse, deleteIconImg);
+    trainerCardCont.appendChild(trainerCard)
+    const deleteCourse = () =>{
+        alert(`delete ${trainer.name}`);
+    }
 
-    let trainerLeft = document.createElement('div');
-    trainerLeft.classList.add('trainer-card-left');
-    trainerCont.appendChild(trainerLeft);
 
-    let trainerTitle = document.createElement('p');
-    trainerTitle.classList.add('trainer-title');
-    trainerLeft.appendChild(trainerTitle);
-    trainerTitle.textContent = trainer.name;
 
-    let arrangeRow = document.createElement('div');
-    arrangeRow.classList.add('arrange-row','arrange-row-first');
-    trainerLeft.appendChild(arrangeRow);
 
-    let arrangeCol = document.createElement('div');
-    arrangeCol.classList.add('arrange-col');
-    arrangeRow.appendChild(arrangeCol);
+    // let trainerCardId = 'trainerCard' + trainer.id;
+    // let trainerCont = document.createElement('div');
+    // trainerCont.classList.add('trainerCard','trainerCard-width');
+    // trainerCont.id = trainerCardId;
+    // trainerCardCont.appendChild(trainerCont);
 
-    let countTitle = document.createElement('span');
-    countTitle.classList.add('learner-count-title','fs-12');
-    countTitle.textContent = 'Course count';
-    arrangeCol.appendChild(countTitle);
-    let count = document.createElement('span');
-    arrangeCol.appendChild(count);
-    count.textContent = trainer.course.length;
-    count.classList.add('learner-count','fs-14');
+    // let trainerLeft = document.createElement('div');
+    // trainerLeft.classList.add('trainer-card-left');
+    // trainerCont.appendChild(trainerLeft);
 
-    let arrangeColTrain = document.createElement('div');
-    arrangeColTrain.classList.add('arrange-col');
-    arrangeRow.appendChild(arrangeColTrain);
+    // let trainerTitle = document.createElement('p');
+    // trainerTitle.classList.add('trainer-title');
+    // trainerLeft.appendChild(trainerTitle);
+    // trainerTitle.textContent = trainer.name;
 
-    let statusTitle = document.createElement('span');
-    statusTitle.classList.add('learner-count-title','fs-12');
-    statusTitle.textContent = 'Status';
-    arrangeColTrain.appendChild(statusTitle);
-    let statusName = document.createElement('span');
-    arrangeColTrain.appendChild(statusName);
-    statusName.textContent = trainer.status;
-    statusName.classList.add('learner-count','fs-14');
+    // let arrangeRow = document.createElement('div');
+    // arrangeRow.classList.add('arrange-row','arrange-row-first');
+    // trainerLeft.appendChild(arrangeRow);
 
-    let eyeIconCont = document.createElement('div');
-    eyeIconCont.onclick = function(){
-        trainerCourseCardCont.innerHTML = "";
-        deleteTrainerModal.style.display='block';
-        actionTitle.textContent = "Trainer-";
-        deleteTrainer.textContent = trainer.name;
-        for (let each of trainer.course){
-           let trainerCourseCard = document.createElement('div');
-           let trainerCourseCardId = trainer.name + Object.keys(each)[0];
-           trainerCourseCard.id = trainerCourseCardId;
-           trainerCourseCardCont.appendChild(trainerCourseCard);
-           trainerCourseCard.classList.add('trainer-course-card');
+    // let arrangeCol = document.createElement('div');
+    // arrangeCol.classList.add('arrange-col');
+    // arrangeRow.appendChild(arrangeCol);
 
-           let trainerCourseCardLeft = document.createElement('div');
-           trainerCourseCardLeft.classList.add('course-card-left');
-           trainerCourseCard.appendChild(trainerCourseCardLeft);
+    // let countTitle = document.createElement('span');
+    // countTitle.classList.add('learner-count-title','fs-12');
+    // countTitle.textContent = 'Course count';
+    // arrangeCol.appendChild(countTitle);
+    // let count = document.createElement('span');
+    // arrangeCol.appendChild(count);
+    // count.textContent = trainer.course.length;
+    // count.classList.add('learner-count','fs-14');
 
-           let trainerCourseTitle = document.createElement('p');
-           trainerCourseTitle.textContent = Object.keys(each)[0];
-           trainerCourseTitle.classList.add('course-title');
-           trainerCourseCardLeft.appendChild(trainerCourseTitle);
+    // let arrangeColTrain = document.createElement('div');
+    // arrangeColTrain.classList.add('arrange-col');
+    // arrangeRow.appendChild(arrangeColTrain);
 
-           let trainerCourseArrangeRow = document.createElement('div');
-           trainerCourseArrangeRow.classList.add('arrange-row');
-           trainerCourseCardLeft.appendChild(trainerCourseArrangeRow);
+    // let statusTitle = document.createElement('span');
+    // statusTitle.classList.add('learner-count-title','fs-12');
+    // statusTitle.textContent = 'Status';
+    // arrangeColTrain.appendChild(statusTitle);
+    // let statusName = document.createElement('span');
+    // arrangeColTrain.appendChild(statusName);
+    // statusName.textContent = trainer.status;
+    // statusName.classList.add('learner-count','fs-14');
 
-           let trainerCourseArrangeCol = document.createElement('div');
-           trainerCourseArrangeRow.appendChild(trainerCourseArrangeCol);
-           trainerCourseArrangeCol.classList.add('arrange-col');
+    // let eyeIconCont = document.createElement('div');
+    // eyeIconCont.onclick = function(){
+    //     trainerCourseCardCont.innerHTML = "";
+    //     deleteTrainerModal.style.display='block';
+    //     actionTitle.textContent = "Trainer-";
+    //     deleteTrainer.textContent = trainer.name;
+    //     for (let each of trainer.course){
+    //        let trainerCourseCard = document.createElement('div');
+    //        let trainerCourseCardId = trainer.name + Object.keys(each)[0];
+    //        trainerCourseCard.id = trainerCourseCardId;
+    //        trainerCourseCardCont.appendChild(trainerCourseCard);
+    //        trainerCourseCard.classList.add('trainer-course-card');
 
-           let trainerCourseLearnerCountTitle = document.createElement('span');
-           trainerCourseArrangeCol.appendChild(trainerCourseLearnerCountTitle);
-           trainerCourseLearnerCountTitle.textContent = 'Learner Count';
-           trainerCourseLearnerCountTitle.classList.add('learner-count-title','fs-12');
+    //        let trainerCourseCardLeft = document.createElement('div');
+    //        trainerCourseCardLeft.classList.add('course-card-left');
+    //        trainerCourseCard.appendChild(trainerCourseCardLeft);
 
-           let trainerCourseLearnerCount = document.createElement('span');
-           trainerCourseArrangeCol.appendChild(trainerCourseLearnerCount);
-           trainerCourseLearnerCount.textContent =Object.values(each)[0] ;
-           trainerCourseLearnerCount.classList.add('learner-count','fs-14');
+    //        let trainerCourseTitle = document.createElement('p');
+    //        trainerCourseTitle.textContent = Object.keys(each)[0];
+    //        trainerCourseTitle.classList.add('course-title');
+    //        trainerCourseCardLeft.appendChild(trainerCourseTitle);
 
-           let trainerCourseCardDelete = document.createElement('div');
-           trainerCourseCard.appendChild(trainerCourseCardDelete);
-           trainerCourseCardDelete.onclick=function(){
-                deleteTrainerModal.style.display = 'none';
-                $('#deleteCourseModal').show();
-                $('#deleteModalTitle').text('Remove Trainer');
-                $('#deleteItemText').text(`Remove ${trainer.name} from ${Object.keys(each)[0]} course?`);
-                $('#deleteCourseBtn').text('Remove');
-                $('#deleteCourseCaution').text("once removed can't be restore again");
-                deleteItem = trainer.name;
-                deleteCourseName = Object.keys(each)[0];
-                trainerCourseCardCont.innerHTML = "";
-           };
-           trainerCourseCardDelete.classList.add('delete-icon');
-           let trainerCourseCardDeleteImg = document.createElement('img');
-           trainerCourseCardDeleteImg.src='https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
-           trainerCourseCardDelete.appendChild(trainerCourseCardDeleteImg);
-        };
-    };
-    eyeIconCont.classList.add('eye-icon');
-    let eyeIconI = document.createElement('img');
-    eyeIconI.src = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_eye.png';
-    eyeIconCont.appendChild(eyeIconI);
-    trainerCont.appendChild(eyeIconCont);
+    //        let trainerCourseArrangeRow = document.createElement('div');
+    //        trainerCourseArrangeRow.classList.add('arrange-row');
+    //        trainerCourseCardLeft.appendChild(trainerCourseArrangeRow);
+
+    //        let trainerCourseArrangeCol = document.createElement('div');
+    //        trainerCourseArrangeRow.appendChild(trainerCourseArrangeCol);
+    //        trainerCourseArrangeCol.classList.add('arrange-col');
+
+    //        let trainerCourseLearnerCountTitle = document.createElement('span');
+    //        trainerCourseArrangeCol.appendChild(trainerCourseLearnerCountTitle);
+    //        trainerCourseLearnerCountTitle.textContent = 'Learner Count';
+    //        trainerCourseLearnerCountTitle.classList.add('learner-count-title','fs-12');
+
+    //        let trainerCourseLearnerCount = document.createElement('span');
+    //        trainerCourseArrangeCol.appendChild(trainerCourseLearnerCount);
+    //        trainerCourseLearnerCount.textContent =Object.values(each)[0] ;
+    //        trainerCourseLearnerCount.classList.add('learner-count','fs-14');
+
+    //        let trainerCourseCardDelete = document.createElement('div');
+    //        trainerCourseCard.appendChild(trainerCourseCardDelete);
+    //        trainerCourseCardDelete.onclick=function(){
+    //             deleteTrainerModal.style.display = 'none';
+    //             $('#deleteCourseModal').show();
+    //             $('#deleteModalTitle').text('Remove Trainer');
+    //             $('#deleteItemText').text(`Remove ${trainer.name} from ${Object.keys(each)[0]} course?`);
+    //             $('#deleteCourseBtn').text('Remove');
+    //             $('#deleteCourseCaution').text("once removed can't be restore again");
+    //             deleteItem = trainer.name;
+    //             deleteCourseName = Object.keys(each)[0];
+    //             trainerCourseCardCont.innerHTML = "";
+    //        };
+    //        trainerCourseCardDelete.classList.add('delete-icon');
+    //        let trainerCourseCardDeleteImg = document.createElement('img');
+    //        trainerCourseCardDeleteImg.src='https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
+    //        trainerCourseCardDelete.appendChild(trainerCourseCardDeleteImg);
+    //     };
+    // };
+    // eyeIconCont.classList.add('eye-icon');
+    // let eyeIconI = document.createElement('img');
+    // eyeIconI.src = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_eye.png';
+    // eyeIconCont.appendChild(eyeIconI);
+    // trainerCont.appendChild(eyeIconCont);
 };
 
 function addAndAppendLearner(learner){
