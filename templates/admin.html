@@ -1825,7 +1825,6 @@ function createEl(el,cls,text){
 
 function creatingCard(displayObj,deleteCourse){
     const courseCont = createEl('div','courseCard');
-    courseCardCont.appendChild(courseCont);
     const courseLeft = createEl('div','course-card-left');
     courseCont.appendChild(courseLeft);
     const courseTitle = createEl('p','course-title',displayObj.name);
@@ -1854,8 +1853,8 @@ function creatingCard(displayObj,deleteCourse){
     deleteIconCont.appendChild(deleteIconI);
     courseCont.appendChild(deleteIconCont);
 
-return courseCont;
-}
+    return courseCont;
+};
 
 function addAndAppendCourse(course) {
     const displayObj = {name:course.courseName,display1:'Learner count',display1_c:course.students.length,display2:'Trainer name',display2_c:course.trainer}
