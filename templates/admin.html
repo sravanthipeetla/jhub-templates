@@ -1805,7 +1805,7 @@ const getAllDetails = async () => {
 
 function createEl(el,cls,text){
     const elem= document.createElement(el);
-    if (text){
+    if (typeof(text) === String){
         elem.textContent = text;
     }
     if (typeof(cls) === 'string' && cls !== ''){
