@@ -1234,6 +1234,7 @@ const mapFileChosen = document.getElementById('mapFileChosen');
 const mapLearnerAdd = document.getElementById("mapLearnerAdd");
 const loaderDisplay = document.getElementsByClassName('loader')[0];
 const deleteIconImg = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
+const actionIconImg = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_eye.png';
 let deleteItem = null;
 let deleteCourseName = null;
 let presentUser = 'singleUser';
@@ -1877,7 +1878,7 @@ function addAndAppendTrainer(trainer) {
     const deleteCourse = () =>{
         alert(`delete ${trainer.name}`);
     }
-    const trainerCard=creatingCard(displayObj,deleteCourse, deleteIconImg);
+    const trainerCard=creatingCard(displayObj,deleteCourse, actionIconImg);
     trainerCardCont.appendChild(trainerCard)
   
 
