@@ -1825,8 +1825,8 @@ function createEl(el,cls,text){
 }
 
 
-function creatingCard(displayObj, onclickAction, iconImg){
-    const courseCont = createEl('div','courseCard');
+function creatingCard(displayObj,classesObj, onclickAction, iconImg){
+    const courseCont = createEl('div', classesObj.card);
     const courseLeft = createEl('div','course-card-left');
     courseCont.appendChild(courseLeft);
     const courseTitle = createEl('p','course-title',displayObj.name);
@@ -1846,7 +1846,7 @@ function creatingCard(displayObj, onclickAction, iconImg){
     const trainName = createEl('span',['learner-count','fs-14'],displayObj.display2_c);
     arrangeColTrain.appendChild(trainName);
 
-    const deleteIconCont = createEl('div','delete-icon');
+    const deleteIconCont = createEl('div',classesObj.icon);
     deleteIconCont.onclick = () =>{
         onclickAction();
     }
@@ -1860,6 +1860,7 @@ function creatingCard(displayObj, onclickAction, iconImg){
 
 function addAndAppendCourse(course) {
     const displayObj = {name:course.courseName,display1:'Learner count',display1_c:course.students.length,display2:'Trainer name',display2_c:course.trainer}
+    const classesObj = {card:'courseCard',icon:'delete-icon'}
     const deleteCourse = () =>{
         $('#deleteCourseModal').show();
         $('#deleteModalTitle').text('Delete Course');
@@ -1868,13 +1869,14 @@ function addAndAppendCourse(course) {
         $('#deleteCourseCaution').text("once deleted can't be restore again");
         deleteItem = course.courseName;
     }
-    const courseCont=creatingCard(displayObj,deleteCourse, deleteIconImg);
+    const courseCont=creatingCard(displayObj,classesObj,deleteCourse, deleteIconImg);
     courseCardCont.appendChild(courseCont);
    
 };
 
 function addAndAppendTrainer(trainer) {
     const displayObj = {name:trainer.name,display1:'Course count',display1_c:trainer.course.length,display2:'Status',display2_c:trainer.status}
+    const classesObj = {card:'trainerCard',icon:'eye-icon'}
     const removeTrainer = () =>{
         trainerCourseCardCont.innerHTML = "";
         deleteTrainerModal.style.display='block';
@@ -1933,7 +1935,7 @@ function addAndAppendTrainer(trainer) {
            trainerCourseCardDelete.appendChild(trainerCourseCardDeleteImg);
         };
     }
-    const trainerCard=creatingCard(displayObj,removeTrainer, actionIconImg);
+    const trainerCard=creatingCard(displayObj,classesObj,removeTrainer, actionIconImg);
     trainerCardCont.appendChild(trainerCard)
   
 
