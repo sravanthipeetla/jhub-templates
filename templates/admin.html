@@ -1874,11 +1874,12 @@ function addAndAppendCourse(course) {
 
 function addAndAppendTrainer(trainer) {
     const displayObj = {name:trainer.name,display1:'Course count',display1_c:trainer.course.length,display2_c:'Status',display2_c:trainer.status}
-    const trainerCont=creatingCard(displayObj,deleteCourse, deleteIconImg);
-    trainerCardCont.appendChild(trainerCard)
     const deleteCourse = () =>{
         alert(`delete ${trainer.name}`);
     }
+    const trainerCont=creatingCard(displayObj,deleteCourse, deleteIconImg);
+    trainerCardCont.appendChild(trainerCard)
+  
 
 
 
