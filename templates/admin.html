@@ -1855,7 +1855,9 @@ function creatingCard(courseName,countNum,trainerName,deleteCourse){
     arrangeColTrain.appendChild(trainName);
 
     const deleteIconCont = createEl('div','delete-icon');
-    deleteIconCont.onclick = deleteCourse;
+    deleteIconCont.onclick = () =>{
+        deleteCourse
+    }
     const deleteIconI = createEl('img');
     deleteIconI.src = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
     deleteIconCont.appendChild(deleteIconI);
@@ -1865,7 +1867,7 @@ return courseCont;
 }
 
 function addAndAppendCourse(course) {
-    const courseCont=creatingCard(course.courseName,course.students.length,course.trainer,deleteCourse(course.courseName))
+    const courseCont=creatingCard(course.courseName,course.students.length,course.trainer,deleteCourse(course.courseName));
     courseCardCont.appendChild(courseCont);
    
 };
