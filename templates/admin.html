@@ -2368,21 +2368,16 @@ multipleUserBtn.onclick = function () {
 
 window.onload = async () =>{
     getAllDetails();
-    const hubUsersFetch = await fetch(`${hub_url}users`);
-    const hubUsersJson = await hubUsersFetch.json();
-    const instructorsUsername = [];
-    for (const i = 0; i < hubUsersJson.length; i++) {
-        if (hubUsersJson[i].groups.includes('instructor')) {
-        instructorsUsername.push(hubUsersJson[i].name);
-        }
-    }; 
+    const hubTrainerGroupFetch = await fetch(`${hub_url}groups/instructor`);
+    const hubTrainerGroupJson = await hubTrainerGroupFetch.json();
+    const hubTrainerGroupList = hubTrainerGroupJson.users.sort();
     const trainDefaultOption = document.createElement('option');
     trainDefaultOption.text = 'Choose trainer';
     trainDefaultOption.value = '';
     trainDefaultOption.selected = true;
     trainDefaultOption.disabled = true;
     chooseTrainerSelect.add(trainDefaultOption);
-    for (const option of instructorsUsername){
+    for (const option of hubTrainerGroupList){
         const newOption = document.createElement('option');
         newOption.text = option;
         newOption.value = option;
