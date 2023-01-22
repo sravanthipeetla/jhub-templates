@@ -1421,14 +1421,12 @@ $('#addTrainerBtn').click(async () =>{
               'Content-Type': 'application/json'
             }
           });
-          console.log(hubAddUserPromise.status);
         if (hubAddUserPromise.status == 201 && hubAddUserPromise.ok) {
             const data = {
               "users": [
                 instructorUserName
               ]
             };
-            console.log('hub user added');
             const hubAddUserGroupPromise = await fetch(`${hub_url}groups/instructor/users`, {
               method: 'POST',
               headers: {
@@ -1491,13 +1489,11 @@ $('#addLearnerCourseBtn').click(async ()=>{
                 'Content-Type': 'application/json'
             }
             });
-            console.log(hubAddUserPromise.status);
             if (hubAddUserPromise.status == 201 && hubAddUserPromise.ok) {
                 const data = {
                 "users": [
                     learnerName
                 ]};
-            console.log('hub user added');
             const hubAddUserGroupPromise = await fetch(`${hub_url}groups/learner/users`, {
               method: 'POST',
               headers: {
@@ -1703,7 +1699,6 @@ $('#removeLearnerCourseBtn').click(() =>{
 });
 
 async function deleteItemNext  (deleteItem,deleteCourseName,deleteItemId) {
-    console.log(deleteItem);
     if ($('#deleteModalTitle').text() ==='Delete Course'){
         const courseDeletePromise = await fetch(`${ngshare_url}course/${deleteItem}`,{
             method: 'DELETE',
@@ -2059,22 +2054,21 @@ function addAndAppendLearner(learner){
 
 getAllDetails().then(async (resp)=>{
     const allDetails = resp;
-    console.log('AllDet',resp);
 
     //course tab
     $('#coursesLoader').hide();
     $('#coursesSearch').keyup(()=>{
         courseCardCont.innerHTML='';
-        let searchValue=$('#coursesSearch').val();
-        let searchList = allDetails.filter((course)=>{
+        const searchValue=$('#coursesSearch').val();
+        const searchList = allDetails.filter((course)=>{
             return course.courseName.toLowerCase().includes(searchValue.toLowerCase());
         });
-        for (let course of searchList) {
+        for (const course of searchList) {
             addAndAppendCourse(course);
         }; 
     });
 
-    for (let course of allDetails) {
+    for (const course of allDetails) {
         addAndAppendCourse(course);
     };
 
@@ -2082,27 +2076,25 @@ getAllDetails().then(async (resp)=>{
     const hubTrainerGroupFetch = await fetch(`${hub_url}groups/instructor`);
     const hubTrainerGroupJson = await hubTrainerGroupFetch.json();
     const hubTrainerGroupList = hubTrainerGroupJson.users.sort();
-    console.log('trainerGroup',hubTrainerGroupList);
     const trainerCourses = {};
     
-    for (let trainer of hubTrainerGroupList){
+    for (const trainer of hubTrainerGroupList){
         trainerCourses[trainer]=[];
     }
     
-    for (let det of allDetails){
+    for (const det of allDetails){
         if(det.trainer in trainerCourses){
-            let obj ={};
+            const obj ={};
             obj[det.courseName] = det.students.length
             trainerCourses[det.trainer].push(obj);
         }
     }
-    console.log('trainrDet',trainerCourses);
 
     $('#trainersLoader').hide();
     const instructorDetailsAll=[];
     const instructorDetailsMapped = [];
     const instructorDetailsUnMapped = [];
-    let reqList =instructorDetailsAll;
+    const reqList =instructorDetailsAll;
 
     for (key in trainerCourses){
         let status = null;
@@ -2117,7 +2109,7 @@ getAllDetails().then(async (resp)=>{
         instructorDetailsAll.push({'name':key,'course':trainerCourses[key],'status':status});
     };
     
-    for (let trainer of instructorDetailsAll) {
+    for (const trainer of instructorDetailsAll) {
         addAndAppendTrainer(trainer);
     }
 
@@ -2134,7 +2126,7 @@ getAllDetails().then(async (resp)=>{
            reqList = instructorDetailsAll;
         }
 
-        for (let trainer of reqList) {
+        for (const trainer of reqList) {
                 addAndAppendTrainer(trainer);
         }
 
@@ -2142,14 +2134,11 @@ getAllDetails().then(async (resp)=>{
     
     $('#trainersSearch').keyup(()=>{
         trainerCardCont.innerHTML='';
-        let searchValue=$('#trainersSearch').val();
-        console.log('searchValue',searchValue);
-        console.log('reqList',reqList)
-        let searchList = reqList.filter((trainer)=>{
+        const searchValue=$('#trainersSearch').val();
+        const searchList = reqList.filter((trainer)=>{
             return trainer.name.toLowerCase().includes(searchValue.toLowerCase());
         });
-        console.log(searchList);
-        for (let trainer of searchList) {
+        for (const trainer of searchList) {
             addAndAppendTrainer(trainer);
         }     
     })
@@ -2158,32 +2147,30 @@ getAllDetails().then(async (resp)=>{
     const hubLearnerGroupFetch = await fetch(`${hub_url}groups/learner`);
     const hubLearnerGroupJson = await hubLearnerGroupFetch.json();
     const hubLearnerGroupList = hubLearnerGroupJson.users.sort();
-    console.log('learnerGroup',hubLearnerGroupList);
     const learnerCourses = {};
     
-    for (let learner of hubLearnerGroupList){
+    for (const learner of hubLearnerGroupList){
         learnerCourses[learner]=[];
     }
-    for(let key in learnerCourses){
-        for (let det of allDetails){
+    for(const key in learnerCourses){
+        for (const det of allDetails){
             if(det.students.includes(key)){
                 learnerCourses[key].push(det.courseName);
             }
         }
     }
     $('#learnersLoader').hide();
-    console.log('learner',learnerCourses);
     for (key in learnerCourses){
-        let obj ={};
+        const obj ={};
         obj[key]=learnerCourses[key]
         addAndAppendLearner(obj);
     };
 
     $('#learnersSearch').keyup(()=>{
         learnerRowsBody.innerHTML='';
-        let searchValue=$('#learnersSearch').val();
-        let searchObj={};
-        for (let key in learnerCourses){
+        const searchValue=$('#learnersSearch').val();
+        const searchObj={};
+        for (const key in learnerCourses){
             if (key.toLowerCase().includes(searchValue.toLowerCase())){
                 searchObj[key] = learnerCourses[key];
             }
@@ -2192,7 +2179,7 @@ getAllDetails().then(async (resp)=>{
             }
         }
         for (key in searchObj){
-            let obj ={};
+            const obj ={};
             obj[key]=learnerCourses[key]
             addAndAppendLearner(obj);
         };
