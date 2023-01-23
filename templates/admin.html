@@ -1898,54 +1898,6 @@ function addAndAppendTrainer(trainer) {
             }
             const trainerCourseCard=creatingCard(displayObjCourse,classesObjCourse,deleteTrainerCourse, deleteIconImg);
             trainerCourseCardCont.appendChild(trainerCourseCard);
-        //    let trainerCourseCard = document.createElement('div');
-        //    trainerCourseCardCont.appendChild(trainerCourseCard);
-        //    trainerCourseCard.classList.add('trainer-course-card');
-
-        //    let trainerCourseCardLeft = document.createElement('div');
-        //    trainerCourseCardLeft.classList.add('course-card-left');
-        //    trainerCourseCard.appendChild(trainerCourseCardLeft);
-
-        //    let trainerCourseTitle = document.createElement('p');
-        //    trainerCourseTitle.textContent = Object.keys(each)[0];
-        //    trainerCourseTitle.classList.add('course-title');
-        //    trainerCourseCardLeft.appendChild(trainerCourseTitle);
-
-        //    let trainerCourseArrangeRow = document.createElement('div');
-        //    trainerCourseArrangeRow.classList.add('arrange-row');
-        //    trainerCourseCardLeft.appendChild(trainerCourseArrangeRow);
-
-        //    let trainerCourseArrangeCol = document.createElement('div');
-        //    trainerCourseArrangeRow.appendChild(trainerCourseArrangeCol);
-        //    trainerCourseArrangeCol.classList.add('arrange-col');
-
-        //    let trainerCourseLearnerCountTitle = document.createElement('span');
-        //    trainerCourseArrangeCol.appendChild(trainerCourseLearnerCountTitle);
-        //    trainerCourseLearnerCountTitle.textContent = 'Learner Count';
-        //    trainerCourseLearnerCountTitle.classList.add('learner-count-title','fs-12');
-
-        //    let trainerCourseLearnerCount = document.createElement('span');
-        //    trainerCourseArrangeCol.appendChild(trainerCourseLearnerCount);
-        //    trainerCourseLearnerCount.textContent =Object.values(each)[0] ;
-        //    trainerCourseLearnerCount.classList.add('learner-count','fs-14');
-
-        //    let trainerCourseCardDelete = document.createElement('div');
-        //    trainerCourseCard.appendChild(trainerCourseCardDelete);
-        //    trainerCourseCardDelete.onclick=function(){
-        //         deleteTrainerModal.style.display = 'none';
-        //         $('#deleteCourseModal').show();
-        //         $('#deleteModalTitle').text('Remove Trainer');
-        //         $('#deleteItemText').text(`Remove ${trainer.name} from ${Object.keys(each)[0]} course?`);
-        //         $('#deleteCourseBtn').text('Remove');
-        //         $('#deleteCourseCaution').text("once removed can't be restore again");
-        //         deleteItem = trainer.name;
-        //         deleteCourseName = Object.keys(each)[0];
-        //         trainerCourseCardCont.innerHTML = "";
-        //    };
-        //    trainerCourseCardDelete.classList.add('delete-icon');
-        //    let trainerCourseCardDeleteImg = document.createElement('img');
-        //    trainerCourseCardDeleteImg.src='https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
-        //    trainerCourseCardDelete.appendChild(trainerCourseCardDeleteImg);
         };
     }
     const trainerCard=creatingCard(displayObj,classesObj,removeTrainer, actionIconImg);
