@@ -2042,7 +2042,7 @@ function addAndAppendTrainer(trainer) {
         $('#actionTitle').text('Trainer - ');
         $('#deleteTrainer').text(trainer.name);
         for (let each of trainer.course){
-            const displayObjCourse = {name:Object.keys(each)[0],display1:'Learner count',display1_c:Object.values(each)[0]}
+            const displayObjCourse = {name:Object.keys(each)[0],display2:'Learner count',display2_c:Object.values(each)[0]}
             const classesObjCourse = {card:'trainer-course-card',icon:'delete-icon'}
             const deleteTrainerCourse = () =>{
                 deleteTrainerModal.style.display = 'none';
