@@ -1006,7 +1006,6 @@ body.loading {
                                 <span class="fs-12">Existing Trainer</span>
                             </div> 
                             <select placeholder="Enter course name" id="chooseTrainerSelect" class="fs-12">
-                                <option default  value="" class="choose-option fs-12">Choose trainer</option>
                             </select>
                         </div>
                 </div>
@@ -2225,7 +2224,6 @@ window.onload = async () =>{
     const courseFetch = await fetch(`${ngshare_url}courses`);
     const courseJson = await courseFetch.json();
     const coursesList = await courseJson.courses;
-    coursesListTotal = coursesList;
     const courseDefaultOption = document.createElement('option');
     courseDefaultOption.text = 'Choose course';
     courseDefaultOption.value = '';
@@ -2240,7 +2238,6 @@ window.onload = async () =>{
         mapLearnerCourseSelect.add(newOption);
     }
    
-    coursesListTotal = coursesList;
     const addCourseDefaultOption = document.createElement('option');
     addCourseDefaultOption.text = 'Choose course';
     addCourseDefaultOption.value = '';
