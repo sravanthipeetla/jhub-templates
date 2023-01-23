@@ -2133,8 +2133,6 @@ $('#addBtn').click (()=> {
     };
 });
 
-$('#successDone').click(() =>location.reload());
-
 $('#successAddMore').click(() =>{
     if ($('#successModelTitle').text() === 'Add Course' ){
         $('#addSuccessModal').hide();
@@ -2156,33 +2154,19 @@ $('#successAddMore').click(() =>{
     }
 });
 
-$('#mapBtn').click (() =>$('#mapLearnerModal').show());
+
 
 $('#addSuccessClose').click(() =>{
     $('#addSuccessModal').hide();
     location.reload();
 });
 
-// $('#addCourseCancel').click(() =>$('#addCourseModal').hide());
+$('#mapBtn').click (() =>$('#mapLearnerModal').show());
+$('#successDone').click(() =>location.reload());
 $('#addCourseClose, #addCourseCancel').click(() =>$('#addCourseModal').hide());
-
-$('#addTrainerCancel').click(() =>{
-    $('#addTrainerModal').hide();
-});
-
-$('#cancelAddTrainer').click(() =>{
-    $('#addTrainerModal').hide();
-});
-
-$("#alertMsgClose").click(() =>{
-    $('#alertMsgCont').hide();
-});
-
-$('#deleteModalClose').click(()=>{
-    $('#deleteCourseModal').hide();
-});
-
-$('#deleteCancelBtn').click(()=> $('#deleteCourseModal').hide());
+$('#addTrainerCancel, #cancelAddTrainer').click(() => $('#addTrainerModal').hide());
+$("#alertMsgClose").click(() =>$('#alertMsgCont').hide());
+$('#deleteModalClose,#deleteCancelBtn').click(()=>$('#deleteCourseModal').hide());
 
 $('#deleteTrainerCancel').click(()=>{
     trainerCourseCardCont.innerHTML = "";
@@ -2199,29 +2183,9 @@ $('#deleteSuccessClose').click(()=>{
     location.reload();
 });
 
-$('#mapLearnerClose').click(()=>{
-    $('#mapLearnerModal').hide();
-});
-
-$('#mapLearnerCancel').click(()=>{
-    $('#mapLearnerModal').hide();
-});
-
-$('#addLearnerCancel').click(() =>{
-    $('#addLearnerModal').hide();
-});
-
-$('#addLearnerClose').click(() =>{
-    $('#addLearnerModal').hide();
-});
-
-$('#removeLearnerCourseModalClose').click(()=>{
-    $('#removeLearnerCourseModal').hide();
-});
-
-$('#removeLearnerCourseCancel').click(()=>{
-    $('#removeLearnerCourseModal').hide();
-})
+$('#mapLearnerClose,#mapLearnerCancel').click(()=>$('#mapLearnerModal').hide());
+$('#addLearnerCancel, #addLearnerClose').click(() =>$('#addLearnerModal').hide());
+$('#removeLearnerCourseModalClose,#removeLearnerCourseCancel').click(()=>$('#removeLearnerCourseModal').hide());
 
 $('#singleUserBtn').click(function () {
     $('#singleUserBtn').addClass('learner-active');
@@ -2231,13 +2195,13 @@ $('#singleUserBtn').click(function () {
     presentUser = 'singleUser';
 });
   
-multipleUserBtn.onclick = function () {
+('#multipleUserBtn').click (function () {
     $('#singleUserBtn').removeClass('learner-active');
     $('#multipleUserBtn').addClass('learner-active');
     $('#singleLearner').hide();
     $('#multipleLearners').show();
     presentUser = 'multipleUsers';
-};
+});
 
 window.onload = async () =>{
     getAllDetails();
