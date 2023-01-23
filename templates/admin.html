@@ -1866,7 +1866,7 @@ function addAndAppendCourse(course) {
         $('#deleteModalTitle').text('Delete Course');
         $('#deleteItemText').text(`Delete ${course.courseName} course?`);
         $('#deleteCourseBtn').text('Delete');
-        $('#deleteCourseCaution').text("once deleted can't be restore again");
+        $('#deleteCourseCaution').text("once deleted can't be restored again");
         deleteItem = course.courseName;
     }
     const courseCont=creatingCard(displayObj,classesObj,deleteCourse, deleteIconImg);
@@ -1889,9 +1889,9 @@ function addAndAppendTrainer(trainer) {
                 deleteTrainerModal.style.display = 'none';
                 $('#deleteCourseModal').show();
                 $('#deleteModalTitle').text('Remove Trainer');
-                $('#deleteItemText').text(`Remove trainer from ${Object.keys(each)[0]} course?`);
+                $('#deleteItemText').text(`Remove ${trainer.name} from ${Object.keys(each)[0]} course?`);
                 $('#deleteCourseBtn').text('Remove');
-                $('#deleteCourseCaution').text("once removed can't be restore again");
+                $('#deleteCourseCaution').text("once removed can't be restored again");
                 deleteItem = trainer.name;
                 deleteCourseName = Object.keys(each)[0];
                 trainerCourseCardCont.innerHTML = "";
@@ -1905,41 +1905,30 @@ function addAndAppendTrainer(trainer) {
 };
 
 function addAndAppendLearner(learner){
-    let learnerRow = document.createElement('tr');
-    let learnerRowId = Object.keys(learner)[0] + 'learner';
-    learnerRow.id = learnerRowId;
+    const learnerRow = createEl('tr');
     learnerRowsBody.appendChild(learnerRow);
-
-
-    let learnerDet = document.createElement('td');
-    learnerDet.textContent = Object.keys(learner)[0];
+    const learnerDet = createEl('td','',Object.keys(learner)[0]);
     learnerRow.appendChild(learnerDet);
-
-    let learnerEye = document.createElement('td');
-    let learnerEyeImg = document.createElement('img');
-    learnerEyeImg.classList.add("eye-action");
+    const learnerEye = createEl('td');
+    const learnerEyeImg = createEl('img','eye-action');
     learnerEyeImg.onclick = function(){
         trainerCourseCardCont.innerHTML = "";
         $('#deleteTrainerModal').show();
         $('#actionTitle').text('Learner - ');
         $('#deleteTrainer').text(Object.keys(learner)[0]);
         for (let each of Object.values(learner)[0]){
-            let learnerCourseCard = document.createElement('div');
+            const learnerCourseCard = createEl('div',['trainer-course-card','learner-coursecard-height']);
             trainerCourseCardCont.appendChild(learnerCourseCard);
-            learnerCourseCard.classList.add('trainer-course-card','learner-coursecard-height');
-            let learnerCourseCardLeft = document.createElement('div');
-            learnerCourseCardLeft.classList.add('course-card-left');
+            const learnerCourseCardLeft = createEl('div','course-card-left');
             learnerCourseCard.appendChild(learnerCourseCardLeft);
-            let learnerCourseTitle = document.createElement('p');
-            learnerCourseTitle.textContent = each;
-            learnerCourseTitle.classList.add('course-title');
+            const learnerCourseTitle = createEl('p','course-title',each);
             learnerCourseCardLeft.appendChild(learnerCourseTitle);
-            let learnerCourseCardDelete = document.createElement('div');
+            const learnerCourseCardDelete = createEl('div','delete-icon');
             learnerCourseCardDelete.onclick=function(){
                 deleteTrainerModal.style.display = 'none';
                 $('#deleteCourseModal').show();
                 $('#deleteModalTitle').text('Remove Learner');
-                $('#deleteCourseCaution').text("once removed can't be restore again");
+                $('#deleteCourseCaution').text("once removed can't be restored again");
                 $('#deleteCourseBtn').text('Remove');
                 $('#deleteItemText').text(`Remove ${Object.keys(learner)[0]} from ${each} course?`);
                 deleteItem = Object.keys(learner)[0];
@@ -1947,29 +1936,26 @@ function addAndAppendLearner(learner){
                 trainerCourseCardCont.innerHTML = ""; 
            };
             learnerCourseCard.appendChild(learnerCourseCardDelete);
-            learnerCourseCardDelete.classList.add('delete-icon');
-            let learnerCourseCardDeleteImg = document.createElement('img');
-            learnerCourseCardDeleteImg.src='https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
+            const learnerCourseCardDeleteImg = createEl('img');
+            learnerCourseCardDeleteImg.src=deleteIconImg;
             learnerCourseCardDelete.appendChild(learnerCourseCardDeleteImg);
          };
     }
     learnerEye.appendChild(learnerEyeImg);
-    learnerEyeImg.src = "https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_eye.png";
+    learnerEyeImg.src = actionIconImg;
     learnerRow.appendChild(learnerEye);
 
-    let learnerDelete = document.createElement('td');
-    let learnerDeleteImg = document.createElement('img');
+    const learnerDelete = createEl('td');
+    const learnerDeleteImg = createEl('img','learner-all-course-remove');
     learnerDeleteImg.onclick = function(){
         coursesRemoveLearner = Object.keys(learner)[0];
         coursesRemoveList = Object.values(learner)[0];
         $('#removeLearnerCourseModal').show();
         $('#removeLearnerModalItemText').text(`Remove ${Object.keys(learner)[0]} from all courses?`);
     }
-    learnerDeleteImg.src = 'https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
-    learnerDeleteImg.classList.add('learner-all-course-remove');
+    learnerDeleteImg.src = deleteIconImg;
     learnerDelete.appendChild(learnerDeleteImg);
     learnerRow.appendChild(learnerDelete);
-
 };
 
 getAllDetails().then(async (resp)=>{
