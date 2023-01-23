@@ -1889,7 +1889,7 @@ function addAndAppendTrainer(trainer) {
                 deleteTrainerModal.style.display = 'none';
                 $('#deleteCourseModal').show();
                 $('#deleteModalTitle').text('Remove Trainer');
-                $('#deleteItemText').text(`Remove ${trainer.name} from ${Object.keys(each)[0]} course?`);
+                $('#deleteItemText').text(`Remove trainer from ${Object.keys(each)[0]} course?`);
                 $('#deleteCourseBtn').text('Remove');
                 $('#deleteCourseCaution').text("once removed can't be restore again");
                 deleteItem = trainer.name;
