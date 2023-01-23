@@ -1221,13 +1221,10 @@ const mapLearnerModal = document.getElementById('mapLearnerModal');
 const courseCardCont = document.getElementById('courseCardCont');
 const trainerCardCont = document.getElementById('trainerCardCont');
 const trainerEyeIcon = document.getElementById('trainer-eye-icon');
-// const deleteTrainerModal = document.getElementById('deleteTrainerModal');
-// const deleteTrainer = document.getElementById('deleteTrainer');
 const modelTitle = document.getElementById('modelTitle');
 const trainerCourseCardCont = document.getElementById('trainerCourseCardCont');
 const chooseLearnerSelect = document.getElementById('chooseLearnerSelect');
 const learnerRowsBody = document.getElementById('learnerRowsBody');
-// const actionTitle = document.getElementById('actionTitle');
 const mapUploadBtn = document.getElementById('mapUploadBtn');
 const addUploadBtn = document.getElementById('addUploadBtn');
 const mapFileChosen = document.getElementById('mapFileChosen');
@@ -1832,18 +1829,22 @@ function creatingCard(displayObj,classesObj, onclickAction, iconImg){
     cardLeft.appendChild(cardTitle);
     const arrangeRow = createEl('div','arrange-row');
     cardLeft.appendChild(arrangeRow);
-    const arrangeCol = createEl('div',['arrange-col','arrange-col-first']);
-    arrangeRow.appendChild(arrangeCol);
-    const countTitle = createEl('span',['learner-count-title','fs-12'],displayObj.display1);
-    arrangeCol.appendChild(countTitle);
-    let count = createEl('span',['learner-count','fs-14'], displayObj.display1_c);
-    arrangeCol.appendChild(count);
-    const arrangeColTrain = createEl('div','arrange-col');
-    arrangeRow.appendChild(arrangeColTrain);
-    const trainTitle = createEl('span',['learner-count-title','fs-12'],displayObj.display2);
-    arrangeColTrain.appendChild(trainTitle);
-    const trainName = createEl('span',['learner-count','fs-14'],displayObj.display2_c);
-    arrangeColTrain.appendChild(trainName);
+    if(displayObj.display1){
+        const arrangeCol = createEl('div',['arrange-col','arrange-col-first']);
+        arrangeRow.appendChild(arrangeCol);
+        const countTitle = createEl('span',['learner-count-title','fs-12'],displayObj.display1);
+        arrangeCol.appendChild(countTitle);
+        let count = createEl('span',['learner-count','fs-14'], displayObj.display1_c);
+        arrangeCol.appendChild(count);
+    }
+    if(displayObj.display2){
+        const arrangeColTrain = createEl('div','arrange-col');
+        arrangeRow.appendChild(arrangeColTrain);
+        const trainTitle = createEl('span',['learner-count-title','fs-12'],displayObj.display2);
+        arrangeColTrain.appendChild(trainTitle);
+        const trainName = createEl('span',['learner-count','fs-14'],displayObj.display2_c);
+        arrangeColTrain.appendChild(trainName);
+    }
 
     const iconCont = createEl('div',classesObj.icon);
     iconCont.onclick = () =>{
@@ -1878,49 +1879,13 @@ function addAndAppendTrainer(trainer) {
     const classesObj = {card:'trainerCard',icon:'eye-icon'}
     const removeTrainer = () =>{
         trainerCourseCardCont.innerHTML = "";
-        // deleteTrainerModal.style.display='block';
-        // actionTitle.textContent = "Trainer-";
-        // deleteTrainer.textContent = trainer.name;
         $('#deleteTrainerModal').show();
         $('#actionTitle').text('Trainer - ');
-        $('#deleteTrainer').textContent = trainer.name;
+        $('#deleteTrainer').text(trainer.name);
         for (let each of trainer.course){
-           let trainerCourseCard = document.createElement('div');
-           let trainerCourseCardId = trainer.name + Object.keys(each)[0];
-           trainerCourseCard.id = trainerCourseCardId;
-           trainerCourseCardCont.appendChild(trainerCourseCard);
-           trainerCourseCard.classList.add('trainer-course-card');
-
-           let trainerCourseCardLeft = document.createElement('div');
-           trainerCourseCardLeft.classList.add('course-card-left');
-           trainerCourseCard.appendChild(trainerCourseCardLeft);
-
-           let trainerCourseTitle = document.createElement('p');
-           trainerCourseTitle.textContent = Object.keys(each)[0];
-           trainerCourseTitle.classList.add('course-title');
-           trainerCourseCardLeft.appendChild(trainerCourseTitle);
-
-           let trainerCourseArrangeRow = document.createElement('div');
-           trainerCourseArrangeRow.classList.add('arrange-row');
-           trainerCourseCardLeft.appendChild(trainerCourseArrangeRow);
-
-           let trainerCourseArrangeCol = document.createElement('div');
-           trainerCourseArrangeRow.appendChild(trainerCourseArrangeCol);
-           trainerCourseArrangeCol.classList.add('arrange-col');
-
-           let trainerCourseLearnerCountTitle = document.createElement('span');
-           trainerCourseArrangeCol.appendChild(trainerCourseLearnerCountTitle);
-           trainerCourseLearnerCountTitle.textContent = 'Learner Count';
-           trainerCourseLearnerCountTitle.classList.add('learner-count-title','fs-12');
-
-           let trainerCourseLearnerCount = document.createElement('span');
-           trainerCourseArrangeCol.appendChild(trainerCourseLearnerCount);
-           trainerCourseLearnerCount.textContent =Object.values(each)[0] ;
-           trainerCourseLearnerCount.classList.add('learner-count','fs-14');
-
-           let trainerCourseCardDelete = document.createElement('div');
-           trainerCourseCard.appendChild(trainerCourseCardDelete);
-           trainerCourseCardDelete.onclick=function(){
+            const displayObjCourse = {name:Object.keys(each)[0],display1:'Learner count',display1_c:Object.values(each)[0]}
+            const classesObjCourse = {card:'courseCard',icon:'delete-icon'}
+            const deleteTrainerCourse = () =>{
                 deleteTrainerModal.style.display = 'none';
                 $('#deleteCourseModal').show();
                 $('#deleteModalTitle').text('Remove Trainer');
@@ -1930,11 +1895,57 @@ function addAndAppendTrainer(trainer) {
                 deleteItem = trainer.name;
                 deleteCourseName = Object.keys(each)[0];
                 trainerCourseCardCont.innerHTML = "";
-           };
-           trainerCourseCardDelete.classList.add('delete-icon');
-           let trainerCourseCardDeleteImg = document.createElement('img');
-           trainerCourseCardDeleteImg.src='https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
-           trainerCourseCardDelete.appendChild(trainerCourseCardDeleteImg);
+            }
+            const trainerCourseCard=creatingCard(displayObjCourse,classesObjCourse,deleteTrainerCourse, deleteIconImg);
+            trainerCourseCardCont.appendChild(trainerCourseCard);
+        //    let trainerCourseCard = document.createElement('div');
+        //    trainerCourseCardCont.appendChild(trainerCourseCard);
+        //    trainerCourseCard.classList.add('trainer-course-card');
+
+        //    let trainerCourseCardLeft = document.createElement('div');
+        //    trainerCourseCardLeft.classList.add('course-card-left');
+        //    trainerCourseCard.appendChild(trainerCourseCardLeft);
+
+        //    let trainerCourseTitle = document.createElement('p');
+        //    trainerCourseTitle.textContent = Object.keys(each)[0];
+        //    trainerCourseTitle.classList.add('course-title');
+        //    trainerCourseCardLeft.appendChild(trainerCourseTitle);
+
+        //    let trainerCourseArrangeRow = document.createElement('div');
+        //    trainerCourseArrangeRow.classList.add('arrange-row');
+        //    trainerCourseCardLeft.appendChild(trainerCourseArrangeRow);
+
+        //    let trainerCourseArrangeCol = document.createElement('div');
+        //    trainerCourseArrangeRow.appendChild(trainerCourseArrangeCol);
+        //    trainerCourseArrangeCol.classList.add('arrange-col');
+
+        //    let trainerCourseLearnerCountTitle = document.createElement('span');
+        //    trainerCourseArrangeCol.appendChild(trainerCourseLearnerCountTitle);
+        //    trainerCourseLearnerCountTitle.textContent = 'Learner Count';
+        //    trainerCourseLearnerCountTitle.classList.add('learner-count-title','fs-12');
+
+        //    let trainerCourseLearnerCount = document.createElement('span');
+        //    trainerCourseArrangeCol.appendChild(trainerCourseLearnerCount);
+        //    trainerCourseLearnerCount.textContent =Object.values(each)[0] ;
+        //    trainerCourseLearnerCount.classList.add('learner-count','fs-14');
+
+        //    let trainerCourseCardDelete = document.createElement('div');
+        //    trainerCourseCard.appendChild(trainerCourseCardDelete);
+        //    trainerCourseCardDelete.onclick=function(){
+        //         deleteTrainerModal.style.display = 'none';
+        //         $('#deleteCourseModal').show();
+        //         $('#deleteModalTitle').text('Remove Trainer');
+        //         $('#deleteItemText').text(`Remove ${trainer.name} from ${Object.keys(each)[0]} course?`);
+        //         $('#deleteCourseBtn').text('Remove');
+        //         $('#deleteCourseCaution').text("once removed can't be restore again");
+        //         deleteItem = trainer.name;
+        //         deleteCourseName = Object.keys(each)[0];
+        //         trainerCourseCardCont.innerHTML = "";
+        //    };
+        //    trainerCourseCardDelete.classList.add('delete-icon');
+        //    let trainerCourseCardDeleteImg = document.createElement('img');
+        //    trainerCourseCardDeleteImg.src='https://datalab-static-images.s3.ap-south-1.amazonaws.com/admin_delete.png';
+        //    trainerCourseCardDelete.appendChild(trainerCourseCardDeleteImg);
         };
     }
     const trainerCard=creatingCard(displayObj,classesObj,removeTrainer, actionIconImg);
@@ -1957,12 +1968,9 @@ function addAndAppendLearner(learner){
     learnerEyeImg.classList.add("eye-action");
     learnerEyeImg.onclick = function(){
         trainerCourseCardCont.innerHTML = "";
-        // deleteTrainerModal.style.display='block';
-        // actionTitle.textContent="Learner-";
-        // deleteTrainer.textContent = Object.keys(learner)[0];
         $('#deleteTrainerModal').show();
         $('#actionTitle').text('Learner - ');
-        $('#deleteTrainer').textContent = Object.keys(learner)[0];
+        $('#deleteTrainer').text(Object.keys(learner)[0]);
         for (let each of Object.values(learner)[0]){
             let learnerCourseCard = document.createElement('div');
             trainerCourseCardCont.appendChild(learnerCourseCard);
