@@ -1802,7 +1802,7 @@ const getAllDetails = async () => {
         const studentsUserNameList = studentsJson.students.map((studentDet)=> {return studentDet.username});
         return { 'courseName': courseName, 'trainer': instructorName, 'students': studentsUserNameList};
     });
-    return details;
+    return Promise.all(details);
 };
 
 function createEl(el,cls,text){
