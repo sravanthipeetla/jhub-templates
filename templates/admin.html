@@ -2092,59 +2092,29 @@ getAllDetails().then(async (resp)=>{
 });
 
 $('#courseNav').click(function(){
-    $('#trainerSearchCont').hide();
-    $('#learnerSearchCont').hide();
-    $('#courseSearchCont').show();
-    $('#trainersFilter').hide();
+    $('#trainerSearchCont, #learnerSearchCont, #trainersFilter, #mapBtn, #trainerDetails, #learnerDetails').hide();
+    $('#courseSearchCont, #courseDetails').show();
     $('#addBtn').text('Add Course');
-    $('#mapBtn').hide();
     $('#description').text('You can manage Course details here.');
     $('#courseNav').addClass('active');
-    $('#trainerNav').removeClass('active');
-    $('#learnerNav').removeClass('active');
-    $('#courseDetails').show();
-    $('#trainerDetails').hide();
-    $('#learnerDetails').hide();
-    
+    $('#trainerNav, #learnerNav').removeClass('active');
 });
 
 $('#trainerNav').click(function(){
-    $('#courseSearchCont').hide();
-    $('#learnerSearchCont').hide();
-    $('#trainerSearchCont').show();
-    $('#trainersFilter').show();
+    $('#courseSearchCont, #learnerSearchCont, #mapBtn, #courseDetails, #learnerDetails ').hide();
+    $('#trainerSearchCont, #trainersFilter, #trainerDetails').show();
     $('#addBtn').text('Add Trainer');
-    $('#mapBtn').hide();
     $('#description').text('You can manage Trainer details here.');
-    $('#courseNav').removeClass('active');
+    $('#courseNav,#learnerNav').removeClass('active');
     $('#trainerNav').addClass('active');
-    $('#learnerNav').removeClass('active');
-    $('#courseDetails').hide();
-    $('#trainerDetails').show();
-    $('#learnerDetails').hide();
-    
 });
 
 $('#learnerNav').click(function(){
-    // $('#trainerSearchCont').hide();
-    // $('#courseSearchCont').hide();
-    // $('#learnerSearchCont').show();
-    // $('#trainersFilter').hide();
-    // $('#addBtn').text('Add Learners');
-    // $('#mapBtn').show();
-    // $('#description').text('You can manage Learners details here.');
-    // $('#courseNav').removeClass('active');
-    // $('#trainerNav').removeClass('active');
-    // $('#learnerNav').addClass('active');
-    // $('#courseDetails').hide();
-    // $('#trainerDetails').hide();
-    // $('#learnerDetails').show();  
     $('#trainerSearchCont,#courseSearchCont,#trainersFilter,#courseDetails,#trainerDetails').hide();
     $('#learnerSearchCont,#mapBtn, #learnerDetails').show();
     $('#addBtn').text('Add Learners');
     $('#description').text('You can manage Learners details here.');
-    $('#courseNav').removeClass('active');
-    $('#trainerNav').removeClass('active');
+    $('#courseNav, #trainerNav').removeClass('active');
     $('#learnerNav').addClass('active');
 });
 
@@ -2152,19 +2122,18 @@ $('#addBtn').click (()=> {
     if ($('#addBtn').text() === "Add Course") {
         $('#courseNameText').val('');
         $('#addCourseModal').show();
-}
+    }
     else if($('#addBtn').text()  === "Add Trainer"){
         $('#trainerUsername').val('');
         $('#addTrainerModal').show();
     }
     else if ($('#addBtn').text()  === "Add Learners") {
         $('#addLearnerModal').show();
-        };
+        $('#singleLearnerName').val('');
+    };
 });
 
-$('#successDone').click(() =>{
-    location.reload();
-});
+$('#successDone').click(() =>location.reload());
 
 $('#successAddMore').click(() =>{
     if ($('#successModelTitle').text() === 'Add Course' ){
@@ -2187,22 +2156,15 @@ $('#successAddMore').click(() =>{
     }
 });
 
-$('#mapBtn').click (() =>{
-    $('#mapLearnerModal').show();
-});
+$('#mapBtn').click (() =>$('#mapLearnerModal').show());
 
 $('#addSuccessClose').click(() =>{
     $('#addSuccessModal').hide();
     location.reload();
 });
 
-$('#addCourseCancel').click(() =>{
-    $('#addCourseModal').hide();
-});
-
-$('#addCourseClose').click(() =>{
-    $('#addCourseModal').hide();
-});
+// $('#addCourseCancel').click(() =>$('#addCourseModal').hide());
+$('#addCourseClose, #addCourseCancel').click(() =>$('#addCourseModal').hide());
 
 $('#addTrainerCancel').click(() =>{
     $('#addTrainerModal').hide();
