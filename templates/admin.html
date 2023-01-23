@@ -1221,13 +1221,13 @@ const mapLearnerModal = document.getElementById('mapLearnerModal');
 const courseCardCont = document.getElementById('courseCardCont');
 const trainerCardCont = document.getElementById('trainerCardCont');
 const trainerEyeIcon = document.getElementById('trainer-eye-icon');
-const deleteTrainerModal = document.getElementById('deleteTrainerModal');
-const deleteTrainer = document.getElementById('deleteTrainer');
+// const deleteTrainerModal = document.getElementById('deleteTrainerModal');
+// const deleteTrainer = document.getElementById('deleteTrainer');
 const modelTitle = document.getElementById('modelTitle');
 const trainerCourseCardCont = document.getElementById('trainerCourseCardCont');
 const chooseLearnerSelect = document.getElementById('chooseLearnerSelect');
 const learnerRowsBody = document.getElementById('learnerRowsBody');
-const actionTitle = document.getElementById('actionTitle');
+// const actionTitle = document.getElementById('actionTitle');
 const mapUploadBtn = document.getElementById('mapUploadBtn');
 const addUploadBtn = document.getElementById('addUploadBtn');
 const mapFileChosen = document.getElementById('mapFileChosen');
@@ -1824,7 +1824,6 @@ function createEl(el,cls,text){
     return elem;
 }
 
-
 function creatingCard(displayObj,classesObj, onclickAction, iconImg){
     const cardCont = createEl('div', classesObj.card);
     const cardLeft = createEl('div','course-card-left');
@@ -1879,9 +1878,12 @@ function addAndAppendTrainer(trainer) {
     const classesObj = {card:'trainerCard',icon:'eye-icon'}
     const removeTrainer = () =>{
         trainerCourseCardCont.innerHTML = "";
-        deleteTrainerModal.style.display='block';
-        actionTitle.textContent = "Trainer-";
-        deleteTrainer.textContent = trainer.name;
+        // deleteTrainerModal.style.display='block';
+        // actionTitle.textContent = "Trainer-";
+        // deleteTrainer.textContent = trainer.name;
+        $('#deleteTrainerModal').show();
+        $('#actionTitle').text('Trainer - ');
+        $('#deleteTrainer').textContent = trainer.name;
         for (let each of trainer.course){
            let trainerCourseCard = document.createElement('div');
            let trainerCourseCardId = trainer.name + Object.keys(each)[0];
@@ -1955,9 +1957,12 @@ function addAndAppendLearner(learner){
     learnerEyeImg.classList.add("eye-action");
     learnerEyeImg.onclick = function(){
         trainerCourseCardCont.innerHTML = "";
-        deleteTrainerModal.style.display='block';
-        actionTitle.textContent="Learner-";
-        deleteTrainer.textContent = Object.keys(learner)[0];
+        // deleteTrainerModal.style.display='block';
+        // actionTitle.textContent="Learner-";
+        // deleteTrainer.textContent = Object.keys(learner)[0];
+        $('#deleteTrainerModal').show();
+        $('#actionTitle').text('Learner - ');
+        $('#deleteTrainer').textContent = Object.keys(learner)[0];
         for (let each of Object.values(learner)[0]){
             let learnerCourseCard = document.createElement('div');
             trainerCourseCardCont.appendChild(learnerCourseCard);
