@@ -1056,10 +1056,11 @@ body.loading {
     }
 
 }
-.select-container {
+.trainer-select-container {
     position: relative;
     width: 14.5vw;
     border-radius: 15px;
+    display:none;
 }
 
 
@@ -1072,7 +1073,6 @@ body.loading {
     padding: 1rem 1.6rem;
     color: black;
     outline: none;
-    display:none;
 }
 
 .select-arrow {
@@ -1138,7 +1138,7 @@ body.loading {
                             <option value="mapped" class="fs-16">Mapped</option>
                             <option value="unmapped" class="fs-16">Unmapped</option>
                         </select> -->
-                        <div class="select-container">
+                        <div class="trainer-select-container" id="trainersFilterCont" >
                             <select id="trainersFilter"  class="trainer-select">
                                 <option default  value="all" class="fs-16">All</option>
                                 <option value="mapped" class="fs-16">Mapped</option>
@@ -2326,7 +2326,7 @@ getAllDetails().then(async (resp)=>{
 });
 
 $('#courseNav').click(function(){
-    $('#trainerSearchCont, #learnerSearchCont, #trainersFilter, #mapBtn, #trainerDetails, #learnerDetails').hide();
+    $('#trainerSearchCont, #learnerSearchCont, #trainersFilterCont, #mapBtn, #trainerDetails, #learnerDetails').hide();
     $('#courseSearchCont, #courseDetails').show();
     $('#addBtn').text('Add Course');
     $('#description').text('You can manage Course details here.');
@@ -2336,7 +2336,7 @@ $('#courseNav').click(function(){
 
 $('#trainerNav').click(function(){
     $('#courseSearchCont, #learnerSearchCont, #mapBtn, #courseDetails, #learnerDetails ').hide();
-    $('#trainerSearchCont, #trainersFilter, #trainerDetails').show();
+    $('#trainerSearchCont, #trainersFilterCont, #trainerDetails').show();
     $('#addBtn').text('Add Trainer');
     $('#description').text('You can manage Trainer details here.');
     $('#courseNav,#learnerNav').removeClass('active');
@@ -2344,7 +2344,7 @@ $('#trainerNav').click(function(){
 });
 
 $('#learnerNav').click(function(){
-    $('#trainerSearchCont,#courseSearchCont,#trainersFilter,#courseDetails,#trainerDetails').hide();
+    $('#trainerSearchCont,#courseSearchCont,#trainersFilterCont,#courseDetails,#trainerDetails').hide();
     $('#learnerSearchCont,#mapBtn, #learnerDetails').show();
     $('#addBtn').text('Add Learners');
     $('#description').text('You can manage Learners details here.');
