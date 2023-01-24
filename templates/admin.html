@@ -1056,6 +1056,36 @@ body.loading {
     }
 
 }
+.select-container {
+    position: relative;
+    width: 14.5vw;
+    border-radius: 15px;
+}
+
+
+#trainersFilter {
+    appearance: none;
+    background-color: #fff;
+    border-radius: 50px;
+    width: 15vw;
+    border: 0.1rem solid #5FBEF0;
+    padding: 1rem 1.6rem;
+    color: black;
+    outline: none;
+    display:none;
+}
+
+.select-arrow {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #000;
+}
 
 </style>
 {% endblock %}
@@ -1103,11 +1133,19 @@ body.loading {
                         </div>
                     
                     
-                        <select  id="trainersFilter" class="stop-visible">
+                        <!-- <select  id="trainersFilter" class="stop-visible">
                             <option default  value="all" class="fs-16">All</option>
                             <option value="mapped" class="fs-16">Mapped</option>
                             <option value="unmapped" class="fs-16">Unmapped</option>
-                        </select>
+                        </select> -->
+                        <div class="select-container">
+                            <select id="trainersFilter"  class="trainer-select">
+                                <option default  value="all" class="fs-16">All</option>
+                                <option value="mapped" class="fs-16">Mapped</option>
+                                <option value="unmapped" class="fs-16">Unmapped</option>
+                            </select>
+                            <div class="select-arrow"></div>
+                        </div>
                         <button class="map-btn" id="mapBtn">Map Learners</button>
                         <button class="add-btn" id="addBtn">Add Course</button>
                     </div>
