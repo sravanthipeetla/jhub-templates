@@ -2048,7 +2048,7 @@ function creatingCard(displayObj,classesObj, onclickAction, iconImg){
     cardLeft.appendChild(cardTitle);
     const cardTitleDisplay = createEl('p',['course-title','overflow-show'],displayObj.name);
     $(cardTitle).click(function(){
-            $(cardTitleDisplay).show(500).fadeOut(5000);
+            $(cardTitleDisplay).show().fadeOut(5000);
     });
     cardLeft.appendChild(cardTitleDisplay);
     const arrangeRow = createEl('div','arrange-row');
