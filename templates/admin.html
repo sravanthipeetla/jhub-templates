@@ -2010,7 +2010,7 @@ function creatingCard(displayObj,classesObj, onclickAction, iconImg){
     const cardTitle = createEl('p','course-title',displayObj.name);
     cardLeft.appendChild(cardTitle);
     const cardTitleDisplay = createEl('p',['course-title','overflow-show'],displayObj.name);
-    $(cardTitle).hover(function(){
+    $(cardTitle).click(function(){
             $(cardTitleDisplay).show(500).fadeOut(5000);
     });
     cardLeft.appendChild(cardTitleDisplay);
