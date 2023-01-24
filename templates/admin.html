@@ -563,12 +563,7 @@ th{
     font-size: 1.2rem;
 }
 
-.name-select-cont{
-    position: relative;
-    width:25rem;
-}
 .add-course-name input,.choose-trainer-name select,.add-learner input{
-    appearance: none;
     border-radius:5rem;
     height:3rem;
     border:1px solid #5FBEF0;
@@ -1082,8 +1077,8 @@ body.loading {
 
 .select-arrow {
     position: absolute;
-    right: 10px;
-    top: 50%;
+    right: 5px;
+    top: 53%;
     transform: translateY(-50%);
     width: 0;
     height: 0;
@@ -1136,6 +1131,7 @@ body.loading {
                                 <span class="searchIcon"></span>
                             </div>
                         </div>
+
                         <div class="trainer-select-container" id="trainersFilterCont" >
                             <select id="trainersFilter"  class="trainer-select">
                                 <option default  value="all" class="fs-16">All</option>
@@ -1228,11 +1224,8 @@ body.loading {
                                 <p>Choose Trainer</p>
                                 <span>Existing Trainer</span>
                             </div> 
-                            <div class="name-select-cont">
                             <select placeholder="Enter course name" id="chooseTrainerSelect" class="choose-select">
                             </select>
-                            <div class="select-arrow"></div>
-                            </div>
                         </div>
                 </div>
                     <div class="add-course-model-bottom">
