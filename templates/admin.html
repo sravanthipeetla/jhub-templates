@@ -186,9 +186,12 @@ body {
     width:24%;
 }
 
-/* .trainerCard-width{
-    width: 18%;
-} */
+.overflow-show{
+    display:none;
+    position: fixed;
+    z-index: 1;
+    min-width:40%;
+}
 
 .trainer-course-card{
     display: flex;
@@ -2005,6 +2008,11 @@ function creatingCard(displayObj,classesObj, onclickAction, iconImg){
     cardCont.appendChild(cardLeft);
     const cardTitle = createEl('p','course-title',displayObj.name);
     cardLeft.appendChild(cardTitle);
+    const cardTitleDisplay = createEl('p',['course-title','overflow-show'],displayObj.name);
+    $('cardTitle').mouseenter(function(){
+            $('cardTitleDisplay').show(1000).fadeOut(5000);
+    });
+    cardLeft.appendChild(cardTitleDisplay);
     const arrangeRow = createEl('div','arrange-row');
     cardLeft.appendChild(arrangeRow);
     if(displayObj.display1){
