@@ -2036,6 +2036,11 @@ function creatingCard(displayObj,classesObj, onclickAction, iconImg){
         arrangeColTrain.appendChild(trainTitle);
         const trainName = createEl('span',['learner-count','fs-14'],displayObj.display2_c);
         arrangeColTrain.appendChild(trainName);
+        const trainNameDisplay = createEl('span',['learner-count','fs-14','overflow-show'],displayObj.display2_c);
+        $(trainName).click(function(){
+            $(trainNameDisplay).show(500).fadeOut(5000);
+    });
+        arrangeColTrain.appendChild(trainNameDisplay);
     }
 
     const iconCont = createEl('div',classesObj.icon);
