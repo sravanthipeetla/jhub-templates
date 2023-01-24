@@ -413,6 +413,7 @@ th{
     font-weight: 600;
     color: #F63C46;
     padding-bottom: 0.2rem;
+    font-size: 1.6rem;
 }
 
 .delete-course-model-top-first span{
@@ -432,6 +433,7 @@ th{
     font-family: 'Gothic A1';
     font-style: Medium;
     font-weight: 600;
+    font-size: 1.6rem;
 }
 
 .delete-course-model-bottom{
@@ -444,6 +446,7 @@ th{
     font-style: normal;
     font-weight: 400;
     padding: 0.8rem;
+    font-size:1.4rem;
 }
 
 .delete-button{
@@ -507,6 +510,7 @@ th{
     font-style: normal;
     font-weight: 600;
     color: #5FBEF0;
+    font-size: 1.6rem;
 }
 
 .add-course-model-top-first span,.add-learner-model-top-first span{
@@ -536,6 +540,7 @@ th{
     font-family: 'Gothic A1';
     font-style: normal;
     font-weight: 400;
+    font-size: 1.4rem;
     color: #000000;
     width:12.5rem;
 }
@@ -544,6 +549,7 @@ th{
     color: #c51306;
     padding-left:15rem;
     display: none;
+    font-size: 1.2rem;
 }
 
 .add-course-name input,.choose-trainer-name select,.add-learner input{
@@ -556,6 +562,7 @@ th{
     color: #263238;;
     outline: none;
     background-color: #fff;
+    font-size: 1.2rem;
 }
 
 .add-course-name input::placeholder{
@@ -563,6 +570,7 @@ th{
     font-style: normal;
     font-weight: 400;
     color: #A6A6A6;
+    font-size: 1.4rem;
 }
 
 .choose-trainer-arrange,.choose-learner-arrange{
@@ -575,6 +583,7 @@ th{
     font-family: 'Gothic A1';
     font-style: normal;
     font-weight: 400;
+    font-size: 1.4rem;
     color: #000000;
     width:12.5rem;
 }
@@ -595,6 +604,10 @@ th{
     color: #A6A6A6;
     margin-top: -0.8rem;
     width:12.5rem;
+    font-size: 1.2rem;
+}
+.choose-select{
+    font-size: 1.2rem;
 }
 
 .add-course-model-bottom{
@@ -686,6 +699,7 @@ th{
     font-style: normal;
     font-weight: 600;
     color: #999999;
+    font-size: 1.6rem;
 }
 
 .delete-trainer-name{
@@ -805,6 +819,7 @@ body.loading {
     min-width:30%;
     height:4rem;
     z-index: 1;
+    font-size: 1.4rem;
 }
 
 #alertMsgCont{
@@ -1041,7 +1056,7 @@ body.loading {
     <script src={{ static_url("js/admin.js") }}></script>
     <div class="fs-16">
         <div id="alertMsgCont">
-            <div class="alert fs-14" >
+            <div class="alert" >
                 <p id="alertMsg"></p>
                 <span class="alert-closebtn" id="alertMsgClose">&times;</span>
             </div>
@@ -1111,18 +1126,18 @@ body.loading {
         <div class="bg-model" id="deleteCourseModal">
             <div class="course-model">
                 <div>
-                    <div class="delete-course-model-top-first fs-16">
-                        <h1 id="deleteModalTitle" class="fs-16"></h1>
+                    <div class="delete-course-model-top-first">
+                        <h1 id="deleteModalTitle"></h1>
                         <div id="deleteModalClose">
                             <span> &times;</span>
                         </div>
                     </div>
-                        <h1 class="delete-title fs-16" id="deleteItemText"></h1>
+                        <h1 class="delete-title" id="deleteItemText"></h1>
                 </div>
                     <div class="delete-course-model-bottom">
                         <button id="deleteCourseBtn" class="delete-button">Delete</button>
                         <button id="deleteCancelBtn" class="cancel-button">Cancel</button>
-                        <p id="deleteCourseCaution" class="fs-14">once deleted can't be restore again</p>  
+                        <p id="deleteCourseCaution" >once deleted can't be restore again</p>  
                     </div>  
             </div>
         
@@ -1131,17 +1146,17 @@ body.loading {
             <div class="course-model">
                 <div>
                     <div class="delete-course-model-top-first">
-                        <h1 id="removeLearnerModalTitle" class="fs-16">Remove Learner</h1>
+                        <h1 id="removeLearnerModalTitle">Remove Learner</h1>
                         <div id="removeLearnerCourseModalClose">
                             <span> &times;</span>
                         </div>
                     </div>
-                        <h1 class="delete-title fs-16" id="removeLearnerModalItemText"></h1>
+                        <h1 class="delete-title" id="removeLearnerModalItemText"></h1>
                 </div>
                     <div class="delete-course-model-bottom">
                         <button id="removeLearnerCourseBtn" class="delete-button">Remove</button>
                         <button id="removeLearnerCourseCancel" class="cancel-button">Cancel</button>
-                        <p id="removeLearnerCourseCaution" class="fs-14">once removed can't be restore again</p>  
+                        <p id="removeLearnerCourseCaution">once removed can't be restore again</p>  
                     </div>  
             </div>
         
@@ -1150,22 +1165,22 @@ body.loading {
             <div class="course-model add-course-model-height">
                 <div>
                     <div class="add-course-model-top-first">
-                        <h1 id="modelTitle" class="fs-16">Add Course</h1>
+                        <h1 id="modelTitle">Add Course</h1>
                         <div id="addCourseClose">
                             <span> &times;</span>
                         </div>
                     </div>
                         <div class="add-course-name">
-                            <p class="fs-14">Course Name</p>
-                            <input type="text" placeholder="Enter course name" id="courseNameText" class="fs-12">
+                            <p>Course Name</p>
+                            <input type="text" placeholder="Enter course name" id="courseNameText">
                         </div>
-                        <span class="course-name-warn fs-12" id="courseNameWarn">* course name should not contain spaces</span>
+                        <span class="course-name-warn" id="courseNameWarn">* course name should not contain spaces</span>
                         <div class="choose-trainer-name">
                             <div class="choose-trainer-arrange">
-                                <p class="fs-14">Choose Trainer</p>
-                                <span class="fs-12">Existing Trainer</span>
+                                <p>Choose Trainer</p>
+                                <span>Existing Trainer</span>
                             </div> 
-                            <select placeholder="Enter course name" id="chooseTrainerSelect" class="fs-12">
+                            <select placeholder="Enter course name" id="chooseTrainerSelect" class="choose-select">
                             </select>
                         </div>
                 </div>
@@ -1180,7 +1195,7 @@ body.loading {
             <div class="course-model add-course-model-height">
                 <div>
                     <div class="add-course-model-top-first">
-                        <h1 id="successModelTitle" class="fs-16">Add Course</h1>
+                        <h1 id="successModelTitle">Add Course</h1>
                         <div id="addSuccessClose">
                             <span> &times;</span>
                         </div>
@@ -1202,7 +1217,7 @@ body.loading {
             <div class="course-model">
                 <div>
                     <div class="delete-course-model-top-first">
-                        <h1 id="DeleteSuccessModelTitle" class="fs-16">Delete Course</h1>
+                        <h1 id="DeleteSuccessModelTitle">Delete Course</h1>
                         <div id="deleteSuccessClose">
                             <span> &times;</span>
                         </div>
@@ -1223,19 +1238,19 @@ body.loading {
             <div class="course-model add-trainer-model-height">
                 <div>
                     <div class="add-course-model-top-first">
-                        <h1 id="modelTitle" class="fs-16">Add Trainer</h1>
+                        <h1 id="modelTitle">Add Trainer</h1>
                         <div id="addTrainerCancel">
                             <span> &times;</span>
                         </div>
                     </div>
                         <div class="add-course-name">
                             <div class="choose-trainer-arrange">
-                                <p class="fs-14">User Name</p>
-                                <span class="fs-12">New trainer</span>
+                                <p>User Name</p>
+                                <span>New trainer</span>
                             </div> 
-                            <input type="text" placeholder="Enter user name" id="trainerUsername" class="fs-12">
+                            <input type="text" placeholder="Enter user name" id="trainerUsername">
                         </div>
-                        <span class="course-name-warn fs-12" id="trainerNameWarn">* user name should not contain spaces</span>
+                        <span class="course-name-warn" id="trainerNameWarn">* user name should not contain spaces</span>
                 </div>
                     <div class="add-course-model-bottom">
                         <button id="addTrainerBtn" class="add-button">Add</button>
@@ -1265,7 +1280,7 @@ body.loading {
             <div class="course-model add-learner-model-height">
                 <div>
                     <div class="add-learner-model-top-first">
-                        <h1 class="fs-16">Map Learners</h1>
+                        <h1>Map Learners</h1>
                         <div id="mapLearnerClose">
                             <span> &times;</span>
                         </div>
@@ -1273,8 +1288,8 @@ body.loading {
                         <div>
                             <div class="add-learner">
                                 <div class="choose-trainer-arrange">
-                                    <p class="fs-14">Upload CSV file</p>
-                                    <span class="fs-12">Multiple learners</span>
+                                    <p>Upload CSV file</p>
+                                    <span>Multiple learners</span>
                                 </div> 
                                 <div class="stop-visible">
                                 <input type="file" id="mapUploadBtn" accept=".csv"/>
@@ -1284,8 +1299,8 @@ body.loading {
                             </div>
                         </div>
                         <div class="choose-trainer-name">
-                            <p class="choose-course-name fs-14">Choose Course</p>
-                            <select id="mapLearnerCourseSelect" class="fs-12">
+                            <p class="choose-course-name">Choose Course</p>
+                            <select id="mapLearnerCourseSelect" class="choose-select">
                             </select>
                         </div>
                 </div>
@@ -1298,7 +1313,7 @@ body.loading {
         <div class="bg-model" id="addLearnerModal">
             <div class="learner-course-add-model">
                     <div class="add-learner-model-top-first">
-                        <h1 class="fs-16">Add Learners</h1>
+                        <h1>Add Learners</h1>
                         <div id="addLearnerClose">
                             <span> &times;</span>
                         </div>
@@ -1311,18 +1326,18 @@ body.loading {
                         <div id="singleLearner">
                             <div class="add-learner">
                                 <div class="choose-trainer-arrange">
-                                    <p class="fs-14">User ID</p>
-                                    <span class="fs-12">Single learner</span>
+                                    <p>User ID</p>
+                                    <span>Single learner</span>
                                 </div> 
-                                <input type="text" placeholder="Enter user ID" class="fs-12" id="singleLearnerName">
+                                <input type="text" placeholder="Enter user ID" id="singleLearnerName">
                             </div>
-                            <span class="course-name-warn fs-12" id="singleLearnerNameWarn">* user name should not contain spaces</span>
+                            <span class="course-name-warn" id="singleLearnerNameWarn">* user name should not contain spaces</span>
                         </div>
                         <div id="multipleLearners" class="stop-visible">
                         <div class="add-learner">
                                 <div class="choose-trainer-arrange">
-                                    <p class="fs-14">Upload CSV file</p>
-                                    <span class="fs-12">Multiple learners</span>
+                                    <p>Upload CSV file</p>
+                                    <span>Multiple learners</span>
                                 </div> 
                                 <div class="stop-visible">
                                 <input type="file" id="addUploadBtn" accept=".csv" />
@@ -1332,8 +1347,8 @@ body.loading {
                         </div>
                         </div>
                         <div class="choose-trainer-name">
-                            <p class="choose-course-name fs-14">Choose Course</p>
-                            <select id="addLearnerCourseSelect" class="fs-12">
+                            <p class="choose-course-name">Choose Course</p>
+                            <select id="addLearnerCourseSelect" class="choose-select">
                             </select>
                         </div>
                     </div>
