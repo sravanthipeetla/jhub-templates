@@ -1509,6 +1509,7 @@ let deleteCourseName = null;
 let presentUser = 'singleUser';
 let coursesRemoveLearner = null;
 let coursesRemoveList = null;
+let addmorePressed = false;
 
 mapUploadBtn.addEventListener('change', function() {
     if (this.files[0].name){
@@ -2416,6 +2417,7 @@ $('#addBtn').click (()=> {
 });
 
 $('#successAddMore').click(() =>{
+    addmorePressed=true;
     if ($('#successModelTitle').text() === 'Add Course' ){
         $('#addSuccessModal').hide();
         $('#addCourseModal').show();
@@ -2445,7 +2447,17 @@ $('#addSuccessClose').click(() =>{
 
 $('#mapBtn').click (() =>$('#mapLearnerModal').show());
 $('#successDone').click(() =>location.reload());
-$('#addCourseClose, #addCourseCancel').click(() =>$('#addCourseModal').hide());
+$('#addCourseClose, #addCourseCancel').click(() =>{
+    if(addmorePressed){
+        location.reload();
+    }
+    else{
+        $('#addCourseModal').hide()
+    }
+   
+
+
+});
 $('#addTrainerCancel, #cancelAddTrainer').click(() => $('#addTrainerModal').hide());
 $("#alertMsgClose").click(() =>$('#alertMsgCont').hide());
 $('#deleteModalClose,#deleteCancelBtn').click(()=>$('#deleteCourseModal').hide());
