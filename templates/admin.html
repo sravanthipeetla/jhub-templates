@@ -2454,11 +2454,15 @@ $('#addCourseClose, #addCourseCancel').click(() =>{
     else{
         $('#addCourseModal').hide()
     }
-   
-
-
 });
-$('#addTrainerCancel, #cancelAddTrainer').click(() => $('#addTrainerModal').hide());
+$('#addTrainerCancel, #cancelAddTrainer').click(() => {
+    if(addmorePressed){
+        location.reload();
+    }
+    else{
+    $('#addTrainerModal').hide()
+    }
+});
 $("#alertMsgClose").click(() =>$('#alertMsgCont').hide());
 $('#deleteModalClose,#deleteCancelBtn').click(()=>$('#deleteCourseModal').hide());
 
@@ -2477,8 +2481,23 @@ $('#deleteSuccessClose').click(()=>{
     location.reload();
 });
 
-$('#mapLearnerClose,#mapLearnerCancel').click(()=>$('#mapLearnerModal').hide());
-$('#addLearnerCancel, #addLearnerClose').click(() =>$('#addLearnerModal').hide());
+$('#mapLearnerClose,#mapLearnerCancel').click(()=>{
+    if(addmorePressed){
+        location.reload();
+    }
+    else{
+    $('#mapLearnerModal').hide()
+    }
+
+});
+$('#addLearnerCancel, #addLearnerClose').click(() =>{
+    if(addmorePressed){
+        location.reload();
+    }
+    else{
+    $('#addLearnerModal').hide()
+    }
+});
 $('#removeLearnerCourseModalClose,#removeLearnerCourseCancel').click(()=>$('#removeLearnerCourseModal').hide());
 
 $('#singleUserBtn').click(function () {
