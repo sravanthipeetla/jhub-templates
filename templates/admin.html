@@ -1551,7 +1551,7 @@ $('#trainerUsername').keyup(function(){
 });
 
 mapLearnerAdd.addEventListener("click", async function(e) {
-    if (mapUploadBtn.files[0] && $('#mapLearnerCourseSelect').find(":selected").val() !==''){
+    if (mapUploadBtn.files[0].name.toLowerCase().includes('.csv') && $('#mapLearnerCourseSelect').find(":selected").val() !==''){
         const hubLearnerGroupFetch = await fetch(`${hub_url}groups/learner`);
         const hubLearnerGroupJson = await hubLearnerGroupFetch.json();
         const hubLearnerGroupList = hubLearnerGroupJson.users;
