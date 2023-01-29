@@ -286,26 +286,48 @@
 
         
         //server-info change
-        const serverInfo=document.getElementById('server-info');
+//         const serverInfo=document.getElementById('server-info');
         
-        const stopServerInfo=()=>{
-            if(!document.getElementById('stop')){
-                serverInfo.innerText='Your workspace is down. You can go to your workspace after starting.'
-                document.getElementById('start').style.marginTop='20px';
-                const lineBreak = document.createElement('br');
-                serverInfo.appendChild(lineBreak);
-            }
+//         const stopServerInfo=()=>{
+//             if(!document.getElementById('stop')){
+//                 serverInfo.innerText='Your workspace is down. You can go to your workspace after starting.'
+//                 document.getElementById('start').style.marginTop='20px';
+//                 const lineBreak = document.createElement('br');
+//                 serverInfo.appendChild(lineBreak);
+//             }
+//         }
+//         if(document.getElementById('stop')){
+//             const serverStop=document.getElementById('stop');
+//             serverStop.onclick=()=>{
+//                 serverInfo.innerText='Your workspace is stopping. Please wait...';
+//                 setTimeout(()=>{window.location.reload();}, 4100);
+//             }
+//         }
+//         if(!document.getElementById('stop')){
+//             stopServerInfo();
+//         }
+        
+        // clear cache,cookies and storage
+        $('#logout').click(function(e) {  
+            console.log("Inside");
+            const cookies = document.cookie.split(";");
+
+             var cookies = document.cookie.split("; ");
+    for (var c = 0; c < cookies.length; c++) {
+        var d = window.location.hostname.split(".");
+        while (d.length > 0) {
+            var cookieBase = encodeURIComponent(cookies[c].split(";")[0].split("=")[0]) + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; domain=' + d.join('.') + ' ;path=';
+            var p = location.pathname.split('/');
+            document.cookie = cookieBase + '/';
+            while (p.length > 0) {
+                document.cookie = cookieBase + p.join('/');
+                p.pop();
+            };
+            d.shift();
         }
-        if(document.getElementById('stop')){
-            const serverStop=document.getElementById('stop');
-            serverStop.onclick=()=>{
-                serverInfo.innerText='Your workspace is stopping. Please wait...';
-                setTimeout(()=>{window.location.reload();}, 4100);
-            }
-        }
-        if(!document.getElementById('stop')){
-            stopServerInfo();
-        }
+    }
+             alert(1);
+        });
     </script>
     {% endblock %}
     
