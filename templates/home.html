@@ -281,6 +281,11 @@
           const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
           navbarLeftList[1].style.display = 'none';
           navbarLeftList[3].style.display = 'none';
+        console.log(document.cookie);
+         $('#logout').click(function(e) { 
+               document.cookie = name + '=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+
+         )}
     </script>
     {% endblock %}
     
