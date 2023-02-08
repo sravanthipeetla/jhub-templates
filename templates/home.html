@@ -4,7 +4,7 @@
 <style>
     .navbar-default {
         height: 4.4vh;
-        background-color: #808080;
+        background-color: #F6FBFE;
         border-color: #e7e7e7;
         box-shadow: 0px 3px 5px rgb(0 0 0 / 12%);
     }
@@ -18,6 +18,10 @@
         font-size: 16px;
         color: #006BB6;
         font-weight: 500;
+    }
+
+    .navbar-nav li {
+        margin-left: 2.5rem;
     }
 
     #jupyterhub-logo .jpy-logo {
@@ -308,7 +312,7 @@
     //custom script
 
     // To hide left navbar items - 'Token' and 'services'
-    
+
     const navbarLeftList = document.getElementsByClassName('nav navbar-nav')[0].getElementsByTagName('li');
     navbarLeftList[1].style.display = 'none';
     navbarLeftList[3].style.display = 'none';
