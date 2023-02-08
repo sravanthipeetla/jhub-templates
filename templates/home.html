@@ -29,7 +29,7 @@
     }
 
     #jupyterhub-logo .jpy-logo {
-        height: 3.5rem;
+        height: 3rem;
     }
 
     .btn-lg {
@@ -330,6 +330,7 @@
         $("#server-info").text("Your workspace is stopping. Please wait...");
         setTimeout(function () {
             $("#sever-info").remove();
+            window.location.reload();
         }, 1000);
     });
 </script>
