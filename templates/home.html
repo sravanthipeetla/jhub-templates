@@ -55,8 +55,9 @@
         font-weight: 500;
     }
 
-    .server-gif {
-        padding-top: 10rem;
+    img {
+        max-width: 100%;
+        height: 100%
     }
 
     @media (max-width: 2560px) {
@@ -86,10 +87,6 @@
             width: calc(12vw - 2rem);
         }
 
-        .server-gif {
-            height: 50rem;
-        }
-
     }
 
     @media (max-width: 2400px) {
@@ -108,10 +105,6 @@
             font-size: 2rem;
             height: 6rem;
             width: calc(13vw - 2rem);
-        }
-
-        .server-gif {
-            height: 40rem;
         }
     }
 
@@ -158,11 +151,6 @@
         .text-center {
             padding-top: 2rem;
         }
-
-        .server-gif {
-            padding-top: 2rem;
-            height: 30rem;
-        }
     }
 
     @media (max-width: 1200px) {
@@ -181,10 +169,6 @@
 
         .text-center {
             padding-top: 2rem;
-        }
-
-        .server-gif {
-            padding-top: 4rem;
         }
     }
 
@@ -299,7 +283,9 @@
                 {% if not default_server.active %}Start{% endif %} My Workspace
             </a>
             <br />
-            <img class='server-gif' src="https://datalab-static-images.s3.ap-south-1.amazonaws.com/home_server.svg" />
+            <div id="server-img-div">
+                <img id="server-img" src="https://datalab-static-images.s3.ap-south-1.amazonaws.com/home_server.svg" />
+            </div>
         </div>
     </div>
 </div>
@@ -335,8 +321,9 @@
     $("#stop").click(function () {
         $("#server-info").text("Your workspace is stopping. Please wait...");
         setTimeout(function () {
+            console.log("Insie");
             $("#sever-info").remove();
-        }, 1000)();
+        }, 1000);
     });
 </script>
 {% endblock %}
