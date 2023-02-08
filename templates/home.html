@@ -24,18 +24,40 @@
         margin-left: 3rem;
     }
 
+    #logout{
+        border:none;
+    }
     .jpy-logo {
         height: 3rem;
     }
 
-    /* .text-center {
-        padding-top: 15rem;
+    .text-center {
+        padding-top: 12rem;
     }
 
     .server-info {
-        font-size: 2rem;
-        font-weight: 500;
-    } */
+        font-family: poppins;
+        font-weight: 400;
+        font-size: 25px;
+    }
+
+    #stop {
+        background-color: #F7545D;
+        font-weight: 600;
+        font-family: Poppins;
+        font-size: 16px;
+        border-radius: 25px;
+        width: 25rem;
+    }
+
+    #start {
+        background-color: #5FBEF0;
+        font-weight: 600;
+        font-family: Poppins;
+        font-size: 16px;
+        border-radius: 25px;
+        width: 25rem;
+    }
 
     #img-div {
         margin: 8rem;
@@ -47,64 +69,33 @@
         height: 100%
     }
 
-    @media (max-width: 2560px) {
+    @media (max-width: 2560px) {}
 
+    @media (max-width: 2400px) {}
 
-    }
+    @media (max-width: 2100px) {}
 
-    @media (max-width: 2400px) {
- 
-    }
+    @media (max-width: 1920px) {}
 
-    @media (max-width: 2100px) {
- 
+    @media (max-width: 1700px) {}
 
-    }
+    @media (max-width: 1400px) {}
 
-    @media (max-width: 1920px) {
+    @media (max-width: 1200px) {}
 
-    }
+    @media (max-width: 1100px) {}
 
-    @media (max-width: 1700px) {
+    @media (max-width: 900px) {}
 
-    }
+    @media (max-width: 780px) {}
 
-    @media (max-width: 1400px) {
-  
-    }
+    @media (max-width: 692px) {}
 
-    @media (max-width: 1200px) {
+    @media (max-width: 612px) {}
 
-    }
+    @media (max-width: 425px) {}
 
-    @media (max-width: 1100px) {
-
-    }
-
-    @media (max-width: 900px) {
-
-
-    }
-
-    @media (max-width: 780px) {
-
-    }
-
-    @media (max-width: 692px) {
-
-    }
-
-    @media (max-width: 612px) {
-
-    }
-
-    @media (max-width: 425px) {
-
-    }
-
-    @media (max-width: 320px) {
-
-    }
+    @media (max-width: 320px) {}
 </style>
 {% endblock %}
 {% if announcement_home %}
@@ -167,6 +158,10 @@
             });
         }
     });
+
+    // Logout text remove
+
+    $("#logout").text('');
 
     //Remove server-info on click of stop server
 
