@@ -24,6 +24,10 @@
         margin-left: 3rem;
     }
 
+    .navbar-right li {
+        margin-left: 3rem;
+    }
+    
     #jupyterhub-logo .jpy-logo {
         height: 3.5rem;
     }
@@ -323,6 +327,7 @@
         setTimeout(function () {
             console.log("Insie");
             $("#sever-info").remove();
+            window.location.reload();
         }, 1000);
     });
 </script>
