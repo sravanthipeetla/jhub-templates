@@ -21,7 +21,7 @@
     }
 
     .navbar-nav li {
-        margin-left: 2.5rem;
+        margin-left: 3rem;
     }
 
     #jupyterhub-logo .jpy-logo {
@@ -299,7 +299,7 @@
                 {% if not default_server.active %}Start{% endif %} My Workspace
             </a>
             <br />
-            <img class='server-gif' src="https://datalab-static-images.s3.ap-south-1.amazonaws.com/home-server.gif" />
+            <img class='server-gif' src="https://datalab-static-images.s3.ap-south-1.amazonaws.com/home_server.svg" />
         </div>
     </div>
 </div>
@@ -333,6 +333,7 @@
     //Remove server-info on click of stop server
 
     $("#stop").click(function () {
+        console.log("Inside");
         $("#server-info").text = "Your workspace is stopping. Please wait...";
         setTimeout(function () {
             $("#sever-info").remove();
