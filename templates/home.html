@@ -333,8 +333,7 @@
     //Remove server-info on click of stop server
 
     $("#stop").click(function () {
-        console.log("Inside");
-        $("#server-info").text = "Your workspace is stopping. Please wait...";
+        $("#server-info").text("Your workspace is stopping. Please wait...");
         setTimeout(function () {
             $("#sever-info").remove();
         }, 1000);
