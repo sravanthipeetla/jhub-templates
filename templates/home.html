@@ -27,7 +27,7 @@
     .navbar-right li {
         margin-left: 3rem;
     }
-    
+
     #jupyterhub-logo .jpy-logo {
         height: 3.5rem;
     }
@@ -57,6 +57,11 @@
     .server-info {
         font-size: 2rem;
         font-weight: 500;
+    }
+
+    #img-div {
+        margin: 8rem;
+        width: calc(57vw - 2rem);
     }
 
     img {
@@ -282,12 +287,11 @@
                 Stop My Workspace
             </a>
             {% endif %}
-            <span class='server-info' id='server-info'></span>
             <a id='start' role='button' class='btn btn-lg btn-primary' href='{{ url }}'>
                 {% if not default_server.active %}Start{% endif %} My Workspace
             </a>
             <br />
-            <div id="server-img-div">
+            <div id="img-div">
                 <img id="server-img" src="https://datalab-static-images.s3.ap-south-1.amazonaws.com/home_server.svg" />
             </div>
         </div>
@@ -325,9 +329,7 @@
     $("#stop").click(function () {
         $("#server-info").text("Your workspace is stopping. Please wait...");
         setTimeout(function () {
-            console.log("Insie");
             $("#sever-info").remove();
-            window.location.reload();
         }, 1000);
     });
 </script>
