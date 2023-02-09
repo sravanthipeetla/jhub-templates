@@ -172,9 +172,9 @@
 
     $('#stop').click(function () {
         console.log('clicked');
-            $('#sever-info').remove();
+            $('#sever-info').text('');
             window.location.reload();
-            $('#text-center').prepend("<span class='server-info' id='server-info'>Your server has stpooed. You can go back to your server again by clicking Start</span>");
+            $('#server-info').text('Your server has stpooed. You can go back to your server again by clicking Start.');
     });
 </script>
 {% endblock %}
