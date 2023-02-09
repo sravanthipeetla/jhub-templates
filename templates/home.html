@@ -3,10 +3,14 @@
 {{ super() }}
 <style>
     .navbar-default {
-        height: 4.4vh;
+        height: 5.9vh;
         background-color: #F6FBFE;
         border-color: #e7e7e7;
         box-shadow: 0px 3px 5px rgb(0 0 0 / 12%);
+    }
+
+    .navbar-header,.navbar-collapse{
+        padding: 1.5rem;
     }
 
     .navbar-nav {
@@ -124,11 +128,11 @@
             <br />
             <br />
             <a id='stop' role='button' class='btn btn-lg btn-danger'>
-                Stop My Workspace
+                Stop My Server
             </a>
             {% endif %}
             <a id='start' role='button' class='btn btn-lg btn-primary' href='{{ url }}'>
-                {% if not default_server.active %}Start{% endif %} My Workspace
+                {% if not default_server.active %}Start{% endif %} My Server
             </a>
             <br />
             <div id="img-div">
