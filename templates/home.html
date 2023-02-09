@@ -1,4 +1,4 @@
-{% extends "templates/page.html" %}
+{% extends 'templates/page.html' %}
 {% block stylesheet %}
 {{ super() }}
 <style>
@@ -118,7 +118,7 @@
 {% block main %}
 <div class='container'>
     <div class='row'>
-        <div class='text-center'>
+        <div class='text-center' id='text-center'>
             {% if default_server.active %}
             {{named_spawners}}
             <span class='server-info' id='server-info'>Your server is still running. You can stop or go back to your
@@ -135,8 +135,8 @@
                 {% if not default_server.active %}Start{% endif %} My Server
             </a>
             <br />
-            <div id="img-div">
-                <img id="server-img" src="https://datalab-static-images.s3.ap-south-1.amazonaws.com/home_server.svg" />
+            <div id='img-div'>
+                <img id='server-img' src='https://datalab-static-images.s3.ap-south-1.amazonaws.com/home_server.svg' />
             </div>
         </div>
     </div>
@@ -144,8 +144,8 @@
 {% endblock main %}
 {% block script %}
 {{ super() }}
-<script type="text/javascript">
-    require(["home"]);
+<script type='text/javascript'>
+    require(['home']);
 
     //custom script
 
@@ -170,10 +170,11 @@
 
     //Remove server-info on click of stop server
 
-    $("#stop").click(function () {
-        console.log("clicked");
-            $("#sever-info").remove();
+    $('#stop').click(function () {
+        console.log('clicked');
+            $('#sever-info').remove();
             window.location.reload();
+            $('text-center').prepend("<span class='server-info' id='server-info'>Your server has stpooed. You can go back to your server again by clicking start</span>");
     });
 </script>
 {% endblock %}
