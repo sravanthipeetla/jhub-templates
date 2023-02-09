@@ -26,6 +26,7 @@
 
     #logout{
         border:none;
+        font-size: 16px;
     }
     .jpy-logo {
         height: 3rem;
@@ -48,6 +49,8 @@
         font-size: 16px;
         border-radius: 25px;
         width: 25rem;
+        border: none;
+        margin: 2rem;
     }
 
     #start {
@@ -57,6 +60,8 @@
         font-size: 16px;
         border-radius: 25px;
         width: 25rem;
+        border: none;
+        margin: 2rem;
     }
 
     #img-div {
@@ -159,18 +164,10 @@
         }
     });
 
-    // Logout text remove
-
-    // $("#logout").text('');
-
     //Remove server-info on click of stop server
 
     $("#stop").click(function () {
-        $("#server-info").text("Your workspace is stopping. Please wait...");
-        setTimeout(function () {
             $("#sever-info").remove();
-            window.location.reload();
-        }, 1000);
     });
 </script>
 {% endblock %}
