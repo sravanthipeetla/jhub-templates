@@ -136,7 +136,7 @@
             </a>
             <br />
             <div id='img-div'>
-                <img id='server-img' src='https://datalab-static-images.s3.ap-south-1.amazonaws.com/home_server.svg' />
+                <img id='server-img'/>
             </div>
         </div>
     </div>
@@ -148,6 +148,9 @@
     require(['home']);
 
     //custom script
+
+    const s3_bucket_url='https://datalab-static-images.s3.ap-south-1.amazonaws.com/';
+    $('#server-img').attr('src',`${s3_bucket_url}home_server.svg`);
 
     // To hide left navbar items - 'Token' and 'services'
 
@@ -172,7 +175,8 @@
 
     $('#stop').click(function () {
         console.log('clicked');
-            $('#sever-info').remove();
+            $('#server-info').remove();
     });
+
 </script>
 {% endblock %}
