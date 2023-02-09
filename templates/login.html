@@ -1,4 +1,4 @@
-{% extends "templates/page.html" %} 
+{% extends 'templates/page.html' %} 
 {% block stylesheet %}
 {{ super() }}
 <style>
@@ -116,7 +116,7 @@
         right: -8rem;
         bottom: 0rem;
         margin: auto;
-        content: "";
+        content: '';
         background: linear-gradient(134.19deg, #006BB6 17.15%, #006BB6 17.15%, #FFFFFF 167.6%);
         transform: rotate(-180deg);
     }
@@ -128,7 +128,7 @@
         right: 0rem;
         bottom: 0rem;
         margin: auto;
-        content: "";
+        content: '';
         width: 8rem;
         height: 8rem;
         background-image: url(https://ik.imagekit.io/iwwbj9so6/shape-1_aTPghNqcM.svg?ik-sdk-version=javascript-1.4.3&updatedAt=1658898386582);
@@ -180,7 +180,7 @@
         left: 0rem;
         right: 0rem;
         margin: auto;
-        content: "";
+        content: '';
         bottom: 6rem;
     }
 
@@ -196,7 +196,7 @@
         height: 12rem;
     }
 
-    .hcl-logo {
+    .org-logo {
         width: 15rem;
     }
 
@@ -268,7 +268,7 @@
             width: 45rem;
         }
 
-        .hcl-logo {
+        .org-logo {
             width: 25rem;
         }
 
@@ -296,7 +296,7 @@
             left: 65rem;
         }
 
-        .hcl-logo {
+        .org-logo {
             width: 20rem;
         }
 
@@ -383,7 +383,7 @@
             padding-top: calc(6vh - 3rem);
         }
 
-        .hcl-logo {
+        .org-logo {
             width: 16rem;
         }
 
@@ -586,7 +586,7 @@
         .login-form-wrapper h3 {
             font-size: 2rem;
         }
-        .hcl-logo {
+        .org-logo {
             width: 12rem;
         }
     }
@@ -662,52 +662,47 @@
 {% endblock %}
 {% block main %}
 {% block login %}
-<div id="login-main" class="container">
+<div id='login-main' class='container'>
     {% block login_container %}
     {% if custom_html %}
     {{ custom_html | safe }}
     {% elif login_service %}
-    <div class="service-login">
-        <div class="page-wrapper">
-            <div class="d-flex flex-wrap h-100">
-                <div class="left-section">
-                    <div class="left-content-wrapper">
-                        <h3 class="color-fff font-poppins">Your differentiated learning journey, begins here.</h3>
+    <div class='service-login'>
+        <div class='page-wrapper'>
+            <div class='d-flex flex-wrap h-100'>
+                <div class='left-section'>
+                    <div class='left-content-wrapper'>
+                        <h3 class='color-fff font-poppins'>Your differentiated learning journey, begins here.</h3>
                     </div>
-                    <div class="student-img-wrapper">
-                        <img class="student-img"
-                            src="https://datalab-static-images.s3.ap-south-1.amazonaws.com/jordy-1.png"/>
+                    <div class='student-img-wrapper'>
+                        <img class='student-img' id='student-img'/>
                     </div>
-                    <div class="plant">
-                        <img
-                            src="https://datalab-static-images.s3.ap-south-1.amazonaws.com/plant.png"/>
+                    <div class='plant'>
+                        <img id='plant'/>
                     </div>
-                    <div class="circle">
-                        <img
-                            src="https://datalab-static-images.s3.ap-south-1.amazonaws.com/ellipse.png"/>
+                    <div class='circle'>
+                        <img id='ellipse'/>
                     </div>
                 </div>
-                <div class="right-section d-flex flex-column">
-                    <div class="section-header">
-                        <div class="section-header ">
-                            <div class="hcl-logo">
-                                <img
-                                    src="https://datalab-static-images.s3.ap-south-1.amazonaws.com/career_shaper_logo.png"/>
+                <div class='right-section d-flex flex-column'>
+                    <div class='section-header'>
+                        <div class='section-header '>
+                            <div class='org-logo'>
+                                <img id='logo'/>
                             </div>
                         </div>
                     </div>
-                    <div class="login-form-wrapper .flex-column">
-                        <h3 class="font-poppins">Welcome to Data Science Labs <span>:)</span></h3>
-                        <div class="form-group floating-label mb-5">
+                    <div class='login-form-wrapper .flex-column'>
+                        <h3 class='font-poppins'>Welcome to Data Science Labs <span>:)</span></h3>
+                        <div class='form-group floating-label mb-5'>
                             <span class='login-form-wrapper-p font-poppins'>Learn. Code. Act. </p>
                         </div>
-                        <div class="login-form-wrapper-img">
-                            <img class="login-img"
-                                src="https://datalab-static-images.s3.ap-south-1.amazonaws.com/data_extraction.svg"/>
+                        <div class='login-form-wrapper-img'>
+                            <img class='login-img' id='data-extraction-img'/>
                         </div>
-                        <div class="sign-flex align-items-center flex-row mt-2 ">
-                            <a role="button" class="btn btn-jupyter btn-lg font-poppins"
-                                href="{{authenticator_login_url}}">
+                        <div class='sign-flex align-items-center flex-row mt-2 '>
+                            <a role='button' class='btn btn-jupyter btn-lg font-poppins'
+                                href='{{authenticator_login_url}}'>
                                 Login with organization ID
                                 <!-- Sign in with {{login_service}} -->
                             </a>
@@ -718,31 +713,31 @@
         </div>
     </div>
     {% else %}
-    <form action="{{authenticator_login_url}}" method="post" role="form">
-        <div class="auth-form-header">Sign in</div>
-        <div class="auth-form-body">
+    <form action='{{authenticator_login_url}}' method='post' role='form'>
+        <div class='auth-form-header'>Sign in</div>
+        <div class='auth-form-body'>
             {% if login_error %}
-            <p class="login_error">{{login_error}}</p>
+            <p class='login_error'>{{login_error}}</p>
             {% endif %}
-            <label for="username_input">Username:</label>
-            <input id="username_input" type="text" autocapitalize="off" autocorrect="off" class="form-control"
-                name="username" val="{{username}}" tabindex="1" autofocus="autofocus" />
-            <label for="password_input">Password:</label>
-            <input type="password" class="form-control" name="password" id="password_input" tabindex="2" />
+            <label for='username_input'>Username:</label>
+            <input id='username_input' type='text' autocapitalize='off' autocorrect='off' class='form-control'
+                name='username' val='{{username}}' tabindex='1' autofocus='autofocus' />
+            <label for='password_input'>Password:</label>
+            <input type='password' class='form-control' name='password' id='password_input' tabindex='2' />
 
-            <div class="feedback-container">
-                <input id="login_submit" type="submit" class="btn btn-jupyter" value="Sign in" tabindex="3" />
-                <div class="feedback-widget hidden">
-                    <i class="fa fa-spinner"></i>
+            <div class='feedback-container'>
+                <input id='login_submit' type='submit' class='btn btn-jupyter' value='Sign in' tabindex='3' />
+                <div class='feedback-widget hidden'>
+                    <i class='fa fa-spinner'></i>
                 </div>
             </div>
 
             {% block login_terms %} {% if login_term_url %}
-            <div id="login_terms" class="login_terms">
-                <input type="checkbox" id="login_terms_checkbox" name="login_terms_checkbox" required />
+            <div id='login_terms' class='login_terms'>
+                <input type='checkbox' id='login_terms_checkbox' name='login_terms_checkbox' required />
                 {% block login_terms_text %} {# allow overriding the text #} By logging
                 into the platform you accept the
-                <a href="{{ login_term_url }}">terms and conditions</a>. {% endblock
+                <a href='{{ login_term_url }}'>terms and conditions</a>. {% endblock
                 login_terms_text %}
             </div>
             {% endif %} {% endblock login_terms %}
@@ -765,6 +760,16 @@ script %}
         form.find('.feedback-container>input').attr('disabled', true);
         form.find('.feedback-container>*').toggleClass('hidden');
         form.find('.feedback-widget>*').toggleClass('fa-pulse');
-    });    
+    });   
+    
+    //custom script
+
+    const s3_bucket_url='https://datalab-static-images.s3.ap-south-1.amazonaws.com/';
+    $('#student-img').attr('src',`${s3_bucket_url}jordy-1.png`);
+    $('#plant').attr('src',`${s3_bucket_url}plant.png`);
+    $('#ellipse').attr('src',`${s3_bucket_url}ellipse.png`);
+    $('#logo').attr('src',`${s3_bucket_url}career_shaper_logo.png`);
+    $('# data-extraction-img').attr('src',`${s3_bucket_url}data_extraction.svg`);    
+
 </script>
 {% endblock %}
