@@ -127,8 +127,7 @@
     require(['home']);
 
     //custom script
-
-    const s3_bucket_url=process.env.S3_BUCKET_URL;
+    const s3_bucket_url= '{{ config.singleuser.extraEnv.Bucket_URL }}';
     $('#server-img').attr('src',`${s3_bucket_url}admin_delete.png`);
 
     // To hide left navbar items - 'Token' and 'services'
