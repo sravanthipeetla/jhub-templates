@@ -107,7 +107,7 @@
             <br />
             <br />
             <a id='stop' role='button' class='btn btn-lg btn-danger'>
-                Stop My Server{{os.environ.S3_Bucket_URL}}
+                Stop My Server
             </a>
             {% endif %}
             <a id='start' role='button' class='btn btn-lg btn-primary' href='{{ url }}'>
@@ -151,7 +151,10 @@
         console.log('clicked');
             $('#server-info').remove();
     });
-    console.log(process.env.S3_BUCKET_URL,"uuurrll")
+    var environment = JSON.parse(document.getElementById('environment').textContent);
+
+        // Now you can access your environment variables
+    console.log("MY_VARIABLE:", environment.MY_VARIABLE);
 
 </script>
 {% endblock %}
