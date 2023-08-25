@@ -127,7 +127,7 @@
     require(['home']);
 
     //custom script
-    const s3_bucket_url= '{{ get_config().singleuser.extraEnv.Bucket_URL }}';
+    const s3_bucket_url= '{{ 'Bucket_URL' | getenv }}';;
     console.log(s3_bucket_url)
     $('#server-img').attr('src',`${s3_bucket_url}admin_delete.png`);
 
